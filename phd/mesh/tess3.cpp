@@ -1,13 +1,19 @@
 #include "tess.h"
 #include <CGAL/Exact_predicates_inexact_constructions_kernel.h>
 #include <CGAL/Delaunay_triangulation_3.h>
+#include <CGAL/Delaunay_triangulation_cell_base_3.h>
 #include <CGAL/Triangulation_vertex_base_with_info_3.h> 
 
 #include <boost/iterator/counting_iterator.hpp>
 
 typedef CGAL::Exact_predicates_inexact_constructions_kernel  K;
+
+/* Added the following two lines + modified the Triangulation_data_structure_3 to include cell base param */
+typedef CGAL::Delaunay_triangulation_cell_base_3<K> C_t; 
+typedef CGAL::Triangulation_cell_base_with_info_3<int, K, C_t> Cb;
+
 typedef CGAL::Triangulation_vertex_base_with_info_3<int, K> Vb; 
-typedef CGAL::Triangulation_data_structure_3<Vb>           Tds; 
+typedef CGAL::Triangulation_data_structure_3<Vb, Cb>           Tds; 
 typedef CGAL::Delaunay_triangulation_3<K, Tds>            Tess;
 typedef Tess::Vertex_handle   Vertex_handle;
 typedef Tess::Point           Point;
