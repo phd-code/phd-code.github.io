@@ -70,8 +70,8 @@ class VoronoiMesh2D(dict):
         num_particles = x.size
 
         # create neighbor and face graph
-        neighbor_graph = [[] for i in xrange(num_particles)]
-        face_graph = [[] for i in xrange(num_particles)]
+        neighbor_graph = [[] for i in range(num_particles)]
+        face_graph = [[] for i in range(num_particles)]
 
         # loop through each face collecting the two particles
         # that made that face as well as the face itself

@@ -29,13 +29,13 @@ def exchange_particles(particles, send_data, send_particles, recv_particles, dis
     if fields != None:
         export_fields = fields
     else:
-        export_fields = particles.carrays.keys()
+        export_fields = list(particles.carrays.keys())
 
     if offset_se is None or offset_re is None:
         # displacements for the send and reveive buffers
         offset_se = np.zeros(size, dtype=np.int32)
         offset_re = np.zeros(size, dtype=np.int32)
-        for i in xrange(1,size):
+        for i in range(1,size):
             offset_se[i] = send_particles[i-1] + offset_se[i-1]
             offset_re[i] = recv_particles[i-1] + offset_re[i-1]
 
@@ -43,7 +43,7 @@ def exchange_particles(particles, send_data, send_particles, recv_particles, dis
     while size > (1<<ptask):
         ptask += 1
 
-    for ngrp in xrange(1,1 << ptask):
+    for ngrp in range(1,1 << ptask):
         sendTask = rank
         recvTask = rank ^ ngrp
         if recvTask < size:

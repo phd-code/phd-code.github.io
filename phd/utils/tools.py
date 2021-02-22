@@ -37,7 +37,7 @@ def class_dict(cl):
     that class has been set.
     """
     dic = {}
-    for attr_name, attr in cl.__dict__.iteritems():
+    for attr_name, attr in cl.__dict__.items():
         comp = getattr(cl, attr_name)
         if isinstance(comp, (int, float, str,
             dict, tuple, list, np.ndarray)):

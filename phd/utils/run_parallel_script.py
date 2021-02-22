@@ -14,7 +14,7 @@ def get_directory(file):
     return os.path.dirname(os.path.abspath(file))
 
 def kill_process(process):
-    print 'KILLING PROCESS ON TIMEOUR'
+    print('KILLING PROCESS ON TIMEOUR')
     process.kill()
 
 def run(filename, args=[], nprocs=2, timeout=20.0, path=None):
@@ -32,7 +32,7 @@ def run(filename, args=[], nprocs=2, timeout=20.0, path=None):
     path = os.path.join(path, filename)
     cmd = ['mpirun', '-n', str(nprocs), sys.executable, path] + args
 
-    print 'running test:', " ".join(cmd)
+    print('running test:', " ".join(cmd))
 
     process = Popen(cmd, stdout=PIPE, stderr=PIPE)
     timer = Timer(timeout, kill_process, [process])
@@ -42,10 +42,10 @@ def run(filename, args=[], nprocs=2, timeout=20.0, path=None):
     retcode = process.returncode
     if retcode:
         msg = 'test ' + filename  + ' failed with returncode ' + str(retcode)
-        print out
-        print err
-        print '#'*80
-        print msg
-        print '#'*80
-        raise RuntimeError, msg
+        print(out)
+        print(err)
+        print('#'*80)
+        print(msg)
+        print('#'*80)
+        raise RuntimeError(msg)
     return retcode, out, err

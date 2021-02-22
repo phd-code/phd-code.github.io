@@ -36,7 +36,7 @@ class TestHLLSetup(unittest.TestCase):
                self.particles.carray_named_groups["momentum"])
 
        # check if fields type are correct
-       for field in self.riemann.flux_fields.keys():
+       for field in list(self.riemann.flux_fields.keys()):
            self.assertEqual(
                    self.riemann.flux_fields[field],
                    self.particles.carrays_dtypes[field])
@@ -108,7 +108,7 @@ class TestHLLFlux(unittest.TestCase):
         self.riemann.compute_fluxes(self.particles, self.mesh,
                 self.reconstruction, self.eos)
 
-        for field in self.riemann.fluxes.carrays.keys():
+        for field in list(self.riemann.fluxes.carrays.keys()):
             self.assertAlmostEqual(self.riemann.fluxes[field][0], ans[field])
 
         # reverse fluid flow
@@ -118,7 +118,7 @@ class TestHLLFlux(unittest.TestCase):
                 self.reconstruction, self.eos)
 
         # left and right states should be the same
-        for field in self.riemann.fluxes.carrays.keys():
+        for field in list(self.riemann.fluxes.carrays.keys()):
             self.assertAlmostEqual(self.riemann.fluxes[field][0], ans[field])
 
 if __name__ == "__main__":

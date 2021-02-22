@@ -30,7 +30,7 @@ def distribute_initial_particles(create_particles, **kwargs):
 
             lengths = disp = send = None
             particles_root = {}
-            for key in phd.HydroParticleCreator(dim=dim).carrays.keys():
+            for key in list(phd.HydroParticleCreator(dim=dim).carrays.keys()):
                 particles_root[key] = None
 
         # tell each processor how many particles it will hold
@@ -40,7 +40,7 @@ def distribute_initial_particles(create_particles, **kwargs):
         particles = phd.HydroParticleCreator(send, dim=dim)
 
         # import particles from root
-        for field in particles.carrays.keys():
+        for field in list(particles.carrays.keys()):
             phd._comm.Scatterv([particles_root[field], (lengths, disp)], particles[field])
         del particles_root
 

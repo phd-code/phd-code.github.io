@@ -54,7 +54,7 @@ particles = io.read(file_name)
 particles.remove_tagged_particles(phd.ParticleTAGS.Ghost)
 
 time = h5py.File(file_name, "r").attrs["time"]
-print time
+print(time)
 
 r = np.sqrt((particles["position-x"]-1.25)**2 + (particles["position-y"]-1.25)**2 + (particles["position-z"]-1.25)**2)
 fig, axes = plt.subplots(1,3, figsize=(12,6))

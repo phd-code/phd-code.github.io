@@ -75,7 +75,7 @@ class TestPieceWiseConstant(unittest.TestCase):
                 domain_manager, dt=1.0)
 
         # left and right states should be the same
-        for field in self.recon.left_states.carrays.keys():
+        for field in list(self.recon.left_states.carrays.keys()):
             self.assertAlmostEqual(self.recon.left_states[field][0],
                     self.particles[field][0])
 

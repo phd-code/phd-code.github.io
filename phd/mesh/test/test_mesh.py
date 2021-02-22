@@ -25,10 +25,10 @@ class TestMeshSetup2d(unittest.TestCase):
         self.mesh.register_fields(particles)
         reg_fields_2d = ["volume", "dcom-x", "dcom-y", "w-x", "w-y"]
         for field in reg_fields_2d:
-            self.assertTrue(field in particles.carrays.keys())
+            self.assertTrue(field in list(particles.carrays.keys()))
 
         # check right number of fields
-        self.assertEqual(particles.carrays.keys().sort(),
+        self.assertEqual(list(particles.carrays.keys()).sort(),
                 (fields + reg_fields_2d).sort())
 
         # check named groups added correctly
@@ -53,10 +53,10 @@ class TestMeshSetup2d(unittest.TestCase):
 
         # check if correct fields registered
         for field in face_vars_2d:
-            self.assertTrue(field in self.mesh.faces.carrays.keys())
+            self.assertTrue(field in list(self.mesh.faces.carrays.keys()))
 
         # check right number of fields
-        self.assertEqual(self.mesh.faces.carrays.keys().sort(),
+        self.assertEqual(list(self.mesh.faces.carrays.keys()).sort(),
                 face_vars_2d.sort())
 
 
@@ -73,10 +73,10 @@ class TestMeshSetup3d(TestMeshSetup2d):
         self.mesh.register_fields(particles)
         reg_fields_3d = ["volume", "dcom-x", "dcom-y", "dcom-z", "w-x", "w-y", "w-z"]
         for field in reg_fields_3d:
-            self.assertTrue(field in particles.carrays.keys())
+            self.assertTrue(field in list(particles.carrays.keys()))
 
         # check right number of fields
-        self.assertEqual(particles.carrays.keys().sort(),
+        self.assertEqual(list(particles.carrays.keys()).sort(),
                 (fields + reg_fields_3d).sort())
 
         # check named groups added correctly
@@ -98,10 +98,10 @@ class TestMeshSetup3d(TestMeshSetup2d):
 
         # check if correct fields registered
         for field in face_vars_3d:
-            self.assertTrue(field in self.mesh.faces.carrays.keys())
+            self.assertTrue(field in list(self.mesh.faces.carrays.keys()))
 
         # check right number of fields
-        self.assertEqual(self.mesh.faces.carrays.keys().sort(),
+        self.assertEqual(list(self.mesh.faces.carrays.keys()).sort(),
                 face_vars_3d.sort())
 
 class TestMesh2dUniformBox(unittest.TestCase):

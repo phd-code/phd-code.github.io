@@ -171,7 +171,7 @@ class IntegrateBase(object):
 
     def compute_source(self, term):
         if self.source_terms:
-            for source in self.source_terms.itervalues():
+            for source in self.source_terms.values():
                 if term == "motion":
                     source.apply_motion(self)
                 elif term == "primitive":
@@ -255,7 +255,7 @@ class IntegrateBase(object):
         # modify timestep from source terms
         if self.source_terms:
             dt_source = np.inf
-            for source in self.source_terms.itervalues():
+            for source in self.source_terms.values():
                 dt_source = min(source.compute_time_step(self), dt_source)
 
             if phd._in_parallel:

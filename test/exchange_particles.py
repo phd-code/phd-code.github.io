@@ -150,7 +150,7 @@ send_particles = np.bincount(exportProcs, minlength=size).astype(np.int32)
 
 # extract particles to send 
 send_data = {}
-for prop in pa.properties.keys():
+for prop in list(pa.properties.keys()):
     send_data[prop] = pa[prop][exportLocalids]
 
 # remove exported and ghost particles
@@ -178,7 +178,7 @@ if rank == 0:
 
 assert(pa.get_number_of_particles() == numParticles)
 
-for i in xrange(pa.get_number_of_particles()):
+for i in range(pa.get_number_of_particles()):
     assert(abs(X[pa['gid'][i]] - pa['position-x'][i]) < 1e-15)
     assert(abs(Y[pa['gid'][i]] - pa['position-y'][i]) < 1e-15)
     assert(GID[pa['gid'][i]] == pa['gid'][i])

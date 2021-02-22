@@ -72,7 +72,7 @@ class Hdf5(ReaderWriterBase):
             particle_grp.attrs["number_particles"] = integrator.particles.get_carray_size()
 
             # store particle data for each field
-            for prop_name in integrator.particles.carrays.keys():
+            for prop_name in list(integrator.particles.carrays.keys()):
                 data_grp = particle_grp.create_group(prop_name)
                 data_grp.attrs["dtype"] = integrator.particles.carray_dtypes[prop_name]
                 data_grp.create_dataset("data", data=integrator.particles[prop_name])
@@ -90,7 +90,7 @@ class Hdf5(ReaderWriterBase):
             particles = CarrayContainer(num_particles)
 
             # populate arrays with data
-            for field_key in particle_grp.keys():
+            for field_key in list(particle_grp.keys()):
                 field = field_key.encode('utf8')
 
                 field_grp = particle_grp[field]

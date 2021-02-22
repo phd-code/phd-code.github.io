@@ -42,7 +42,7 @@ for i in range(num):
     time[i] = h5py.File(file_name, "r").attrs["time"]
 
 error = (energy-E0)/E0
-print "energy min:", error.min(), "energy max:", error.max()
+print("energy min:", error.min(), "energy max:", error.max())
 ax.set_xlabel("X")
 ax.set_ylabel("Y")
 

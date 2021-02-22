@@ -193,7 +193,7 @@ class Simulation(object):
         cldict = class_dict(self.integrator)
         cldict["integrator"] = self.integrator.__class__.__name__
         message += "\nClasses used in the simulation\n" + bar + "\n"
-        for key, val in sorted(cldict.iteritems()):
+        for key, val in sorted(cldict.items()):
             message += key + ": " + val + "\n"
 
         phdLogger.info(message)

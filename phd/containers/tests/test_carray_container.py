@@ -25,9 +25,9 @@ class TestCarrayContainer(TestCase):
         container = CarrayContainer(carrays_to_register=self.carrays)
 
         self.assertEqual(container.get_carray_size(), 0)
-        self.assertItemsEqual(container.carrays.keys(), self.carrays.keys())
+        self.assertItemsEqual(list(container.carrays.keys()), list(self.carrays.keys()))
 
-        for carray_name in container.carrays.keys():
+        for carray_name in list(container.carrays.keys()):
             self.assertEqual(container[carray_name].size, 0)
 
     def test_register_carray(self):
@@ -36,28 +36,28 @@ class TestCarrayContainer(TestCase):
 
         container.register_carray(5, "x", "double")
         self.assertEqual(container.get_carray_size(), 5)
-        self.assertTrue("x" in container.carrays.keys())
+        self.assertTrue("x" in list(container.carrays.keys()))
         self.assertEqual(len(container.carrays), 1)
         self.assertEqual(len(container.carray_dtypes), 1)
         self.assertEqual(container.carray_dtypes["x"], "double")
 
         container.register_carray(5, "y", "int")
         self.assertEqual(container.get_carray_size(), 5)
-        self.assertTrue("y" in container.carrays.keys())
+        self.assertTrue("y" in list(container.carrays.keys()))
         self.assertEqual(len(container.carrays), 2)
         self.assertEqual(len(container.carray_dtypes), 2)
         self.assertEqual(container.carray_dtypes["y"], "int")
 
         container.register_carray(5, "z", "long")
         self.assertEqual(container.get_carray_size(), 5)
-        self.assertTrue("z" in container.carrays.keys())
+        self.assertTrue("z" in list(container.carrays.keys()))
         self.assertEqual(len(container.carrays), 3)
         self.assertEqual(len(container.carray_dtypes), 3)
         self.assertEqual(container.carray_dtypes["z"], "long")
 
         container.register_carray(5, "w", "longlong")
         self.assertEqual(container.get_carray_size(), 5)
-        self.assertTrue("w" in container.carrays.keys())
+        self.assertTrue("w" in list(container.carrays.keys()))
         self.assertEqual(len(container.carrays), 4)
         self.assertEqual(len(container.carray_dtypes), 4)
         self.assertEqual(container.carray_dtypes["w"], "longlong")
@@ -135,7 +135,7 @@ class TestCarrayContainer(TestCase):
         container.resize(42)
 
         self.assertEqual(container.get_carray_size(), 42)
-        for field in container.carrays.itervalues():
+        for field in container.carrays.values():
             self.assertEqual(field.length, 42)
 
         self.assertRaises(RuntimeError, container.resize, -1)
@@ -151,7 +151,7 @@ class TestCarrayContainer(TestCase):
         container.extend(100)
 
         self.assertEqual(container.get_carray_size(), 100)
-        for field in container.carrays.itervalues():
+        for field in container.carrays.values():
             self.assertEqual(field.length, 100)
 
         self.assertRaises(RuntimeError, container.extend, -1)

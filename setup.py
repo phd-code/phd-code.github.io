@@ -38,14 +38,14 @@ for subdir in subdirs:
         sources += ["phd/domain/particle.cpp"]
     extensions.append(
             Extension(subdir.replace("/", ".") + ".*",
-                sources, include_dirs = [np.get_include()] + subdirs,
+                sources, include_dirs = [np.get_include()] + subdirs + ["/opt/homebrew/Cellar/cgal/5.2/include"] + \
+                                            ["/opt/homebrew/Cellar/boost/1.75.0_1/include"],
                 libraries=["CGAL", "gmp", "m"],
                 define_macros=[("CGAL_NDEBUG",1)],
             )
     )
     if any(_ in subdir for _ in cpp):
         extensions[-1].language = "c++"
-
 setup(
         name="phd",
         version="0.1",

@@ -36,7 +36,7 @@ for i in range(4): # over columns
         patch, colors = phd.vor_collection(particles, "density")
         particles.remove_tagged_particles(phd.ParticleTAGS.Ghost)
 
-        print particles["density"].min(), particles["density"].max()
+        print(particles["density"].min(), particles["density"].max())
 
         p = PatchCollection(patch, cmap="jet", edgecolor="none")
         p.set_array(np.array(colors))

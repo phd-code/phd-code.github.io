@@ -94,7 +94,7 @@ if rank == 3:
     gid = np.array( [21, 22, 23, 24], dtype=np.int32 )
 
 
-f = h5py.File("initial_particle_data_" + `rank`.zfill(4) + ".hdf5", "w")
+f = h5py.File("initial_particle_data_" + repr(rank).zfill(4) + ".hdf5", "w")
 f['/x'] = x
 f['/y'] = y
 f.attrs["rank"] = rank
@@ -121,7 +121,7 @@ if rank == 0:
     f['/id'] = GID
     f.close
 
-f = h5py.File("final_particle_data_" + `rank`.zfill(4) + ".hdf5", "w")
+f = h5py.File("final_particle_data_" + repr(rank).zfill(4) + ".hdf5", "w")
 f['/global_id_to_send'] = gid[exchange_data["ids"]]
 tmp = np.delete(gid, exchange_data["ids"])
 if tmp.size == 0:

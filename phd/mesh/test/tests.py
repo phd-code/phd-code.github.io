@@ -116,9 +116,9 @@ class TestVoronoiMesh3dBox(unittest.TestCase):
         z = np.zeros(N)
 
         part = 0
-        for i in xrange(Nq):
-            for j in xrange(Nq):
-                for k in xrange(Nq):
+        for i in range(Nq):
+            for j in range(Nq):
+                for k in range(Nq):
                     x[part] = q[i]
                     y[part] = q[j]
                     z[part] = q[k]
@@ -154,9 +154,9 @@ class TestVoronoiMesh3dBox(unittest.TestCase):
         """
         # generate voronoi mesh 
         mesh = Mesh3d(self.particles, self.bound)
-        print "building mesh..."
+        print("building mesh...")
         mesh.build_geometry()
-        print "mesh complete"
+        print("mesh complete")
 
         # calculate voronoi volumes of all real particles 
         real_indices = self.particles["tag"] == ParticleTAGS.Real
