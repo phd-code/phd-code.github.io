@@ -40,7 +40,8 @@ for subdir in subdirs:
             Extension(subdir.replace("/", ".") + ".*",
                 sources, include_dirs = [np.get_include()] + subdirs + ["/opt/homebrew/Cellar/cgal/5.2/include"] + \
                                             ["/opt/homebrew/Cellar/boost/1.75.0_1/include"],
-                libraries=["CGAL", "gmp", "m"],
+                library_dirs = ["/opt/homebrew/Cellar/cgal/5.2/lib"], 
+                libraries=["gmp", "m"],
                 define_macros=[("CGAL_NDEBUG",1)],
             )
     )

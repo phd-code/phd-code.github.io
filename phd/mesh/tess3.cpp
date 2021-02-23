@@ -8,9 +8,8 @@
 
 typedef CGAL::Exact_predicates_inexact_constructions_kernel  K;
 
-/* Added the following two lines + modified the Triangulation_data_structure_3 to include cell base param */
-typedef CGAL::Delaunay_triangulation_cell_base_3<K> C_t; 
-typedef CGAL::Triangulation_cell_base_with_info_3<int, K, C_t> Cb;
+/* Added the following line + modified the Triangulation_data_structure_3 to include cell base param */
+typedef CGAL::Delaunay_triangulation_cell_base_3<K> Cb; 
 
 typedef CGAL::Triangulation_vertex_base_with_info_3<int, K> Vb; 
 typedef CGAL::Triangulation_data_structure_3<Vb, Cb>           Tds; 
