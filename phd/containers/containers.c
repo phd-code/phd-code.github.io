@@ -25,12 +25,16 @@
             "phd/riemann/",
             "phd/mesh/",
             "phd/reconstruction/",
-            "phd/source_term/"
+            "phd/source_term/",
+            "/opt/homebrew/Cellar/cgal/5.2/include",
+            "/opt/homebrew/Cellar/boost/1.75.0_1/include"
         ],
         "libraries": [
-            "CGAL",
             "gmp",
             "m"
+        ],
+        "library_dirs": [
+            "/opt/homebrew/Cellar/cgal/5.2/lib"
         ],
         "name": "phd.containers.containers",
         "sources": [
@@ -2823,7 +2827,7 @@ static PyObject *__pyx_f_3phd_10containers_10containers_15CarrayContainer_regist
   /* "phd/containers/containers.pyx":53
  *             Data type of carray.
  *         """
- *         if carray_name in self.carrays.keys():             # <<<<<<<<<<<<<<
+ *         if carray_name in list(self.carrays.keys()):             # <<<<<<<<<<<<<<
  *             raise RuntimeError("ERROR: Carray already registered")
  * 
  */
@@ -2833,28 +2837,31 @@ static PyObject *__pyx_f_3phd_10containers_10containers_15CarrayContainer_regist
   }
   __pyx_t_1 = __Pyx_PyDict_Keys(__pyx_v_self->carrays); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 53, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_8 = (__Pyx_PySequence_ContainsTF(__pyx_v_carray_name, __pyx_t_1, Py_EQ)); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 53, __pyx_L1_error)
+  __pyx_t_2 = PySequence_List(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 53, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_8 = (__Pyx_PySequence_ContainsTF(__pyx_v_carray_name, __pyx_t_2, Py_EQ)); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 53, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_9 = (__pyx_t_8 != 0);
   if (unlikely(__pyx_t_9)) {
 
     /* "phd/containers/containers.pyx":54
  *         """
- *         if carray_name in self.carrays.keys():
+ *         if carray_name in list(self.carrays.keys()):
  *             raise RuntimeError("ERROR: Carray already registered")             # <<<<<<<<<<<<<<
  * 
  *         if len(self.carrays) != 0:
  */
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 54, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __Pyx_Raise(__pyx_t_1, 0, 0, 0);
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 54, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_Raise(__pyx_t_2, 0, 0, 0);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __PYX_ERR(0, 54, __pyx_L1_error)
 
     /* "phd/containers/containers.pyx":53
  *             Data type of carray.
  *         """
- *         if carray_name in self.carrays.keys():             # <<<<<<<<<<<<<<
+ *         if carray_name in list(self.carrays.keys()):             # <<<<<<<<<<<<<<
  *             raise RuntimeError("ERROR: Carray already registered")
  * 
  */
@@ -2867,14 +2874,14 @@ static PyObject *__pyx_f_3phd_10containers_10containers_15CarrayContainer_regist
  *             if carray_size != self.get_carray_size():
  *                 raise RuntimeError("ERROR: Size inconsistent with carray size")
  */
-  __pyx_t_1 = __pyx_v_self->carrays;
-  __Pyx_INCREF(__pyx_t_1);
-  if (unlikely(__pyx_t_1 == Py_None)) {
+  __pyx_t_2 = __pyx_v_self->carrays;
+  __Pyx_INCREF(__pyx_t_2);
+  if (unlikely(__pyx_t_2 == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
     __PYX_ERR(0, 56, __pyx_L1_error)
   }
-  __pyx_t_10 = PyDict_Size(__pyx_t_1); if (unlikely(__pyx_t_10 == ((Py_ssize_t)-1))) __PYX_ERR(0, 56, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_10 = PyDict_Size(__pyx_t_2); if (unlikely(__pyx_t_10 == ((Py_ssize_t)-1))) __PYX_ERR(0, 56, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_9 = ((__pyx_t_10 != 0) != 0);
   if (__pyx_t_9) {
 
@@ -2895,10 +2902,10 @@ static PyObject *__pyx_f_3phd_10containers_10containers_15CarrayContainer_regist
  * 
  *         # store data type of field
  */
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_tuple__2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 58, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_1);
-      __Pyx_Raise(__pyx_t_1, 0, 0, 0);
-      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_tuple__2, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 58, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_2);
+      __Pyx_Raise(__pyx_t_2, 0, 0, 0);
+      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __PYX_ERR(0, 58, __pyx_L1_error)
 
       /* "phd/containers/containers.pyx":57
@@ -2950,17 +2957,17 @@ static PyObject *__pyx_f_3phd_10containers_10containers_15CarrayContainer_regist
  *         elif dtype == "int":
  *             self.carrays[carray_name] = IntArray(carray_size)
  */
-    __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_carray_size); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 64, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_2 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_3phd_5utils_6carray_DoubleArray), __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 64, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_carray_size); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 64, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_3phd_5utils_6carray_DoubleArray), __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 64, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     if (unlikely(__pyx_v_self->carrays == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
       __PYX_ERR(0, 64, __pyx_L1_error)
     }
-    if (unlikely(PyDict_SetItem(__pyx_v_self->carrays, __pyx_v_carray_name, __pyx_t_2) < 0)) __PYX_ERR(0, 64, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    if (unlikely(PyDict_SetItem(__pyx_v_self->carrays, __pyx_v_carray_name, __pyx_t_1) < 0)) __PYX_ERR(0, 64, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
     /* "phd/containers/containers.pyx":63
  *         self.carray_dtypes[carray_name] = dtype
@@ -2990,17 +2997,17 @@ static PyObject *__pyx_f_3phd_10containers_10containers_15CarrayContainer_regist
  *         elif dtype == "long":
  *             self.carrays[carray_name] = LongArray(carray_size)
  */
-    __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_carray_size); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 66, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_3phd_5utils_6carray_IntArray), __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 66, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_carray_size); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 66, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __pyx_t_2 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_3phd_5utils_6carray_IntArray), __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 66, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     if (unlikely(__pyx_v_self->carrays == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
       __PYX_ERR(0, 66, __pyx_L1_error)
     }
-    if (unlikely(PyDict_SetItem(__pyx_v_self->carrays, __pyx_v_carray_name, __pyx_t_1) < 0)) __PYX_ERR(0, 66, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    if (unlikely(PyDict_SetItem(__pyx_v_self->carrays, __pyx_v_carray_name, __pyx_t_2) < 0)) __PYX_ERR(0, 66, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
     /* "phd/containers/containers.pyx":65
  *         if dtype == "double":
@@ -3030,17 +3037,17 @@ static PyObject *__pyx_f_3phd_10containers_10containers_15CarrayContainer_regist
  *         elif dtype == "longlong":
  *             self.carrays[carray_name] = LongLongArray(carray_size)
  */
-    __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_carray_size); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 68, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_2 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_3phd_5utils_6carray_LongArray), __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 68, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_carray_size); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 68, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_3phd_5utils_6carray_LongArray), __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 68, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     if (unlikely(__pyx_v_self->carrays == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
       __PYX_ERR(0, 68, __pyx_L1_error)
     }
-    if (unlikely(PyDict_SetItem(__pyx_v_self->carrays, __pyx_v_carray_name, __pyx_t_2) < 0)) __PYX_ERR(0, 68, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    if (unlikely(PyDict_SetItem(__pyx_v_self->carrays, __pyx_v_carray_name, __pyx_t_1) < 0)) __PYX_ERR(0, 68, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
     /* "phd/containers/containers.pyx":67
  *         elif dtype == "int":
@@ -3070,17 +3077,17 @@ static PyObject *__pyx_f_3phd_10containers_10containers_15CarrayContainer_regist
  *         else:
  *             raise ValueError("ERROR: Unrecognized dtype: %s" % dtype)
  */
-    __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_carray_size); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 70, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_3phd_5utils_6carray_LongLongArray), __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 70, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_carray_size); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 70, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __pyx_t_2 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_3phd_5utils_6carray_LongLongArray), __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 70, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     if (unlikely(__pyx_v_self->carrays == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
       __PYX_ERR(0, 70, __pyx_L1_error)
     }
-    if (unlikely(PyDict_SetItem(__pyx_v_self->carrays, __pyx_v_carray_name, __pyx_t_1) < 0)) __PYX_ERR(0, 70, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    if (unlikely(PyDict_SetItem(__pyx_v_self->carrays, __pyx_v_carray_name, __pyx_t_2) < 0)) __PYX_ERR(0, 70, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
     /* "phd/containers/containers.pyx":69
  *         elif dtype == "long":
@@ -3100,13 +3107,13 @@ static PyObject *__pyx_f_3phd_10containers_10containers_15CarrayContainer_regist
  *     def __getitem__(self, str carray_name):
  */
   /*else*/ {
-    __pyx_t_1 = __Pyx_PyString_Format(__pyx_kp_s_ERROR_Unrecognized_dtype_s, __pyx_v_dtype); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 72, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_builtin_ValueError, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 72, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyString_Format(__pyx_kp_s_ERROR_Unrecognized_dtype_s, __pyx_v_dtype); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 72, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __Pyx_Raise(__pyx_t_2, 0, 0, 0);
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_builtin_ValueError, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 72, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __Pyx_Raise(__pyx_t_1, 0, 0, 0);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __PYX_ERR(0, 72, __pyx_L1_error)
   }
   __pyx_L6:;
@@ -3289,9 +3296,9 @@ static PyObject *__pyx_pf_3phd_10containers_10containers_15CarrayContainer_4__ge
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
-  int __pyx_t_2;
+  PyObject *__pyx_t_2 = NULL;
   int __pyx_t_3;
-  PyObject *__pyx_t_4 = NULL;
+  int __pyx_t_4;
   PyObject *__pyx_t_5 = NULL;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
@@ -3301,7 +3308,7 @@ static PyObject *__pyx_pf_3phd_10containers_10containers_15CarrayContainer_4__ge
   /* "phd/containers/containers.pyx":88
  * 
  *         """
- *         if carray_name in self.carrays.keys():             # <<<<<<<<<<<<<<
+ *         if carray_name in list(self.carrays.keys()):             # <<<<<<<<<<<<<<
  *             return self.carrays[carray_name].get_npy_array()
  *         else:
  */
@@ -3311,14 +3318,17 @@ static PyObject *__pyx_pf_3phd_10containers_10containers_15CarrayContainer_4__ge
   }
   __pyx_t_1 = __Pyx_PyDict_Keys(__pyx_v_self->carrays); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 88, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = (__Pyx_PySequence_ContainsTF(__pyx_v_carray_name, __pyx_t_1, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 88, __pyx_L1_error)
+  __pyx_t_2 = PySequence_List(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 88, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_3 = (__pyx_t_2 != 0);
-  if (likely(__pyx_t_3)) {
+  __pyx_t_3 = (__Pyx_PySequence_ContainsTF(__pyx_v_carray_name, __pyx_t_2, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 88, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_4 = (__pyx_t_3 != 0);
+  if (likely(__pyx_t_4)) {
 
     /* "phd/containers/containers.pyx":89
  *         """
- *         if carray_name in self.carrays.keys():
+ *         if carray_name in list(self.carrays.keys()):
  *             return self.carrays[carray_name].get_npy_array()             # <<<<<<<<<<<<<<
  *         else:
  *             raise AttributeError("Unrecognized field: %s" % carray_name)
@@ -3328,34 +3338,34 @@ static PyObject *__pyx_pf_3phd_10containers_10containers_15CarrayContainer_4__ge
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
       __PYX_ERR(0, 89, __pyx_L1_error)
     }
-    __pyx_t_4 = __Pyx_PyDict_GetItem(__pyx_v_self->carrays, __pyx_v_carray_name); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 89, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_get_npy_array); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 89, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_self->carrays, __pyx_v_carray_name); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 89, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_get_npy_array); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 89, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_4 = NULL;
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __pyx_t_1 = NULL;
     if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_5))) {
-      __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_5);
-      if (likely(__pyx_t_4)) {
+      __pyx_t_1 = PyMethod_GET_SELF(__pyx_t_5);
+      if (likely(__pyx_t_1)) {
         PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_5);
-        __Pyx_INCREF(__pyx_t_4);
+        __Pyx_INCREF(__pyx_t_1);
         __Pyx_INCREF(function);
         __Pyx_DECREF_SET(__pyx_t_5, function);
       }
     }
-    __pyx_t_1 = (__pyx_t_4) ? __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_4) : __Pyx_PyObject_CallNoArg(__pyx_t_5);
-    __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 89, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_t_2 = (__pyx_t_1) ? __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_1) : __Pyx_PyObject_CallNoArg(__pyx_t_5);
+    __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
+    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 89, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_r = __pyx_t_1;
-    __pyx_t_1 = 0;
+    __pyx_r = __pyx_t_2;
+    __pyx_t_2 = 0;
     goto __pyx_L0;
 
     /* "phd/containers/containers.pyx":88
  * 
  *         """
- *         if carray_name in self.carrays.keys():             # <<<<<<<<<<<<<<
+ *         if carray_name in list(self.carrays.keys()):             # <<<<<<<<<<<<<<
  *             return self.carrays[carray_name].get_npy_array()
  *         else:
  */
@@ -3369,11 +3379,11 @@ static PyObject *__pyx_pf_3phd_10containers_10containers_15CarrayContainer_4__ge
  *     cpdef int get_carray_size(self):
  */
   /*else*/ {
-    __pyx_t_1 = __Pyx_PyString_Format(__pyx_kp_s_Unrecognized_field_s, __pyx_v_carray_name); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 91, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_builtin_AttributeError, __pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 91, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyString_Format(__pyx_kp_s_Unrecognized_field_s, __pyx_v_carray_name); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 91, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_builtin_AttributeError, __pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 91, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_Raise(__pyx_t_5, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __PYX_ERR(0, 91, __pyx_L1_error)
@@ -3390,7 +3400,7 @@ static PyObject *__pyx_pf_3phd_10containers_10containers_15CarrayContainer_4__ge
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_5);
   __Pyx_AddTraceback("phd.containers.containers.CarrayContainer.__getitem__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
@@ -3474,7 +3484,7 @@ static int __pyx_f_3phd_10containers_10containers_15CarrayContainer_get_carray_s
  *     cpdef int get_carray_size(self):
  *         """Return the number of items in the carray."""
  *         if len(self.carrays) > 0:             # <<<<<<<<<<<<<<
- *             return self.carrays.values()[0].length
+ *             return list(self.carrays.values())[0].length
  *         else:
  */
   __pyx_t_1 = __pyx_v_self->carrays;
@@ -3491,7 +3501,7 @@ static int __pyx_f_3phd_10containers_10containers_15CarrayContainer_get_carray_s
     /* "phd/containers/containers.pyx":96
  *         """Return the number of items in the carray."""
  *         if len(self.carrays) > 0:
- *             return self.carrays.values()[0].length             # <<<<<<<<<<<<<<
+ *             return list(self.carrays.values())[0].length             # <<<<<<<<<<<<<<
  *         else:
  *             return 0
  */
@@ -3501,14 +3511,17 @@ static int __pyx_f_3phd_10containers_10containers_15CarrayContainer_get_carray_s
     }
     __pyx_t_1 = __Pyx_PyDict_Values(__pyx_v_self->carrays); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 96, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_2 = __Pyx_GetItemInt(__pyx_t_1, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 96, __pyx_L1_error)
+    __pyx_t_2 = PySequence_List(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 96, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_length); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 96, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_t_2, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 96, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 96, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_length); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 96, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_t_2); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 96, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_r = __pyx_t_5;
     goto __pyx_L0;
 
@@ -3516,13 +3529,13 @@ static int __pyx_f_3phd_10containers_10containers_15CarrayContainer_get_carray_s
  *     cpdef int get_carray_size(self):
  *         """Return the number of items in the carray."""
  *         if len(self.carrays) > 0:             # <<<<<<<<<<<<<<
- *             return self.carrays.values()[0].length
+ *             return list(self.carrays.values())[0].length
  *         else:
  */
   }
 
   /* "phd/containers/containers.pyx":98
- *             return self.carrays.values()[0].length
+ *             return list(self.carrays.values())[0].length
  *         else:
  *             return 0             # <<<<<<<<<<<<<<
  * 
@@ -3616,7 +3629,6 @@ static PyObject *__pyx_f_3phd_10containers_10containers_15CarrayContainer_extend
   PyObject *__pyx_t_5 = NULL;
   int __pyx_t_6;
   Py_ssize_t __pyx_t_7;
-  PyObject *(*__pyx_t_8)(PyObject *);
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
@@ -3724,7 +3736,7 @@ static PyObject *__pyx_f_3phd_10containers_10containers_15CarrayContainer_extend
   /* "phd/containers/containers.pyx":116
  *         cdef BaseArray carr
  * 
- *         for carr in self.carrays.values():             # <<<<<<<<<<<<<<
+ *         for carr in list(self.carrays.values()):             # <<<<<<<<<<<<<<
  *             carr.resize(new_size)
  * 
  */
@@ -3734,70 +3746,43 @@ static PyObject *__pyx_f_3phd_10containers_10containers_15CarrayContainer_extend
   }
   __pyx_t_1 = __Pyx_PyDict_Values(__pyx_v_self->carrays); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 116, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (likely(PyList_CheckExact(__pyx_t_1)) || PyTuple_CheckExact(__pyx_t_1)) {
-    __pyx_t_2 = __pyx_t_1; __Pyx_INCREF(__pyx_t_2); __pyx_t_7 = 0;
-    __pyx_t_8 = NULL;
-  } else {
-    __pyx_t_7 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 116, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_8 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 116, __pyx_L1_error)
-  }
+  __pyx_t_2 = PySequence_List(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 116, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_1 = __pyx_t_2; __Pyx_INCREF(__pyx_t_1); __pyx_t_7 = 0;
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   for (;;) {
-    if (likely(!__pyx_t_8)) {
-      if (likely(PyList_CheckExact(__pyx_t_2))) {
-        if (__pyx_t_7 >= PyList_GET_SIZE(__pyx_t_2)) break;
-        #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_1 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_7); __Pyx_INCREF(__pyx_t_1); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 116, __pyx_L1_error)
-        #else
-        __pyx_t_1 = PySequence_ITEM(__pyx_t_2, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 116, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_1);
-        #endif
-      } else {
-        if (__pyx_t_7 >= PyTuple_GET_SIZE(__pyx_t_2)) break;
-        #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_7); __Pyx_INCREF(__pyx_t_1); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 116, __pyx_L1_error)
-        #else
-        __pyx_t_1 = PySequence_ITEM(__pyx_t_2, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 116, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_1);
-        #endif
-      }
-    } else {
-      __pyx_t_1 = __pyx_t_8(__pyx_t_2);
-      if (unlikely(!__pyx_t_1)) {
-        PyObject* exc_type = PyErr_Occurred();
-        if (exc_type) {
-          if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 116, __pyx_L1_error)
-        }
-        break;
-      }
-      __Pyx_GOTREF(__pyx_t_1);
-    }
-    if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_3phd_5utils_6carray_BaseArray))))) __PYX_ERR(0, 116, __pyx_L1_error)
-    __Pyx_XDECREF_SET(__pyx_v_carr, ((struct __pyx_obj_3phd_5utils_6carray_BaseArray *)__pyx_t_1));
-    __pyx_t_1 = 0;
+    if (__pyx_t_7 >= PyList_GET_SIZE(__pyx_t_1)) break;
+    #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
+    __pyx_t_2 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_7); __Pyx_INCREF(__pyx_t_2); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 116, __pyx_L1_error)
+    #else
+    __pyx_t_2 = PySequence_ITEM(__pyx_t_1, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 116, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    #endif
+    if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_ptype_3phd_5utils_6carray_BaseArray))))) __PYX_ERR(0, 116, __pyx_L1_error)
+    __Pyx_XDECREF_SET(__pyx_v_carr, ((struct __pyx_obj_3phd_5utils_6carray_BaseArray *)__pyx_t_2));
+    __pyx_t_2 = 0;
 
     /* "phd/containers/containers.pyx":117
  * 
- *         for carr in self.carrays.values():
+ *         for carr in list(self.carrays.values()):
  *             carr.resize(new_size)             # <<<<<<<<<<<<<<
  * 
  *     cpdef BaseArray get_carray(self, str carray_name):
  */
-    __pyx_t_1 = ((struct __pyx_vtabstruct_3phd_5utils_6carray_BaseArray *)__pyx_v_carr->__pyx_vtab)->resize(__pyx_v_carr, __pyx_v_new_size, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 117, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __pyx_t_2 = ((struct __pyx_vtabstruct_3phd_5utils_6carray_BaseArray *)__pyx_v_carr->__pyx_vtab)->resize(__pyx_v_carr, __pyx_v_new_size, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 117, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
     /* "phd/containers/containers.pyx":116
  *         cdef BaseArray carr
  * 
- *         for carr in self.carrays.values():             # <<<<<<<<<<<<<<
+ *         for carr in list(self.carrays.values()):             # <<<<<<<<<<<<<<
  *             carr.resize(new_size)
  * 
  */
   }
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "phd/containers/containers.pyx":100
  *             return 0
@@ -4096,7 +4081,6 @@ static PyObject *__pyx_f_3phd_10containers_10containers_15CarrayContainer_resize
   PyObject *__pyx_t_5 = NULL;
   int __pyx_t_6;
   Py_ssize_t __pyx_t_7;
-  PyObject *(*__pyx_t_8)(PyObject *);
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
@@ -4186,7 +4170,7 @@ static PyObject *__pyx_f_3phd_10containers_10containers_15CarrayContainer_resize
   /* "phd/containers/containers.pyx":145
  * 
  *         cdef BaseArray carr
- *         for carr in self.carrays.values():             # <<<<<<<<<<<<<<
+ *         for carr in list(self.carrays.values()):             # <<<<<<<<<<<<<<
  *             carr.resize(carray_size)
  * 
  */
@@ -4196,70 +4180,43 @@ static PyObject *__pyx_f_3phd_10containers_10containers_15CarrayContainer_resize
   }
   __pyx_t_1 = __Pyx_PyDict_Values(__pyx_v_self->carrays); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 145, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (likely(PyList_CheckExact(__pyx_t_1)) || PyTuple_CheckExact(__pyx_t_1)) {
-    __pyx_t_2 = __pyx_t_1; __Pyx_INCREF(__pyx_t_2); __pyx_t_7 = 0;
-    __pyx_t_8 = NULL;
-  } else {
-    __pyx_t_7 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 145, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_8 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 145, __pyx_L1_error)
-  }
+  __pyx_t_2 = PySequence_List(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 145, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_1 = __pyx_t_2; __Pyx_INCREF(__pyx_t_1); __pyx_t_7 = 0;
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   for (;;) {
-    if (likely(!__pyx_t_8)) {
-      if (likely(PyList_CheckExact(__pyx_t_2))) {
-        if (__pyx_t_7 >= PyList_GET_SIZE(__pyx_t_2)) break;
-        #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_1 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_7); __Pyx_INCREF(__pyx_t_1); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 145, __pyx_L1_error)
-        #else
-        __pyx_t_1 = PySequence_ITEM(__pyx_t_2, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 145, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_1);
-        #endif
-      } else {
-        if (__pyx_t_7 >= PyTuple_GET_SIZE(__pyx_t_2)) break;
-        #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_7); __Pyx_INCREF(__pyx_t_1); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 145, __pyx_L1_error)
-        #else
-        __pyx_t_1 = PySequence_ITEM(__pyx_t_2, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 145, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_1);
-        #endif
-      }
-    } else {
-      __pyx_t_1 = __pyx_t_8(__pyx_t_2);
-      if (unlikely(!__pyx_t_1)) {
-        PyObject* exc_type = PyErr_Occurred();
-        if (exc_type) {
-          if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 145, __pyx_L1_error)
-        }
-        break;
-      }
-      __Pyx_GOTREF(__pyx_t_1);
-    }
-    if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_3phd_5utils_6carray_BaseArray))))) __PYX_ERR(0, 145, __pyx_L1_error)
-    __Pyx_XDECREF_SET(__pyx_v_carr, ((struct __pyx_obj_3phd_5utils_6carray_BaseArray *)__pyx_t_1));
-    __pyx_t_1 = 0;
+    if (__pyx_t_7 >= PyList_GET_SIZE(__pyx_t_1)) break;
+    #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
+    __pyx_t_2 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_7); __Pyx_INCREF(__pyx_t_2); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 145, __pyx_L1_error)
+    #else
+    __pyx_t_2 = PySequence_ITEM(__pyx_t_1, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 145, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    #endif
+    if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_ptype_3phd_5utils_6carray_BaseArray))))) __PYX_ERR(0, 145, __pyx_L1_error)
+    __Pyx_XDECREF_SET(__pyx_v_carr, ((struct __pyx_obj_3phd_5utils_6carray_BaseArray *)__pyx_t_2));
+    __pyx_t_2 = 0;
 
     /* "phd/containers/containers.pyx":146
  *         cdef BaseArray carr
- *         for carr in self.carrays.values():
+ *         for carr in list(self.carrays.values()):
  *             carr.resize(carray_size)             # <<<<<<<<<<<<<<
  * 
  *     def get_sendbufs(self, np.ndarray indices):
  */
-    __pyx_t_1 = ((struct __pyx_vtabstruct_3phd_5utils_6carray_BaseArray *)__pyx_v_carr->__pyx_vtab)->resize(__pyx_v_carr, __pyx_v_carray_size, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 146, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __pyx_t_2 = ((struct __pyx_vtabstruct_3phd_5utils_6carray_BaseArray *)__pyx_v_carr->__pyx_vtab)->resize(__pyx_v_carr, __pyx_v_carray_size, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 146, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
     /* "phd/containers/containers.pyx":145
  * 
  *         cdef BaseArray carr
- *         for carr in self.carrays.values():             # <<<<<<<<<<<<<<
+ *         for carr in list(self.carrays.values()):             # <<<<<<<<<<<<<<
  *             carr.resize(carray_size)
  * 
  */
   }
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "phd/containers/containers.pyx":133
  *             raise KeyError("ERROR: carray %s not present" % carray_name)
@@ -4989,7 +4946,7 @@ static struct __pyx_obj_3phd_10containers_10containers_CarrayContainer *__pyx_f_
  *         cdef CarrayContainer result_array = CarrayContainer()
  * 
  *         if carray_list_names is None:             # <<<<<<<<<<<<<<
- *             carray_list_names = self.carrays.keys()
+ *             carray_list_names = list(self.carrays.keys())
  * 
  */
   __pyx_t_8 = (__pyx_v_carray_list_names == ((PyObject*)Py_None));
@@ -4999,7 +4956,7 @@ static struct __pyx_obj_3phd_10containers_10containers_CarrayContainer *__pyx_f_
     /* "phd/containers/containers.pyx":220
  * 
  *         if carray_list_names is None:
- *             carray_list_names = self.carrays.keys()             # <<<<<<<<<<<<<<
+ *             carray_list_names = list(self.carrays.keys())             # <<<<<<<<<<<<<<
  * 
  *         # now we have the result array setup
  */
@@ -5009,15 +4966,17 @@ static struct __pyx_obj_3phd_10containers_10containers_CarrayContainer *__pyx_f_
     }
     __pyx_t_1 = __Pyx_PyDict_Keys(__pyx_v_self->carrays); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 220, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 220, __pyx_L1_error)
-    __Pyx_DECREF_SET(__pyx_v_carray_list_names, ((PyObject*)__pyx_t_1));
-    __pyx_t_1 = 0;
+    __pyx_t_2 = PySequence_List(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 220, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __Pyx_DECREF_SET(__pyx_v_carray_list_names, ((PyObject*)__pyx_t_2));
+    __pyx_t_2 = 0;
 
     /* "phd/containers/containers.pyx":219
  *         cdef CarrayContainer result_array = CarrayContainer()
  * 
  *         if carray_list_names is None:             # <<<<<<<<<<<<<<
- *             carray_list_names = self.carrays.keys()
+ *             carray_list_names = list(self.carrays.keys())
  * 
  */
   }
@@ -5064,18 +5023,18 @@ static struct __pyx_obj_3phd_10containers_10containers_CarrayContainer *__pyx_f_
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
     __PYX_ERR(0, 228, __pyx_L1_error)
   }
-  __pyx_t_1 = __pyx_v_carray_list_names; __Pyx_INCREF(__pyx_t_1); __pyx_t_10 = 0;
+  __pyx_t_2 = __pyx_v_carray_list_names; __Pyx_INCREF(__pyx_t_2); __pyx_t_10 = 0;
   for (;;) {
-    if (__pyx_t_10 >= PyList_GET_SIZE(__pyx_t_1)) break;
+    if (__pyx_t_10 >= PyList_GET_SIZE(__pyx_t_2)) break;
     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-    __pyx_t_2 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_10); __Pyx_INCREF(__pyx_t_2); __pyx_t_10++; if (unlikely(0 < 0)) __PYX_ERR(0, 228, __pyx_L1_error)
+    __pyx_t_1 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_10); __Pyx_INCREF(__pyx_t_1); __pyx_t_10++; if (unlikely(0 < 0)) __PYX_ERR(0, 228, __pyx_L1_error)
     #else
-    __pyx_t_2 = PySequence_ITEM(__pyx_t_1, __pyx_t_10); __pyx_t_10++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 228, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_t_1 = PySequence_ITEM(__pyx_t_2, __pyx_t_10); __pyx_t_10++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 228, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
     #endif
-    if (!(likely(PyString_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 228, __pyx_L1_error)
-    __Pyx_XDECREF_SET(__pyx_v_carray_name, ((PyObject*)__pyx_t_2));
-    __pyx_t_2 = 0;
+    if (!(likely(PyString_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 228, __pyx_L1_error)
+    __Pyx_XDECREF_SET(__pyx_v_carray_name, ((PyObject*)__pyx_t_1));
+    __pyx_t_1 = 0;
 
     /* "phd/containers/containers.pyx":229
  *         # allocate carrays
@@ -5088,11 +5047,11 @@ static struct __pyx_obj_3phd_10containers_10containers_CarrayContainer *__pyx_f_
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
       __PYX_ERR(0, 229, __pyx_L1_error)
     }
-    __pyx_t_2 = __Pyx_PyDict_GetItem(__pyx_v_self->carray_dtypes, __pyx_v_carray_name); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 229, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    if (!(likely(PyString_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 229, __pyx_L1_error)
-    __Pyx_XDECREF_SET(__pyx_v_dtype, ((PyObject*)__pyx_t_2));
-    __pyx_t_2 = 0;
+    __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_self->carray_dtypes, __pyx_v_carray_name); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 229, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    if (!(likely(PyString_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 229, __pyx_L1_error)
+    __Pyx_XDECREF_SET(__pyx_v_dtype, ((PyObject*)__pyx_t_1));
+    __pyx_t_1 = 0;
 
     /* "phd/containers/containers.pyx":230
  *         for carray_name in carray_list_names:
@@ -5103,9 +5062,9 @@ static struct __pyx_obj_3phd_10containers_10containers_CarrayContainer *__pyx_f_
  */
     __pyx_t_11.__pyx_n = 1;
     __pyx_t_11.dtype = __pyx_v_dtype;
-    __pyx_t_2 = ((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_result_array->__pyx_vtab)->register_carray(__pyx_v_result_array, __pyx_v_size, __pyx_v_carray_name, 0, &__pyx_t_11); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 230, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __pyx_t_1 = ((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_result_array->__pyx_vtab)->register_carray(__pyx_v_result_array, __pyx_v_size, __pyx_v_carray_name, 0, &__pyx_t_11); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 230, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
     /* "phd/containers/containers.pyx":228
  * 
@@ -5115,7 +5074,7 @@ static struct __pyx_obj_3phd_10containers_10containers_CarrayContainer *__pyx_f_
  *             result_array.register_carray(size, carray_name, dtype)
  */
   }
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
   /* "phd/containers/containers.pyx":233
  * 
@@ -5128,18 +5087,18 @@ static struct __pyx_obj_3phd_10containers_10containers_CarrayContainer *__pyx_f_
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
     __PYX_ERR(0, 233, __pyx_L1_error)
   }
-  __pyx_t_1 = __pyx_v_carray_list_names; __Pyx_INCREF(__pyx_t_1); __pyx_t_10 = 0;
+  __pyx_t_2 = __pyx_v_carray_list_names; __Pyx_INCREF(__pyx_t_2); __pyx_t_10 = 0;
   for (;;) {
-    if (__pyx_t_10 >= PyList_GET_SIZE(__pyx_t_1)) break;
+    if (__pyx_t_10 >= PyList_GET_SIZE(__pyx_t_2)) break;
     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-    __pyx_t_2 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_10); __Pyx_INCREF(__pyx_t_2); __pyx_t_10++; if (unlikely(0 < 0)) __PYX_ERR(0, 233, __pyx_L1_error)
+    __pyx_t_1 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_10); __Pyx_INCREF(__pyx_t_1); __pyx_t_10++; if (unlikely(0 < 0)) __PYX_ERR(0, 233, __pyx_L1_error)
     #else
-    __pyx_t_2 = PySequence_ITEM(__pyx_t_1, __pyx_t_10); __pyx_t_10++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 233, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_t_1 = PySequence_ITEM(__pyx_t_2, __pyx_t_10); __pyx_t_10++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 233, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
     #endif
-    if (!(likely(PyString_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 233, __pyx_L1_error)
-    __Pyx_XDECREF_SET(__pyx_v_carray_name, ((PyObject*)__pyx_t_2));
-    __pyx_t_2 = 0;
+    if (!(likely(PyString_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 233, __pyx_L1_error)
+    __Pyx_XDECREF_SET(__pyx_v_carray_name, ((PyObject*)__pyx_t_1));
+    __pyx_t_1 = 0;
 
     /* "phd/containers/containers.pyx":234
  *         # copy the required indices for each carray
@@ -5148,10 +5107,10 @@ static struct __pyx_obj_3phd_10containers_10containers_CarrayContainer *__pyx_f_
  *             dst_carray = result_array.get_carray(carray_name)
  *             src_carray.copy_values(index_array, dst_carray)
  */
-    __pyx_t_2 = ((PyObject *)((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_self->__pyx_vtab)->get_carray(__pyx_v_self, __pyx_v_carray_name, 0)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 234, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __Pyx_XDECREF_SET(__pyx_v_src_carray, ((struct __pyx_obj_3phd_5utils_6carray_BaseArray *)__pyx_t_2));
-    __pyx_t_2 = 0;
+    __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_self->__pyx_vtab)->get_carray(__pyx_v_self, __pyx_v_carray_name, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 234, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_XDECREF_SET(__pyx_v_src_carray, ((struct __pyx_obj_3phd_5utils_6carray_BaseArray *)__pyx_t_1));
+    __pyx_t_1 = 0;
 
     /* "phd/containers/containers.pyx":235
  *         for carray_name in carray_list_names:
@@ -5160,10 +5119,10 @@ static struct __pyx_obj_3phd_10containers_10containers_CarrayContainer *__pyx_f_
  *             src_carray.copy_values(index_array, dst_carray)
  * 
  */
-    __pyx_t_2 = ((PyObject *)((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_result_array->__pyx_vtab)->get_carray(__pyx_v_result_array, __pyx_v_carray_name, 0)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 235, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __Pyx_XDECREF_SET(__pyx_v_dst_carray, ((struct __pyx_obj_3phd_5utils_6carray_BaseArray *)__pyx_t_2));
-    __pyx_t_2 = 0;
+    __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_result_array->__pyx_vtab)->get_carray(__pyx_v_result_array, __pyx_v_carray_name, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 235, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_XDECREF_SET(__pyx_v_dst_carray, ((struct __pyx_obj_3phd_5utils_6carray_BaseArray *)__pyx_t_1));
+    __pyx_t_1 = 0;
 
     /* "phd/containers/containers.pyx":236
  *             src_carray = self.get_carray(carray_name)
@@ -5172,9 +5131,9 @@ static struct __pyx_obj_3phd_10containers_10containers_CarrayContainer *__pyx_f_
  * 
  *         return result_array
  */
-    __pyx_t_2 = ((struct __pyx_vtabstruct_3phd_5utils_6carray_BaseArray *)__pyx_v_src_carray->__pyx_vtab)->copy_values(__pyx_v_src_carray, __pyx_v_index_array, __pyx_v_dst_carray, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 236, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __pyx_t_1 = ((struct __pyx_vtabstruct_3phd_5utils_6carray_BaseArray *)__pyx_v_src_carray->__pyx_vtab)->copy_values(__pyx_v_src_carray, __pyx_v_index_array, __pyx_v_dst_carray, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 236, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
     /* "phd/containers/containers.pyx":233
  * 
@@ -5184,7 +5143,7 @@ static struct __pyx_obj_3phd_10containers_10containers_CarrayContainer *__pyx_f_
  *             dst_carray = result_array.get_carray(carray_name)
  */
   }
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
   /* "phd/containers/containers.pyx":238
  *             src_carray.copy_values(index_array, dst_carray)
@@ -5474,7 +5433,7 @@ static PyObject *__pyx_f_3phd_10containers_10containers_15CarrayContainer_remove
  *             raise ValueError(msg)
  * 
  *         sorted_indices = np.sort(index_list)             # <<<<<<<<<<<<<<
- *         carray_list = self.carrays.values()
+ *         carray_list = list(self.carrays.values())
  * 
  */
   __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 264, __pyx_L1_error)
@@ -5504,7 +5463,7 @@ static PyObject *__pyx_f_3phd_10containers_10containers_15CarrayContainer_remove
   /* "phd/containers/containers.pyx":265
  * 
  *         sorted_indices = np.sort(index_list)
- *         carray_list = self.carrays.values()             # <<<<<<<<<<<<<<
+ *         carray_list = list(self.carrays.values())             # <<<<<<<<<<<<<<
  * 
  *         for i in range(len(carray_list)):
  */
@@ -5514,21 +5473,19 @@ static PyObject *__pyx_f_3phd_10containers_10containers_15CarrayContainer_remove
   }
   __pyx_t_3 = __Pyx_PyDict_Values(__pyx_v_self->carrays); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 265, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (!(likely(PyList_CheckExact(__pyx_t_3))||((__pyx_t_3) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_3)->tp_name), 0))) __PYX_ERR(0, 265, __pyx_L1_error)
-  __pyx_v_carray_list = ((PyObject*)__pyx_t_3);
-  __pyx_t_3 = 0;
+  __pyx_t_1 = PySequence_List(__pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 265, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_v_carray_list = ((PyObject*)__pyx_t_1);
+  __pyx_t_1 = 0;
 
   /* "phd/containers/containers.pyx":267
- *         carray_list = self.carrays.values()
+ *         carray_list = list(self.carrays.values())
  * 
  *         for i in range(len(carray_list)):             # <<<<<<<<<<<<<<
  *             carr = carray_list[i]
  *             carr.remove(sorted_indices, 1)
  */
-  if (unlikely(__pyx_v_carray_list == Py_None)) {
-    PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-    __PYX_ERR(0, 267, __pyx_L1_error)
-  }
   __pyx_t_6 = PyList_GET_SIZE(__pyx_v_carray_list); if (unlikely(__pyx_t_6 == ((Py_ssize_t)-1))) __PYX_ERR(0, 267, __pyx_L1_error)
   __pyx_t_7 = __pyx_t_6;
   for (__pyx_t_8 = 0; __pyx_t_8 < __pyx_t_7; __pyx_t_8+=1) {
@@ -5541,15 +5498,11 @@ static PyObject *__pyx_f_3phd_10containers_10containers_15CarrayContainer_remove
  *             carr.remove(sorted_indices, 1)
  * 
  */
-    if (unlikely(__pyx_v_carray_list == Py_None)) {
-      PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 268, __pyx_L1_error)
-    }
-    __pyx_t_3 = __Pyx_GetItemInt_List(__pyx_v_carray_list, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 268, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    if (!(likely(((__pyx_t_3) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_3, __pyx_ptype_3phd_5utils_6carray_BaseArray))))) __PYX_ERR(0, 268, __pyx_L1_error)
-    __Pyx_XDECREF_SET(__pyx_v_carr, ((struct __pyx_obj_3phd_5utils_6carray_BaseArray *)__pyx_t_3));
-    __pyx_t_3 = 0;
+    __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_carray_list, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 268, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_3phd_5utils_6carray_BaseArray))))) __PYX_ERR(0, 268, __pyx_L1_error)
+    __Pyx_XDECREF_SET(__pyx_v_carr, ((struct __pyx_obj_3phd_5utils_6carray_BaseArray *)__pyx_t_1));
+    __pyx_t_1 = 0;
 
     /* "phd/containers/containers.pyx":269
  *         for i in range(len(carray_list)):
@@ -5560,9 +5513,9 @@ static PyObject *__pyx_f_3phd_10containers_10containers_15CarrayContainer_remove
  */
     __pyx_t_9.__pyx_n = 1;
     __pyx_t_9.input_sorted = 1;
-    __pyx_t_3 = ((struct __pyx_vtabstruct_3phd_5utils_6carray_BaseArray *)__pyx_v_carr->__pyx_vtab)->remove(__pyx_v_carr, __pyx_v_sorted_indices, 0, &__pyx_t_9); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 269, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_1 = ((struct __pyx_vtabstruct_3phd_5utils_6carray_BaseArray *)__pyx_v_carr->__pyx_vtab)->remove(__pyx_v_carr, __pyx_v_sorted_indices, 0, &__pyx_t_9); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 269, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   }
 
   /* "phd/containers/containers.pyx":240
@@ -6935,9 +6888,9 @@ static void __pyx_f_3phd_10containers_10containers_15CarrayContainer_pointer_gro
   PyObject *__pyx_t_1 = NULL;
   Py_ssize_t __pyx_t_2;
   PyObject *__pyx_t_3 = NULL;
-  int __pyx_t_4;
+  PyObject *__pyx_t_4 = NULL;
   int __pyx_t_5;
-  PyObject *__pyx_t_6 = NULL;
+  int __pyx_t_6;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
@@ -6948,7 +6901,7 @@ static void __pyx_f_3phd_10containers_10containers_15CarrayContainer_pointer_gro
  * 
  *         i = 0             # <<<<<<<<<<<<<<
  *         for carray_name in carray_list_names:
- *             if carray_name in self.carrays.keys():
+ *             if carray_name in list(self.carrays.keys()):
  */
   __pyx_v_i = 0;
 
@@ -6956,7 +6909,7 @@ static void __pyx_f_3phd_10containers_10containers_15CarrayContainer_pointer_gro
  * 
  *         i = 0
  *         for carray_name in carray_list_names:             # <<<<<<<<<<<<<<
- *             if carray_name in self.carrays.keys():
+ *             if carray_name in list(self.carrays.keys()):
  *                 arr = <DoubleArray> self.get_carray(carray_name)
  */
   if (unlikely(__pyx_v_carray_list_names == Py_None)) {
@@ -6979,7 +6932,7 @@ static void __pyx_f_3phd_10containers_10containers_15CarrayContainer_pointer_gro
     /* "phd/containers/containers.pyx":390
  *         i = 0
  *         for carray_name in carray_list_names:
- *             if carray_name in self.carrays.keys():             # <<<<<<<<<<<<<<
+ *             if carray_name in list(self.carrays.keys()):             # <<<<<<<<<<<<<<
  *                 arr = <DoubleArray> self.get_carray(carray_name)
  *                 vec[i] = arr.get_data_ptr()
  */
@@ -6989,28 +6942,31 @@ static void __pyx_f_3phd_10containers_10containers_15CarrayContainer_pointer_gro
     }
     __pyx_t_3 = __Pyx_PyDict_Keys(__pyx_v_self->carrays); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 390, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = (__Pyx_PySequence_ContainsTF(__pyx_v_carray_name, __pyx_t_3, Py_EQ)); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 390, __pyx_L1_error)
+    __pyx_t_4 = PySequence_List(__pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 390, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_5 = (__pyx_t_4 != 0);
-    if (likely(__pyx_t_5)) {
+    __pyx_t_5 = (__Pyx_PySequence_ContainsTF(__pyx_v_carray_name, __pyx_t_4, Py_EQ)); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 390, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __pyx_t_6 = (__pyx_t_5 != 0);
+    if (likely(__pyx_t_6)) {
 
       /* "phd/containers/containers.pyx":391
  *         for carray_name in carray_list_names:
- *             if carray_name in self.carrays.keys():
+ *             if carray_name in list(self.carrays.keys()):
  *                 arr = <DoubleArray> self.get_carray(carray_name)             # <<<<<<<<<<<<<<
  *                 vec[i] = arr.get_data_ptr()
  *                 i += 1
  */
-      __pyx_t_3 = ((PyObject *)((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_self->__pyx_vtab)->get_carray(__pyx_v_self, __pyx_v_carray_name, 0)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 391, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_6 = __pyx_t_3;
-      __Pyx_INCREF(__pyx_t_6);
-      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __Pyx_XDECREF_SET(__pyx_v_arr, ((struct __pyx_obj_3phd_5utils_6carray_DoubleArray *)__pyx_t_6));
-      __pyx_t_6 = 0;
+      __pyx_t_4 = ((PyObject *)((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_self->__pyx_vtab)->get_carray(__pyx_v_self, __pyx_v_carray_name, 0)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 391, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_4);
+      __pyx_t_3 = __pyx_t_4;
+      __Pyx_INCREF(__pyx_t_3);
+      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+      __Pyx_XDECREF_SET(__pyx_v_arr, ((struct __pyx_obj_3phd_5utils_6carray_DoubleArray *)__pyx_t_3));
+      __pyx_t_3 = 0;
 
       /* "phd/containers/containers.pyx":392
- *             if carray_name in self.carrays.keys():
+ *             if carray_name in list(self.carrays.keys()):
  *                 arr = <DoubleArray> self.get_carray(carray_name)
  *                 vec[i] = arr.get_data_ptr()             # <<<<<<<<<<<<<<
  *                 i += 1
@@ -7030,7 +6986,7 @@ static void __pyx_f_3phd_10containers_10containers_15CarrayContainer_pointer_gro
       /* "phd/containers/containers.pyx":390
  *         i = 0
  *         for carray_name in carray_list_names:
- *             if carray_name in self.carrays.keys():             # <<<<<<<<<<<<<<
+ *             if carray_name in list(self.carrays.keys()):             # <<<<<<<<<<<<<<
  *                 arr = <DoubleArray> self.get_carray(carray_name)
  *                 vec[i] = arr.get_data_ptr()
  */
@@ -7043,10 +6999,10 @@ static void __pyx_f_3phd_10containers_10containers_15CarrayContainer_pointer_gro
  *                 raise ValueError("ERROR: Unknown field!")             # <<<<<<<<<<<<<<
  */
     /*else*/ {
-      __pyx_t_6 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__6, NULL); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 395, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_6);
-      __Pyx_Raise(__pyx_t_6, 0, 0, 0);
-      __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__6, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 395, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_3);
+      __Pyx_Raise(__pyx_t_3, 0, 0, 0);
+      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __PYX_ERR(0, 395, __pyx_L1_error)
     }
     __pyx_L5:;
@@ -7055,7 +7011,7 @@ static void __pyx_f_3phd_10containers_10containers_15CarrayContainer_pointer_gro
  * 
  *         i = 0
  *         for carray_name in carray_list_names:             # <<<<<<<<<<<<<<
- *             if carray_name in self.carrays.keys():
+ *             if carray_name in list(self.carrays.keys()):
  *                 arr = <DoubleArray> self.get_carray(carray_name)
  */
   }
@@ -7074,7 +7030,7 @@ static void __pyx_f_3phd_10containers_10containers_15CarrayContainer_pointer_gro
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_XDECREF(__pyx_t_6);
+  __Pyx_XDECREF(__pyx_t_4);
   __Pyx_WriteUnraisable("phd.containers.containers.CarrayContainer.pointer_groups", __pyx_clineno, __pyx_lineno, __pyx_filename, 1, 0);
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_carray_name);
@@ -9119,7 +9075,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
 
   /* "phd/containers/containers.pyx":54
  *         """
- *         if carray_name in self.carrays.keys():
+ *         if carray_name in list(self.carrays.keys()):
  *             raise RuntimeError("ERROR: Carray already registered")             # <<<<<<<<<<<<<<
  * 
  *         if len(self.carrays) != 0:

@@ -25,7 +25,7 @@ class TestCarrayContainer(TestCase):
         container = CarrayContainer(carrays_to_register=self.carrays)
 
         self.assertEqual(container.get_carray_size(), 0)
-        self.assertItemsEqual(list(container.carrays.keys()), list(self.carrays.keys()))
+        self.assertCountEqual(list(container.carrays.keys()), list(self.carrays.keys()))
 
         for carray_name in list(container.carrays.keys()):
             self.assertEqual(container[carray_name].size, 0)

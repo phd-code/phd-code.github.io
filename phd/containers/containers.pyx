@@ -50,7 +50,7 @@ cdef class CarrayContainer:
         dtype : str
             Data type of carray.
         """
-        if carray_name in self.carrays.keys():
+        if carray_name in list(self.carrays.keys()):
             raise RuntimeError("ERROR: Carray already registered")
 
         if len(self.carrays) != 0:
@@ -85,7 +85,7 @@ cdef class CarrayContainer:
             Numpy array reference to carray.
 
         """
-        if carray_name in self.carrays.keys():
+        if carray_name in list(self.carrays.keys()):
             return self.carrays[carray_name].get_npy_array()
         else:
             raise AttributeError("Unrecognized field: %s" % carray_name)
@@ -93,7 +93,7 @@ cdef class CarrayContainer:
     cpdef int get_carray_size(self):
         """Return the number of items in the carray."""
         if len(self.carrays) > 0:
-            return self.carrays.values()[0].length
+            return list(self.carrays.values())[0].length
         else:
             return 0
 
@@ -113,7 +113,7 @@ cdef class CarrayContainer:
         cdef int new_size = old_size + increase_carray_size
         cdef BaseArray carr
 
-        for carr in self.carrays.values():
+        for carr in list(self.carrays.values()):
             carr.resize(new_size)
 
     cpdef BaseArray get_carray(self, str carray_name):
@@ -142,7 +142,7 @@ cdef class CarrayContainer:
             raise RuntimeError("ERROR: Negative number in resize")
 
         cdef BaseArray carr
-        for carr in self.carrays.values():
+        for carr in list(self.carrays.values()):
             carr.resize(carray_size)
 
     def get_sendbufs(self, np.ndarray indices):
@@ -217,7 +217,7 @@ cdef class CarrayContainer:
         cdef CarrayContainer result_array = CarrayContainer()
 
         if carray_list_names is None:
-            carray_list_names = self.carrays.keys()
+            carray_list_names = list(self.carrays.keys())
 
         # now we have the result array setup
         # resize it
@@ -262,7 +262,7 @@ cdef class CarrayContainer:
             raise ValueError(msg)
 
         sorted_indices = np.sort(index_list)
-        carray_list = self.carrays.values()
+        carray_list = list(self.carrays.values())
 
         for i in range(len(carray_list)):
             carr = carray_list[i]
@@ -387,7 +387,7 @@ cdef class CarrayContainer:
 
         i = 0
         for carray_name in carray_list_names:
-            if carray_name in self.carrays.keys():
+            if carray_name in list(self.carrays.keys()):
                 arr = <DoubleArray> self.get_carray(carray_name)
                 vec[i] = arr.get_data_ptr()
                 i += 1

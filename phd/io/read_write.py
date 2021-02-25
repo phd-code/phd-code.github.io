@@ -91,8 +91,8 @@ class Hdf5(ReaderWriterBase):
 
             # populate arrays with data
             for field_key in list(particle_grp.keys()):
-                field = field_key.encode('utf8')
-
+                #field = field_key.encode('utf8')
+                field = str(field_key)
                 field_grp = particle_grp[field]
                 particles.register_carray(num_particles, field, field_grp.attrs["dtype"])
                 particles[field][:] = field_grp["data"][:]
