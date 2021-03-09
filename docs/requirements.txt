@@ -1,4 +1,5 @@
 furo
+sphinx
 nbsphinx
 IPython
 jupyter
