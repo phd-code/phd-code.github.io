@@ -1,0 +1,8 @@
+furo
+nbsphinx
+IPython
+jupyter
+notebook
+ipykernel
+sympy
+pyyaml

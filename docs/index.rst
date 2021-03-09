@@ -15,6 +15,7 @@ phd: the python-based hydrodynamics package
    :caption: Tutorials:
 
 	example_nbooks/linear_wave_test.ipynb
+	example_nbooks/sod_shock_test.ipynb
 
 
 
@@ -25,6 +26,13 @@ Tutorials and Tests
 
    example_nbooks/linear_wave_test.ipynb
    example_nbooks/sod_shock_test.ipynb
+
+Documentation
+=============
+
+.. toctree::
+   
+   docs.rst   
 
 Index
 ==================
