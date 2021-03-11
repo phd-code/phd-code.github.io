@@ -6,3 +6,6 @@ notebook
 ipykernel
 sympy
 pyyaml
+numpy
+os
+sys
