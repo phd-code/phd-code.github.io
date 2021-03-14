@@ -9,3 +9,8 @@ pyyaml
 numpy
 os
 sys
+mpi4py
+h5py
+logging
+Cython
+scipy
