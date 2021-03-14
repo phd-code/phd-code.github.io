@@ -4,7 +4,7 @@
    contain the root `toctree` directive.
 
 phd: the python-based hydrodynamics package
-===============================
+===========================================
 
 .. toctree::
    :maxdepth: 2
@@ -12,10 +12,6 @@ phd: the python-based hydrodynamics package
 
    install
 
-   :caption: Tutorials:
-
-	example_nbooks/linear_wave_test.ipynb
-	example_nbooks/sod_shock_test.ipynb
 
 
 
