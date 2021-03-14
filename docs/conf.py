@@ -16,6 +16,9 @@ sys.path.insert(0, os.path.abspath('../phd/'))
 #import sphinx_rtd_theme
 import furo
 
+if 'READTHEDOCS' not in os.environ:
+    import cython_generated_ext
+    
 autodoc_mock_imports = ['matplotlib', 'numpy', 'mpi4py', 'h5py', 'logging', 'Cython', 'os', 'sys', 'scipy', 'phd']
 
 
