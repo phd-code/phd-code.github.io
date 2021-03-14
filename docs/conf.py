@@ -23,8 +23,6 @@ if 'READTHEDOCS' not in os.environ:
 
 autodoc_mock_imports = ['matplotlib', 'numpy', 'mpi4py', 'h5py', 'logging', 'Cython', 'os', 'sys', 'scipy', 'phd']
 
-for mod_name in autodoc_mock_imports:
-    sys.modules[mod_name] = mock.MagicMock()
 
 # -- Project information -----------------------------------------------------
 
