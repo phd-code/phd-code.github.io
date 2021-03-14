@@ -7,8 +7,6 @@ ipykernel
 sympy
 pyyaml
 numpy
-os
-sys
 mpi4py
 h5py
 logging
