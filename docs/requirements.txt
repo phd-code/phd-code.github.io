@@ -9,4 +9,3 @@ sympy
 pyyaml
 numpy
 mock
-phd

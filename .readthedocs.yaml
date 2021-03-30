@@ -4,6 +4,8 @@
 # Required
 version: 2
 
+use_virtualenv: True
+
 build:
   image: latest
 
