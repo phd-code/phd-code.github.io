@@ -16,7 +16,7 @@ import mock
 #sys.path.insert(0, os.path.abspath('../phd/'))
 #sys.path.insert(0, os.path.abspath('../'))
 #sys.path.insert(0, os.path.abspath('./'))
-import sphinx_rtd_theme
+
 import furo
 
 if 'READTHEDOCS' not in os.environ:
@@ -57,8 +57,7 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 # a list of builtin themes.
 #
 #html_theme = 'alabaster'
-#html_theme = "furo"
-html_theme = "sphinx_rtd_theme"
+html_theme = "furo"
 #html_theme_path = [insegel.get_html_theme_path()]
 
 # Add any paths that contain custom static files (such as style sheets) here,
