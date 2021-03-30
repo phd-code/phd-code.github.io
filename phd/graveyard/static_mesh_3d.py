@@ -45,7 +45,7 @@ class StaticMesh3D(StaticMesh):
 
     def data_dump(self, num):
 
-        f = h5py.File(self.output_name + "_" + `num`.zfill(4) + ".hdf5", "w")
+        f = h5py.File(self.output_name + "_" + repr(num).zfill(4) + ".hdf5", "w")
 
         dens = self.fields.get_field("density")
         velx = self.fields.get_field("velocity-x")

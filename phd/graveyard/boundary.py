@@ -319,7 +319,7 @@ class MultiCoreBoundary(object):
         ind = np.argsort(ghost_proc)
         ghost_proc = ghost_proc[ind]
 
-        for field in particles.properties.keys():
+        for field in list(particles.properties.keys()):
             array = particles[field][current_size:]
             array[:] = array[ind]
 
@@ -392,7 +392,7 @@ class MultiCoreBoundary(object):
 
             # extract data to send and remove the particles
             send_data = {}
-            for prop in particles.properties.keys():
+            for prop in list(particles.properties.keys()):
                 send_data[prop] = np.ascontiguousarray(particles[prop][indices.get_npy_array()])
             send_data["tag"][:] = ParticleTAGS.Ghost
 
@@ -442,7 +442,7 @@ class MultiCoreBoundary(object):
             if corner_ghost.get_number_of_particles() > 0:
 
                 ind = np.argsort(corner_ghost['process'])
-                for field in corner_ghost.properties.keys():
+                for field in list(corner_ghost.properties.keys()):
                     array = corner_ghost[field]
                     array[:] = array[ind]
 
@@ -459,13 +459,13 @@ class MultiCoreBoundary(object):
 
             # put particles in process order for next loop
             ind = np.argsort(particles["process"][current_size:])
-            for field in particles.properties.keys():
+            for field in list(particles.properties.keys()):
                 array = particles[field][current_size:]
                 array[:] = array[ind]
 
             ghost_proc = np.array(particles["process"][current_size:])
 
-        print 'rank:', rank, 'fraction of real to ghost:', (particles.get_number_of_particles()-current_size)*1.0/particles.get_number_of_particles()
+        print('rank:', rank, 'fraction of real to ghost:', (particles.get_number_of_particles()-current_size)*1.0/particles.get_number_of_particles())
 
 
     def update_ghost_particles(self, particles, mesh, domain, load_balance, comm):
@@ -512,7 +512,7 @@ class MultiCoreBoundary(object):
 
             # put particles in process order
             ind = np.argsort(export_particles["process"])
-            for field in export_particles.properties.keys():
+            for field in list(export_particles.properties.keys()):
                 array = export_particles[field]
                 array[:] = array[ind]
 
@@ -583,7 +583,7 @@ class MultiCoreBoundary(object):
 
         # extract data to send and remove the particles
         send_data = {}
-        for prop in particles.properties.keys():
+        for prop in list(particles.properties.keys()):
             send_data[prop] = np.ascontiguousarray(particles[prop][indices.get_npy_array()])
         send_data["tag"][:] = ParticleTAGS.Ghost
 
@@ -627,7 +627,7 @@ class MultiCoreBoundary(object):
         if corner_ghost.get_number_of_particles() > 0:
 
             ind = np.argsort(corner_ghost['process'])
-            for field in corner_ghost.properties.keys():
+            for field in list(corner_ghost.properties.keys()):
                 array = corner_ghost[field]
                 array[:] = array[ind]
 

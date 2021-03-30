@@ -48,7 +48,7 @@ def simulation():
     cells = ((x_in-.5)**2 + (y_in-.5)**2) <= r**2
     #data[3, cells] = 1.0/(np.pi*r**2)
     data[3, cells] = 1.0/(dx*dy)
-    print "number of cells:", np.sum(cells)
+    print("number of cells:", np.sum(cells))
 
     # interior particles are real particles
     x_particles = np.copy(x_in); y_particles = np.copy(y_in)

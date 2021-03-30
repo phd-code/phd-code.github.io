@@ -150,9 +150,9 @@ def test_reflect3d_boundary():
     z = np.zeros(N**3)
 
     part = 0
-    for i in xrange(N):
-        for j in xrange(N):
-            for k in xrange(N):
+    for i in range(N):
+        for j in range(N):
+            for k in range(N):
                 x[part] = q[i]
                 y[part] = q[j]
                 z[part] = q[k]

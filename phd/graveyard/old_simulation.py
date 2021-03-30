@@ -107,14 +107,14 @@ class Simulation(object):
             raise RuntimeError("%s component not type IntegratorBase" % cl.__class__.__name__)
 
     def _create_components_from_dict(self, cl_dict):
-        for comp_name, (cl_name, cl_param) in cl_dict.iteritems():
+        for comp_name, (cl_name, cl_param) in cl_dict.items():
             cl = getattr(phd, cl_name)
             x = cl(**cl_param)
             setattr(self, comp_name, x)
 
     def _create_components_timeshot(self):
         dict_output = {}
-        for attr_name, cl in self.__dict__.iteritems():
+        for attr_name, cl in self.__dict__.items():
 
             comp = getattr(self, attr_name)
 
@@ -135,7 +135,7 @@ class Simulation(object):
 
     def _check_component(self):
 
-        for attr_name, cl in self.__dict__.iteritems():
+        for attr_name, cl in self.__dict__.items():
             comp = getattr(self, attr_name)
             if isinstance(comp, (int, float, str)):
                 continue
@@ -224,8 +224,8 @@ class Simulation(object):
 
     def _save(self, iteration_count, current_time, dt):
 
-        f = h5py.File(self.path + '/' + self.fname + '_' + `self.output`.zfill(4) + '.hdf5', 'w')
-        for prop in self.pc.properties.keys():
+        f = h5py.File(self.path + '/' + self.fname + '_' + repr(self.output).zfill(4) + '.hdf5', 'w')
+        for prop in list(self.pc.properties.keys()):
             f["/" + prop] = self.pc[prop]
 
         f.attrs['iteration_count'] = iteration_count
@@ -453,7 +453,7 @@ class SimulationParallel(Simulation):
                 dt =  tf - current_time
 
             if self.rank == 0:
-                print 'iteration:', iteration_count, 'time:', current_time, 'dt:', dt
+                print('iteration:', iteration_count, 'time:', current_time, 'dt:', dt)
 
             if ( (time_counter + dt) > self.tfreq ):
                 dt = self.tfreq - time_counter
@@ -477,17 +477,17 @@ class SimulationParallel(Simulation):
 
     def _save(self, iteration_count, current_time, dt):
 
-        output_dir = self.path + "/" + self.fname + "_" + `self.output`.zfill(4)
+        output_dir = self.path + "/" + self.fname + "_" + repr(self.output).zfill(4)
 
         if self.rank == 0:
             #if not os.path.isdir(self.path):
             os.mkdir(output_dir)
         self.comm.barrier()
 
-        f = h5py.File(output_dir + "/" + "data" + `self.output`.zfill(4)
-                + '_cpu' + `self.rank`.zfill(4) + ".hdf5", "w")
+        f = h5py.File(output_dir + "/" + "data" + repr(self.output).zfill(4)
+                + '_cpu' + repr(self.rank).zfill(4) + ".hdf5", "w")
 
-        for prop in self.pc.properties.keys():
+        for prop in list(self.pc.properties.keys()):
             f["/" + prop] = self.pc[prop]
 
         f.attrs["iteration_count"] = iteration_count

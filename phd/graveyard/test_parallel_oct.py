@@ -27,11 +27,11 @@ if rank == 0:
     keys = np.array([hilbert.hilbert_key_2d(p[0], p[1], order) for p in particles_h.T], dtype=np.int32)
 
     # sort indices
-    sorted_indices = np.array(sorted(range(keys.shape[0]), key=lambda k: keys[k]))
+    sorted_indices = np.array(sorted(list(range(keys.shape[0])), key=lambda k: keys[k]))
     sorted_particles = np.array(particles[:,sorted_indices])
     sorted_keys = np.array(keys[sorted_indices], dtype=np.int32)
 
-    print "process %d sorted keys %s" % (rank, sorted_keys)
+    print("process %d sorted keys %s" % (rank, sorted_keys))
 
     # split keys among processes
     num_keys, remainder = divmod(sorted_keys.size, size)
@@ -40,13 +40,13 @@ if rank == 0:
     scounts[-1] += remainder
     counts = list(scounts)
 
-    print "process %d scounts %s" % (rank, scounts)
+    print("process %d scounts %s" % (rank, scounts))
 
     sdispls = size*[0]
-    for i in xrange(1,size):
+    for i in range(1,size):
         sdispls[i] = scounts[i-1] + sdispls[i-1]
 
-    print "process %d sdispls %s" % (rank, sdispls)
+    print("process %d sdispls %s" % (rank, sdispls))
 
 else:
     sorted_keys = None
@@ -58,11 +58,11 @@ else:
 # tell the processors how much data is coming
 counts = comm.scatter(counts, root=0)
 keys_sorted_local = np.zeros(counts, dtype=np.int32)
-print "process %d counts %s" % (rank, counts)
+print("process %d counts %s" % (rank, counts))
 
 # send keys
 comm.Scatterv([sorted_keys, scounts, sdispls, MPI.INT], [keys_sorted_local, MPI.INT])
-print "processor %d has keys: %s" % (rank, keys_sorted_local)
+print("processor %d has keys: %s" % (rank, keys_sorted_local))
 
 
 

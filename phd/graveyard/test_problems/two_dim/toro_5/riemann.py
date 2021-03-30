@@ -164,7 +164,7 @@ def riemann(domain_length=2.0, diaphram=1.0, cells=128, gamma=1.4, time_out=0.01
     if (Q_max <= Q_user and \
         pressure_min <= pressure_initial <= pressure_max):
 
-        print " Initial guess for pressure: ", pressure_initial
+        print(" Initial guess for pressure: ", pressure_initial)
 
     elif (pressure_initial <= pressure_min):
 
@@ -175,7 +175,7 @@ def riemann(domain_length=2.0, diaphram=1.0, cells=128, gamma=1.4, time_out=0.01
         P_TR   = (1 + (gamma -1)*(u_star - velocity_right)/(2*c_right))**(2.0*gamma/(gamma - 1.0))
 
         pressure_initial = 0.5*(pressure_left*P_TL + pressure_right*P_TR)
-        print "  Initial guess for pressure: ", pressure_initial
+        print("  Initial guess for pressure: ", pressure_initial)
 
     else:
 
@@ -183,13 +183,13 @@ def riemann(domain_length=2.0, diaphram=1.0, cells=128, gamma=1.4, time_out=0.01
         g_R = sqrt((2.0/(gamma+1.0))/density_right)/(((gamma-1.0)/(gamma+1.0))*pressure_right + pressure_initial)
 
         pressure_initial = (g_L*pressure_left + g_R*pressure_right)/(g_L + g_R)
-        print " Initial guess for pressure: ", pressure_initial
+        print(" Initial guess for pressure: ", pressure_initial)
 
 
     # Now we begin Newton-Raphosn iteration to find p*
-    print "-------------------------------------------------------------------"
-    print "  Iteration      Delta                                             "
-    print "-------------------------------------------------------------------"
+    print("-------------------------------------------------------------------")
+    print("  Iteration      Delta                                             ")
+    print("-------------------------------------------------------------------")
 
     i = 1
     tolerance     = 1.0E-6
@@ -201,7 +201,7 @@ def riemann(domain_length=2.0, diaphram=1.0, cells=128, gamma=1.4, time_out=0.01
         FR, FR_Derivative = Derivative(pressure_old, density_right, pressure_right, c_right, gamma)
         pressure_star = pressure_old - (FL + FR + velocity_diff)/(FL_Derivative + FR_Derivative)
         change = 2.0*abs((pressure_star - pressure_old)/(pressure_star + pressure_old))
-        print "%3d\t%.5e " %(i, change)
+        print("%3d\t%.5e " %(i, change))
         if (change <= tolerance):
             break
         if (pressure_star <= 0.0):
@@ -211,11 +211,11 @@ def riemann(domain_length=2.0, diaphram=1.0, cells=128, gamma=1.4, time_out=0.01
     # compute velocity in the star region
     velocity_star = 0.5*(velocity_left + velocity_right + FR - FL)
 
-    print "-------------------------------------------------------------------"
-    print "  Pressure       Velocity                                          "
-    print "-------------------------------------------------------------------"
-    print pressure_star/mpa, velocity_star
-    print "\n"
+    print("-------------------------------------------------------------------")
+    print("  Pressure       Velocity                                          ")
+    print("-------------------------------------------------------------------")
+    print(pressure_star/mpa, velocity_star)
+    print("\n")
 
     # Now beggin to plot the data
     x = []; d = []; u = []; p = [];

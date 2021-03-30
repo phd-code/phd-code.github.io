@@ -50,7 +50,7 @@ def vor_plot2(pc, mesh, iteration_count):
     ax.set_aspect('equal')
 
     plt.colorbar(p)
-    plt.savefig('test_'+ `iteration_count`.zfill(4) + '.pdf', format='pdf')
+    plt.savefig('test_'+ repr(iteration_count).zfill(4) + '.pdf', format='pdf')
 
     plt.cla()
     plt.clf()

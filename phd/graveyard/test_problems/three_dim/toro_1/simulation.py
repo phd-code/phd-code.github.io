@@ -35,9 +35,9 @@ def simulation():
     z = np.zeros(N)
 
     part = 0
-    for i in xrange(Nx):
-        for j in xrange(Nq):
-            for k in xrange(Nq):
+    for i in range(Nx):
+        for j in range(Nq):
+            for k in range(Nq):
                 x[part] = qx[i]
                 y[part] = q[j]
                 z[part] = q[k]
@@ -53,7 +53,7 @@ def simulation():
     num_points = np.sum(~indices)
     y[~indices] += 1.0E-3*dq*(2.0*np.random.random(num_points)-1.0)
     z[~indices] += 1.0E-3*dq*(2.0*np.random.random(num_points)-1.0)
-    print "interface has", num_points, "interface points\n"
+    print("interface has", num_points, "interface points\n")
 
     # find all particles inside the unit box 
     indices = (((0. <= x) & (x <= 1.)) & ((0. <= y) & (y <= .1)) & ((0. <= z) & (z <= .1)))

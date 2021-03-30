@@ -35,9 +35,9 @@ def simulation():
     z = np.zeros(N)
 
     part = 0
-    for i in xrange(Nx):
-        for j in xrange(Nq):
-            for k in xrange(Nq):
+    for i in range(Nx):
+        for j in range(Nq):
+            for k in range(Nq):
                 x[part] = qx[i]
                 y[part] = q[j]
                 z[part] = q[k]

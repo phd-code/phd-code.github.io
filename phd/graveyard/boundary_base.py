@@ -61,7 +61,7 @@ class BoundaryBase(object):
 
         # new gradient with values for real and ghost particles
         new_grad = {}
-        for key in grad.keys():
+        for key in list(grad.keys()):
             new_grad[key] = np.hstack((grad[key], grad[key][:, np.asarray([ghost_map[i] for i in particles_index["ghost"]])]))
 
         return new_grad

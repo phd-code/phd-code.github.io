@@ -82,7 +82,7 @@ class StaticMesh(object):
 
     def data_dump(self, num):
 
-        f = h5py.File(self.output_name + "_" + `num`.zfill(4) + ".hdf5", "w")
+        f = h5py.File(self.output_name + "_" + repr(num).zfill(4) + ".hdf5", "w")
 
         dens = self.fields.get_field("density")
         velx = self.fields.get_field("velocity-x")
@@ -171,7 +171,7 @@ class StaticMesh(object):
 
     def set_parameter(self, parameter_name, parameter):
 
-        if parameter_name in self.__dict__.keys():
+        if parameter_name in list(self.__dict__.keys()):
             setattr(self, parameter_name, parameter)
         else:
             raise ValueError("Unknown parameter: %s" % parameter_name)
@@ -189,7 +189,7 @@ class StaticMesh(object):
             self.time += self.dt
             self.num_steps += 1
 
-            print "solving for step:", self.num_steps, "time: ", self.time
+            print("solving for step:", self.num_steps, "time: ", self.time)
 
             # output data
             if self.num_steps%self.output_cycle == 0:

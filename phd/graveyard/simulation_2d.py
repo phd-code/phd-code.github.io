@@ -19,7 +19,7 @@ riemann_solver = riemann.Exact2D(reconstruction)
 simulation = simulation.MovingMesh()
 #simulation = simulation.StaticMesh()
 
-for key, value in parameters.iteritems():
+for key, value in parameters.items():
     simulation.set_parameter(key, value)
 
 # set the boundary, riemann solver, and initial state of the simulation 

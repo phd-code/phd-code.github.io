@@ -19,7 +19,7 @@ riemann_solver = riemann.Hll3D(reconstruction)
 simulation = simulation.MovingMesh3D()
 #simulation = simulation.StaticMesh3D()
 
-for key, value in parameters.iteritems():
+for key, value in parameters.items():
     simulation.set_parameter(key, value)
 
 # set the boundary, riemann solver, and initial state of the simulation 

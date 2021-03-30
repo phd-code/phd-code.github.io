@@ -14,7 +14,7 @@ particles = np.random.random(2*num_particles).reshape(2,num_particles).astype(np
 order = 4
 particles_h = np.array(particles * 2**order, dtype=np.int32)
 keys = np.array([hilbert.hilbert_key_2d(p[0], p[1], order) for p in particles_h.T], dtype=np.int64)
-sorted_indices = np.array(sorted(range(keys.shape[0]), key=lambda k: keys[k]))
+sorted_indices = np.array(sorted(list(range(keys.shape[0])), key=lambda k: keys[k]))
 sorted_particles = particles[:,sorted_indices]
 sorted_keys = np.array(keys[sorted_indices], dtype=np.int64)
 
