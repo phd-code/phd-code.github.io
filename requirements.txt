@@ -6,7 +6,6 @@ notebook
 ipykernel
 sympy
 pyyaml
-logging
 mock==4.0.2
 scipy==1.5.2
 nose==1.3.7
