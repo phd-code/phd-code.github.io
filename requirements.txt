@@ -8,7 +8,6 @@ sympy
 pyyaml
 logging
 mock==4.0.2
-mpi4py==3.0.3
 scipy==1.5.2
 nose==1.3.7
 h5py==2.10.0
