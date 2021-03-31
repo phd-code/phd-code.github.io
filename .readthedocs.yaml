@@ -17,6 +17,8 @@ python:
   version: 3.8
   install:
   - requirements: docs/requirements.txt
+  - method: setuptools
+    path: .
 
 
 # Optionally build your docs in additional formats such as PDF
