@@ -14,3 +14,4 @@ Cython==0.29.21
 numpy==1.19.2
 matplotlib==3.3.2
 pygments==2.4.1
+pandoc
