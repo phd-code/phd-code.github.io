@@ -11,7 +11,7 @@ phd: the python-based hydrodynamics package
    :caption: Contents:
 
    install
-..   tutorials
+   tutorials
 
 Documentation
 =============
