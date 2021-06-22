@@ -1,0 +1,11 @@
+furo
+sphinx
+nbsphinx
+IPython
+jupyter
+notebook
+ipykernel
+sympy
+pyyaml
+numpy
+mock

@@ -36,7 +36,6 @@ cdef class GravityTree:
     def __init__(self, str split_type="barnes-hut",  double barnes_angle=0.3,
             double smoothing_length = 1.0E-5, int calculate_potential=0,
             int max_buffer_size=256):
-
         self.split_type = split_type
         self.barnes_angle = barnes_angle
         self.calculate_potential = calculate_potential
@@ -44,7 +43,6 @@ cdef class GravityTree:
         self.load_balance = None
         self.domain_manager = None
         self.max_buffer_size = max_buffer_size
-
         # criteria to open nodes
         if self.split_type == "barnes-hut":
             self.export_splitter = BarnesHut(self.barnes_angle)

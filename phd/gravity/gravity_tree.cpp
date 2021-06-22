@@ -28,13 +28,17 @@
             "phd/riemann/",
             "phd/mesh/",
             "phd/reconstruction/",
-            "phd/source_term/"
+            "phd/source_term/",
+            "/opt/homebrew/Cellar/cgal/5.2/include",
+            "/opt/homebrew/Cellar/boost/1.75.0_1/include"
         ],
         "language": "c++",
         "libraries": [
-            "CGAL",
             "gmp",
             "m"
+        ],
+        "library_dirs": [
+            "/opt/homebrew/Cellar/cgal/5.2/lib"
         ],
         "name": "phd.gravity.gravity_tree",
         "sources": [
@@ -3395,9 +3399,9 @@ static int __pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree___init__(struct _
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__init__", 0);
 
-  /* "phd/gravity/gravity_tree.pyx":40
+  /* "phd/gravity/gravity_tree.pyx":39
+ *             double smoothing_length = 1.0E-5, int calculate_potential=0,
  *             int max_buffer_size=256):
- * 
  *         self.split_type = split_type             # <<<<<<<<<<<<<<
  *         self.barnes_angle = barnes_angle
  *         self.calculate_potential = calculate_potential
@@ -3408,8 +3412,8 @@ static int __pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree___init__(struct _
   __Pyx_DECREF(__pyx_v_self->split_type);
   __pyx_v_self->split_type = __pyx_v_split_type;
 
-  /* "phd/gravity/gravity_tree.pyx":41
- * 
+  /* "phd/gravity/gravity_tree.pyx":40
+ *             int max_buffer_size=256):
  *         self.split_type = split_type
  *         self.barnes_angle = barnes_angle             # <<<<<<<<<<<<<<
  *         self.calculate_potential = calculate_potential
@@ -3417,7 +3421,7 @@ static int __pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree___init__(struct _
  */
   __pyx_v_self->barnes_angle = __pyx_v_barnes_angle;
 
-  /* "phd/gravity/gravity_tree.pyx":42
+  /* "phd/gravity/gravity_tree.pyx":41
  *         self.split_type = split_type
  *         self.barnes_angle = barnes_angle
  *         self.calculate_potential = calculate_potential             # <<<<<<<<<<<<<<
@@ -3426,7 +3430,7 @@ static int __pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree___init__(struct _
  */
   __pyx_v_self->calculate_potential = __pyx_v_calculate_potential;
 
-  /* "phd/gravity/gravity_tree.pyx":44
+  /* "phd/gravity/gravity_tree.pyx":43
  *         self.calculate_potential = calculate_potential
  * 
  *         self.load_balance = None             # <<<<<<<<<<<<<<
@@ -3439,12 +3443,12 @@ static int __pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree___init__(struct _
   __Pyx_DECREF(((PyObject *)__pyx_v_self->load_balance));
   __pyx_v_self->load_balance = ((struct __pyx_obj_3phd_12load_balance_12load_balance_LoadBalance *)Py_None);
 
-  /* "phd/gravity/gravity_tree.pyx":45
+  /* "phd/gravity/gravity_tree.pyx":44
  * 
  *         self.load_balance = None
  *         self.domain_manager = None             # <<<<<<<<<<<<<<
  *         self.max_buffer_size = max_buffer_size
- * 
+ *         # criteria to open nodes
  */
   __Pyx_INCREF(Py_None);
   __Pyx_GIVEREF(Py_None);
@@ -3452,36 +3456,36 @@ static int __pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree___init__(struct _
   __Pyx_DECREF(((PyObject *)__pyx_v_self->domain_manager));
   __pyx_v_self->domain_manager = ((struct __pyx_obj_3phd_6domain_14domain_manager_DomainManager *)Py_None);
 
-  /* "phd/gravity/gravity_tree.pyx":46
+  /* "phd/gravity/gravity_tree.pyx":45
  *         self.load_balance = None
  *         self.domain_manager = None
  *         self.max_buffer_size = max_buffer_size             # <<<<<<<<<<<<<<
- * 
  *         # criteria to open nodes
+ *         if self.split_type == "barnes-hut":
  */
   __pyx_v_self->max_buffer_size = __pyx_v_max_buffer_size;
 
-  /* "phd/gravity/gravity_tree.pyx":49
- * 
+  /* "phd/gravity/gravity_tree.pyx":47
+ *         self.max_buffer_size = max_buffer_size
  *         # criteria to open nodes
  *         if self.split_type == "barnes-hut":             # <<<<<<<<<<<<<<
  *             self.export_splitter = BarnesHut(self.barnes_angle)
  * 
  */
-  __pyx_t_1 = (__Pyx_PyString_Equals(__pyx_v_self->split_type, __pyx_kp_s_barnes_hut, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 49, __pyx_L1_error)
+  __pyx_t_1 = (__Pyx_PyString_Equals(__pyx_v_self->split_type, __pyx_kp_s_barnes_hut, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 47, __pyx_L1_error)
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (likely(__pyx_t_2)) {
 
-    /* "phd/gravity/gravity_tree.pyx":50
+    /* "phd/gravity/gravity_tree.pyx":48
  *         # criteria to open nodes
  *         if self.split_type == "barnes-hut":
  *             self.export_splitter = BarnesHut(self.barnes_angle)             # <<<<<<<<<<<<<<
  * 
  *             if phd._in_parallel:
  */
-    __pyx_t_3 = PyFloat_FromDouble(__pyx_v_self->barnes_angle); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 50, __pyx_L1_error)
+    __pyx_t_3 = PyFloat_FromDouble(__pyx_v_self->barnes_angle); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 48, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_3phd_7gravity_8splitter_BarnesHut), __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 50, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_3phd_7gravity_8splitter_BarnesHut), __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 48, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_GIVEREF(__pyx_t_4);
@@ -3490,32 +3494,32 @@ static int __pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree___init__(struct _
     __pyx_v_self->export_splitter = ((struct __pyx_obj_3phd_7gravity_8splitter_Splitter *)__pyx_t_4);
     __pyx_t_4 = 0;
 
-    /* "phd/gravity/gravity_tree.pyx":52
+    /* "phd/gravity/gravity_tree.pyx":50
  *             self.export_splitter = BarnesHut(self.barnes_angle)
  * 
  *             if phd._in_parallel:             # <<<<<<<<<<<<<<
  *                 self.import_splitter = BarnesHut(self.barnes_angle)
  *         else:
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_phd); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 52, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_phd); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 50, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_in_parallel); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 52, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_in_parallel); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 50, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 52, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 50, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     if (__pyx_t_2) {
 
-      /* "phd/gravity/gravity_tree.pyx":53
+      /* "phd/gravity/gravity_tree.pyx":51
  * 
  *             if phd._in_parallel:
  *                 self.import_splitter = BarnesHut(self.barnes_angle)             # <<<<<<<<<<<<<<
  *         else:
  *             raise RuntimeError("Unrecognized splitter in gravity")
  */
-      __pyx_t_3 = PyFloat_FromDouble(__pyx_v_self->barnes_angle); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 53, __pyx_L1_error)
+      __pyx_t_3 = PyFloat_FromDouble(__pyx_v_self->barnes_angle); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 51, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_4 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_3phd_7gravity_8splitter_BarnesHut), __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 53, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_3phd_7gravity_8splitter_BarnesHut), __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 51, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_GIVEREF(__pyx_t_4);
@@ -3524,7 +3528,7 @@ static int __pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree___init__(struct _
       __pyx_v_self->import_splitter = ((struct __pyx_obj_3phd_7gravity_8splitter_Splitter *)__pyx_t_4);
       __pyx_t_4 = 0;
 
-      /* "phd/gravity/gravity_tree.pyx":52
+      /* "phd/gravity/gravity_tree.pyx":50
  *             self.export_splitter = BarnesHut(self.barnes_angle)
  * 
  *             if phd._in_parallel:             # <<<<<<<<<<<<<<
@@ -3533,8 +3537,8 @@ static int __pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree___init__(struct _
  */
     }
 
-    /* "phd/gravity/gravity_tree.pyx":49
- * 
+    /* "phd/gravity/gravity_tree.pyx":47
+ *         self.max_buffer_size = max_buffer_size
  *         # criteria to open nodes
  *         if self.split_type == "barnes-hut":             # <<<<<<<<<<<<<<
  *             self.export_splitter = BarnesHut(self.barnes_angle)
@@ -3543,7 +3547,7 @@ static int __pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree___init__(struct _
     goto __pyx_L3;
   }
 
-  /* "phd/gravity/gravity_tree.pyx":55
+  /* "phd/gravity/gravity_tree.pyx":53
  *                 self.import_splitter = BarnesHut(self.barnes_angle)
  *         else:
  *             raise RuntimeError("Unrecognized splitter in gravity")             # <<<<<<<<<<<<<<
@@ -3551,34 +3555,34 @@ static int __pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree___init__(struct _
  *         # gravity force caculator
  */
   /*else*/ {
-    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 55, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 53, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_Raise(__pyx_t_4, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __PYX_ERR(0, 55, __pyx_L1_error)
+    __PYX_ERR(0, 53, __pyx_L1_error)
   }
   __pyx_L3:;
 
-  /* "phd/gravity/gravity_tree.pyx":59
+  /* "phd/gravity/gravity_tree.pyx":57
  *         # gravity force caculator
  *         self.export_interaction = GravityAcceleration(
  *                 calculate_potential, smoothing_length)             # <<<<<<<<<<<<<<
  * 
  *         if phd._in_parallel:
  */
-  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_calculate_potential); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 59, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_calculate_potential); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 57, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_3 = PyFloat_FromDouble(__pyx_v_smoothing_length); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 59, __pyx_L1_error)
+  __pyx_t_3 = PyFloat_FromDouble(__pyx_v_smoothing_length); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 57, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
 
-  /* "phd/gravity/gravity_tree.pyx":58
+  /* "phd/gravity/gravity_tree.pyx":56
  * 
  *         # gravity force caculator
  *         self.export_interaction = GravityAcceleration(             # <<<<<<<<<<<<<<
  *                 calculate_potential, smoothing_length)
  * 
  */
-  __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 58, __pyx_L1_error)
+  __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 56, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_GIVEREF(__pyx_t_4);
   PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_4);
@@ -3586,7 +3590,7 @@ static int __pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree___init__(struct _
   PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_t_3);
   __pyx_t_4 = 0;
   __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_3phd_7gravity_11interaction_GravityAcceleration), __pyx_t_5, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 58, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_3phd_7gravity_11interaction_GravityAcceleration), __pyx_t_5, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 56, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __Pyx_GIVEREF(__pyx_t_3);
@@ -3595,42 +3599,42 @@ static int __pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree___init__(struct _
   __pyx_v_self->export_interaction = ((struct __pyx_obj_3phd_7gravity_11interaction_Interaction *)__pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "phd/gravity/gravity_tree.pyx":61
+  /* "phd/gravity/gravity_tree.pyx":59
  *                 calculate_potential, smoothing_length)
  * 
  *         if phd._in_parallel:             # <<<<<<<<<<<<<<
  * 
  *             self.import_interaction = GravityAcceleration(
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_phd); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 61, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_phd); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 59, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_in_parallel); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 61, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_in_parallel); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 59, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 61, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 59, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   if (__pyx_t_2) {
 
-    /* "phd/gravity/gravity_tree.pyx":64
+    /* "phd/gravity/gravity_tree.pyx":62
  * 
  *             self.import_interaction = GravityAcceleration(
  *                     calculate_potential, smoothing_length)             # <<<<<<<<<<<<<<
  * 
  *             self.indices = LongArray(n=self.max_buffer_size)
  */
-    __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_calculate_potential); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 64, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_calculate_potential); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 62, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_3 = PyFloat_FromDouble(__pyx_v_smoothing_length); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 64, __pyx_L1_error)
+    __pyx_t_3 = PyFloat_FromDouble(__pyx_v_smoothing_length); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 62, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
 
-    /* "phd/gravity/gravity_tree.pyx":63
+    /* "phd/gravity/gravity_tree.pyx":61
  *         if phd._in_parallel:
  * 
  *             self.import_interaction = GravityAcceleration(             # <<<<<<<<<<<<<<
  *                     calculate_potential, smoothing_length)
  * 
  */
-    __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 63, __pyx_L1_error)
+    __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 61, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_GIVEREF(__pyx_t_5);
     PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_5);
@@ -3638,7 +3642,7 @@ static int __pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree___init__(struct _
     PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_t_3);
     __pyx_t_5 = 0;
     __pyx_t_3 = 0;
-    __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_3phd_7gravity_11interaction_GravityAcceleration), __pyx_t_4, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 63, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_3phd_7gravity_11interaction_GravityAcceleration), __pyx_t_4, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 61, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_GIVEREF(__pyx_t_3);
@@ -3647,20 +3651,20 @@ static int __pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree___init__(struct _
     __pyx_v_self->import_interaction = ((struct __pyx_obj_3phd_7gravity_11interaction_Interaction *)__pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "phd/gravity/gravity_tree.pyx":66
+    /* "phd/gravity/gravity_tree.pyx":64
  *                     calculate_potential, smoothing_length)
  * 
  *             self.indices = LongArray(n=self.max_buffer_size)             # <<<<<<<<<<<<<<
  * 
  *             # particle buffers for parallel tree walk
  */
-    __pyx_t_3 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 66, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 64, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_self->max_buffer_size); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 66, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_self->max_buffer_size); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 64, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_n, __pyx_t_4) < 0) __PYX_ERR(0, 66, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_n, __pyx_t_4) < 0) __PYX_ERR(0, 64, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_4 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_3phd_5utils_6carray_LongArray), __pyx_empty_tuple, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 66, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_3phd_5utils_6carray_LongArray), __pyx_empty_tuple, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 64, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_GIVEREF(__pyx_t_4);
@@ -3669,14 +3673,14 @@ static int __pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree___init__(struct _
     __pyx_v_self->indices = ((struct __pyx_obj_3phd_5utils_6carray_LongArray *)__pyx_t_4);
     __pyx_t_4 = 0;
 
-    /* "phd/gravity/gravity_tree.pyx":69
+    /* "phd/gravity/gravity_tree.pyx":67
  * 
  *             # particle buffers for parallel tree walk
  *             self.buffer_import = CarrayContainer(0)             # <<<<<<<<<<<<<<
  *             self.buffer_export = CarrayContainer(0)
  * 
  */
-    __pyx_t_4 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_3phd_10containers_10containers_CarrayContainer), __pyx_tuple__2, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 69, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_3phd_10containers_10containers_CarrayContainer), __pyx_tuple__2, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 67, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_GIVEREF(__pyx_t_4);
     __Pyx_GOTREF(__pyx_v_self->buffer_import);
@@ -3684,14 +3688,14 @@ static int __pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree___init__(struct _
     __pyx_v_self->buffer_import = ((struct __pyx_obj_3phd_10containers_10containers_CarrayContainer *)__pyx_t_4);
     __pyx_t_4 = 0;
 
-    /* "phd/gravity/gravity_tree.pyx":70
+    /* "phd/gravity/gravity_tree.pyx":68
  *             # particle buffers for parallel tree walk
  *             self.buffer_import = CarrayContainer(0)
  *             self.buffer_export = CarrayContainer(0)             # <<<<<<<<<<<<<<
  * 
  *     def register_fields(self, CarrayContainer particles):
  */
-    __pyx_t_4 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_3phd_10containers_10containers_CarrayContainer), __pyx_tuple__2, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 70, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_3phd_10containers_10containers_CarrayContainer), __pyx_tuple__2, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 68, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_GIVEREF(__pyx_t_4);
     __Pyx_GOTREF(__pyx_v_self->buffer_export);
@@ -3699,7 +3703,7 @@ static int __pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree___init__(struct _
     __pyx_v_self->buffer_export = ((struct __pyx_obj_3phd_10containers_10containers_CarrayContainer *)__pyx_t_4);
     __pyx_t_4 = 0;
 
-    /* "phd/gravity/gravity_tree.pyx":61
+    /* "phd/gravity/gravity_tree.pyx":59
  *                 calculate_potential, smoothing_length)
  * 
  *         if phd._in_parallel:             # <<<<<<<<<<<<<<
@@ -3730,7 +3734,7 @@ static int __pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree___init__(struct _
   return __pyx_r;
 }
 
-/* "phd/gravity/gravity_tree.pyx":72
+/* "phd/gravity/gravity_tree.pyx":70
  *             self.buffer_export = CarrayContainer(0)
  * 
  *     def register_fields(self, CarrayContainer particles):             # <<<<<<<<<<<<<<
@@ -3748,7 +3752,7 @@ static PyObject *__pyx_pw_3phd_7gravity_12gravity_tree_11GravityTree_3register_f
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("register_fields (wrapper)", 0);
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_particles), __pyx_ptype_3phd_10containers_10containers_CarrayContainer, 1, "particles", 0))) __PYX_ERR(0, 72, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_particles), __pyx_ptype_3phd_10containers_10containers_CarrayContainer, 1, "particles", 0))) __PYX_ERR(0, 70, __pyx_L1_error)
   __pyx_r = __pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_2register_fields(((struct __pyx_obj_3phd_7gravity_12gravity_tree_GravityTree *)__pyx_v_self), ((struct __pyx_obj_3phd_10containers_10containers_CarrayContainer *)__pyx_v_particles));
 
   /* function exit code */
@@ -3777,14 +3781,14 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_2register_f
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("register_fields", 0);
 
-  /* "phd/gravity/gravity_tree.pyx":83
+  /* "phd/gravity/gravity_tree.pyx":81
  *         """
  *         cdef str field
  *         self.export_interaction.register_fields(particles)             # <<<<<<<<<<<<<<
  * 
  *         if phd._in_parallel:
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self->export_interaction), __pyx_n_s_register_fields); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 83, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self->export_interaction), __pyx_n_s_register_fields); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 81, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -3798,28 +3802,28 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_2register_f
   }
   __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_3, ((PyObject *)__pyx_v_particles)) : __Pyx_PyObject_CallOneArg(__pyx_t_2, ((PyObject *)__pyx_v_particles));
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 83, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 81, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "phd/gravity/gravity_tree.pyx":85
+  /* "phd/gravity/gravity_tree.pyx":83
  *         self.export_interaction.register_fields(particles)
  * 
  *         if phd._in_parallel:             # <<<<<<<<<<<<<<
  * 
  *             # hack because export already registered
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_phd); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 85, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_phd); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 83, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_in_parallel); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 85, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_in_parallel); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 83, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_4 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 85, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 83, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   if (__pyx_t_4) {
 
-    /* "phd/gravity/gravity_tree.pyx":88
+    /* "phd/gravity/gravity_tree.pyx":86
  * 
  *             # hack because export already registered
  *             self.import_interaction.dim = self.export_interaction.dim             # <<<<<<<<<<<<<<
@@ -3829,7 +3833,7 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_2register_f
     __pyx_t_5 = __pyx_v_self->export_interaction->dim;
     __pyx_v_self->import_interaction->dim = __pyx_t_5;
 
-    /* "phd/gravity/gravity_tree.pyx":89
+    /* "phd/gravity/gravity_tree.pyx":87
  *             # hack because export already registered
  *             self.import_interaction.dim = self.export_interaction.dim
  *             self.import_interaction.particle_fields_registered = True             # <<<<<<<<<<<<<<
@@ -3838,7 +3842,7 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_2register_f
  */
     __pyx_v_self->import_interaction->particle_fields_registered = 1;
 
-    /* "phd/gravity/gravity_tree.pyx":92
+    /* "phd/gravity/gravity_tree.pyx":90
  * 
  *             # add fields that will be communicated
  *             for field in particles.carray_named_groups["gravity"]:             # <<<<<<<<<<<<<<
@@ -3847,17 +3851,17 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_2register_f
  */
     if (unlikely(__pyx_v_particles->carray_named_groups == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 92, __pyx_L1_error)
+      __PYX_ERR(0, 90, __pyx_L1_error)
     }
-    __pyx_t_2 = __Pyx_PyDict_GetItem(__pyx_v_particles->carray_named_groups, __pyx_n_s_gravity); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 92, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyDict_GetItem(__pyx_v_particles->carray_named_groups, __pyx_n_s_gravity); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 90, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     if (likely(PyList_CheckExact(__pyx_t_2)) || PyTuple_CheckExact(__pyx_t_2)) {
       __pyx_t_1 = __pyx_t_2; __Pyx_INCREF(__pyx_t_1); __pyx_t_6 = 0;
       __pyx_t_7 = NULL;
     } else {
-      __pyx_t_6 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 92, __pyx_L1_error)
+      __pyx_t_6 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 90, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_7 = Py_TYPE(__pyx_t_1)->tp_iternext; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 92, __pyx_L1_error)
+      __pyx_t_7 = Py_TYPE(__pyx_t_1)->tp_iternext; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 90, __pyx_L1_error)
     }
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     for (;;) {
@@ -3865,17 +3869,17 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_2register_f
         if (likely(PyList_CheckExact(__pyx_t_1))) {
           if (__pyx_t_6 >= PyList_GET_SIZE(__pyx_t_1)) break;
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_2 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_6); __Pyx_INCREF(__pyx_t_2); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 92, __pyx_L1_error)
+          __pyx_t_2 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_6); __Pyx_INCREF(__pyx_t_2); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 90, __pyx_L1_error)
           #else
-          __pyx_t_2 = PySequence_ITEM(__pyx_t_1, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 92, __pyx_L1_error)
+          __pyx_t_2 = PySequence_ITEM(__pyx_t_1, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 90, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
           #endif
         } else {
           if (__pyx_t_6 >= PyTuple_GET_SIZE(__pyx_t_1)) break;
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_2 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_6); __Pyx_INCREF(__pyx_t_2); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 92, __pyx_L1_error)
+          __pyx_t_2 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_6); __Pyx_INCREF(__pyx_t_2); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 90, __pyx_L1_error)
           #else
-          __pyx_t_2 = PySequence_ITEM(__pyx_t_1, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 92, __pyx_L1_error)
+          __pyx_t_2 = PySequence_ITEM(__pyx_t_1, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 90, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
           #endif
         }
@@ -3885,17 +3889,17 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_2register_f
           PyObject* exc_type = PyErr_Occurred();
           if (exc_type) {
             if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-            else __PYX_ERR(0, 92, __pyx_L1_error)
+            else __PYX_ERR(0, 90, __pyx_L1_error)
           }
           break;
         }
         __Pyx_GOTREF(__pyx_t_2);
       }
-      if (!(likely(PyString_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 92, __pyx_L1_error)
+      if (!(likely(PyString_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 90, __pyx_L1_error)
       __Pyx_XDECREF_SET(__pyx_v_field, ((PyObject*)__pyx_t_2));
       __pyx_t_2 = 0;
 
-      /* "phd/gravity/gravity_tree.pyx":95
+      /* "phd/gravity/gravity_tree.pyx":93
  * 
  *                 self.buffer_export.register_carray(0, field,
  *                         particles.carray_dtypes[field])             # <<<<<<<<<<<<<<
@@ -3904,13 +3908,13 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_2register_f
  */
       if (unlikely(__pyx_v_particles->carray_dtypes == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-        __PYX_ERR(0, 95, __pyx_L1_error)
+        __PYX_ERR(0, 93, __pyx_L1_error)
       }
-      __pyx_t_2 = __Pyx_PyDict_GetItem(__pyx_v_particles->carray_dtypes, __pyx_v_field); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 95, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyDict_GetItem(__pyx_v_particles->carray_dtypes, __pyx_v_field); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 93, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      if (!(likely(PyString_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 95, __pyx_L1_error)
+      if (!(likely(PyString_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 93, __pyx_L1_error)
 
-      /* "phd/gravity/gravity_tree.pyx":94
+      /* "phd/gravity/gravity_tree.pyx":92
  *             for field in particles.carray_named_groups["gravity"]:
  * 
  *                 self.buffer_export.register_carray(0, field,             # <<<<<<<<<<<<<<
@@ -3919,12 +3923,12 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_2register_f
  */
       __pyx_t_8.__pyx_n = 1;
       __pyx_t_8.dtype = ((PyObject*)__pyx_t_2);
-      __pyx_t_3 = ((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_self->buffer_export->__pyx_vtab)->register_carray(__pyx_v_self->buffer_export, 0, __pyx_v_field, 0, &__pyx_t_8); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 94, __pyx_L1_error)
+      __pyx_t_3 = ((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_self->buffer_export->__pyx_vtab)->register_carray(__pyx_v_self->buffer_export, 0, __pyx_v_field, 0, &__pyx_t_8); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 92, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-      /* "phd/gravity/gravity_tree.pyx":98
+      /* "phd/gravity/gravity_tree.pyx":96
  * 
  *                 self.buffer_import.register_carray(0, field,
  *                         particles.carray_dtypes[field])             # <<<<<<<<<<<<<<
@@ -3933,13 +3937,13 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_2register_f
  */
       if (unlikely(__pyx_v_particles->carray_dtypes == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-        __PYX_ERR(0, 98, __pyx_L1_error)
+        __PYX_ERR(0, 96, __pyx_L1_error)
       }
-      __pyx_t_3 = __Pyx_PyDict_GetItem(__pyx_v_particles->carray_dtypes, __pyx_v_field); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 98, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyDict_GetItem(__pyx_v_particles->carray_dtypes, __pyx_v_field); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 96, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      if (!(likely(PyString_CheckExact(__pyx_t_3))||((__pyx_t_3) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_3)->tp_name), 0))) __PYX_ERR(0, 98, __pyx_L1_error)
+      if (!(likely(PyString_CheckExact(__pyx_t_3))||((__pyx_t_3) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_3)->tp_name), 0))) __PYX_ERR(0, 96, __pyx_L1_error)
 
-      /* "phd/gravity/gravity_tree.pyx":97
+      /* "phd/gravity/gravity_tree.pyx":95
  *                         particles.carray_dtypes[field])
  * 
  *                 self.buffer_import.register_carray(0, field,             # <<<<<<<<<<<<<<
@@ -3948,12 +3952,12 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_2register_f
  */
       __pyx_t_8.__pyx_n = 1;
       __pyx_t_8.dtype = ((PyObject*)__pyx_t_3);
-      __pyx_t_2 = ((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_self->buffer_import->__pyx_vtab)->register_carray(__pyx_v_self->buffer_import, 0, __pyx_v_field, 0, &__pyx_t_8); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 97, __pyx_L1_error)
+      __pyx_t_2 = ((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_self->buffer_import->__pyx_vtab)->register_carray(__pyx_v_self->buffer_import, 0, __pyx_v_field, 0, &__pyx_t_8); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 95, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-      /* "phd/gravity/gravity_tree.pyx":92
+      /* "phd/gravity/gravity_tree.pyx":90
  * 
  *             # add fields that will be communicated
  *             for field in particles.carray_named_groups["gravity"]:             # <<<<<<<<<<<<<<
@@ -3963,7 +3967,7 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_2register_f
     }
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "phd/gravity/gravity_tree.pyx":102
+    /* "phd/gravity/gravity_tree.pyx":100
  *             # add name groups as well
  *             self.buffer_export.carray_named_groups["acceleration"] =\
  *                     list(particles.carray_named_groups["acceleration"])             # <<<<<<<<<<<<<<
@@ -3972,15 +3976,15 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_2register_f
  */
     if (unlikely(__pyx_v_particles->carray_named_groups == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 102, __pyx_L1_error)
+      __PYX_ERR(0, 100, __pyx_L1_error)
     }
-    __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_particles->carray_named_groups, __pyx_n_s_acceleration); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 102, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_particles->carray_named_groups, __pyx_n_s_acceleration); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 100, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_2 = PySequence_List(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 102, __pyx_L1_error)
+    __pyx_t_2 = PySequence_List(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 100, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "phd/gravity/gravity_tree.pyx":101
+    /* "phd/gravity/gravity_tree.pyx":99
  * 
  *             # add name groups as well
  *             self.buffer_export.carray_named_groups["acceleration"] =\             # <<<<<<<<<<<<<<
@@ -3989,12 +3993,12 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_2register_f
  */
     if (unlikely(__pyx_v_self->buffer_export->carray_named_groups == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 101, __pyx_L1_error)
+      __PYX_ERR(0, 99, __pyx_L1_error)
     }
-    if (unlikely(PyDict_SetItem(__pyx_v_self->buffer_export->carray_named_groups, __pyx_n_s_acceleration, __pyx_t_2) < 0)) __PYX_ERR(0, 101, __pyx_L1_error)
+    if (unlikely(PyDict_SetItem(__pyx_v_self->buffer_export->carray_named_groups, __pyx_n_s_acceleration, __pyx_t_2) < 0)) __PYX_ERR(0, 99, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "phd/gravity/gravity_tree.pyx":104
+    /* "phd/gravity/gravity_tree.pyx":102
  *                     list(particles.carray_named_groups["acceleration"])
  *             self.buffer_export.carray_named_groups["position"] =\
  *                     list(particles.carray_named_groups["position"])             # <<<<<<<<<<<<<<
@@ -4003,15 +4007,15 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_2register_f
  */
     if (unlikely(__pyx_v_particles->carray_named_groups == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 104, __pyx_L1_error)
+      __PYX_ERR(0, 102, __pyx_L1_error)
     }
-    __pyx_t_2 = __Pyx_PyDict_GetItem(__pyx_v_particles->carray_named_groups, __pyx_n_s_position); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 104, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyDict_GetItem(__pyx_v_particles->carray_named_groups, __pyx_n_s_position); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 102, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_1 = PySequence_List(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 104, __pyx_L1_error)
+    __pyx_t_1 = PySequence_List(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 102, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "phd/gravity/gravity_tree.pyx":103
+    /* "phd/gravity/gravity_tree.pyx":101
  *             self.buffer_export.carray_named_groups["acceleration"] =\
  *                     list(particles.carray_named_groups["acceleration"])
  *             self.buffer_export.carray_named_groups["position"] =\             # <<<<<<<<<<<<<<
@@ -4020,12 +4024,12 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_2register_f
  */
     if (unlikely(__pyx_v_self->buffer_export->carray_named_groups == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 103, __pyx_L1_error)
+      __PYX_ERR(0, 101, __pyx_L1_error)
     }
-    if (unlikely(PyDict_SetItem(__pyx_v_self->buffer_export->carray_named_groups, __pyx_n_s_position, __pyx_t_1) < 0)) __PYX_ERR(0, 103, __pyx_L1_error)
+    if (unlikely(PyDict_SetItem(__pyx_v_self->buffer_export->carray_named_groups, __pyx_n_s_position, __pyx_t_1) < 0)) __PYX_ERR(0, 101, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "phd/gravity/gravity_tree.pyx":107
+    /* "phd/gravity/gravity_tree.pyx":105
  * 
  *             self.buffer_import.carray_named_groups["acceleration"] =\
  *                     list(particles.carray_named_groups["acceleration"])             # <<<<<<<<<<<<<<
@@ -4034,15 +4038,15 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_2register_f
  */
     if (unlikely(__pyx_v_particles->carray_named_groups == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 107, __pyx_L1_error)
+      __PYX_ERR(0, 105, __pyx_L1_error)
     }
-    __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_particles->carray_named_groups, __pyx_n_s_acceleration); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 107, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_particles->carray_named_groups, __pyx_n_s_acceleration); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 105, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_2 = PySequence_List(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 107, __pyx_L1_error)
+    __pyx_t_2 = PySequence_List(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 105, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "phd/gravity/gravity_tree.pyx":106
+    /* "phd/gravity/gravity_tree.pyx":104
  *                     list(particles.carray_named_groups["position"])
  * 
  *             self.buffer_import.carray_named_groups["acceleration"] =\             # <<<<<<<<<<<<<<
@@ -4051,12 +4055,12 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_2register_f
  */
     if (unlikely(__pyx_v_self->buffer_import->carray_named_groups == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 106, __pyx_L1_error)
+      __PYX_ERR(0, 104, __pyx_L1_error)
     }
-    if (unlikely(PyDict_SetItem(__pyx_v_self->buffer_import->carray_named_groups, __pyx_n_s_acceleration, __pyx_t_2) < 0)) __PYX_ERR(0, 106, __pyx_L1_error)
+    if (unlikely(PyDict_SetItem(__pyx_v_self->buffer_import->carray_named_groups, __pyx_n_s_acceleration, __pyx_t_2) < 0)) __PYX_ERR(0, 104, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "phd/gravity/gravity_tree.pyx":109
+    /* "phd/gravity/gravity_tree.pyx":107
  *                     list(particles.carray_named_groups["acceleration"])
  *             self.buffer_import.carray_named_groups["position"] =\
  *                     list(particles.carray_named_groups["position"])             # <<<<<<<<<<<<<<
@@ -4065,15 +4069,15 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_2register_f
  */
     if (unlikely(__pyx_v_particles->carray_named_groups == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 109, __pyx_L1_error)
+      __PYX_ERR(0, 107, __pyx_L1_error)
     }
-    __pyx_t_2 = __Pyx_PyDict_GetItem(__pyx_v_particles->carray_named_groups, __pyx_n_s_position); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 109, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyDict_GetItem(__pyx_v_particles->carray_named_groups, __pyx_n_s_position); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 107, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_1 = PySequence_List(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 109, __pyx_L1_error)
+    __pyx_t_1 = PySequence_List(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 107, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "phd/gravity/gravity_tree.pyx":108
+    /* "phd/gravity/gravity_tree.pyx":106
  *             self.buffer_import.carray_named_groups["acceleration"] =\
  *                     list(particles.carray_named_groups["acceleration"])
  *             self.buffer_import.carray_named_groups["position"] =\             # <<<<<<<<<<<<<<
@@ -4082,12 +4086,12 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_2register_f
  */
     if (unlikely(__pyx_v_self->buffer_import->carray_named_groups == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 108, __pyx_L1_error)
+      __PYX_ERR(0, 106, __pyx_L1_error)
     }
-    if (unlikely(PyDict_SetItem(__pyx_v_self->buffer_import->carray_named_groups, __pyx_n_s_position, __pyx_t_1) < 0)) __PYX_ERR(0, 108, __pyx_L1_error)
+    if (unlikely(PyDict_SetItem(__pyx_v_self->buffer_import->carray_named_groups, __pyx_n_s_position, __pyx_t_1) < 0)) __PYX_ERR(0, 106, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "phd/gravity/gravity_tree.pyx":85
+    /* "phd/gravity/gravity_tree.pyx":83
  *         self.export_interaction.register_fields(particles)
  * 
  *         if phd._in_parallel:             # <<<<<<<<<<<<<<
@@ -4096,7 +4100,7 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_2register_f
  */
   }
 
-  /* "phd/gravity/gravity_tree.pyx":72
+  /* "phd/gravity/gravity_tree.pyx":70
  *             self.buffer_export = CarrayContainer(0)
  * 
  *     def register_fields(self, CarrayContainer particles):             # <<<<<<<<<<<<<<
@@ -4120,7 +4124,7 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_2register_f
   return __pyx_r;
 }
 
-/* "phd/gravity/gravity_tree.pyx":111
+/* "phd/gravity/gravity_tree.pyx":109
  *                     list(particles.carray_named_groups["position"])
  * 
  *     def add_fields(self, CarrayContainer particles):             # <<<<<<<<<<<<<<
@@ -4138,7 +4142,7 @@ static PyObject *__pyx_pw_3phd_7gravity_12gravity_tree_11GravityTree_5add_fields
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("add_fields (wrapper)", 0);
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_particles), __pyx_ptype_3phd_10containers_10containers_CarrayContainer, 1, "particles", 0))) __PYX_ERR(0, 111, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_particles), __pyx_ptype_3phd_10containers_10containers_CarrayContainer, 1, "particles", 0))) __PYX_ERR(0, 109, __pyx_L1_error)
   __pyx_r = __pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_4add_fields(((struct __pyx_obj_3phd_7gravity_12gravity_tree_GravityTree *)__pyx_v_self), ((struct __pyx_obj_3phd_10containers_10containers_CarrayContainer *)__pyx_v_particles));
 
   /* function exit code */
@@ -4168,31 +4172,31 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_4add_fields
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("add_fields", 0);
 
-  /* "phd/gravity/gravity_tree.pyx":121
+  /* "phd/gravity/gravity_tree.pyx":119
  *         """
  *         cdef str axis
  *         cdef dict toptree_carray_to_register = {}             # <<<<<<<<<<<<<<
  *         cdef dict toptree_carray_named_groups = {}
  * 
  */
-  __pyx_t_1 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 121, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 119, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_toptree_carray_to_register = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "phd/gravity/gravity_tree.pyx":122
+  /* "phd/gravity/gravity_tree.pyx":120
  *         cdef str axis
  *         cdef dict toptree_carray_to_register = {}
  *         cdef dict toptree_carray_named_groups = {}             # <<<<<<<<<<<<<<
  * 
  *         self.dim = len(particles.carray_named_groups["position"])
  */
-  __pyx_t_1 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 122, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 120, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_toptree_carray_named_groups = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "phd/gravity/gravity_tree.pyx":124
+  /* "phd/gravity/gravity_tree.pyx":122
  *         cdef dict toptree_carray_named_groups = {}
  * 
  *         self.dim = len(particles.carray_named_groups["position"])             # <<<<<<<<<<<<<<
@@ -4201,81 +4205,81 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_4add_fields
  */
   if (unlikely(__pyx_v_particles->carray_named_groups == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(0, 124, __pyx_L1_error)
+    __PYX_ERR(0, 122, __pyx_L1_error)
   }
-  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_particles->carray_named_groups, __pyx_n_s_position); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 124, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_particles->carray_named_groups, __pyx_n_s_position); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 122, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyObject_Length(__pyx_t_1); if (unlikely(__pyx_t_2 == ((Py_ssize_t)-1))) __PYX_ERR(0, 124, __pyx_L1_error)
+  __pyx_t_2 = PyObject_Length(__pyx_t_1); if (unlikely(__pyx_t_2 == ((Py_ssize_t)-1))) __PYX_ERR(0, 122, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_self->dim = __pyx_t_2;
 
-  /* "phd/gravity/gravity_tree.pyx":126
+  /* "phd/gravity/gravity_tree.pyx":124
  *         self.dim = len(particles.carray_named_groups["position"])
  * 
  *         if phd._in_parallel:             # <<<<<<<<<<<<<<
  * 
  *             toptree_carray_to_register["map"]  = "long"
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_phd); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 126, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_phd); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 124, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_in_parallel); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 126, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_in_parallel); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 124, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_4 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 126, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 124, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   if (__pyx_t_4) {
 
-    /* "phd/gravity/gravity_tree.pyx":128
+    /* "phd/gravity/gravity_tree.pyx":126
  *         if phd._in_parallel:
  * 
  *             toptree_carray_to_register["map"]  = "long"             # <<<<<<<<<<<<<<
  *             toptree_carray_to_register["proc"] = "long"
  *             toptree_carray_to_register["mass"] = "double"
  */
-    if (unlikely(PyDict_SetItem(__pyx_v_toptree_carray_to_register, __pyx_n_s_map, __pyx_n_s_long) < 0)) __PYX_ERR(0, 128, __pyx_L1_error)
+    if (unlikely(PyDict_SetItem(__pyx_v_toptree_carray_to_register, __pyx_n_s_map, __pyx_n_s_long) < 0)) __PYX_ERR(0, 126, __pyx_L1_error)
 
-    /* "phd/gravity/gravity_tree.pyx":129
+    /* "phd/gravity/gravity_tree.pyx":127
  * 
  *             toptree_carray_to_register["map"]  = "long"
  *             toptree_carray_to_register["proc"] = "long"             # <<<<<<<<<<<<<<
  *             toptree_carray_to_register["mass"] = "double"
  * 
  */
-    if (unlikely(PyDict_SetItem(__pyx_v_toptree_carray_to_register, __pyx_n_s_proc, __pyx_n_s_long) < 0)) __PYX_ERR(0, 129, __pyx_L1_error)
+    if (unlikely(PyDict_SetItem(__pyx_v_toptree_carray_to_register, __pyx_n_s_proc, __pyx_n_s_long) < 0)) __PYX_ERR(0, 127, __pyx_L1_error)
 
-    /* "phd/gravity/gravity_tree.pyx":130
+    /* "phd/gravity/gravity_tree.pyx":128
  *             toptree_carray_to_register["map"]  = "long"
  *             toptree_carray_to_register["proc"] = "long"
  *             toptree_carray_to_register["mass"] = "double"             # <<<<<<<<<<<<<<
  * 
  *             toptree_carray_named_groups["com"] = []
  */
-    if (unlikely(PyDict_SetItem(__pyx_v_toptree_carray_to_register, __pyx_n_s_mass, __pyx_n_s_double) < 0)) __PYX_ERR(0, 130, __pyx_L1_error)
+    if (unlikely(PyDict_SetItem(__pyx_v_toptree_carray_to_register, __pyx_n_s_mass, __pyx_n_s_double) < 0)) __PYX_ERR(0, 128, __pyx_L1_error)
 
-    /* "phd/gravity/gravity_tree.pyx":132
+    /* "phd/gravity/gravity_tree.pyx":130
  *             toptree_carray_to_register["mass"] = "double"
  * 
  *             toptree_carray_named_groups["com"] = []             # <<<<<<<<<<<<<<
  *             for axis in "xyz"[:self.dim]:
  *                 toptree_carray_to_register["com-"+axis] = "double"
  */
-    __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 132, __pyx_L1_error)
+    __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 130, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    if (unlikely(PyDict_SetItem(__pyx_v_toptree_carray_named_groups, __pyx_n_s_com, __pyx_t_3) < 0)) __PYX_ERR(0, 132, __pyx_L1_error)
+    if (unlikely(PyDict_SetItem(__pyx_v_toptree_carray_named_groups, __pyx_n_s_com, __pyx_t_3) < 0)) __PYX_ERR(0, 130, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-    /* "phd/gravity/gravity_tree.pyx":133
+    /* "phd/gravity/gravity_tree.pyx":131
  * 
  *             toptree_carray_named_groups["com"] = []
  *             for axis in "xyz"[:self.dim]:             # <<<<<<<<<<<<<<
  *                 toptree_carray_to_register["com-"+axis] = "double"
  *                 toptree_carray_named_groups["com"].append("com-"+axis)
  */
-    __pyx_t_3 = PySequence_GetSlice(__pyx_n_s_xyz, 0, __pyx_v_self->dim); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 133, __pyx_L1_error)
+    __pyx_t_3 = PySequence_GetSlice(__pyx_n_s_xyz, 0, __pyx_v_self->dim); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 131, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_1 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 133, __pyx_L1_error)
+    __pyx_t_1 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 131, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_5 = Py_TYPE(__pyx_t_1)->tp_iternext; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 133, __pyx_L1_error)
+    __pyx_t_5 = Py_TYPE(__pyx_t_1)->tp_iternext; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 131, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     for (;;) {
       {
@@ -4284,7 +4288,7 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_4add_fields
           PyObject* exc_type = PyErr_Occurred();
           if (exc_type) {
             if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-            else __PYX_ERR(0, 133, __pyx_L1_error)
+            else __PYX_ERR(0, 131, __pyx_L1_error)
           }
           break;
         }
@@ -4293,34 +4297,34 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_4add_fields
       __Pyx_XDECREF_SET(__pyx_v_axis, ((PyObject*)__pyx_t_3));
       __pyx_t_3 = 0;
 
-      /* "phd/gravity/gravity_tree.pyx":134
+      /* "phd/gravity/gravity_tree.pyx":132
  *             toptree_carray_named_groups["com"] = []
  *             for axis in "xyz"[:self.dim]:
  *                 toptree_carray_to_register["com-"+axis] = "double"             # <<<<<<<<<<<<<<
  *                 toptree_carray_named_groups["com"].append("com-"+axis)
  * 
  */
-      __pyx_t_3 = PyNumber_Add(__pyx_kp_s_com_2, __pyx_v_axis); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 134, __pyx_L1_error)
+      __pyx_t_3 = PyNumber_Add(__pyx_kp_s_com_2, __pyx_v_axis); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 132, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      if (unlikely(PyDict_SetItem(__pyx_v_toptree_carray_to_register, __pyx_t_3, __pyx_n_s_double) < 0)) __PYX_ERR(0, 134, __pyx_L1_error)
+      if (unlikely(PyDict_SetItem(__pyx_v_toptree_carray_to_register, __pyx_t_3, __pyx_n_s_double) < 0)) __PYX_ERR(0, 132, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-      /* "phd/gravity/gravity_tree.pyx":135
+      /* "phd/gravity/gravity_tree.pyx":133
  *             for axis in "xyz"[:self.dim]:
  *                 toptree_carray_to_register["com-"+axis] = "double"
  *                 toptree_carray_named_groups["com"].append("com-"+axis)             # <<<<<<<<<<<<<<
  * 
  *             toptree_carray_named_groups["moments"] = ["mass"] +\
  */
-      __pyx_t_3 = __Pyx_PyDict_GetItem(__pyx_v_toptree_carray_named_groups, __pyx_n_s_com); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 135, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyDict_GetItem(__pyx_v_toptree_carray_named_groups, __pyx_n_s_com); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 133, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_6 = PyNumber_Add(__pyx_kp_s_com_2, __pyx_v_axis); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 135, __pyx_L1_error)
+      __pyx_t_6 = PyNumber_Add(__pyx_kp_s_com_2, __pyx_v_axis); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 133, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
-      __pyx_t_7 = __Pyx_PyObject_Append(__pyx_t_3, __pyx_t_6); if (unlikely(__pyx_t_7 == ((int)-1))) __PYX_ERR(0, 135, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyObject_Append(__pyx_t_3, __pyx_t_6); if (unlikely(__pyx_t_7 == ((int)-1))) __PYX_ERR(0, 133, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-      /* "phd/gravity/gravity_tree.pyx":133
+      /* "phd/gravity/gravity_tree.pyx":131
  * 
  *             toptree_carray_named_groups["com"] = []
  *             for axis in "xyz"[:self.dim]:             # <<<<<<<<<<<<<<
@@ -4330,44 +4334,44 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_4add_fields
     }
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "phd/gravity/gravity_tree.pyx":137
+    /* "phd/gravity/gravity_tree.pyx":135
  *                 toptree_carray_named_groups["com"].append("com-"+axis)
  * 
  *             toptree_carray_named_groups["moments"] = ["mass"] +\             # <<<<<<<<<<<<<<
  *                     toptree_carray_named_groups["com"]
  * 
  */
-    __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 137, __pyx_L1_error)
+    __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 135, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_INCREF(__pyx_n_s_mass);
     __Pyx_GIVEREF(__pyx_n_s_mass);
     PyList_SET_ITEM(__pyx_t_1, 0, __pyx_n_s_mass);
 
-    /* "phd/gravity/gravity_tree.pyx":138
+    /* "phd/gravity/gravity_tree.pyx":136
  * 
  *             toptree_carray_named_groups["moments"] = ["mass"] +\
  *                     toptree_carray_named_groups["com"]             # <<<<<<<<<<<<<<
  * 
  *             self.toptree_carray_to_register = toptree_carray_to_register
  */
-    __pyx_t_6 = __Pyx_PyDict_GetItem(__pyx_v_toptree_carray_named_groups, __pyx_n_s_com); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 138, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyDict_GetItem(__pyx_v_toptree_carray_named_groups, __pyx_n_s_com); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 136, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
 
-    /* "phd/gravity/gravity_tree.pyx":137
+    /* "phd/gravity/gravity_tree.pyx":135
  *                 toptree_carray_named_groups["com"].append("com-"+axis)
  * 
  *             toptree_carray_named_groups["moments"] = ["mass"] +\             # <<<<<<<<<<<<<<
  *                     toptree_carray_named_groups["com"]
  * 
  */
-    __pyx_t_3 = PyNumber_Add(__pyx_t_1, __pyx_t_6); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 137, __pyx_L1_error)
+    __pyx_t_3 = PyNumber_Add(__pyx_t_1, __pyx_t_6); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 135, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    if (unlikely(PyDict_SetItem(__pyx_v_toptree_carray_named_groups, __pyx_n_s_moments, __pyx_t_3) < 0)) __PYX_ERR(0, 137, __pyx_L1_error)
+    if (unlikely(PyDict_SetItem(__pyx_v_toptree_carray_named_groups, __pyx_n_s_moments, __pyx_t_3) < 0)) __PYX_ERR(0, 135, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-    /* "phd/gravity/gravity_tree.pyx":140
+    /* "phd/gravity/gravity_tree.pyx":138
  *                     toptree_carray_named_groups["com"]
  * 
  *             self.toptree_carray_to_register = toptree_carray_to_register             # <<<<<<<<<<<<<<
@@ -4380,7 +4384,7 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_4add_fields
     __Pyx_DECREF(__pyx_v_self->toptree_carray_to_register);
     __pyx_v_self->toptree_carray_to_register = __pyx_v_toptree_carray_to_register;
 
-    /* "phd/gravity/gravity_tree.pyx":141
+    /* "phd/gravity/gravity_tree.pyx":139
  * 
  *             self.toptree_carray_to_register = toptree_carray_to_register
  *             self.toptree_carray_named_groups = toptree_carray_named_groups             # <<<<<<<<<<<<<<
@@ -4393,7 +4397,7 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_4add_fields
     __Pyx_DECREF(__pyx_v_self->toptree_carray_named_groups);
     __pyx_v_self->toptree_carray_named_groups = __pyx_v_toptree_carray_named_groups;
 
-    /* "phd/gravity/gravity_tree.pyx":126
+    /* "phd/gravity/gravity_tree.pyx":124
  *         self.dim = len(particles.carray_named_groups["position"])
  * 
  *         if phd._in_parallel:             # <<<<<<<<<<<<<<
@@ -4402,7 +4406,7 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_4add_fields
  */
   }
 
-  /* "phd/gravity/gravity_tree.pyx":111
+  /* "phd/gravity/gravity_tree.pyx":109
  *                     list(particles.carray_named_groups["position"])
  * 
  *     def add_fields(self, CarrayContainer particles):             # <<<<<<<<<<<<<<
@@ -4428,7 +4432,7 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_4add_fields
   return __pyx_r;
 }
 
-/* "phd/gravity/gravity_tree.pyx":143
+/* "phd/gravity/gravity_tree.pyx":141
  *             self.toptree_carray_named_groups = toptree_carray_named_groups
  * 
  *     def set_domain_manager(self, DomainManager domain_manager):             # <<<<<<<<<<<<<<
@@ -4446,7 +4450,7 @@ static PyObject *__pyx_pw_3phd_7gravity_12gravity_tree_11GravityTree_7set_domain
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("set_domain_manager (wrapper)", 0);
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_domain_manager), __pyx_ptype_3phd_6domain_14domain_manager_DomainManager, 1, "domain_manager", 0))) __PYX_ERR(0, 143, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_domain_manager), __pyx_ptype_3phd_6domain_14domain_manager_DomainManager, 1, "domain_manager", 0))) __PYX_ERR(0, 141, __pyx_L1_error)
   __pyx_r = __pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_6set_domain_manager(((struct __pyx_obj_3phd_7gravity_12gravity_tree_GravityTree *)__pyx_v_self), ((struct __pyx_obj_3phd_6domain_14domain_manager_DomainManager *)__pyx_v_domain_manager));
 
   /* function exit code */
@@ -4463,7 +4467,7 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_6set_domain
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("set_domain_manager", 0);
 
-  /* "phd/gravity/gravity_tree.pyx":145
+  /* "phd/gravity/gravity_tree.pyx":143
  *     def set_domain_manager(self, DomainManager domain_manager):
  *         """Set domain manager."""
  *         self.domain_manager = domain_manager             # <<<<<<<<<<<<<<
@@ -4476,7 +4480,7 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_6set_domain
   __Pyx_DECREF(((PyObject *)__pyx_v_self->domain_manager));
   __pyx_v_self->domain_manager = __pyx_v_domain_manager;
 
-  /* "phd/gravity/gravity_tree.pyx":143
+  /* "phd/gravity/gravity_tree.pyx":141
  *             self.toptree_carray_named_groups = toptree_carray_named_groups
  * 
  *     def set_domain_manager(self, DomainManager domain_manager):             # <<<<<<<<<<<<<<
@@ -4491,7 +4495,7 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_6set_domain
   return __pyx_r;
 }
 
-/* "phd/gravity/gravity_tree.pyx":147
+/* "phd/gravity/gravity_tree.pyx":145
  *         self.domain_manager = domain_manager
  * 
  *     def initialize(self):             # <<<<<<<<<<<<<<
@@ -4528,31 +4532,31 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_8initialize
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("initialize", 0);
 
-  /* "phd/gravity/gravity_tree.pyx":153
+  /* "phd/gravity/gravity_tree.pyx":151
  *         cdef str axis
  * 
  *         if not self.domain_manager:             # <<<<<<<<<<<<<<
  *             raise RuntimeError("ERROR: DomainManager not set")
  * 
  */
-  __pyx_t_1 = __Pyx_PyObject_IsTrue(((PyObject *)__pyx_v_self->domain_manager)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 153, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_IsTrue(((PyObject *)__pyx_v_self->domain_manager)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 151, __pyx_L1_error)
   __pyx_t_2 = ((!__pyx_t_1) != 0);
   if (unlikely(__pyx_t_2)) {
 
-    /* "phd/gravity/gravity_tree.pyx":154
+    /* "phd/gravity/gravity_tree.pyx":152
  * 
  *         if not self.domain_manager:
  *             raise RuntimeError("ERROR: DomainManager not set")             # <<<<<<<<<<<<<<
  * 
  *         self.export_splitter.set_dim(self.dim)
  */
-    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_tuple__3, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 154, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_tuple__3, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 152, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_Raise(__pyx_t_3, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __PYX_ERR(0, 154, __pyx_L1_error)
+    __PYX_ERR(0, 152, __pyx_L1_error)
 
-    /* "phd/gravity/gravity_tree.pyx":153
+    /* "phd/gravity/gravity_tree.pyx":151
  *         cdef str axis
  * 
  *         if not self.domain_manager:             # <<<<<<<<<<<<<<
@@ -4561,16 +4565,16 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_8initialize
  */
   }
 
-  /* "phd/gravity/gravity_tree.pyx":156
+  /* "phd/gravity/gravity_tree.pyx":154
  *             raise RuntimeError("ERROR: DomainManager not set")
  * 
  *         self.export_splitter.set_dim(self.dim)             # <<<<<<<<<<<<<<
  *         self.export_interaction.set_splitter(self.export_splitter)
  *         self.export_interaction.initialize()
  */
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self->export_splitter), __pyx_n_s_set_dim); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 156, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self->export_splitter), __pyx_n_s_set_dim); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 154, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_self->dim); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 156, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_self->dim); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 154, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __pyx_t_6 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
@@ -4585,19 +4589,19 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_8initialize
   __pyx_t_3 = (__pyx_t_6) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_6, __pyx_t_5) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_5);
   __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 156, __pyx_L1_error)
+  if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 154, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "phd/gravity/gravity_tree.pyx":157
+  /* "phd/gravity/gravity_tree.pyx":155
  * 
  *         self.export_splitter.set_dim(self.dim)
  *         self.export_interaction.set_splitter(self.export_splitter)             # <<<<<<<<<<<<<<
  *         self.export_interaction.initialize()
  * 
  */
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self->export_interaction), __pyx_n_s_set_splitter); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 157, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self->export_interaction), __pyx_n_s_set_splitter); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 155, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_5 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
@@ -4611,19 +4615,19 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_8initialize
   }
   __pyx_t_3 = (__pyx_t_5) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_5, ((PyObject *)__pyx_v_self->export_splitter)) : __Pyx_PyObject_CallOneArg(__pyx_t_4, ((PyObject *)__pyx_v_self->export_splitter));
   __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 157, __pyx_L1_error)
+  if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 155, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "phd/gravity/gravity_tree.pyx":158
+  /* "phd/gravity/gravity_tree.pyx":156
  *         self.export_splitter.set_dim(self.dim)
  *         self.export_interaction.set_splitter(self.export_splitter)
  *         self.export_interaction.initialize()             # <<<<<<<<<<<<<<
  * 
  *         if phd._in_parallel:
  */
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self->export_interaction), __pyx_n_s_initialize); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 158, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self->export_interaction), __pyx_n_s_initialize); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 156, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_5 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
@@ -4637,37 +4641,37 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_8initialize
   }
   __pyx_t_3 = (__pyx_t_5) ? __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_5) : __Pyx_PyObject_CallNoArg(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 158, __pyx_L1_error)
+  if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 156, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "phd/gravity/gravity_tree.pyx":160
+  /* "phd/gravity/gravity_tree.pyx":158
  *         self.export_interaction.initialize()
  * 
  *         if phd._in_parallel:             # <<<<<<<<<<<<<<
  * 
  *             self.import_splitter.set_dim(self.dim)
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_phd); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 160, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_phd); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 158, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_in_parallel); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 160, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_in_parallel); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 158, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 160, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 158, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   if (__pyx_t_2) {
 
-    /* "phd/gravity/gravity_tree.pyx":162
+    /* "phd/gravity/gravity_tree.pyx":160
  *         if phd._in_parallel:
  * 
  *             self.import_splitter.set_dim(self.dim)             # <<<<<<<<<<<<<<
  *             self.import_interaction.set_splitter(self.import_splitter)
  *             self.import_interaction.initialize()
  */
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self->import_splitter), __pyx_n_s_set_dim); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 162, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self->import_splitter), __pyx_n_s_set_dim); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 160, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_self->dim); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 162, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_self->dim); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 160, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __pyx_t_6 = NULL;
     if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
@@ -4682,19 +4686,19 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_8initialize
     __pyx_t_4 = (__pyx_t_6) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_6, __pyx_t_5) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_5);
     __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 162, __pyx_L1_error)
+    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 160, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-    /* "phd/gravity/gravity_tree.pyx":163
+    /* "phd/gravity/gravity_tree.pyx":161
  * 
  *             self.import_splitter.set_dim(self.dim)
  *             self.import_interaction.set_splitter(self.import_splitter)             # <<<<<<<<<<<<<<
  *             self.import_interaction.initialize()
  * 
  */
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self->import_interaction), __pyx_n_s_set_splitter); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 163, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self->import_interaction), __pyx_n_s_set_splitter); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 161, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __pyx_t_5 = NULL;
     if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
@@ -4708,19 +4712,19 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_8initialize
     }
     __pyx_t_4 = (__pyx_t_5) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_5, ((PyObject *)__pyx_v_self->import_splitter)) : __Pyx_PyObject_CallOneArg(__pyx_t_3, ((PyObject *)__pyx_v_self->import_splitter));
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 163, __pyx_L1_error)
+    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 161, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-    /* "phd/gravity/gravity_tree.pyx":164
+    /* "phd/gravity/gravity_tree.pyx":162
  *             self.import_splitter.set_dim(self.dim)
  *             self.import_interaction.set_splitter(self.import_splitter)
  *             self.import_interaction.initialize()             # <<<<<<<<<<<<<<
  * 
  *         self.number_nodes = 2**self.dim
  */
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self->import_interaction), __pyx_n_s_initialize); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 164, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self->import_interaction), __pyx_n_s_initialize); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 162, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __pyx_t_5 = NULL;
     if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
@@ -4734,12 +4738,12 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_8initialize
     }
     __pyx_t_4 = (__pyx_t_5) ? __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_5) : __Pyx_PyObject_CallNoArg(__pyx_t_3);
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 164, __pyx_L1_error)
+    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 162, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-    /* "phd/gravity/gravity_tree.pyx":160
+    /* "phd/gravity/gravity_tree.pyx":158
  *         self.export_interaction.initialize()
  * 
  *         if phd._in_parallel:             # <<<<<<<<<<<<<<
@@ -4748,7 +4752,7 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_8initialize
  */
   }
 
-  /* "phd/gravity/gravity_tree.pyx":166
+  /* "phd/gravity/gravity_tree.pyx":164
  *             self.import_interaction.initialize()
  * 
  *         self.number_nodes = 2**self.dim             # <<<<<<<<<<<<<<
@@ -4757,14 +4761,14 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_8initialize
  */
   __pyx_v_self->number_nodes = __Pyx_pow_long(2, ((long)__pyx_v_self->dim));
 
-  /* "phd/gravity/gravity_tree.pyx":167
+  /* "phd/gravity/gravity_tree.pyx":165
  * 
  *         self.number_nodes = 2**self.dim
  *         self.nodes = GravityPool(10000)             # <<<<<<<<<<<<<<
  * 
  *         if phd._in_parallel:
  */
-  __pyx_t_4 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_3phd_7gravity_12gravity_pool_GravityPool), __pyx_tuple__4, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 167, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_3phd_7gravity_12gravity_pool_GravityPool), __pyx_tuple__4, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 165, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_GIVEREF(__pyx_t_4);
   __Pyx_GOTREF(__pyx_v_self->nodes);
@@ -4772,23 +4776,23 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_8initialize
   __pyx_v_self->nodes = ((struct __pyx_obj_3phd_7gravity_12gravity_pool_GravityPool *)__pyx_t_4);
   __pyx_t_4 = 0;
 
-  /* "phd/gravity/gravity_tree.pyx":169
+  /* "phd/gravity/gravity_tree.pyx":167
  *         self.nodes = GravityPool(10000)
  * 
  *         if phd._in_parallel:             # <<<<<<<<<<<<<<
  * 
  *             self.load_balance = self.domain_manager.load_balance
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_phd); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 169, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_phd); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 167, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_in_parallel); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 169, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_in_parallel); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 167, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 169, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 167, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   if (__pyx_t_2) {
 
-    /* "phd/gravity/gravity_tree.pyx":171
+    /* "phd/gravity/gravity_tree.pyx":169
  *         if phd._in_parallel:
  * 
  *             self.load_balance = self.domain_manager.load_balance             # <<<<<<<<<<<<<<
@@ -4803,197 +4807,197 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_8initialize
     __pyx_v_self->load_balance = ((struct __pyx_obj_3phd_12load_balance_12load_balance_LoadBalance *)__pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "phd/gravity/gravity_tree.pyx":174
+    /* "phd/gravity/gravity_tree.pyx":172
  * 
  *             # export processor counts and displacements
  *             self.send_cnts = np.zeros(phd._size, dtype=np.int32)             # <<<<<<<<<<<<<<
  *             self.send_disp = np.zeros(phd._size, dtype=np.int32)
  * 
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 174, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 172, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_zeros); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 174, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_zeros); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 172, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_phd); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 174, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_phd); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 172, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_size); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 174, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_size); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 172, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 174, __pyx_L1_error)
+    __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 172, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_GIVEREF(__pyx_t_5);
     PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_5);
     __pyx_t_5 = 0;
-    __pyx_t_5 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 174, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 172, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 174, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 172, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_int32); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 174, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_int32); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 172, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_dtype, __pyx_t_7) < 0) __PYX_ERR(0, 174, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_dtype, __pyx_t_7) < 0) __PYX_ERR(0, 172, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_3, __pyx_t_5); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 174, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_3, __pyx_t_5); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 172, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (!(likely(((__pyx_t_7) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_7, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 174, __pyx_L1_error)
+    if (!(likely(((__pyx_t_7) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_7, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 172, __pyx_L1_error)
     __Pyx_GIVEREF(__pyx_t_7);
     __Pyx_GOTREF(__pyx_v_self->send_cnts);
     __Pyx_DECREF(((PyObject *)__pyx_v_self->send_cnts));
     __pyx_v_self->send_cnts = ((PyArrayObject *)__pyx_t_7);
     __pyx_t_7 = 0;
 
-    /* "phd/gravity/gravity_tree.pyx":175
+    /* "phd/gravity/gravity_tree.pyx":173
  *             # export processor counts and displacements
  *             self.send_cnts = np.zeros(phd._size, dtype=np.int32)
  *             self.send_disp = np.zeros(phd._size, dtype=np.int32)             # <<<<<<<<<<<<<<
  * 
  *             # import processor counts and displacements
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 175, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 173, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_zeros); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 175, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_zeros); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 173, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_phd); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 175, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_phd); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 173, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_size); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 175, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_size); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 173, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    __pyx_t_7 = PyTuple_New(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 175, __pyx_L1_error)
+    __pyx_t_7 = PyTuple_New(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 173, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_GIVEREF(__pyx_t_3);
     PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_3);
     __pyx_t_3 = 0;
-    __pyx_t_3 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 175, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 173, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 175, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 173, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_int32); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 175, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_int32); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 173, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_dtype, __pyx_t_6) < 0) __PYX_ERR(0, 175, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_dtype, __pyx_t_6) < 0) __PYX_ERR(0, 173, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_7, __pyx_t_3); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 175, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_7, __pyx_t_3); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 173, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (!(likely(((__pyx_t_6) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_6, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 175, __pyx_L1_error)
+    if (!(likely(((__pyx_t_6) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_6, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 173, __pyx_L1_error)
     __Pyx_GIVEREF(__pyx_t_6);
     __Pyx_GOTREF(__pyx_v_self->send_disp);
     __Pyx_DECREF(((PyObject *)__pyx_v_self->send_disp));
     __pyx_v_self->send_disp = ((PyArrayObject *)__pyx_t_6);
     __pyx_t_6 = 0;
 
-    /* "phd/gravity/gravity_tree.pyx":178
+    /* "phd/gravity/gravity_tree.pyx":176
  * 
  *             # import processor counts and displacements
  *             self.recv_cnts = np.zeros(phd._size, dtype=np.int32)             # <<<<<<<<<<<<<<
  *             self.recv_disp = np.zeros(phd._size, dtype=np.int32)
  * 
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 178, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 176, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_zeros); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 178, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_zeros); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 176, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_phd); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 178, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_phd); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 176, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_size); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 178, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_size); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 176, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __pyx_t_6 = PyTuple_New(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 178, __pyx_L1_error)
+    __pyx_t_6 = PyTuple_New(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 176, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_GIVEREF(__pyx_t_7);
     PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_7);
     __pyx_t_7 = 0;
-    __pyx_t_7 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 178, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 176, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 178, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 176, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_int32); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 178, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_int32); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 176, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (PyDict_SetItem(__pyx_t_7, __pyx_n_s_dtype, __pyx_t_4) < 0) __PYX_ERR(0, 178, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_7, __pyx_n_s_dtype, __pyx_t_4) < 0) __PYX_ERR(0, 176, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_6, __pyx_t_7); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 178, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_6, __pyx_t_7); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 176, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    if (!(likely(((__pyx_t_4) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_4, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 178, __pyx_L1_error)
+    if (!(likely(((__pyx_t_4) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_4, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 176, __pyx_L1_error)
     __Pyx_GIVEREF(__pyx_t_4);
     __Pyx_GOTREF(__pyx_v_self->recv_cnts);
     __Pyx_DECREF(((PyObject *)__pyx_v_self->recv_cnts));
     __pyx_v_self->recv_cnts = ((PyArrayObject *)__pyx_t_4);
     __pyx_t_4 = 0;
 
-    /* "phd/gravity/gravity_tree.pyx":179
+    /* "phd/gravity/gravity_tree.pyx":177
  *             # import processor counts and displacements
  *             self.recv_cnts = np.zeros(phd._size, dtype=np.int32)
  *             self.recv_disp = np.zeros(phd._size, dtype=np.int32)             # <<<<<<<<<<<<<<
  * 
  *             # container of nodes common to all processors
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 179, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 177, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_zeros); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 179, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_zeros); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 177, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_phd); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 179, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_phd); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 177, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_size); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 179, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_size); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 177, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 179, __pyx_L1_error)
+    __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 177, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_GIVEREF(__pyx_t_6);
     PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_6);
     __pyx_t_6 = 0;
-    __pyx_t_6 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 179, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 177, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 179, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 177, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_int32); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 179, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_int32); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 177, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (PyDict_SetItem(__pyx_t_6, __pyx_n_s_dtype, __pyx_t_5) < 0) __PYX_ERR(0, 179, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_6, __pyx_n_s_dtype, __pyx_t_5) < 0) __PYX_ERR(0, 177, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_4, __pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 179, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_4, __pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 177, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    if (!(likely(((__pyx_t_5) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_5, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 179, __pyx_L1_error)
+    if (!(likely(((__pyx_t_5) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_5, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 177, __pyx_L1_error)
     __Pyx_GIVEREF(__pyx_t_5);
     __Pyx_GOTREF(__pyx_v_self->recv_disp);
     __Pyx_DECREF(((PyObject *)__pyx_v_self->recv_disp));
     __pyx_v_self->recv_disp = ((PyArrayObject *)__pyx_t_5);
     __pyx_t_5 = 0;
 
-    /* "phd/gravity/gravity_tree.pyx":183
+    /* "phd/gravity/gravity_tree.pyx":181
  *             # container of nodes common to all processors
  *             self.toptree_leafs = CarrayContainer(
  *                     carrays_to_register=self.toptree_carray_to_register)             # <<<<<<<<<<<<<<
  * 
  *             self.toptree_leafs.carray_named_groups =\
  */
-    __pyx_t_5 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 183, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 181, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_carrays_to_register, __pyx_v_self->toptree_carray_to_register) < 0) __PYX_ERR(0, 183, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_carrays_to_register, __pyx_v_self->toptree_carray_to_register) < 0) __PYX_ERR(0, 181, __pyx_L1_error)
 
-    /* "phd/gravity/gravity_tree.pyx":182
+    /* "phd/gravity/gravity_tree.pyx":180
  * 
  *             # container of nodes common to all processors
  *             self.toptree_leafs = CarrayContainer(             # <<<<<<<<<<<<<<
  *                     carrays_to_register=self.toptree_carray_to_register)
  * 
  */
-    __pyx_t_6 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_3phd_10containers_10containers_CarrayContainer), __pyx_empty_tuple, __pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 182, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_3phd_10containers_10containers_CarrayContainer), __pyx_empty_tuple, __pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 180, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_GIVEREF(__pyx_t_6);
@@ -5002,7 +5006,7 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_8initialize
     __pyx_v_self->toptree_leafs = ((struct __pyx_obj_3phd_10containers_10containers_CarrayContainer *)__pyx_t_6);
     __pyx_t_6 = 0;
 
-    /* "phd/gravity/gravity_tree.pyx":186
+    /* "phd/gravity/gravity_tree.pyx":184
  * 
  *             self.toptree_leafs.carray_named_groups =\
  *                     self.toptree_carray_named_groups             # <<<<<<<<<<<<<<
@@ -5012,7 +5016,7 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_8initialize
     __pyx_t_6 = __pyx_v_self->toptree_carray_named_groups;
     __Pyx_INCREF(__pyx_t_6);
 
-    /* "phd/gravity/gravity_tree.pyx":185
+    /* "phd/gravity/gravity_tree.pyx":183
  *                     carrays_to_register=self.toptree_carray_to_register)
  * 
  *             self.toptree_leafs.carray_named_groups =\             # <<<<<<<<<<<<<<
@@ -5025,7 +5029,7 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_8initialize
     __pyx_v_self->toptree_leafs->carray_named_groups = ((PyObject*)__pyx_t_6);
     __pyx_t_6 = 0;
 
-    /* "phd/gravity/gravity_tree.pyx":189
+    /* "phd/gravity/gravity_tree.pyx":187
  * 
  *             # particle id and send processors buffers
  *             self.buffer_ids = <PairId*> stdlib.malloc(             # <<<<<<<<<<<<<<
@@ -5034,7 +5038,7 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_8initialize
  */
     __pyx_v_self->buffer_ids = ((struct __pyx_t_3phd_7gravity_12gravity_tree_PairId *)malloc((__pyx_v_self->max_buffer_size * (sizeof(struct __pyx_t_3phd_7gravity_12gravity_tree_PairId)))));
 
-    /* "phd/gravity/gravity_tree.pyx":191
+    /* "phd/gravity/gravity_tree.pyx":189
  *             self.buffer_ids = <PairId*> stdlib.malloc(
  *                     self.max_buffer_size*sizeof(PairId))
  *             if self.buffer_ids == NULL:             # <<<<<<<<<<<<<<
@@ -5044,20 +5048,20 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_8initialize
     __pyx_t_2 = ((__pyx_v_self->buffer_ids == NULL) != 0);
     if (unlikely(__pyx_t_2)) {
 
-      /* "phd/gravity/gravity_tree.pyx":192
+      /* "phd/gravity/gravity_tree.pyx":190
  *                     self.max_buffer_size*sizeof(PairId))
  *             if self.buffer_ids == NULL:
  *                 raise MemoryError("ERROR: Insufficient memory in id buffer")             # <<<<<<<<<<<<<<
  *             self.buffer_size = 0
  * 
  */
-      __pyx_t_6 = __Pyx_PyObject_Call(__pyx_builtin_MemoryError, __pyx_tuple__5, NULL); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 192, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyObject_Call(__pyx_builtin_MemoryError, __pyx_tuple__5, NULL); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 190, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_Raise(__pyx_t_6, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-      __PYX_ERR(0, 192, __pyx_L1_error)
+      __PYX_ERR(0, 190, __pyx_L1_error)
 
-      /* "phd/gravity/gravity_tree.pyx":191
+      /* "phd/gravity/gravity_tree.pyx":189
  *             self.buffer_ids = <PairId*> stdlib.malloc(
  *                     self.max_buffer_size*sizeof(PairId))
  *             if self.buffer_ids == NULL:             # <<<<<<<<<<<<<<
@@ -5066,7 +5070,7 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_8initialize
  */
     }
 
-    /* "phd/gravity/gravity_tree.pyx":193
+    /* "phd/gravity/gravity_tree.pyx":191
  *             if self.buffer_ids == NULL:
  *                 raise MemoryError("ERROR: Insufficient memory in id buffer")
  *             self.buffer_size = 0             # <<<<<<<<<<<<<<
@@ -5075,7 +5079,7 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_8initialize
  */
     __pyx_v_self->buffer_size = 0;
 
-    /* "phd/gravity/gravity_tree.pyx":169
+    /* "phd/gravity/gravity_tree.pyx":167
  *         self.nodes = GravityPool(10000)
  * 
  *         if phd._in_parallel:             # <<<<<<<<<<<<<<
@@ -5084,7 +5088,7 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_8initialize
  */
   }
 
-  /* "phd/gravity/gravity_tree.pyx":147
+  /* "phd/gravity/gravity_tree.pyx":145
  *         self.domain_manager = domain_manager
  * 
  *     def initialize(self):             # <<<<<<<<<<<<<<
@@ -5109,7 +5113,7 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_8initialize
   return __pyx_r;
 }
 
-/* "phd/gravity/gravity_tree.pyx":195
+/* "phd/gravity/gravity_tree.pyx":193
  *             self.buffer_size = 0
  * 
  *     cdef inline int _get_index(self, int parent_index, np.float64_t x[3]):             # <<<<<<<<<<<<<<
@@ -5129,7 +5133,7 @@ static CYTHON_INLINE int __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__get
   int __pyx_t_4;
   __Pyx_RefNannySetupContext("_get_index", 0);
 
-  /* "phd/gravity/gravity_tree.pyx":213
+  /* "phd/gravity/gravity_tree.pyx":211
  * 
  *         """
  *         cdef int i, index = 0             # <<<<<<<<<<<<<<
@@ -5138,7 +5142,7 @@ static CYTHON_INLINE int __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__get
  */
   __pyx_v_index = 0;
 
-  /* "phd/gravity/gravity_tree.pyx":214
+  /* "phd/gravity/gravity_tree.pyx":212
  *         """
  *         cdef int i, index = 0
  *         cdef Node* node = &self.nodes.array[parent_index]             # <<<<<<<<<<<<<<
@@ -5147,7 +5151,7 @@ static CYTHON_INLINE int __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__get
  */
   __pyx_v_node = (&(__pyx_v_self->nodes->array[__pyx_v_parent_index]));
 
-  /* "phd/gravity/gravity_tree.pyx":216
+  /* "phd/gravity/gravity_tree.pyx":214
  *         cdef Node* node = &self.nodes.array[parent_index]
  * 
  *         for i in range(self.dim):             # <<<<<<<<<<<<<<
@@ -5159,7 +5163,7 @@ static CYTHON_INLINE int __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__get
   for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_i = __pyx_t_3;
 
-    /* "phd/gravity/gravity_tree.pyx":217
+    /* "phd/gravity/gravity_tree.pyx":215
  * 
  *         for i in range(self.dim):
  *             if(x[i] > node.center[i]):             # <<<<<<<<<<<<<<
@@ -5169,7 +5173,7 @@ static CYTHON_INLINE int __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__get
     __pyx_t_4 = (((__pyx_v_x[__pyx_v_i]) > (__pyx_v_node->center[__pyx_v_i])) != 0);
     if (__pyx_t_4) {
 
-      /* "phd/gravity/gravity_tree.pyx":218
+      /* "phd/gravity/gravity_tree.pyx":216
  *         for i in range(self.dim):
  *             if(x[i] > node.center[i]):
  *                 index += (1 << i)             # <<<<<<<<<<<<<<
@@ -5178,7 +5182,7 @@ static CYTHON_INLINE int __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__get
  */
       __pyx_v_index = (__pyx_v_index + (1 << __pyx_v_i));
 
-      /* "phd/gravity/gravity_tree.pyx":217
+      /* "phd/gravity/gravity_tree.pyx":215
  * 
  *         for i in range(self.dim):
  *             if(x[i] > node.center[i]):             # <<<<<<<<<<<<<<
@@ -5188,7 +5192,7 @@ static CYTHON_INLINE int __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__get
     }
   }
 
-  /* "phd/gravity/gravity_tree.pyx":219
+  /* "phd/gravity/gravity_tree.pyx":217
  *             if(x[i] > node.center[i]):
  *                 index += (1 << i)
  *         return index             # <<<<<<<<<<<<<<
@@ -5198,7 +5202,7 @@ static CYTHON_INLINE int __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__get
   __pyx_r = __pyx_v_index;
   goto __pyx_L0;
 
-  /* "phd/gravity/gravity_tree.pyx":195
+  /* "phd/gravity/gravity_tree.pyx":193
  *             self.buffer_size = 0
  * 
  *     cdef inline int _get_index(self, int parent_index, np.float64_t x[3]):             # <<<<<<<<<<<<<<
@@ -5212,7 +5216,7 @@ static CYTHON_INLINE int __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__get
   return __pyx_r;
 }
 
-/* "phd/gravity/gravity_tree.pyx":221
+/* "phd/gravity/gravity_tree.pyx":219
  *         return index
  * 
  *     cdef inline Node* _create_child(self, int parent_index, int child_index):             # <<<<<<<<<<<<<<
@@ -5233,7 +5237,7 @@ static CYTHON_INLINE struct __pyx_t_3phd_7gravity_12gravity_pool_Node *__pyx_f_3
   int __pyx_t_4;
   __Pyx_RefNannySetupContext("_create_child", 0);
 
-  /* "phd/gravity/gravity_tree.pyx":245
+  /* "phd/gravity/gravity_tree.pyx":243
  * 
  *         # allocate child
  *         child = self.nodes.get(1)             # <<<<<<<<<<<<<<
@@ -5242,7 +5246,7 @@ static CYTHON_INLINE struct __pyx_t_3phd_7gravity_12gravity_pool_Node *__pyx_f_3
  */
   __pyx_v_child = ((struct __pyx_vtabstruct_3phd_7gravity_12gravity_pool_GravityPool *)__pyx_v_self->nodes->__pyx_vtab)->get(__pyx_v_self->nodes, 1);
 
-  /* "phd/gravity/gravity_tree.pyx":248
+  /* "phd/gravity/gravity_tree.pyx":246
  * 
  *         # pass parent info to child
  *         parent = &self.nodes.array[parent_index]             # <<<<<<<<<<<<<<
@@ -5251,7 +5255,7 @@ static CYTHON_INLINE struct __pyx_t_3phd_7gravity_12gravity_pool_Node *__pyx_f_3
  */
   __pyx_v_parent = (&(__pyx_v_self->nodes->array[__pyx_v_parent_index]));
 
-  /* "phd/gravity/gravity_tree.pyx":249
+  /* "phd/gravity/gravity_tree.pyx":247
  *         # pass parent info to child
  *         parent = &self.nodes.array[parent_index]
  *         parent.group.children[child_index] = self.nodes.used - 1             # <<<<<<<<<<<<<<
@@ -5260,7 +5264,7 @@ static CYTHON_INLINE struct __pyx_t_3phd_7gravity_12gravity_pool_Node *__pyx_f_3
  */
   (__pyx_v_parent->group.children[__pyx_v_child_index]) = (__pyx_v_self->nodes->used - 1);
 
-  /* "phd/gravity/gravity_tree.pyx":252
+  /* "phd/gravity/gravity_tree.pyx":250
  * 
  *         # parent no longer leaf
  *         parent.flags &= ~LEAF             # <<<<<<<<<<<<<<
@@ -5269,7 +5273,7 @@ static CYTHON_INLINE struct __pyx_t_3phd_7gravity_12gravity_pool_Node *__pyx_f_3
  */
   __pyx_v_parent->flags = (__pyx_v_parent->flags & (~__pyx_e_3phd_7gravity_12gravity_tree_LEAF));
 
-  /* "phd/gravity/gravity_tree.pyx":254
+  /* "phd/gravity/gravity_tree.pyx":252
  *         parent.flags &= ~LEAF
  * 
  *         for i in range(self.number_nodes):             # <<<<<<<<<<<<<<
@@ -5281,7 +5285,7 @@ static CYTHON_INLINE struct __pyx_t_3phd_7gravity_12gravity_pool_Node *__pyx_f_3
   for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_i = __pyx_t_3;
 
-    /* "phd/gravity/gravity_tree.pyx":255
+    /* "phd/gravity/gravity_tree.pyx":253
  * 
  *         for i in range(self.number_nodes):
  *             child.group.children[i] = NOT_EXIST             # <<<<<<<<<<<<<<
@@ -5291,7 +5295,7 @@ static CYTHON_INLINE struct __pyx_t_3phd_7gravity_12gravity_pool_Node *__pyx_f_3
     (__pyx_v_child->group.children[__pyx_v_i]) = __pyx_e_3phd_7gravity_12gravity_tree_NOT_EXIST;
   }
 
-  /* "phd/gravity/gravity_tree.pyx":257
+  /* "phd/gravity/gravity_tree.pyx":255
  *             child.group.children[i] = NOT_EXIST
  * 
  *         child.flags = LEAF             # <<<<<<<<<<<<<<
@@ -5300,7 +5304,7 @@ static CYTHON_INLINE struct __pyx_t_3phd_7gravity_12gravity_pool_Node *__pyx_f_3
  */
   __pyx_v_child->flags = __pyx_e_3phd_7gravity_12gravity_tree_LEAF;
 
-  /* "phd/gravity/gravity_tree.pyx":258
+  /* "phd/gravity/gravity_tree.pyx":256
  * 
  *         child.flags = LEAF
  *         width = .5*parent.width             # <<<<<<<<<<<<<<
@@ -5309,7 +5313,7 @@ static CYTHON_INLINE struct __pyx_t_3phd_7gravity_12gravity_pool_Node *__pyx_f_3
  */
   __pyx_v_width = (.5 * __pyx_v_parent->width);
 
-  /* "phd/gravity/gravity_tree.pyx":259
+  /* "phd/gravity/gravity_tree.pyx":257
  *         child.flags = LEAF
  *         width = .5*parent.width
  *         child.width = width             # <<<<<<<<<<<<<<
@@ -5318,7 +5322,7 @@ static CYTHON_INLINE struct __pyx_t_3phd_7gravity_12gravity_pool_Node *__pyx_f_3
  */
   __pyx_v_child->width = __pyx_v_width;
 
-  /* "phd/gravity/gravity_tree.pyx":261
+  /* "phd/gravity/gravity_tree.pyx":259
  *         child.width = width
  * 
  *         for i in range(self.dim):             # <<<<<<<<<<<<<<
@@ -5330,7 +5334,7 @@ static CYTHON_INLINE struct __pyx_t_3phd_7gravity_12gravity_pool_Node *__pyx_f_3
   for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_i = __pyx_t_3;
 
-    /* "phd/gravity/gravity_tree.pyx":263
+    /* "phd/gravity/gravity_tree.pyx":261
  *         for i in range(self.dim):
  *             # create center coords for child
  *             if((child_index >> i) & 1):             # <<<<<<<<<<<<<<
@@ -5340,7 +5344,7 @@ static CYTHON_INLINE struct __pyx_t_3phd_7gravity_12gravity_pool_Node *__pyx_f_3
     __pyx_t_4 = (((__pyx_v_child_index >> __pyx_v_i) & 1) != 0);
     if (__pyx_t_4) {
 
-      /* "phd/gravity/gravity_tree.pyx":264
+      /* "phd/gravity/gravity_tree.pyx":262
  *             # create center coords for child
  *             if((child_index >> i) & 1):
  *                 child.center[i] = parent.center[i] + .5*width             # <<<<<<<<<<<<<<
@@ -5349,7 +5353,7 @@ static CYTHON_INLINE struct __pyx_t_3phd_7gravity_12gravity_pool_Node *__pyx_f_3
  */
       (__pyx_v_child->center[__pyx_v_i]) = ((__pyx_v_parent->center[__pyx_v_i]) + (.5 * __pyx_v_width));
 
-      /* "phd/gravity/gravity_tree.pyx":263
+      /* "phd/gravity/gravity_tree.pyx":261
  *         for i in range(self.dim):
  *             # create center coords for child
  *             if((child_index >> i) & 1):             # <<<<<<<<<<<<<<
@@ -5359,7 +5363,7 @@ static CYTHON_INLINE struct __pyx_t_3phd_7gravity_12gravity_pool_Node *__pyx_f_3
       goto __pyx_L7;
     }
 
-    /* "phd/gravity/gravity_tree.pyx":266
+    /* "phd/gravity/gravity_tree.pyx":264
  *                 child.center[i] = parent.center[i] + .5*width
  *             else:
  *                 child.center[i] = parent.center[i] - .5*width             # <<<<<<<<<<<<<<
@@ -5372,7 +5376,7 @@ static CYTHON_INLINE struct __pyx_t_3phd_7gravity_12gravity_pool_Node *__pyx_f_3
     __pyx_L7:;
   }
 
-  /* "phd/gravity/gravity_tree.pyx":268
+  /* "phd/gravity/gravity_tree.pyx":266
  *                 child.center[i] = parent.center[i] - .5*width
  * 
  *         return child             # <<<<<<<<<<<<<<
@@ -5382,7 +5386,7 @@ static CYTHON_INLINE struct __pyx_t_3phd_7gravity_12gravity_pool_Node *__pyx_f_3
   __pyx_r = __pyx_v_child;
   goto __pyx_L0;
 
-  /* "phd/gravity/gravity_tree.pyx":221
+  /* "phd/gravity/gravity_tree.pyx":219
  *         return index
  * 
  *     cdef inline Node* _create_child(self, int parent_index, int child_index):             # <<<<<<<<<<<<<<
@@ -5396,7 +5400,7 @@ static CYTHON_INLINE struct __pyx_t_3phd_7gravity_12gravity_pool_Node *__pyx_f_3
   return __pyx_r;
 }
 
-/* "phd/gravity/gravity_tree.pyx":270
+/* "phd/gravity/gravity_tree.pyx":268
  *         return child
  * 
  *     cdef inline void _create_children(self, int parent_index):             # <<<<<<<<<<<<<<
@@ -5421,7 +5425,7 @@ static CYTHON_INLINE void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__cr
   int __pyx_t_7;
   __Pyx_RefNannySetupContext("_create_children", 0);
 
-  /* "phd/gravity/gravity_tree.pyx":285
+  /* "phd/gravity/gravity_tree.pyx":283
  * 
  *         # create a block of children
  *         child = self.nodes.get(self.number_nodes)          # reference of first child             # <<<<<<<<<<<<<<
@@ -5430,7 +5434,7 @@ static CYTHON_INLINE void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__cr
  */
   __pyx_v_child = ((struct __pyx_vtabstruct_3phd_7gravity_12gravity_pool_GravityPool *)__pyx_v_self->nodes->__pyx_vtab)->get(__pyx_v_self->nodes, __pyx_v_self->number_nodes);
 
-  /* "phd/gravity/gravity_tree.pyx":286
+  /* "phd/gravity/gravity_tree.pyx":284
  *         # create a block of children
  *         child = self.nodes.get(self.number_nodes)          # reference of first child
  *         start_index = self.nodes.used - self.number_nodes  # index of first child             # <<<<<<<<<<<<<<
@@ -5439,7 +5443,7 @@ static CYTHON_INLINE void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__cr
  */
   __pyx_v_start_index = (__pyx_v_self->nodes->used - __pyx_v_self->number_nodes);
 
-  /* "phd/gravity/gravity_tree.pyx":288
+  /* "phd/gravity/gravity_tree.pyx":286
  *         start_index = self.nodes.used - self.number_nodes  # index of first child
  * 
  *         parent = &self.nodes.array[parent_index]             # <<<<<<<<<<<<<<
@@ -5448,7 +5452,7 @@ static CYTHON_INLINE void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__cr
  */
   __pyx_v_parent = (&(__pyx_v_self->nodes->array[__pyx_v_parent_index]));
 
-  /* "phd/gravity/gravity_tree.pyx":289
+  /* "phd/gravity/gravity_tree.pyx":287
  * 
  *         parent = &self.nodes.array[parent_index]
  *         width = .5*parent.width                            # box width of children             # <<<<<<<<<<<<<<
@@ -5457,7 +5461,7 @@ static CYTHON_INLINE void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__cr
  */
   __pyx_v_width = (.5 * __pyx_v_parent->width);
 
-  /* "phd/gravity/gravity_tree.pyx":290
+  /* "phd/gravity/gravity_tree.pyx":288
  *         parent = &self.nodes.array[parent_index]
  *         width = .5*parent.width                            # box width of children
  *         parent.flags &= ~LEAF                              # parent no longer leaf             # <<<<<<<<<<<<<<
@@ -5466,7 +5470,7 @@ static CYTHON_INLINE void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__cr
  */
   __pyx_v_parent->flags = (__pyx_v_parent->flags & (~__pyx_e_3phd_7gravity_12gravity_tree_LEAF));
 
-  /* "phd/gravity/gravity_tree.pyx":293
+  /* "phd/gravity/gravity_tree.pyx":291
  * 
  *         # loop over each child and pass parent information
  *         for i in range(self.number_nodes):             # <<<<<<<<<<<<<<
@@ -5478,7 +5482,7 @@ static CYTHON_INLINE void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__cr
   for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_i = __pyx_t_3;
 
-    /* "phd/gravity/gravity_tree.pyx":296
+    /* "phd/gravity/gravity_tree.pyx":294
  * 
  *             # store child index in node array
  *             parent.group.children[i] = start_index + i             # <<<<<<<<<<<<<<
@@ -5487,7 +5491,7 @@ static CYTHON_INLINE void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__cr
  */
     (__pyx_v_parent->group.children[__pyx_v_i]) = (__pyx_v_start_index + __pyx_v_i);
 
-    /* "phd/gravity/gravity_tree.pyx":297
+    /* "phd/gravity/gravity_tree.pyx":295
  *             # store child index in node array
  *             parent.group.children[i] = start_index + i
  *             child = &self.nodes.array[start_index + i]             # <<<<<<<<<<<<<<
@@ -5496,7 +5500,7 @@ static CYTHON_INLINE void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__cr
  */
     __pyx_v_child = (&(__pyx_v_self->nodes->array[(__pyx_v_start_index + __pyx_v_i)]));
 
-    /* "phd/gravity/gravity_tree.pyx":299
+    /* "phd/gravity/gravity_tree.pyx":297
  *             child = &self.nodes.array[start_index + i]
  * 
  *             child.flags = LEAF             # <<<<<<<<<<<<<<
@@ -5505,7 +5509,7 @@ static CYTHON_INLINE void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__cr
  */
     __pyx_v_child->flags = __pyx_e_3phd_7gravity_12gravity_tree_LEAF;
 
-    /* "phd/gravity/gravity_tree.pyx":300
+    /* "phd/gravity/gravity_tree.pyx":298
  * 
  *             child.flags = LEAF
  *             child.width = width             # <<<<<<<<<<<<<<
@@ -5514,7 +5518,7 @@ static CYTHON_INLINE void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__cr
  */
     __pyx_v_child->width = __pyx_v_width;
 
-    /* "phd/gravity/gravity_tree.pyx":303
+    /* "phd/gravity/gravity_tree.pyx":301
  * 
  *             # set children of children to null
  *             for k in range(self.number_nodes):             # <<<<<<<<<<<<<<
@@ -5526,7 +5530,7 @@ static CYTHON_INLINE void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__cr
     for (__pyx_t_6 = 0; __pyx_t_6 < __pyx_t_5; __pyx_t_6+=1) {
       __pyx_v_k = __pyx_t_6;
 
-      /* "phd/gravity/gravity_tree.pyx":304
+      /* "phd/gravity/gravity_tree.pyx":302
  *             # set children of children to null
  *             for k in range(self.number_nodes):
  *                 child.group.children[k] = NOT_EXIST             # <<<<<<<<<<<<<<
@@ -5536,7 +5540,7 @@ static CYTHON_INLINE void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__cr
       (__pyx_v_child->group.children[__pyx_v_k]) = __pyx_e_3phd_7gravity_12gravity_tree_NOT_EXIST;
     }
 
-    /* "phd/gravity/gravity_tree.pyx":308
+    /* "phd/gravity/gravity_tree.pyx":306
  *             # create center coordinates from parent
  *             # children are put in z-order
  *             for k in range(self.dim):             # <<<<<<<<<<<<<<
@@ -5548,7 +5552,7 @@ static CYTHON_INLINE void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__cr
     for (__pyx_t_6 = 0; __pyx_t_6 < __pyx_t_5; __pyx_t_6+=1) {
       __pyx_v_k = __pyx_t_6;
 
-      /* "phd/gravity/gravity_tree.pyx":310
+      /* "phd/gravity/gravity_tree.pyx":308
  *             for k in range(self.dim):
  *                 # create center coords for child
  *                 if((i >> k) & 1):             # <<<<<<<<<<<<<<
@@ -5558,7 +5562,7 @@ static CYTHON_INLINE void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__cr
       __pyx_t_7 = (((__pyx_v_i >> __pyx_v_k) & 1) != 0);
       if (__pyx_t_7) {
 
-        /* "phd/gravity/gravity_tree.pyx":311
+        /* "phd/gravity/gravity_tree.pyx":309
  *                 # create center coords for child
  *                 if((i >> k) & 1):
  *                     child.center[k] = parent.center[k] + .5*width             # <<<<<<<<<<<<<<
@@ -5567,7 +5571,7 @@ static CYTHON_INLINE void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__cr
  */
         (__pyx_v_child->center[__pyx_v_k]) = ((__pyx_v_parent->center[__pyx_v_k]) + (.5 * __pyx_v_width));
 
-        /* "phd/gravity/gravity_tree.pyx":310
+        /* "phd/gravity/gravity_tree.pyx":308
  *             for k in range(self.dim):
  *                 # create center coords for child
  *                 if((i >> k) & 1):             # <<<<<<<<<<<<<<
@@ -5577,7 +5581,7 @@ static CYTHON_INLINE void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__cr
         goto __pyx_L9;
       }
 
-      /* "phd/gravity/gravity_tree.pyx":313
+      /* "phd/gravity/gravity_tree.pyx":311
  *                     child.center[k] = parent.center[k] + .5*width
  *                 else:
  *                     child.center[k] = parent.center[k] - .5*width             # <<<<<<<<<<<<<<
@@ -5591,7 +5595,7 @@ static CYTHON_INLINE void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__cr
     }
   }
 
-  /* "phd/gravity/gravity_tree.pyx":270
+  /* "phd/gravity/gravity_tree.pyx":268
  *         return child
  * 
  *     cdef inline void _create_children(self, int parent_index):             # <<<<<<<<<<<<<<
@@ -5603,7 +5607,7 @@ static CYTHON_INLINE void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__cr
   __Pyx_RefNannyFinishContext();
 }
 
-/* "phd/gravity/gravity_tree.pyx":315
+/* "phd/gravity/gravity_tree.pyx":313
  *                     child.center[k] = parent.center[k] - .5*width
  * 
  *     cdef void _build_toptree(self):             # <<<<<<<<<<<<<<
@@ -5637,7 +5641,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__build_toptree(st
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_build_toptree", 0);
 
-  /* "phd/gravity/gravity_tree.pyx":324
+  /* "phd/gravity/gravity_tree.pyx":322
  * 
  *         cdef Node *node
  *         cdef LoadNode *load_root = self.load_balance.tree.root             # <<<<<<<<<<<<<<
@@ -5647,7 +5651,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__build_toptree(st
   __pyx_t_1 = __pyx_v_self->load_balance->tree->root;
   __pyx_v_load_root = __pyx_t_1;
 
-  /* "phd/gravity/gravity_tree.pyx":326
+  /* "phd/gravity/gravity_tree.pyx":324
  *         cdef LoadNode *load_root = self.load_balance.tree.root
  * 
  *         cdef Pool pool = self.load_balance.tree.mem_pool             # <<<<<<<<<<<<<<
@@ -5659,7 +5663,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__build_toptree(st
   __pyx_v_pool = ((struct __pyx_obj_3phd_12load_balance_4tree_TreeMemoryPool *)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "phd/gravity/gravity_tree.pyx":328
+  /* "phd/gravity/gravity_tree.pyx":326
  *         cdef Pool pool = self.load_balance.tree.mem_pool
  * 
  *         cdef LongArray leaf_pid = self.load_balance.leaf_pid             # <<<<<<<<<<<<<<
@@ -5671,33 +5675,33 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__build_toptree(st
   __pyx_v_leaf_pid = ((struct __pyx_obj_3phd_5utils_6carray_LongArray *)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "phd/gravity/gravity_tree.pyx":329
+  /* "phd/gravity/gravity_tree.pyx":327
  * 
  *         cdef LongArray leaf_pid = self.load_balance.leaf_pid
  *         cdef LongArray maps = self.toptree_leafs.get_carray("map")             # <<<<<<<<<<<<<<
  *         cdef LongArray proc = self.toptree_leafs.get_carray("proc")
  * 
  */
-  __pyx_t_2 = ((PyObject *)((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_self->toptree_leafs->__pyx_vtab)->get_carray(__pyx_v_self->toptree_leafs, __pyx_n_s_map, 0)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 329, __pyx_L1_error)
+  __pyx_t_2 = ((PyObject *)((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_self->toptree_leafs->__pyx_vtab)->get_carray(__pyx_v_self->toptree_leafs, __pyx_n_s_map, 0)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 327, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_ptype_3phd_5utils_6carray_LongArray))))) __PYX_ERR(0, 329, __pyx_L1_error)
+  if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_ptype_3phd_5utils_6carray_LongArray))))) __PYX_ERR(0, 327, __pyx_L1_error)
   __pyx_v_maps = ((struct __pyx_obj_3phd_5utils_6carray_LongArray *)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "phd/gravity/gravity_tree.pyx":330
+  /* "phd/gravity/gravity_tree.pyx":328
  *         cdef LongArray leaf_pid = self.load_balance.leaf_pid
  *         cdef LongArray maps = self.toptree_leafs.get_carray("map")
  *         cdef LongArray proc = self.toptree_leafs.get_carray("proc")             # <<<<<<<<<<<<<<
  * 
  *         # resize memory pool to hold tree - this only allocates available
  */
-  __pyx_t_2 = ((PyObject *)((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_self->toptree_leafs->__pyx_vtab)->get_carray(__pyx_v_self->toptree_leafs, __pyx_n_s_proc, 0)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 330, __pyx_L1_error)
+  __pyx_t_2 = ((PyObject *)((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_self->toptree_leafs->__pyx_vtab)->get_carray(__pyx_v_self->toptree_leafs, __pyx_n_s_proc, 0)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 328, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_ptype_3phd_5utils_6carray_LongArray))))) __PYX_ERR(0, 330, __pyx_L1_error)
+  if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_ptype_3phd_5utils_6carray_LongArray))))) __PYX_ERR(0, 328, __pyx_L1_error)
   __pyx_v_proc = ((struct __pyx_obj_3phd_5utils_6carray_LongArray *)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "phd/gravity/gravity_tree.pyx":334
+  /* "phd/gravity/gravity_tree.pyx":332
  *         # resize memory pool to hold tree - this only allocates available
  *         # memory it does not create nodes
  *         self.nodes.resize(pool.number_nodes())             # <<<<<<<<<<<<<<
@@ -5706,18 +5710,18 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__build_toptree(st
  */
   ((struct __pyx_vtabstruct_3phd_7gravity_12gravity_pool_GravityPool *)__pyx_v_self->nodes->__pyx_vtab)->resize(__pyx_v_self->nodes, ((struct __pyx_vtabstruct_3phd_12load_balance_4tree_TreeMemoryPool *)__pyx_v_pool->__pyx_vtab)->number_nodes(__pyx_v_pool, 0));
 
-  /* "phd/gravity/gravity_tree.pyx":337
+  /* "phd/gravity/gravity_tree.pyx":335
  * 
  *         # resize container to hold load leaf data
  *         self.toptree_leafs.resize(pool.number_leaves())             # <<<<<<<<<<<<<<
  * 
  *         # copy global top tree in z-order, collect load leaf index for mapping
  */
-  __pyx_t_2 = ((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_self->toptree_leafs->__pyx_vtab)->resize(__pyx_v_self->toptree_leafs, ((struct __pyx_vtabstruct_3phd_12load_balance_4tree_TreeMemoryPool *)__pyx_v_pool->__pyx_vtab)->number_leaves(__pyx_v_pool, 0), 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 337, __pyx_L1_error)
+  __pyx_t_2 = ((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_self->toptree_leafs->__pyx_vtab)->resize(__pyx_v_self->toptree_leafs, ((struct __pyx_vtabstruct_3phd_12load_balance_4tree_TreeMemoryPool *)__pyx_v_pool->__pyx_vtab)->number_leaves(__pyx_v_pool, 0), 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 335, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "phd/gravity/gravity_tree.pyx":340
+  /* "phd/gravity/gravity_tree.pyx":338
  * 
  *         # copy global top tree in z-order, collect load leaf index for mapping
  *         self._create_toptree(ROOT, load_root, maps.get_data_ptr())             # <<<<<<<<<<<<<<
@@ -5726,7 +5730,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__build_toptree(st
  */
   ((struct __pyx_vtabstruct_3phd_7gravity_12gravity_tree_GravityTree *)__pyx_v_self->__pyx_vtab)->_create_toptree(__pyx_v_self, __pyx_e_3phd_7gravity_12gravity_tree_ROOT, __pyx_v_load_root, ((struct __pyx_vtabstruct_3phd_5utils_6carray_LongArray *)__pyx_v_maps->__pyx_base.__pyx_vtab)->get_data_ptr(__pyx_v_maps));
 
-  /* "phd/gravity/gravity_tree.pyx":343
+  /* "phd/gravity/gravity_tree.pyx":341
  * 
  *         # reset top tree leaf to toptree container map
  *         self.toptree_leaf_map.clear()             # <<<<<<<<<<<<<<
@@ -5735,35 +5739,35 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__build_toptree(st
  */
   __pyx_v_self->toptree_leaf_map.clear();
 
-  /* "phd/gravity/gravity_tree.pyx":347
+  /* "phd/gravity/gravity_tree.pyx":345
  *         # top tree leafs are in load balance order, hilbert and processor,
  *         # this allows for easy communication.
  *         for i in range(phd._size):             # <<<<<<<<<<<<<<
  *             self.send_cnts[i] = 0
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_phd); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 347, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_phd); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 345, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_size); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 347, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_size); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 345, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_4 = __Pyx_PyInt_As_long(__pyx_t_3); if (unlikely((__pyx_t_4 == (long)-1) && PyErr_Occurred())) __PYX_ERR(0, 347, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyInt_As_long(__pyx_t_3); if (unlikely((__pyx_t_4 == (long)-1) && PyErr_Occurred())) __PYX_ERR(0, 345, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_5 = __pyx_t_4;
   for (__pyx_t_6 = 0; __pyx_t_6 < __pyx_t_5; __pyx_t_6+=1) {
     __pyx_v_i = __pyx_t_6;
 
-    /* "phd/gravity/gravity_tree.pyx":348
+    /* "phd/gravity/gravity_tree.pyx":346
  *         # this allows for easy communication.
  *         for i in range(phd._size):
  *             self.send_cnts[i] = 0             # <<<<<<<<<<<<<<
  * 
  *         # loop over load leafs
  */
-    if (unlikely(__Pyx_SetItemInt(((PyObject *)__pyx_v_self->send_cnts), __pyx_v_i, __pyx_int_0, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 348, __pyx_L1_error)
+    if (unlikely(__Pyx_SetItemInt(((PyObject *)__pyx_v_self->send_cnts), __pyx_v_i, __pyx_int_0, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 346, __pyx_L1_error)
   }
 
-  /* "phd/gravity/gravity_tree.pyx":351
+  /* "phd/gravity/gravity_tree.pyx":349
  * 
  *         # loop over load leafs
  *         for i in range(leaf_pid.length):             # <<<<<<<<<<<<<<
@@ -5775,7 +5779,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__build_toptree(st
   for (__pyx_t_6 = 0; __pyx_t_6 < __pyx_t_5; __pyx_t_6+=1) {
     __pyx_v_i = __pyx_t_6;
 
-    /* "phd/gravity/gravity_tree.pyx":353
+    /* "phd/gravity/gravity_tree.pyx":351
  *         for i in range(leaf_pid.length):
  * 
  *             pid = leaf_pid.data[i]     # processor that owns leaf             # <<<<<<<<<<<<<<
@@ -5784,7 +5788,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__build_toptree(st
  */
     __pyx_v_pid = (__pyx_v_leaf_pid->data[__pyx_v_i]);
 
-    /* "phd/gravity/gravity_tree.pyx":354
+    /* "phd/gravity/gravity_tree.pyx":352
  * 
  *             pid = leaf_pid.data[i]     # processor that owns leaf
  *             proc.data[i] = pid         # store processor info             # <<<<<<<<<<<<<<
@@ -5793,7 +5797,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__build_toptree(st
  */
     (__pyx_v_proc->data[__pyx_v_i]) = __pyx_v_pid;
 
-    /* "phd/gravity/gravity_tree.pyx":358
+    /* "phd/gravity/gravity_tree.pyx":356
  *             # bin leafs to processor - our processor is bined
  *             # because we comunicate IN_PLACE in mpi
  *             self.send_cnts[pid] += 1             # <<<<<<<<<<<<<<
@@ -5803,16 +5807,16 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__build_toptree(st
     __Pyx_INCREF(((PyObject *)__pyx_v_self->send_cnts));
     __pyx_t_7 = __pyx_v_self->send_cnts;
     __pyx_t_8 = __pyx_v_pid;
-    __pyx_t_3 = __Pyx_GetItemInt(((PyObject *)__pyx_t_7), __pyx_t_8, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 358, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_GetItemInt(((PyObject *)__pyx_t_7), __pyx_t_8, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 356, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_2 = __Pyx_PyInt_AddObjC(__pyx_t_3, __pyx_int_1, 1, 1, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 358, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyInt_AddObjC(__pyx_t_3, __pyx_int_1, 1, 1, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 356, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(__Pyx_SetItemInt(((PyObject *)__pyx_t_7), __pyx_t_8, __pyx_t_2, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 358, __pyx_L1_error)
+    if (unlikely(__Pyx_SetItemInt(((PyObject *)__pyx_t_7), __pyx_t_8, __pyx_t_2, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 356, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(((PyObject *)__pyx_t_7)); __pyx_t_7 = 0;
 
-    /* "phd/gravity/gravity_tree.pyx":361
+    /* "phd/gravity/gravity_tree.pyx":359
  * 
  *             # mapping toptree leaf index -> toptree leaf container
  *             self.toptree_leaf_map[maps.data[i]] = i             # <<<<<<<<<<<<<<
@@ -5821,28 +5825,28 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__build_toptree(st
  */
     (__pyx_v_self->toptree_leaf_map[(__pyx_v_maps->data[__pyx_v_i])]) = __pyx_v_i;
 
-    /* "phd/gravity/gravity_tree.pyx":364
+    /* "phd/gravity/gravity_tree.pyx":362
  * 
  *             # flag leafs that don't belong to this processor
  *             if(pid != phd._rank):             # <<<<<<<<<<<<<<
  *                 node = &self.nodes.array[maps.data[i]]
  *                 node.flags |= (SKIP_BRANCH|TOP_TREE_LEAF_REMOTE)
  */
-    __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_pid); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 364, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_pid); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 362, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_phd); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 364, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_phd); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 362, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_rank); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 364, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_rank); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 362, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = PyObject_RichCompare(__pyx_t_2, __pyx_t_9, Py_NE); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 364, __pyx_L1_error)
+    __pyx_t_3 = PyObject_RichCompare(__pyx_t_2, __pyx_t_9, Py_NE); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 362, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-    __pyx_t_10 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_10 < 0)) __PYX_ERR(0, 364, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_10 < 0)) __PYX_ERR(0, 362, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     if (__pyx_t_10) {
 
-      /* "phd/gravity/gravity_tree.pyx":365
+      /* "phd/gravity/gravity_tree.pyx":363
  *             # flag leafs that don't belong to this processor
  *             if(pid != phd._rank):
  *                 node = &self.nodes.array[maps.data[i]]             # <<<<<<<<<<<<<<
@@ -5851,7 +5855,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__build_toptree(st
  */
       __pyx_v_node = (&(__pyx_v_self->nodes->array[(__pyx_v_maps->data[__pyx_v_i])]));
 
-      /* "phd/gravity/gravity_tree.pyx":366
+      /* "phd/gravity/gravity_tree.pyx":364
  *             if(pid != phd._rank):
  *                 node = &self.nodes.array[maps.data[i]]
  *                 node.flags |= (SKIP_BRANCH|TOP_TREE_LEAF_REMOTE)             # <<<<<<<<<<<<<<
@@ -5860,7 +5864,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__build_toptree(st
  */
       __pyx_v_node->flags = (__pyx_v_node->flags | (__pyx_e_3phd_7gravity_12gravity_tree_SKIP_BRANCH | __pyx_e_3phd_7gravity_12gravity_tree_TOP_TREE_LEAF_REMOTE));
 
-      /* "phd/gravity/gravity_tree.pyx":364
+      /* "phd/gravity/gravity_tree.pyx":362
  * 
  *             # flag leafs that don't belong to this processor
  *             if(pid != phd._rank):             # <<<<<<<<<<<<<<
@@ -5870,34 +5874,34 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__build_toptree(st
     }
   }
 
-  /* "phd/gravity/gravity_tree.pyx":368
+  /* "phd/gravity/gravity_tree.pyx":366
  *                 node.flags |= (SKIP_BRANCH|TOP_TREE_LEAF_REMOTE)
  * 
  *         self.send_disp[0] = 0             # <<<<<<<<<<<<<<
  *         for i in range(1, phd._size):
  *             self.send_disp[i] = self.send_cnts[i-1] + self.send_disp[i-1]
  */
-  if (unlikely(__Pyx_SetItemInt(((PyObject *)__pyx_v_self->send_disp), 0, __pyx_int_0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1) < 0)) __PYX_ERR(0, 368, __pyx_L1_error)
+  if (unlikely(__Pyx_SetItemInt(((PyObject *)__pyx_v_self->send_disp), 0, __pyx_int_0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1) < 0)) __PYX_ERR(0, 366, __pyx_L1_error)
 
-  /* "phd/gravity/gravity_tree.pyx":369
+  /* "phd/gravity/gravity_tree.pyx":367
  * 
  *         self.send_disp[0] = 0
  *         for i in range(1, phd._size):             # <<<<<<<<<<<<<<
  *             self.send_disp[i] = self.send_cnts[i-1] + self.send_disp[i-1]
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_phd); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 369, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_phd); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 367, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_size); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 369, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_size); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 367, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_4 = __Pyx_PyInt_As_long(__pyx_t_9); if (unlikely((__pyx_t_4 == (long)-1) && PyErr_Occurred())) __PYX_ERR(0, 369, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyInt_As_long(__pyx_t_9); if (unlikely((__pyx_t_4 == (long)-1) && PyErr_Occurred())) __PYX_ERR(0, 367, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
   __pyx_t_5 = __pyx_t_4;
   for (__pyx_t_6 = 1; __pyx_t_6 < __pyx_t_5; __pyx_t_6+=1) {
     __pyx_v_i = __pyx_t_6;
 
-    /* "phd/gravity/gravity_tree.pyx":370
+    /* "phd/gravity/gravity_tree.pyx":368
  *         self.send_disp[0] = 0
  *         for i in range(1, phd._size):
  *             self.send_disp[i] = self.send_cnts[i-1] + self.send_disp[i-1]             # <<<<<<<<<<<<<<
@@ -5905,20 +5909,20 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__build_toptree(st
  *     cdef void _create_toptree(self, int node_index, LoadNode* load_parent,
  */
     __pyx_t_11 = (__pyx_v_i - 1);
-    __pyx_t_9 = __Pyx_GetItemInt(((PyObject *)__pyx_v_self->send_cnts), __pyx_t_11, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 370, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_GetItemInt(((PyObject *)__pyx_v_self->send_cnts), __pyx_t_11, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 368, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
     __pyx_t_11 = (__pyx_v_i - 1);
-    __pyx_t_3 = __Pyx_GetItemInt(((PyObject *)__pyx_v_self->send_disp), __pyx_t_11, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 370, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_GetItemInt(((PyObject *)__pyx_v_self->send_disp), __pyx_t_11, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 368, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_2 = PyNumber_Add(__pyx_t_9, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 370, __pyx_L1_error)
+    __pyx_t_2 = PyNumber_Add(__pyx_t_9, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 368, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(__Pyx_SetItemInt(((PyObject *)__pyx_v_self->send_disp), __pyx_v_i, __pyx_t_2, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 370, __pyx_L1_error)
+    if (unlikely(__Pyx_SetItemInt(((PyObject *)__pyx_v_self->send_disp), __pyx_v_i, __pyx_t_2, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 368, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   }
 
-  /* "phd/gravity/gravity_tree.pyx":315
+  /* "phd/gravity/gravity_tree.pyx":313
  *                     child.center[k] = parent.center[k] - .5*width
  * 
  *     cdef void _build_toptree(self):             # <<<<<<<<<<<<<<
@@ -5942,7 +5946,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__build_toptree(st
   __Pyx_RefNannyFinishContext();
 }
 
-/* "phd/gravity/gravity_tree.pyx":372
+/* "phd/gravity/gravity_tree.pyx":370
  *             self.send_disp[i] = self.send_cnts[i-1] + self.send_disp[i-1]
  * 
  *     cdef void _create_toptree(self, int node_index, LoadNode* load_parent,             # <<<<<<<<<<<<<<
@@ -5961,7 +5965,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__create_toptree(s
   int __pyx_t_4;
   __Pyx_RefNannySetupContext("_create_toptree", 0);
 
-  /* "phd/gravity/gravity_tree.pyx":397
+  /* "phd/gravity/gravity_tree.pyx":395
  *         """
  *         cdef int index, i
  *         cdef Node* parent = &self.nodes.array[node_index]             # <<<<<<<<<<<<<<
@@ -5970,7 +5974,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__create_toptree(s
  */
   __pyx_v_parent = (&(__pyx_v_self->nodes->array[__pyx_v_node_index]));
 
-  /* "phd/gravity/gravity_tree.pyx":400
+  /* "phd/gravity/gravity_tree.pyx":398
  * 
  *         # label node in top tree
  *         parent.flags |= TOP_TREE             # <<<<<<<<<<<<<<
@@ -5979,7 +5983,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__create_toptree(s
  */
   __pyx_v_parent->flags = (__pyx_v_parent->flags | __pyx_e_3phd_7gravity_12gravity_tree_TOP_TREE);
 
-  /* "phd/gravity/gravity_tree.pyx":402
+  /* "phd/gravity/gravity_tree.pyx":400
  *         parent.flags |= TOP_TREE
  * 
  *         if load_parent.children_start == -1: # leaf stop             # <<<<<<<<<<<<<<
@@ -5989,7 +5993,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__create_toptree(s
   __pyx_t_1 = ((__pyx_v_load_parent->children_start == -1L) != 0);
   if (__pyx_t_1) {
 
-    /* "phd/gravity/gravity_tree.pyx":403
+    /* "phd/gravity/gravity_tree.pyx":401
  * 
  *         if load_parent.children_start == -1: # leaf stop
  *             parent.flags |= TOP_TREE_LEAF             # <<<<<<<<<<<<<<
@@ -5998,7 +6002,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__create_toptree(s
  */
     __pyx_v_parent->flags = (__pyx_v_parent->flags | __pyx_e_3phd_7gravity_12gravity_tree_TOP_TREE_LEAF);
 
-    /* "phd/gravity/gravity_tree.pyx":404
+    /* "phd/gravity/gravity_tree.pyx":402
  *         if load_parent.children_start == -1: # leaf stop
  *             parent.flags |= TOP_TREE_LEAF
  *             node_map[load_parent.array_index] = node_index             # <<<<<<<<<<<<<<
@@ -6007,7 +6011,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__create_toptree(s
  */
     (__pyx_v_node_map[__pyx_v_load_parent->array_index]) = __pyx_v_node_index;
 
-    /* "phd/gravity/gravity_tree.pyx":402
+    /* "phd/gravity/gravity_tree.pyx":400
  *         parent.flags |= TOP_TREE
  * 
  *         if load_parent.children_start == -1: # leaf stop             # <<<<<<<<<<<<<<
@@ -6017,7 +6021,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__create_toptree(s
     goto __pyx_L3;
   }
 
-  /* "phd/gravity/gravity_tree.pyx":408
+  /* "phd/gravity/gravity_tree.pyx":406
  * 
  *             # create children in z-order
  *             self._create_children(node_index)             # <<<<<<<<<<<<<<
@@ -6027,7 +6031,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__create_toptree(s
   /*else*/ {
     __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__create_children(__pyx_v_self, __pyx_v_node_index);
 
-    /* "phd/gravity/gravity_tree.pyx":411
+    /* "phd/gravity/gravity_tree.pyx":409
  * 
  *             # create children could of realloc
  *             parent = &self.nodes.array[node_index]             # <<<<<<<<<<<<<<
@@ -6036,7 +6040,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__create_toptree(s
  */
     __pyx_v_parent = (&(__pyx_v_self->nodes->array[__pyx_v_node_index]));
 
-    /* "phd/gravity/gravity_tree.pyx":414
+    /* "phd/gravity/gravity_tree.pyx":412
  * 
  *             # travel down to children
  *             for i in range(self.number_nodes):             # <<<<<<<<<<<<<<
@@ -6048,7 +6052,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__create_toptree(s
     for (__pyx_t_4 = 0; __pyx_t_4 < __pyx_t_3; __pyx_t_4+=1) {
       __pyx_v_i = __pyx_t_4;
 
-      /* "phd/gravity/gravity_tree.pyx":417
+      /* "phd/gravity/gravity_tree.pyx":415
  * 
  *                 # grab next child in z-order
  *                 index = load_parent.zorder_to_hilbert[i]             # <<<<<<<<<<<<<<
@@ -6057,7 +6061,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__create_toptree(s
  */
       __pyx_v_index = (__pyx_v_load_parent->zorder_to_hilbert[__pyx_v_i]);
 
-      /* "phd/gravity/gravity_tree.pyx":418
+      /* "phd/gravity/gravity_tree.pyx":416
  *                 # grab next child in z-order
  *                 index = load_parent.zorder_to_hilbert[i]
  *                 self._create_toptree(             # <<<<<<<<<<<<<<
@@ -6069,7 +6073,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__create_toptree(s
   }
   __pyx_L3:;
 
-  /* "phd/gravity/gravity_tree.pyx":372
+  /* "phd/gravity/gravity_tree.pyx":370
  *             self.send_disp[i] = self.send_cnts[i-1] + self.send_disp[i-1]
  * 
  *     cdef void _create_toptree(self, int node_index, LoadNode* load_parent,             # <<<<<<<<<<<<<<
@@ -6081,7 +6085,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__create_toptree(s
   __Pyx_RefNannyFinishContext();
 }
 
-/* "phd/gravity/gravity_tree.pyx":422
+/* "phd/gravity/gravity_tree.pyx":420
  *                         node_map)
  * 
  *     cdef inline int _leaf_index_toptree(self, np.int64_t key):             # <<<<<<<<<<<<<<
@@ -6100,20 +6104,20 @@ static CYTHON_INLINE int __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__lea
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_leaf_index_toptree", 0);
 
-  /* "phd/gravity/gravity_tree.pyx":433
+  /* "phd/gravity/gravity_tree.pyx":431
  *         """
  *         cdef LoadNode* load_node
  *         cdef LongArray maps = self.toptree_leafs.get_carray('map')             # <<<<<<<<<<<<<<
  * 
  *         load_node = self.load_balance.tree.find_leaf(key)
  */
-  __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_self->toptree_leafs->__pyx_vtab)->get_carray(__pyx_v_self->toptree_leafs, __pyx_n_s_map, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 433, __pyx_L1_error)
+  __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_self->toptree_leafs->__pyx_vtab)->get_carray(__pyx_v_self->toptree_leafs, __pyx_n_s_map, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 431, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_3phd_5utils_6carray_LongArray))))) __PYX_ERR(0, 433, __pyx_L1_error)
+  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_3phd_5utils_6carray_LongArray))))) __PYX_ERR(0, 431, __pyx_L1_error)
   __pyx_v_maps = ((struct __pyx_obj_3phd_5utils_6carray_LongArray *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "phd/gravity/gravity_tree.pyx":435
+  /* "phd/gravity/gravity_tree.pyx":433
  *         cdef LongArray maps = self.toptree_leafs.get_carray('map')
  * 
  *         load_node = self.load_balance.tree.find_leaf(key)             # <<<<<<<<<<<<<<
@@ -6122,7 +6126,7 @@ static CYTHON_INLINE int __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__lea
  */
   __pyx_v_load_node = ((struct __pyx_vtabstruct_3phd_12load_balance_4tree_Tree *)__pyx_v_self->load_balance->tree->__pyx_vtab)->find_leaf(__pyx_v_self->load_balance->tree, __pyx_v_key);
 
-  /* "phd/gravity/gravity_tree.pyx":436
+  /* "phd/gravity/gravity_tree.pyx":434
  * 
  *         load_node = self.load_balance.tree.find_leaf(key)
  *         return maps.data[load_node.array_index]             # <<<<<<<<<<<<<<
@@ -6132,7 +6136,7 @@ static CYTHON_INLINE int __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__lea
   __pyx_r = (__pyx_v_maps->data[__pyx_v_load_node->array_index]);
   goto __pyx_L0;
 
-  /* "phd/gravity/gravity_tree.pyx":422
+  /* "phd/gravity/gravity_tree.pyx":420
  *                         node_map)
  * 
  *     cdef inline int _leaf_index_toptree(self, np.int64_t key):             # <<<<<<<<<<<<<<
@@ -6151,7 +6155,7 @@ static CYTHON_INLINE int __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__lea
   return __pyx_r;
 }
 
-/* "phd/gravity/gravity_tree.pyx":438
+/* "phd/gravity/gravity_tree.pyx":436
  *         return maps.data[load_node.array_index]
  * 
  *     cdef inline void _create_root(self):             # <<<<<<<<<<<<<<
@@ -6169,7 +6173,7 @@ static CYTHON_INLINE void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__cr
   int __pyx_t_4;
   __Pyx_RefNannySetupContext("_create_root", 0);
 
-  /* "phd/gravity/gravity_tree.pyx":447
+  /* "phd/gravity/gravity_tree.pyx":445
  * 
  *         # clear out node pool
  *         self.nodes.reset()             # <<<<<<<<<<<<<<
@@ -6178,7 +6182,7 @@ static CYTHON_INLINE void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__cr
  */
   ((struct __pyx_vtabstruct_3phd_7gravity_12gravity_pool_GravityPool *)__pyx_v_self->nodes->__pyx_vtab)->reset(__pyx_v_self->nodes);
 
-  /* "phd/gravity/gravity_tree.pyx":450
+  /* "phd/gravity/gravity_tree.pyx":448
  * 
  *         # create root with domain information
  *         root = self.nodes.get(1)             # <<<<<<<<<<<<<<
@@ -6187,7 +6191,7 @@ static CYTHON_INLINE void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__cr
  */
   __pyx_v_root = ((struct __pyx_vtabstruct_3phd_7gravity_12gravity_pool_GravityPool *)__pyx_v_self->nodes->__pyx_vtab)->get(__pyx_v_self->nodes, 1);
 
-  /* "phd/gravity/gravity_tree.pyx":451
+  /* "phd/gravity/gravity_tree.pyx":449
  *         # create root with domain information
  *         root = self.nodes.get(1)
  *         root.flags = LEAF             # <<<<<<<<<<<<<<
@@ -6196,7 +6200,7 @@ static CYTHON_INLINE void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__cr
  */
   __pyx_v_root->flags = __pyx_e_3phd_7gravity_12gravity_tree_LEAF;
 
-  /* "phd/gravity/gravity_tree.pyx":452
+  /* "phd/gravity/gravity_tree.pyx":450
  *         root = self.nodes.get(1)
  *         root.flags = LEAF
  *         root.width = self.domain_manager.max_length             # <<<<<<<<<<<<<<
@@ -6206,7 +6210,7 @@ static CYTHON_INLINE void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__cr
   __pyx_t_1 = __pyx_v_self->domain_manager->max_length;
   __pyx_v_root->width = __pyx_t_1;
 
-  /* "phd/gravity/gravity_tree.pyx":453
+  /* "phd/gravity/gravity_tree.pyx":451
  *         root.flags = LEAF
  *         root.width = self.domain_manager.max_length
  *         for k in range(self.dim):             # <<<<<<<<<<<<<<
@@ -6218,7 +6222,7 @@ static CYTHON_INLINE void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__cr
   for (__pyx_t_4 = 0; __pyx_t_4 < __pyx_t_3; __pyx_t_4+=1) {
     __pyx_v_k = __pyx_t_4;
 
-    /* "phd/gravity/gravity_tree.pyx":454
+    /* "phd/gravity/gravity_tree.pyx":452
  *         root.width = self.domain_manager.max_length
  *         for k in range(self.dim):
  *             root.center[k] = .5*\             # <<<<<<<<<<<<<<
@@ -6228,7 +6232,7 @@ static CYTHON_INLINE void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__cr
     (__pyx_v_root->center[__pyx_v_k]) = (.5 * (((__pyx_v_self->domain_manager->bounds[1])[__pyx_v_k]) - ((__pyx_v_self->domain_manager->bounds[0])[__pyx_v_k])));
   }
 
-  /* "phd/gravity/gravity_tree.pyx":458
+  /* "phd/gravity/gravity_tree.pyx":456
  * 
  *         # set root children to null
  *         for k in range(self.number_nodes):             # <<<<<<<<<<<<<<
@@ -6240,7 +6244,7 @@ static CYTHON_INLINE void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__cr
   for (__pyx_t_4 = 0; __pyx_t_4 < __pyx_t_3; __pyx_t_4+=1) {
     __pyx_v_k = __pyx_t_4;
 
-    /* "phd/gravity/gravity_tree.pyx":459
+    /* "phd/gravity/gravity_tree.pyx":457
  *         # set root children to null
  *         for k in range(self.number_nodes):
  *             root.group.children[k] = NOT_EXIST             # <<<<<<<<<<<<<<
@@ -6250,7 +6254,7 @@ static CYTHON_INLINE void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__cr
     (__pyx_v_root->group.children[__pyx_v_k]) = __pyx_e_3phd_7gravity_12gravity_tree_NOT_EXIST;
   }
 
-  /* "phd/gravity/gravity_tree.pyx":438
+  /* "phd/gravity/gravity_tree.pyx":436
  *         return maps.data[load_node.array_index]
  * 
  *     cdef inline void _create_root(self):             # <<<<<<<<<<<<<<
@@ -6262,7 +6266,7 @@ static CYTHON_INLINE void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__cr
   __Pyx_RefNannyFinishContext();
 }
 
-/* "phd/gravity/gravity_tree.pyx":461
+/* "phd/gravity/gravity_tree.pyx":459
  *             root.group.children[k] = NOT_EXIST
  * 
  *     def _build_tree(self, CarrayContainer particles):             # <<<<<<<<<<<<<<
@@ -6280,7 +6284,7 @@ static PyObject *__pyx_pw_3phd_7gravity_12gravity_tree_11GravityTree_11_build_tr
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("_build_tree (wrapper)", 0);
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_particles), __pyx_ptype_3phd_10containers_10containers_CarrayContainer, 1, "particles", 0))) __PYX_ERR(0, 461, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_particles), __pyx_ptype_3phd_10containers_10containers_CarrayContainer, 1, "particles", 0))) __PYX_ERR(0, 459, __pyx_L1_error)
   __pyx_r = __pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_10_build_tree(((struct __pyx_obj_3phd_7gravity_12gravity_tree_GravityTree *)__pyx_v_self), ((struct __pyx_obj_3phd_10containers_10containers_CarrayContainer *)__pyx_v_particles));
 
   /* function exit code */
@@ -6321,33 +6325,33 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_10_build_tr
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_build_tree", 0);
 
-  /* "phd/gravity/gravity_tree.pyx":469
+  /* "phd/gravity/gravity_tree.pyx":467
  *         """
  *         cdef LongLongArray keys
  *         cdef IntArray tags = particles.get_carray("tag")             # <<<<<<<<<<<<<<
  *         cdef DoubleArray mass = particles.get_carray("mass")
  * 
  */
-  __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_particles->__pyx_vtab)->get_carray(__pyx_v_particles, __pyx_n_s_tag, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 469, __pyx_L1_error)
+  __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_particles->__pyx_vtab)->get_carray(__pyx_v_particles, __pyx_n_s_tag, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 467, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_3phd_5utils_6carray_IntArray))))) __PYX_ERR(0, 469, __pyx_L1_error)
+  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_3phd_5utils_6carray_IntArray))))) __PYX_ERR(0, 467, __pyx_L1_error)
   __pyx_v_tags = ((struct __pyx_obj_3phd_5utils_6carray_IntArray *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "phd/gravity/gravity_tree.pyx":470
+  /* "phd/gravity/gravity_tree.pyx":468
  *         cdef LongLongArray keys
  *         cdef IntArray tags = particles.get_carray("tag")
  *         cdef DoubleArray mass = particles.get_carray("mass")             # <<<<<<<<<<<<<<
  * 
  *         cdef double width
  */
-  __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_particles->__pyx_vtab)->get_carray(__pyx_v_particles, __pyx_n_s_mass, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 470, __pyx_L1_error)
+  __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_particles->__pyx_vtab)->get_carray(__pyx_v_particles, __pyx_n_s_mass, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 468, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_3phd_5utils_6carray_DoubleArray))))) __PYX_ERR(0, 470, __pyx_L1_error)
+  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_3phd_5utils_6carray_DoubleArray))))) __PYX_ERR(0, 468, __pyx_L1_error)
   __pyx_v_mass = ((struct __pyx_obj_3phd_5utils_6carray_DoubleArray *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "phd/gravity/gravity_tree.pyx":480
+  /* "phd/gravity/gravity_tree.pyx":478
  * 
  *         # pointer to particle position and mass
  *         particles.pointer_groups(self.x, particles.carray_named_groups["position"])             # <<<<<<<<<<<<<<
@@ -6356,15 +6360,15 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_10_build_tr
  */
   if (unlikely(__pyx_v_particles->carray_named_groups == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(0, 480, __pyx_L1_error)
+    __PYX_ERR(0, 478, __pyx_L1_error)
   }
-  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_particles->carray_named_groups, __pyx_n_s_position); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 480, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_particles->carray_named_groups, __pyx_n_s_position); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 478, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 480, __pyx_L1_error)
+  if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 478, __pyx_L1_error)
   ((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_particles->__pyx_vtab)->pointer_groups(__pyx_v_particles, __pyx_v_self->x, ((PyObject*)__pyx_t_1));
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "phd/gravity/gravity_tree.pyx":481
+  /* "phd/gravity/gravity_tree.pyx":479
  *         # pointer to particle position and mass
  *         particles.pointer_groups(self.x, particles.carray_named_groups["position"])
  *         self.m = mass.get_data_ptr()             # <<<<<<<<<<<<<<
@@ -6373,7 +6377,7 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_10_build_tr
  */
   __pyx_v_self->m = ((struct __pyx_vtabstruct_3phd_5utils_6carray_DoubleArray *)__pyx_v_mass->__pyx_base.__pyx_vtab)->get_data_ptr(__pyx_v_mass);
 
-  /* "phd/gravity/gravity_tree.pyx":483
+  /* "phd/gravity/gravity_tree.pyx":481
  *         self.m = mass.get_data_ptr()
  * 
  *         self._create_root()             # <<<<<<<<<<<<<<
@@ -6382,36 +6386,36 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_10_build_tr
  */
   __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__create_root(__pyx_v_self);
 
-  /* "phd/gravity/gravity_tree.pyx":485
+  /* "phd/gravity/gravity_tree.pyx":483
  *         self._create_root()
  * 
  *         if phd._in_parallel:             # <<<<<<<<<<<<<<
  *             keys = particles.get_carray("key")
  *             self._build_toptree()
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_phd); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 485, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_phd); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 483, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_in_parallel); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 485, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_in_parallel); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 483, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 485, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 483, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   if (__pyx_t_3) {
 
-    /* "phd/gravity/gravity_tree.pyx":486
+    /* "phd/gravity/gravity_tree.pyx":484
  * 
  *         if phd._in_parallel:
  *             keys = particles.get_carray("key")             # <<<<<<<<<<<<<<
  *             self._build_toptree()
  * 
  */
-    __pyx_t_2 = ((PyObject *)((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_particles->__pyx_vtab)->get_carray(__pyx_v_particles, __pyx_n_s_key, 0)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 486, __pyx_L1_error)
+    __pyx_t_2 = ((PyObject *)((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_particles->__pyx_vtab)->get_carray(__pyx_v_particles, __pyx_n_s_key, 0)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 484, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_ptype_3phd_5utils_6carray_LongLongArray))))) __PYX_ERR(0, 486, __pyx_L1_error)
+    if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_ptype_3phd_5utils_6carray_LongLongArray))))) __PYX_ERR(0, 484, __pyx_L1_error)
     __pyx_v_keys = ((struct __pyx_obj_3phd_5utils_6carray_LongLongArray *)__pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "phd/gravity/gravity_tree.pyx":487
+    /* "phd/gravity/gravity_tree.pyx":485
  *         if phd._in_parallel:
  *             keys = particles.get_carray("key")
  *             self._build_toptree()             # <<<<<<<<<<<<<<
@@ -6420,7 +6424,7 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_10_build_tr
  */
     ((struct __pyx_vtabstruct_3phd_7gravity_12gravity_tree_GravityTree *)__pyx_v_self->__pyx_vtab)->_build_toptree(__pyx_v_self);
 
-    /* "phd/gravity/gravity_tree.pyx":485
+    /* "phd/gravity/gravity_tree.pyx":483
  *         self._create_root()
  * 
  *         if phd._in_parallel:             # <<<<<<<<<<<<<<
@@ -6429,7 +6433,7 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_10_build_tr
  */
   }
 
-  /* "phd/gravity/gravity_tree.pyx":490
+  /* "phd/gravity/gravity_tree.pyx":488
  * 
  *         # add real particles to tree
  *         for i in range(particles.get_carray_size()):             # <<<<<<<<<<<<<<
@@ -6441,7 +6445,7 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_10_build_tr
   for (__pyx_t_6 = 0; __pyx_t_6 < __pyx_t_5; __pyx_t_6+=1) {
     __pyx_v_i = __pyx_t_6;
 
-    /* "phd/gravity/gravity_tree.pyx":491
+    /* "phd/gravity/gravity_tree.pyx":489
  *         # add real particles to tree
  *         for i in range(particles.get_carray_size()):
  *             if tags.data[i] == Real:             # <<<<<<<<<<<<<<
@@ -6451,7 +6455,7 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_10_build_tr
     __pyx_t_3 = (((__pyx_v_tags->data[__pyx_v_i]) == __pyx_v_3phd_7gravity_12gravity_tree_Real) != 0);
     if (__pyx_t_3) {
 
-      /* "phd/gravity/gravity_tree.pyx":493
+      /* "phd/gravity/gravity_tree.pyx":491
  *             if tags.data[i] == Real:
  * 
  *                 for k in range(self.dim):             # <<<<<<<<<<<<<<
@@ -6463,7 +6467,7 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_10_build_tr
       for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
         __pyx_v_k = __pyx_t_9;
 
-        /* "phd/gravity/gravity_tree.pyx":494
+        /* "phd/gravity/gravity_tree.pyx":492
  * 
  *                 for k in range(self.dim):
  *                     xi[k] = self.x[k][i]             # <<<<<<<<<<<<<<
@@ -6473,33 +6477,33 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_10_build_tr
         (__pyx_v_xi[__pyx_v_k]) = ((__pyx_v_self->x[__pyx_v_k])[__pyx_v_i]);
       }
 
-      /* "phd/gravity/gravity_tree.pyx":496
+      /* "phd/gravity/gravity_tree.pyx":494
  *                     xi[k] = self.x[k][i]
  * 
  *                 if phd._in_parallel: # start at top tree leaf             # <<<<<<<<<<<<<<
  *                     current = self._leaf_index_toptree(keys.data[i])
  *                 else: # start at root
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_phd); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 496, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_phd); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 494, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_in_parallel); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 496, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_in_parallel); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 494, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 496, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 494, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       if (__pyx_t_3) {
 
-        /* "phd/gravity/gravity_tree.pyx":497
+        /* "phd/gravity/gravity_tree.pyx":495
  * 
  *                 if phd._in_parallel: # start at top tree leaf
  *                     current = self._leaf_index_toptree(keys.data[i])             # <<<<<<<<<<<<<<
  *                 else: # start at root
  *                     current = ROOT
  */
-        if (unlikely(!__pyx_v_keys)) { __Pyx_RaiseUnboundLocalError("keys"); __PYX_ERR(0, 497, __pyx_L1_error) }
+        if (unlikely(!__pyx_v_keys)) { __Pyx_RaiseUnboundLocalError("keys"); __PYX_ERR(0, 495, __pyx_L1_error) }
         __pyx_v_current = __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__leaf_index_toptree(__pyx_v_self, (__pyx_v_keys->data[__pyx_v_i]));
 
-        /* "phd/gravity/gravity_tree.pyx":496
+        /* "phd/gravity/gravity_tree.pyx":494
  *                     xi[k] = self.x[k][i]
  * 
  *                 if phd._in_parallel: # start at top tree leaf             # <<<<<<<<<<<<<<
@@ -6509,7 +6513,7 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_10_build_tr
         goto __pyx_L9;
       }
 
-      /* "phd/gravity/gravity_tree.pyx":499
+      /* "phd/gravity/gravity_tree.pyx":497
  *                     current = self._leaf_index_toptree(keys.data[i])
  *                 else: # start at root
  *                     current = ROOT             # <<<<<<<<<<<<<<
@@ -6521,7 +6525,7 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_10_build_tr
       }
       __pyx_L9:;
 
-      /* "phd/gravity/gravity_tree.pyx":501
+      /* "phd/gravity/gravity_tree.pyx":499
  *                     current = ROOT
  * 
  *                 while True:             # <<<<<<<<<<<<<<
@@ -6530,7 +6534,7 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_10_build_tr
  */
       while (1) {
 
-        /* "phd/gravity/gravity_tree.pyx":502
+        /* "phd/gravity/gravity_tree.pyx":500
  * 
  *                 while True:
  *                     node = &self.nodes.array[current]             # <<<<<<<<<<<<<<
@@ -6539,7 +6543,7 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_10_build_tr
  */
         __pyx_v_node = (&(__pyx_v_self->nodes->array[__pyx_v_current]));
 
-        /* "phd/gravity/gravity_tree.pyx":503
+        /* "phd/gravity/gravity_tree.pyx":501
  *                 while True:
  *                     node = &self.nodes.array[current]
  *                     if (node.flags & LEAF):             # <<<<<<<<<<<<<<
@@ -6549,7 +6553,7 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_10_build_tr
         __pyx_t_3 = ((__pyx_v_node->flags & __pyx_e_3phd_7gravity_12gravity_tree_LEAF) != 0);
         if (__pyx_t_3) {
 
-          /* "phd/gravity/gravity_tree.pyx":504
+          /* "phd/gravity/gravity_tree.pyx":502
  *                     node = &self.nodes.array[current]
  *                     if (node.flags & LEAF):
  *                         if (node.flags & HAS_PARTICLE):             # <<<<<<<<<<<<<<
@@ -6559,7 +6563,7 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_10_build_tr
           __pyx_t_3 = ((__pyx_v_node->flags & __pyx_e_3phd_7gravity_12gravity_tree_HAS_PARTICLE) != 0);
           if (__pyx_t_3) {
 
-            /* "phd/gravity/gravity_tree.pyx":507
+            /* "phd/gravity/gravity_tree.pyx":505
  * 
  *                             # leaf has particle already
  *                             j = node.group.data.pid             # <<<<<<<<<<<<<<
@@ -6569,7 +6573,7 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_10_build_tr
             __pyx_t_7 = __pyx_v_node->group.data.pid;
             __pyx_v_j = __pyx_t_7;
 
-            /* "phd/gravity/gravity_tree.pyx":508
+            /* "phd/gravity/gravity_tree.pyx":506
  *                             # leaf has particle already
  *                             j = node.group.data.pid
  *                             for k in range(self.dim):             # <<<<<<<<<<<<<<
@@ -6581,7 +6585,7 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_10_build_tr
             for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
               __pyx_v_k = __pyx_t_9;
 
-              /* "phd/gravity/gravity_tree.pyx":509
+              /* "phd/gravity/gravity_tree.pyx":507
  *                             j = node.group.data.pid
  *                             for k in range(self.dim):
  *                                 xj[k] = self.x[k][j]             # <<<<<<<<<<<<<<
@@ -6591,7 +6595,7 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_10_build_tr
               (__pyx_v_xj[__pyx_v_k]) = ((__pyx_v_self->x[__pyx_v_k])[__pyx_v_j]);
             }
 
-            /* "phd/gravity/gravity_tree.pyx":512
+            /* "phd/gravity/gravity_tree.pyx":510
  * 
  *                             # reset children to null due to union
  *                             for k in range(self.number_nodes):             # <<<<<<<<<<<<<<
@@ -6603,7 +6607,7 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_10_build_tr
             for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
               __pyx_v_k = __pyx_t_9;
 
-              /* "phd/gravity/gravity_tree.pyx":513
+              /* "phd/gravity/gravity_tree.pyx":511
  *                             # reset children to null due to union
  *                             for k in range(self.number_nodes):
  *                                 node.group.children[k] = NOT_EXIST             # <<<<<<<<<<<<<<
@@ -6613,7 +6617,7 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_10_build_tr
               (__pyx_v_node->group.children[__pyx_v_k]) = __pyx_e_3phd_7gravity_12gravity_tree_NOT_EXIST;
             }
 
-            /* "phd/gravity/gravity_tree.pyx":516
+            /* "phd/gravity/gravity_tree.pyx":514
  * 
  *                             # node becomes internal node
  *                             node.flags &= ~(LEAF|HAS_PARTICLE)             # <<<<<<<<<<<<<<
@@ -6622,7 +6626,7 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_10_build_tr
  */
             __pyx_v_node->flags = (__pyx_v_node->flags & (~(__pyx_e_3phd_7gravity_12gravity_tree_LEAF | __pyx_e_3phd_7gravity_12gravity_tree_HAS_PARTICLE)));
 
-            /* "phd/gravity/gravity_tree.pyx":519
+            /* "phd/gravity/gravity_tree.pyx":517
  * 
  *                             # create child to store leaf particle
  *                             index = self._get_index(current, xj)             # <<<<<<<<<<<<<<
@@ -6631,7 +6635,7 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_10_build_tr
  */
             __pyx_v_index = __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__get_index(__pyx_v_self, __pyx_v_current, __pyx_v_xj);
 
-            /* "phd/gravity/gravity_tree.pyx":520
+            /* "phd/gravity/gravity_tree.pyx":518
  *                             # create child to store leaf particle
  *                             index = self._get_index(current, xj)
  *                             child = self._create_child(current, index)             # <<<<<<<<<<<<<<
@@ -6640,7 +6644,7 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_10_build_tr
  */
             __pyx_v_child = __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__create_child(__pyx_v_self, __pyx_v_current, __pyx_v_index);
 
-            /* "phd/gravity/gravity_tree.pyx":523
+            /* "phd/gravity/gravity_tree.pyx":521
  * 
  *                             # store leaf particle here
  *                             child.flags |= (LEAF|HAS_PARTICLE)             # <<<<<<<<<<<<<<
@@ -6649,7 +6653,7 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_10_build_tr
  */
             __pyx_v_child->flags = (__pyx_v_child->flags | (__pyx_e_3phd_7gravity_12gravity_tree_LEAF | __pyx_e_3phd_7gravity_12gravity_tree_HAS_PARTICLE));
 
-            /* "phd/gravity/gravity_tree.pyx":524
+            /* "phd/gravity/gravity_tree.pyx":522
  *                             # store leaf particle here
  *                             child.flags |= (LEAF|HAS_PARTICLE)
  *                             child.group.data.pid = j             # <<<<<<<<<<<<<<
@@ -6658,7 +6662,7 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_10_build_tr
  */
             __pyx_v_child->group.data.pid = __pyx_v_j;
 
-            /* "phd/gravity/gravity_tree.pyx":504
+            /* "phd/gravity/gravity_tree.pyx":502
  *                     node = &self.nodes.array[current]
  *                     if (node.flags & LEAF):
  *                         if (node.flags & HAS_PARTICLE):             # <<<<<<<<<<<<<<
@@ -6668,7 +6672,7 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_10_build_tr
             goto __pyx_L13;
           }
 
-          /* "phd/gravity/gravity_tree.pyx":529
+          /* "phd/gravity/gravity_tree.pyx":527
  * 
  *                         else:
  *                             node.flags |= HAS_PARTICLE # store particle here             # <<<<<<<<<<<<<<
@@ -6678,7 +6682,7 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_10_build_tr
           /*else*/ {
             __pyx_v_node->flags = (__pyx_v_node->flags | __pyx_e_3phd_7gravity_12gravity_tree_HAS_PARTICLE);
 
-            /* "phd/gravity/gravity_tree.pyx":530
+            /* "phd/gravity/gravity_tree.pyx":528
  *                         else:
  *                             node.flags |= HAS_PARTICLE # store particle here
  *                             node.group.data.pid = i    # overwrites in union             # <<<<<<<<<<<<<<
@@ -6687,7 +6691,7 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_10_build_tr
  */
             __pyx_v_node->group.data.pid = __pyx_v_i;
 
-            /* "phd/gravity/gravity_tree.pyx":531
+            /* "phd/gravity/gravity_tree.pyx":529
  *                             node.flags |= HAS_PARTICLE # store particle here
  *                             node.group.data.pid = i    # overwrites in union
  *                             break # particle done             # <<<<<<<<<<<<<<
@@ -6698,7 +6702,7 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_10_build_tr
           }
           __pyx_L13:;
 
-          /* "phd/gravity/gravity_tree.pyx":503
+          /* "phd/gravity/gravity_tree.pyx":501
  *                 while True:
  *                     node = &self.nodes.array[current]
  *                     if (node.flags & LEAF):             # <<<<<<<<<<<<<<
@@ -6708,7 +6712,7 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_10_build_tr
           goto __pyx_L12;
         }
 
-        /* "phd/gravity/gravity_tree.pyx":535
+        /* "phd/gravity/gravity_tree.pyx":533
  *                     else:
  *                         # find child to store particle
  *                         index = self._get_index(current, xi)             # <<<<<<<<<<<<<<
@@ -6718,7 +6722,7 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_10_build_tr
         /*else*/ {
           __pyx_v_index = __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__get_index(__pyx_v_self, __pyx_v_current, __pyx_v_xi);
 
-          /* "phd/gravity/gravity_tree.pyx":539
+          /* "phd/gravity/gravity_tree.pyx":537
  *                         # if child does not exist create child
  *                         # and store particle
  *                         if node.group.children[index] == NOT_EXIST:             # <<<<<<<<<<<<<<
@@ -6728,7 +6732,7 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_10_build_tr
           __pyx_t_3 = (((__pyx_v_node->group.children[__pyx_v_index]) == __pyx_e_3phd_7gravity_12gravity_tree_NOT_EXIST) != 0);
           if (__pyx_t_3) {
 
-            /* "phd/gravity/gravity_tree.pyx":540
+            /* "phd/gravity/gravity_tree.pyx":538
  *                         # and store particle
  *                         if node.group.children[index] == NOT_EXIST:
  *                             child = self._create_child(current, index)             # <<<<<<<<<<<<<<
@@ -6737,7 +6741,7 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_10_build_tr
  */
             __pyx_v_child = __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__create_child(__pyx_v_self, __pyx_v_current, __pyx_v_index);
 
-            /* "phd/gravity/gravity_tree.pyx":541
+            /* "phd/gravity/gravity_tree.pyx":539
  *                         if node.group.children[index] == NOT_EXIST:
  *                             child = self._create_child(current, index)
  *                             child.flags |= (LEAF|HAS_PARTICLE)             # <<<<<<<<<<<<<<
@@ -6746,7 +6750,7 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_10_build_tr
  */
             __pyx_v_child->flags = (__pyx_v_child->flags | (__pyx_e_3phd_7gravity_12gravity_tree_LEAF | __pyx_e_3phd_7gravity_12gravity_tree_HAS_PARTICLE));
 
-            /* "phd/gravity/gravity_tree.pyx":542
+            /* "phd/gravity/gravity_tree.pyx":540
  *                             child = self._create_child(current, index)
  *                             child.flags |= (LEAF|HAS_PARTICLE)
  *                             child.group.data.pid = i             # <<<<<<<<<<<<<<
@@ -6755,7 +6759,7 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_10_build_tr
  */
             __pyx_v_child->group.data.pid = __pyx_v_i;
 
-            /* "phd/gravity/gravity_tree.pyx":543
+            /* "phd/gravity/gravity_tree.pyx":541
  *                             child.flags |= (LEAF|HAS_PARTICLE)
  *                             child.group.data.pid = i
  *                             break # particle done             # <<<<<<<<<<<<<<
@@ -6764,7 +6768,7 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_10_build_tr
  */
             goto __pyx_L11_break;
 
-            /* "phd/gravity/gravity_tree.pyx":539
+            /* "phd/gravity/gravity_tree.pyx":537
  *                         # if child does not exist create child
  *                         # and store particle
  *                         if node.group.children[index] == NOT_EXIST:             # <<<<<<<<<<<<<<
@@ -6773,7 +6777,7 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_10_build_tr
  */
           }
 
-          /* "phd/gravity/gravity_tree.pyx":546
+          /* "phd/gravity/gravity_tree.pyx":544
  * 
  *                         else: # internal node, travel down
  *                             current = node.group.children[index]             # <<<<<<<<<<<<<<
@@ -6788,7 +6792,7 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_10_build_tr
       }
       __pyx_L11_break:;
 
-      /* "phd/gravity/gravity_tree.pyx":491
+      /* "phd/gravity/gravity_tree.pyx":489
  *         # add real particles to tree
  *         for i in range(particles.get_carray_size()):
  *             if tags.data[i] == Real:             # <<<<<<<<<<<<<<
@@ -6798,7 +6802,7 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_10_build_tr
     }
   }
 
-  /* "phd/gravity/gravity_tree.pyx":549
+  /* "phd/gravity/gravity_tree.pyx":547
  * 
  *         # calculate node moments
  *         self._update_moments(ROOT, ROOT_SIBLING)             # <<<<<<<<<<<<<<
@@ -6807,23 +6811,23 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_10_build_tr
  */
   ((struct __pyx_vtabstruct_3phd_7gravity_12gravity_tree_GravityTree *)__pyx_v_self->__pyx_vtab)->_update_moments(__pyx_v_self, __pyx_e_3phd_7gravity_12gravity_tree_ROOT, __pyx_e_3phd_7gravity_12gravity_tree_ROOT_SIBLING);
 
-  /* "phd/gravity/gravity_tree.pyx":551
+  /* "phd/gravity/gravity_tree.pyx":549
  *         self._update_moments(ROOT, ROOT_SIBLING)
  * 
  *         if phd._in_parallel:             # <<<<<<<<<<<<<<
  *             # export top tree leaf moments and
  *             # recalculate node moments
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_phd); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 551, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_phd); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 549, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_in_parallel); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 551, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_in_parallel); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 549, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 551, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 549, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   if (__pyx_t_3) {
 
-    /* "phd/gravity/gravity_tree.pyx":554
+    /* "phd/gravity/gravity_tree.pyx":552
  *             # export top tree leaf moments and
  *             # recalculate node moments
  *             self._exchange_toptree_leafs()             # <<<<<<<<<<<<<<
@@ -6832,7 +6836,7 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_10_build_tr
  */
     ((struct __pyx_vtabstruct_3phd_7gravity_12gravity_tree_GravityTree *)__pyx_v_self->__pyx_vtab)->_exchange_toptree_leafs(__pyx_v_self);
 
-    /* "phd/gravity/gravity_tree.pyx":551
+    /* "phd/gravity/gravity_tree.pyx":549
  *         self._update_moments(ROOT, ROOT_SIBLING)
  * 
  *         if phd._in_parallel:             # <<<<<<<<<<<<<<
@@ -6841,7 +6845,7 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_10_build_tr
  */
   }
 
-  /* "phd/gravity/gravity_tree.pyx":556
+  /* "phd/gravity/gravity_tree.pyx":554
  *             self._exchange_toptree_leafs()
  * 
  *         self.m = NULL             # <<<<<<<<<<<<<<
@@ -6850,7 +6854,7 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_10_build_tr
  */
   __pyx_v_self->m = NULL;
 
-  /* "phd/gravity/gravity_tree.pyx":557
+  /* "phd/gravity/gravity_tree.pyx":555
  * 
  *         self.m = NULL
  *         for k in range(self.dim):             # <<<<<<<<<<<<<<
@@ -6862,7 +6866,7 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_10_build_tr
   for (__pyx_t_6 = 0; __pyx_t_6 < __pyx_t_5; __pyx_t_6+=1) {
     __pyx_v_k = __pyx_t_6;
 
-    /* "phd/gravity/gravity_tree.pyx":558
+    /* "phd/gravity/gravity_tree.pyx":556
  *         self.m = NULL
  *         for k in range(self.dim):
  *             self.x[k] = NULL             # <<<<<<<<<<<<<<
@@ -6872,7 +6876,7 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_10_build_tr
     (__pyx_v_self->x[__pyx_v_k]) = NULL;
   }
 
-  /* "phd/gravity/gravity_tree.pyx":461
+  /* "phd/gravity/gravity_tree.pyx":459
  *             root.group.children[k] = NOT_EXIST
  * 
  *     def _build_tree(self, CarrayContainer particles):             # <<<<<<<<<<<<<<
@@ -6897,7 +6901,7 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_10_build_tr
   return __pyx_r;
 }
 
-/* "phd/gravity/gravity_tree.pyx":560
+/* "phd/gravity/gravity_tree.pyx":558
  *             self.x[k] = NULL
  * 
  *     cdef void _update_moments(self, int current, int sibling):             # <<<<<<<<<<<<<<
@@ -6931,7 +6935,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__update_moments(s
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_update_moments", 0);
 
-  /* "phd/gravity/gravity_tree.pyx":578
+  /* "phd/gravity/gravity_tree.pyx":576
  *         cdef int i, j, k, sib, pid, skip
  * 
  *         skip = SKIP_BRANCH             # <<<<<<<<<<<<<<
@@ -6940,7 +6944,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__update_moments(s
  */
   __pyx_v_skip = __pyx_e_3phd_7gravity_12gravity_tree_SKIP_BRANCH;
 
-  /* "phd/gravity/gravity_tree.pyx":581
+  /* "phd/gravity/gravity_tree.pyx":579
  * 
  *         # due to union we first save moments
  *         mass = 0.             # <<<<<<<<<<<<<<
@@ -6949,7 +6953,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__update_moments(s
  */
   __pyx_v_mass = 0.;
 
-  /* "phd/gravity/gravity_tree.pyx":582
+  /* "phd/gravity/gravity_tree.pyx":580
  *         # due to union we first save moments
  *         mass = 0.
  *         for i in range(self.dim):             # <<<<<<<<<<<<<<
@@ -6961,7 +6965,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__update_moments(s
   for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_i = __pyx_t_3;
 
-    /* "phd/gravity/gravity_tree.pyx":583
+    /* "phd/gravity/gravity_tree.pyx":581
  *         mass = 0.
  *         for i in range(self.dim):
  *             com[i] = 0.             # <<<<<<<<<<<<<<
@@ -6971,7 +6975,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__update_moments(s
     (__pyx_v_com[__pyx_v_i]) = 0.;
   }
 
-  /* "phd/gravity/gravity_tree.pyx":584
+  /* "phd/gravity/gravity_tree.pyx":582
  *         for i in range(self.dim):
  *             com[i] = 0.
  *         node = &self.nodes.array[current]             # <<<<<<<<<<<<<<
@@ -6980,7 +6984,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__update_moments(s
  */
   __pyx_v_node = (&(__pyx_v_self->nodes->array[__pyx_v_current]));
 
-  /* "phd/gravity/gravity_tree.pyx":587
+  /* "phd/gravity/gravity_tree.pyx":585
  * 
  *         # for non leafs use children
  *         if((node.flags & LEAF) != LEAF):             # <<<<<<<<<<<<<<
@@ -6990,7 +6994,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__update_moments(s
   __pyx_t_4 = (((__pyx_v_node->flags & __pyx_e_3phd_7gravity_12gravity_tree_LEAF) != __pyx_e_3phd_7gravity_12gravity_tree_LEAF) != 0);
   if (__pyx_t_4) {
 
-    /* "phd/gravity/gravity_tree.pyx":588
+    /* "phd/gravity/gravity_tree.pyx":586
  *         # for non leafs use children
  *         if((node.flags & LEAF) != LEAF):
  *             for i in range(self.number_nodes):             # <<<<<<<<<<<<<<
@@ -7002,7 +7006,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__update_moments(s
     for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
       __pyx_v_i = __pyx_t_3;
 
-      /* "phd/gravity/gravity_tree.pyx":589
+      /* "phd/gravity/gravity_tree.pyx":587
  *         if((node.flags & LEAF) != LEAF):
  *             for i in range(self.number_nodes):
  *                 if(node.group.children[i] != NOT_EXIST):             # <<<<<<<<<<<<<<
@@ -7012,7 +7016,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__update_moments(s
       __pyx_t_4 = (((__pyx_v_node->group.children[__pyx_v_i]) != __pyx_e_3phd_7gravity_12gravity_tree_NOT_EXIST) != 0);
       if (__pyx_t_4) {
 
-        /* "phd/gravity/gravity_tree.pyx":592
+        /* "phd/gravity/gravity_tree.pyx":590
  * 
  *                     # find sibling of child
  *                     j = i + 1             # <<<<<<<<<<<<<<
@@ -7021,7 +7025,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__update_moments(s
  */
         __pyx_v_j = (__pyx_v_i + 1);
 
-        /* "phd/gravity/gravity_tree.pyx":593
+        /* "phd/gravity/gravity_tree.pyx":591
  *                     # find sibling of child
  *                     j = i + 1
  *                     while(j < self.number_nodes and\             # <<<<<<<<<<<<<<
@@ -7036,7 +7040,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__update_moments(s
             goto __pyx_L11_bool_binop_done;
           }
 
-          /* "phd/gravity/gravity_tree.pyx":594
+          /* "phd/gravity/gravity_tree.pyx":592
  *                     j = i + 1
  *                     while(j < self.number_nodes and\
  *                             node.group.children[j] == NOT_EXIST):             # <<<<<<<<<<<<<<
@@ -7048,7 +7052,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__update_moments(s
           __pyx_L11_bool_binop_done:;
           if (!__pyx_t_4) break;
 
-          /* "phd/gravity/gravity_tree.pyx":595
+          /* "phd/gravity/gravity_tree.pyx":593
  *                     while(j < self.number_nodes and\
  *                             node.group.children[j] == NOT_EXIST):
  *                         j += 1             # <<<<<<<<<<<<<<
@@ -7058,7 +7062,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__update_moments(s
           __pyx_v_j = (__pyx_v_j + 1);
         }
 
-        /* "phd/gravity/gravity_tree.pyx":597
+        /* "phd/gravity/gravity_tree.pyx":595
  *                         j += 1
  * 
  *                     if(j < self.number_nodes):             # <<<<<<<<<<<<<<
@@ -7068,7 +7072,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__update_moments(s
         __pyx_t_4 = ((__pyx_v_j < __pyx_v_self->number_nodes) != 0);
         if (__pyx_t_4) {
 
-          /* "phd/gravity/gravity_tree.pyx":598
+          /* "phd/gravity/gravity_tree.pyx":596
  * 
  *                     if(j < self.number_nodes):
  *                         sib = node.group.children[j]             # <<<<<<<<<<<<<<
@@ -7077,7 +7081,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__update_moments(s
  */
           __pyx_v_sib = (__pyx_v_node->group.children[__pyx_v_j]);
 
-          /* "phd/gravity/gravity_tree.pyx":597
+          /* "phd/gravity/gravity_tree.pyx":595
  *                         j += 1
  * 
  *                     if(j < self.number_nodes):             # <<<<<<<<<<<<<<
@@ -7087,7 +7091,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__update_moments(s
           goto __pyx_L13;
         }
 
-        /* "phd/gravity/gravity_tree.pyx":600
+        /* "phd/gravity/gravity_tree.pyx":598
  *                         sib = node.group.children[j]
  *                     else:
  *                         sib = sibling             # <<<<<<<<<<<<<<
@@ -7099,7 +7103,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__update_moments(s
         }
         __pyx_L13:;
 
-        /* "phd/gravity/gravity_tree.pyx":602
+        /* "phd/gravity/gravity_tree.pyx":600
  *                         sib = sibling
  * 
  *                     self._update_moments(node.group.children[i], sib)             # <<<<<<<<<<<<<<
@@ -7108,7 +7112,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__update_moments(s
  */
         ((struct __pyx_vtabstruct_3phd_7gravity_12gravity_tree_GravityTree *)__pyx_v_self->__pyx_vtab)->_update_moments(__pyx_v_self, (__pyx_v_node->group.children[__pyx_v_i]), __pyx_v_sib);
 
-        /* "phd/gravity/gravity_tree.pyx":603
+        /* "phd/gravity/gravity_tree.pyx":601
  * 
  *                     self._update_moments(node.group.children[i], sib)
  *                     child = &self.nodes.array[node.group.children[i]]             # <<<<<<<<<<<<<<
@@ -7117,7 +7121,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__update_moments(s
  */
         __pyx_v_child = (&(__pyx_v_self->nodes->array[(__pyx_v_node->group.children[__pyx_v_i])]));
 
-        /* "phd/gravity/gravity_tree.pyx":606
+        /* "phd/gravity/gravity_tree.pyx":604
  * 
  *                     # for parallel flag branches to skip during walk
  *                     skip &= (child.flags & SKIP_BRANCH)             # <<<<<<<<<<<<<<
@@ -7126,7 +7130,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__update_moments(s
  */
         __pyx_v_skip = (__pyx_v_skip & (__pyx_v_child->flags & __pyx_e_3phd_7gravity_12gravity_tree_SKIP_BRANCH));
 
-        /* "phd/gravity/gravity_tree.pyx":608
+        /* "phd/gravity/gravity_tree.pyx":606
  *                     skip &= (child.flags & SKIP_BRANCH)
  * 
  *                     mass += child.group.data.mass             # <<<<<<<<<<<<<<
@@ -7135,7 +7139,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__update_moments(s
  */
         __pyx_v_mass = (__pyx_v_mass + __pyx_v_child->group.data.mass);
 
-        /* "phd/gravity/gravity_tree.pyx":609
+        /* "phd/gravity/gravity_tree.pyx":607
  * 
  *                     mass += child.group.data.mass
  *                     for k in range(self.dim):             # <<<<<<<<<<<<<<
@@ -7147,7 +7151,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__update_moments(s
         for (__pyx_t_8 = 0; __pyx_t_8 < __pyx_t_7; __pyx_t_8+=1) {
           __pyx_v_k = __pyx_t_8;
 
-          /* "phd/gravity/gravity_tree.pyx":610
+          /* "phd/gravity/gravity_tree.pyx":608
  *                     mass += child.group.data.mass
  *                     for k in range(self.dim):
  *                         com[k] += child.group.data.mass*\             # <<<<<<<<<<<<<<
@@ -7156,7 +7160,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__update_moments(s
  */
           __pyx_t_9 = __pyx_v_k;
 
-          /* "phd/gravity/gravity_tree.pyx":611
+          /* "phd/gravity/gravity_tree.pyx":609
  *                     for k in range(self.dim):
  *                         com[k] += child.group.data.mass*\
  *                                 child.group.data.com[k]             # <<<<<<<<<<<<<<
@@ -7166,7 +7170,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__update_moments(s
           (__pyx_v_com[__pyx_t_9]) = ((__pyx_v_com[__pyx_t_9]) + (__pyx_v_child->group.data.mass * (__pyx_v_child->group.data.com[__pyx_v_k])));
         }
 
-        /* "phd/gravity/gravity_tree.pyx":589
+        /* "phd/gravity/gravity_tree.pyx":587
  *         if((node.flags & LEAF) != LEAF):
  *             for i in range(self.number_nodes):
  *                 if(node.group.children[i] != NOT_EXIST):             # <<<<<<<<<<<<<<
@@ -7176,7 +7180,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__update_moments(s
       }
     }
 
-    /* "phd/gravity/gravity_tree.pyx":614
+    /* "phd/gravity/gravity_tree.pyx":612
  * 
  *             # find first child of node
  *             j = 0             # <<<<<<<<<<<<<<
@@ -7185,7 +7189,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__update_moments(s
  */
     __pyx_v_j = 0;
 
-    /* "phd/gravity/gravity_tree.pyx":615
+    /* "phd/gravity/gravity_tree.pyx":613
  *             # find first child of node
  *             j = 0
  *             while(node.group.children[j] == NOT_EXIST):             # <<<<<<<<<<<<<<
@@ -7196,7 +7200,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__update_moments(s
       __pyx_t_4 = (((__pyx_v_node->group.children[__pyx_v_j]) == __pyx_e_3phd_7gravity_12gravity_tree_NOT_EXIST) != 0);
       if (!__pyx_t_4) break;
 
-      /* "phd/gravity/gravity_tree.pyx":616
+      /* "phd/gravity/gravity_tree.pyx":614
  *             j = 0
  *             while(node.group.children[j] == NOT_EXIST):
  *                 j += 1             # <<<<<<<<<<<<<<
@@ -7206,7 +7210,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__update_moments(s
       __pyx_v_j = (__pyx_v_j + 1);
     }
 
-    /* "phd/gravity/gravity_tree.pyx":618
+    /* "phd/gravity/gravity_tree.pyx":616
  *                 j += 1
  * 
  *             node.flags |= (skip & SKIP_BRANCH)             # <<<<<<<<<<<<<<
@@ -7215,7 +7219,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__update_moments(s
  */
     __pyx_v_node->flags = (__pyx_v_node->flags | (__pyx_v_skip & __pyx_e_3phd_7gravity_12gravity_tree_SKIP_BRANCH));
 
-    /* "phd/gravity/gravity_tree.pyx":621
+    /* "phd/gravity/gravity_tree.pyx":619
  * 
  *             # no longer need children array in union
  *             node.group.data.first_child = node.group.children[j]             # <<<<<<<<<<<<<<
@@ -7224,7 +7228,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__update_moments(s
  */
     __pyx_v_node->group.data.first_child = (__pyx_v_node->group.children[__pyx_v_j]);
 
-    /* "phd/gravity/gravity_tree.pyx":622
+    /* "phd/gravity/gravity_tree.pyx":620
  *             # no longer need children array in union
  *             node.group.data.first_child = node.group.children[j]
  *             node.group.data.next_sibling = sibling             # <<<<<<<<<<<<<<
@@ -7233,7 +7237,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__update_moments(s
  */
     __pyx_v_node->group.data.next_sibling = __pyx_v_sibling;
 
-    /* "phd/gravity/gravity_tree.pyx":623
+    /* "phd/gravity/gravity_tree.pyx":621
  *             node.group.data.first_child = node.group.children[j]
  *             node.group.data.next_sibling = sibling
  *             node.group.data.mass = mass             # <<<<<<<<<<<<<<
@@ -7242,7 +7246,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__update_moments(s
  */
     __pyx_v_node->group.data.mass = __pyx_v_mass;
 
-    /* "phd/gravity/gravity_tree.pyx":625
+    /* "phd/gravity/gravity_tree.pyx":623
  *             node.group.data.mass = mass
  * 
  *             if(mass):             # <<<<<<<<<<<<<<
@@ -7252,7 +7256,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__update_moments(s
     __pyx_t_4 = (__pyx_v_mass != 0);
     if (__pyx_t_4) {
 
-      /* "phd/gravity/gravity_tree.pyx":626
+      /* "phd/gravity/gravity_tree.pyx":624
  * 
  *             if(mass):
  *                 for k in range(self.dim):             # <<<<<<<<<<<<<<
@@ -7264,7 +7268,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__update_moments(s
       for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
         __pyx_v_k = __pyx_t_3;
 
-        /* "phd/gravity/gravity_tree.pyx":627
+        /* "phd/gravity/gravity_tree.pyx":625
  *             if(mass):
  *                 for k in range(self.dim):
  *                     node.group.data.com[k] = com[k]/mass             # <<<<<<<<<<<<<<
@@ -7273,12 +7277,12 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__update_moments(s
  */
         if (unlikely(__pyx_v_mass == 0)) {
           PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-          __PYX_ERR(0, 627, __pyx_L1_error)
+          __PYX_ERR(0, 625, __pyx_L1_error)
         }
         (__pyx_v_node->group.data.com[__pyx_v_k]) = ((__pyx_v_com[__pyx_v_k]) / __pyx_v_mass);
       }
 
-      /* "phd/gravity/gravity_tree.pyx":625
+      /* "phd/gravity/gravity_tree.pyx":623
  *             node.group.data.mass = mass
  * 
  *             if(mass):             # <<<<<<<<<<<<<<
@@ -7288,7 +7292,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__update_moments(s
       goto __pyx_L18;
     }
 
-    /* "phd/gravity/gravity_tree.pyx":629
+    /* "phd/gravity/gravity_tree.pyx":627
  *                     node.group.data.com[k] = com[k]/mass
  *             else:
  *                 for k in range(self.dim):             # <<<<<<<<<<<<<<
@@ -7301,7 +7305,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__update_moments(s
       for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
         __pyx_v_k = __pyx_t_3;
 
-        /* "phd/gravity/gravity_tree.pyx":630
+        /* "phd/gravity/gravity_tree.pyx":628
  *             else:
  *                 for k in range(self.dim):
  *                     node.group.data.com[k] = 0.             # <<<<<<<<<<<<<<
@@ -7313,7 +7317,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__update_moments(s
     }
     __pyx_L18:;
 
-    /* "phd/gravity/gravity_tree.pyx":587
+    /* "phd/gravity/gravity_tree.pyx":585
  * 
  *         # for non leafs use children
  *         if((node.flags & LEAF) != LEAF):             # <<<<<<<<<<<<<<
@@ -7323,7 +7327,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__update_moments(s
     goto __pyx_L5;
   }
 
-  /* "phd/gravity/gravity_tree.pyx":633
+  /* "phd/gravity/gravity_tree.pyx":631
  *         else:
  * 
  *             node.group.data.first_child  = NOT_EXIST             # <<<<<<<<<<<<<<
@@ -7333,7 +7337,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__update_moments(s
   /*else*/ {
     __pyx_v_node->group.data.first_child = __pyx_e_3phd_7gravity_12gravity_tree_NOT_EXIST;
 
-    /* "phd/gravity/gravity_tree.pyx":634
+    /* "phd/gravity/gravity_tree.pyx":632
  * 
  *             node.group.data.first_child  = NOT_EXIST
  *             node.group.data.next_sibling = sibling             # <<<<<<<<<<<<<<
@@ -7342,7 +7346,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__update_moments(s
  */
     __pyx_v_node->group.data.next_sibling = __pyx_v_sibling;
 
-    /* "phd/gravity/gravity_tree.pyx":637
+    /* "phd/gravity/gravity_tree.pyx":635
  * 
  *             # toptree leafs may not have particles
  *             if(node.flags & HAS_PARTICLE):             # <<<<<<<<<<<<<<
@@ -7352,7 +7356,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__update_moments(s
     __pyx_t_4 = ((__pyx_v_node->flags & __pyx_e_3phd_7gravity_12gravity_tree_HAS_PARTICLE) != 0);
     if (__pyx_t_4) {
 
-      /* "phd/gravity/gravity_tree.pyx":638
+      /* "phd/gravity/gravity_tree.pyx":636
  *             # toptree leafs may not have particles
  *             if(node.flags & HAS_PARTICLE):
  *                 pid = node.group.data.pid             # <<<<<<<<<<<<<<
@@ -7362,7 +7366,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__update_moments(s
       __pyx_t_1 = __pyx_v_node->group.data.pid;
       __pyx_v_pid = __pyx_t_1;
 
-      /* "phd/gravity/gravity_tree.pyx":641
+      /* "phd/gravity/gravity_tree.pyx":639
  * 
  *                 # copy particle information
  *                 node.group.data.mass = self.m[pid]             # <<<<<<<<<<<<<<
@@ -7371,7 +7375,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__update_moments(s
  */
       __pyx_v_node->group.data.mass = (__pyx_v_self->m[__pyx_v_pid]);
 
-      /* "phd/gravity/gravity_tree.pyx":642
+      /* "phd/gravity/gravity_tree.pyx":640
  *                 # copy particle information
  *                 node.group.data.mass = self.m[pid]
  *                 for k in range(self.dim):             # <<<<<<<<<<<<<<
@@ -7383,7 +7387,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__update_moments(s
       for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
         __pyx_v_k = __pyx_t_3;
 
-        /* "phd/gravity/gravity_tree.pyx":643
+        /* "phd/gravity/gravity_tree.pyx":641
  *                 node.group.data.mass = self.m[pid]
  *                 for k in range(self.dim):
  *                     node.group.data.com[k] = self.x[k][pid]             # <<<<<<<<<<<<<<
@@ -7393,7 +7397,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__update_moments(s
         (__pyx_v_node->group.data.com[__pyx_v_k]) = ((__pyx_v_self->x[__pyx_v_k])[__pyx_v_pid]);
       }
 
-      /* "phd/gravity/gravity_tree.pyx":637
+      /* "phd/gravity/gravity_tree.pyx":635
  * 
  *             # toptree leafs may not have particles
  *             if(node.flags & HAS_PARTICLE):             # <<<<<<<<<<<<<<
@@ -7403,7 +7407,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__update_moments(s
       goto __pyx_L23;
     }
 
-    /* "phd/gravity/gravity_tree.pyx":645
+    /* "phd/gravity/gravity_tree.pyx":643
  *                     node.group.data.com[k] = self.x[k][pid]
  *             else:
  *                 node.group.data.mass = 0.             # <<<<<<<<<<<<<<
@@ -7413,7 +7417,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__update_moments(s
     /*else*/ {
       __pyx_v_node->group.data.mass = 0.;
 
-      /* "phd/gravity/gravity_tree.pyx":646
+      /* "phd/gravity/gravity_tree.pyx":644
  *             else:
  *                 node.group.data.mass = 0.
  *                 for k in range(self.dim):             # <<<<<<<<<<<<<<
@@ -7425,7 +7429,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__update_moments(s
       for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
         __pyx_v_k = __pyx_t_3;
 
-        /* "phd/gravity/gravity_tree.pyx":647
+        /* "phd/gravity/gravity_tree.pyx":645
  *                 node.group.data.mass = 0.
  *                 for k in range(self.dim):
  *                     node.group.data.com[k] = 0.             # <<<<<<<<<<<<<<
@@ -7439,7 +7443,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__update_moments(s
   }
   __pyx_L5:;
 
-  /* "phd/gravity/gravity_tree.pyx":560
+  /* "phd/gravity/gravity_tree.pyx":558
  *             self.x[k] = NULL
  * 
  *     cdef void _update_moments(self, int current, int sibling):             # <<<<<<<<<<<<<<
@@ -7455,7 +7459,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__update_moments(s
   __Pyx_RefNannyFinishContext();
 }
 
-/* "phd/gravity/gravity_tree.pyx":649
+/* "phd/gravity/gravity_tree.pyx":647
  *                     node.group.data.com[k] = 0.
  * 
  *     cdef void _update_toptree_moments(self, int current):             # <<<<<<<<<<<<<<
@@ -7482,7 +7486,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__update_toptree_m
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_update_toptree_moments", 0);
 
-  /* "phd/gravity/gravity_tree.pyx":665
+  /* "phd/gravity/gravity_tree.pyx":663
  *         cdef double mass, com[3]
  * 
  *         node = &self.nodes.array[current]             # <<<<<<<<<<<<<<
@@ -7491,7 +7495,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__update_toptree_m
  */
   __pyx_v_node = (&(__pyx_v_self->nodes->array[__pyx_v_current]));
 
-  /* "phd/gravity/gravity_tree.pyx":668
+  /* "phd/gravity/gravity_tree.pyx":666
  * 
  *         # check if node is not a top tree leaf
  *         if((node.flags & TOP_TREE_LEAF) != TOP_TREE_LEAF):             # <<<<<<<<<<<<<<
@@ -7501,7 +7505,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__update_toptree_m
   __pyx_t_1 = (((__pyx_v_node->flags & __pyx_e_3phd_7gravity_12gravity_tree_TOP_TREE_LEAF) != __pyx_e_3phd_7gravity_12gravity_tree_TOP_TREE_LEAF) != 0);
   if (__pyx_t_1) {
 
-    /* "phd/gravity/gravity_tree.pyx":670
+    /* "phd/gravity/gravity_tree.pyx":668
  *         if((node.flags & TOP_TREE_LEAF) != TOP_TREE_LEAF):
  * 
  *             mass = 0.             # <<<<<<<<<<<<<<
@@ -7510,7 +7514,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__update_toptree_m
  */
     __pyx_v_mass = 0.;
 
-    /* "phd/gravity/gravity_tree.pyx":671
+    /* "phd/gravity/gravity_tree.pyx":669
  * 
  *             mass = 0.
  *             for k in range(self.dim):             # <<<<<<<<<<<<<<
@@ -7522,7 +7526,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__update_toptree_m
     for (__pyx_t_4 = 0; __pyx_t_4 < __pyx_t_3; __pyx_t_4+=1) {
       __pyx_v_k = __pyx_t_4;
 
-      /* "phd/gravity/gravity_tree.pyx":672
+      /* "phd/gravity/gravity_tree.pyx":670
  *             mass = 0.
  *             for k in range(self.dim):
  *                 com[k] = 0.             # <<<<<<<<<<<<<<
@@ -7532,7 +7536,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__update_toptree_m
       (__pyx_v_com[__pyx_v_k]) = 0.;
     }
 
-    /* "phd/gravity/gravity_tree.pyx":675
+    /* "phd/gravity/gravity_tree.pyx":673
  * 
  *             # sum moments from each child
  *             ind = node.group.data.first_child             # <<<<<<<<<<<<<<
@@ -7542,7 +7546,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__update_toptree_m
     __pyx_t_2 = __pyx_v_node->group.data.first_child;
     __pyx_v_ind = __pyx_t_2;
 
-    /* "phd/gravity/gravity_tree.pyx":676
+    /* "phd/gravity/gravity_tree.pyx":674
  *             # sum moments from each child
  *             ind = node.group.data.first_child
  *             sib = node.group.data.next_sibling             # <<<<<<<<<<<<<<
@@ -7552,7 +7556,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__update_toptree_m
     __pyx_t_2 = __pyx_v_node->group.data.next_sibling;
     __pyx_v_sib = __pyx_t_2;
 
-    /* "phd/gravity/gravity_tree.pyx":677
+    /* "phd/gravity/gravity_tree.pyx":675
  *             ind = node.group.data.first_child
  *             sib = node.group.data.next_sibling
  *             while(ind != sib):             # <<<<<<<<<<<<<<
@@ -7563,7 +7567,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__update_toptree_m
       __pyx_t_1 = ((__pyx_v_ind != __pyx_v_sib) != 0);
       if (!__pyx_t_1) break;
 
-      /* "phd/gravity/gravity_tree.pyx":680
+      /* "phd/gravity/gravity_tree.pyx":678
  * 
  *                 # update node moments
  *                 child = &self.nodes.array[ind]             # <<<<<<<<<<<<<<
@@ -7572,7 +7576,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__update_toptree_m
  */
       __pyx_v_child = (&(__pyx_v_self->nodes->array[__pyx_v_ind]));
 
-      /* "phd/gravity/gravity_tree.pyx":681
+      /* "phd/gravity/gravity_tree.pyx":679
  *                 # update node moments
  *                 child = &self.nodes.array[ind]
  *                 self._update_toptree_moments(ind)             # <<<<<<<<<<<<<<
@@ -7581,7 +7585,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__update_toptree_m
  */
       ((struct __pyx_vtabstruct_3phd_7gravity_12gravity_tree_GravityTree *)__pyx_v_self->__pyx_vtab)->_update_toptree_moments(__pyx_v_self, __pyx_v_ind);
 
-      /* "phd/gravity/gravity_tree.pyx":682
+      /* "phd/gravity/gravity_tree.pyx":680
  *                 child = &self.nodes.array[ind]
  *                 self._update_toptree_moments(ind)
  *                 mass += child.group.data.mass             # <<<<<<<<<<<<<<
@@ -7590,7 +7594,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__update_toptree_m
  */
       __pyx_v_mass = (__pyx_v_mass + __pyx_v_child->group.data.mass);
 
-      /* "phd/gravity/gravity_tree.pyx":683
+      /* "phd/gravity/gravity_tree.pyx":681
  *                 self._update_toptree_moments(ind)
  *                 mass += child.group.data.mass
  *                 for k in range(self.dim):             # <<<<<<<<<<<<<<
@@ -7602,7 +7606,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__update_toptree_m
       for (__pyx_t_4 = 0; __pyx_t_4 < __pyx_t_3; __pyx_t_4+=1) {
         __pyx_v_k = __pyx_t_4;
 
-        /* "phd/gravity/gravity_tree.pyx":684
+        /* "phd/gravity/gravity_tree.pyx":682
  *                 mass += child.group.data.mass
  *                 for k in range(self.dim):
  *                     com[k] += child.group.data.mass*\             # <<<<<<<<<<<<<<
@@ -7611,7 +7615,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__update_toptree_m
  */
         __pyx_t_5 = __pyx_v_k;
 
-        /* "phd/gravity/gravity_tree.pyx":685
+        /* "phd/gravity/gravity_tree.pyx":683
  *                 for k in range(self.dim):
  *                     com[k] += child.group.data.mass*\
  *                             child.group.data.com[k]             # <<<<<<<<<<<<<<
@@ -7621,7 +7625,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__update_toptree_m
         (__pyx_v_com[__pyx_t_5]) = ((__pyx_v_com[__pyx_t_5]) + (__pyx_v_child->group.data.mass * (__pyx_v_child->group.data.com[__pyx_v_k])));
       }
 
-      /* "phd/gravity/gravity_tree.pyx":688
+      /* "phd/gravity/gravity_tree.pyx":686
  * 
  *                 # next child
  *                 ind = child.group.data.next_sibling             # <<<<<<<<<<<<<<
@@ -7632,7 +7636,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__update_toptree_m
       __pyx_v_ind = __pyx_t_2;
     }
 
-    /* "phd/gravity/gravity_tree.pyx":690
+    /* "phd/gravity/gravity_tree.pyx":688
  *                 ind = child.group.data.next_sibling
  * 
  *             if(mass):             # <<<<<<<<<<<<<<
@@ -7642,7 +7646,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__update_toptree_m
     __pyx_t_1 = (__pyx_v_mass != 0);
     if (__pyx_t_1) {
 
-      /* "phd/gravity/gravity_tree.pyx":691
+      /* "phd/gravity/gravity_tree.pyx":689
  * 
  *             if(mass):
  *                 for k in range(self.dim):             # <<<<<<<<<<<<<<
@@ -7654,7 +7658,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__update_toptree_m
       for (__pyx_t_4 = 0; __pyx_t_4 < __pyx_t_3; __pyx_t_4+=1) {
         __pyx_v_k = __pyx_t_4;
 
-        /* "phd/gravity/gravity_tree.pyx":692
+        /* "phd/gravity/gravity_tree.pyx":690
  *             if(mass):
  *                 for k in range(self.dim):
  *                     com[k] /= mass             # <<<<<<<<<<<<<<
@@ -7664,12 +7668,12 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__update_toptree_m
         __pyx_t_5 = __pyx_v_k;
         if (unlikely(__pyx_v_mass == 0)) {
           PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-          __PYX_ERR(0, 692, __pyx_L1_error)
+          __PYX_ERR(0, 690, __pyx_L1_error)
         }
         (__pyx_v_com[__pyx_t_5]) = ((__pyx_v_com[__pyx_t_5]) / __pyx_v_mass);
       }
 
-      /* "phd/gravity/gravity_tree.pyx":690
+      /* "phd/gravity/gravity_tree.pyx":688
  *                 ind = child.group.data.next_sibling
  * 
  *             if(mass):             # <<<<<<<<<<<<<<
@@ -7678,7 +7682,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__update_toptree_m
  */
     }
 
-    /* "phd/gravity/gravity_tree.pyx":694
+    /* "phd/gravity/gravity_tree.pyx":692
  *                     com[k] /= mass
  * 
  *             node.group.data.mass = mass             # <<<<<<<<<<<<<<
@@ -7687,7 +7691,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__update_toptree_m
  */
     __pyx_v_node->group.data.mass = __pyx_v_mass;
 
-    /* "phd/gravity/gravity_tree.pyx":695
+    /* "phd/gravity/gravity_tree.pyx":693
  * 
  *             node.group.data.mass = mass
  *             for k in range(self.dim):             # <<<<<<<<<<<<<<
@@ -7699,7 +7703,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__update_toptree_m
     for (__pyx_t_4 = 0; __pyx_t_4 < __pyx_t_3; __pyx_t_4+=1) {
       __pyx_v_k = __pyx_t_4;
 
-      /* "phd/gravity/gravity_tree.pyx":696
+      /* "phd/gravity/gravity_tree.pyx":694
  *             node.group.data.mass = mass
  *             for k in range(self.dim):
  *                 node.group.data.com[k] = com[k]             # <<<<<<<<<<<<<<
@@ -7709,7 +7713,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__update_toptree_m
       (__pyx_v_node->group.data.com[__pyx_v_k]) = (__pyx_v_com[__pyx_v_k]);
     }
 
-    /* "phd/gravity/gravity_tree.pyx":668
+    /* "phd/gravity/gravity_tree.pyx":666
  * 
  *         # check if node is not a top tree leaf
  *         if((node.flags & TOP_TREE_LEAF) != TOP_TREE_LEAF):             # <<<<<<<<<<<<<<
@@ -7718,7 +7722,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__update_toptree_m
  */
   }
 
-  /* "phd/gravity/gravity_tree.pyx":649
+  /* "phd/gravity/gravity_tree.pyx":647
  *                     node.group.data.com[k] = 0.
  * 
  *     cdef void _update_toptree_moments(self, int current):             # <<<<<<<<<<<<<<
@@ -7734,7 +7738,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__update_toptree_m
   __Pyx_RefNannyFinishContext();
 }
 
-/* "phd/gravity/gravity_tree.pyx":698
+/* "phd/gravity/gravity_tree.pyx":696
  *                 node.group.data.com[k] = com[k]
  * 
  *     cdef void _exchange_toptree_leafs(self):             # <<<<<<<<<<<<<<
@@ -7774,46 +7778,46 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__exchange_toptree
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_exchange_toptree_leafs", 0);
 
-  /* "phd/gravity/gravity_tree.pyx":708
+  /* "phd/gravity/gravity_tree.pyx":706
  *         cdef np.float64_t* comx[3]
  * 
  *         cdef LongArray proc   = self.toptree_leafs.get_carray("proc")             # <<<<<<<<<<<<<<
  *         cdef LongArray maps   = self.toptree_leafs.get_carray("map")
  *         cdef DoubleArray mass = self.toptree_leafs.get_carray("mass")
  */
-  __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_self->toptree_leafs->__pyx_vtab)->get_carray(__pyx_v_self->toptree_leafs, __pyx_n_s_proc, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 708, __pyx_L1_error)
+  __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_self->toptree_leafs->__pyx_vtab)->get_carray(__pyx_v_self->toptree_leafs, __pyx_n_s_proc, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 706, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_3phd_5utils_6carray_LongArray))))) __PYX_ERR(0, 708, __pyx_L1_error)
+  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_3phd_5utils_6carray_LongArray))))) __PYX_ERR(0, 706, __pyx_L1_error)
   __pyx_v_proc = ((struct __pyx_obj_3phd_5utils_6carray_LongArray *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "phd/gravity/gravity_tree.pyx":709
+  /* "phd/gravity/gravity_tree.pyx":707
  * 
  *         cdef LongArray proc   = self.toptree_leafs.get_carray("proc")
  *         cdef LongArray maps   = self.toptree_leafs.get_carray("map")             # <<<<<<<<<<<<<<
  *         cdef DoubleArray mass = self.toptree_leafs.get_carray("mass")
  * 
  */
-  __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_self->toptree_leafs->__pyx_vtab)->get_carray(__pyx_v_self->toptree_leafs, __pyx_n_s_map, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 709, __pyx_L1_error)
+  __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_self->toptree_leafs->__pyx_vtab)->get_carray(__pyx_v_self->toptree_leafs, __pyx_n_s_map, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 707, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_3phd_5utils_6carray_LongArray))))) __PYX_ERR(0, 709, __pyx_L1_error)
+  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_3phd_5utils_6carray_LongArray))))) __PYX_ERR(0, 707, __pyx_L1_error)
   __pyx_v_maps = ((struct __pyx_obj_3phd_5utils_6carray_LongArray *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "phd/gravity/gravity_tree.pyx":710
+  /* "phd/gravity/gravity_tree.pyx":708
  *         cdef LongArray proc   = self.toptree_leafs.get_carray("proc")
  *         cdef LongArray maps   = self.toptree_leafs.get_carray("map")
  *         cdef DoubleArray mass = self.toptree_leafs.get_carray("mass")             # <<<<<<<<<<<<<<
  * 
  *         self.toptree_leafs.pointer_groups(comx,
  */
-  __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_self->toptree_leafs->__pyx_vtab)->get_carray(__pyx_v_self->toptree_leafs, __pyx_n_s_mass, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 710, __pyx_L1_error)
+  __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_self->toptree_leafs->__pyx_vtab)->get_carray(__pyx_v_self->toptree_leafs, __pyx_n_s_mass, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 708, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_3phd_5utils_6carray_DoubleArray))))) __PYX_ERR(0, 710, __pyx_L1_error)
+  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_3phd_5utils_6carray_DoubleArray))))) __PYX_ERR(0, 708, __pyx_L1_error)
   __pyx_v_mass = ((struct __pyx_obj_3phd_5utils_6carray_DoubleArray *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "phd/gravity/gravity_tree.pyx":713
+  /* "phd/gravity/gravity_tree.pyx":711
  * 
  *         self.toptree_leafs.pointer_groups(comx,
  *                 self.toptree_leafs.carray_named_groups["com"])             # <<<<<<<<<<<<<<
@@ -7822,13 +7826,13 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__exchange_toptree
  */
   if (unlikely(__pyx_v_self->toptree_leafs->carray_named_groups == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(0, 713, __pyx_L1_error)
+    __PYX_ERR(0, 711, __pyx_L1_error)
   }
-  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_self->toptree_leafs->carray_named_groups, __pyx_n_s_com); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 713, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_self->toptree_leafs->carray_named_groups, __pyx_n_s_com); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 711, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 713, __pyx_L1_error)
+  if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 711, __pyx_L1_error)
 
-  /* "phd/gravity/gravity_tree.pyx":712
+  /* "phd/gravity/gravity_tree.pyx":710
  *         cdef DoubleArray mass = self.toptree_leafs.get_carray("mass")
  * 
  *         self.toptree_leafs.pointer_groups(comx,             # <<<<<<<<<<<<<<
@@ -7838,7 +7842,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__exchange_toptree
   ((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_self->toptree_leafs->__pyx_vtab)->pointer_groups(__pyx_v_self->toptree_leafs, __pyx_v_comx, ((PyObject*)__pyx_t_1));
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "phd/gravity/gravity_tree.pyx":716
+  /* "phd/gravity/gravity_tree.pyx":714
  * 
  *         # collect toptree leaf moments belonging to our processor
  *         for i in range(self.toptree_leafs.get_carray_size()):             # <<<<<<<<<<<<<<
@@ -7850,28 +7854,28 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__exchange_toptree
   for (__pyx_t_4 = 0; __pyx_t_4 < __pyx_t_3; __pyx_t_4+=1) {
     __pyx_v_i = __pyx_t_4;
 
-    /* "phd/gravity/gravity_tree.pyx":717
+    /* "phd/gravity/gravity_tree.pyx":715
  *         # collect toptree leaf moments belonging to our processor
  *         for i in range(self.toptree_leafs.get_carray_size()):
  *             if proc.data[i] == phd._rank:             # <<<<<<<<<<<<<<
  * 
  *                 # copy our moments
  */
-    __pyx_t_1 = __Pyx_PyInt_From_npy_int32((__pyx_v_proc->data[__pyx_v_i])); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 717, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyInt_From_npy_int32((__pyx_v_proc->data[__pyx_v_i])); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 715, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_phd); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 717, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_phd); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 715, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_rank); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 717, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_rank); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 715, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_5 = PyObject_RichCompare(__pyx_t_1, __pyx_t_6, Py_EQ); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 717, __pyx_L1_error)
+    __pyx_t_5 = PyObject_RichCompare(__pyx_t_1, __pyx_t_6, Py_EQ); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 715, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 717, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 715, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     if (__pyx_t_7) {
 
-      /* "phd/gravity/gravity_tree.pyx":720
+      /* "phd/gravity/gravity_tree.pyx":718
  * 
  *                 # copy our moments
  *                 node = &self.nodes.array[maps.data[i]]             # <<<<<<<<<<<<<<
@@ -7880,7 +7884,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__exchange_toptree
  */
       __pyx_v_node = (&(__pyx_v_self->nodes->array[(__pyx_v_maps->data[__pyx_v_i])]));
 
-      /* "phd/gravity/gravity_tree.pyx":721
+      /* "phd/gravity/gravity_tree.pyx":719
  *                 # copy our moments
  *                 node = &self.nodes.array[maps.data[i]]
  *                 for j in range(self.dim):             # <<<<<<<<<<<<<<
@@ -7892,7 +7896,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__exchange_toptree
       for (__pyx_t_10 = 0; __pyx_t_10 < __pyx_t_9; __pyx_t_10+=1) {
         __pyx_v_j = __pyx_t_10;
 
-        /* "phd/gravity/gravity_tree.pyx":722
+        /* "phd/gravity/gravity_tree.pyx":720
  *                 node = &self.nodes.array[maps.data[i]]
  *                 for j in range(self.dim):
  *                     comx[j][i] = node.group.data.com[j]             # <<<<<<<<<<<<<<
@@ -7902,7 +7906,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__exchange_toptree
         ((__pyx_v_comx[__pyx_v_j])[__pyx_v_i]) = (__pyx_v_node->group.data.com[__pyx_v_j]);
       }
 
-      /* "phd/gravity/gravity_tree.pyx":723
+      /* "phd/gravity/gravity_tree.pyx":721
  *                 for j in range(self.dim):
  *                     comx[j][i] = node.group.data.com[j]
  *                 mass.data[i] = node.group.data.mass             # <<<<<<<<<<<<<<
@@ -7912,7 +7916,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__exchange_toptree
       __pyx_t_11 = __pyx_v_node->group.data.mass;
       (__pyx_v_mass->data[__pyx_v_i]) = __pyx_t_11;
 
-      /* "phd/gravity/gravity_tree.pyx":717
+      /* "phd/gravity/gravity_tree.pyx":715
  *         # collect toptree leaf moments belonging to our processor
  *         for i in range(self.toptree_leafs.get_carray_size()):
  *             if proc.data[i] == phd._rank:             # <<<<<<<<<<<<<<
@@ -7922,7 +7926,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__exchange_toptree
     }
   }
 
-  /* "phd/gravity/gravity_tree.pyx":726
+  /* "phd/gravity/gravity_tree.pyx":724
  * 
  *         # exchange toptree leaf moments
  *         for field in self.toptree_leafs.carray_named_groups["moments"]:             # <<<<<<<<<<<<<<
@@ -7931,17 +7935,17 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__exchange_toptree
  */
   if (unlikely(__pyx_v_self->toptree_leafs->carray_named_groups == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(0, 726, __pyx_L1_error)
+    __PYX_ERR(0, 724, __pyx_L1_error)
   }
-  __pyx_t_5 = __Pyx_PyDict_GetItem(__pyx_v_self->toptree_leafs->carray_named_groups, __pyx_n_s_moments); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 726, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyDict_GetItem(__pyx_v_self->toptree_leafs->carray_named_groups, __pyx_n_s_moments); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 724, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   if (likely(PyList_CheckExact(__pyx_t_5)) || PyTuple_CheckExact(__pyx_t_5)) {
     __pyx_t_6 = __pyx_t_5; __Pyx_INCREF(__pyx_t_6); __pyx_t_12 = 0;
     __pyx_t_13 = NULL;
   } else {
-    __pyx_t_12 = -1; __pyx_t_6 = PyObject_GetIter(__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 726, __pyx_L1_error)
+    __pyx_t_12 = -1; __pyx_t_6 = PyObject_GetIter(__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 724, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    __pyx_t_13 = Py_TYPE(__pyx_t_6)->tp_iternext; if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 726, __pyx_L1_error)
+    __pyx_t_13 = Py_TYPE(__pyx_t_6)->tp_iternext; if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 724, __pyx_L1_error)
   }
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   for (;;) {
@@ -7949,17 +7953,17 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__exchange_toptree
       if (likely(PyList_CheckExact(__pyx_t_6))) {
         if (__pyx_t_12 >= PyList_GET_SIZE(__pyx_t_6)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_5 = PyList_GET_ITEM(__pyx_t_6, __pyx_t_12); __Pyx_INCREF(__pyx_t_5); __pyx_t_12++; if (unlikely(0 < 0)) __PYX_ERR(0, 726, __pyx_L1_error)
+        __pyx_t_5 = PyList_GET_ITEM(__pyx_t_6, __pyx_t_12); __Pyx_INCREF(__pyx_t_5); __pyx_t_12++; if (unlikely(0 < 0)) __PYX_ERR(0, 724, __pyx_L1_error)
         #else
-        __pyx_t_5 = PySequence_ITEM(__pyx_t_6, __pyx_t_12); __pyx_t_12++; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 726, __pyx_L1_error)
+        __pyx_t_5 = PySequence_ITEM(__pyx_t_6, __pyx_t_12); __pyx_t_12++; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 724, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
         #endif
       } else {
         if (__pyx_t_12 >= PyTuple_GET_SIZE(__pyx_t_6)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_5 = PyTuple_GET_ITEM(__pyx_t_6, __pyx_t_12); __Pyx_INCREF(__pyx_t_5); __pyx_t_12++; if (unlikely(0 < 0)) __PYX_ERR(0, 726, __pyx_L1_error)
+        __pyx_t_5 = PyTuple_GET_ITEM(__pyx_t_6, __pyx_t_12); __Pyx_INCREF(__pyx_t_5); __pyx_t_12++; if (unlikely(0 < 0)) __PYX_ERR(0, 724, __pyx_L1_error)
         #else
-        __pyx_t_5 = PySequence_ITEM(__pyx_t_6, __pyx_t_12); __pyx_t_12++; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 726, __pyx_L1_error)
+        __pyx_t_5 = PySequence_ITEM(__pyx_t_6, __pyx_t_12); __pyx_t_12++; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 724, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
         #endif
       }
@@ -7969,7 +7973,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__exchange_toptree
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 726, __pyx_L1_error)
+          else __PYX_ERR(0, 724, __pyx_L1_error)
         }
         break;
       }
@@ -7978,58 +7982,58 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__exchange_toptree
     __Pyx_XDECREF_SET(__pyx_v_field, __pyx_t_5);
     __pyx_t_5 = 0;
 
-    /* "phd/gravity/gravity_tree.pyx":727
+    /* "phd/gravity/gravity_tree.pyx":725
  *         # exchange toptree leaf moments
  *         for field in self.toptree_leafs.carray_named_groups["moments"]:
  *             phd._comm.Allgatherv(MPI.IN_PLACE,             # <<<<<<<<<<<<<<
  *                     [self.toptree_leafs[field], self.send_cnts,
  *                         self.send_disp, MPI.DOUBLE])
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_phd); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 727, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_phd); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 725, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_comm); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 727, __pyx_L1_error)
+    __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_comm); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 725, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_14);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_14, __pyx_n_s_Allgatherv); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 727, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_14, __pyx_n_s_Allgatherv); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 725, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-    __Pyx_GetModuleGlobalName(__pyx_t_14, __pyx_n_s_MPI); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 727, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_14, __pyx_n_s_MPI); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 725, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_14);
-    __pyx_t_15 = __Pyx_PyObject_GetAttrStr(__pyx_t_14, __pyx_n_s_IN_PLACE); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 727, __pyx_L1_error)
+    __pyx_t_15 = __Pyx_PyObject_GetAttrStr(__pyx_t_14, __pyx_n_s_IN_PLACE); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 725, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_15);
     __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
 
-    /* "phd/gravity/gravity_tree.pyx":728
+    /* "phd/gravity/gravity_tree.pyx":726
  *         for field in self.toptree_leafs.carray_named_groups["moments"]:
  *             phd._comm.Allgatherv(MPI.IN_PLACE,
  *                     [self.toptree_leafs[field], self.send_cnts,             # <<<<<<<<<<<<<<
  *                         self.send_disp, MPI.DOUBLE])
  * 
  */
-    __pyx_t_14 = __Pyx_PyObject_GetItem(((PyObject *)__pyx_v_self->toptree_leafs), __pyx_v_field); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 728, __pyx_L1_error)
+    __pyx_t_14 = __Pyx_PyObject_GetItem(((PyObject *)__pyx_v_self->toptree_leafs), __pyx_v_field); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 726, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_14);
 
-    /* "phd/gravity/gravity_tree.pyx":729
+    /* "phd/gravity/gravity_tree.pyx":727
  *             phd._comm.Allgatherv(MPI.IN_PLACE,
  *                     [self.toptree_leafs[field], self.send_cnts,
  *                         self.send_disp, MPI.DOUBLE])             # <<<<<<<<<<<<<<
  * 
  *         # copy imported toptree leaf moments to tree
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_16, __pyx_n_s_MPI); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 729, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_16, __pyx_n_s_MPI); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 727, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_16);
-    __pyx_t_17 = __Pyx_PyObject_GetAttrStr(__pyx_t_16, __pyx_n_s_DOUBLE); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 729, __pyx_L1_error)
+    __pyx_t_17 = __Pyx_PyObject_GetAttrStr(__pyx_t_16, __pyx_n_s_DOUBLE); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 727, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_17);
     __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
 
-    /* "phd/gravity/gravity_tree.pyx":728
+    /* "phd/gravity/gravity_tree.pyx":726
  *         for field in self.toptree_leafs.carray_named_groups["moments"]:
  *             phd._comm.Allgatherv(MPI.IN_PLACE,
  *                     [self.toptree_leafs[field], self.send_cnts,             # <<<<<<<<<<<<<<
  *                         self.send_disp, MPI.DOUBLE])
  * 
  */
-    __pyx_t_16 = PyList_New(4); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 728, __pyx_L1_error)
+    __pyx_t_16 = PyList_New(4); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 726, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_16);
     __Pyx_GIVEREF(__pyx_t_14);
     PyList_SET_ITEM(__pyx_t_16, 0, __pyx_t_14);
@@ -8058,7 +8062,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__exchange_toptree
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_1)) {
       PyObject *__pyx_temp[3] = {__pyx_t_17, __pyx_t_15, __pyx_t_16};
-      __pyx_t_5 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_2, 2+__pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 727, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_2, 2+__pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 725, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_17); __pyx_t_17 = 0;
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
@@ -8068,7 +8072,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__exchange_toptree
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_1)) {
       PyObject *__pyx_temp[3] = {__pyx_t_17, __pyx_t_15, __pyx_t_16};
-      __pyx_t_5 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_2, 2+__pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 727, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_2, 2+__pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 725, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_17); __pyx_t_17 = 0;
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
@@ -8076,7 +8080,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__exchange_toptree
     } else
     #endif
     {
-      __pyx_t_14 = PyTuple_New(2+__pyx_t_2); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 727, __pyx_L1_error)
+      __pyx_t_14 = PyTuple_New(2+__pyx_t_2); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 725, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_14);
       if (__pyx_t_17) {
         __Pyx_GIVEREF(__pyx_t_17); PyTuple_SET_ITEM(__pyx_t_14, 0, __pyx_t_17); __pyx_t_17 = NULL;
@@ -8087,14 +8091,14 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__exchange_toptree
       PyTuple_SET_ITEM(__pyx_t_14, 1+__pyx_t_2, __pyx_t_16);
       __pyx_t_15 = 0;
       __pyx_t_16 = 0;
-      __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_14, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 727, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_14, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 725, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
     }
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-    /* "phd/gravity/gravity_tree.pyx":726
+    /* "phd/gravity/gravity_tree.pyx":724
  * 
  *         # exchange toptree leaf moments
  *         for field in self.toptree_leafs.carray_named_groups["moments"]:             # <<<<<<<<<<<<<<
@@ -8104,7 +8108,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__exchange_toptree
   }
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-  /* "phd/gravity/gravity_tree.pyx":732
+  /* "phd/gravity/gravity_tree.pyx":730
  * 
  *         # copy imported toptree leaf moments to tree
  *         for i in range(self.toptree_leafs.get_carray_size()):             # <<<<<<<<<<<<<<
@@ -8116,28 +8120,28 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__exchange_toptree
   for (__pyx_t_4 = 0; __pyx_t_4 < __pyx_t_3; __pyx_t_4+=1) {
     __pyx_v_i = __pyx_t_4;
 
-    /* "phd/gravity/gravity_tree.pyx":733
+    /* "phd/gravity/gravity_tree.pyx":731
  *         # copy imported toptree leaf moments to tree
  *         for i in range(self.toptree_leafs.get_carray_size()):
  *             if proc.data[i] != phd._rank:             # <<<<<<<<<<<<<<
  * 
  *                 # update moments
  */
-    __pyx_t_6 = __Pyx_PyInt_From_npy_int32((__pyx_v_proc->data[__pyx_v_i])); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 733, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyInt_From_npy_int32((__pyx_v_proc->data[__pyx_v_i])); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 731, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_phd); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 733, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_phd); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 731, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_rank); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 733, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_rank); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 731, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_5 = PyObject_RichCompare(__pyx_t_6, __pyx_t_1, Py_NE); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 733, __pyx_L1_error)
+    __pyx_t_5 = PyObject_RichCompare(__pyx_t_6, __pyx_t_1, Py_NE); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 731, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 733, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 731, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     if (__pyx_t_7) {
 
-      /* "phd/gravity/gravity_tree.pyx":736
+      /* "phd/gravity/gravity_tree.pyx":734
  * 
  *                 # update moments
  *                 node = &self.nodes.array[maps.data[i]]             # <<<<<<<<<<<<<<
@@ -8146,7 +8150,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__exchange_toptree
  */
       __pyx_v_node = (&(__pyx_v_self->nodes->array[(__pyx_v_maps->data[__pyx_v_i])]));
 
-      /* "phd/gravity/gravity_tree.pyx":737
+      /* "phd/gravity/gravity_tree.pyx":735
  *                 # update moments
  *                 node = &self.nodes.array[maps.data[i]]
  *                 for j in range(self.dim):             # <<<<<<<<<<<<<<
@@ -8158,7 +8162,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__exchange_toptree
       for (__pyx_t_10 = 0; __pyx_t_10 < __pyx_t_9; __pyx_t_10+=1) {
         __pyx_v_j = __pyx_t_10;
 
-        /* "phd/gravity/gravity_tree.pyx":738
+        /* "phd/gravity/gravity_tree.pyx":736
  *                 node = &self.nodes.array[maps.data[i]]
  *                 for j in range(self.dim):
  *                     node.group.data.com[j] = comx[j][i]             # <<<<<<<<<<<<<<
@@ -8168,7 +8172,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__exchange_toptree
         (__pyx_v_node->group.data.com[__pyx_v_j]) = ((__pyx_v_comx[__pyx_v_j])[__pyx_v_i]);
       }
 
-      /* "phd/gravity/gravity_tree.pyx":739
+      /* "phd/gravity/gravity_tree.pyx":737
  *                 for j in range(self.dim):
  *                     node.group.data.com[j] = comx[j][i]
  *                 node.group.data.mass = mass.data[i]             # <<<<<<<<<<<<<<
@@ -8177,7 +8181,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__exchange_toptree
  */
       __pyx_v_node->group.data.mass = (__pyx_v_mass->data[__pyx_v_i]);
 
-      /* "phd/gravity/gravity_tree.pyx":733
+      /* "phd/gravity/gravity_tree.pyx":731
  *         # copy imported toptree leaf moments to tree
  *         for i in range(self.toptree_leafs.get_carray_size()):
  *             if proc.data[i] != phd._rank:             # <<<<<<<<<<<<<<
@@ -8187,7 +8191,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__exchange_toptree
     }
   }
 
-  /* "phd/gravity/gravity_tree.pyx":742
+  /* "phd/gravity/gravity_tree.pyx":740
  * 
  *         # recalculate toptree moments
  *         self._update_toptree_moments(ROOT)             # <<<<<<<<<<<<<<
@@ -8196,7 +8200,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__exchange_toptree
  */
   ((struct __pyx_vtabstruct_3phd_7gravity_12gravity_tree_GravityTree *)__pyx_v_self->__pyx_vtab)->_update_toptree_moments(__pyx_v_self, __pyx_e_3phd_7gravity_12gravity_tree_ROOT);
 
-  /* "phd/gravity/gravity_tree.pyx":698
+  /* "phd/gravity/gravity_tree.pyx":696
  *                 node.group.data.com[k] = com[k]
  * 
  *     cdef void _exchange_toptree_leafs(self):             # <<<<<<<<<<<<<<
@@ -8223,7 +8227,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__exchange_toptree
   __Pyx_RefNannyFinishContext();
 }
 
-/* "phd/gravity/gravity_tree.pyx":744
+/* "phd/gravity/gravity_tree.pyx":742
  *         self._update_toptree_moments(ROOT)
  * 
  *     def walk(self, CarrayContainer particles):             # <<<<<<<<<<<<<<
@@ -8241,7 +8245,7 @@ static PyObject *__pyx_pw_3phd_7gravity_12gravity_tree_11GravityTree_13walk(PyOb
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("walk (wrapper)", 0);
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_particles), __pyx_ptype_3phd_10containers_10containers_CarrayContainer, 1, "particles", 0))) __PYX_ERR(0, 744, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_particles), __pyx_ptype_3phd_10containers_10containers_CarrayContainer, 1, "particles", 0))) __PYX_ERR(0, 742, __pyx_L1_error)
   __pyx_r = __pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_12walk(((struct __pyx_obj_3phd_7gravity_12gravity_tree_GravityTree *)__pyx_v_self), ((struct __pyx_obj_3phd_10containers_10containers_CarrayContainer *)__pyx_v_particles));
 
   /* function exit code */
@@ -8264,7 +8268,7 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_12walk(stru
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("walk", 0);
 
-  /* "phd/gravity/gravity_tree.pyx":753
+  /* "phd/gravity/gravity_tree.pyx":751
  * 
  *         """
  *         self.export_interaction.initialize_particles(particles)             # <<<<<<<<<<<<<<
@@ -8273,23 +8277,23 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_12walk(stru
  */
   ((struct __pyx_vtabstruct_3phd_7gravity_11interaction_Interaction *)__pyx_v_self->export_interaction->__pyx_vtab)->initialize_particles(__pyx_v_self->export_interaction, __pyx_v_particles, NULL);
 
-  /* "phd/gravity/gravity_tree.pyx":754
+  /* "phd/gravity/gravity_tree.pyx":752
  *         """
  *         self.export_interaction.initialize_particles(particles)
  *         if phd._in_parallel:             # <<<<<<<<<<<<<<
  *             self._parallel_walk(self.export_interaction, particles)
  *         else:
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_phd); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 754, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_phd); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 752, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_in_parallel); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 754, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_in_parallel); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 752, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 754, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 752, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   if (__pyx_t_3) {
 
-    /* "phd/gravity/gravity_tree.pyx":755
+    /* "phd/gravity/gravity_tree.pyx":753
  *         self.export_interaction.initialize_particles(particles)
  *         if phd._in_parallel:
  *             self._parallel_walk(self.export_interaction, particles)             # <<<<<<<<<<<<<<
@@ -8301,7 +8305,7 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_12walk(stru
     ((struct __pyx_vtabstruct_3phd_7gravity_12gravity_tree_GravityTree *)__pyx_v_self->__pyx_vtab)->_parallel_walk(__pyx_v_self, ((struct __pyx_obj_3phd_7gravity_11interaction_Interaction *)__pyx_t_2), __pyx_v_particles);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "phd/gravity/gravity_tree.pyx":754
+    /* "phd/gravity/gravity_tree.pyx":752
  *         """
  *         self.export_interaction.initialize_particles(particles)
  *         if phd._in_parallel:             # <<<<<<<<<<<<<<
@@ -8311,7 +8315,7 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_12walk(stru
     goto __pyx_L3;
   }
 
-  /* "phd/gravity/gravity_tree.pyx":757
+  /* "phd/gravity/gravity_tree.pyx":755
  *             self._parallel_walk(self.export_interaction, particles)
  *         else:
  *             self._serial_walk(self.export_interaction, particles)             # <<<<<<<<<<<<<<
@@ -8326,7 +8330,7 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_12walk(stru
   }
   __pyx_L3:;
 
-  /* "phd/gravity/gravity_tree.pyx":744
+  /* "phd/gravity/gravity_tree.pyx":742
  *         self._update_toptree_moments(ROOT)
  * 
  *     def walk(self, CarrayContainer particles):             # <<<<<<<<<<<<<<
@@ -8348,7 +8352,7 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_12walk(stru
   return __pyx_r;
 }
 
-/* "phd/gravity/gravity_tree.pyx":759
+/* "phd/gravity/gravity_tree.pyx":757
  *             self._serial_walk(self.export_interaction, particles)
  * 
  *     cdef void _serial_walk(self, Interaction interaction, CarrayContainer particles):             # <<<<<<<<<<<<<<
@@ -8364,7 +8368,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__serial_walk(stru
   int __pyx_t_2;
   __Pyx_RefNannySetupContext("_serial_walk", 0);
 
-  /* "phd/gravity/gravity_tree.pyx":776
+  /* "phd/gravity/gravity_tree.pyx":774
  * 
  *         # loop through each real praticle
  *         while(interaction.process_particle()):             # <<<<<<<<<<<<<<
@@ -8375,7 +8379,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__serial_walk(stru
     __pyx_t_1 = (((struct __pyx_vtabstruct_3phd_7gravity_11interaction_Interaction *)__pyx_v_interaction->__pyx_vtab)->process_particle(__pyx_v_interaction) != 0);
     if (!__pyx_t_1) break;
 
-    /* "phd/gravity/gravity_tree.pyx":777
+    /* "phd/gravity/gravity_tree.pyx":775
  *         # loop through each real praticle
  *         while(interaction.process_particle()):
  *             index = ROOT             # <<<<<<<<<<<<<<
@@ -8384,7 +8388,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__serial_walk(stru
  */
     __pyx_v_index = __pyx_e_3phd_7gravity_12gravity_tree_ROOT;
 
-    /* "phd/gravity/gravity_tree.pyx":778
+    /* "phd/gravity/gravity_tree.pyx":776
  *         while(interaction.process_particle()):
  *             index = ROOT
  *             while(index != ROOT_SIBLING):             # <<<<<<<<<<<<<<
@@ -8395,7 +8399,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__serial_walk(stru
       __pyx_t_1 = ((__pyx_v_index != __pyx_e_3phd_7gravity_12gravity_tree_ROOT_SIBLING) != 0);
       if (!__pyx_t_1) break;
 
-      /* "phd/gravity/gravity_tree.pyx":779
+      /* "phd/gravity/gravity_tree.pyx":777
  *             index = ROOT
  *             while(index != ROOT_SIBLING):
  *                 node = &self.nodes.array[index]             # <<<<<<<<<<<<<<
@@ -8404,7 +8408,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__serial_walk(stru
  */
       __pyx_v_node = (&(__pyx_v_self->nodes->array[__pyx_v_index]));
 
-      /* "phd/gravity/gravity_tree.pyx":781
+      /* "phd/gravity/gravity_tree.pyx":779
  *                 node = &self.nodes.array[index]
  * 
  *                 if(node.flags & LEAF):             # <<<<<<<<<<<<<<
@@ -8414,7 +8418,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__serial_walk(stru
       __pyx_t_1 = ((__pyx_v_node->flags & __pyx_e_3phd_7gravity_12gravity_tree_LEAF) != 0);
       if (__pyx_t_1) {
 
-        /* "phd/gravity/gravity_tree.pyx":783
+        /* "phd/gravity/gravity_tree.pyx":781
  *                 if(node.flags & LEAF):
  *                     # calculate particle particle interaction
  *                     interaction.interact(node)             # <<<<<<<<<<<<<<
@@ -8423,7 +8427,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__serial_walk(stru
  */
         ((struct __pyx_vtabstruct_3phd_7gravity_11interaction_Interaction *)__pyx_v_interaction->__pyx_vtab)->interact(__pyx_v_interaction, __pyx_v_node);
 
-        /* "phd/gravity/gravity_tree.pyx":784
+        /* "phd/gravity/gravity_tree.pyx":782
  *                     # calculate particle particle interaction
  *                     interaction.interact(node)
  *                     index = node.group.data.next_sibling             # <<<<<<<<<<<<<<
@@ -8433,7 +8437,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__serial_walk(stru
         __pyx_t_2 = __pyx_v_node->group.data.next_sibling;
         __pyx_v_index = __pyx_t_2;
 
-        /* "phd/gravity/gravity_tree.pyx":781
+        /* "phd/gravity/gravity_tree.pyx":779
  *                 node = &self.nodes.array[index]
  * 
  *                 if(node.flags & LEAF):             # <<<<<<<<<<<<<<
@@ -8443,7 +8447,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__serial_walk(stru
         goto __pyx_L7;
       }
 
-      /* "phd/gravity/gravity_tree.pyx":786
+      /* "phd/gravity/gravity_tree.pyx":784
  *                     index = node.group.data.next_sibling
  *                 else:
  *                     if(interaction.splitter.split(node)):             # <<<<<<<<<<<<<<
@@ -8454,7 +8458,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__serial_walk(stru
         __pyx_t_1 = (((struct __pyx_vtabstruct_3phd_7gravity_8splitter_Splitter *)__pyx_v_interaction->splitter->__pyx_vtab)->split(__pyx_v_interaction->splitter, __pyx_v_node) != 0);
         if (__pyx_t_1) {
 
-          /* "phd/gravity/gravity_tree.pyx":788
+          /* "phd/gravity/gravity_tree.pyx":786
  *                     if(interaction.splitter.split(node)):
  *                         # node opened travel down
  *                         index = node.group.data.first_child             # <<<<<<<<<<<<<<
@@ -8464,7 +8468,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__serial_walk(stru
           __pyx_t_2 = __pyx_v_node->group.data.first_child;
           __pyx_v_index = __pyx_t_2;
 
-          /* "phd/gravity/gravity_tree.pyx":786
+          /* "phd/gravity/gravity_tree.pyx":784
  *                     index = node.group.data.next_sibling
  *                 else:
  *                     if(interaction.splitter.split(node)):             # <<<<<<<<<<<<<<
@@ -8474,7 +8478,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__serial_walk(stru
           goto __pyx_L8;
         }
 
-        /* "phd/gravity/gravity_tree.pyx":791
+        /* "phd/gravity/gravity_tree.pyx":789
  *                     else:
  *                         # calculate node particle interaction
  *                         interaction.interact(node)             # <<<<<<<<<<<<<<
@@ -8484,7 +8488,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__serial_walk(stru
         /*else*/ {
           ((struct __pyx_vtabstruct_3phd_7gravity_11interaction_Interaction *)__pyx_v_interaction->__pyx_vtab)->interact(__pyx_v_interaction, __pyx_v_node);
 
-          /* "phd/gravity/gravity_tree.pyx":792
+          /* "phd/gravity/gravity_tree.pyx":790
  *                         # calculate node particle interaction
  *                         interaction.interact(node)
  *                         index = node.group.data.next_sibling             # <<<<<<<<<<<<<<
@@ -8500,7 +8504,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__serial_walk(stru
     }
   }
 
-  /* "phd/gravity/gravity_tree.pyx":759
+  /* "phd/gravity/gravity_tree.pyx":757
  *             self._serial_walk(self.export_interaction, particles)
  * 
  *     cdef void _serial_walk(self, Interaction interaction, CarrayContainer particles):             # <<<<<<<<<<<<<<
@@ -8512,7 +8516,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__serial_walk(stru
   __Pyx_RefNannyFinishContext();
 }
 
-/* "phd/gravity/gravity_tree.pyx":794
+/* "phd/gravity/gravity_tree.pyx":792
  *                         index = node.group.data.next_sibling
  * 
  *     cdef void _import_walk(self, Interaction interaction):             # <<<<<<<<<<<<<<
@@ -8528,7 +8532,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__import_walk(stru
   int __pyx_t_2;
   __Pyx_RefNannySetupContext("_import_walk", 0);
 
-  /* "phd/gravity/gravity_tree.pyx":808
+  /* "phd/gravity/gravity_tree.pyx":806
  * 
  *         # loop through each export praticle
  *         while(interaction.process_particle()):             # <<<<<<<<<<<<<<
@@ -8539,7 +8543,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__import_walk(stru
     __pyx_t_1 = (((struct __pyx_vtabstruct_3phd_7gravity_11interaction_Interaction *)__pyx_v_interaction->__pyx_vtab)->process_particle(__pyx_v_interaction) != 0);
     if (!__pyx_t_1) break;
 
-    /* "phd/gravity/gravity_tree.pyx":809
+    /* "phd/gravity/gravity_tree.pyx":807
  *         # loop through each export praticle
  *         while(interaction.process_particle()):
  *             index = ROOT             # <<<<<<<<<<<<<<
@@ -8548,7 +8552,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__import_walk(stru
  */
     __pyx_v_index = __pyx_e_3phd_7gravity_12gravity_tree_ROOT;
 
-    /* "phd/gravity/gravity_tree.pyx":810
+    /* "phd/gravity/gravity_tree.pyx":808
  *         while(interaction.process_particle()):
  *             index = ROOT
  *             while(index != ROOT_SIBLING):             # <<<<<<<<<<<<<<
@@ -8559,7 +8563,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__import_walk(stru
       __pyx_t_1 = ((__pyx_v_index != __pyx_e_3phd_7gravity_12gravity_tree_ROOT_SIBLING) != 0);
       if (!__pyx_t_1) break;
 
-      /* "phd/gravity/gravity_tree.pyx":811
+      /* "phd/gravity/gravity_tree.pyx":809
  *             index = ROOT
  *             while(index != ROOT_SIBLING):
  *                 node = &self.nodes.array[index]             # <<<<<<<<<<<<<<
@@ -8568,7 +8572,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__import_walk(stru
  */
       __pyx_v_node = (&(__pyx_v_self->nodes->array[__pyx_v_index]));
 
-      /* "phd/gravity/gravity_tree.pyx":813
+      /* "phd/gravity/gravity_tree.pyx":811
  *                 node = &self.nodes.array[index]
  * 
  *                 if(node.flags & LEAF):             # <<<<<<<<<<<<<<
@@ -8578,7 +8582,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__import_walk(stru
       __pyx_t_1 = ((__pyx_v_node->flags & __pyx_e_3phd_7gravity_12gravity_tree_LEAF) != 0);
       if (__pyx_t_1) {
 
-        /* "phd/gravity/gravity_tree.pyx":814
+        /* "phd/gravity/gravity_tree.pyx":812
  * 
  *                 if(node.flags & LEAF):
  *                     if(node.flags & TOP_TREE_LEAF_REMOTE):             # <<<<<<<<<<<<<<
@@ -8588,7 +8592,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__import_walk(stru
         __pyx_t_1 = ((__pyx_v_node->flags & __pyx_e_3phd_7gravity_12gravity_tree_TOP_TREE_LEAF_REMOTE) != 0);
         if (__pyx_t_1) {
 
-          /* "phd/gravity/gravity_tree.pyx":817
+          /* "phd/gravity/gravity_tree.pyx":815
  *                         # skip toptree leaf that does not belong
  *                         # to this processor
  *                         index = node.group.data.next_sibling             # <<<<<<<<<<<<<<
@@ -8598,7 +8602,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__import_walk(stru
           __pyx_t_2 = __pyx_v_node->group.data.next_sibling;
           __pyx_v_index = __pyx_t_2;
 
-          /* "phd/gravity/gravity_tree.pyx":814
+          /* "phd/gravity/gravity_tree.pyx":812
  * 
  *                 if(node.flags & LEAF):
  *                     if(node.flags & TOP_TREE_LEAF_REMOTE):             # <<<<<<<<<<<<<<
@@ -8608,7 +8612,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__import_walk(stru
           goto __pyx_L8;
         }
 
-        /* "phd/gravity/gravity_tree.pyx":820
+        /* "phd/gravity/gravity_tree.pyx":818
  * 
  *                     else: # calculate particle particle interaction
  *                         interaction.interact(node)             # <<<<<<<<<<<<<<
@@ -8618,7 +8622,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__import_walk(stru
         /*else*/ {
           ((struct __pyx_vtabstruct_3phd_7gravity_11interaction_Interaction *)__pyx_v_interaction->__pyx_vtab)->interact(__pyx_v_interaction, __pyx_v_node);
 
-          /* "phd/gravity/gravity_tree.pyx":821
+          /* "phd/gravity/gravity_tree.pyx":819
  *                     else: # calculate particle particle interaction
  *                         interaction.interact(node)
  *                         index = node.group.data.next_sibling             # <<<<<<<<<<<<<<
@@ -8630,7 +8634,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__import_walk(stru
         }
         __pyx_L8:;
 
-        /* "phd/gravity/gravity_tree.pyx":813
+        /* "phd/gravity/gravity_tree.pyx":811
  *                 node = &self.nodes.array[index]
  * 
  *                 if(node.flags & LEAF):             # <<<<<<<<<<<<<<
@@ -8640,7 +8644,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__import_walk(stru
         goto __pyx_L7;
       }
 
-      /* "phd/gravity/gravity_tree.pyx":824
+      /* "phd/gravity/gravity_tree.pyx":822
  * 
  *                 else: # node is not leaf
  *                     if(node.flags & SKIP_BRANCH):             # <<<<<<<<<<<<<<
@@ -8651,7 +8655,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__import_walk(stru
         __pyx_t_1 = ((__pyx_v_node->flags & __pyx_e_3phd_7gravity_12gravity_tree_SKIP_BRANCH) != 0);
         if (__pyx_t_1) {
 
-          /* "phd/gravity/gravity_tree.pyx":827
+          /* "phd/gravity/gravity_tree.pyx":825
  *                         # we can skip branch if node only depends
  *                         # on nodes from other processors
  *                         index = node.group.data.next_sibling             # <<<<<<<<<<<<<<
@@ -8661,7 +8665,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__import_walk(stru
           __pyx_t_2 = __pyx_v_node->group.data.next_sibling;
           __pyx_v_index = __pyx_t_2;
 
-          /* "phd/gravity/gravity_tree.pyx":824
+          /* "phd/gravity/gravity_tree.pyx":822
  * 
  *                 else: # node is not leaf
  *                     if(node.flags & SKIP_BRANCH):             # <<<<<<<<<<<<<<
@@ -8671,7 +8675,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__import_walk(stru
           goto __pyx_L9;
         }
 
-        /* "phd/gravity/gravity_tree.pyx":830
+        /* "phd/gravity/gravity_tree.pyx":828
  * 
  *                     # check if node can be opened
  *                     elif(interaction.splitter.split(node)):             # <<<<<<<<<<<<<<
@@ -8681,7 +8685,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__import_walk(stru
         __pyx_t_1 = (((struct __pyx_vtabstruct_3phd_7gravity_8splitter_Splitter *)__pyx_v_interaction->splitter->__pyx_vtab)->split(__pyx_v_interaction->splitter, __pyx_v_node) != 0);
         if (__pyx_t_1) {
 
-          /* "phd/gravity/gravity_tree.pyx":832
+          /* "phd/gravity/gravity_tree.pyx":830
  *                     elif(interaction.splitter.split(node)):
  *                         # travel down node
  *                         index = node.group.data.first_child             # <<<<<<<<<<<<<<
@@ -8691,7 +8695,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__import_walk(stru
           __pyx_t_2 = __pyx_v_node->group.data.first_child;
           __pyx_v_index = __pyx_t_2;
 
-          /* "phd/gravity/gravity_tree.pyx":830
+          /* "phd/gravity/gravity_tree.pyx":828
  * 
  *                     # check if node can be opened
  *                     elif(interaction.splitter.split(node)):             # <<<<<<<<<<<<<<
@@ -8701,7 +8705,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__import_walk(stru
           goto __pyx_L9;
         }
 
-        /* "phd/gravity/gravity_tree.pyx":835
+        /* "phd/gravity/gravity_tree.pyx":833
  * 
  *                     else: # node not opened particle node interaction
  *                         if(node.flags & TOP_TREE):             # <<<<<<<<<<<<<<
@@ -8712,7 +8716,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__import_walk(stru
           __pyx_t_1 = ((__pyx_v_node->flags & __pyx_e_3phd_7gravity_12gravity_tree_TOP_TREE) != 0);
           if (__pyx_t_1) {
 
-            /* "phd/gravity/gravity_tree.pyx":837
+            /* "phd/gravity/gravity_tree.pyx":835
  *                         if(node.flags & TOP_TREE):
  *                             # skip top tree nodes
  *                             index = node.group.data.next_sibling             # <<<<<<<<<<<<<<
@@ -8722,7 +8726,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__import_walk(stru
             __pyx_t_2 = __pyx_v_node->group.data.next_sibling;
             __pyx_v_index = __pyx_t_2;
 
-            /* "phd/gravity/gravity_tree.pyx":835
+            /* "phd/gravity/gravity_tree.pyx":833
  * 
  *                     else: # node not opened particle node interaction
  *                         if(node.flags & TOP_TREE):             # <<<<<<<<<<<<<<
@@ -8732,7 +8736,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__import_walk(stru
             goto __pyx_L10;
           }
 
-          /* "phd/gravity/gravity_tree.pyx":840
+          /* "phd/gravity/gravity_tree.pyx":838
  *                         else:
  *                             # calculate node particle interaction
  *                             interaction.interact(node)             # <<<<<<<<<<<<<<
@@ -8742,7 +8746,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__import_walk(stru
           /*else*/ {
             ((struct __pyx_vtabstruct_3phd_7gravity_11interaction_Interaction *)__pyx_v_interaction->__pyx_vtab)->interact(__pyx_v_interaction, __pyx_v_node);
 
-            /* "phd/gravity/gravity_tree.pyx":841
+            /* "phd/gravity/gravity_tree.pyx":839
  *                             # calculate node particle interaction
  *                             interaction.interact(node)
  *                             index = node.group.data.next_sibling             # <<<<<<<<<<<<<<
@@ -8760,7 +8764,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__import_walk(stru
     }
   }
 
-  /* "phd/gravity/gravity_tree.pyx":794
+  /* "phd/gravity/gravity_tree.pyx":792
  *                         index = node.group.data.next_sibling
  * 
  *     cdef void _import_walk(self, Interaction interaction):             # <<<<<<<<<<<<<<
@@ -8772,7 +8776,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__import_walk(stru
   __Pyx_RefNannyFinishContext();
 }
 
-/* "phd/gravity/gravity_tree.pyx":843
+/* "phd/gravity/gravity_tree.pyx":841
  *                             index = node.group.data.next_sibling
  * 
  *     cdef void _export_walk(self, Interaction interaction):             # <<<<<<<<<<<<<<
@@ -8795,20 +8799,20 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__export_walk(stru
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_export_walk", 0);
 
-  /* "phd/gravity/gravity_tree.pyx":856
+  /* "phd/gravity/gravity_tree.pyx":854
  *         cdef int index, i, node_pid
  * 
  *         cdef LongArray pid = self.toptree_leafs.get_carray("proc")             # <<<<<<<<<<<<<<
  * 
  *         # loop through each real praticle
  */
-  __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_self->toptree_leafs->__pyx_vtab)->get_carray(__pyx_v_self->toptree_leafs, __pyx_n_s_proc, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 856, __pyx_L1_error)
+  __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_self->toptree_leafs->__pyx_vtab)->get_carray(__pyx_v_self->toptree_leafs, __pyx_n_s_proc, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 854, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_3phd_5utils_6carray_LongArray))))) __PYX_ERR(0, 856, __pyx_L1_error)
+  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_3phd_5utils_6carray_LongArray))))) __PYX_ERR(0, 854, __pyx_L1_error)
   __pyx_v_pid = ((struct __pyx_obj_3phd_5utils_6carray_LongArray *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "phd/gravity/gravity_tree.pyx":859
+  /* "phd/gravity/gravity_tree.pyx":857
  * 
  *         # loop through each real praticle
  *         while(interaction.process_particle()):             # <<<<<<<<<<<<<<
@@ -8819,7 +8823,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__export_walk(stru
     __pyx_t_2 = (((struct __pyx_vtabstruct_3phd_7gravity_11interaction_Interaction *)__pyx_v_interaction->__pyx_vtab)->process_particle(__pyx_v_interaction) != 0);
     if (!__pyx_t_2) break;
 
-    /* "phd/gravity/gravity_tree.pyx":862
+    /* "phd/gravity/gravity_tree.pyx":860
  * 
  *             # start at root or next node from previous walk
  *             index = interaction.start_node_index()             # <<<<<<<<<<<<<<
@@ -8828,7 +8832,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__export_walk(stru
  */
     __pyx_v_index = ((struct __pyx_vtabstruct_3phd_7gravity_11interaction_Interaction *)__pyx_v_interaction->__pyx_vtab)->start_node_index(__pyx_v_interaction);
 
-    /* "phd/gravity/gravity_tree.pyx":863
+    /* "phd/gravity/gravity_tree.pyx":861
  *             # start at root or next node from previous walk
  *             index = interaction.start_node_index()
  *             while(index != ROOT_SIBLING):             # <<<<<<<<<<<<<<
@@ -8839,7 +8843,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__export_walk(stru
       __pyx_t_2 = ((__pyx_v_index != __pyx_e_3phd_7gravity_12gravity_tree_ROOT_SIBLING) != 0);
       if (!__pyx_t_2) break;
 
-      /* "phd/gravity/gravity_tree.pyx":865
+      /* "phd/gravity/gravity_tree.pyx":863
  *             while(index != ROOT_SIBLING):
  * 
  *                 node = &self.nodes.array[index]             # <<<<<<<<<<<<<<
@@ -8848,7 +8852,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__export_walk(stru
  */
       __pyx_v_node = (&(__pyx_v_self->nodes->array[__pyx_v_index]));
 
-      /* "phd/gravity/gravity_tree.pyx":866
+      /* "phd/gravity/gravity_tree.pyx":864
  * 
  *                 node = &self.nodes.array[index]
  *                 if(node.flags & LEAF):             # <<<<<<<<<<<<<<
@@ -8858,7 +8862,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__export_walk(stru
       __pyx_t_2 = ((__pyx_v_node->flags & __pyx_e_3phd_7gravity_12gravity_tree_LEAF) != 0);
       if (__pyx_t_2) {
 
-        /* "phd/gravity/gravity_tree.pyx":867
+        /* "phd/gravity/gravity_tree.pyx":865
  *                 node = &self.nodes.array[index]
  *                 if(node.flags & LEAF):
  *                     if(node.flags & TOP_TREE_LEAF_REMOTE):             # <<<<<<<<<<<<<<
@@ -8868,7 +8872,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__export_walk(stru
         __pyx_t_2 = ((__pyx_v_node->flags & __pyx_e_3phd_7gravity_12gravity_tree_TOP_TREE_LEAF_REMOTE) != 0);
         if (__pyx_t_2) {
 
-          /* "phd/gravity/gravity_tree.pyx":868
+          /* "phd/gravity/gravity_tree.pyx":866
  *                 if(node.flags & LEAF):
  *                     if(node.flags & TOP_TREE_LEAF_REMOTE):
  *                         if(interaction.splitter.split(node)):             # <<<<<<<<<<<<<<
@@ -8878,7 +8882,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__export_walk(stru
           __pyx_t_2 = (((struct __pyx_vtabstruct_3phd_7gravity_8splitter_Splitter *)__pyx_v_interaction->splitter->__pyx_vtab)->split(__pyx_v_interaction->splitter, __pyx_v_node) != 0);
           if (__pyx_t_2) {
 
-            /* "phd/gravity/gravity_tree.pyx":871
+            /* "phd/gravity/gravity_tree.pyx":869
  * 
  *                             # node opend check if particle alreay flagged
  *                             node_pid = pid.data[self.toptree_leaf_map[index]]             # <<<<<<<<<<<<<<
@@ -8887,20 +8891,20 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__export_walk(stru
  */
             __pyx_v_node_pid = (__pyx_v_pid->data[(__pyx_v_self->toptree_leaf_map[__pyx_v_index])]);
 
-            /* "phd/gravity/gravity_tree.pyx":872
+            /* "phd/gravity/gravity_tree.pyx":870
  *                             # node opend check if particle alreay flagged
  *                             node_pid = pid.data[self.toptree_leaf_map[index]]
  *                             if interaction.flag_pid[node_pid]:             # <<<<<<<<<<<<<<
  *                                 index = node.group.data.next_sibling
  *                             else:
  */
-            __pyx_t_1 = __Pyx_GetItemInt(((PyObject *)__pyx_v_interaction->flag_pid), __pyx_v_node_pid, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 872, __pyx_L1_error)
+            __pyx_t_1 = __Pyx_GetItemInt(((PyObject *)__pyx_v_interaction->flag_pid), __pyx_v_node_pid, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 870, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_1);
-            __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 872, __pyx_L1_error)
+            __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 870, __pyx_L1_error)
             __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
             if (__pyx_t_2) {
 
-              /* "phd/gravity/gravity_tree.pyx":873
+              /* "phd/gravity/gravity_tree.pyx":871
  *                             node_pid = pid.data[self.toptree_leaf_map[index]]
  *                             if interaction.flag_pid[node_pid]:
  *                                 index = node.group.data.next_sibling             # <<<<<<<<<<<<<<
@@ -8910,7 +8914,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__export_walk(stru
               __pyx_t_3 = __pyx_v_node->group.data.next_sibling;
               __pyx_v_index = __pyx_t_3;
 
-              /* "phd/gravity/gravity_tree.pyx":872
+              /* "phd/gravity/gravity_tree.pyx":870
  *                             # node opend check if particle alreay flagged
  *                             node_pid = pid.data[self.toptree_leaf_map[index]]
  *                             if interaction.flag_pid[node_pid]:             # <<<<<<<<<<<<<<
@@ -8920,7 +8924,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__export_walk(stru
               goto __pyx_L10;
             }
 
-            /* "phd/gravity/gravity_tree.pyx":877
+            /* "phd/gravity/gravity_tree.pyx":875
  * 
  *                                 # particle exported to pid
  *                                 interaction.flag_pid[node_pid] = 1             # <<<<<<<<<<<<<<
@@ -8928,9 +8932,9 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__export_walk(stru
  *                                 # node opened flag for export
  */
             /*else*/ {
-              if (unlikely(__Pyx_SetItemInt(((PyObject *)__pyx_v_interaction->flag_pid), __pyx_v_node_pid, __pyx_int_1, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 877, __pyx_L1_error)
+              if (unlikely(__Pyx_SetItemInt(((PyObject *)__pyx_v_interaction->flag_pid), __pyx_v_node_pid, __pyx_int_1, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 875, __pyx_L1_error)
 
-              /* "phd/gravity/gravity_tree.pyx":881
+              /* "phd/gravity/gravity_tree.pyx":879
  *                                 # node opened flag for export
  *                                 self.buffer_ids[self.buffer_size].index =\
  *                                         interaction.current             # <<<<<<<<<<<<<<
@@ -8939,7 +8943,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__export_walk(stru
  */
               __pyx_t_4 = __pyx_v_interaction->current;
 
-              /* "phd/gravity/gravity_tree.pyx":880
+              /* "phd/gravity/gravity_tree.pyx":878
  * 
  *                                 # node opened flag for export
  *                                 self.buffer_ids[self.buffer_size].index =\             # <<<<<<<<<<<<<<
@@ -8948,7 +8952,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__export_walk(stru
  */
               (__pyx_v_self->buffer_ids[__pyx_v_self->buffer_size]).index = __pyx_t_4;
 
-              /* "phd/gravity/gravity_tree.pyx":882
+              /* "phd/gravity/gravity_tree.pyx":880
  *                                 self.buffer_ids[self.buffer_size].index =\
  *                                         interaction.current
  *                                 self.buffer_ids[self.buffer_size].proc =\             # <<<<<<<<<<<<<<
@@ -8957,7 +8961,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__export_walk(stru
  */
               (__pyx_v_self->buffer_ids[__pyx_v_self->buffer_size]).proc = __pyx_v_node_pid;
 
-              /* "phd/gravity/gravity_tree.pyx":885
+              /* "phd/gravity/gravity_tree.pyx":883
  *                                         node_pid
  * 
  *                                 self.buffer_size += 1             # <<<<<<<<<<<<<<
@@ -8966,7 +8970,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__export_walk(stru
  */
               __pyx_v_self->buffer_size = (__pyx_v_self->buffer_size + 1);
 
-              /* "phd/gravity/gravity_tree.pyx":888
+              /* "phd/gravity/gravity_tree.pyx":886
  * 
  *                                 # check if buffer is full, halt walk if true
  *                                 if self.buffer_size == self.max_buffer_size:             # <<<<<<<<<<<<<<
@@ -8976,7 +8980,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__export_walk(stru
               __pyx_t_2 = ((__pyx_v_self->buffer_size == __pyx_v_self->max_buffer_size) != 0);
               if (__pyx_t_2) {
 
-                /* "phd/gravity/gravity_tree.pyx":890
+                /* "phd/gravity/gravity_tree.pyx":888
  *                                 if self.buffer_size == self.max_buffer_size:
  *                                     # save node to continue walk
  *                                     interaction.particle_not_finished(             # <<<<<<<<<<<<<<
@@ -8985,7 +8989,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__export_walk(stru
  */
                 ((struct __pyx_vtabstruct_3phd_7gravity_11interaction_Interaction *)__pyx_v_interaction->__pyx_vtab)->particle_not_finished(__pyx_v_interaction, __pyx_v_node->group.data.next_sibling);
 
-                /* "phd/gravity/gravity_tree.pyx":892
+                /* "phd/gravity/gravity_tree.pyx":890
  *                                     interaction.particle_not_finished(
  *                                             node.group.data.next_sibling)
  *                                     return # break out of walk             # <<<<<<<<<<<<<<
@@ -8994,7 +8998,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__export_walk(stru
  */
                 goto __pyx_L0;
 
-                /* "phd/gravity/gravity_tree.pyx":888
+                /* "phd/gravity/gravity_tree.pyx":886
  * 
  *                                 # check if buffer is full, halt walk if true
  *                                 if self.buffer_size == self.max_buffer_size:             # <<<<<<<<<<<<<<
@@ -9003,7 +9007,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__export_walk(stru
  */
               }
 
-              /* "phd/gravity/gravity_tree.pyx":894
+              /* "phd/gravity/gravity_tree.pyx":892
  *                                     return # break out of walk
  *                                 else:
  *                                     index = node.group.data.next_sibling             # <<<<<<<<<<<<<<
@@ -9017,7 +9021,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__export_walk(stru
             }
             __pyx_L10:;
 
-            /* "phd/gravity/gravity_tree.pyx":868
+            /* "phd/gravity/gravity_tree.pyx":866
  *                 if(node.flags & LEAF):
  *                     if(node.flags & TOP_TREE_LEAF_REMOTE):
  *                         if(interaction.splitter.split(node)):             # <<<<<<<<<<<<<<
@@ -9027,7 +9031,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__export_walk(stru
             goto __pyx_L9;
           }
 
-          /* "phd/gravity/gravity_tree.pyx":897
+          /* "phd/gravity/gravity_tree.pyx":895
  * 
  *                         else: # node not opened particle node interaction
  *                             interaction.interact(node)             # <<<<<<<<<<<<<<
@@ -9037,7 +9041,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__export_walk(stru
           /*else*/ {
             ((struct __pyx_vtabstruct_3phd_7gravity_11interaction_Interaction *)__pyx_v_interaction->__pyx_vtab)->interact(__pyx_v_interaction, __pyx_v_node);
 
-            /* "phd/gravity/gravity_tree.pyx":898
+            /* "phd/gravity/gravity_tree.pyx":896
  *                         else: # node not opened particle node interaction
  *                             interaction.interact(node)
  *                             index = node.group.data.next_sibling             # <<<<<<<<<<<<<<
@@ -9049,7 +9053,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__export_walk(stru
           }
           __pyx_L9:;
 
-          /* "phd/gravity/gravity_tree.pyx":867
+          /* "phd/gravity/gravity_tree.pyx":865
  *                 node = &self.nodes.array[index]
  *                 if(node.flags & LEAF):
  *                     if(node.flags & TOP_TREE_LEAF_REMOTE):             # <<<<<<<<<<<<<<
@@ -9059,7 +9063,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__export_walk(stru
           goto __pyx_L8;
         }
 
-        /* "phd/gravity/gravity_tree.pyx":901
+        /* "phd/gravity/gravity_tree.pyx":899
  * 
  *                     else: # particle particle interaction
  *                         interaction.interact(node)             # <<<<<<<<<<<<<<
@@ -9069,7 +9073,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__export_walk(stru
         /*else*/ {
           ((struct __pyx_vtabstruct_3phd_7gravity_11interaction_Interaction *)__pyx_v_interaction->__pyx_vtab)->interact(__pyx_v_interaction, __pyx_v_node);
 
-          /* "phd/gravity/gravity_tree.pyx":902
+          /* "phd/gravity/gravity_tree.pyx":900
  *                     else: # particle particle interaction
  *                         interaction.interact(node)
  *                         index = node.group.data.next_sibling             # <<<<<<<<<<<<<<
@@ -9081,7 +9085,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__export_walk(stru
         }
         __pyx_L8:;
 
-        /* "phd/gravity/gravity_tree.pyx":866
+        /* "phd/gravity/gravity_tree.pyx":864
  * 
  *                 node = &self.nodes.array[index]
  *                 if(node.flags & LEAF):             # <<<<<<<<<<<<<<
@@ -9091,7 +9095,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__export_walk(stru
         goto __pyx_L7;
       }
 
-      /* "phd/gravity/gravity_tree.pyx":905
+      /* "phd/gravity/gravity_tree.pyx":903
  * 
  *                 else: # check if node can be opened
  *                     if(interaction.splitter.split(node)):             # <<<<<<<<<<<<<<
@@ -9102,7 +9106,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__export_walk(stru
         __pyx_t_2 = (((struct __pyx_vtabstruct_3phd_7gravity_8splitter_Splitter *)__pyx_v_interaction->splitter->__pyx_vtab)->split(__pyx_v_interaction->splitter, __pyx_v_node) != 0);
         if (__pyx_t_2) {
 
-          /* "phd/gravity/gravity_tree.pyx":907
+          /* "phd/gravity/gravity_tree.pyx":905
  *                     if(interaction.splitter.split(node)):
  *                         # travel down node
  *                         index = node.group.data.first_child             # <<<<<<<<<<<<<<
@@ -9112,7 +9116,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__export_walk(stru
           __pyx_t_3 = __pyx_v_node->group.data.first_child;
           __pyx_v_index = __pyx_t_3;
 
-          /* "phd/gravity/gravity_tree.pyx":905
+          /* "phd/gravity/gravity_tree.pyx":903
  * 
  *                 else: # check if node can be opened
  *                     if(interaction.splitter.split(node)):             # <<<<<<<<<<<<<<
@@ -9122,7 +9126,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__export_walk(stru
           goto __pyx_L12;
         }
 
-        /* "phd/gravity/gravity_tree.pyx":910
+        /* "phd/gravity/gravity_tree.pyx":908
  * 
  *                     else: # node not opened particle node interaction
  *                         interaction.interact(node)             # <<<<<<<<<<<<<<
@@ -9132,7 +9136,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__export_walk(stru
         /*else*/ {
           ((struct __pyx_vtabstruct_3phd_7gravity_11interaction_Interaction *)__pyx_v_interaction->__pyx_vtab)->interact(__pyx_v_interaction, __pyx_v_node);
 
-          /* "phd/gravity/gravity_tree.pyx":911
+          /* "phd/gravity/gravity_tree.pyx":909
  *                     else: # node not opened particle node interaction
  *                         interaction.interact(node)
  *                         index = node.group.data.next_sibling             # <<<<<<<<<<<<<<
@@ -9147,7 +9151,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__export_walk(stru
       __pyx_L7:;
     }
 
-    /* "phd/gravity/gravity_tree.pyx":914
+    /* "phd/gravity/gravity_tree.pyx":912
  * 
  *             # ready for next particle
  *             interaction.particle_finished()             # <<<<<<<<<<<<<<
@@ -9157,7 +9161,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__export_walk(stru
     ((struct __pyx_vtabstruct_3phd_7gravity_11interaction_Interaction *)__pyx_v_interaction->__pyx_vtab)->particle_finished(__pyx_v_interaction);
   }
 
-  /* "phd/gravity/gravity_tree.pyx":843
+  /* "phd/gravity/gravity_tree.pyx":841
  *                             index = node.group.data.next_sibling
  * 
  *     cdef void _export_walk(self, Interaction interaction):             # <<<<<<<<<<<<<<
@@ -9175,7 +9179,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__export_walk(stru
   __Pyx_RefNannyFinishContext();
 }
 
-/* "phd/gravity/gravity_tree.pyx":916
+/* "phd/gravity/gravity_tree.pyx":914
  *             interaction.particle_finished()
  * 
  *     cdef void _parallel_walk(self, Interaction interaction, CarrayContainer particles):             # <<<<<<<<<<<<<<
@@ -9210,65 +9214,65 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__parallel_walk(st
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_parallel_walk", 0);
 
-  /* "phd/gravity/gravity_tree.pyx":934
+  /* "phd/gravity/gravity_tree.pyx":932
  *         cdef np.ndarray loc_done, glb_done
  * 
  *         loc_done = np.zeros(1, dtype=np.int32)             # <<<<<<<<<<<<<<
  *         glb_done = np.zeros(1, dtype=np.int32)
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 934, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 932, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_zeros); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 934, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_zeros); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 932, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 934, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 932, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 934, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 932, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_int32); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 934, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_int32); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 932, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_dtype, __pyx_t_4) < 0) __PYX_ERR(0, 934, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_dtype, __pyx_t_4) < 0) __PYX_ERR(0, 932, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple__6, __pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 934, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple__6, __pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 932, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (!(likely(((__pyx_t_4) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_4, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 934, __pyx_L1_error)
+  if (!(likely(((__pyx_t_4) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_4, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 932, __pyx_L1_error)
   __pyx_v_loc_done = ((PyArrayObject *)__pyx_t_4);
   __pyx_t_4 = 0;
 
-  /* "phd/gravity/gravity_tree.pyx":935
+  /* "phd/gravity/gravity_tree.pyx":933
  * 
  *         loc_done = np.zeros(1, dtype=np.int32)
  *         glb_done = np.zeros(1, dtype=np.int32)             # <<<<<<<<<<<<<<
  * 
  *         # clear out buffers
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 935, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 933, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_zeros); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 935, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_zeros); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 933, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 935, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 933, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 935, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 933, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_int32); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 935, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_int32); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 933, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_dtype, __pyx_t_3) < 0) __PYX_ERR(0, 935, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_dtype, __pyx_t_3) < 0) __PYX_ERR(0, 933, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_tuple__6, __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 935, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_tuple__6, __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 933, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (!(likely(((__pyx_t_3) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_3, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 935, __pyx_L1_error)
+  if (!(likely(((__pyx_t_3) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_3, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 933, __pyx_L1_error)
   __pyx_v_glb_done = ((PyArrayObject *)__pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "phd/gravity/gravity_tree.pyx":938
+  /* "phd/gravity/gravity_tree.pyx":936
  * 
  *         # clear out buffers
  *         self.buffer_size = 0             # <<<<<<<<<<<<<<
@@ -9277,7 +9281,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__parallel_walk(st
  */
   __pyx_v_self->buffer_size = 0;
 
-  /* "phd/gravity/gravity_tree.pyx":941
+  /* "phd/gravity/gravity_tree.pyx":939
  * 
  *         # setup local particles for walk
  *         while True:             # <<<<<<<<<<<<<<
@@ -9286,7 +9290,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__parallel_walk(st
  */
   while (1) {
 
-    /* "phd/gravity/gravity_tree.pyx":944
+    /* "phd/gravity/gravity_tree.pyx":942
  * 
  *             # reset buffers
  *             self.buffer_size = 0             # <<<<<<<<<<<<<<
@@ -9295,77 +9299,77 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__parallel_walk(st
  */
     __pyx_v_self->buffer_size = 0;
 
-    /* "phd/gravity/gravity_tree.pyx":945
+    /* "phd/gravity/gravity_tree.pyx":943
  *             # reset buffers
  *             self.buffer_size = 0
  *             self.indices.resize(self.buffer_size)             # <<<<<<<<<<<<<<
  *             self.buffer_import.resize(self.buffer_size)
  *             self.buffer_export.resize(self.buffer_size)
  */
-    __pyx_t_3 = ((struct __pyx_vtabstruct_3phd_5utils_6carray_LongArray *)__pyx_v_self->indices->__pyx_base.__pyx_vtab)->__pyx_base.resize(((struct __pyx_obj_3phd_5utils_6carray_BaseArray *)__pyx_v_self->indices), __pyx_v_self->buffer_size, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 945, __pyx_L1_error)
+    __pyx_t_3 = ((struct __pyx_vtabstruct_3phd_5utils_6carray_LongArray *)__pyx_v_self->indices->__pyx_base.__pyx_vtab)->__pyx_base.resize(((struct __pyx_obj_3phd_5utils_6carray_BaseArray *)__pyx_v_self->indices), __pyx_v_self->buffer_size, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 943, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-    /* "phd/gravity/gravity_tree.pyx":946
+    /* "phd/gravity/gravity_tree.pyx":944
  *             self.buffer_size = 0
  *             self.indices.resize(self.buffer_size)
  *             self.buffer_import.resize(self.buffer_size)             # <<<<<<<<<<<<<<
  *             self.buffer_export.resize(self.buffer_size)
  * 
  */
-    __pyx_t_3 = ((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_self->buffer_import->__pyx_vtab)->resize(__pyx_v_self->buffer_import, __pyx_v_self->buffer_size, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 946, __pyx_L1_error)
+    __pyx_t_3 = ((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_self->buffer_import->__pyx_vtab)->resize(__pyx_v_self->buffer_import, __pyx_v_self->buffer_size, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 944, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-    /* "phd/gravity/gravity_tree.pyx":947
+    /* "phd/gravity/gravity_tree.pyx":945
  *             self.indices.resize(self.buffer_size)
  *             self.buffer_import.resize(self.buffer_size)
  *             self.buffer_export.resize(self.buffer_size)             # <<<<<<<<<<<<<<
  * 
  *             # reset import/export counts
  */
-    __pyx_t_3 = ((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_self->buffer_export->__pyx_vtab)->resize(__pyx_v_self->buffer_export, __pyx_v_self->buffer_size, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 947, __pyx_L1_error)
+    __pyx_t_3 = ((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_self->buffer_export->__pyx_vtab)->resize(__pyx_v_self->buffer_export, __pyx_v_self->buffer_size, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 945, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-    /* "phd/gravity/gravity_tree.pyx":950
+    /* "phd/gravity/gravity_tree.pyx":948
  * 
  *             # reset import/export counts
  *             for i in range(phd._size):             # <<<<<<<<<<<<<<
  *                 self.send_cnts[i] = 0
  *                 self.recv_cnts[i] = 0
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_phd); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 950, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_phd); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 948, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_size); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 950, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_size); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 948, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_5 = __Pyx_PyInt_As_long(__pyx_t_4); if (unlikely((__pyx_t_5 == (long)-1) && PyErr_Occurred())) __PYX_ERR(0, 950, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyInt_As_long(__pyx_t_4); if (unlikely((__pyx_t_5 == (long)-1) && PyErr_Occurred())) __PYX_ERR(0, 948, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_t_6 = __pyx_t_5;
     for (__pyx_t_7 = 0; __pyx_t_7 < __pyx_t_6; __pyx_t_7+=1) {
       __pyx_v_i = __pyx_t_7;
 
-      /* "phd/gravity/gravity_tree.pyx":951
+      /* "phd/gravity/gravity_tree.pyx":949
  *             # reset import/export counts
  *             for i in range(phd._size):
  *                 self.send_cnts[i] = 0             # <<<<<<<<<<<<<<
  *                 self.recv_cnts[i] = 0
  * 
  */
-      if (unlikely(__Pyx_SetItemInt(((PyObject *)__pyx_v_self->send_cnts), __pyx_v_i, __pyx_int_0, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 951, __pyx_L1_error)
+      if (unlikely(__Pyx_SetItemInt(((PyObject *)__pyx_v_self->send_cnts), __pyx_v_i, __pyx_int_0, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 949, __pyx_L1_error)
 
-      /* "phd/gravity/gravity_tree.pyx":952
+      /* "phd/gravity/gravity_tree.pyx":950
  *             for i in range(phd._size):
  *                 self.send_cnts[i] = 0
  *                 self.recv_cnts[i] = 0             # <<<<<<<<<<<<<<
  * 
  *             # perform walk while flagging particles for export
  */
-      if (unlikely(__Pyx_SetItemInt(((PyObject *)__pyx_v_self->recv_cnts), __pyx_v_i, __pyx_int_0, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 952, __pyx_L1_error)
+      if (unlikely(__Pyx_SetItemInt(((PyObject *)__pyx_v_self->recv_cnts), __pyx_v_i, __pyx_int_0, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 950, __pyx_L1_error)
     }
 
-    /* "phd/gravity/gravity_tree.pyx":956
+    /* "phd/gravity/gravity_tree.pyx":954
  *             # perform walk while flagging particles for export
  *             # once the buffer is full the walk will hault
  *             self._export_walk(self.export_interaction)             # <<<<<<<<<<<<<<
@@ -9377,7 +9381,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__parallel_walk(st
     ((struct __pyx_vtabstruct_3phd_7gravity_12gravity_tree_GravityTree *)__pyx_v_self->__pyx_vtab)->_export_walk(__pyx_v_self, ((struct __pyx_obj_3phd_7gravity_11interaction_Interaction *)__pyx_t_4));
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-    /* "phd/gravity/gravity_tree.pyx":957
+    /* "phd/gravity/gravity_tree.pyx":955
  *             # once the buffer is full the walk will hault
  *             self._export_walk(self.export_interaction)
  *             if self.buffer_size:             # <<<<<<<<<<<<<<
@@ -9387,7 +9391,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__parallel_walk(st
     __pyx_t_8 = (__pyx_v_self->buffer_size != 0);
     if (__pyx_t_8) {
 
-      /* "phd/gravity/gravity_tree.pyx":960
+      /* "phd/gravity/gravity_tree.pyx":958
  * 
  *                 # put particles in process order
  *                 qsort(<void*> self.buffer_ids, <size_t> self.buffer_size,             # <<<<<<<<<<<<<<
@@ -9396,18 +9400,18 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__parallel_walk(st
  */
       qsort(((void *)__pyx_v_self->buffer_ids), ((size_t)__pyx_v_self->buffer_size), (sizeof(struct __pyx_t_3phd_7gravity_12gravity_tree_PairId)), __pyx_f_3phd_7gravity_12gravity_tree_proc_compare);
 
-      /* "phd/gravity/gravity_tree.pyx":965
+      /* "phd/gravity/gravity_tree.pyx":963
  *                 # copy particle indices in process order and count
  *                 # the number number particles export per processor
  *                 self.indices.resize(self.buffer_size)             # <<<<<<<<<<<<<<
  *                 for i in range(self.buffer_size):
  *                     self.indices.data[i] = self.buffer_ids[i].index
  */
-      __pyx_t_4 = ((struct __pyx_vtabstruct_3phd_5utils_6carray_LongArray *)__pyx_v_self->indices->__pyx_base.__pyx_vtab)->__pyx_base.resize(((struct __pyx_obj_3phd_5utils_6carray_BaseArray *)__pyx_v_self->indices), __pyx_v_self->buffer_size, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 965, __pyx_L1_error)
+      __pyx_t_4 = ((struct __pyx_vtabstruct_3phd_5utils_6carray_LongArray *)__pyx_v_self->indices->__pyx_base.__pyx_vtab)->__pyx_base.resize(((struct __pyx_obj_3phd_5utils_6carray_BaseArray *)__pyx_v_self->indices), __pyx_v_self->buffer_size, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 963, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-      /* "phd/gravity/gravity_tree.pyx":966
+      /* "phd/gravity/gravity_tree.pyx":964
  *                 # the number number particles export per processor
  *                 self.indices.resize(self.buffer_size)
  *                 for i in range(self.buffer_size):             # <<<<<<<<<<<<<<
@@ -9419,7 +9423,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__parallel_walk(st
       for (__pyx_t_10 = 0; __pyx_t_10 < __pyx_t_9; __pyx_t_10+=1) {
         __pyx_v_i = __pyx_t_10;
 
-        /* "phd/gravity/gravity_tree.pyx":967
+        /* "phd/gravity/gravity_tree.pyx":965
  *                 self.indices.resize(self.buffer_size)
  *                 for i in range(self.buffer_size):
  *                     self.indices.data[i] = self.buffer_ids[i].index             # <<<<<<<<<<<<<<
@@ -9429,7 +9433,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__parallel_walk(st
         __pyx_t_11 = (__pyx_v_self->buffer_ids[__pyx_v_i]).index;
         (__pyx_v_self->indices->data[__pyx_v_i]) = __pyx_t_11;
 
-        /* "phd/gravity/gravity_tree.pyx":968
+        /* "phd/gravity/gravity_tree.pyx":966
  *                 for i in range(self.buffer_size):
  *                     self.indices.data[i] = self.buffer_ids[i].index
  *                     self.send_cnts[self.buffer_ids[i].proc] += 1             # <<<<<<<<<<<<<<
@@ -9439,28 +9443,28 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__parallel_walk(st
         __Pyx_INCREF(((PyObject *)__pyx_v_self->send_cnts));
         __pyx_t_12 = __pyx_v_self->send_cnts;
         __pyx_t_11 = (__pyx_v_self->buffer_ids[__pyx_v_i]).proc;
-        __pyx_t_4 = __Pyx_GetItemInt(((PyObject *)__pyx_t_12), __pyx_t_11, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 968, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_GetItemInt(((PyObject *)__pyx_t_12), __pyx_t_11, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 966, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
-        __pyx_t_3 = __Pyx_PyInt_AddObjC(__pyx_t_4, __pyx_int_1, 1, 1, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 968, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyInt_AddObjC(__pyx_t_4, __pyx_int_1, 1, 1, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 966, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-        if (unlikely(__Pyx_SetItemInt(((PyObject *)__pyx_t_12), __pyx_t_11, __pyx_t_3, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 968, __pyx_L1_error)
+        if (unlikely(__Pyx_SetItemInt(((PyObject *)__pyx_t_12), __pyx_t_11, __pyx_t_3, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 966, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         __Pyx_DECREF(((PyObject *)__pyx_t_12)); __pyx_t_12 = 0;
       }
 
-      /* "phd/gravity/gravity_tree.pyx":971
+      /* "phd/gravity/gravity_tree.pyx":969
  * 
  *                 # copy flagged particles into buffer
  *                 self.buffer_export.resize(self.buffer_size)             # <<<<<<<<<<<<<<
  *                 self.buffer_export.copy(particles, self.indices,
  *                         particles.carray_named_groups["gravity-walk-export"])
  */
-      __pyx_t_3 = ((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_self->buffer_export->__pyx_vtab)->resize(__pyx_v_self->buffer_export, __pyx_v_self->buffer_size, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 971, __pyx_L1_error)
+      __pyx_t_3 = ((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_self->buffer_export->__pyx_vtab)->resize(__pyx_v_self->buffer_export, __pyx_v_self->buffer_size, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 969, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-      /* "phd/gravity/gravity_tree.pyx":972
+      /* "phd/gravity/gravity_tree.pyx":970
  *                 # copy flagged particles into buffer
  *                 self.buffer_export.resize(self.buffer_size)
  *                 self.buffer_export.copy(particles, self.indices,             # <<<<<<<<<<<<<<
@@ -9470,7 +9474,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__parallel_walk(st
       __pyx_t_3 = ((PyObject *)__pyx_v_self->indices);
       __Pyx_INCREF(__pyx_t_3);
 
-      /* "phd/gravity/gravity_tree.pyx":973
+      /* "phd/gravity/gravity_tree.pyx":971
  *                 self.buffer_export.resize(self.buffer_size)
  *                 self.buffer_export.copy(particles, self.indices,
  *                         particles.carray_named_groups["gravity-walk-export"])             # <<<<<<<<<<<<<<
@@ -9479,26 +9483,26 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__parallel_walk(st
  */
       if (unlikely(__pyx_v_particles->carray_named_groups == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-        __PYX_ERR(0, 973, __pyx_L1_error)
+        __PYX_ERR(0, 971, __pyx_L1_error)
       }
-      __pyx_t_4 = __Pyx_PyDict_GetItem(__pyx_v_particles->carray_named_groups, __pyx_kp_s_gravity_walk_export); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 973, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyDict_GetItem(__pyx_v_particles->carray_named_groups, __pyx_kp_s_gravity_walk_export); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 971, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
-      if (!(likely(PyList_CheckExact(__pyx_t_4))||((__pyx_t_4) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_4)->tp_name), 0))) __PYX_ERR(0, 973, __pyx_L1_error)
+      if (!(likely(PyList_CheckExact(__pyx_t_4))||((__pyx_t_4) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_4)->tp_name), 0))) __PYX_ERR(0, 971, __pyx_L1_error)
 
-      /* "phd/gravity/gravity_tree.pyx":972
+      /* "phd/gravity/gravity_tree.pyx":970
  *                 # copy flagged particles into buffer
  *                 self.buffer_export.resize(self.buffer_size)
  *                 self.buffer_export.copy(particles, self.indices,             # <<<<<<<<<<<<<<
  *                         particles.carray_named_groups["gravity-walk-export"])
  * 
  */
-      __pyx_t_1 = ((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_self->buffer_export->__pyx_vtab)->copy(__pyx_v_self->buffer_export, __pyx_v_particles, ((struct __pyx_obj_3phd_5utils_6carray_LongArray *)__pyx_t_3), ((PyObject*)__pyx_t_4), 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 972, __pyx_L1_error)
+      __pyx_t_1 = ((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_self->buffer_export->__pyx_vtab)->copy(__pyx_v_self->buffer_export, __pyx_v_particles, ((struct __pyx_obj_3phd_5utils_6carray_LongArray *)__pyx_t_3), ((PyObject*)__pyx_t_4), 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 970, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-      /* "phd/gravity/gravity_tree.pyx":957
+      /* "phd/gravity/gravity_tree.pyx":955
  *             # once the buffer is full the walk will hault
  *             self._export_walk(self.export_interaction)
  *             if self.buffer_size:             # <<<<<<<<<<<<<<
@@ -9507,27 +9511,27 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__parallel_walk(st
  */
     }
 
-    /* "phd/gravity/gravity_tree.pyx":976
+    /* "phd/gravity/gravity_tree.pyx":974
  * 
  *             # send number of exports to all processors
  *             phd._comm.Alltoall([self.send_cnts, MPI.INT],             # <<<<<<<<<<<<<<
  *                     [self.recv_cnts, MPI.INT])
  * 
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_phd); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 976, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_phd); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 974, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_comm); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 976, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_comm); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 974, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_Alltoall); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 976, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_Alltoall); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 974, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_MPI); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 976, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_MPI); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 974, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_INT); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 976, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_INT); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 974, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = PyList_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 976, __pyx_L1_error)
+    __pyx_t_3 = PyList_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 974, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_INCREF(((PyObject *)__pyx_v_self->send_cnts));
     __Pyx_GIVEREF(((PyObject *)__pyx_v_self->send_cnts));
@@ -9536,19 +9540,19 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__parallel_walk(st
     PyList_SET_ITEM(__pyx_t_3, 1, __pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "phd/gravity/gravity_tree.pyx":977
+    /* "phd/gravity/gravity_tree.pyx":975
  *             # send number of exports to all processors
  *             phd._comm.Alltoall([self.send_cnts, MPI.INT],
  *                     [self.recv_cnts, MPI.INT])             # <<<<<<<<<<<<<<
  * 
  *             # how many incoming particles
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_MPI); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 977, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_MPI); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 975, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_13 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_INT); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 977, __pyx_L1_error)
+    __pyx_t_13 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_INT); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 975, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_13);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = PyList_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 977, __pyx_L1_error)
+    __pyx_t_2 = PyList_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 975, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_INCREF(((PyObject *)__pyx_v_self->recv_cnts));
     __Pyx_GIVEREF(((PyObject *)__pyx_v_self->recv_cnts));
@@ -9571,7 +9575,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__parallel_walk(st
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_4)) {
       PyObject *__pyx_temp[3] = {__pyx_t_13, __pyx_t_3, __pyx_t_2};
-      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 976, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 974, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_13); __pyx_t_13 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -9581,7 +9585,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__parallel_walk(st
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
       PyObject *__pyx_temp[3] = {__pyx_t_13, __pyx_t_3, __pyx_t_2};
-      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 976, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 974, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_13); __pyx_t_13 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -9589,7 +9593,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__parallel_walk(st
     } else
     #endif
     {
-      __pyx_t_14 = PyTuple_New(2+__pyx_t_7); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 976, __pyx_L1_error)
+      __pyx_t_14 = PyTuple_New(2+__pyx_t_7); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 974, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_14);
       if (__pyx_t_13) {
         __Pyx_GIVEREF(__pyx_t_13); PyTuple_SET_ITEM(__pyx_t_14, 0, __pyx_t_13); __pyx_t_13 = NULL;
@@ -9600,14 +9604,14 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__parallel_walk(st
       PyTuple_SET_ITEM(__pyx_t_14, 1+__pyx_t_7, __pyx_t_2);
       __pyx_t_3 = 0;
       __pyx_t_2 = 0;
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_14, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 976, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_14, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 974, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
     }
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "phd/gravity/gravity_tree.pyx":980
+    /* "phd/gravity/gravity_tree.pyx":978
  * 
  *             # how many incoming particles
  *             num_import = 0             # <<<<<<<<<<<<<<
@@ -9616,73 +9620,73 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__parallel_walk(st
  */
     __pyx_v_num_import = 0;
 
-    /* "phd/gravity/gravity_tree.pyx":981
+    /* "phd/gravity/gravity_tree.pyx":979
  *             # how many incoming particles
  *             num_import = 0
  *             for i in range(phd._size):             # <<<<<<<<<<<<<<
  *                 num_import += self.recv_cnts[i]
  * 
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_phd); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 981, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_phd); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 979, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_size); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 981, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_size); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 979, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_5 = __Pyx_PyInt_As_long(__pyx_t_4); if (unlikely((__pyx_t_5 == (long)-1) && PyErr_Occurred())) __PYX_ERR(0, 981, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyInt_As_long(__pyx_t_4); if (unlikely((__pyx_t_5 == (long)-1) && PyErr_Occurred())) __PYX_ERR(0, 979, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_t_6 = __pyx_t_5;
     for (__pyx_t_7 = 0; __pyx_t_7 < __pyx_t_6; __pyx_t_7+=1) {
       __pyx_v_i = __pyx_t_7;
 
-      /* "phd/gravity/gravity_tree.pyx":982
+      /* "phd/gravity/gravity_tree.pyx":980
  *             num_import = 0
  *             for i in range(phd._size):
  *                 num_import += self.recv_cnts[i]             # <<<<<<<<<<<<<<
  * 
  *             # create displacement arrays
  */
-      __pyx_t_4 = __Pyx_PyInt_From_long(__pyx_v_num_import); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 982, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyInt_From_long(__pyx_v_num_import); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 980, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_1 = __Pyx_GetItemInt(((PyObject *)__pyx_v_self->recv_cnts), __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 982, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_GetItemInt(((PyObject *)__pyx_v_self->recv_cnts), __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 980, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_14 = PyNumber_InPlaceAdd(__pyx_t_4, __pyx_t_1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 982, __pyx_L1_error)
+      __pyx_t_14 = PyNumber_InPlaceAdd(__pyx_t_4, __pyx_t_1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 980, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_14);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __pyx_t_15 = __Pyx_PyInt_As_long(__pyx_t_14); if (unlikely((__pyx_t_15 == (long)-1) && PyErr_Occurred())) __PYX_ERR(0, 982, __pyx_L1_error)
+      __pyx_t_15 = __Pyx_PyInt_As_long(__pyx_t_14); if (unlikely((__pyx_t_15 == (long)-1) && PyErr_Occurred())) __PYX_ERR(0, 980, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
       __pyx_v_num_import = __pyx_t_15;
     }
 
-    /* "phd/gravity/gravity_tree.pyx":985
+    /* "phd/gravity/gravity_tree.pyx":983
  * 
  *             # create displacement arrays
  *             self.send_disp[0] = self.recv_disp[0] = 0             # <<<<<<<<<<<<<<
  *             for i in range(1, phd._size):
  *                 self.send_disp[i] = self.send_cnts[i-1] + self.send_disp[i-1]
  */
-    if (unlikely(__Pyx_SetItemInt(((PyObject *)__pyx_v_self->send_disp), 0, __pyx_int_0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1) < 0)) __PYX_ERR(0, 985, __pyx_L1_error)
-    if (unlikely(__Pyx_SetItemInt(((PyObject *)__pyx_v_self->recv_disp), 0, __pyx_int_0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1) < 0)) __PYX_ERR(0, 985, __pyx_L1_error)
+    if (unlikely(__Pyx_SetItemInt(((PyObject *)__pyx_v_self->send_disp), 0, __pyx_int_0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1) < 0)) __PYX_ERR(0, 983, __pyx_L1_error)
+    if (unlikely(__Pyx_SetItemInt(((PyObject *)__pyx_v_self->recv_disp), 0, __pyx_int_0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1) < 0)) __PYX_ERR(0, 983, __pyx_L1_error)
 
-    /* "phd/gravity/gravity_tree.pyx":986
+    /* "phd/gravity/gravity_tree.pyx":984
  *             # create displacement arrays
  *             self.send_disp[0] = self.recv_disp[0] = 0
  *             for i in range(1, phd._size):             # <<<<<<<<<<<<<<
  *                 self.send_disp[i] = self.send_cnts[i-1] + self.send_disp[i-1]
  *                 self.recv_disp[i] = self.recv_cnts[i-1] + self.recv_disp[i-1]
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_14, __pyx_n_s_phd); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 986, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_14, __pyx_n_s_phd); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 984, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_14);
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_14, __pyx_n_s_size); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 986, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_14, __pyx_n_s_size); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 984, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-    __pyx_t_5 = __Pyx_PyInt_As_long(__pyx_t_1); if (unlikely((__pyx_t_5 == (long)-1) && PyErr_Occurred())) __PYX_ERR(0, 986, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyInt_As_long(__pyx_t_1); if (unlikely((__pyx_t_5 == (long)-1) && PyErr_Occurred())) __PYX_ERR(0, 984, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __pyx_t_6 = __pyx_t_5;
     for (__pyx_t_7 = 1; __pyx_t_7 < __pyx_t_6; __pyx_t_7+=1) {
       __pyx_v_i = __pyx_t_7;
 
-      /* "phd/gravity/gravity_tree.pyx":987
+      /* "phd/gravity/gravity_tree.pyx":985
  *             self.send_disp[0] = self.recv_disp[0] = 0
  *             for i in range(1, phd._size):
  *                 self.send_disp[i] = self.send_cnts[i-1] + self.send_disp[i-1]             # <<<<<<<<<<<<<<
@@ -9690,19 +9694,19 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__parallel_walk(st
  * 
  */
       __pyx_t_15 = (__pyx_v_i - 1);
-      __pyx_t_1 = __Pyx_GetItemInt(((PyObject *)__pyx_v_self->send_cnts), __pyx_t_15, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 987, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_GetItemInt(((PyObject *)__pyx_v_self->send_cnts), __pyx_t_15, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 985, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __pyx_t_15 = (__pyx_v_i - 1);
-      __pyx_t_14 = __Pyx_GetItemInt(((PyObject *)__pyx_v_self->send_disp), __pyx_t_15, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 987, __pyx_L1_error)
+      __pyx_t_14 = __Pyx_GetItemInt(((PyObject *)__pyx_v_self->send_disp), __pyx_t_15, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 985, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_14);
-      __pyx_t_4 = PyNumber_Add(__pyx_t_1, __pyx_t_14); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 987, __pyx_L1_error)
+      __pyx_t_4 = PyNumber_Add(__pyx_t_1, __pyx_t_14); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 985, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-      if (unlikely(__Pyx_SetItemInt(((PyObject *)__pyx_v_self->send_disp), __pyx_v_i, __pyx_t_4, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 987, __pyx_L1_error)
+      if (unlikely(__Pyx_SetItemInt(((PyObject *)__pyx_v_self->send_disp), __pyx_v_i, __pyx_t_4, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 985, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-      /* "phd/gravity/gravity_tree.pyx":988
+      /* "phd/gravity/gravity_tree.pyx":986
  *             for i in range(1, phd._size):
  *                 self.send_disp[i] = self.send_cnts[i-1] + self.send_disp[i-1]
  *                 self.recv_disp[i] = self.recv_cnts[i-1] + self.recv_disp[i-1]             # <<<<<<<<<<<<<<
@@ -9710,54 +9714,54 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__parallel_walk(st
  *             # resize to fit number of particle incoming
  */
       __pyx_t_15 = (__pyx_v_i - 1);
-      __pyx_t_4 = __Pyx_GetItemInt(((PyObject *)__pyx_v_self->recv_cnts), __pyx_t_15, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 988, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_GetItemInt(((PyObject *)__pyx_v_self->recv_cnts), __pyx_t_15, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 986, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __pyx_t_15 = (__pyx_v_i - 1);
-      __pyx_t_14 = __Pyx_GetItemInt(((PyObject *)__pyx_v_self->recv_disp), __pyx_t_15, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 988, __pyx_L1_error)
+      __pyx_t_14 = __Pyx_GetItemInt(((PyObject *)__pyx_v_self->recv_disp), __pyx_t_15, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 986, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_14);
-      __pyx_t_1 = PyNumber_Add(__pyx_t_4, __pyx_t_14); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 988, __pyx_L1_error)
+      __pyx_t_1 = PyNumber_Add(__pyx_t_4, __pyx_t_14); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 986, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-      if (unlikely(__Pyx_SetItemInt(((PyObject *)__pyx_v_self->recv_disp), __pyx_v_i, __pyx_t_1, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 988, __pyx_L1_error)
+      if (unlikely(__Pyx_SetItemInt(((PyObject *)__pyx_v_self->recv_disp), __pyx_v_i, __pyx_t_1, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 986, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     }
 
-    /* "phd/gravity/gravity_tree.pyx":991
+    /* "phd/gravity/gravity_tree.pyx":989
  * 
  *             # resize to fit number of particle incoming
  *             self.buffer_import.resize(num_import)             # <<<<<<<<<<<<<<
  * 
  *             # send our particles / recieve particles
  */
-    __pyx_t_1 = ((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_self->buffer_import->__pyx_vtab)->resize(__pyx_v_self->buffer_import, __pyx_v_num_import, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 991, __pyx_L1_error)
+    __pyx_t_1 = ((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_self->buffer_import->__pyx_vtab)->resize(__pyx_v_self->buffer_import, __pyx_v_num_import, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 989, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "phd/gravity/gravity_tree.pyx":994
+    /* "phd/gravity/gravity_tree.pyx":992
  * 
  *             # send our particles / recieve particles
  *             exchange_particles(self.buffer_import, self.buffer_export,             # <<<<<<<<<<<<<<
  *                     self.send_cnts, self.recv_cnts,
  *                     0, phd._comm,
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_14, __pyx_n_s_exchange_particles); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 994, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_14, __pyx_n_s_exchange_particles); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 992, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_14);
 
-    /* "phd/gravity/gravity_tree.pyx":996
+    /* "phd/gravity/gravity_tree.pyx":994
  *             exchange_particles(self.buffer_import, self.buffer_export,
  *                     self.send_cnts, self.recv_cnts,
  *                     0, phd._comm,             # <<<<<<<<<<<<<<
  *                     particles.carray_named_groups["gravity-walk-export"],
  *                     self.send_disp, self.recv_disp)
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_phd); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 996, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_phd); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 994, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_comm); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 996, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_comm); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 994, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-    /* "phd/gravity/gravity_tree.pyx":997
+    /* "phd/gravity/gravity_tree.pyx":995
  *                     self.send_cnts, self.recv_cnts,
  *                     0, phd._comm,
  *                     particles.carray_named_groups["gravity-walk-export"],             # <<<<<<<<<<<<<<
@@ -9766,12 +9770,12 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__parallel_walk(st
  */
     if (unlikely(__pyx_v_particles->carray_named_groups == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 997, __pyx_L1_error)
+      __PYX_ERR(0, 995, __pyx_L1_error)
     }
-    __pyx_t_4 = __Pyx_PyDict_GetItem(__pyx_v_particles->carray_named_groups, __pyx_kp_s_gravity_walk_export); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 997, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyDict_GetItem(__pyx_v_particles->carray_named_groups, __pyx_kp_s_gravity_walk_export); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 995, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
 
-    /* "phd/gravity/gravity_tree.pyx":998
+    /* "phd/gravity/gravity_tree.pyx":996
  *                     0, phd._comm,
  *                     particles.carray_named_groups["gravity-walk-export"],
  *                     self.send_disp, self.recv_disp)             # <<<<<<<<<<<<<<
@@ -9793,7 +9797,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__parallel_walk(st
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_14)) {
       PyObject *__pyx_temp[10] = {__pyx_t_3, ((PyObject *)__pyx_v_self->buffer_import), ((PyObject *)__pyx_v_self->buffer_export), ((PyObject *)__pyx_v_self->send_cnts), ((PyObject *)__pyx_v_self->recv_cnts), __pyx_int_0, __pyx_t_2, __pyx_t_4, ((PyObject *)__pyx_v_self->send_disp), ((PyObject *)__pyx_v_self->recv_disp)};
-      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_14, __pyx_temp+1-__pyx_t_7, 9+__pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 994, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_14, __pyx_temp+1-__pyx_t_7, 9+__pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 992, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -9803,7 +9807,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__parallel_walk(st
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_14)) {
       PyObject *__pyx_temp[10] = {__pyx_t_3, ((PyObject *)__pyx_v_self->buffer_import), ((PyObject *)__pyx_v_self->buffer_export), ((PyObject *)__pyx_v_self->send_cnts), ((PyObject *)__pyx_v_self->recv_cnts), __pyx_int_0, __pyx_t_2, __pyx_t_4, ((PyObject *)__pyx_v_self->send_disp), ((PyObject *)__pyx_v_self->recv_disp)};
-      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_14, __pyx_temp+1-__pyx_t_7, 9+__pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 994, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_14, __pyx_temp+1-__pyx_t_7, 9+__pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 992, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -9811,7 +9815,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__parallel_walk(st
     } else
     #endif
     {
-      __pyx_t_13 = PyTuple_New(9+__pyx_t_7); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 994, __pyx_L1_error)
+      __pyx_t_13 = PyTuple_New(9+__pyx_t_7); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 992, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_13);
       if (__pyx_t_3) {
         __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_13, 0, __pyx_t_3); __pyx_t_3 = NULL;
@@ -9843,14 +9847,14 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__parallel_walk(st
       PyTuple_SET_ITEM(__pyx_t_13, 8+__pyx_t_7, ((PyObject *)__pyx_v_self->recv_disp));
       __pyx_t_2 = 0;
       __pyx_t_4 = 0;
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_14, __pyx_t_13, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 994, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_14, __pyx_t_13, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 992, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
     }
     __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "phd/gravity/gravity_tree.pyx":1001
+    /* "phd/gravity/gravity_tree.pyx":999
  * 
  *             # walk imported particles
  *             self.import_interaction.initialize_particles(self.buffer_import, False)             # <<<<<<<<<<<<<<
@@ -9864,7 +9868,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__parallel_walk(st
     ((struct __pyx_vtabstruct_3phd_7gravity_11interaction_Interaction *)__pyx_v_self->import_interaction->__pyx_vtab)->initialize_particles(__pyx_v_self->import_interaction, ((struct __pyx_obj_3phd_10containers_10containers_CarrayContainer *)__pyx_t_1), &__pyx_t_16); 
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "phd/gravity/gravity_tree.pyx":1002
+    /* "phd/gravity/gravity_tree.pyx":1000
  *             # walk imported particles
  *             self.import_interaction.initialize_particles(self.buffer_import, False)
  *             self._import_walk(self.import_interaction)             # <<<<<<<<<<<<<<
@@ -9876,30 +9880,30 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__parallel_walk(st
     ((struct __pyx_vtabstruct_3phd_7gravity_12gravity_tree_GravityTree *)__pyx_v_self->__pyx_vtab)->_import_walk(__pyx_v_self, ((struct __pyx_obj_3phd_7gravity_11interaction_Interaction *)__pyx_t_1));
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "phd/gravity/gravity_tree.pyx":1005
+    /* "phd/gravity/gravity_tree.pyx":1003
  * 
  *             # recieve back our paritcles / send back particles
  *             exchange_particles(self.buffer_export, self.buffer_import,             # <<<<<<<<<<<<<<
  *                     self.recv_cnts, self.send_cnts,
  *                     0, phd._comm,
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_14, __pyx_n_s_exchange_particles); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 1005, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_14, __pyx_n_s_exchange_particles); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 1003, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_14);
 
-    /* "phd/gravity/gravity_tree.pyx":1007
+    /* "phd/gravity/gravity_tree.pyx":1005
  *             exchange_particles(self.buffer_export, self.buffer_import,
  *                     self.recv_cnts, self.send_cnts,
  *                     0, phd._comm,             # <<<<<<<<<<<<<<
  *                     particles.carray_named_groups["gravity-walk-import"],
  *                     self.recv_disp, self.send_disp)
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_13, __pyx_n_s_phd); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 1007, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_13, __pyx_n_s_phd); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 1005, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_13);
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_13, __pyx_n_s_comm); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1007, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_13, __pyx_n_s_comm); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1005, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
 
-    /* "phd/gravity/gravity_tree.pyx":1008
+    /* "phd/gravity/gravity_tree.pyx":1006
  *                     self.recv_cnts, self.send_cnts,
  *                     0, phd._comm,
  *                     particles.carray_named_groups["gravity-walk-import"],             # <<<<<<<<<<<<<<
@@ -9908,12 +9912,12 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__parallel_walk(st
  */
     if (unlikely(__pyx_v_particles->carray_named_groups == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 1008, __pyx_L1_error)
+      __PYX_ERR(0, 1006, __pyx_L1_error)
     }
-    __pyx_t_13 = __Pyx_PyDict_GetItem(__pyx_v_particles->carray_named_groups, __pyx_kp_s_gravity_walk_import); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 1008, __pyx_L1_error)
+    __pyx_t_13 = __Pyx_PyDict_GetItem(__pyx_v_particles->carray_named_groups, __pyx_kp_s_gravity_walk_import); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 1006, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_13);
 
-    /* "phd/gravity/gravity_tree.pyx":1009
+    /* "phd/gravity/gravity_tree.pyx":1007
  *                     0, phd._comm,
  *                     particles.carray_named_groups["gravity-walk-import"],
  *                     self.recv_disp, self.send_disp)             # <<<<<<<<<<<<<<
@@ -9935,7 +9939,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__parallel_walk(st
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_14)) {
       PyObject *__pyx_temp[10] = {__pyx_t_2, ((PyObject *)__pyx_v_self->buffer_export), ((PyObject *)__pyx_v_self->buffer_import), ((PyObject *)__pyx_v_self->recv_cnts), ((PyObject *)__pyx_v_self->send_cnts), __pyx_int_0, __pyx_t_4, __pyx_t_13, ((PyObject *)__pyx_v_self->recv_disp), ((PyObject *)__pyx_v_self->send_disp)};
-      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_14, __pyx_temp+1-__pyx_t_7, 9+__pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1005, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_14, __pyx_temp+1-__pyx_t_7, 9+__pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1003, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -9945,7 +9949,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__parallel_walk(st
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_14)) {
       PyObject *__pyx_temp[10] = {__pyx_t_2, ((PyObject *)__pyx_v_self->buffer_export), ((PyObject *)__pyx_v_self->buffer_import), ((PyObject *)__pyx_v_self->recv_cnts), ((PyObject *)__pyx_v_self->send_cnts), __pyx_int_0, __pyx_t_4, __pyx_t_13, ((PyObject *)__pyx_v_self->recv_disp), ((PyObject *)__pyx_v_self->send_disp)};
-      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_14, __pyx_temp+1-__pyx_t_7, 9+__pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1005, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_14, __pyx_temp+1-__pyx_t_7, 9+__pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1003, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -9953,7 +9957,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__parallel_walk(st
     } else
     #endif
     {
-      __pyx_t_3 = PyTuple_New(9+__pyx_t_7); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1005, __pyx_L1_error)
+      __pyx_t_3 = PyTuple_New(9+__pyx_t_7); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1003, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       if (__pyx_t_2) {
         __Pyx_GIVEREF(__pyx_t_2); PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_2); __pyx_t_2 = NULL;
@@ -9985,14 +9989,14 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__parallel_walk(st
       PyTuple_SET_ITEM(__pyx_t_3, 8+__pyx_t_7, ((PyObject *)__pyx_v_self->send_disp));
       __pyx_t_4 = 0;
       __pyx_t_13 = 0;
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_14, __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1005, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_14, __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1003, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     }
     __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "phd/gravity/gravity_tree.pyx":1012
+    /* "phd/gravity/gravity_tree.pyx":1010
  * 
  *             # copy back our data
  *             particles.add(self.buffer_export, self.indices,             # <<<<<<<<<<<<<<
@@ -10004,7 +10008,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__parallel_walk(st
     __pyx_t_14 = ((PyObject *)__pyx_v_self->indices);
     __Pyx_INCREF(__pyx_t_14);
 
-    /* "phd/gravity/gravity_tree.pyx":1013
+    /* "phd/gravity/gravity_tree.pyx":1011
  *             # copy back our data
  *             particles.add(self.buffer_export, self.indices,
  *                     particles.carray_named_groups["gravity-walk-import"])             # <<<<<<<<<<<<<<
@@ -10013,68 +10017,68 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__parallel_walk(st
  */
     if (unlikely(__pyx_v_particles->carray_named_groups == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 1013, __pyx_L1_error)
+      __PYX_ERR(0, 1011, __pyx_L1_error)
     }
-    __pyx_t_3 = __Pyx_PyDict_GetItem(__pyx_v_particles->carray_named_groups, __pyx_kp_s_gravity_walk_import); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1013, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyDict_GetItem(__pyx_v_particles->carray_named_groups, __pyx_kp_s_gravity_walk_import); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1011, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    if (!(likely(PyList_CheckExact(__pyx_t_3))||((__pyx_t_3) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_3)->tp_name), 0))) __PYX_ERR(0, 1013, __pyx_L1_error)
+    if (!(likely(PyList_CheckExact(__pyx_t_3))||((__pyx_t_3) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_3)->tp_name), 0))) __PYX_ERR(0, 1011, __pyx_L1_error)
 
-    /* "phd/gravity/gravity_tree.pyx":1012
+    /* "phd/gravity/gravity_tree.pyx":1010
  * 
  *             # copy back our data
  *             particles.add(self.buffer_export, self.indices,             # <<<<<<<<<<<<<<
  *                     particles.carray_named_groups["gravity-walk-import"])
  * 
  */
-    __pyx_t_13 = ((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_particles->__pyx_vtab)->add(__pyx_v_particles, ((struct __pyx_obj_3phd_10containers_10containers_CarrayContainer *)__pyx_t_1), ((struct __pyx_obj_3phd_5utils_6carray_LongArray *)__pyx_t_14), ((PyObject*)__pyx_t_3), 0); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 1012, __pyx_L1_error)
+    __pyx_t_13 = ((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_particles->__pyx_vtab)->add(__pyx_v_particles, ((struct __pyx_obj_3phd_10containers_10containers_CarrayContainer *)__pyx_t_1), ((struct __pyx_obj_3phd_5utils_6carray_LongArray *)__pyx_t_14), ((PyObject*)__pyx_t_3), 0); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 1010, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_13);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
 
-    /* "phd/gravity/gravity_tree.pyx":1016
+    /* "phd/gravity/gravity_tree.pyx":1014
  * 
  *             # let all processors know if walk is complete
  *             glb_done[0] = 0             # <<<<<<<<<<<<<<
  *             loc_done[0] = self.export_interaction.done_processing()
  *             phd._comm.Allreduce([loc_done, MPI.INT], [glb_done, MPI.INT], op=MPI.SUM)
  */
-    if (unlikely(__Pyx_SetItemInt(((PyObject *)__pyx_v_glb_done), 0, __pyx_int_0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1) < 0)) __PYX_ERR(0, 1016, __pyx_L1_error)
+    if (unlikely(__Pyx_SetItemInt(((PyObject *)__pyx_v_glb_done), 0, __pyx_int_0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1) < 0)) __PYX_ERR(0, 1014, __pyx_L1_error)
 
-    /* "phd/gravity/gravity_tree.pyx":1017
+    /* "phd/gravity/gravity_tree.pyx":1015
  *             # let all processors know if walk is complete
  *             glb_done[0] = 0
  *             loc_done[0] = self.export_interaction.done_processing()             # <<<<<<<<<<<<<<
  *             phd._comm.Allreduce([loc_done, MPI.INT], [glb_done, MPI.INT], op=MPI.SUM)
  * 
  */
-    __pyx_t_13 = __Pyx_PyBool_FromLong(((struct __pyx_vtabstruct_3phd_7gravity_11interaction_Interaction *)__pyx_v_self->export_interaction->__pyx_vtab)->done_processing(__pyx_v_self->export_interaction)); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 1017, __pyx_L1_error)
+    __pyx_t_13 = __Pyx_PyBool_FromLong(((struct __pyx_vtabstruct_3phd_7gravity_11interaction_Interaction *)__pyx_v_self->export_interaction->__pyx_vtab)->done_processing(__pyx_v_self->export_interaction)); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 1015, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_13);
-    if (unlikely(__Pyx_SetItemInt(((PyObject *)__pyx_v_loc_done), 0, __pyx_t_13, long, 1, __Pyx_PyInt_From_long, 0, 0, 1) < 0)) __PYX_ERR(0, 1017, __pyx_L1_error)
+    if (unlikely(__Pyx_SetItemInt(((PyObject *)__pyx_v_loc_done), 0, __pyx_t_13, long, 1, __Pyx_PyInt_From_long, 0, 0, 1) < 0)) __PYX_ERR(0, 1015, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
 
-    /* "phd/gravity/gravity_tree.pyx":1018
+    /* "phd/gravity/gravity_tree.pyx":1016
  *             glb_done[0] = 0
  *             loc_done[0] = self.export_interaction.done_processing()
  *             phd._comm.Allreduce([loc_done, MPI.INT], [glb_done, MPI.INT], op=MPI.SUM)             # <<<<<<<<<<<<<<
  * 
  *             # if all processors tree walks are done exit
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_13, __pyx_n_s_phd); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 1018, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_13, __pyx_n_s_phd); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 1016, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_13);
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_13, __pyx_n_s_comm); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1018, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_13, __pyx_n_s_comm); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1016, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
-    __pyx_t_13 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_Allreduce); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 1018, __pyx_L1_error)
+    __pyx_t_13 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_Allreduce); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 1016, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_13);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_MPI); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1018, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_MPI); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1016, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_INT); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 1018, __pyx_L1_error)
+    __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_INT); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 1016, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_14);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = PyList_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1018, __pyx_L1_error)
+    __pyx_t_3 = PyList_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1016, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_INCREF(((PyObject *)__pyx_v_loc_done));
     __Pyx_GIVEREF(((PyObject *)__pyx_v_loc_done));
@@ -10082,12 +10086,12 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__parallel_walk(st
     __Pyx_GIVEREF(__pyx_t_14);
     PyList_SET_ITEM(__pyx_t_3, 1, __pyx_t_14);
     __pyx_t_14 = 0;
-    __Pyx_GetModuleGlobalName(__pyx_t_14, __pyx_n_s_MPI); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 1018, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_14, __pyx_n_s_MPI); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 1016, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_14);
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_14, __pyx_n_s_INT); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1018, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_14, __pyx_n_s_INT); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1016, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-    __pyx_t_14 = PyList_New(2); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 1018, __pyx_L1_error)
+    __pyx_t_14 = PyList_New(2); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 1016, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_14);
     __Pyx_INCREF(((PyObject *)__pyx_v_glb_done));
     __Pyx_GIVEREF(((PyObject *)__pyx_v_glb_done));
@@ -10095,7 +10099,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__parallel_walk(st
     __Pyx_GIVEREF(__pyx_t_1);
     PyList_SET_ITEM(__pyx_t_14, 1, __pyx_t_1);
     __pyx_t_1 = 0;
-    __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1018, __pyx_L1_error)
+    __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1016, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_GIVEREF(__pyx_t_3);
     PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_3);
@@ -10103,44 +10107,44 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__parallel_walk(st
     PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_t_14);
     __pyx_t_3 = 0;
     __pyx_t_14 = 0;
-    __pyx_t_14 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 1018, __pyx_L1_error)
+    __pyx_t_14 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 1016, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_14);
-    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_MPI); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1018, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_MPI); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1016, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_SUM); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1018, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_SUM); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1016, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (PyDict_SetItem(__pyx_t_14, __pyx_n_s_op, __pyx_t_4) < 0) __PYX_ERR(0, 1018, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_14, __pyx_n_s_op, __pyx_t_4) < 0) __PYX_ERR(0, 1016, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_13, __pyx_t_1, __pyx_t_14); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1018, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_13, __pyx_t_1, __pyx_t_14); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1016, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-    /* "phd/gravity/gravity_tree.pyx":1021
+    /* "phd/gravity/gravity_tree.pyx":1019
  * 
  *             # if all processors tree walks are done exit
  *             if glb_done[0] == phd._size:             # <<<<<<<<<<<<<<
  *                 break
  * 
  */
-    __pyx_t_4 = __Pyx_GetItemInt(((PyObject *)__pyx_v_glb_done), 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1021, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_GetItemInt(((PyObject *)__pyx_v_glb_done), 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1019, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __Pyx_GetModuleGlobalName(__pyx_t_14, __pyx_n_s_phd); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 1021, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_14, __pyx_n_s_phd); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 1019, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_14);
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_14, __pyx_n_s_size); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1021, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_14, __pyx_n_s_size); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1019, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-    __pyx_t_14 = PyObject_RichCompare(__pyx_t_4, __pyx_t_1, Py_EQ); __Pyx_XGOTREF(__pyx_t_14); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 1021, __pyx_L1_error)
+    __pyx_t_14 = PyObject_RichCompare(__pyx_t_4, __pyx_t_1, Py_EQ); __Pyx_XGOTREF(__pyx_t_14); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 1019, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_8 = __Pyx_PyObject_IsTrue(__pyx_t_14); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 1021, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_IsTrue(__pyx_t_14); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 1019, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
     if (__pyx_t_8) {
 
-      /* "phd/gravity/gravity_tree.pyx":1022
+      /* "phd/gravity/gravity_tree.pyx":1020
  *             # if all processors tree walks are done exit
  *             if glb_done[0] == phd._size:
  *                 break             # <<<<<<<<<<<<<<
@@ -10149,7 +10153,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__parallel_walk(st
  */
       goto __pyx_L4_break;
 
-      /* "phd/gravity/gravity_tree.pyx":1021
+      /* "phd/gravity/gravity_tree.pyx":1019
  * 
  *             # if all processors tree walks are done exit
  *             if glb_done[0] == phd._size:             # <<<<<<<<<<<<<<
@@ -10160,7 +10164,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__parallel_walk(st
   }
   __pyx_L4_break:;
 
-  /* "phd/gravity/gravity_tree.pyx":916
+  /* "phd/gravity/gravity_tree.pyx":914
  *             interaction.particle_finished()
  * 
  *     cdef void _parallel_walk(self, Interaction interaction, CarrayContainer particles):             # <<<<<<<<<<<<<<
@@ -10185,7 +10189,7 @@ static void __pyx_f_3phd_7gravity_12gravity_tree_11GravityTree__parallel_walk(st
   __Pyx_RefNannyFinishContext();
 }
 
-/* "phd/gravity/gravity_tree.pyx":1025
+/* "phd/gravity/gravity_tree.pyx":1023
  * 
  *     # -- delete later --
  *     def dump_root_node(self):             # <<<<<<<<<<<<<<
@@ -10224,7 +10228,7 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_14dump_root
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("dump_root_node", 0);
 
-  /* "phd/gravity/gravity_tree.pyx":1029
+  /* "phd/gravity/gravity_tree.pyx":1027
  *         cdef np.float64_t mass, width
  * 
  *         root = &self.nodes.array[0]             # <<<<<<<<<<<<<<
@@ -10233,7 +10237,7 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_14dump_root
  */
   __pyx_v_root = (&(__pyx_v_self->nodes->array[0]));
 
-  /* "phd/gravity/gravity_tree.pyx":1030
+  /* "phd/gravity/gravity_tree.pyx":1028
  * 
  *         root = &self.nodes.array[0]
  *         width = root.width             # <<<<<<<<<<<<<<
@@ -10243,44 +10247,44 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_14dump_root
   __pyx_t_1 = __pyx_v_root->width;
   __pyx_v_width = __pyx_t_1;
 
-  /* "phd/gravity/gravity_tree.pyx":1032
+  /* "phd/gravity/gravity_tree.pyx":1030
  *         width = root.width
  *         pos = [
  *             root.center[0],             # <<<<<<<<<<<<<<
  *             root.center[1],
  *             root.center[2]]
  */
-  __pyx_t_2 = PyFloat_FromDouble((__pyx_v_root->center[0])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1032, __pyx_L1_error)
+  __pyx_t_2 = PyFloat_FromDouble((__pyx_v_root->center[0])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1030, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
 
-  /* "phd/gravity/gravity_tree.pyx":1033
+  /* "phd/gravity/gravity_tree.pyx":1031
  *         pos = [
  *             root.center[0],
  *             root.center[1],             # <<<<<<<<<<<<<<
  *             root.center[2]]
  * 
  */
-  __pyx_t_3 = PyFloat_FromDouble((__pyx_v_root->center[1])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1033, __pyx_L1_error)
+  __pyx_t_3 = PyFloat_FromDouble((__pyx_v_root->center[1])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1031, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
 
-  /* "phd/gravity/gravity_tree.pyx":1034
+  /* "phd/gravity/gravity_tree.pyx":1032
  *             root.center[0],
  *             root.center[1],
  *             root.center[2]]             # <<<<<<<<<<<<<<
  * 
  *         mass = root.group.data.mass
  */
-  __pyx_t_4 = PyFloat_FromDouble((__pyx_v_root->center[2])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1034, __pyx_L1_error)
+  __pyx_t_4 = PyFloat_FromDouble((__pyx_v_root->center[2])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1032, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
 
-  /* "phd/gravity/gravity_tree.pyx":1031
+  /* "phd/gravity/gravity_tree.pyx":1029
  *         root = &self.nodes.array[0]
  *         width = root.width
  *         pos = [             # <<<<<<<<<<<<<<
  *             root.center[0],
  *             root.center[1],
  */
-  __pyx_t_5 = PyList_New(3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 1031, __pyx_L1_error)
+  __pyx_t_5 = PyList_New(3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 1029, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_GIVEREF(__pyx_t_2);
   PyList_SET_ITEM(__pyx_t_5, 0, __pyx_t_2);
@@ -10294,7 +10298,7 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_14dump_root
   __pyx_v_pos = ((PyObject*)__pyx_t_5);
   __pyx_t_5 = 0;
 
-  /* "phd/gravity/gravity_tree.pyx":1036
+  /* "phd/gravity/gravity_tree.pyx":1034
  *             root.center[2]]
  * 
  *         mass = root.group.data.mass             # <<<<<<<<<<<<<<
@@ -10304,44 +10308,44 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_14dump_root
   __pyx_t_1 = __pyx_v_root->group.data.mass;
   __pyx_v_mass = __pyx_t_1;
 
-  /* "phd/gravity/gravity_tree.pyx":1038
+  /* "phd/gravity/gravity_tree.pyx":1036
  *         mass = root.group.data.mass
  *         com = [
  *             root.group.data.com[0],             # <<<<<<<<<<<<<<
  *             root.group.data.com[1],
  *             root.group.data.com[2]]
  */
-  __pyx_t_5 = PyFloat_FromDouble((__pyx_v_root->group.data.com[0])); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 1038, __pyx_L1_error)
+  __pyx_t_5 = PyFloat_FromDouble((__pyx_v_root->group.data.com[0])); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 1036, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
 
-  /* "phd/gravity/gravity_tree.pyx":1039
+  /* "phd/gravity/gravity_tree.pyx":1037
  *         com = [
  *             root.group.data.com[0],
  *             root.group.data.com[1],             # <<<<<<<<<<<<<<
  *             root.group.data.com[2]]
  * 
  */
-  __pyx_t_4 = PyFloat_FromDouble((__pyx_v_root->group.data.com[1])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1039, __pyx_L1_error)
+  __pyx_t_4 = PyFloat_FromDouble((__pyx_v_root->group.data.com[1])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1037, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
 
-  /* "phd/gravity/gravity_tree.pyx":1040
+  /* "phd/gravity/gravity_tree.pyx":1038
  *             root.group.data.com[0],
  *             root.group.data.com[1],
  *             root.group.data.com[2]]             # <<<<<<<<<<<<<<
  * 
  *         return pos, width, mass, com
  */
-  __pyx_t_3 = PyFloat_FromDouble((__pyx_v_root->group.data.com[2])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1040, __pyx_L1_error)
+  __pyx_t_3 = PyFloat_FromDouble((__pyx_v_root->group.data.com[2])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1038, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
 
-  /* "phd/gravity/gravity_tree.pyx":1037
+  /* "phd/gravity/gravity_tree.pyx":1035
  * 
  *         mass = root.group.data.mass
  *         com = [             # <<<<<<<<<<<<<<
  *             root.group.data.com[0],
  *             root.group.data.com[1],
  */
-  __pyx_t_2 = PyList_New(3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1037, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1035, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_5);
   PyList_SET_ITEM(__pyx_t_2, 0, __pyx_t_5);
@@ -10355,7 +10359,7 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_14dump_root
   __pyx_v_com = ((PyObject*)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "phd/gravity/gravity_tree.pyx":1042
+  /* "phd/gravity/gravity_tree.pyx":1040
  *             root.group.data.com[2]]
  * 
  *         return pos, width, mass, com             # <<<<<<<<<<<<<<
@@ -10363,11 +10367,11 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_14dump_root
  *     # -- delete later --
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = PyFloat_FromDouble(__pyx_v_width); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1042, __pyx_L1_error)
+  __pyx_t_2 = PyFloat_FromDouble(__pyx_v_width); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1040, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyFloat_FromDouble(__pyx_v_mass); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1042, __pyx_L1_error)
+  __pyx_t_3 = PyFloat_FromDouble(__pyx_v_mass); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1040, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyTuple_New(4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1042, __pyx_L1_error)
+  __pyx_t_4 = PyTuple_New(4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1040, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_INCREF(__pyx_v_pos);
   __Pyx_GIVEREF(__pyx_v_pos);
@@ -10385,7 +10389,7 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_14dump_root
   __pyx_t_4 = 0;
   goto __pyx_L0;
 
-  /* "phd/gravity/gravity_tree.pyx":1025
+  /* "phd/gravity/gravity_tree.pyx":1023
  * 
  *     # -- delete later --
  *     def dump_root_node(self):             # <<<<<<<<<<<<<<
@@ -10409,7 +10413,7 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_14dump_root
   return __pyx_r;
 }
 
-/* "phd/gravity/gravity_tree.pyx":1045
+/* "phd/gravity/gravity_tree.pyx":1043
  * 
  *     # -- delete later --
  *     def dump_data(self):             # <<<<<<<<<<<<<<
@@ -10454,19 +10458,19 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_16dump_data
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("dump_data", 0);
 
-  /* "phd/gravity/gravity_tree.pyx":1046
+  /* "phd/gravity/gravity_tree.pyx":1044
  *     # -- delete later --
  *     def dump_data(self):
  *         cdef list data_list = []             # <<<<<<<<<<<<<<
  *         cdef Node* node
  * 
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1046, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1044, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_data_list = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "phd/gravity/gravity_tree.pyx":1050
+  /* "phd/gravity/gravity_tree.pyx":1048
  * 
  *         cdef int i
  *         for i in range(self.nodes.used):             # <<<<<<<<<<<<<<
@@ -10478,7 +10482,7 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_16dump_data
   for (__pyx_t_4 = 0; __pyx_t_4 < __pyx_t_3; __pyx_t_4+=1) {
     __pyx_v_i = __pyx_t_4;
 
-    /* "phd/gravity/gravity_tree.pyx":1051
+    /* "phd/gravity/gravity_tree.pyx":1049
  *         cdef int i
  *         for i in range(self.nodes.used):
  *             node = &self.nodes.array[i]             # <<<<<<<<<<<<<<
@@ -10487,7 +10491,7 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_16dump_data
  */
     __pyx_v_node = (&(__pyx_v_self->nodes->array[__pyx_v_i]));
 
-    /* "phd/gravity/gravity_tree.pyx":1052
+    /* "phd/gravity/gravity_tree.pyx":1050
  *         for i in range(self.nodes.used):
  *             node = &self.nodes.array[i]
  *             if (node.flags & LEAF):             # <<<<<<<<<<<<<<
@@ -10497,84 +10501,84 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_16dump_data
     __pyx_t_5 = ((__pyx_v_node->flags & __pyx_e_3phd_7gravity_12gravity_tree_LEAF) != 0);
     if (__pyx_t_5) {
 
-      /* "phd/gravity/gravity_tree.pyx":1054
+      /* "phd/gravity/gravity_tree.pyx":1052
  *             if (node.flags & LEAF):
  *                 data_list.append([
  *                     node.center[0],             # <<<<<<<<<<<<<<
  *                     node.center[1],
  *                     node.center[2],
  */
-      __pyx_t_1 = PyFloat_FromDouble((__pyx_v_node->center[0])); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1054, __pyx_L1_error)
+      __pyx_t_1 = PyFloat_FromDouble((__pyx_v_node->center[0])); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1052, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
 
-      /* "phd/gravity/gravity_tree.pyx":1055
+      /* "phd/gravity/gravity_tree.pyx":1053
  *                 data_list.append([
  *                     node.center[0],
  *                     node.center[1],             # <<<<<<<<<<<<<<
  *                     node.center[2],
  *                     node.group.data.mass,
  */
-      __pyx_t_6 = PyFloat_FromDouble((__pyx_v_node->center[1])); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 1055, __pyx_L1_error)
+      __pyx_t_6 = PyFloat_FromDouble((__pyx_v_node->center[1])); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 1053, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
 
-      /* "phd/gravity/gravity_tree.pyx":1056
+      /* "phd/gravity/gravity_tree.pyx":1054
  *                     node.center[0],
  *                     node.center[1],
  *                     node.center[2],             # <<<<<<<<<<<<<<
  *                     node.group.data.mass,
  *                     node.group.data.com[0],
  */
-      __pyx_t_7 = PyFloat_FromDouble((__pyx_v_node->center[2])); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 1056, __pyx_L1_error)
+      __pyx_t_7 = PyFloat_FromDouble((__pyx_v_node->center[2])); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 1054, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
 
-      /* "phd/gravity/gravity_tree.pyx":1057
+      /* "phd/gravity/gravity_tree.pyx":1055
  *                     node.center[1],
  *                     node.center[2],
  *                     node.group.data.mass,             # <<<<<<<<<<<<<<
  *                     node.group.data.com[0],
  *                     node.group.data.com[1],
  */
-      __pyx_t_8 = PyFloat_FromDouble(__pyx_v_node->group.data.mass); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1057, __pyx_L1_error)
+      __pyx_t_8 = PyFloat_FromDouble(__pyx_v_node->group.data.mass); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1055, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
 
-      /* "phd/gravity/gravity_tree.pyx":1058
+      /* "phd/gravity/gravity_tree.pyx":1056
  *                     node.center[2],
  *                     node.group.data.mass,
  *                     node.group.data.com[0],             # <<<<<<<<<<<<<<
  *                     node.group.data.com[1],
  *                     node.width])
  */
-      __pyx_t_9 = PyFloat_FromDouble((__pyx_v_node->group.data.com[0])); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1058, __pyx_L1_error)
+      __pyx_t_9 = PyFloat_FromDouble((__pyx_v_node->group.data.com[0])); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1056, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
 
-      /* "phd/gravity/gravity_tree.pyx":1059
+      /* "phd/gravity/gravity_tree.pyx":1057
  *                     node.group.data.mass,
  *                     node.group.data.com[0],
  *                     node.group.data.com[1],             # <<<<<<<<<<<<<<
  *                     node.width])
  * 
  */
-      __pyx_t_10 = PyFloat_FromDouble((__pyx_v_node->group.data.com[1])); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 1059, __pyx_L1_error)
+      __pyx_t_10 = PyFloat_FromDouble((__pyx_v_node->group.data.com[1])); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 1057, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
 
-      /* "phd/gravity/gravity_tree.pyx":1060
+      /* "phd/gravity/gravity_tree.pyx":1058
  *                     node.group.data.com[0],
  *                     node.group.data.com[1],
  *                     node.width])             # <<<<<<<<<<<<<<
  * 
  *         return data_list
  */
-      __pyx_t_11 = PyFloat_FromDouble(__pyx_v_node->width); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 1060, __pyx_L1_error)
+      __pyx_t_11 = PyFloat_FromDouble(__pyx_v_node->width); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 1058, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_11);
 
-      /* "phd/gravity/gravity_tree.pyx":1053
+      /* "phd/gravity/gravity_tree.pyx":1051
  *             node = &self.nodes.array[i]
  *             if (node.flags & LEAF):
  *                 data_list.append([             # <<<<<<<<<<<<<<
  *                     node.center[0],
  *                     node.center[1],
  */
-      __pyx_t_12 = PyList_New(7); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 1053, __pyx_L1_error)
+      __pyx_t_12 = PyList_New(7); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 1051, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_12);
       __Pyx_GIVEREF(__pyx_t_1);
       PyList_SET_ITEM(__pyx_t_12, 0, __pyx_t_1);
@@ -10597,10 +10601,10 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_16dump_data
       __pyx_t_9 = 0;
       __pyx_t_10 = 0;
       __pyx_t_11 = 0;
-      __pyx_t_13 = __Pyx_PyList_Append(__pyx_v_data_list, __pyx_t_12); if (unlikely(__pyx_t_13 == ((int)-1))) __PYX_ERR(0, 1053, __pyx_L1_error)
+      __pyx_t_13 = __Pyx_PyList_Append(__pyx_v_data_list, __pyx_t_12); if (unlikely(__pyx_t_13 == ((int)-1))) __PYX_ERR(0, 1051, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
 
-      /* "phd/gravity/gravity_tree.pyx":1052
+      /* "phd/gravity/gravity_tree.pyx":1050
  *         for i in range(self.nodes.used):
  *             node = &self.nodes.array[i]
  *             if (node.flags & LEAF):             # <<<<<<<<<<<<<<
@@ -10610,7 +10614,7 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_16dump_data
     }
   }
 
-  /* "phd/gravity/gravity_tree.pyx":1062
+  /* "phd/gravity/gravity_tree.pyx":1060
  *                     node.width])
  * 
  *         return data_list             # <<<<<<<<<<<<<<
@@ -10622,7 +10626,7 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_16dump_data
   __pyx_r = __pyx_v_data_list;
   goto __pyx_L0;
 
-  /* "phd/gravity/gravity_tree.pyx":1045
+  /* "phd/gravity/gravity_tree.pyx":1043
  * 
  *     # -- delete later --
  *     def dump_data(self):             # <<<<<<<<<<<<<<
@@ -10649,7 +10653,7 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_16dump_data
   return __pyx_r;
 }
 
-/* "phd/gravity/gravity_tree.pyx":1065
+/* "phd/gravity/gravity_tree.pyx":1063
  * 
  *     # -- delete later --
  *     def dump_all_data(self):             # <<<<<<<<<<<<<<
@@ -10694,19 +10698,19 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_18dump_all_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("dump_all_data", 0);
 
-  /* "phd/gravity/gravity_tree.pyx":1066
+  /* "phd/gravity/gravity_tree.pyx":1064
  *     # -- delete later --
  *     def dump_all_data(self):
  *         cdef list data_list = []             # <<<<<<<<<<<<<<
  *         cdef Node* node
  * 
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1066, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1064, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_data_list = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "phd/gravity/gravity_tree.pyx":1070
+  /* "phd/gravity/gravity_tree.pyx":1068
  * 
  *         cdef int i
  *         for i in range(self.nodes.used):             # <<<<<<<<<<<<<<
@@ -10718,7 +10722,7 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_18dump_all_
   for (__pyx_t_4 = 0; __pyx_t_4 < __pyx_t_3; __pyx_t_4+=1) {
     __pyx_v_i = __pyx_t_4;
 
-    /* "phd/gravity/gravity_tree.pyx":1071
+    /* "phd/gravity/gravity_tree.pyx":1069
  *         cdef int i
  *         for i in range(self.nodes.used):
  *             node = &self.nodes.array[i]             # <<<<<<<<<<<<<<
@@ -10727,94 +10731,94 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_18dump_all_
  */
     __pyx_v_node = (&(__pyx_v_self->nodes->array[__pyx_v_i]));
 
-    /* "phd/gravity/gravity_tree.pyx":1073
+    /* "phd/gravity/gravity_tree.pyx":1071
  *             node = &self.nodes.array[i]
  *             data_list.append([
  *                 node.center[0],             # <<<<<<<<<<<<<<
  *                 node.center[1],
  *                 node.center[2],
  */
-    __pyx_t_1 = PyFloat_FromDouble((__pyx_v_node->center[0])); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1073, __pyx_L1_error)
+    __pyx_t_1 = PyFloat_FromDouble((__pyx_v_node->center[0])); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1071, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
 
-    /* "phd/gravity/gravity_tree.pyx":1074
+    /* "phd/gravity/gravity_tree.pyx":1072
  *             data_list.append([
  *                 node.center[0],
  *                 node.center[1],             # <<<<<<<<<<<<<<
  *                 node.center[2],
  *                 node.group.data.mass,
  */
-    __pyx_t_5 = PyFloat_FromDouble((__pyx_v_node->center[1])); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 1074, __pyx_L1_error)
+    __pyx_t_5 = PyFloat_FromDouble((__pyx_v_node->center[1])); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 1072, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
 
-    /* "phd/gravity/gravity_tree.pyx":1075
+    /* "phd/gravity/gravity_tree.pyx":1073
  *                 node.center[0],
  *                 node.center[1],
  *                 node.center[2],             # <<<<<<<<<<<<<<
  *                 node.group.data.mass,
  *                 node.group.data.com[0],
  */
-    __pyx_t_6 = PyFloat_FromDouble((__pyx_v_node->center[2])); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 1075, __pyx_L1_error)
+    __pyx_t_6 = PyFloat_FromDouble((__pyx_v_node->center[2])); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 1073, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
 
-    /* "phd/gravity/gravity_tree.pyx":1076
+    /* "phd/gravity/gravity_tree.pyx":1074
  *                 node.center[1],
  *                 node.center[2],
  *                 node.group.data.mass,             # <<<<<<<<<<<<<<
  *                 node.group.data.com[0],
  *                 node.group.data.com[1],
  */
-    __pyx_t_7 = PyFloat_FromDouble(__pyx_v_node->group.data.mass); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 1076, __pyx_L1_error)
+    __pyx_t_7 = PyFloat_FromDouble(__pyx_v_node->group.data.mass); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 1074, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
 
-    /* "phd/gravity/gravity_tree.pyx":1077
+    /* "phd/gravity/gravity_tree.pyx":1075
  *                 node.center[2],
  *                 node.group.data.mass,
  *                 node.group.data.com[0],             # <<<<<<<<<<<<<<
  *                 node.group.data.com[1],
  *                 (node.flags) & LEAF,
  */
-    __pyx_t_8 = PyFloat_FromDouble((__pyx_v_node->group.data.com[0])); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1077, __pyx_L1_error)
+    __pyx_t_8 = PyFloat_FromDouble((__pyx_v_node->group.data.com[0])); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1075, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
 
-    /* "phd/gravity/gravity_tree.pyx":1078
+    /* "phd/gravity/gravity_tree.pyx":1076
  *                 node.group.data.mass,
  *                 node.group.data.com[0],
  *                 node.group.data.com[1],             # <<<<<<<<<<<<<<
  *                 (node.flags) & LEAF,
  *                 node.width])
  */
-    __pyx_t_9 = PyFloat_FromDouble((__pyx_v_node->group.data.com[1])); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1078, __pyx_L1_error)
+    __pyx_t_9 = PyFloat_FromDouble((__pyx_v_node->group.data.com[1])); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1076, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
 
-    /* "phd/gravity/gravity_tree.pyx":1079
+    /* "phd/gravity/gravity_tree.pyx":1077
  *                 node.group.data.com[0],
  *                 node.group.data.com[1],
  *                 (node.flags) & LEAF,             # <<<<<<<<<<<<<<
  *                 node.width])
  * 
  */
-    __pyx_t_10 = __Pyx_PyInt_From_int((__pyx_v_node->flags & __pyx_e_3phd_7gravity_12gravity_tree_LEAF)); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 1079, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_PyInt_From_int((__pyx_v_node->flags & __pyx_e_3phd_7gravity_12gravity_tree_LEAF)); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 1077, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
 
-    /* "phd/gravity/gravity_tree.pyx":1080
+    /* "phd/gravity/gravity_tree.pyx":1078
  *                 node.group.data.com[1],
  *                 (node.flags) & LEAF,
  *                 node.width])             # <<<<<<<<<<<<<<
  * 
  *         return data_list
  */
-    __pyx_t_11 = PyFloat_FromDouble(__pyx_v_node->width); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 1080, __pyx_L1_error)
+    __pyx_t_11 = PyFloat_FromDouble(__pyx_v_node->width); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 1078, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_11);
 
-    /* "phd/gravity/gravity_tree.pyx":1072
+    /* "phd/gravity/gravity_tree.pyx":1070
  *         for i in range(self.nodes.used):
  *             node = &self.nodes.array[i]
  *             data_list.append([             # <<<<<<<<<<<<<<
  *                 node.center[0],
  *                 node.center[1],
  */
-    __pyx_t_12 = PyList_New(8); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 1072, __pyx_L1_error)
+    __pyx_t_12 = PyList_New(8); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 1070, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_12);
     __Pyx_GIVEREF(__pyx_t_1);
     PyList_SET_ITEM(__pyx_t_12, 0, __pyx_t_1);
@@ -10840,11 +10844,11 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_18dump_all_
     __pyx_t_9 = 0;
     __pyx_t_10 = 0;
     __pyx_t_11 = 0;
-    __pyx_t_13 = __Pyx_PyList_Append(__pyx_v_data_list, __pyx_t_12); if (unlikely(__pyx_t_13 == ((int)-1))) __PYX_ERR(0, 1072, __pyx_L1_error)
+    __pyx_t_13 = __Pyx_PyList_Append(__pyx_v_data_list, __pyx_t_12); if (unlikely(__pyx_t_13 == ((int)-1))) __PYX_ERR(0, 1070, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
   }
 
-  /* "phd/gravity/gravity_tree.pyx":1082
+  /* "phd/gravity/gravity_tree.pyx":1080
  *                 node.width])
  * 
  *         return data_list             # <<<<<<<<<<<<<<
@@ -10856,7 +10860,7 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_18dump_all_
   __pyx_r = __pyx_v_data_list;
   goto __pyx_L0;
 
-  /* "phd/gravity/gravity_tree.pyx":1065
+  /* "phd/gravity/gravity_tree.pyx":1063
  * 
  *     # -- delete later --
  *     def dump_all_data(self):             # <<<<<<<<<<<<<<
@@ -10884,7 +10888,7 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_18dump_all_
   return __pyx_r;
 }
 
-/* "phd/gravity/gravity_tree.pyx":1085
+/* "phd/gravity/gravity_tree.pyx":1083
  * 
  *     # -- delete later --
  *     def dump_remote(self):             # <<<<<<<<<<<<<<
@@ -10932,45 +10936,45 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_20dump_remo
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("dump_remote", 0);
 
-  /* "phd/gravity/gravity_tree.pyx":1088
+  /* "phd/gravity/gravity_tree.pyx":1086
  *         cdef int i, j
  *         cdef Node* node
  *         cdef list data_list = []             # <<<<<<<<<<<<<<
  *         cdef LongArray maps = self.toptree_leafs.get_carray('map')
  *         cdef LongArray proc = self.toptree_leafs.get_carray('proc')
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1088, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1086, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_data_list = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "phd/gravity/gravity_tree.pyx":1089
+  /* "phd/gravity/gravity_tree.pyx":1087
  *         cdef Node* node
  *         cdef list data_list = []
  *         cdef LongArray maps = self.toptree_leafs.get_carray('map')             # <<<<<<<<<<<<<<
  *         cdef LongArray proc = self.toptree_leafs.get_carray('proc')
  * 
  */
-  __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_self->toptree_leafs->__pyx_vtab)->get_carray(__pyx_v_self->toptree_leafs, __pyx_n_s_map, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1089, __pyx_L1_error)
+  __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_self->toptree_leafs->__pyx_vtab)->get_carray(__pyx_v_self->toptree_leafs, __pyx_n_s_map, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1087, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_3phd_5utils_6carray_LongArray))))) __PYX_ERR(0, 1089, __pyx_L1_error)
+  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_3phd_5utils_6carray_LongArray))))) __PYX_ERR(0, 1087, __pyx_L1_error)
   __pyx_v_maps = ((struct __pyx_obj_3phd_5utils_6carray_LongArray *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "phd/gravity/gravity_tree.pyx":1090
+  /* "phd/gravity/gravity_tree.pyx":1088
  *         cdef list data_list = []
  *         cdef LongArray maps = self.toptree_leafs.get_carray('map')
  *         cdef LongArray proc = self.toptree_leafs.get_carray('proc')             # <<<<<<<<<<<<<<
  * 
  *         for i in range(self.toptree_leafs.get_carray_size()):
  */
-  __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_self->toptree_leafs->__pyx_vtab)->get_carray(__pyx_v_self->toptree_leafs, __pyx_n_s_proc, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1090, __pyx_L1_error)
+  __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_self->toptree_leafs->__pyx_vtab)->get_carray(__pyx_v_self->toptree_leafs, __pyx_n_s_proc, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1088, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_3phd_5utils_6carray_LongArray))))) __PYX_ERR(0, 1090, __pyx_L1_error)
+  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_3phd_5utils_6carray_LongArray))))) __PYX_ERR(0, 1088, __pyx_L1_error)
   __pyx_v_proc = ((struct __pyx_obj_3phd_5utils_6carray_LongArray *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "phd/gravity/gravity_tree.pyx":1092
+  /* "phd/gravity/gravity_tree.pyx":1090
  *         cdef LongArray proc = self.toptree_leafs.get_carray('proc')
  * 
  *         for i in range(self.toptree_leafs.get_carray_size()):             # <<<<<<<<<<<<<<
@@ -10982,7 +10986,7 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_20dump_remo
   for (__pyx_t_4 = 0; __pyx_t_4 < __pyx_t_3; __pyx_t_4+=1) {
     __pyx_v_i = __pyx_t_4;
 
-    /* "phd/gravity/gravity_tree.pyx":1093
+    /* "phd/gravity/gravity_tree.pyx":1091
  * 
  *         for i in range(self.toptree_leafs.get_carray_size()):
  *             j = maps.data[i]             # <<<<<<<<<<<<<<
@@ -10991,7 +10995,7 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_20dump_remo
  */
     __pyx_v_j = (__pyx_v_maps->data[__pyx_v_i]);
 
-    /* "phd/gravity/gravity_tree.pyx":1094
+    /* "phd/gravity/gravity_tree.pyx":1092
  *         for i in range(self.toptree_leafs.get_carray_size()):
  *             j = maps.data[i]
  *             node = &self.nodes.array[j]             # <<<<<<<<<<<<<<
@@ -11000,94 +11004,94 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_20dump_remo
  */
     __pyx_v_node = (&(__pyx_v_self->nodes->array[__pyx_v_j]));
 
-    /* "phd/gravity/gravity_tree.pyx":1096
+    /* "phd/gravity/gravity_tree.pyx":1094
  *             node = &self.nodes.array[j]
  *             data_list.append([
  *                 node.center[0],             # <<<<<<<<<<<<<<
  *                 node.center[1],
  *                 node.center[2],
  */
-    __pyx_t_1 = PyFloat_FromDouble((__pyx_v_node->center[0])); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1096, __pyx_L1_error)
+    __pyx_t_1 = PyFloat_FromDouble((__pyx_v_node->center[0])); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1094, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
 
-    /* "phd/gravity/gravity_tree.pyx":1097
+    /* "phd/gravity/gravity_tree.pyx":1095
  *             data_list.append([
  *                 node.center[0],
  *                 node.center[1],             # <<<<<<<<<<<<<<
  *                 node.center[2],
  *                 node.group.data.mass,
  */
-    __pyx_t_5 = PyFloat_FromDouble((__pyx_v_node->center[1])); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 1097, __pyx_L1_error)
+    __pyx_t_5 = PyFloat_FromDouble((__pyx_v_node->center[1])); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 1095, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
 
-    /* "phd/gravity/gravity_tree.pyx":1098
+    /* "phd/gravity/gravity_tree.pyx":1096
  *                 node.center[0],
  *                 node.center[1],
  *                 node.center[2],             # <<<<<<<<<<<<<<
  *                 node.group.data.mass,
  *                 node.group.data.com[0],
  */
-    __pyx_t_6 = PyFloat_FromDouble((__pyx_v_node->center[2])); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 1098, __pyx_L1_error)
+    __pyx_t_6 = PyFloat_FromDouble((__pyx_v_node->center[2])); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 1096, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
 
-    /* "phd/gravity/gravity_tree.pyx":1099
+    /* "phd/gravity/gravity_tree.pyx":1097
  *                 node.center[1],
  *                 node.center[2],
  *                 node.group.data.mass,             # <<<<<<<<<<<<<<
  *                 node.group.data.com[0],
  *                 node.group.data.com[1],
  */
-    __pyx_t_7 = PyFloat_FromDouble(__pyx_v_node->group.data.mass); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 1099, __pyx_L1_error)
+    __pyx_t_7 = PyFloat_FromDouble(__pyx_v_node->group.data.mass); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 1097, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
 
-    /* "phd/gravity/gravity_tree.pyx":1100
+    /* "phd/gravity/gravity_tree.pyx":1098
  *                 node.center[2],
  *                 node.group.data.mass,
  *                 node.group.data.com[0],             # <<<<<<<<<<<<<<
  *                 node.group.data.com[1],
  *                 proc.data[i],
  */
-    __pyx_t_8 = PyFloat_FromDouble((__pyx_v_node->group.data.com[0])); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1100, __pyx_L1_error)
+    __pyx_t_8 = PyFloat_FromDouble((__pyx_v_node->group.data.com[0])); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1098, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
 
-    /* "phd/gravity/gravity_tree.pyx":1101
+    /* "phd/gravity/gravity_tree.pyx":1099
  *                 node.group.data.mass,
  *                 node.group.data.com[0],
  *                 node.group.data.com[1],             # <<<<<<<<<<<<<<
  *                 proc.data[i],
  *                 node.width])
  */
-    __pyx_t_9 = PyFloat_FromDouble((__pyx_v_node->group.data.com[1])); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1101, __pyx_L1_error)
+    __pyx_t_9 = PyFloat_FromDouble((__pyx_v_node->group.data.com[1])); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 1099, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
 
-    /* "phd/gravity/gravity_tree.pyx":1102
+    /* "phd/gravity/gravity_tree.pyx":1100
  *                 node.group.data.com[0],
  *                 node.group.data.com[1],
  *                 proc.data[i],             # <<<<<<<<<<<<<<
  *                 node.width])
  * 
  */
-    __pyx_t_10 = __Pyx_PyInt_From_npy_int32((__pyx_v_proc->data[__pyx_v_i])); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 1102, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_PyInt_From_npy_int32((__pyx_v_proc->data[__pyx_v_i])); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 1100, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
 
-    /* "phd/gravity/gravity_tree.pyx":1103
+    /* "phd/gravity/gravity_tree.pyx":1101
  *                 node.group.data.com[1],
  *                 proc.data[i],
  *                 node.width])             # <<<<<<<<<<<<<<
  * 
  *         return data_list
  */
-    __pyx_t_11 = PyFloat_FromDouble(__pyx_v_node->width); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 1103, __pyx_L1_error)
+    __pyx_t_11 = PyFloat_FromDouble(__pyx_v_node->width); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 1101, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_11);
 
-    /* "phd/gravity/gravity_tree.pyx":1095
+    /* "phd/gravity/gravity_tree.pyx":1093
  *             j = maps.data[i]
  *             node = &self.nodes.array[j]
  *             data_list.append([             # <<<<<<<<<<<<<<
  *                 node.center[0],
  *                 node.center[1],
  */
-    __pyx_t_12 = PyList_New(8); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 1095, __pyx_L1_error)
+    __pyx_t_12 = PyList_New(8); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 1093, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_12);
     __Pyx_GIVEREF(__pyx_t_1);
     PyList_SET_ITEM(__pyx_t_12, 0, __pyx_t_1);
@@ -11113,11 +11117,11 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_20dump_remo
     __pyx_t_9 = 0;
     __pyx_t_10 = 0;
     __pyx_t_11 = 0;
-    __pyx_t_13 = __Pyx_PyList_Append(__pyx_v_data_list, __pyx_t_12); if (unlikely(__pyx_t_13 == ((int)-1))) __PYX_ERR(0, 1095, __pyx_L1_error)
+    __pyx_t_13 = __Pyx_PyList_Append(__pyx_v_data_list, __pyx_t_12); if (unlikely(__pyx_t_13 == ((int)-1))) __PYX_ERR(0, 1093, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
   }
 
-  /* "phd/gravity/gravity_tree.pyx":1105
+  /* "phd/gravity/gravity_tree.pyx":1103
  *                 node.width])
  * 
  *         return data_list             # <<<<<<<<<<<<<<
@@ -11129,7 +11133,7 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_20dump_remo
   __pyx_r = __pyx_v_data_list;
   goto __pyx_L0;
 
-  /* "phd/gravity/gravity_tree.pyx":1085
+  /* "phd/gravity/gravity_tree.pyx":1083
  * 
  *     # -- delete later --
  *     def dump_remote(self):             # <<<<<<<<<<<<<<
@@ -11159,7 +11163,7 @@ static PyObject *__pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_20dump_remo
   return __pyx_r;
 }
 
-/* "phd/gravity/gravity_tree.pyx":1107
+/* "phd/gravity/gravity_tree.pyx":1105
  *         return data_list
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
@@ -11182,14 +11186,14 @@ static void __pyx_pf_3phd_7gravity_12gravity_tree_11GravityTree_22__dealloc__(st
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__dealloc__", 0);
 
-  /* "phd/gravity/gravity_tree.pyx":1111
+  /* "phd/gravity/gravity_tree.pyx":1109
  *         Deallocate buffers in gravity
  *         """
  *         stdlib.free(self.buffer_ids)             # <<<<<<<<<<<<<<
  */
   free(__pyx_v_self->buffer_ids);
 
-  /* "phd/gravity/gravity_tree.pyx":1107
+  /* "phd/gravity/gravity_tree.pyx":1105
  *         return data_list
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
@@ -15369,9 +15373,9 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {0, 0, 0, 0, 0, 0, 0}
 };
 static CYTHON_SMALL_CODE int __Pyx_InitCachedBuiltins(void) {
-  __pyx_builtin_RuntimeError = __Pyx_GetBuiltinName(__pyx_n_s_RuntimeError); if (!__pyx_builtin_RuntimeError) __PYX_ERR(0, 55, __pyx_L1_error)
-  __pyx_builtin_MemoryError = __Pyx_GetBuiltinName(__pyx_n_s_MemoryError); if (!__pyx_builtin_MemoryError) __PYX_ERR(0, 192, __pyx_L1_error)
-  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 216, __pyx_L1_error)
+  __pyx_builtin_RuntimeError = __Pyx_GetBuiltinName(__pyx_n_s_RuntimeError); if (!__pyx_builtin_RuntimeError) __PYX_ERR(0, 53, __pyx_L1_error)
+  __pyx_builtin_MemoryError = __Pyx_GetBuiltinName(__pyx_n_s_MemoryError); if (!__pyx_builtin_MemoryError) __PYX_ERR(0, 190, __pyx_L1_error)
+  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 214, __pyx_L1_error)
   __pyx_builtin_TypeError = __Pyx_GetBuiltinName(__pyx_n_s_TypeError); if (!__pyx_builtin_TypeError) __PYX_ERR(1, 2, __pyx_L1_error)
   __pyx_builtin_ImportError = __Pyx_GetBuiltinName(__pyx_n_s_ImportError); if (!__pyx_builtin_ImportError) __PYX_ERR(3, 884, __pyx_L1_error)
   return 0;
@@ -15383,69 +15387,69 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "phd/gravity/gravity_tree.pyx":55
+  /* "phd/gravity/gravity_tree.pyx":53
  *                 self.import_splitter = BarnesHut(self.barnes_angle)
  *         else:
  *             raise RuntimeError("Unrecognized splitter in gravity")             # <<<<<<<<<<<<<<
  * 
  *         # gravity force caculator
  */
-  __pyx_tuple_ = PyTuple_Pack(1, __pyx_kp_s_Unrecognized_splitter_in_gravity); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 55, __pyx_L1_error)
+  __pyx_tuple_ = PyTuple_Pack(1, __pyx_kp_s_Unrecognized_splitter_in_gravity); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 53, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple_);
   __Pyx_GIVEREF(__pyx_tuple_);
 
-  /* "phd/gravity/gravity_tree.pyx":69
+  /* "phd/gravity/gravity_tree.pyx":67
  * 
  *             # particle buffers for parallel tree walk
  *             self.buffer_import = CarrayContainer(0)             # <<<<<<<<<<<<<<
  *             self.buffer_export = CarrayContainer(0)
  * 
  */
-  __pyx_tuple__2 = PyTuple_Pack(1, __pyx_int_0); if (unlikely(!__pyx_tuple__2)) __PYX_ERR(0, 69, __pyx_L1_error)
+  __pyx_tuple__2 = PyTuple_Pack(1, __pyx_int_0); if (unlikely(!__pyx_tuple__2)) __PYX_ERR(0, 67, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__2);
   __Pyx_GIVEREF(__pyx_tuple__2);
 
-  /* "phd/gravity/gravity_tree.pyx":154
+  /* "phd/gravity/gravity_tree.pyx":152
  * 
  *         if not self.domain_manager:
  *             raise RuntimeError("ERROR: DomainManager not set")             # <<<<<<<<<<<<<<
  * 
  *         self.export_splitter.set_dim(self.dim)
  */
-  __pyx_tuple__3 = PyTuple_Pack(1, __pyx_kp_s_ERROR_DomainManager_not_set); if (unlikely(!__pyx_tuple__3)) __PYX_ERR(0, 154, __pyx_L1_error)
+  __pyx_tuple__3 = PyTuple_Pack(1, __pyx_kp_s_ERROR_DomainManager_not_set); if (unlikely(!__pyx_tuple__3)) __PYX_ERR(0, 152, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__3);
   __Pyx_GIVEREF(__pyx_tuple__3);
 
-  /* "phd/gravity/gravity_tree.pyx":167
+  /* "phd/gravity/gravity_tree.pyx":165
  * 
  *         self.number_nodes = 2**self.dim
  *         self.nodes = GravityPool(10000)             # <<<<<<<<<<<<<<
  * 
  *         if phd._in_parallel:
  */
-  __pyx_tuple__4 = PyTuple_Pack(1, __pyx_int_10000); if (unlikely(!__pyx_tuple__4)) __PYX_ERR(0, 167, __pyx_L1_error)
+  __pyx_tuple__4 = PyTuple_Pack(1, __pyx_int_10000); if (unlikely(!__pyx_tuple__4)) __PYX_ERR(0, 165, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__4);
   __Pyx_GIVEREF(__pyx_tuple__4);
 
-  /* "phd/gravity/gravity_tree.pyx":192
+  /* "phd/gravity/gravity_tree.pyx":190
  *                     self.max_buffer_size*sizeof(PairId))
  *             if self.buffer_ids == NULL:
  *                 raise MemoryError("ERROR: Insufficient memory in id buffer")             # <<<<<<<<<<<<<<
  *             self.buffer_size = 0
  * 
  */
-  __pyx_tuple__5 = PyTuple_Pack(1, __pyx_kp_s_ERROR_Insufficient_memory_in_id); if (unlikely(!__pyx_tuple__5)) __PYX_ERR(0, 192, __pyx_L1_error)
+  __pyx_tuple__5 = PyTuple_Pack(1, __pyx_kp_s_ERROR_Insufficient_memory_in_id); if (unlikely(!__pyx_tuple__5)) __PYX_ERR(0, 190, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__5);
   __Pyx_GIVEREF(__pyx_tuple__5);
 
-  /* "phd/gravity/gravity_tree.pyx":934
+  /* "phd/gravity/gravity_tree.pyx":932
  *         cdef np.ndarray loc_done, glb_done
  * 
  *         loc_done = np.zeros(1, dtype=np.int32)             # <<<<<<<<<<<<<<
  *         glb_done = np.zeros(1, dtype=np.int32)
  * 
  */
-  __pyx_tuple__6 = PyTuple_Pack(1, __pyx_int_1); if (unlikely(!__pyx_tuple__6)) __PYX_ERR(0, 934, __pyx_L1_error)
+  __pyx_tuple__6 = PyTuple_Pack(1, __pyx_int_1); if (unlikely(!__pyx_tuple__6)) __PYX_ERR(0, 932, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__6);
   __Pyx_GIVEREF(__pyx_tuple__6);
 

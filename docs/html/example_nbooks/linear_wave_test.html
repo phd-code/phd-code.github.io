@@ -1,0 +1,1058 @@
+<!doctype html>
+<html class="no-js">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Sod Shock Tube" href="sod_shock_test.html" /><link rel="prev" title="Tutorials and Test Problems" href="../tutorials.html" />
+
+    <meta name="generator" content="sphinx-3.2.1, furo 2021.02.28.beta28"/>
+        <title>A simple linear wave - phd 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/styles/furo.css?digest=be5985a4059b5c2cd56ed0804790452beca62674">
+    <link rel="stylesheet" href="../_static/pygments.css">
+    <link media="(prefers-color-scheme: dark)" rel="stylesheet" href="../_static/pygments_dark.css">
+    
+
+
+<style>
+  :root {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+  }
+
+  /* For allowing end-user-specific overrides */
+  .override-light {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  .override-dark {
+    --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+  }
+</style><link rel="stylesheet" href="../_static/styles/furo-extensions.css?digest=d391b54134226e4196576da3bdb6dddb7e05ba2b"></head>
+  <body dir="">
+    
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke-width="1.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z"/>
+      <line x1="4" y1="6" x2="20" y2="6" />
+      <line x1="10" y1="12" x2="20" y2="12" />
+      <line x1="6" y1="18" x2="20" y2="18" />
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">phd 0.1 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  
+  
+  <span class="sidebar-brand-text">phd 0.1 documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html">
+  <input class="sidebar-search" placeholder=Search name="q">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="../tutorials.html">Tutorials and Test Problems</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label for="toctree-checkbox-1"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">A simple linear wave</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sod_shock_test.html">Sod Shock Tube</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gresho_test.html">The Gresho Vortex Test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kelvin_helmholtz_test.html">Kelvin-Helmholtz Instability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sedov_test.html">Sedov-Taylor Blast Wave</a></li>
+<li class="toctree-l2"><a class="reference internal" href="two_body_test.html">Two Body Problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plummer_test.html">Plummer Sphere</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rayleigh_taylor_test.html">Rayleigh-Taylor Instability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="evrard_test.html">Evrard Collapse</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../docs.html">Documentation</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label for="toctree-checkbox-2"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../phd_code_docs/phd.containers.html">phd.containers package</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label for="toctree-checkbox-3"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../phd_code_docs/phd.containers.tests.html">phd.containers.tests package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../phd_code_docs/phd.domain.html">phd.domain package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../phd_code_docs/phd.equation_state.html">phd.equation_state package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../phd_code_docs/phd.gravity.html">phd.gravity package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../phd_code_docs/phd.hilbert.html">phd.hilbert package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../phd_code_docs/phd.integrate.html">phd.integrate package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../phd_code_docs/phd.io.html">phd.io package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../phd_code_docs/phd.load_balance.html">phd.load_balance package</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../phd_code_docs/phd.mesh.html">phd.mesh package</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label for="toctree-checkbox-4"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../phd_code_docs/phd.mesh.test.html">phd.mesh.test package</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../phd_code_docs/phd.reconstruction.html">phd.reconstruction package</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label for="toctree-checkbox-5"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../phd_code_docs/phd.reconstruction.test.html">phd.reconstruction.test package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../phd_code_docs/phd.riemann.html">phd.riemann package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../phd_code_docs/phd.simulation.html">phd.simulation package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../phd_code_docs/phd.source_term.html">phd.source_term package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../phd_code_docs/phd.utils.html">phd.utils package</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+      </div>
+      
+    </div>
+  </aside>
+  <main class="main">
+    <div class="content">
+      <article role="main">
+        <label class="toc-overlay-icon toc-content-icon" for="__toc">
+          <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+        </label>
+        
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt *,
+div.nbinput.container div.input_area pre,
+div.nboutput.container div.output_area pre,
+div.nbinput.container div.input_area .highlight,
+div.nboutput.container div.output_area .highlight {
+    border: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+div.nbinput.container > div[class*=highlight],
+div.nboutput.container > div[class*=highlight] {
+    margin: 0;
+}
+
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt * {
+    background: none;
+}
+
+div.nboutput.container div.output_area .highlight,
+div.nboutput.container div.output_area pre {
+    background: unset;
+}
+
+div.nboutput.container div.output_area div.highlight {
+    color: unset;  /* override Pygments text color */
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
+}
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        width: unset;
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    /*background: #f5f5f5;*/
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 5px;
+    margin: 0;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+</style>
+<div class="section" id="A-simple-linear-wave">
+<h1>A simple linear wave<a class="headerlink" href="#A-simple-linear-wave" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="Some-context">
+<h2>Some context<a class="headerlink" href="#Some-context" title="Permalink to this headline">¶</a></h2>
+<p>A very basic test problem that also introduces some of the features of the code is to observe the wave transmission of disturbances in the fluid. In other words, if we begin with a constant pressure <span class="math notranslate nohighlight">\(P_0\)</span> and density <span class="math notranslate nohighlight">\(\rho_0\)</span> fluid, with no velocity <span class="math notranslate nohighlight">\(\mathbf{v}=0\)</span>, then we can introduce perturbations of the form:</p>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[\begin{split}\begin{gathered}
+\rho(x,t) = \rho_0 + \delta\rho(x,t) \\
+P(x,t) = P_0 + \delta P(x,t) \\
+\mathbf{v}(x,t) = \delta\mathbf{v}(x,t)
+\end{gathered}\end{split}\]</div></div>
+<p>Then, taking the <a class="reference external" href="https://en.wikipedia.org/wiki/Euler_equations_(fluid_dynamics)#Incompressible_Euler_equations">Euler</a> (with no external forces) and continuity equations, we have (respectively)</p>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[\begin{split}\begin{gathered}
+\frac{\partial\mathbf{v}}{\partial t} = -\frac{\nabla P}{\rho} \\
+\frac{\partial\rho}{\partial t} + \nabla\cdot(\rho\mathbf{v}) = 0
+\end{gathered}\end{split}\]</div></div>
+<p>Then, linearizing these equations (dropping all second-order and higher terms), assuming <span class="math notranslate nohighlight">\(\delta P, \delta \rho &lt;&lt; 1\)</span>, and taking these two equations together, we get a wave equation for the perturbations</p>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[\frac{\partial^2 \delta\rho}{\partial t^2} = -\nabla^2\delta P\]</div></div>
+<p>and using an EOS, could express this as a wave equation for each variable. Ultimately, we can see that by specifying the functional form of the density perturbation/disturbance, we can extract initial conditions (<span class="math notranslate nohighlight">\(t=0\)</span>) for our velocity and pressure perturbations. Explicitly, this means if we take <span class="math notranslate nohighlight">\(\delta\rho = A\sin(kx+\omega t)\)</span> (i.e. a sinusoidal disturbance with <span class="math notranslate nohighlight">\(k=\omega=2\pi\)</span> and amplitude <span class="math notranslate nohighlight">\(A = 10^{-6}\)</span> is induced initially), then we have a corresponding</p>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[\begin{split}\begin{gathered}
+\delta\mathbf{v}(x,0) = \bigg(\frac{\omega}{k}\bigg)\frac{\rho(x,0)}{\rho_0}\mathbf{\hat{x}} \\
+\delta P(x,0) = \bigg(\frac{\omega}{k}\bigg)^2\delta\rho(x,0)
+\end{gathered}\end{split}\]</div></div>
+<p>If we specify <span class="math notranslate nohighlight">\(\rho_0 = 1.0\)</span>, <span class="math notranslate nohighlight">\(P_0=1\)</span>, <span class="math notranslate nohighlight">\(\mathbf{v}=0\)</span>, and <span class="math notranslate nohighlight">\(\gamma = 5/3\)</span> with periodic boundary conditions, then we can see that we have a wave propagating to the right (positive <span class="math notranslate nohighlight">\(\mathbf{\hat{x}}\)</span> direction) with velocity 1. This means that after 1 unit of time in the simulation, the wave should propagate through the simulation box and return to its original position – so comparison of the initial and final densities should give us a good indication of the code
+performance.</p>
+</div>
+<div class="section" id="Using-the-code">
+<h2>Using the code<a class="headerlink" href="#Using-the-code" title="Permalink to this headline">¶</a></h2>
+<p>First we need to import the necessary packages. We can import the code via the simple command <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">phd</span></code>.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">phd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">import</span> <span class="nn">h5py</span>
+</pre></div>
+</div>
+</div>
+<p>Initially, we need to set-up our particle grid. This can be achieved very straightforwardly with some basic code commands. The primary method of doing this is with the <code class="docutils literal notranslate"><span class="pre">HydroParticleCreator</span></code> method, which interfaces with the <code class="docutils literal notranslate"><span class="pre">CarrayContainer</span></code> class to produce a one-dimensional grid of particles of size <code class="docutils literal notranslate"><span class="pre">n</span></code> (in this case, 10):</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">nx</span> <span class="o">=</span> <span class="mi">10</span>   <span class="c1"># number of particles in x direction</span>
+<span class="n">Lx</span> <span class="o">=</span> <span class="mf">1.</span>    <span class="c1"># domain size in x</span>
+<span class="n">dx</span> <span class="o">=</span> <span class="n">Lx</span><span class="o">/</span><span class="n">nx</span> <span class="c1"># spacing between particles</span>
+<span class="n">n</span> <span class="o">=</span> <span class="n">nx</span><span class="o">*</span><span class="n">nx</span>  <span class="c1"># number of points</span>
+
+<span class="n">particles</span> <span class="o">=</span> <span class="n">phd</span><span class="o">.</span><span class="n">HydroParticleCreator</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="c1"># create particle container</span>
+</pre></div>
+</div>
+</div>
+<p>Next, we can specify the initial conditions as outlined above and feed those into the <code class="docutils literal notranslate"><span class="pre">particles</span></code> object just as dictionary key values specified for all particles.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">rho0</span><span class="p">,</span> <span class="n">vel0</span><span class="p">,</span> <span class="n">pre0</span><span class="p">,</span> <span class="n">gamma</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">5.</span><span class="o">/</span><span class="mf">3.</span> <span class="c1"># density, velocity, pressure initial conditions</span>
+<span class="n">A</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="mf">1.0e-6</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="c1"># amplitude, frequency, wavenumber of sinusoidal perturbation</span>
+
+<span class="n">particles</span><span class="p">[</span><span class="s2">"density"</span><span class="p">][:]</span> <span class="o">=</span> <span class="n">rho0</span>
+<span class="n">particles</span><span class="p">[</span><span class="s2">"velocity-x"</span><span class="p">][:]</span> <span class="o">=</span> <span class="n">vel0</span>
+<span class="n">particles</span><span class="p">[</span><span class="s2">"velocity-y"</span><span class="p">][:]</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="n">particles</span><span class="p">[</span><span class="s2">"pressure"</span><span class="p">][:]</span> <span class="o">=</span> <span class="n">pre0</span><span class="o">/</span><span class="n">gamma</span>
+</pre></div>
+</div>
+</div>
+<p>Now we can iterate through each of the particles and add the initial perturbation as given above.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nx</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nx</span><span class="p">):</span>
+        <span class="n">part</span> <span class="o">=</span> <span class="mi">10</span><span class="o">*</span><span class="n">i</span> <span class="o">+</span> <span class="n">j</span>                                        <span class="c1"># indexing/counting each of the particles</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mf">0.5</span><span class="p">)</span><span class="o">*</span><span class="n">dx</span><span class="p">;</span> <span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="n">j</span><span class="o">+</span><span class="mf">0.5</span><span class="p">)</span><span class="o">*</span><span class="n">dx</span>                         <span class="c1"># x and y position of the cell</span>
+        <span class="n">delta_rho</span> <span class="o">=</span> <span class="n">A</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">k</span><span class="o">*</span><span class="n">x</span><span class="p">)</span>                              <span class="c1"># density perturbation (with t=0)</span>
+        <span class="n">particles</span><span class="p">[</span><span class="s2">"density"</span><span class="p">][</span><span class="n">part</span><span class="p">]</span> <span class="o">+=</span> <span class="n">delta_rho</span>
+        <span class="n">particles</span><span class="p">[</span><span class="s2">"velocity-x"</span><span class="p">][</span><span class="n">part</span><span class="p">]</span> <span class="o">+=</span> <span class="p">(</span><span class="n">w</span><span class="o">/</span><span class="n">k</span><span class="p">)</span><span class="o">*</span><span class="n">delta_rho</span><span class="o">/</span><span class="n">rho0</span>
+        <span class="n">particles</span><span class="p">[</span><span class="s2">"pressure"</span><span class="p">][</span><span class="n">part</span><span class="p">]</span> <span class="o">+=</span> <span class="p">(</span><span class="n">w</span><span class="o">/</span><span class="n">k</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">delta_rho</span>
+
+        <span class="n">particles</span><span class="p">[</span><span class="s2">"position-x"</span><span class="p">][</span><span class="n">part</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="n">particles</span><span class="p">[</span><span class="s2">"position-y"</span><span class="p">][</span><span class="n">part</span><span class="p">]</span> <span class="o">=</span> <span class="n">y</span>
+        <span class="n">particles</span><span class="p">[</span><span class="s2">"ids"</span><span class="p">][</span><span class="n">part</span><span class="p">]</span> <span class="o">=</span> <span class="n">part</span>                          <span class="c1"># particle ID</span>
+</pre></div>
+</div>
+</div>
+<p>With this in hand, we are ready to initialize our simulation! The following code block establishes the simulation domain via the <code class="docutils literal notranslate"><span class="pre">DomainManager</span></code> class. Next we want to establish the mesh with no regularization and initialize the integration object – here we are simply selecting the integrator that we will use to solve the fluid equations, feeding in each of the components we have defined so far, and setting the Riemann solver <code class="docutils literal notranslate"><span class="pre">HLLC</span></code>. Following that, we establish the stopping criterion for
+the simulation and dictate that it output the final and initial steps to the screen. Lastly, we name the simulation (this corresponds to the output files that will be stored; here we use <code class="docutils literal notranslate"><span class="pre">linear_wave_10</span></code> to indicate the number of particles) and can run the simulation.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># computation related to boundaries</span>
+<span class="n">domain_manager</span> <span class="o">=</span> <span class="n">phd</span><span class="o">.</span><span class="n">DomainManager</span><span class="p">(</span><span class="n">xmin</span><span class="o">=</span><span class="p">[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">],</span> <span class="n">xmax</span><span class="o">=</span><span class="p">[</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">],</span> <span class="n">initial_radius</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+
+<span class="c1"># create voronoi mesh</span>
+<span class="n">mesh</span> <span class="o">=</span> <span class="n">phd</span><span class="o">.</span><span class="n">Mesh</span><span class="p">(</span><span class="n">regularize</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># computation</span>
+<span class="n">integrator</span> <span class="o">=</span> <span class="n">phd</span><span class="o">.</span><span class="n">MovingMeshMUSCLHancock</span><span class="p">()</span>
+<span class="n">integrator</span><span class="o">.</span><span class="n">set_mesh</span><span class="p">(</span><span class="n">mesh</span><span class="p">)</span>
+<span class="n">integrator</span><span class="o">.</span><span class="n">set_riemann</span><span class="p">(</span><span class="n">phd</span><span class="o">.</span><span class="n">HLLC</span><span class="p">())</span>
+<span class="n">integrator</span><span class="o">.</span><span class="n">set_particles</span><span class="p">(</span><span class="n">particles</span><span class="p">)</span>
+<span class="n">integrator</span><span class="o">.</span><span class="n">set_domain_manager</span><span class="p">(</span><span class="n">domain_manager</span><span class="p">)</span>
+<span class="n">integrator</span><span class="o">.</span><span class="n">set_boundary_condition</span><span class="p">(</span><span class="n">phd</span><span class="o">.</span><span class="n">Periodic</span><span class="p">())</span>
+<span class="n">integrator</span><span class="o">.</span><span class="n">set_reconstruction</span><span class="p">(</span><span class="n">phd</span><span class="o">.</span><span class="n">PieceWiseLinear</span><span class="p">(</span><span class="n">gizmo_limiter</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+<span class="n">integrator</span><span class="o">.</span><span class="n">set_equation_state</span><span class="p">(</span><span class="n">phd</span><span class="o">.</span><span class="n">IdealGas</span><span class="p">(</span><span class="n">gamma</span><span class="o">=</span><span class="n">gamma</span><span class="p">))</span>
+
+<span class="c1"># add finish criteria</span>
+<span class="n">simulation_time_manager</span> <span class="o">=</span> <span class="n">phd</span><span class="o">.</span><span class="n">SimulationTimeManager</span><span class="p">()</span>
+<span class="n">simulation_time_manager</span><span class="o">.</span><span class="n">add_finish</span><span class="p">(</span><span class="n">phd</span><span class="o">.</span><span class="n">Time</span><span class="p">(</span><span class="n">time_max</span><span class="o">=</span><span class="mf">1.0</span><span class="p">))</span>
+
+<span class="c1"># output last step</span>
+<span class="n">output</span> <span class="o">=</span> <span class="n">phd</span><span class="o">.</span><span class="n">FinalOutput</span><span class="p">()</span>
+<span class="n">output</span><span class="o">.</span><span class="n">set_writer</span><span class="p">(</span><span class="n">phd</span><span class="o">.</span><span class="n">Hdf5</span><span class="p">())</span>
+<span class="n">simulation_time_manager</span><span class="o">.</span><span class="n">add_output</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+
+<span class="c1"># output initial data</span>
+<span class="n">output</span> <span class="o">=</span> <span class="n">phd</span><span class="o">.</span><span class="n">InitialOutput</span><span class="p">()</span>
+<span class="n">output</span><span class="o">.</span><span class="n">set_writer</span><span class="p">(</span><span class="n">phd</span><span class="o">.</span><span class="n">Hdf5</span><span class="p">())</span>
+<span class="n">simulation_time_manager</span><span class="o">.</span><span class="n">add_output</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+
+<span class="c1"># Create simulator</span>
+<span class="n">simulation</span> <span class="o">=</span> <span class="n">phd</span><span class="o">.</span><span class="n">Simulation</span><span class="p">(</span><span class="n">simulation_name</span><span class="o">=</span><span class="s2">"linear_wave_10"</span><span class="p">,</span> <span class="n">colored_logs</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">simulation</span><span class="o">.</span><span class="n">set_integrator</span><span class="p">(</span><span class="n">integrator</span><span class="p">)</span>
+<span class="n">simulation</span><span class="o">.</span><span class="n">set_simulation_time_manager</span><span class="p">(</span><span class="n">simulation_time_manager</span><span class="p">)</span>
+<span class="n">simulation</span><span class="o">.</span><span class="n">initialize</span><span class="p">()</span>
+<span class="n">simulation</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+phd: [INFO     ] 2021-03-02 11:57:00,896:
+
+ __________.__         .___
+\______   \  |__    __| _/
+ |     ___/  |  \  / __ |
+ |    |   |   Y  \/ /_/ |
+ |____|   |___|  /\____ |
+               \/      \/
+Welcome to Python Hydro-Dynamics!
+
+Simulation Information
+------------------------------
+Running in serial
+Log file saved at: linear_wave_10.log
+Problem solving: linear_wave_10
+Output data will be saved at: linear_wave_10_output
+
+Classes used in the simulation
+------------------------------
+boundary_condition: Periodic
+domain_manager: DomainManager
+equation_state: IdealGas
+integrator: MovingMeshMUSCLHancock
+mesh: Mesh
+particles: CarrayContainer
+reconstruction: PieceWiseLinear
+riemann: HLLC
+
+phd: [INFO     ] 2021-03-02 11:57:00,898: IntegrateBase: Building initial mesh
+phd: [INFO     ] 2021-03-02 11:57:00,899: Mesh: Starting mesh creation
+phd: [INFO     ] 2021-03-02 11:57:00,906: hdf5 format: Writting initial_output0000.hdf5
+phd: [INFO     ] 2021-03-02 11:57:00,928: Beginning integration loop
+phd: [INFO     ] 2021-03-02 11:57:00,930: Hydro dt: 0.028209
+phd: [INFO     ] 2021-03-02 11:57:00,930: Starting iteration: 0 time: 0.000000 dt: 0.028209
+phd: [INFO     ] 2021-03-02 11:57:00,931: MovingMeshMUSCLHancock: Starting integration
+phd: [INFO     ] 2021-03-02 11:57:00,931: PieceWiseLinear: Starting gradient cacluation
+phd: [INFO     ] 2021-03-02 11:57:00,932: PieceWiseLinear: Starting spatial reconstruction
+phd: [INFO     ] 2021-03-02 11:57:00,933: PieceWiseLinear: Starting temporal reconstruction
+phd: [INFO     ] 2021-03-02 11:57:00,934: HLLC: Starting riemann
+phd: [INFO     ] 2021-03-02 11:57:00,934: Mesh: Starting mesh creation
+phd: [INFO     ] 2021-03-02 11:57:00,938: Hydro dt: 0.028209
+phd: [INFO     ] 2021-03-02 11:57:00,938: Starting iteration: 1 time: 0.028209 dt: 0.028209
+phd: [INFO     ] 2021-03-02 11:57:00,939: MovingMeshMUSCLHancock: Starting integration
+phd: [INFO     ] 2021-03-02 11:57:00,939: PieceWiseLinear: Starting gradient cacluation
+phd: [INFO     ] 2021-03-02 11:57:00,941: PieceWiseLinear: Starting spatial reconstruction
+phd: [INFO     ] 2021-03-02 11:57:00,941: PieceWiseLinear: Starting temporal reconstruction
+phd: [INFO     ] 2021-03-02 11:57:00,941: HLLC: Starting riemann
+phd: [INFO     ] 2021-03-02 11:57:00,942: Mesh: Starting mesh creation
+phd: [INFO     ] 2021-03-02 11:57:00,945: Hydro dt: 0.028209
+phd: [INFO     ] 2021-03-02 11:57:00,946: Starting iteration: 2 time: 0.056419 dt: 0.028209
+phd: [INFO     ] 2021-03-02 11:57:00,946: MovingMeshMUSCLHancock: Starting integration
+phd: [INFO     ] 2021-03-02 11:57:00,947: PieceWiseLinear: Starting gradient cacluation
+phd: [INFO     ] 2021-03-02 11:57:00,948: PieceWiseLinear: Starting spatial reconstruction
+phd: [INFO     ] 2021-03-02 11:57:00,949: PieceWiseLinear: Starting temporal reconstruction
+phd: [INFO     ] 2021-03-02 11:57:00,949: HLLC: Starting riemann
+phd: [INFO     ] 2021-03-02 11:57:00,950: Mesh: Starting mesh creation
+phd: [INFO     ] 2021-03-02 11:57:00,952: Hydro dt: 0.028209
+phd: [INFO     ] 2021-03-02 11:57:00,953: Starting iteration: 3 time: 0.084628 dt: 0.028209
+phd: [INFO     ] 2021-03-02 11:57:00,953: MovingMeshMUSCLHancock: Starting integration
+phd: [INFO     ] 2021-03-02 11:57:00,954: PieceWiseLinear: Starting gradient cacluation
+phd: [INFO     ] 2021-03-02 11:57:00,955: PieceWiseLinear: Starting spatial reconstruction
+phd: [INFO     ] 2021-03-02 11:57:00,955: PieceWiseLinear: Starting temporal reconstruction
+phd: [INFO     ] 2021-03-02 11:57:00,955: HLLC: Starting riemann
+phd: [INFO     ] 2021-03-02 11:57:00,956: Mesh: Starting mesh creation
+phd: [INFO     ] 2021-03-02 11:57:00,958: Hydro dt: 0.028209
+phd: [INFO     ] 2021-03-02 11:57:00,958: Starting iteration: 4 time: 0.112838 dt: 0.028209
+phd: [INFO     ] 2021-03-02 11:57:00,959: MovingMeshMUSCLHancock: Starting integration
+phd: [INFO     ] 2021-03-02 11:57:00,959: PieceWiseLinear: Starting gradient cacluation
+phd: [INFO     ] 2021-03-02 11:57:00,960: PieceWiseLinear: Starting spatial reconstruction
+phd: [INFO     ] 2021-03-02 11:57:00,960: PieceWiseLinear: Starting temporal reconstruction
+phd: [INFO     ] 2021-03-02 11:57:00,961: HLLC: Starting riemann
+phd: [INFO     ] 2021-03-02 11:57:00,961: Mesh: Starting mesh creation
+phd: [INFO     ] 2021-03-02 11:57:00,964: Hydro dt: 0.028209
+phd: [INFO     ] 2021-03-02 11:57:00,965: Starting iteration: 5 time: 0.141047 dt: 0.028209
+phd: [INFO     ] 2021-03-02 11:57:00,965: MovingMeshMUSCLHancock: Starting integration
+phd: [INFO     ] 2021-03-02 11:57:00,966: PieceWiseLinear: Starting gradient cacluation
+phd: [INFO     ] 2021-03-02 11:57:00,966: PieceWiseLinear: Starting spatial reconstruction
+phd: [INFO     ] 2021-03-02 11:57:00,967: PieceWiseLinear: Starting temporal reconstruction
+phd: [INFO     ] 2021-03-02 11:57:00,967: HLLC: Starting riemann
+phd: [INFO     ] 2021-03-02 11:57:00,967: Mesh: Starting mesh creation
+phd: [INFO     ] 2021-03-02 11:57:00,969: Hydro dt: 0.028209
+phd: [INFO     ] 2021-03-02 11:57:00,970: Starting iteration: 6 time: 0.169257 dt: 0.028209
+phd: [INFO     ] 2021-03-02 11:57:00,970: MovingMeshMUSCLHancock: Starting integration
+phd: [INFO     ] 2021-03-02 11:57:00,970: PieceWiseLinear: Starting gradient cacluation
+phd: [INFO     ] 2021-03-02 11:57:00,971: PieceWiseLinear: Starting spatial reconstruction
+phd: [INFO     ] 2021-03-02 11:57:00,971: PieceWiseLinear: Starting temporal reconstruction
+phd: [INFO     ] 2021-03-02 11:57:00,972: HLLC: Starting riemann
+phd: [INFO     ] 2021-03-02 11:57:00,972: Mesh: Starting mesh creation
+phd: [INFO     ] 2021-03-02 11:57:00,974: Hydro dt: 0.028209
+phd: [INFO     ] 2021-03-02 11:57:00,974: Starting iteration: 7 time: 0.197466 dt: 0.028209
+phd: [INFO     ] 2021-03-02 11:57:00,974: MovingMeshMUSCLHancock: Starting integration
+phd: [INFO     ] 2021-03-02 11:57:00,975: PieceWiseLinear: Starting gradient cacluation
+phd: [INFO     ] 2021-03-02 11:57:00,976: PieceWiseLinear: Starting spatial reconstruction
+phd: [INFO     ] 2021-03-02 11:57:00,976: PieceWiseLinear: Starting temporal reconstruction
+phd: [INFO     ] 2021-03-02 11:57:00,976: HLLC: Starting riemann
+phd: [INFO     ] 2021-03-02 11:57:00,976: Mesh: Starting mesh creation
+phd: [INFO     ] 2021-03-02 11:57:00,978: Hydro dt: 0.028209
+phd: [INFO     ] 2021-03-02 11:57:00,979: Starting iteration: 8 time: 0.225676 dt: 0.028209
+phd: [INFO     ] 2021-03-02 11:57:00,979: MovingMeshMUSCLHancock: Starting integration
+phd: [INFO     ] 2021-03-02 11:57:00,980: PieceWiseLinear: Starting gradient cacluation
+phd: [INFO     ] 2021-03-02 11:57:00,981: PieceWiseLinear: Starting spatial reconstruction
+phd: [INFO     ] 2021-03-02 11:57:00,981: PieceWiseLinear: Starting temporal reconstruction
+phd: [INFO     ] 2021-03-02 11:57:00,981: HLLC: Starting riemann
+phd: [INFO     ] 2021-03-02 11:57:00,982: Mesh: Starting mesh creation
+phd: [INFO     ] 2021-03-02 11:57:00,984: Hydro dt: 0.028209
+phd: [INFO     ] 2021-03-02 11:57:00,984: Starting iteration: 9 time: 0.253885 dt: 0.028209
+phd: [INFO     ] 2021-03-02 11:57:00,984: MovingMeshMUSCLHancock: Starting integration
+phd: [INFO     ] 2021-03-02 11:57:00,985: PieceWiseLinear: Starting gradient cacluation
+phd: [INFO     ] 2021-03-02 11:57:00,985: PieceWiseLinear: Starting spatial reconstruction
+phd: [INFO     ] 2021-03-02 11:57:00,986: PieceWiseLinear: Starting temporal reconstruction
+phd: [INFO     ] 2021-03-02 11:57:00,986: HLLC: Starting riemann
+phd: [INFO     ] 2021-03-02 11:57:00,986: Mesh: Starting mesh creation
+phd: [INFO     ] 2021-03-02 11:57:00,988: Hydro dt: 0.028209
+phd: [INFO     ] 2021-03-02 11:57:00,988: Starting iteration: 10 time: 0.282095 dt: 0.028209
+phd: [INFO     ] 2021-03-02 11:57:00,989: MovingMeshMUSCLHancock: Starting integration
+phd: [INFO     ] 2021-03-02 11:57:00,989: PieceWiseLinear: Starting gradient cacluation
+phd: [INFO     ] 2021-03-02 11:57:00,990: PieceWiseLinear: Starting spatial reconstruction
+phd: [INFO     ] 2021-03-02 11:57:00,990: PieceWiseLinear: Starting temporal reconstruction
+phd: [INFO     ] 2021-03-02 11:57:00,990: HLLC: Starting riemann
+phd: [INFO     ] 2021-03-02 11:57:00,991: Mesh: Starting mesh creation
+phd: [INFO     ] 2021-03-02 11:57:00,993: Hydro dt: 0.028209
+phd: [INFO     ] 2021-03-02 11:57:00,993: Starting iteration: 11 time: 0.310304 dt: 0.028209
+phd: [INFO     ] 2021-03-02 11:57:00,993: MovingMeshMUSCLHancock: Starting integration
+phd: [INFO     ] 2021-03-02 11:57:00,994: PieceWiseLinear: Starting gradient cacluation
+phd: [INFO     ] 2021-03-02 11:57:00,995: PieceWiseLinear: Starting spatial reconstruction
+phd: [INFO     ] 2021-03-02 11:57:00,995: PieceWiseLinear: Starting temporal reconstruction
+phd: [INFO     ] 2021-03-02 11:57:00,996: HLLC: Starting riemann
+phd: [INFO     ] 2021-03-02 11:57:00,996: Mesh: Starting mesh creation
+phd: [INFO     ] 2021-03-02 11:57:00,999: Hydro dt: 0.028209
+phd: [INFO     ] 2021-03-02 11:57:00,999: Starting iteration: 12 time: 0.338514 dt: 0.028209
+phd: [INFO     ] 2021-03-02 11:57:00,999: MovingMeshMUSCLHancock: Starting integration
+phd: [INFO     ] 2021-03-02 11:57:01,000: PieceWiseLinear: Starting gradient cacluation
+phd: [INFO     ] 2021-03-02 11:57:01,001: PieceWiseLinear: Starting spatial reconstruction
+phd: [INFO     ] 2021-03-02 11:57:01,001: PieceWiseLinear: Starting temporal reconstruction
+phd: [INFO     ] 2021-03-02 11:57:01,001: HLLC: Starting riemann
+phd: [INFO     ] 2021-03-02 11:57:01,001: Mesh: Starting mesh creation
+phd: [INFO     ] 2021-03-02 11:57:01,003: Hydro dt: 0.028209
+phd: [INFO     ] 2021-03-02 11:57:01,004: Starting iteration: 13 time: 0.366723 dt: 0.028209
+phd: [INFO     ] 2021-03-02 11:57:01,004: MovingMeshMUSCLHancock: Starting integration
+phd: [INFO     ] 2021-03-02 11:57:01,004: PieceWiseLinear: Starting gradient cacluation
+phd: [INFO     ] 2021-03-02 11:57:01,005: PieceWiseLinear: Starting spatial reconstruction
+phd: [INFO     ] 2021-03-02 11:57:01,005: PieceWiseLinear: Starting temporal reconstruction
+phd: [INFO     ] 2021-03-02 11:57:01,006: HLLC: Starting riemann
+phd: [INFO     ] 2021-03-02 11:57:01,006: Mesh: Starting mesh creation
+phd: [INFO     ] 2021-03-02 11:57:01,008: Hydro dt: 0.028209
+phd: [INFO     ] 2021-03-02 11:57:01,008: Starting iteration: 14 time: 0.394932 dt: 0.028209
+phd: [INFO     ] 2021-03-02 11:57:01,009: MovingMeshMUSCLHancock: Starting integration
+phd: [INFO     ] 2021-03-02 11:57:01,009: PieceWiseLinear: Starting gradient cacluation
+phd: [INFO     ] 2021-03-02 11:57:01,010: PieceWiseLinear: Starting spatial reconstruction
+phd: [INFO     ] 2021-03-02 11:57:01,010: PieceWiseLinear: Starting temporal reconstruction
+phd: [INFO     ] 2021-03-02 11:57:01,010: HLLC: Starting riemann
+phd: [INFO     ] 2021-03-02 11:57:01,011: Mesh: Starting mesh creation
+phd: [INFO     ] 2021-03-02 11:57:01,013: Hydro dt: 0.028209
+phd: [INFO     ] 2021-03-02 11:57:01,014: Starting iteration: 15 time: 0.423142 dt: 0.028209
+phd: [INFO     ] 2021-03-02 11:57:01,014: MovingMeshMUSCLHancock: Starting integration
+phd: [INFO     ] 2021-03-02 11:57:01,015: PieceWiseLinear: Starting gradient cacluation
+phd: [INFO     ] 2021-03-02 11:57:01,015: PieceWiseLinear: Starting spatial reconstruction
+phd: [INFO     ] 2021-03-02 11:57:01,016: PieceWiseLinear: Starting temporal reconstruction
+phd: [INFO     ] 2021-03-02 11:57:01,016: HLLC: Starting riemann
+phd: [INFO     ] 2021-03-02 11:57:01,017: Mesh: Starting mesh creation
+phd: [INFO     ] 2021-03-02 11:57:01,019: Hydro dt: 0.028209
+phd: [INFO     ] 2021-03-02 11:57:01,019: Starting iteration: 16 time: 0.451351 dt: 0.028209
+phd: [INFO     ] 2021-03-02 11:57:01,019: MovingMeshMUSCLHancock: Starting integration
+phd: [INFO     ] 2021-03-02 11:57:01,020: PieceWiseLinear: Starting gradient cacluation
+phd: [INFO     ] 2021-03-02 11:57:01,020: PieceWiseLinear: Starting spatial reconstruction
+phd: [INFO     ] 2021-03-02 11:57:01,021: PieceWiseLinear: Starting temporal reconstruction
+phd: [INFO     ] 2021-03-02 11:57:01,021: HLLC: Starting riemann
+phd: [INFO     ] 2021-03-02 11:57:01,021: Mesh: Starting mesh creation
+phd: [INFO     ] 2021-03-02 11:57:01,023: Hydro dt: 0.028209
+phd: [INFO     ] 2021-03-02 11:57:01,024: Starting iteration: 17 time: 0.479561 dt: 0.028209
+phd: [INFO     ] 2021-03-02 11:57:01,024: MovingMeshMUSCLHancock: Starting integration
+phd: [INFO     ] 2021-03-02 11:57:01,024: PieceWiseLinear: Starting gradient cacluation
+phd: [INFO     ] 2021-03-02 11:57:01,025: PieceWiseLinear: Starting spatial reconstruction
+phd: [INFO     ] 2021-03-02 11:57:01,025: PieceWiseLinear: Starting temporal reconstruction
+phd: [INFO     ] 2021-03-02 11:57:01,026: HLLC: Starting riemann
+phd: [INFO     ] 2021-03-02 11:57:01,026: Mesh: Starting mesh creation
+phd: [INFO     ] 2021-03-02 11:57:01,028: Hydro dt: 0.028209
+phd: [INFO     ] 2021-03-02 11:57:01,029: Starting iteration: 18 time: 0.507770 dt: 0.028209
+phd: [INFO     ] 2021-03-02 11:57:01,029: MovingMeshMUSCLHancock: Starting integration
+phd: [INFO     ] 2021-03-02 11:57:01,030: PieceWiseLinear: Starting gradient cacluation
+phd: [INFO     ] 2021-03-02 11:57:01,030: PieceWiseLinear: Starting spatial reconstruction
+phd: [INFO     ] 2021-03-02 11:57:01,031: PieceWiseLinear: Starting temporal reconstruction
+phd: [INFO     ] 2021-03-02 11:57:01,031: HLLC: Starting riemann
+phd: [INFO     ] 2021-03-02 11:57:01,031: Mesh: Starting mesh creation
+phd: [INFO     ] 2021-03-02 11:57:01,033: Hydro dt: 0.028209
+phd: [INFO     ] 2021-03-02 11:57:01,033: Starting iteration: 19 time: 0.535980 dt: 0.028209
+phd: [INFO     ] 2021-03-02 11:57:01,034: MovingMeshMUSCLHancock: Starting integration
+phd: [INFO     ] 2021-03-02 11:57:01,034: PieceWiseLinear: Starting gradient cacluation
+phd: [INFO     ] 2021-03-02 11:57:01,035: PieceWiseLinear: Starting spatial reconstruction
+phd: [INFO     ] 2021-03-02 11:57:01,035: PieceWiseLinear: Starting temporal reconstruction
+phd: [INFO     ] 2021-03-02 11:57:01,035: HLLC: Starting riemann
+phd: [INFO     ] 2021-03-02 11:57:01,036: Mesh: Starting mesh creation
+phd: [INFO     ] 2021-03-02 11:57:01,038: Hydro dt: 0.028209
+phd: [INFO     ] 2021-03-02 11:57:01,038: Starting iteration: 20 time: 0.564189 dt: 0.028209
+phd: [INFO     ] 2021-03-02 11:57:01,038: MovingMeshMUSCLHancock: Starting integration
+phd: [INFO     ] 2021-03-02 11:57:01,039: PieceWiseLinear: Starting gradient cacluation
+phd: [INFO     ] 2021-03-02 11:57:01,040: PieceWiseLinear: Starting spatial reconstruction
+phd: [INFO     ] 2021-03-02 11:57:01,040: PieceWiseLinear: Starting temporal reconstruction
+phd: [INFO     ] 2021-03-02 11:57:01,040: HLLC: Starting riemann
+phd: [INFO     ] 2021-03-02 11:57:01,040: Mesh: Starting mesh creation
+phd: [INFO     ] 2021-03-02 11:57:01,042: Hydro dt: 0.028209
+phd: [INFO     ] 2021-03-02 11:57:01,043: Starting iteration: 21 time: 0.592399 dt: 0.028209
+phd: [INFO     ] 2021-03-02 11:57:01,043: MovingMeshMUSCLHancock: Starting integration
+phd: [INFO     ] 2021-03-02 11:57:01,043: PieceWiseLinear: Starting gradient cacluation
+phd: [INFO     ] 2021-03-02 11:57:01,044: PieceWiseLinear: Starting spatial reconstruction
+phd: [INFO     ] 2021-03-02 11:57:01,045: PieceWiseLinear: Starting temporal reconstruction
+phd: [INFO     ] 2021-03-02 11:57:01,045: HLLC: Starting riemann
+phd: [INFO     ] 2021-03-02 11:57:01,046: Mesh: Starting mesh creation
+phd: [INFO     ] 2021-03-02 11:57:01,048: Hydro dt: 0.028209
+phd: [INFO     ] 2021-03-02 11:57:01,048: Starting iteration: 22 time: 0.620608 dt: 0.028209
+phd: [INFO     ] 2021-03-02 11:57:01,049: MovingMeshMUSCLHancock: Starting integration
+phd: [INFO     ] 2021-03-02 11:57:01,049: PieceWiseLinear: Starting gradient cacluation
+phd: [INFO     ] 2021-03-02 11:57:01,050: PieceWiseLinear: Starting spatial reconstruction
+phd: [INFO     ] 2021-03-02 11:57:01,050: PieceWiseLinear: Starting temporal reconstruction
+phd: [INFO     ] 2021-03-02 11:57:01,050: HLLC: Starting riemann
+phd: [INFO     ] 2021-03-02 11:57:01,051: Mesh: Starting mesh creation
+phd: [INFO     ] 2021-03-02 11:57:01,052: Hydro dt: 0.028209
+phd: [INFO     ] 2021-03-02 11:57:01,053: Starting iteration: 23 time: 0.648817 dt: 0.028209
+phd: [INFO     ] 2021-03-02 11:57:01,053: MovingMeshMUSCLHancock: Starting integration
+phd: [INFO     ] 2021-03-02 11:57:01,054: PieceWiseLinear: Starting gradient cacluation
+phd: [INFO     ] 2021-03-02 11:57:01,054: PieceWiseLinear: Starting spatial reconstruction
+phd: [INFO     ] 2021-03-02 11:57:01,055: PieceWiseLinear: Starting temporal reconstruction
+phd: [INFO     ] 2021-03-02 11:57:01,055: HLLC: Starting riemann
+phd: [INFO     ] 2021-03-02 11:57:01,055: Mesh: Starting mesh creation
+phd: [INFO     ] 2021-03-02 11:57:01,057: Hydro dt: 0.028209
+phd: [INFO     ] 2021-03-02 11:57:01,057: Starting iteration: 24 time: 0.677027 dt: 0.028209
+phd: [INFO     ] 2021-03-02 11:57:01,058: MovingMeshMUSCLHancock: Starting integration
+phd: [INFO     ] 2021-03-02 11:57:01,058: PieceWiseLinear: Starting gradient cacluation
+phd: [INFO     ] 2021-03-02 11:57:01,059: PieceWiseLinear: Starting spatial reconstruction
+phd: [INFO     ] 2021-03-02 11:57:01,059: PieceWiseLinear: Starting temporal reconstruction
+phd: [INFO     ] 2021-03-02 11:57:01,059: HLLC: Starting riemann
+phd: [INFO     ] 2021-03-02 11:57:01,060: Mesh: Starting mesh creation
+phd: [INFO     ] 2021-03-02 11:57:01,062: Hydro dt: 0.028209
+phd: [INFO     ] 2021-03-02 11:57:01,062: Starting iteration: 25 time: 0.705236 dt: 0.028209
+phd: [INFO     ] 2021-03-02 11:57:01,063: MovingMeshMUSCLHancock: Starting integration
+phd: [INFO     ] 2021-03-02 11:57:01,063: PieceWiseLinear: Starting gradient cacluation
+phd: [INFO     ] 2021-03-02 11:57:01,064: PieceWiseLinear: Starting spatial reconstruction
+phd: [INFO     ] 2021-03-02 11:57:01,064: PieceWiseLinear: Starting temporal reconstruction
+phd: [INFO     ] 2021-03-02 11:57:01,065: HLLC: Starting riemann
+phd: [INFO     ] 2021-03-02 11:57:01,065: Mesh: Starting mesh creation
+phd: [INFO     ] 2021-03-02 11:57:01,067: Hydro dt: 0.028209
+phd: [INFO     ] 2021-03-02 11:57:01,067: Starting iteration: 26 time: 0.733446 dt: 0.028209
+phd: [INFO     ] 2021-03-02 11:57:01,068: MovingMeshMUSCLHancock: Starting integration
+phd: [INFO     ] 2021-03-02 11:57:01,068: PieceWiseLinear: Starting gradient cacluation
+phd: [INFO     ] 2021-03-02 11:57:01,069: PieceWiseLinear: Starting spatial reconstruction
+phd: [INFO     ] 2021-03-02 11:57:01,069: PieceWiseLinear: Starting temporal reconstruction
+phd: [INFO     ] 2021-03-02 11:57:01,069: HLLC: Starting riemann
+phd: [INFO     ] 2021-03-02 11:57:01,070: Mesh: Starting mesh creation
+phd: [INFO     ] 2021-03-02 11:57:01,071: Hydro dt: 0.028209
+phd: [INFO     ] 2021-03-02 11:57:01,072: Starting iteration: 27 time: 0.761655 dt: 0.028209
+phd: [INFO     ] 2021-03-02 11:57:01,072: MovingMeshMUSCLHancock: Starting integration
+phd: [INFO     ] 2021-03-02 11:57:01,072: PieceWiseLinear: Starting gradient cacluation
+phd: [INFO     ] 2021-03-02 11:57:01,073: PieceWiseLinear: Starting spatial reconstruction
+phd: [INFO     ] 2021-03-02 11:57:01,073: PieceWiseLinear: Starting temporal reconstruction
+phd: [INFO     ] 2021-03-02 11:57:01,074: HLLC: Starting riemann
+phd: [INFO     ] 2021-03-02 11:57:01,074: Mesh: Starting mesh creation
+phd: [INFO     ] 2021-03-02 11:57:01,076: Hydro dt: 0.028209
+phd: [INFO     ] 2021-03-02 11:57:01,076: Starting iteration: 28 time: 0.789865 dt: 0.028209
+phd: [INFO     ] 2021-03-02 11:57:01,077: MovingMeshMUSCLHancock: Starting integration
+phd: [INFO     ] 2021-03-02 11:57:01,078: PieceWiseLinear: Starting gradient cacluation
+phd: [INFO     ] 2021-03-02 11:57:01,079: PieceWiseLinear: Starting spatial reconstruction
+phd: [INFO     ] 2021-03-02 11:57:01,079: PieceWiseLinear: Starting temporal reconstruction
+phd: [INFO     ] 2021-03-02 11:57:01,079: HLLC: Starting riemann
+phd: [INFO     ] 2021-03-02 11:57:01,080: Mesh: Starting mesh creation
+phd: [INFO     ] 2021-03-02 11:57:01,082: Hydro dt: 0.028209
+phd: [INFO     ] 2021-03-02 11:57:01,082: Starting iteration: 29 time: 0.818074 dt: 0.028209
+phd: [INFO     ] 2021-03-02 11:57:01,082: MovingMeshMUSCLHancock: Starting integration
+phd: [INFO     ] 2021-03-02 11:57:01,083: PieceWiseLinear: Starting gradient cacluation
+phd: [INFO     ] 2021-03-02 11:57:01,083: PieceWiseLinear: Starting spatial reconstruction
+phd: [INFO     ] 2021-03-02 11:57:01,084: PieceWiseLinear: Starting temporal reconstruction
+phd: [INFO     ] 2021-03-02 11:57:01,084: HLLC: Starting riemann
+phd: [INFO     ] 2021-03-02 11:57:01,084: Mesh: Starting mesh creation
+phd: [INFO     ] 2021-03-02 11:57:01,086: Hydro dt: 0.028209
+phd: [INFO     ] 2021-03-02 11:57:01,086: Starting iteration: 30 time: 0.846284 dt: 0.028209
+phd: [INFO     ] 2021-03-02 11:57:01,087: MovingMeshMUSCLHancock: Starting integration
+phd: [INFO     ] 2021-03-02 11:57:01,087: PieceWiseLinear: Starting gradient cacluation
+phd: [INFO     ] 2021-03-02 11:57:01,088: PieceWiseLinear: Starting spatial reconstruction
+phd: [INFO     ] 2021-03-02 11:57:01,088: PieceWiseLinear: Starting temporal reconstruction
+phd: [INFO     ] 2021-03-02 11:57:01,088: HLLC: Starting riemann
+phd: [INFO     ] 2021-03-02 11:57:01,089: Mesh: Starting mesh creation
+phd: [INFO     ] 2021-03-02 11:57:01,090: Hydro dt: 0.028209
+phd: [INFO     ] 2021-03-02 11:57:01,091: Starting iteration: 31 time: 0.874493 dt: 0.028209
+phd: [INFO     ] 2021-03-02 11:57:01,091: MovingMeshMUSCLHancock: Starting integration
+phd: [INFO     ] 2021-03-02 11:57:01,091: PieceWiseLinear: Starting gradient cacluation
+phd: [INFO     ] 2021-03-02 11:57:01,092: PieceWiseLinear: Starting spatial reconstruction
+phd: [INFO     ] 2021-03-02 11:57:01,092: PieceWiseLinear: Starting temporal reconstruction
+phd: [INFO     ] 2021-03-02 11:57:01,093: HLLC: Starting riemann
+phd: [INFO     ] 2021-03-02 11:57:01,093: Mesh: Starting mesh creation
+phd: [INFO     ] 2021-03-02 11:57:01,095: Hydro dt: 0.028209
+phd: [INFO     ] 2021-03-02 11:57:01,096: Starting iteration: 32 time: 0.902703 dt: 0.028209
+phd: [INFO     ] 2021-03-02 11:57:01,096: MovingMeshMUSCLHancock: Starting integration
+phd: [INFO     ] 2021-03-02 11:57:01,096: PieceWiseLinear: Starting gradient cacluation
+phd: [INFO     ] 2021-03-02 11:57:01,097: PieceWiseLinear: Starting spatial reconstruction
+phd: [INFO     ] 2021-03-02 11:57:01,097: PieceWiseLinear: Starting temporal reconstruction
+phd: [INFO     ] 2021-03-02 11:57:01,098: HLLC: Starting riemann
+phd: [INFO     ] 2021-03-02 11:57:01,098: Mesh: Starting mesh creation
+phd: [INFO     ] 2021-03-02 11:57:01,100: Hydro dt: 0.028209
+phd: [INFO     ] 2021-03-02 11:57:01,100: Starting iteration: 33 time: 0.930912 dt: 0.028209
+phd: [INFO     ] 2021-03-02 11:57:01,100: MovingMeshMUSCLHancock: Starting integration
+phd: [INFO     ] 2021-03-02 11:57:01,101: PieceWiseLinear: Starting gradient cacluation
+phd: [INFO     ] 2021-03-02 11:57:01,101: PieceWiseLinear: Starting spatial reconstruction
+phd: [INFO     ] 2021-03-02 11:57:01,101: PieceWiseLinear: Starting temporal reconstruction
+phd: [INFO     ] 2021-03-02 11:57:01,102: HLLC: Starting riemann
+phd: [INFO     ] 2021-03-02 11:57:01,102: Mesh: Starting mesh creation
+phd: [INFO     ] 2021-03-02 11:57:01,104: Hydro dt: 0.028209
+phd: [INFO     ] 2021-03-02 11:57:01,104: Starting iteration: 34 time: 0.959122 dt: 0.028209
+phd: [INFO     ] 2021-03-02 11:57:01,104: MovingMeshMUSCLHancock: Starting integration
+phd: [INFO     ] 2021-03-02 11:57:01,105: PieceWiseLinear: Starting gradient cacluation
+phd: [INFO     ] 2021-03-02 11:57:01,105: PieceWiseLinear: Starting spatial reconstruction
+phd: [INFO     ] 2021-03-02 11:57:01,106: PieceWiseLinear: Starting temporal reconstruction
+phd: [INFO     ] 2021-03-02 11:57:01,106: HLLC: Starting riemann
+phd: [INFO     ] 2021-03-02 11:57:01,106: Mesh: Starting mesh creation
+phd: [INFO     ] 2021-03-02 11:57:01,108: Hydro dt: 0.028209
+phd: [INFO     ] 2021-03-02 11:57:01,108: Starting iteration: 35 time: 0.987331 dt: 0.012669
+phd: [INFO     ] 2021-03-02 11:57:01,109: MovingMeshMUSCLHancock: Starting integration
+phd: [INFO     ] 2021-03-02 11:57:01,109: PieceWiseLinear: Starting gradient cacluation
+phd: [INFO     ] 2021-03-02 11:57:01,110: PieceWiseLinear: Starting spatial reconstruction
+phd: [INFO     ] 2021-03-02 11:57:01,110: PieceWiseLinear: Starting temporal reconstruction
+phd: [INFO     ] 2021-03-02 11:57:01,110: HLLC: Starting riemann
+phd: [INFO     ] 2021-03-02 11:57:01,111: Mesh: Starting mesh creation
+phd: [INFO     ] 2021-03-02 11:57:01,113: hdf5 format: Writting final_output0000.hdf5
+phd: [SUCCESS  ] 2021-03-02 11:57:01,122: Simulation successfully finished!
+</pre></div></div>
+</div>
+<p>To visualize the results, we can extract the data from the initial and final output files, plotting the density on the upper left, and the pressures, densities, and velocities in the other three panels. Comparing the initial (x’s) and final (o’s) values, we can see some slight discrepancy, which improves as we increase the grid resolution (i.e. increase <code class="docutils literal notranslate"><span class="pre">nx</span></code>), with convergence that is approximately second-order. Extrapolating to higher resolutions is a simple extension of the above procedure
+and can be functionally achieved by locally defining a method to create particles and looping through different resolutions.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># For plotting...</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">matplotlib.collections</span> <span class="kn">import</span> <span class="n">PatchCollection</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">"mathtext.fontset"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"stix"</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">"font.family"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"STIXGeneral"</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">"xtick.labelsize"</span><span class="p">]</span> <span class="o">=</span> <span class="mi">16</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">"ytick.labelsize"</span><span class="p">]</span> <span class="o">=</span> <span class="mi">16</span>
+
+
+<span class="n">path_to_output</span> <span class="o">=</span> <span class="s1">'../../notebooks_tests/linear_wave/'</span>
+<span class="n">init_output</span> <span class="o">=</span> <span class="n">path_to_output</span> <span class="o">+</span> <span class="s1">'linear_wave_10_output/initial_output/initial_output0000/initial_output0000.hdf5'</span>
+<span class="n">final_output</span> <span class="o">=</span> <span class="n">path_to_output</span> <span class="o">+</span> <span class="s1">'linear_wave_10_output/final_output/final_output0000/final_output0000.hdf5'</span>
+
+<span class="n">reader</span> <span class="o">=</span> <span class="n">phd</span><span class="o">.</span><span class="n">Hdf5</span><span class="p">()</span>
+<span class="n">init_particles</span> <span class="o">=</span> <span class="n">reader</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">init_output</span><span class="p">)</span>
+<span class="n">final_particles</span> <span class="o">=</span> <span class="n">reader</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">final_output</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">12</span><span class="p">))</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">patch</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s1">'white'</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">patch</span><span class="o">.</span><span class="n">set_alpha</span><span class="p">(</span><span class="mf">0.8</span><span class="p">)</span>
+
+<span class="n">patch</span><span class="p">,</span> <span class="n">colors</span> <span class="o">=</span> <span class="n">phd</span><span class="o">.</span><span class="n">vor_collection</span><span class="p">(</span><span class="n">init_particles</span><span class="p">,</span> <span class="s2">"density"</span><span class="p">)</span>
+<span class="n">init_particles</span><span class="o">.</span><span class="n">remove_tagged_particles</span><span class="p">(</span><span class="n">phd</span><span class="o">.</span><span class="n">ParticleTAGS</span><span class="o">.</span><span class="n">Ghost</span><span class="p">)</span>
+<span class="n">final_particles</span><span class="o">.</span><span class="n">remove_tagged_particles</span><span class="p">(</span><span class="n">phd</span><span class="o">.</span><span class="n">ParticleTAGS</span><span class="o">.</span><span class="n">Ghost</span><span class="p">)</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">PatchCollection</span><span class="p">(</span><span class="n">patch</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">"jet"</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">"black"</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+<span class="n">p</span><span class="o">.</span><span class="n">set_array</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">colors</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"X"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"Y"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">add_collection</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">init_particles</span><span class="p">[</span><span class="s2">"position-x"</span><span class="p">],</span> <span class="n">init_particles</span><span class="p">[</span><span class="s2">"density"</span><span class="p">],</span> <span class="s2">"kx"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"t=0."</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">final_particles</span><span class="p">[</span><span class="s2">"position-x"</span><span class="p">],</span> <span class="n">final_particles</span><span class="p">[</span><span class="s2">"density"</span><span class="p">],</span> <span class="s2">"r."</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"t=1."</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mf">1.0</span><span class="o">-</span><span class="mf">2.0e-6</span><span class="p">,</span><span class="mf">1.0</span><span class="o">+</span><span class="mf">2.0e-6</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"X"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"Density"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">init_particles</span><span class="p">[</span><span class="s2">"position-x"</span><span class="p">],</span> <span class="n">init_particles</span><span class="p">[</span><span class="s2">"velocity-x"</span><span class="p">],</span> <span class="s2">"kx"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"t=0."</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">final_particles</span><span class="p">[</span><span class="s2">"position-x"</span><span class="p">],</span> <span class="n">final_particles</span><span class="p">[</span><span class="s2">"velocity-x"</span><span class="p">],</span> <span class="s2">"r."</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"t=1."</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">2.0e-6</span><span class="p">,</span><span class="o">+</span><span class="mf">2.0e-6</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"X"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"Velocity"</span><span class="p">)</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">init_particles</span><span class="p">[</span><span class="s2">"position-x"</span><span class="p">],</span> <span class="n">init_particles</span><span class="p">[</span><span class="s2">"pressure"</span><span class="p">],</span> <span class="s2">"kx"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"t=0"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">final_particles</span><span class="p">[</span><span class="s2">"position-x"</span><span class="p">],</span> <span class="n">final_particles</span><span class="p">[</span><span class="s2">"pressure"</span><span class="p">],</span> <span class="s2">"r."</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"t=1"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mf">3.</span><span class="o">/</span><span class="mf">5.</span><span class="o">-</span><span class="mf">2.0e-6</span><span class="p">,</span><span class="mf">3.0</span><span class="o">/</span><span class="mf">5.</span><span class="o">+</span><span class="mf">2.0e-6</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"X"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"Pressure"</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">"linear_wave_plot.png"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+phd: [INFO     ] 2021-03-02 11:57:15,412: hdf5 format: Reading filename ../../notebooks_tests/linear_wave/linear_wave_10_output/initial_output/initial_output0000/initial_output0000.hdf5
+phd: [INFO     ] 2021-03-02 11:57:15,423: hdf5 format: Reading filename ../../notebooks_tests/linear_wave/linear_wave_10_output/final_output/final_output0000/final_output0000.hdf5
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/example_nbooks_linear_wave_test_12_1.png" src="../_images/example_nbooks_linear_wave_test_12_1.png"/>
+</div>
+</div>
+</div>
+</div>
+
+      </article>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="sod_shock_test.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Sod Shock Tube</div>
+              </div>
+              <svg><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="../tutorials.html">
+              <svg><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Tutorials and Test Problems</div>
+                
+              </div>
+            </a>
+        </div>
+
+        <div class="related-information">
+              Copyright &#169; 2021, Ricardo Fernandez, Greg Bryan
+            |
+            Built with <a href="https://www.sphinx-doc.org/">Sphinx</a>
+              and
+              <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+              <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
+            |
+            <a class="muted-link" href="../_sources/example_nbooks/linear_wave_test.ipynb.txt"
+               rel="nofollow">
+              Show Source
+            </a>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            Contents
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">A simple linear wave</a><ul>
+<li><a class="reference internal" href="#Some-context">Some context</a></li>
+<li><a class="reference internal" href="#Using-the-code">Using the code</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </main>
+</div>
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    <script src="../_static/scripts/main.js?digest=e931d09b2a40c1bb82b542effe772014573baf67"></script></body>
+</html>

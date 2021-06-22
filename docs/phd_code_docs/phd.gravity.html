@@ -1,0 +1,1102 @@
+<!doctype html>
+<html class="no-js">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="phd.hilbert package" href="phd.hilbert.html" /><link rel="prev" title="phd.equation_state package" href="phd.equation_state.html" />
+
+    <meta name="generator" content="sphinx-3.2.1, furo 2021.02.28.beta28"/>
+        <title>phd.gravity package - phd 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/styles/furo.css?digest=be5985a4059b5c2cd56ed0804790452beca62674">
+    <link rel="stylesheet" href="../_static/pygments.css">
+    <link media="(prefers-color-scheme: dark)" rel="stylesheet" href="../_static/pygments_dark.css">
+    
+
+
+<style>
+  :root {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+  }
+
+  /* For allowing end-user-specific overrides */
+  .override-light {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  .override-dark {
+    --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+  }
+</style><link rel="stylesheet" href="../_static/styles/furo-extensions.css?digest=d391b54134226e4196576da3bdb6dddb7e05ba2b"></head>
+  <body dir="">
+    
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke-width="1.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z"/>
+      <line x1="4" y1="6" x2="20" y2="6" />
+      <line x1="10" y1="12" x2="20" y2="12" />
+      <line x1="6" y1="18" x2="20" y2="18" />
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">phd 0.1 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  
+  
+  <span class="sidebar-brand-text">phd 0.1 documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html">
+  <input class="sidebar-search" placeholder=Search name="q">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../tutorials.html">Tutorials and Test Problems</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label for="toctree-checkbox-1"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../example_nbooks/linear_wave_test.html">A simple linear wave</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../example_nbooks/sod_shock_test.html">Sod Shock Tube</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../example_nbooks/gresho_test.html">The Gresho Vortex Test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../example_nbooks/kelvin_helmholtz_test.html">Kelvin-Helmholtz Instability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../example_nbooks/sedov_test.html">Sedov-Taylor Blast Wave</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../example_nbooks/two_body_test.html">Two Body Problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../example_nbooks/plummer_test.html">Plummer Sphere</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../example_nbooks/rayleigh_taylor_test.html">Rayleigh-Taylor Instability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../example_nbooks/evrard_test.html">Evrard Collapse</a></li>
+</ul>
+</li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current has-children"><a class="reference internal" href="../docs.html">Documentation</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label for="toctree-checkbox-2"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2 has-children"><a class="reference internal" href="phd.containers.html">phd.containers package</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label for="toctree-checkbox-3"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="phd.containers.tests.html">phd.containers.tests package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="phd.domain.html">phd.domain package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="phd.equation_state.html">phd.equation_state package</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">phd.gravity package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="phd.hilbert.html">phd.hilbert package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="phd.integrate.html">phd.integrate package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="phd.io.html">phd.io package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="phd.load_balance.html">phd.load_balance package</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="phd.mesh.html">phd.mesh package</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label for="toctree-checkbox-4"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="phd.mesh.test.html">phd.mesh.test package</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="phd.reconstruction.html">phd.reconstruction package</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label for="toctree-checkbox-5"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="phd.reconstruction.test.html">phd.reconstruction.test package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="phd.riemann.html">phd.riemann package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="phd.simulation.html">phd.simulation package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="phd.source_term.html">phd.source_term package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="phd.utils.html">phd.utils package</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+      </div>
+      
+    </div>
+  </aside>
+  <main class="main">
+    <div class="content">
+      <article role="main">
+        <label class="toc-overlay-icon toc-content-icon" for="__toc">
+          <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+        </label>
+        <div class="section" id="phd-gravity-package">
+<h1>phd.gravity package<a class="headerlink" href="#phd-gravity-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-phd.gravity.gravity_force">
+<span id="phd-gravity-gravity-force-module"></span><h2>phd.gravity.gravity_force module<a class="headerlink" href="#module-phd.gravity.gravity_force" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="phd.gravity.gravity_force.ConstantGravity">
+<em class="property">class </em><code class="sig-prename descclassname">phd.gravity.gravity_force.</code><code class="sig-name descname">ConstantGravity</code><a class="headerlink" href="#phd.gravity.gravity_force.ConstantGravity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="phd.source_term.html#id0" title="phd.source_term.source_term.MUSCLHancockSourceTerm"><code class="xref py py-class docutils literal notranslate"><span class="pre">phd.source_term.source_term.MUSCLHancockSourceTerm</span></code></a></p>
+<p>Constant gravity source term. Gravity is applied in only
+direction.</p>
+<dl class="py method">
+<dt id="phd.gravity.gravity_force.ConstantGravity.apply_conservative">
+<code class="sig-name descname">apply_conservative</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.gravity.gravity_force.ConstantGravity.apply_conservative" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update conservative variables after flux update.</p>
+</dd></dl>
+<dl class="py method">
+<dt id="phd.gravity.gravity_force.ConstantGravity.apply_flux">
+<code class="sig-name descname">apply_flux</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.gravity.gravity_force.ConstantGravity.apply_flux" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply terms using flux variables.</p>
+</dd></dl>
+<dl class="py method">
+<dt id="phd.gravity.gravity_force.ConstantGravity.apply_motion">
+<code class="sig-name descname">apply_motion</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.gravity.gravity_force.ConstantGravity.apply_motion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply terms to particle motion.</p>
+</dd></dl>
+<dl class="py method">
+<dt id="phd.gravity.gravity_force.ConstantGravity.apply_primitive">
+<code class="sig-name descname">apply_primitive</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.gravity.gravity_force.ConstantGravity.apply_primitive" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add gravity half time step update to primitive variables
+at faces for riemann solver and add half update to
+conservative variables.</p>
+</dd></dl>
+<dl class="py method">
+<dt id="phd.gravity.gravity_force.ConstantGravity.compute_source">
+<code class="sig-name descname">compute_source</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.gravity.gravity_force.ConstantGravity.compute_source" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute soure term.</p>
+</dd></dl>
+<dl class="py method">
+<dt id="phd.gravity.gravity_force.ConstantGravity.compute_time_step">
+<code class="sig-name descname">compute_time_step</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.gravity.gravity_force.ConstantGravity.compute_time_step" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute time step.</p>
+</dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt id="phd.gravity.gravity_force.SelfGravity">
+<em class="property">class </em><code class="sig-prename descclassname">phd.gravity.gravity_force.</code><code class="sig-name descname">SelfGravity</code><a class="headerlink" href="#phd.gravity.gravity_force.SelfGravity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="phd.source_term.html#id0" title="phd.source_term.source_term.MUSCLHancockSourceTerm"><code class="xref py py-class docutils literal notranslate"><span class="pre">phd.source_term.source_term.MUSCLHancockSourceTerm</span></code></a></p>
+<p>Constant gravity source term. Gravity is applied in only
+direction.</p>
+<dl class="py method">
+<dt id="phd.gravity.gravity_force.SelfGravity.apply_conservative">
+<code class="sig-name descname">apply_conservative</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.gravity.gravity_force.SelfGravity.apply_conservative" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update conservative variables after mesh build.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>integrator</strong> (<a class="reference internal" href="phd.integrate.html#phd.integrate.integrate.IntegrateBase" title="phd.integrate.integrate.IntegrateBase"><em>IntegrateBase</em></a>) – Advances the fluid equations by one step.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="phd.gravity.gravity_force.SelfGravity.apply_flux">
+<code class="sig-name descname">apply_flux</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.gravity.gravity_force.SelfGravity.apply_flux" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform any computation after flux update.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>integrator</strong> (<a class="reference internal" href="phd.integrate.html#phd.integrate.integrate.IntegrateBase" title="phd.integrate.integrate.IntegrateBase"><em>IntegrateBase</em></a>) – Advances the fluid equations by one step.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="phd.gravity.gravity_force.SelfGravity.apply_motion">
+<code class="sig-name descname">apply_motion</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.gravity.gravity_force.SelfGravity.apply_motion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply terms to particle motion.</p>
+</dd></dl>
+<dl class="py method">
+<dt id="phd.gravity.gravity_force.SelfGravity.apply_primitive">
+<code class="sig-name descname">apply_primitive</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.gravity.gravity_force.SelfGravity.apply_primitive" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add gravity half time step update to primitive variables
+at faces for riemann solver and add half update to
+conservative variables.</p>
+</dd></dl>
+<dl class="py attribute">
+<dt id="phd.gravity.gravity_force.SelfGravity.barnes_angle">
+<code class="sig-name descname">barnes_angle</code><a class="headerlink" href="#phd.gravity.gravity_force.SelfGravity.barnes_angle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="phd.gravity.gravity_force.SelfGravity.calculate_potential">
+<code class="sig-name descname">calculate_potential</code><a class="headerlink" href="#phd.gravity.gravity_force.SelfGravity.calculate_potential" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="phd.gravity.gravity_force.SelfGravity.compute_source">
+<code class="sig-name descname">compute_source</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.gravity.gravity_force.SelfGravity.compute_source" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute gravitational acceleration.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>integrator</strong> (<a class="reference internal" href="phd.integrate.html#phd.integrate.integrate.IntegrateBase" title="phd.integrate.integrate.IntegrateBase"><em>IntegrateBase</em></a>) – Advances the fluid equations by one step.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="phd.gravity.gravity_force.SelfGravity.compute_time_step">
+<code class="sig-name descname">compute_time_step</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.gravity.gravity_force.SelfGravity.compute_time_step" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute time step from gravitational force.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>integrator</strong> (<a class="reference internal" href="phd.integrate.html#phd.integrate.integrate.IntegrateBase" title="phd.integrate.integrate.IntegrateBase"><em>IntegrateBase</em></a>) – Advances the fluid equations by one step.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt id="phd.gravity.gravity_force.SelfGravity.eta">
+<code class="sig-name descname">eta</code><a class="headerlink" href="#phd.gravity.gravity_force.SelfGravity.eta" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="phd.gravity.gravity_force.SelfGravity.max_buffer_size">
+<code class="sig-name descname">max_buffer_size</code><a class="headerlink" href="#phd.gravity.gravity_force.SelfGravity.max_buffer_size" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="phd.gravity.gravity_force.SelfGravity.set_gravity">
+<code class="sig-name descname">set_gravity</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.gravity.gravity_force.SelfGravity.set_gravity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets an external GravityTree object defined for the specific problem.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>gravtree</strong> (<a class="reference internal" href="#id27" title="phd.gravity.gravity_tree.GravityTree"><em>GravityTree</em></a>) – Solves gravity by barnes-hut algorithm.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt id="phd.gravity.gravity_force.SelfGravity.smoothing_length">
+<code class="sig-name descname">smoothing_length</code><a class="headerlink" href="#phd.gravity.gravity_force.SelfGravity.smoothing_length" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="phd.gravity.gravity_force.SelfGravity.split_type">
+<code class="sig-name descname">split_type</code><a class="headerlink" href="#phd.gravity.gravity_force.SelfGravity.split_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+</dd></dl>
+</div>
+<div class="section" id="id1">
+<h2>phd.gravity.gravity_force module<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="module-0"></span><dl class="py class">
+<dt id="id0">
+<em class="property">class </em><code class="sig-prename descclassname">phd.gravity.gravity_force.</code><code class="sig-name descname">ConstantGravity</code><a class="headerlink" href="#id0" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="phd.source_term.html#id0" title="phd.source_term.source_term.MUSCLHancockSourceTerm"><code class="xref py py-class docutils literal notranslate"><span class="pre">phd.source_term.source_term.MUSCLHancockSourceTerm</span></code></a></p>
+<p>Constant gravity source term. Gravity is applied in only
+direction.</p>
+<dl class="py method">
+<dt id="id2">
+<code class="sig-name descname">apply_conservative</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update conservative variables after flux update.</p>
+</dd></dl>
+<dl class="py method">
+<dt id="id3">
+<code class="sig-name descname">apply_flux</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id3" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply terms using flux variables.</p>
+</dd></dl>
+<dl class="py method">
+<dt id="id4">
+<code class="sig-name descname">apply_motion</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id4" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply terms to particle motion.</p>
+</dd></dl>
+<dl class="py method">
+<dt id="id5">
+<code class="sig-name descname">apply_primitive</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id5" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add gravity half time step update to primitive variables
+at faces for riemann solver and add half update to
+conservative variables.</p>
+</dd></dl>
+<dl class="py method">
+<dt id="id6">
+<code class="sig-name descname">compute_source</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id6" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute soure term.</p>
+</dd></dl>
+<dl class="py method">
+<dt id="id7">
+<code class="sig-name descname">compute_time_step</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id7" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute time step.</p>
+</dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt id="id8">
+<em class="property">class </em><code class="sig-prename descclassname">phd.gravity.gravity_force.</code><code class="sig-name descname">SelfGravity</code><a class="headerlink" href="#id8" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="phd.source_term.html#id0" title="phd.source_term.source_term.MUSCLHancockSourceTerm"><code class="xref py py-class docutils literal notranslate"><span class="pre">phd.source_term.source_term.MUSCLHancockSourceTerm</span></code></a></p>
+<p>Constant gravity source term. Gravity is applied in only
+direction.</p>
+<dl class="py method">
+<dt id="id9">
+<code class="sig-name descname">apply_conservative</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id9" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update conservative variables after mesh build.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>integrator</strong> (<a class="reference internal" href="phd.integrate.html#phd.integrate.integrate.IntegrateBase" title="phd.integrate.integrate.IntegrateBase"><em>IntegrateBase</em></a>) – Advances the fluid equations by one step.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="id10">
+<code class="sig-name descname">apply_flux</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id10" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform any computation after flux update.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>integrator</strong> (<a class="reference internal" href="phd.integrate.html#phd.integrate.integrate.IntegrateBase" title="phd.integrate.integrate.IntegrateBase"><em>IntegrateBase</em></a>) – Advances the fluid equations by one step.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="id11">
+<code class="sig-name descname">apply_motion</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id11" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply terms to particle motion.</p>
+</dd></dl>
+<dl class="py method">
+<dt id="id12">
+<code class="sig-name descname">apply_primitive</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id12" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add gravity half time step update to primitive variables
+at faces for riemann solver and add half update to
+conservative variables.</p>
+</dd></dl>
+<dl class="py attribute">
+<dt id="id13">
+<code class="sig-name descname">barnes_angle</code><a class="headerlink" href="#id13" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="id14">
+<code class="sig-name descname">calculate_potential</code><a class="headerlink" href="#id14" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="id15">
+<code class="sig-name descname">compute_source</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id15" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute gravitational acceleration.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>integrator</strong> (<a class="reference internal" href="phd.integrate.html#phd.integrate.integrate.IntegrateBase" title="phd.integrate.integrate.IntegrateBase"><em>IntegrateBase</em></a>) – Advances the fluid equations by one step.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="id16">
+<code class="sig-name descname">compute_time_step</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id16" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute time step from gravitational force.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>integrator</strong> (<a class="reference internal" href="phd.integrate.html#phd.integrate.integrate.IntegrateBase" title="phd.integrate.integrate.IntegrateBase"><em>IntegrateBase</em></a>) – Advances the fluid equations by one step.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt id="id17">
+<code class="sig-name descname">eta</code><a class="headerlink" href="#id17" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="id18">
+<code class="sig-name descname">max_buffer_size</code><a class="headerlink" href="#id18" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="id19">
+<code class="sig-name descname">set_gravity</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id19" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets an external GravityTree object defined for the specific problem.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>gravtree</strong> (<a class="reference internal" href="#id27" title="phd.gravity.gravity_tree.GravityTree"><em>GravityTree</em></a>) – Solves gravity by barnes-hut algorithm.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt id="id20">
+<code class="sig-name descname">smoothing_length</code><a class="headerlink" href="#id20" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="id21">
+<code class="sig-name descname">split_type</code><a class="headerlink" href="#id21" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+</dd></dl>
+</div>
+<div class="section" id="module-phd.gravity.gravity_pool">
+<span id="phd-gravity-gravity-pool-module"></span><h2>phd.gravity.gravity_pool module<a class="headerlink" href="#module-phd.gravity.gravity_pool" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="phd.gravity.gravity_pool.GravityPool">
+<em class="property">class </em><code class="sig-prename descclassname">phd.gravity.gravity_pool.</code><code class="sig-name descname">GravityPool</code><a class="headerlink" href="#phd.gravity.gravity_pool.GravityPool" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Memory pool of gravity nodes for tree construction.</p>
+<p>Initialization memory pool, which reserves num_nodes nodes
+in pool for use.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>num_nodes</strong> (<em>int</em>) – Number of nodees to reserve for pool</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="phd.gravity.gravity_pool.GravityPool.number_leafs">
+<code class="sig-name descname">number_leafs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.gravity.gravity_pool.GravityPool.number_leafs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return number of nodes flagged as leafs in pool</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Number of leafs in pool</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="phd.gravity.gravity_pool.GravityPool.number_nodes">
+<code class="sig-name descname">number_nodes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.gravity.gravity_pool.GravityPool.number_nodes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return number of nodes used in pool.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Number of nodes used in pool</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+</div>
+<div class="section" id="id22">
+<h2>phd.gravity.gravity_pool module<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="module-1"></span><dl class="py class">
+<dt id="id23">
+<em class="property">class </em><code class="sig-prename descclassname">phd.gravity.gravity_pool.</code><code class="sig-name descname">GravityPool</code><a class="headerlink" href="#id23" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Memory pool of gravity nodes for tree construction.</p>
+<p>Initialization memory pool, which reserves num_nodes nodes
+in pool for use.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>num_nodes</strong> (<em>int</em>) – Number of nodees to reserve for pool</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="id24">
+<code class="sig-name descname">number_leafs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id24" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return number of nodes flagged as leafs in pool</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Number of leafs in pool</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="id25">
+<code class="sig-name descname">number_nodes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id25" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return number of nodes used in pool.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Number of nodes used in pool</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+</div>
+<div class="section" id="module-phd.gravity.gravity_tree">
+<span id="phd-gravity-gravity-tree-module"></span><h2>phd.gravity.gravity_tree module<a class="headerlink" href="#module-phd.gravity.gravity_tree" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="phd.gravity.gravity_tree.GravityTree">
+<em class="property">class </em><code class="sig-prename descclassname">phd.gravity.gravity_tree.</code><code class="sig-name descname">GravityTree</code><a class="headerlink" href="#phd.gravity.gravity_tree.GravityTree" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Solves gravity by barnes and hut algorithm in serial
+or parallel. The algorithm heavily depends on LoadBalance
+class if run in parallel. The algorithm works in 2d or 3d.</p>
+<dl class="py method">
+<dt id="phd.gravity.gravity_tree.GravityTree.add_fields">
+<code class="sig-name descname">add_fields</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.gravity.gravity_tree.GravityTree.add_fields" title="Permalink to this definition">¶</a></dt>
+<dd><p>Setup containers for toptree nodes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>particles</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Class that holds all information pertaining to the particles.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt id="phd.gravity.gravity_tree.GravityTree.barnes_angle">
+<code class="sig-name descname">barnes_angle</code><a class="headerlink" href="#phd.gravity.gravity_tree.GravityTree.barnes_angle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="phd.gravity.gravity_tree.GravityTree.buffer_export">
+<code class="sig-name descname">buffer_export</code><a class="headerlink" href="#phd.gravity.gravity_tree.GravityTree.buffer_export" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="phd.gravity.gravity_tree.GravityTree.buffer_import">
+<code class="sig-name descname">buffer_import</code><a class="headerlink" href="#phd.gravity.gravity_tree.GravityTree.buffer_import" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="phd.gravity.gravity_tree.GravityTree.buffer_size">
+<code class="sig-name descname">buffer_size</code><a class="headerlink" href="#phd.gravity.gravity_tree.GravityTree.buffer_size" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="phd.gravity.gravity_tree.GravityTree.calc_potential">
+<code class="sig-name descname">calc_potential</code><a class="headerlink" href="#phd.gravity.gravity_tree.GravityTree.calc_potential" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="phd.gravity.gravity_tree.GravityTree.calculate_potential">
+<code class="sig-name descname">calculate_potential</code><a class="headerlink" href="#phd.gravity.gravity_tree.GravityTree.calculate_potential" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="phd.gravity.gravity_tree.GravityTree.dim">
+<code class="sig-name descname">dim</code><a class="headerlink" href="#phd.gravity.gravity_tree.GravityTree.dim" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="phd.gravity.gravity_tree.GravityTree.domain_manager">
+<code class="sig-name descname">domain_manager</code><a class="headerlink" href="#phd.gravity.gravity_tree.GravityTree.domain_manager" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="phd.gravity.gravity_tree.GravityTree.dump_all_data">
+<code class="sig-name descname">dump_all_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.gravity.gravity_tree.GravityTree.dump_all_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="phd.gravity.gravity_tree.GravityTree.dump_data">
+<code class="sig-name descname">dump_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.gravity.gravity_tree.GravityTree.dump_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="phd.gravity.gravity_tree.GravityTree.dump_remote">
+<code class="sig-name descname">dump_remote</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.gravity.gravity_tree.GravityTree.dump_remote" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="phd.gravity.gravity_tree.GravityTree.dump_root_node">
+<code class="sig-name descname">dump_root_node</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.gravity.gravity_tree.GravityTree.dump_root_node" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="phd.gravity.gravity_tree.GravityTree.export_interaction">
+<code class="sig-name descname">export_interaction</code><a class="headerlink" href="#phd.gravity.gravity_tree.GravityTree.export_interaction" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="phd.gravity.gravity_tree.GravityTree.export_splitter">
+<code class="sig-name descname">export_splitter</code><a class="headerlink" href="#phd.gravity.gravity_tree.GravityTree.export_splitter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="phd.gravity.gravity_tree.GravityTree.import_interaction">
+<code class="sig-name descname">import_interaction</code><a class="headerlink" href="#phd.gravity.gravity_tree.GravityTree.import_interaction" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="phd.gravity.gravity_tree.GravityTree.import_splitter">
+<code class="sig-name descname">import_splitter</code><a class="headerlink" href="#phd.gravity.gravity_tree.GravityTree.import_splitter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="phd.gravity.gravity_tree.GravityTree.indices">
+<code class="sig-name descname">indices</code><a class="headerlink" href="#phd.gravity.gravity_tree.GravityTree.indices" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="phd.gravity.gravity_tree.GravityTree.initialize">
+<code class="sig-name descname">initialize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.gravity.gravity_tree.GravityTree.initialize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize variables for the gravity tree. Tree pool and
+toptree nodes are allocated as well dimension of the tree.</p>
+</dd></dl>
+<dl class="py attribute">
+<dt id="phd.gravity.gravity_tree.GravityTree.load_balance">
+<code class="sig-name descname">load_balance</code><a class="headerlink" href="#phd.gravity.gravity_tree.GravityTree.load_balance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="phd.gravity.gravity_tree.GravityTree.max_buffer_size">
+<code class="sig-name descname">max_buffer_size</code><a class="headerlink" href="#phd.gravity.gravity_tree.GravityTree.max_buffer_size" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="phd.gravity.gravity_tree.GravityTree.nodes">
+<code class="sig-name descname">nodes</code><a class="headerlink" href="#phd.gravity.gravity_tree.GravityTree.nodes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="phd.gravity.gravity_tree.GravityTree.number_nodes">
+<code class="sig-name descname">number_nodes</code><a class="headerlink" href="#phd.gravity.gravity_tree.GravityTree.number_nodes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="phd.gravity.gravity_tree.GravityTree.rank">
+<code class="sig-name descname">rank</code><a class="headerlink" href="#phd.gravity.gravity_tree.GravityTree.rank" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="phd.gravity.gravity_tree.GravityTree.recv_cnts">
+<code class="sig-name descname">recv_cnts</code><a class="headerlink" href="#phd.gravity.gravity_tree.GravityTree.recv_cnts" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="phd.gravity.gravity_tree.GravityTree.recv_disp">
+<code class="sig-name descname">recv_disp</code><a class="headerlink" href="#phd.gravity.gravity_tree.GravityTree.recv_disp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="phd.gravity.gravity_tree.GravityTree.register_fields">
+<code class="sig-name descname">register_fields</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.gravity.gravity_tree.GravityTree.register_fields" title="Permalink to this definition">¶</a></dt>
+<dd><p>Register gravity fields into the particle container (i.e.
+accleration, potential, mpi groups etc.).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>particles</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Class that holds all information pertaining to the particles.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt id="phd.gravity.gravity_tree.GravityTree.send_cnts">
+<code class="sig-name descname">send_cnts</code><a class="headerlink" href="#phd.gravity.gravity_tree.GravityTree.send_cnts" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="phd.gravity.gravity_tree.GravityTree.send_disp">
+<code class="sig-name descname">send_disp</code><a class="headerlink" href="#phd.gravity.gravity_tree.GravityTree.send_disp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="phd.gravity.gravity_tree.GravityTree.set_domain_manager">
+<code class="sig-name descname">set_domain_manager</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.gravity.gravity_tree.GravityTree.set_domain_manager" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set domain manager.</p>
+</dd></dl>
+<dl class="py attribute">
+<dt id="phd.gravity.gravity_tree.GravityTree.size">
+<code class="sig-name descname">size</code><a class="headerlink" href="#phd.gravity.gravity_tree.GravityTree.size" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="phd.gravity.gravity_tree.GravityTree.split_type">
+<code class="sig-name descname">split_type</code><a class="headerlink" href="#phd.gravity.gravity_tree.GravityTree.split_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="phd.gravity.gravity_tree.GravityTree.toptree_leafs">
+<code class="sig-name descname">toptree_leafs</code><a class="headerlink" href="#phd.gravity.gravity_tree.GravityTree.toptree_leafs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="phd.gravity.gravity_tree.GravityTree.walk">
+<code class="sig-name descname">walk</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.gravity.gravity_tree.GravityTree.walk" title="Permalink to this definition">¶</a></dt>
+<dd><p>Walk the tree calculating accerlerations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>particles</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Class that holds all information pertaining to the particles.</p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+</div>
+<div class="section" id="id26">
+<h2>phd.gravity.gravity_tree module<a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="module-2"></span><dl class="py class">
+<dt id="id27">
+<em class="property">class </em><code class="sig-prename descclassname">phd.gravity.gravity_tree.</code><code class="sig-name descname">GravityTree</code><a class="headerlink" href="#id27" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Solves gravity by barnes and hut algorithm in serial
+or parallel. The algorithm heavily depends on LoadBalance
+class if run in parallel. The algorithm works in 2d or 3d.</p>
+<dl class="py method">
+<dt id="id28">
+<code class="sig-name descname">add_fields</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id28" title="Permalink to this definition">¶</a></dt>
+<dd><p>Setup containers for toptree nodes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>particles</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Class that holds all information pertaining to the particles.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt id="id29">
+<code class="sig-name descname">barnes_angle</code><a class="headerlink" href="#id29" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="id30">
+<code class="sig-name descname">buffer_export</code><a class="headerlink" href="#id30" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="id31">
+<code class="sig-name descname">buffer_import</code><a class="headerlink" href="#id31" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="id32">
+<code class="sig-name descname">buffer_size</code><a class="headerlink" href="#id32" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="id33">
+<code class="sig-name descname">calc_potential</code><a class="headerlink" href="#id33" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="id34">
+<code class="sig-name descname">calculate_potential</code><a class="headerlink" href="#id34" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="id35">
+<code class="sig-name descname">dim</code><a class="headerlink" href="#id35" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="id36">
+<code class="sig-name descname">domain_manager</code><a class="headerlink" href="#id36" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="id37">
+<code class="sig-name descname">dump_all_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id37" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="id38">
+<code class="sig-name descname">dump_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id38" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="id39">
+<code class="sig-name descname">dump_remote</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id39" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="id40">
+<code class="sig-name descname">dump_root_node</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id40" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="id41">
+<code class="sig-name descname">export_interaction</code><a class="headerlink" href="#id41" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="id42">
+<code class="sig-name descname">export_splitter</code><a class="headerlink" href="#id42" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="id43">
+<code class="sig-name descname">import_interaction</code><a class="headerlink" href="#id43" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="id44">
+<code class="sig-name descname">import_splitter</code><a class="headerlink" href="#id44" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="id45">
+<code class="sig-name descname">indices</code><a class="headerlink" href="#id45" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="id46">
+<code class="sig-name descname">initialize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id46" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize variables for the gravity tree. Tree pool and
+toptree nodes are allocated as well dimension of the tree.</p>
+</dd></dl>
+<dl class="py attribute">
+<dt id="id47">
+<code class="sig-name descname">load_balance</code><a class="headerlink" href="#id47" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="id48">
+<code class="sig-name descname">max_buffer_size</code><a class="headerlink" href="#id48" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="id49">
+<code class="sig-name descname">nodes</code><a class="headerlink" href="#id49" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="id50">
+<code class="sig-name descname">number_nodes</code><a class="headerlink" href="#id50" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="id51">
+<code class="sig-name descname">rank</code><a class="headerlink" href="#id51" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="id52">
+<code class="sig-name descname">recv_cnts</code><a class="headerlink" href="#id52" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="id53">
+<code class="sig-name descname">recv_disp</code><a class="headerlink" href="#id53" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="id54">
+<code class="sig-name descname">register_fields</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id54" title="Permalink to this definition">¶</a></dt>
+<dd><p>Register gravity fields into the particle container (i.e.
+accleration, potential, mpi groups etc.).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>particles</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Class that holds all information pertaining to the particles.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt id="id55">
+<code class="sig-name descname">send_cnts</code><a class="headerlink" href="#id55" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="id56">
+<code class="sig-name descname">send_disp</code><a class="headerlink" href="#id56" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="id57">
+<code class="sig-name descname">set_domain_manager</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id57" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set domain manager.</p>
+</dd></dl>
+<dl class="py attribute">
+<dt id="id58">
+<code class="sig-name descname">size</code><a class="headerlink" href="#id58" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="id59">
+<code class="sig-name descname">split_type</code><a class="headerlink" href="#id59" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="id60">
+<code class="sig-name descname">toptree_leafs</code><a class="headerlink" href="#id60" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="id61">
+<code class="sig-name descname">walk</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id61" title="Permalink to this definition">¶</a></dt>
+<dd><p>Walk the tree calculating accerlerations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>particles</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Class that holds all information pertaining to the particles.</p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+</div>
+<div class="section" id="module-phd.gravity.interaction">
+<span id="phd-gravity-interaction-module"></span><h2>phd.gravity.interaction module<a class="headerlink" href="#module-phd.gravity.interaction" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="phd.gravity.interaction.GravityAcceleration">
+<em class="property">class </em><code class="sig-prename descclassname">phd.gravity.interaction.</code><code class="sig-name descname">GravityAcceleration</code><a class="headerlink" href="#phd.gravity.interaction.GravityAcceleration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#id67" title="phd.gravity.interaction.Interaction"><code class="xref py py-class docutils literal notranslate"><span class="pre">phd.gravity.interaction.Interaction</span></code></a></p>
+<p>Class to compute acceleration due to gravity between particle
+and gravity node.</p>
+<p>Initialize interaction class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>potential</strong> (<em>int</em>) – Flag if potential calculation is needed.</p></li>
+<li><p><strong>smoothing_length</strong> (<em>int</em>) – Gravitational smoothing length.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="phd.gravity.interaction.GravityAcceleration.initialize">
+<code class="sig-name descname">initialize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.gravity.interaction.GravityAcceleration.initialize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialze class making sure all initial routines
+have been called.</p>
+</dd></dl>
+<dl class="py method">
+<dt id="phd.gravity.interaction.GravityAcceleration.register_fields">
+<code class="sig-name descname">register_fields</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.gravity.interaction.GravityAcceleration.register_fields" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add needed fields for interaction computation to particle
+container.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>particles</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Container holding particle data.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="phd.gravity.interaction.GravityAcceleration.set_splitter">
+<code class="sig-name descname">set_splitter</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.gravity.interaction.GravityAcceleration.set_splitter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set criteria to open node.</p>
+</dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt id="phd.gravity.interaction.Interaction">
+<em class="property">class </em><code class="sig-prename descclassname">phd.gravity.interaction.</code><code class="sig-name descname">Interaction</code><a class="headerlink" href="#phd.gravity.interaction.Interaction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Base class for particle node computation.</p>
+</dd></dl>
+</div>
+<div class="section" id="id62">
+<h2>phd.gravity.interaction module<a class="headerlink" href="#id62" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="module-3"></span><dl class="py class">
+<dt id="id63">
+<em class="property">class </em><code class="sig-prename descclassname">phd.gravity.interaction.</code><code class="sig-name descname">GravityAcceleration</code><a class="headerlink" href="#id63" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#id67" title="phd.gravity.interaction.Interaction"><code class="xref py py-class docutils literal notranslate"><span class="pre">phd.gravity.interaction.Interaction</span></code></a></p>
+<p>Class to compute acceleration due to gravity between particle
+and gravity node.</p>
+<p>Initialize interaction class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>potential</strong> (<em>int</em>) – Flag if potential calculation is needed.</p></li>
+<li><p><strong>smoothing_length</strong> (<em>int</em>) – Gravitational smoothing length.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="id64">
+<code class="sig-name descname">initialize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id64" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialze class making sure all initial routines
+have been called.</p>
+</dd></dl>
+<dl class="py method">
+<dt id="id65">
+<code class="sig-name descname">register_fields</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id65" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add needed fields for interaction computation to particle
+container.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>particles</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Container holding particle data.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="id66">
+<code class="sig-name descname">set_splitter</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id66" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set criteria to open node.</p>
+</dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt id="id67">
+<em class="property">class </em><code class="sig-prename descclassname">phd.gravity.interaction.</code><code class="sig-name descname">Interaction</code><a class="headerlink" href="#id67" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Base class for particle node computation.</p>
+</dd></dl>
+</div>
+<div class="section" id="module-phd.gravity.splitter">
+<span id="phd-gravity-splitter-module"></span><h2>phd.gravity.splitter module<a class="headerlink" href="#module-phd.gravity.splitter" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="phd.gravity.splitter.BarnesHut">
+<em class="property">class </em><code class="sig-prename descclassname">phd.gravity.splitter.</code><code class="sig-name descname">BarnesHut</code><a class="headerlink" href="#phd.gravity.splitter.BarnesHut" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#id70" title="phd.gravity.splitter.Splitter"><code class="xref py py-class docutils literal notranslate"><span class="pre">phd.gravity.splitter.Splitter</span></code></a></p>
+<p>Barnes and Hut criteria.</p>
+<p>Initialize class with opening angle.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>open_angle</strong> (<em>double</em>) – opening angle criteria.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py class">
+<dt id="phd.gravity.splitter.Splitter">
+<em class="property">class </em><code class="sig-prename descclassname">phd.gravity.splitter.</code><code class="sig-name descname">Splitter</code><a class="headerlink" href="#phd.gravity.splitter.Splitter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Base class for open node criteria.</p>
+<dl class="py method">
+<dt id="phd.gravity.splitter.Splitter.set_dim">
+<code class="sig-name descname">set_dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.gravity.splitter.Splitter.set_dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set dimension of simulation.</p>
+</dd></dl>
+</dd></dl>
+</div>
+<div class="section" id="id68">
+<h2>phd.gravity.splitter module<a class="headerlink" href="#id68" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="module-4"></span><dl class="py class">
+<dt id="id69">
+<em class="property">class </em><code class="sig-prename descclassname">phd.gravity.splitter.</code><code class="sig-name descname">BarnesHut</code><a class="headerlink" href="#id69" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#id70" title="phd.gravity.splitter.Splitter"><code class="xref py py-class docutils literal notranslate"><span class="pre">phd.gravity.splitter.Splitter</span></code></a></p>
+<p>Barnes and Hut criteria.</p>
+<p>Initialize class with opening angle.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>open_angle</strong> (<em>double</em>) – opening angle criteria.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py class">
+<dt id="id70">
+<em class="property">class </em><code class="sig-prename descclassname">phd.gravity.splitter.</code><code class="sig-name descname">Splitter</code><a class="headerlink" href="#id70" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Base class for open node criteria.</p>
+<dl class="py method">
+<dt id="id71">
+<code class="sig-name descname">set_dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id71" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set dimension of simulation.</p>
+</dd></dl>
+</dd></dl>
+</div>
+<div class="section" id="module-phd.gravity">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-phd.gravity" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+      </article>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="phd.hilbert.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">phd.hilbert package</div>
+              </div>
+              <svg><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="phd.equation_state.html">
+              <svg><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">phd.equation_state package</div>
+                
+              </div>
+            </a>
+        </div>
+
+        <div class="related-information">
+              Copyright &#169; 2021, Ricardo Fernandez, Greg Bryan
+            |
+            Built with <a href="https://www.sphinx-doc.org/">Sphinx</a>
+              and
+              <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+              <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
+            |
+            <a class="muted-link" href="../_sources/phd_code_docs/phd.gravity.rst.txt"
+               rel="nofollow">
+              Show Source
+            </a>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            Contents
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">phd.gravity package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-phd.gravity.gravity_force">phd.gravity.gravity_force module</a></li>
+<li><a class="reference internal" href="#id1">phd.gravity.gravity_force module</a></li>
+<li><a class="reference internal" href="#module-phd.gravity.gravity_pool">phd.gravity.gravity_pool module</a></li>
+<li><a class="reference internal" href="#id22">phd.gravity.gravity_pool module</a></li>
+<li><a class="reference internal" href="#module-phd.gravity.gravity_tree">phd.gravity.gravity_tree module</a></li>
+<li><a class="reference internal" href="#id26">phd.gravity.gravity_tree module</a></li>
+<li><a class="reference internal" href="#module-phd.gravity.interaction">phd.gravity.interaction module</a></li>
+<li><a class="reference internal" href="#id62">phd.gravity.interaction module</a></li>
+<li><a class="reference internal" href="#module-phd.gravity.splitter">phd.gravity.splitter module</a></li>
+<li><a class="reference internal" href="#id68">phd.gravity.splitter module</a></li>
+<li><a class="reference internal" href="#module-phd.gravity">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </main>
+</div>
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    <script src="../_static/scripts/main.js?digest=e931d09b2a40c1bb82b542effe772014573baf67"></script></body>
+</html>

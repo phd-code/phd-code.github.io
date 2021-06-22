@@ -1,0 +1,1933 @@
+<!doctype html>
+<html class="no-js">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Two Body Problem" href="two_body_test.html" /><link rel="prev" title="Kelvin-Helmholtz Instability" href="kelvin_helmholtz_test.html" />
+
+    <meta name="generator" content="sphinx-3.2.1, furo 2021.02.28.beta28"/>
+        <title>Sedov-Taylor Blast Wave - phd 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/styles/furo.css?digest=be5985a4059b5c2cd56ed0804790452beca62674">
+    <link rel="stylesheet" href="../_static/pygments.css">
+    <link media="(prefers-color-scheme: dark)" rel="stylesheet" href="../_static/pygments_dark.css">
+    
+
+
+<style>
+  :root {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+  }
+
+  /* For allowing end-user-specific overrides */
+  .override-light {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  .override-dark {
+    --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+  }
+</style><link rel="stylesheet" href="../_static/styles/furo-extensions.css?digest=d391b54134226e4196576da3bdb6dddb7e05ba2b"></head>
+  <body dir="">
+    
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke-width="1.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z"/>
+      <line x1="4" y1="6" x2="20" y2="6" />
+      <line x1="10" y1="12" x2="20" y2="12" />
+      <line x1="6" y1="18" x2="20" y2="18" />
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">phd 0.1 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  
+  
+  <span class="sidebar-brand-text">phd 0.1 documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html">
+  <input class="sidebar-search" placeholder=Search name="q">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="../tutorials.html">Tutorials and Test Problems</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label for="toctree-checkbox-1"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="linear_wave_test.html">A simple linear wave</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sod_shock_test.html">Sod Shock Tube</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gresho_test.html">The Gresho Vortex Test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kelvin_helmholtz_test.html">Kelvin-Helmholtz Instability</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Sedov-Taylor Blast Wave</a></li>
+<li class="toctree-l2"><a class="reference internal" href="two_body_test.html">Two Body Problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plummer_test.html">Plummer Sphere</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rayleigh_taylor_test.html">Rayleigh-Taylor Instability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="evrard_test.html">Evrard Collapse</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../docs.html">Documentation</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label for="toctree-checkbox-2"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../phd_code_docs/phd.containers.html">phd.containers package</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label for="toctree-checkbox-3"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../phd_code_docs/phd.containers.tests.html">phd.containers.tests package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../phd_code_docs/phd.domain.html">phd.domain package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../phd_code_docs/phd.equation_state.html">phd.equation_state package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../phd_code_docs/phd.gravity.html">phd.gravity package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../phd_code_docs/phd.hilbert.html">phd.hilbert package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../phd_code_docs/phd.integrate.html">phd.integrate package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../phd_code_docs/phd.io.html">phd.io package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../phd_code_docs/phd.load_balance.html">phd.load_balance package</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../phd_code_docs/phd.mesh.html">phd.mesh package</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label for="toctree-checkbox-4"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../phd_code_docs/phd.mesh.test.html">phd.mesh.test package</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../phd_code_docs/phd.reconstruction.html">phd.reconstruction package</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label for="toctree-checkbox-5"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../phd_code_docs/phd.reconstruction.test.html">phd.reconstruction.test package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../phd_code_docs/phd.riemann.html">phd.riemann package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../phd_code_docs/phd.simulation.html">phd.simulation package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../phd_code_docs/phd.source_term.html">phd.source_term package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../phd_code_docs/phd.utils.html">phd.utils package</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+      </div>
+      
+    </div>
+  </aside>
+  <main class="main">
+    <div class="content">
+      <article role="main">
+        <label class="toc-overlay-icon toc-content-icon" for="__toc">
+          <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+        </label>
+        
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt *,
+div.nbinput.container div.input_area pre,
+div.nboutput.container div.output_area pre,
+div.nbinput.container div.input_area .highlight,
+div.nboutput.container div.output_area .highlight {
+    border: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+div.nbinput.container > div[class*=highlight],
+div.nboutput.container > div[class*=highlight] {
+    margin: 0;
+}
+
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt * {
+    background: none;
+}
+
+div.nboutput.container div.output_area .highlight,
+div.nboutput.container div.output_area pre {
+    background: unset;
+}
+
+div.nboutput.container div.output_area div.highlight {
+    color: unset;  /* override Pygments text color */
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
+}
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        width: unset;
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    /*background: #f5f5f5;*/
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 5px;
+    margin: 0;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+</style>
+<div class="section" id="Sedov-Taylor-Blast-Wave">
+<h1>Sedov-Taylor Blast Wave<a class="headerlink" href="#Sedov-Taylor-Blast-Wave" title="Permalink to this headline">¶</a></h1>
+<p>This is another problem that demonstrates the ability of the code to handle creation and propagation of shocks. Specifically, we inject a large amount of energy into a single point at the center of a homogeneous gas – for example, one can imagine the detonation of an explosive. The strength of the resulting explosion will produce a spherical shock wave that propagates outwards and once this shock has moved to a large distance (so the only relevant parameter is the strength of the explosion, or,
+equivalently, the energy injected), we can describe the flow of gas around the shock using the Euler equations. In particular, the region around the shock is well described by the Rankine-Hugoniot shock jump conditions and a series of substitutions into the Euler equations (in spherical coordinates, as <a class="reference external" href="https://en.wikipedia.org/wiki/Taylor%E2%80%93von_Neumann%E2%80%93Sedov_blast_wave#Self-similar_solution">here</a>) yields an analytic self-similar solution. From this, we get a maximum density
+compression (over the uniform background density) of</p>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[\frac{\rho_\mathrm{max}}{\rho} = \frac{\gamma+1}{\gamma-1}\]</div></div>
+<p>Physically, we expect that the mass is swept up into a thin region immediately behind the shock front, creating a cavity behind the shock that grows as the shock propagates outwards.</p>
+<div class="section" id="In-the-Code">
+<h2>In the Code<a class="headerlink" href="#In-the-Code" title="Permalink to this headline">¶</a></h2>
+<p>Much of the setup in the code is similar to the preceding few example/test problems – we define a method to create the particle container and initialize the different modules of the simulation. Specifically, here, we can see how the code can be used in three dimensions, a natural extension of the 2D setup we had before.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">phd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+</div>
+<p>We create a grid of particles with resolution <span class="math notranslate nohighlight">\(45\times 45\times 45\)</span>, set the background density to be <span class="math notranslate nohighlight">\(\rho = 1\)</span> and the pressure to be <span class="math notranslate nohighlight">\(P = 10^{-6}(\gamma - 1)\)</span>.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">def</span> <span class="nf">create_particles</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">nx</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span> <span class="n">Lx</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mf">1.4</span><span class="p">):</span>
+
+    <span class="n">dx</span> <span class="o">=</span> <span class="n">Lx</span><span class="o">/</span><span class="n">nx</span> <span class="c1"># spacing between particles</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">nx</span><span class="o">**</span><span class="mi">3</span>  <span class="c1"># number of points</span>
+
+    <span class="c1"># create particle container</span>
+    <span class="n">particles</span> <span class="o">=</span> <span class="n">phd</span><span class="o">.</span><span class="n">HydroParticleCreator</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">part</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nx</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nx</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nx</span><span class="p">):</span>
+                <span class="n">particles</span><span class="p">[</span><span class="s2">"position-x"</span><span class="p">][</span><span class="n">part</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mf">0.5</span><span class="p">)</span><span class="o">*</span><span class="n">dx</span> <span class="o">+</span> <span class="mf">1.0e-8</span><span class="o">*</span><span class="n">dx</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">()</span>
+                <span class="n">particles</span><span class="p">[</span><span class="s2">"position-y"</span><span class="p">][</span><span class="n">part</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">j</span><span class="o">+</span><span class="mf">0.5</span><span class="p">)</span><span class="o">*</span><span class="n">dx</span> <span class="o">+</span> <span class="mf">1.0e-8</span><span class="o">*</span><span class="n">dx</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">()</span>
+                <span class="n">particles</span><span class="p">[</span><span class="s2">"position-z"</span><span class="p">][</span><span class="n">part</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">k</span><span class="o">+</span><span class="mf">0.5</span><span class="p">)</span><span class="o">*</span><span class="n">dx</span> <span class="o">+</span> <span class="mf">1.0e-8</span><span class="o">*</span><span class="n">dx</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">()</span>
+                <span class="n">particles</span><span class="p">[</span><span class="s2">"ids"</span><span class="p">][</span><span class="n">part</span><span class="p">]</span> <span class="o">=</span> <span class="n">part</span>
+                <span class="n">part</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="c1"># set ambient values</span>
+    <span class="n">particles</span><span class="p">[</span><span class="s2">"density"</span><span class="p">][:]</span>  <span class="o">=</span> <span class="mf">1.0</span>               <span class="c1"># density</span>
+    <span class="n">particles</span><span class="p">[</span><span class="s2">"pressure"</span><span class="p">][:]</span> <span class="o">=</span> <span class="mf">1.0E-6</span><span class="o">*</span><span class="p">(</span><span class="n">gamma</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># total energy</span>
+    <span class="n">particles</span><span class="p">[</span><span class="s2">"velocity-x"</span><span class="p">][:]</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="n">particles</span><span class="p">[</span><span class="s2">"velocity-y"</span><span class="p">][:]</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="n">particles</span><span class="p">[</span><span class="s2">"velocity-z"</span><span class="p">][:]</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+    <span class="c1"># put all energy in center particle</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">dx</span> <span class="o">*</span> <span class="o">.</span><span class="mi">51</span>
+    <span class="n">cell</span> <span class="o">=</span> <span class="p">((</span><span class="n">particles</span><span class="p">[</span><span class="s2">"position-x"</span><span class="p">]</span><span class="o">-.</span><span class="mi">5</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span>\
+             <span class="p">(</span><span class="n">particles</span><span class="p">[</span><span class="s2">"position-y"</span><span class="p">]</span><span class="o">-.</span><span class="mi">5</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span>\
+             <span class="p">(</span><span class="n">particles</span><span class="p">[</span><span class="s2">"position-z"</span><span class="p">]</span><span class="o">-.</span><span class="mi">5</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">r</span><span class="o">**</span><span class="mi">2</span>
+
+    <span class="n">particles</span><span class="p">[</span><span class="s2">"pressure"</span><span class="p">][</span><span class="n">cell</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span><span class="o">/</span><span class="p">(</span><span class="n">dx</span><span class="o">*</span><span class="n">dx</span><span class="o">*</span><span class="n">dx</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">gamma</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">particles</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">dim</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="n">gamma</span> <span class="o">=</span> <span class="mf">5.</span><span class="o">/</span><span class="mf">3.</span>
+<span class="n">particles</span> <span class="o">=</span> <span class="n">phd</span><span class="o">.</span><span class="n">distribute_initial_particles</span><span class="p">(</span>
+        <span class="n">create_particles</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="n">gamma</span><span class="p">)</span>
+
+<span class="c1"># computation related to boundaries</span>
+<span class="n">domain_manager</span> <span class="o">=</span> <span class="n">phd</span><span class="o">.</span><span class="n">DomainManager</span><span class="p">(</span>
+        <span class="n">xmin</span><span class="o">=</span><span class="p">[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">],</span> <span class="n">xmax</span><span class="o">=</span><span class="p">[</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">],</span>
+        <span class="n">initial_radius</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+
+<span class="c1"># create voronoi mesh</span>
+<span class="n">mesh</span> <span class="o">=</span> <span class="n">phd</span><span class="o">.</span><span class="n">Mesh</span><span class="p">()</span>
+
+<span class="c1"># computation</span>
+<span class="n">integrator</span> <span class="o">=</span> <span class="n">phd</span><span class="o">.</span><span class="n">MovingMeshMUSCLHancock</span><span class="p">()</span>
+<span class="n">integrator</span><span class="o">.</span><span class="n">set_mesh</span><span class="p">(</span><span class="n">mesh</span><span class="p">)</span>
+<span class="n">integrator</span><span class="o">.</span><span class="n">set_riemann</span><span class="p">(</span><span class="n">phd</span><span class="o">.</span><span class="n">HLLC</span><span class="p">())</span>
+<span class="n">integrator</span><span class="o">.</span><span class="n">set_particles</span><span class="p">(</span><span class="n">particles</span><span class="p">)</span>
+<span class="n">integrator</span><span class="o">.</span><span class="n">set_domain_manager</span><span class="p">(</span><span class="n">domain_manager</span><span class="p">)</span>
+<span class="n">integrator</span><span class="o">.</span><span class="n">set_boundary_condition</span><span class="p">(</span><span class="n">phd</span><span class="o">.</span><span class="n">Reflective</span><span class="p">())</span>
+<span class="n">integrator</span><span class="o">.</span><span class="n">set_reconstruction</span><span class="p">(</span><span class="n">phd</span><span class="o">.</span><span class="n">PieceWiseLinear</span><span class="p">())</span>
+<span class="n">integrator</span><span class="o">.</span><span class="n">set_equation_state</span><span class="p">(</span><span class="n">phd</span><span class="o">.</span><span class="n">IdealGas</span><span class="p">(</span><span class="n">gamma</span><span class="o">=</span><span class="n">gamma</span><span class="p">))</span>
+
+<span class="n">sim_name</span> <span class="o">=</span> <span class="s2">"sedov"</span>
+<span class="k">if</span> <span class="n">phd</span><span class="o">.</span><span class="n">_in_parallel</span><span class="p">:</span>
+    <span class="n">integrator</span><span class="o">.</span><span class="n">set_load_balance</span><span class="p">(</span><span class="n">phd</span><span class="o">.</span><span class="n">LoadBalance</span><span class="p">())</span>
+    <span class="n">sim_name</span> <span class="o">=</span> <span class="s2">"mpi_sedov"</span>
+
+<span class="c1"># add finish criteria</span>
+<span class="n">simulation_time_manager</span> <span class="o">=</span> <span class="n">phd</span><span class="o">.</span><span class="n">SimulationTimeManager</span><span class="p">()</span>
+<span class="n">simulation_time_manager</span><span class="o">.</span><span class="n">add_finish</span><span class="p">(</span><span class="n">phd</span><span class="o">.</span><span class="n">Time</span><span class="p">(</span><span class="n">time_max</span><span class="o">=</span><span class="mf">0.06</span><span class="p">))</span>
+
+<span class="c1"># output every time interval</span>
+<span class="n">output</span> <span class="o">=</span> <span class="n">phd</span><span class="o">.</span><span class="n">TimeInterval</span><span class="p">(</span><span class="n">time_interval</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
+<span class="n">output</span><span class="o">.</span><span class="n">set_writer</span><span class="p">(</span><span class="n">phd</span><span class="o">.</span><span class="n">Hdf5</span><span class="p">())</span>
+<span class="n">simulation_time_manager</span><span class="o">.</span><span class="n">add_output</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+
+<span class="c1"># output last step</span>
+<span class="n">output</span> <span class="o">=</span> <span class="n">phd</span><span class="o">.</span><span class="n">FinalOutput</span><span class="p">()</span>
+<span class="n">output</span><span class="o">.</span><span class="n">set_writer</span><span class="p">(</span><span class="n">phd</span><span class="o">.</span><span class="n">Hdf5</span><span class="p">())</span>
+<span class="n">simulation_time_manager</span><span class="o">.</span><span class="n">add_output</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+
+<span class="c1"># Create simulator</span>
+<span class="n">simulation</span> <span class="o">=</span> <span class="n">phd</span><span class="o">.</span><span class="n">Simulation</span><span class="p">(</span><span class="n">simulation_name</span><span class="o">=</span><span class="n">sim_name</span><span class="p">)</span>
+<span class="n">simulation</span><span class="o">.</span><span class="n">set_integrator</span><span class="p">(</span><span class="n">integrator</span><span class="p">)</span>
+<span class="n">simulation</span><span class="o">.</span><span class="n">set_simulation_time_manager</span><span class="p">(</span><span class="n">simulation_time_manager</span><span class="p">)</span>
+<span class="n">simulation</span><span class="o">.</span><span class="n">initialize</span><span class="p">()</span>
+<span class="n">simulation</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+phd: [<span class="ansi-yellow-fg">WARNING</span>  ] 2021-06-02 12:09:22,658: Directory sedov_output already exists, files maybe over written!
+phd: [<span class="ansi-yellow-fg">WARNING</span>  ] 2021-06-02 12:09:22,661: Directory sedov_output/final_output already exists, files maybe over written!
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:09:22,662:
+
+ __________.__         .___
+\______   \  |__    __| _/
+ |     ___/  |  \  / __ |
+ |    |   |   Y  \/ /_/ |
+ |____|   |___|  /\____ |
+               \/      \/
+Welcome to Python Hydro-Dynamics!
+
+Simulation Information
+------------------------------
+Running in serial
+Log file saved at: sedov.log
+Problem solving: sedov
+Output data will be saved at: sedov_output
+
+Classes used in the simulation
+------------------------------
+boundary_condition: Reflective
+domain_manager: DomainManager
+equation_state: IdealGas
+integrator: MovingMeshMUSCLHancock
+mesh: Mesh
+particles: CarrayContainer
+reconstruction: PieceWiseLinear
+riemann: HLLC
+
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:09:22,663: IntegrateBase: Building initial mesh
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:09:22,663: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:09:27,185: Beginning integration loop
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:09:27,194: Hydro dt: 0.000022
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:09:27,195: Starting iteration: 0 time: 0.000000 dt: 0.000022
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:09:27,195: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:09:27,448: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:09:28,455: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:09:28,749: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:09:28,908: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:09:29,026: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:09:32,381: Hydro dt: 0.000025
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:09:32,381: Starting iteration: 1 time: 0.000022 dt: 0.000025
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:09:32,382: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:09:32,630: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:09:33,589: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:09:33,829: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:09:33,984: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:09:34,098: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:09:37,463: Hydro dt: 0.000029
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:09:37,464: Starting iteration: 2 time: 0.000047 dt: 0.000029
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:09:37,465: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:09:37,714: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:09:38,660: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:09:38,917: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:09:39,078: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:09:39,196: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:09:42,497: Hydro dt: 0.000033
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:09:42,498: Starting iteration: 3 time: 0.000076 dt: 0.000033
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:09:42,498: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:09:42,749: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:09:43,695: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:09:43,950: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:09:44,110: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:09:44,229: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:09:47,465: Hydro dt: 0.000038
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:09:47,465: Starting iteration: 4 time: 0.000109 dt: 0.000038
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:09:47,466: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:09:47,713: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:09:48,643: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:09:48,895: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:09:49,050: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:09:49,169: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:09:52,376: Hydro dt: 0.000044
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:09:52,377: Starting iteration: 5 time: 0.000148 dt: 0.000044
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:09:52,378: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:09:52,627: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:09:53,562: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:09:53,819: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:09:53,978: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:09:54,098: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:09:57,299: Hydro dt: 0.000051
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:09:57,300: Starting iteration: 6 time: 0.000192 dt: 0.000051
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:09:57,301: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:09:57,554: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:09:58,504: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:09:58,759: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:09:58,918: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:09:59,034: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:02,234: Hydro dt: 0.000058
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:02,234: Starting iteration: 7 time: 0.000243 dt: 0.000058
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:02,235: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:02,488: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:03,460: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:03,716: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:03,884: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:04,002: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:07,417: Hydro dt: 0.000065
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:07,418: Starting iteration: 8 time: 0.000301 dt: 0.000065
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:07,418: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:07,672: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:08,643: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:08,899: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:09,055: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:09,174: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:12,423: Hydro dt: 0.000070
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:12,423: Starting iteration: 9 time: 0.000366 dt: 0.000070
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:12,424: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:12,674: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:13,619: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:13,874: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:14,031: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:14,151: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:17,401: Hydro dt: 0.000079
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:17,401: Starting iteration: 10 time: 0.000436 dt: 0.000079
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:17,402: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:17,653: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:18,604: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:18,863: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:19,039: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:19,160: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:22,457: Hydro dt: 0.000081
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:22,459: Starting iteration: 11 time: 0.000515 dt: 0.000081
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:22,459: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:22,710: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:23,656: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:23,910: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:24,068: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:24,189: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:27,456: Hydro dt: 0.000092
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:27,458: Starting iteration: 12 time: 0.000596 dt: 0.000092
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:27,459: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:27,712: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:28,661: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:28,917: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:29,077: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:29,197: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:32,509: Hydro dt: 0.000097
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:32,509: Starting iteration: 13 time: 0.000688 dt: 0.000097
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:32,510: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:32,760: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:33,704: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:33,965: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:34,123: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:34,240: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:37,526: Hydro dt: 0.000107
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:37,526: Starting iteration: 14 time: 0.000785 dt: 0.000107
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:37,527: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:37,774: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:38,718: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:38,971: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:39,129: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:39,246: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:42,466: Hydro dt: 0.000112
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:42,467: Starting iteration: 15 time: 0.000892 dt: 0.000112
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:42,467: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:42,719: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:43,668: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:43,925: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:44,081: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:44,200: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:47,490: Hydro dt: 0.000121
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:47,491: Starting iteration: 16 time: 0.001004 dt: 0.000121
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:47,492: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:47,742: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:48,718: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:48,978: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:49,138: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:49,256: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:52,809: Hydro dt: 0.000129
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:52,817: Starting iteration: 17 time: 0.001125 dt: 0.000129
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:52,818: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:53,095: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:54,233: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:54,562: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:54,720: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:54,848: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:58,416: Hydro dt: 0.000135
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:58,416: Starting iteration: 18 time: 0.001254 dt: 0.000135
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:58,417: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:58,671: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:59,629: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:10:59,891: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:00,049: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:00,171: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:03,551: Hydro dt: 0.000143
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:03,552: Starting iteration: 19 time: 0.001389 dt: 0.000143
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:03,552: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:03,804: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:04,754: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:05,010: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:05,170: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:05,288: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:08,972: Hydro dt: 0.000144
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:08,974: Starting iteration: 20 time: 0.001532 dt: 0.000144
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:08,974: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:09,227: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:10,173: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:10,434: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:10,610: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:10,730: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:14,139: Hydro dt: 0.000151
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:14,140: Starting iteration: 21 time: 0.001676 dt: 0.000151
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:14,141: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:14,394: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:15,348: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:15,608: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:15,769: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:15,891: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:19,295: Hydro dt: 0.000151
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:19,295: Starting iteration: 22 time: 0.001826 dt: 0.000151
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:19,296: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:19,553: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:20,504: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:20,761: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:20,920: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:21,039: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:24,403: Hydro dt: 0.000161
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:24,405: Starting iteration: 23 time: 0.001977 dt: 0.000161
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:24,405: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:24,657: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:25,607: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:25,863: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:26,023: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:26,142: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:29,438: Hydro dt: 0.000164
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:29,438: Starting iteration: 24 time: 0.002138 dt: 0.000164
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:29,439: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:29,689: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:30,642: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:30,899: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:31,057: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:31,175: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:34,427: Hydro dt: 0.000172
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:34,427: Starting iteration: 25 time: 0.002302 dt: 0.000172
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:34,428: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:34,679: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:35,625: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:35,884: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:36,042: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:36,162: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:39,434: Hydro dt: 0.000178
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:39,435: Starting iteration: 26 time: 0.002473 dt: 0.000178
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:39,435: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:39,686: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:40,646: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:40,909: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:41,068: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:41,188: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:44,442: Hydro dt: 0.000185
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:44,442: Starting iteration: 27 time: 0.002651 dt: 0.000185
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:44,443: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:44,693: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:45,645: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:45,904: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:46,061: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:46,180: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:49,437: Hydro dt: 0.000188
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:49,438: Starting iteration: 28 time: 0.002836 dt: 0.000188
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:49,438: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:49,690: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:50,650: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:50,911: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:51,072: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:51,192: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:54,480: Hydro dt: 0.000194
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:54,480: Starting iteration: 29 time: 0.003024 dt: 0.000194
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:54,481: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:54,736: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:55,694: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:55,952: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:56,112: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:56,231: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:59,553: Hydro dt: 0.000199
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:59,554: Starting iteration: 30 time: 0.003217 dt: 0.000199
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:59,554: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:11:59,807: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:00,765: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:01,027: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:01,185: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:01,304: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:04,599: Hydro dt: 0.000205
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:04,599: Starting iteration: 31 time: 0.003417 dt: 0.000205
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:04,600: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:04,853: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:05,809: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:06,068: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:06,227: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:06,345: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:09,630: Hydro dt: 0.000210
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:09,630: Starting iteration: 32 time: 0.003622 dt: 0.000210
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:09,631: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:09,883: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:10,829: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:11,089: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:11,247: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:11,365: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:14,630: Hydro dt: 0.000216
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:14,631: Starting iteration: 33 time: 0.003832 dt: 0.000216
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:14,631: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:14,881: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:15,827: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:16,084: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:16,241: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:16,360: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:19,593: Hydro dt: 0.000221
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:19,594: Starting iteration: 34 time: 0.004048 dt: 0.000221
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:19,594: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:19,844: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:20,790: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:21,047: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:21,204: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:21,324: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:24,567: Hydro dt: 0.000227
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:24,569: Starting iteration: 35 time: 0.004269 dt: 0.000227
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:24,569: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:24,821: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:25,785: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:26,046: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:26,208: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:26,328: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:29,584: Hydro dt: 0.000232
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:29,585: Starting iteration: 36 time: 0.004495 dt: 0.000232
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:29,585: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:29,838: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:30,812: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:31,075: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:31,235: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:31,355: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:34,607: Hydro dt: 0.000237
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:34,607: Starting iteration: 37 time: 0.004728 dt: 0.000237
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:34,608: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:34,858: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:35,806: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:36,065: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:36,224: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:36,343: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:39,575: Hydro dt: 0.000243
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:39,576: Starting iteration: 38 time: 0.004965 dt: 0.000243
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:39,576: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:39,827: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:40,773: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:41,031: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:41,188: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:41,307: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:44,560: Hydro dt: 0.000248
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:44,560: Starting iteration: 39 time: 0.005208 dt: 0.000248
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:44,561: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:44,813: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:45,765: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:46,038: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:46,199: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:46,319: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:49,603: Hydro dt: 0.000254
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:49,604: Starting iteration: 40 time: 0.005456 dt: 0.000254
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:49,604: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:49,855: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:50,800: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:51,056: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:51,216: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:51,334: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:54,593: Hydro dt: 0.000259
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:54,594: Starting iteration: 41 time: 0.005710 dt: 0.000259
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:54,595: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:54,845: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:55,869: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:56,162: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:56,319: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:12:56,438: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:00,033: Hydro dt: 0.000265
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:00,035: Starting iteration: 42 time: 0.005969 dt: 0.000265
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:00,036: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:00,301: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:01,270: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:01,562: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:01,725: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:01,905: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:05,642: Hydro dt: 0.000270
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:05,642: Starting iteration: 43 time: 0.006233 dt: 0.000270
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:05,643: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:05,912: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:06,925: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:07,193: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:07,358: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:07,511: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:10,892: Hydro dt: 0.000276
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:10,893: Starting iteration: 44 time: 0.006503 dt: 0.000276
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:10,893: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:11,150: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:12,129: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:12,388: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:12,550: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:12,668: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:15,955: Hydro dt: 0.000281
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:15,956: Starting iteration: 45 time: 0.006779 dt: 0.000281
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:15,956: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:16,211: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:17,162: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:17,420: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:17,578: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:17,697: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:20,993: Hydro dt: 0.000287
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:20,994: Starting iteration: 46 time: 0.007061 dt: 0.000287
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:20,994: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:21,248: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:22,204: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:22,468: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:22,629: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:22,749: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:26,073: Hydro dt: 0.000293
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:26,073: Starting iteration: 47 time: 0.007348 dt: 0.000293
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:26,074: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:26,330: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:27,285: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:27,545: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:27,717: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:27,845: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:31,148: Hydro dt: 0.000299
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:31,148: Starting iteration: 48 time: 0.007640 dt: 0.000299
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:31,149: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:31,400: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:32,353: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:32,612: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:32,770: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:32,889: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:36,224: Hydro dt: 0.000304
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:36,225: Starting iteration: 49 time: 0.007939 dt: 0.000304
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:36,225: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:36,478: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:37,450: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:37,709: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:37,867: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:37,987: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:41,327: Hydro dt: 0.000310
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:41,328: Starting iteration: 50 time: 0.008243 dt: 0.000310
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:41,328: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:41,584: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:42,531: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:42,787: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:42,947: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:43,070: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:46,393: Hydro dt: 0.000316
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:46,394: Starting iteration: 51 time: 0.008554 dt: 0.000316
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:46,394: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:46,646: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:47,592: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:47,848: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:48,006: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:48,125: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:51,409: Hydro dt: 0.000322
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:51,410: Starting iteration: 52 time: 0.008870 dt: 0.000322
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:51,410: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:51,661: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:52,612: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:52,868: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:53,028: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:53,146: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:56,448: Hydro dt: 0.000328
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:56,449: Starting iteration: 53 time: 0.009192 dt: 0.000328
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:56,449: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:56,702: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:57,665: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:57,921: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:58,078: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:13:58,197: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:01,545: Hydro dt: 0.000334
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:01,546: Starting iteration: 54 time: 0.009520 dt: 0.000334
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:01,547: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:01,802: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:02,777: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:03,040: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:03,197: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:03,316: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:06,559: Hydro dt: 0.000340
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:06,560: Starting iteration: 55 time: 0.009853 dt: 0.000147
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:06,561: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:06,811: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:07,778: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:08,039: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:08,196: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:08,316: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:12,215: hdf5 format: Writting time_interval0000.hdf5
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:12,312: Hydro dt: 0.000342
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:12,322: Starting iteration: 56 time: 0.010000 dt: 0.000342
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:12,322: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:12,611: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:13,580: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:13,849: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:14,008: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:14,132: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:17,648: Hydro dt: 0.000348
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:17,651: Starting iteration: 57 time: 0.010342 dt: 0.000348
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:17,651: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:17,906: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:18,872: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:19,180: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:19,349: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:19,476: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:23,451: Hydro dt: 0.000354
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:23,454: Starting iteration: 58 time: 0.010690 dt: 0.000354
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:23,454: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:23,780: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:24,826: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:25,160: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:25,323: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:25,485: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:29,659: Hydro dt: 0.000359
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:29,661: Starting iteration: 59 time: 0.011044 dt: 0.000359
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:29,661: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:29,920: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:30,886: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:31,148: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:31,309: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:31,428: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:34,906: Hydro dt: 0.000365
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:34,907: Starting iteration: 60 time: 0.011403 dt: 0.000365
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:34,907: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:35,162: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:36,281: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:36,559: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:36,800: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:36,947: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:40,370: Hydro dt: 0.000371
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:40,371: Starting iteration: 61 time: 0.011768 dt: 0.000371
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:40,371: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:40,621: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:41,571: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:41,834: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:41,991: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:42,118: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:45,561: Hydro dt: 0.000377
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:45,562: Starting iteration: 62 time: 0.012139 dt: 0.000377
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:45,562: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:45,823: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:46,789: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:47,060: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:47,228: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:47,354: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:50,656: Hydro dt: 0.000382
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:50,657: Starting iteration: 63 time: 0.012516 dt: 0.000382
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:50,657: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:50,908: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:51,855: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:52,114: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:52,273: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:52,392: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:55,833: Hydro dt: 0.000388
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:55,835: Starting iteration: 64 time: 0.012898 dt: 0.000388
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:55,835: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:56,087: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:57,036: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:57,291: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:57,454: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:14:57,588: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:01,083: Hydro dt: 0.000394
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:01,084: Starting iteration: 65 time: 0.013287 dt: 0.000394
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:01,084: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:01,342: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:02,296: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:02,560: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:02,721: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:02,842: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:06,397: Hydro dt: 0.000399
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:06,398: Starting iteration: 66 time: 0.013681 dt: 0.000399
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:06,398: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:06,654: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:07,612: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:07,919: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:08,081: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:08,203: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:11,554: Hydro dt: 0.000405
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:11,555: Starting iteration: 67 time: 0.014080 dt: 0.000405
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:11,555: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:11,847: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:12,835: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:13,094: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:13,288: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:13,406: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:16,892: Hydro dt: 0.000411
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:16,892: Starting iteration: 68 time: 0.014485 dt: 0.000411
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:16,893: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:17,162: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:18,187: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:18,459: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:18,620: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:18,744: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:22,058: Hydro dt: 0.000416
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:22,059: Starting iteration: 69 time: 0.014896 dt: 0.000416
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:22,059: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:22,310: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:23,260: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:23,515: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:23,673: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:23,792: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:27,031: Hydro dt: 0.000422
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:27,031: Starting iteration: 70 time: 0.015312 dt: 0.000422
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:27,031: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:27,289: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:28,235: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:28,493: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:28,658: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:28,794: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:32,168: Hydro dt: 0.000427
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:32,169: Starting iteration: 71 time: 0.015733 dt: 0.000427
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:32,169: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:32,423: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:33,376: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:33,636: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:33,796: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:33,917: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:37,254: Hydro dt: 0.000432
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:37,254: Starting iteration: 72 time: 0.016160 dt: 0.000432
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:37,255: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:37,506: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:38,463: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:38,719: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:38,879: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:38,999: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:42,311: Hydro dt: 0.000438
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:42,311: Starting iteration: 73 time: 0.016593 dt: 0.000438
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:42,312: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:42,572: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:43,577: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:43,842: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:44,000: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:44,128: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:47,455: Hydro dt: 0.000443
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:47,456: Starting iteration: 74 time: 0.017030 dt: 0.000443
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:47,456: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:47,708: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:48,656: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:48,913: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:49,073: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:49,192: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:52,485: Hydro dt: 0.000448
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:52,486: Starting iteration: 75 time: 0.017473 dt: 0.000448
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:52,486: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:52,738: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:53,694: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:53,952: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:54,111: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:54,231: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:57,680: Hydro dt: 0.000453
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:57,684: Starting iteration: 76 time: 0.017921 dt: 0.000453
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:57,685: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:57,940: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:58,892: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:59,151: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:59,314: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:15:59,433: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:02,780: Hydro dt: 0.000458
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:02,780: Starting iteration: 77 time: 0.018374 dt: 0.000458
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:02,781: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:03,035: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:03,982: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:04,239: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:04,398: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:04,517: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:07,834: Hydro dt: 0.000463
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:07,834: Starting iteration: 78 time: 0.018832 dt: 0.000463
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:07,835: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:08,088: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:09,039: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:09,298: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:09,458: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:09,578: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:12,871: Hydro dt: 0.000468
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:12,871: Starting iteration: 79 time: 0.019295 dt: 0.000468
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:12,872: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:13,129: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:14,082: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:14,343: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:14,503: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:14,631: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:17,909: Hydro dt: 0.000473
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:17,909: Starting iteration: 80 time: 0.019763 dt: 0.000237
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:17,910: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:18,167: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:19,121: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:19,403: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:19,578: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:19,707: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:23,172: hdf5 format: Writting time_interval0001.hdf5
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:23,228: Hydro dt: 0.000475
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:23,230: Starting iteration: 81 time: 0.020000 dt: 0.000475
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:23,230: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:23,493: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:24,465: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:24,725: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:24,897: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:25,022: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:28,744: Hydro dt: 0.000480
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:28,745: Starting iteration: 82 time: 0.020475 dt: 0.000480
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:28,746: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:29,029: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:30,033: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:30,405: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:30,565: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:30,727: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:34,099: Hydro dt: 0.000485
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:34,099: Starting iteration: 83 time: 0.020955 dt: 0.000485
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:34,100: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:34,351: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:35,303: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:35,560: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:35,719: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:35,839: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:39,126: Hydro dt: 0.000490
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:39,127: Starting iteration: 84 time: 0.021440 dt: 0.000490
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:39,127: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:39,378: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:40,347: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:40,603: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:40,761: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:40,880: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:44,175: Hydro dt: 0.000495
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:44,175: Starting iteration: 85 time: 0.021930 dt: 0.000495
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:44,176: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:44,429: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:45,371: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:45,628: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:45,790: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:45,915: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:49,520: Hydro dt: 0.000499
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:49,525: Starting iteration: 86 time: 0.022425 dt: 0.000499
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:49,525: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:49,797: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:50,792: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:51,117: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:51,278: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:51,398: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:54,740: Hydro dt: 0.000504
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:54,742: Starting iteration: 87 time: 0.022924 dt: 0.000504
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:54,742: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:54,997: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:55,971: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:56,230: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:56,392: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:56,511: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:59,886: Hydro dt: 0.000509
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:59,887: Starting iteration: 88 time: 0.023428 dt: 0.000509
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:16:59,887: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:00,139: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:01,092: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:01,350: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:01,507: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:01,627: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:04,953: Hydro dt: 0.000514
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:04,953: Starting iteration: 89 time: 0.023937 dt: 0.000514
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:04,954: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:05,206: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:06,151: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:06,407: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:06,567: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:06,688: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:10,101: Hydro dt: 0.000518
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:10,102: Starting iteration: 90 time: 0.024451 dt: 0.000518
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:10,103: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:10,359: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:11,311: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:11,564: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:11,729: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:11,857: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:15,171: Hydro dt: 0.000523
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:15,172: Starting iteration: 91 time: 0.024970 dt: 0.000523
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:15,173: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:15,422: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:16,368: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:16,629: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:16,795: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:16,923: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:20,191: Hydro dt: 0.000528
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:20,192: Starting iteration: 92 time: 0.025493 dt: 0.000528
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:20,192: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:20,444: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:21,452: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:21,718: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:21,882: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:22,002: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:25,328: Hydro dt: 0.000533
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:25,336: Starting iteration: 93 time: 0.026021 dt: 0.000533
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:25,337: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:25,587: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:26,543: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:26,799: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:26,956: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:27,081: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:30,394: Hydro dt: 0.000537
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:30,394: Starting iteration: 94 time: 0.026553 dt: 0.000537
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:30,395: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:30,648: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:31,597: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:31,851: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:32,011: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:32,134: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:35,423: Hydro dt: 0.000542
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:35,424: Starting iteration: 95 time: 0.027091 dt: 0.000542
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:35,424: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:35,677: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:36,630: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:36,886: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:37,046: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:37,166: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:40,440: Hydro dt: 0.000547
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:40,441: Starting iteration: 96 time: 0.027633 dt: 0.000547
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:40,441: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:40,698: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:41,661: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:41,918: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:42,080: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:42,200: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:45,452: Hydro dt: 0.000552
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:45,453: Starting iteration: 97 time: 0.028180 dt: 0.000552
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:45,453: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:45,703: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:46,661: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:46,923: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:47,082: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:47,202: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:50,545: Hydro dt: 0.000556
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:50,546: Starting iteration: 98 time: 0.028731 dt: 0.000556
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:50,546: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:50,799: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:51,752: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:52,012: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:52,176: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:52,295: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:55,572: Hydro dt: 0.000561
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:55,573: Starting iteration: 99 time: 0.029288 dt: 0.000561
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:55,573: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:55,826: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:56,767: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:57,020: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:57,177: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:17:57,296: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:00,543: Hydro dt: 0.000566
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:00,543: Starting iteration: 100 time: 0.029849 dt: 0.000151
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:00,544: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:00,795: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:01,737: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:01,994: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:02,155: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:02,276: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:05,593: hdf5 format: Writting time_interval0002.hdf5
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:05,644: Hydro dt: 0.000567
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:05,645: Starting iteration: 101 time: 0.030000 dt: 0.000567
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:05,646: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:05,906: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:06,863: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:07,119: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:07,279: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:07,401: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:10,746: Hydro dt: 0.000571
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:10,747: Starting iteration: 102 time: 0.030567 dt: 0.000571
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:10,748: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:10,999: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:11,954: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:12,213: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:12,370: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:12,490: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:15,779: Hydro dt: 0.000576
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:15,780: Starting iteration: 103 time: 0.031138 dt: 0.000576
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:15,780: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:16,034: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:16,974: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:17,230: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:17,391: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:17,513: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:20,923: Hydro dt: 0.000581
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:20,924: Starting iteration: 104 time: 0.031714 dt: 0.000581
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:20,924: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:21,186: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:22,152: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:22,408: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:22,567: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:22,689: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:26,047: Hydro dt: 0.000585
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:26,047: Starting iteration: 105 time: 0.032295 dt: 0.000585
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:26,048: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:26,300: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:27,257: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:27,517: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:27,676: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:27,800: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:31,897: Hydro dt: 0.000590
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:31,898: Starting iteration: 106 time: 0.032880 dt: 0.000590
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:31,899: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:32,307: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:33,360: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:33,754: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:33,925: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:34,086: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:37,572: Hydro dt: 0.000594
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:37,573: Starting iteration: 107 time: 0.033470 dt: 0.000594
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:37,574: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:37,830: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:38,814: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:39,070: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:39,237: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:39,359: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:42,728: Hydro dt: 0.000598
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:42,729: Starting iteration: 108 time: 0.034064 dt: 0.000598
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:42,729: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:42,980: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:43,940: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:44,197: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:44,358: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:44,486: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:47,849: Hydro dt: 0.000603
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:47,850: Starting iteration: 109 time: 0.034662 dt: 0.000603
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:47,851: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:48,102: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:49,047: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:49,302: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:49,462: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:49,582: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:52,913: Hydro dt: 0.000607
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:52,914: Starting iteration: 110 time: 0.035265 dt: 0.000607
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:52,914: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:53,167: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:54,116: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:54,396: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:54,565: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:54,687: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:57,958: Hydro dt: 0.000611
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:57,959: Starting iteration: 111 time: 0.035872 dt: 0.000611
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:57,960: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:58,214: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:59,176: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:59,431: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:59,590: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:18:59,712: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:02,984: Hydro dt: 0.000616
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:02,986: Starting iteration: 112 time: 0.036483 dt: 0.000616
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:02,986: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:03,238: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:04,198: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:04,452: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:04,610: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:04,732: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:08,055: Hydro dt: 0.000620
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:08,056: Starting iteration: 113 time: 0.037099 dt: 0.000620
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:08,056: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:08,312: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:09,262: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:09,520: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:09,680: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:09,800: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:13,069: Hydro dt: 0.000624
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:13,070: Starting iteration: 114 time: 0.037719 dt: 0.000624
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:13,071: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:13,321: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:14,262: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:14,519: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:14,678: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:14,799: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:18,054: Hydro dt: 0.000628
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:18,054: Starting iteration: 115 time: 0.038342 dt: 0.000628
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:18,055: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:18,305: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:19,253: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:19,514: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:19,676: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:19,796: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:23,076: Hydro dt: 0.000632
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:23,077: Starting iteration: 116 time: 0.038970 dt: 0.000632
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:23,077: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:23,331: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:24,281: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:24,534: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:24,702: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:24,822: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:28,117: Hydro dt: 0.000636
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:28,118: Starting iteration: 117 time: 0.039602 dt: 0.000398
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:28,118: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:28,369: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:29,312: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:29,565: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:29,726: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:29,846: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:33,174: hdf5 format: Writting time_interval0003.hdf5
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:33,248: Hydro dt: 0.000638
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:33,249: Starting iteration: 118 time: 0.040000 dt: 0.000638
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:33,249: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:33,506: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:34,449: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:34,701: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:34,860: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:34,983: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:38,231: Hydro dt: 0.000642
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:38,232: Starting iteration: 119 time: 0.040638 dt: 0.000642
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:38,232: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:38,485: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:39,424: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:39,676: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:39,835: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:39,955: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:43,335: Hydro dt: 0.000646
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:43,336: Starting iteration: 120 time: 0.041281 dt: 0.000646
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:43,336: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:43,592: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:44,550: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:44,813: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:44,971: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:45,097: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:48,360: Hydro dt: 0.000650
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:48,360: Starting iteration: 121 time: 0.041927 dt: 0.000650
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:48,361: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:48,612: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:49,564: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:49,825: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:49,986: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:50,107: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:53,481: Hydro dt: 0.000654
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:53,482: Starting iteration: 122 time: 0.042577 dt: 0.000654
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:53,483: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:53,733: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:54,693: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:54,954: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:55,118: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:55,240: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:58,508: Hydro dt: 0.000658
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:58,509: Starting iteration: 123 time: 0.043232 dt: 0.000658
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:58,509: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:58,759: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:59,717: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:19:59,980: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:00,148: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:00,271: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:03,633: Hydro dt: 0.000662
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:03,635: Starting iteration: 124 time: 0.043890 dt: 0.000662
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:03,635: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:03,884: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:04,843: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:05,097: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:05,254: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:05,374: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:08,651: Hydro dt: 0.000666
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:08,652: Starting iteration: 125 time: 0.044551 dt: 0.000666
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:08,652: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:08,902: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:09,848: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:10,100: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:10,256: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:10,377: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:13,584: Hydro dt: 0.000669
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:13,585: Starting iteration: 126 time: 0.045217 dt: 0.000669
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:13,585: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:13,837: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:14,780: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:15,031: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:15,189: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:15,308: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:18,586: Hydro dt: 0.000673
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:18,586: Starting iteration: 127 time: 0.045887 dt: 0.000673
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:18,587: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:18,840: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:19,826: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:20,083: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:20,245: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:20,366: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:23,787: Hydro dt: 0.000677
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:23,788: Starting iteration: 128 time: 0.046560 dt: 0.000677
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:23,789: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:24,046: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:24,995: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:25,247: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:25,405: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:25,532: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:28,941: Hydro dt: 0.000681
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:28,942: Starting iteration: 129 time: 0.047237 dt: 0.000681
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:28,942: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:29,201: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:30,158: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:30,416: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:30,575: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:30,696: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:33,926: Hydro dt: 0.000685
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:33,927: Starting iteration: 130 time: 0.047918 dt: 0.000685
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:33,928: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:34,177: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:35,127: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:35,384: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:35,544: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:35,664: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:38,931: Hydro dt: 0.000688
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:38,931: Starting iteration: 131 time: 0.048602 dt: 0.000688
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:38,932: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:39,182: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:40,143: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:40,401: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:40,562: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:40,682: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:43,912: Hydro dt: 0.000692
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:43,912: Starting iteration: 132 time: 0.049291 dt: 0.000692
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:43,913: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:44,162: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:45,102: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:45,354: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:45,519: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:45,646: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:49,004: Hydro dt: 0.000696
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:49,005: Starting iteration: 133 time: 0.049983 dt: 0.000017
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:49,005: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:49,255: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:50,203: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:50,466: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:50,625: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:50,748: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:54,059: hdf5 format: Writting time_interval0004.hdf5
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:54,109: Hydro dt: 0.000696
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:54,110: Starting iteration: 134 time: 0.050000 dt: 0.000696
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:54,110: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:54,376: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:55,440: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:55,712: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:55,873: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:55,999: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:59,246: Hydro dt: 0.000700
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:59,247: Starting iteration: 135 time: 0.050696 dt: 0.000700
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:59,247: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:20:59,497: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:00,461: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:00,713: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:00,869: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:00,989: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:04,248: Hydro dt: 0.000704
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:04,249: Starting iteration: 136 time: 0.051396 dt: 0.000704
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:04,250: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:04,500: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:05,438: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:05,692: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:05,850: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:05,970: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:09,203: Hydro dt: 0.000707
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:09,203: Starting iteration: 137 time: 0.052100 dt: 0.000707
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:09,204: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:09,460: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:10,416: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:10,671: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:10,830: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:10,956: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:14,322: Hydro dt: 0.000711
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:14,323: Starting iteration: 138 time: 0.052807 dt: 0.000711
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:14,323: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:14,575: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:15,538: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:15,792: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:15,950: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:16,074: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:19,315: Hydro dt: 0.000715
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:19,316: Starting iteration: 139 time: 0.053518 dt: 0.000715
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:19,316: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:19,570: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:20,520: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:20,771: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:20,933: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:21,070: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:24,320: Hydro dt: 0.000719
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:24,321: Starting iteration: 140 time: 0.054233 dt: 0.000719
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:24,322: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:24,573: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:25,525: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:25,783: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:25,940: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:26,061: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:29,429: Hydro dt: 0.000723
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:29,430: Starting iteration: 141 time: 0.054952 dt: 0.000723
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:29,430: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:29,681: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:30,635: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:30,891: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:31,061: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:31,191: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:34,527: Hydro dt: 0.000726
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:34,528: Starting iteration: 142 time: 0.055675 dt: 0.000726
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:34,528: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:34,781: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:35,730: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:35,984: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:36,143: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:36,268: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:39,566: Hydro dt: 0.000730
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:39,567: Starting iteration: 143 time: 0.056401 dt: 0.000730
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:39,568: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:39,816: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:40,763: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:41,033: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:41,192: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:41,313: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:44,840: Hydro dt: 0.000734
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:44,841: Starting iteration: 144 time: 0.057131 dt: 0.000734
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:44,841: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:45,090: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:46,031: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:46,283: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:46,447: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:46,570: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:49,850: Hydro dt: 0.000738
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:49,851: Starting iteration: 145 time: 0.057865 dt: 0.000738
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:49,851: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:50,108: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:51,064: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:51,318: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:51,477: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:51,601: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:54,846: Hydro dt: 0.000742
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:54,848: Starting iteration: 146 time: 0.058603 dt: 0.000742
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:54,850: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:55,105: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:56,056: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:56,311: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:56,473: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:56,600: Mesh: Starting mesh creation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:59,910: Hydro dt: 0.000745
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:59,910: Starting iteration: 147 time: 0.059344 dt: 0.000656
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:21:59,911: MovingMeshMUSCLHancock: Starting integration
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:22:00,164: PieceWiseLinear: Starting gradient cacluation
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:22:01,161: PieceWiseLinear: Starting spatial reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:22:01,424: PieceWiseLinear: Starting temporal reconstruction
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:22:01,583: HLLC: Starting riemann
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:22:01,706: Mesh: Starting mesh creation
+phd: [<span class="ansi-yellow-fg">WARNING</span>  ] 2021-06-02 12:22:04,961: Directory sedov_output/final_output/final_output0000 already exists, files maybe over written!
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:22:04,962: hdf5 format: Writting final_output0000.hdf5
+phd: [<span class="ansi-green-fg">SUCCESS</span>  ] 2021-06-02 12:22:05,006: Simulation successfully finished!
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">"mathtext.fontset"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"stix"</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">"font.family"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"STIXGeneral"</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">"xtick.labelsize"</span><span class="p">]</span> <span class="o">=</span> <span class="mi">16</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">"ytick.labelsize"</span><span class="p">]</span> <span class="o">=</span> <span class="mi">16</span>
+
+<span class="c1"># plot cartesian or uniform run</span>
+<span class="n">file_name</span><span class="o">=</span><span class="s2">"sedov_output/final_output/final_output0000/final_output0000.hdf5"</span>
+<span class="n">reader</span> <span class="o">=</span> <span class="n">phd</span><span class="o">.</span><span class="n">Hdf5</span><span class="p">()</span>
+<span class="n">sedov</span> <span class="o">=</span> <span class="n">reader</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span>
+<span class="n">sedov</span><span class="o">.</span><span class="n">remove_tagged_particles</span><span class="p">(</span><span class="n">phd</span><span class="o">.</span><span class="n">ParticleTAGS</span><span class="o">.</span><span class="n">Ghost</span><span class="p">)</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">sedov</span><span class="p">[</span><span class="s2">"position-x"</span><span class="p">]</span><span class="o">-</span><span class="mf">0.5</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">sedov</span><span class="p">[</span><span class="s2">"position-y"</span><span class="p">]</span><span class="o">-</span><span class="mf">0.5</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">sedov</span><span class="p">[</span><span class="s2">"position-z"</span><span class="p">]</span><span class="o">-</span><span class="mf">0.5</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">sedov</span><span class="p">[</span><span class="s2">"velocity-x"</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">sedov</span><span class="p">[</span><span class="s2">"velocity-y"</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">sedov</span><span class="p">[</span><span class="s2">"velocity-z"</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># get the exact solution</span>
+<span class="c1">#exact = np.loadtxt("sedov_3d.dat")</span>
+
+<span class="c1"># get the exact solution</span>
+<span class="c1">#x_ex = exact[:,1]   # radius</span>
+<span class="c1">#r_ex = exact[:,2]   # density</span>
+<span class="c1">#p_ex = exact[:,4]   # pressure</span>
+<span class="c1">#u_ex = exact[:,5]   # velocity</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">12</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">sedov</span><span class="p">[</span><span class="s2">"density"</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">"lightsteelblue"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"phd"</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span> <span class="mi">5</span><span class="p">)</span>
+<span class="c1">#plt.plot(x_ex, r_ex, "k", label="exact")</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mf">4.1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"Radius"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Density"</span><span class="p">)</span>
+<span class="n">l</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">"upper left"</span><span class="p">,</span> <span class="n">prop</span><span class="o">=</span><span class="p">{</span><span class="s2">"size"</span><span class="p">:</span><span class="mi">12</span><span class="p">})</span>
+<span class="n">l</span><span class="o">.</span><span class="n">draw_frame</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"lightsteelblue"</span><span class="p">)</span>
+<span class="c1">#plt.plot(x_ex, u_ex, "k")</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">2.0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"Radius"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Velocity"</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">sedov</span><span class="p">[</span><span class="s2">"pressure"</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">"lightsteelblue"</span><span class="p">)</span>
+<span class="c1">#plt.plot(x_ex, p_ex, "k")</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">4.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"Radius"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Pressure"</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">"sedov_3d.png"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:04:25,077: hdf5 format: Reading filename sedov_output/final_output/final_output0000/final_output0000.hdf5
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/example_nbooks_sedov_test_5_1.png" src="../_images/example_nbooks_sedov_test_5_1.png"/>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+      </article>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="two_body_test.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Two Body Problem</div>
+              </div>
+              <svg><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="kelvin_helmholtz_test.html">
+              <svg><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Kelvin-Helmholtz Instability</div>
+                
+              </div>
+            </a>
+        </div>
+
+        <div class="related-information">
+              Copyright &#169; 2021, Ricardo Fernandez, Greg Bryan
+            |
+            Built with <a href="https://www.sphinx-doc.org/">Sphinx</a>
+              and
+              <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+              <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
+            |
+            <a class="muted-link" href="../_sources/example_nbooks/sedov_test.ipynb.txt"
+               rel="nofollow">
+              Show Source
+            </a>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            Contents
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Sedov-Taylor Blast Wave</a><ul>
+<li><a class="reference internal" href="#In-the-Code">In the Code</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </main>
+</div>
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    <script src="../_static/scripts/main.js?digest=e931d09b2a40c1bb82b542effe772014573baf67"></script></body>
+</html>

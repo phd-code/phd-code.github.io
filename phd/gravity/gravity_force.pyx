@@ -64,7 +64,7 @@ cdef class ConstantGravity(MUSCLHancockSourceTerm):
         phdLogger.info("ConstantGravity: Applying gravity to primitive")
 
         left_states.pointer_groups(vl,  left_states.carray_named_groups["velocity"])
-        right_states.pointer_groups(vr, left_states.carray_named_groups["velocity"])
+        right_states.pointer_groups(vr, right_states.carray_named_groups["velocity"])
 
         particles.pointer_groups(mv, particles.carray_named_groups["momentum"])
         particles.pointer_groups(wx, particles.carray_named_groups["w"])
@@ -175,7 +175,7 @@ cdef class SelfGravity(MUSCLHancockSourceTerm):
         self.smoothing_length = smoothing_length
         self.calculate_potential = calculate_potential
 
-        self.gravity = GravityTree(barnes_angle, smoothing_length,
+        self.gravity = GravityTree(split_type, barnes_angle, smoothing_length,
                 calculate_potential, max_buffer_size)
 
     cpdef apply_motion(self, object integrator):
@@ -226,7 +226,7 @@ cdef class SelfGravity(MUSCLHancockSourceTerm):
         dim = len(particles.carray_named_groups["position"])
 
         left_states.pointer_groups(vl,  left_states.carray_named_groups["velocity"])
-        right_states.pointer_groups(vr, left_states.carray_named_groups["velocity"])
+        right_states.pointer_groups(vr, right_states.carray_named_groups["velocity"])
 
         particles.pointer_groups(wx, particles.carray_named_groups["w"])
         particles.pointer_groups(mv, particles.carray_named_groups["momentum"])
@@ -325,6 +325,18 @@ cdef class SelfGravity(MUSCLHancockSourceTerm):
 
         phdLogger.info("SelfGravity: Gravity dt: %f" %dt)
         return dt
+
+    def set_gravity(self, gravtree):
+        """Sets an external GravityTree object defined for the specific problem.
+
+        Parameters
+        ----------
+        gravtree : GravityTree
+            Solves gravity by barnes-hut algorithm.
+
+        """
+        self.gravity = gravtree
+
 
     cpdef apply_flux(self, object integrator):
         """Perform any computation after flux update.

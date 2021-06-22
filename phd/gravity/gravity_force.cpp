@@ -28,13 +28,17 @@
             "phd/riemann/",
             "phd/mesh/",
             "phd/reconstruction/",
-            "phd/source_term/"
+            "phd/source_term/",
+            "/opt/homebrew/Cellar/cgal/5.2/include",
+            "/opt/homebrew/Cellar/boost/1.75.0_1/include"
         ],
         "language": "c++",
         "libraries": [
-            "CGAL",
             "gmp",
             "m"
+        ],
+        "library_dirs": [
+            "/opt/homebrew/Cellar/cgal/5.2/lib"
         ],
         "name": "phd.gravity.gravity_force",
         "sources": [
@@ -3148,8 +3152,9 @@ static PyObject *__pyx_pf_3phd_7gravity_13gravity_force_11SelfGravity_2apply_mot
 static PyObject *__pyx_pf_3phd_7gravity_13gravity_force_11SelfGravity_4apply_primitive(struct __pyx_obj_3phd_7gravity_13gravity_force_SelfGravity *__pyx_v_self, PyObject *__pyx_v_integrator); /* proto */
 static PyObject *__pyx_pf_3phd_7gravity_13gravity_force_11SelfGravity_6compute_source(struct __pyx_obj_3phd_7gravity_13gravity_force_SelfGravity *__pyx_v_self, PyObject *__pyx_v_integrator); /* proto */
 static PyObject *__pyx_pf_3phd_7gravity_13gravity_force_11SelfGravity_8compute_time_step(struct __pyx_obj_3phd_7gravity_13gravity_force_SelfGravity *__pyx_v_self, PyObject *__pyx_v_integrator); /* proto */
-static PyObject *__pyx_pf_3phd_7gravity_13gravity_force_11SelfGravity_10apply_flux(struct __pyx_obj_3phd_7gravity_13gravity_force_SelfGravity *__pyx_v_self, PyObject *__pyx_v_integrator); /* proto */
-static PyObject *__pyx_pf_3phd_7gravity_13gravity_force_11SelfGravity_12apply_conservative(struct __pyx_obj_3phd_7gravity_13gravity_force_SelfGravity *__pyx_v_self, PyObject *__pyx_v_integrator); /* proto */
+static PyObject *__pyx_pf_3phd_7gravity_13gravity_force_11SelfGravity_10set_gravity(struct __pyx_obj_3phd_7gravity_13gravity_force_SelfGravity *__pyx_v_self, PyObject *__pyx_v_gravtree); /* proto */
+static PyObject *__pyx_pf_3phd_7gravity_13gravity_force_11SelfGravity_12apply_flux(struct __pyx_obj_3phd_7gravity_13gravity_force_SelfGravity *__pyx_v_self, PyObject *__pyx_v_integrator); /* proto */
+static PyObject *__pyx_pf_3phd_7gravity_13gravity_force_11SelfGravity_14apply_conservative(struct __pyx_obj_3phd_7gravity_13gravity_force_SelfGravity *__pyx_v_self, PyObject *__pyx_v_integrator); /* proto */
 static PyObject *__pyx_pf_3phd_7gravity_13gravity_force_11SelfGravity_3eta___get__(struct __pyx_obj_3phd_7gravity_13gravity_force_SelfGravity *__pyx_v_self); /* proto */
 static int __pyx_pf_3phd_7gravity_13gravity_force_11SelfGravity_3eta_2__set__(struct __pyx_obj_3phd_7gravity_13gravity_force_SelfGravity *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
 static PyObject *__pyx_pf_3phd_7gravity_13gravity_force_11SelfGravity_10split_type___get__(struct __pyx_obj_3phd_7gravity_13gravity_force_SelfGravity *__pyx_v_self); /* proto */
@@ -3163,8 +3168,8 @@ static PyObject *__pyx_pf_3phd_7gravity_13gravity_force_11SelfGravity_16smoothin
 static int __pyx_pf_3phd_7gravity_13gravity_force_11SelfGravity_16smoothing_length_2__set__(struct __pyx_obj_3phd_7gravity_13gravity_force_SelfGravity *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
 static PyObject *__pyx_pf_3phd_7gravity_13gravity_force_11SelfGravity_19calculate_potential___get__(struct __pyx_obj_3phd_7gravity_13gravity_force_SelfGravity *__pyx_v_self); /* proto */
 static int __pyx_pf_3phd_7gravity_13gravity_force_11SelfGravity_19calculate_potential_2__set__(struct __pyx_obj_3phd_7gravity_13gravity_force_SelfGravity *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
-static PyObject *__pyx_pf_3phd_7gravity_13gravity_force_11SelfGravity_14__reduce_cython__(struct __pyx_obj_3phd_7gravity_13gravity_force_SelfGravity *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_3phd_7gravity_13gravity_force_11SelfGravity_16__setstate_cython__(struct __pyx_obj_3phd_7gravity_13gravity_force_SelfGravity *__pyx_v_self, PyObject *__pyx_v___pyx_state); /* proto */
+static PyObject *__pyx_pf_3phd_7gravity_13gravity_force_11SelfGravity_16__reduce_cython__(struct __pyx_obj_3phd_7gravity_13gravity_force_SelfGravity *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_3phd_7gravity_13gravity_force_11SelfGravity_18__setstate_cython__(struct __pyx_obj_3phd_7gravity_13gravity_force_SelfGravity *__pyx_v_self, PyObject *__pyx_v___pyx_state); /* proto */
 static PyObject *__pyx_pf_3phd_7gravity_13gravity_force___pyx_unpickle_ConstantGravity(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v___pyx_type, long __pyx_v___pyx_checksum, PyObject *__pyx_v___pyx_state); /* proto */
 static PyObject *__pyx_pf_3phd_7gravity_13gravity_force_2__pyx_unpickle_SelfGravity(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v___pyx_type, long __pyx_v___pyx_checksum, PyObject *__pyx_v___pyx_state); /* proto */
 static PyObject *__pyx_tp_new_3phd_7gravity_13gravity_force_ConstantGravity(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
@@ -3931,7 +3936,7 @@ static PyObject *__pyx_f_3phd_7gravity_13gravity_force_15ConstantGravity_apply_p
  *         phdLogger.info("ConstantGravity: Applying gravity to primitive")
  * 
  *         left_states.pointer_groups(vl,  left_states.carray_named_groups["velocity"])             # <<<<<<<<<<<<<<
- *         right_states.pointer_groups(vr, left_states.carray_named_groups["velocity"])
+ *         right_states.pointer_groups(vr, right_states.carray_named_groups["velocity"])
  * 
  */
   if (unlikely(__pyx_v_left_states->carray_named_groups == Py_None)) {
@@ -3947,22 +3952,22 @@ static PyObject *__pyx_f_3phd_7gravity_13gravity_force_15ConstantGravity_apply_p
   /* "phd/gravity/gravity_force.pyx":67
  * 
  *         left_states.pointer_groups(vl,  left_states.carray_named_groups["velocity"])
- *         right_states.pointer_groups(vr, left_states.carray_named_groups["velocity"])             # <<<<<<<<<<<<<<
+ *         right_states.pointer_groups(vr, right_states.carray_named_groups["velocity"])             # <<<<<<<<<<<<<<
  * 
  *         particles.pointer_groups(mv, particles.carray_named_groups["momentum"])
  */
-  if (unlikely(__pyx_v_left_states->carray_named_groups == Py_None)) {
+  if (unlikely(__pyx_v_right_states->carray_named_groups == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
     __PYX_ERR(0, 67, __pyx_L1_error)
   }
-  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_left_states->carray_named_groups, __pyx_n_s_velocity); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 67, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_right_states->carray_named_groups, __pyx_n_s_velocity); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 67, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 67, __pyx_L1_error)
   ((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_right_states->__pyx_vtab)->pointer_groups(__pyx_v_right_states, __pyx_v_vr, ((PyObject*)__pyx_t_1));
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "phd/gravity/gravity_force.pyx":69
- *         right_states.pointer_groups(vr, left_states.carray_named_groups["velocity"])
+ *         right_states.pointer_groups(vr, right_states.carray_named_groups["velocity"])
  * 
  *         particles.pointer_groups(mv, particles.carray_named_groups["momentum"])             # <<<<<<<<<<<<<<
  *         particles.pointer_groups(wx, particles.carray_named_groups["w"])
@@ -5564,14 +5569,14 @@ static int __pyx_pf_3phd_7gravity_13gravity_force_11SelfGravity___init__(struct 
  *         self.smoothing_length = smoothing_length
  *         self.calculate_potential = calculate_potential             # <<<<<<<<<<<<<<
  * 
- *         self.gravity = GravityTree(barnes_angle, smoothing_length,
+ *         self.gravity = GravityTree(split_type, barnes_angle, smoothing_length,
  */
   __pyx_v_self->calculate_potential = __pyx_v_calculate_potential;
 
   /* "phd/gravity/gravity_force.pyx":178
  *         self.calculate_potential = calculate_potential
  * 
- *         self.gravity = GravityTree(barnes_angle, smoothing_length,             # <<<<<<<<<<<<<<
+ *         self.gravity = GravityTree(split_type, barnes_angle, smoothing_length,             # <<<<<<<<<<<<<<
  *                 calculate_potential, max_buffer_size)
  * 
  */
@@ -5582,7 +5587,7 @@ static int __pyx_pf_3phd_7gravity_13gravity_force_11SelfGravity___init__(struct 
 
   /* "phd/gravity/gravity_force.pyx":179
  * 
- *         self.gravity = GravityTree(barnes_angle, smoothing_length,
+ *         self.gravity = GravityTree(split_type, barnes_angle, smoothing_length,
  *                 calculate_potential, max_buffer_size)             # <<<<<<<<<<<<<<
  * 
  *     cpdef apply_motion(self, object integrator):
@@ -5595,20 +5600,23 @@ static int __pyx_pf_3phd_7gravity_13gravity_force_11SelfGravity___init__(struct 
   /* "phd/gravity/gravity_force.pyx":178
  *         self.calculate_potential = calculate_potential
  * 
- *         self.gravity = GravityTree(barnes_angle, smoothing_length,             # <<<<<<<<<<<<<<
+ *         self.gravity = GravityTree(split_type, barnes_angle, smoothing_length,             # <<<<<<<<<<<<<<
  *                 calculate_potential, max_buffer_size)
  * 
  */
-  __pyx_t_6 = PyTuple_New(4); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 178, __pyx_L1_error)
+  __pyx_t_6 = PyTuple_New(5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 178, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
+  __Pyx_INCREF(__pyx_v_split_type);
+  __Pyx_GIVEREF(__pyx_v_split_type);
+  PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_v_split_type);
   __Pyx_GIVEREF(__pyx_t_2);
-  PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_2);
+  PyTuple_SET_ITEM(__pyx_t_6, 1, __pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_3);
-  PyTuple_SET_ITEM(__pyx_t_6, 1, __pyx_t_3);
+  PyTuple_SET_ITEM(__pyx_t_6, 2, __pyx_t_3);
   __Pyx_GIVEREF(__pyx_t_4);
-  PyTuple_SET_ITEM(__pyx_t_6, 2, __pyx_t_4);
+  PyTuple_SET_ITEM(__pyx_t_6, 3, __pyx_t_4);
   __Pyx_GIVEREF(__pyx_t_5);
-  PyTuple_SET_ITEM(__pyx_t_6, 3, __pyx_t_5);
+  PyTuple_SET_ITEM(__pyx_t_6, 4, __pyx_t_5);
   __pyx_t_2 = 0;
   __pyx_t_3 = 0;
   __pyx_t_4 = 0;
@@ -6150,7 +6158,7 @@ static PyObject *__pyx_f_3phd_7gravity_13gravity_force_11SelfGravity_apply_primi
  *         dim = len(particles.carray_named_groups["position"])
  * 
  *         left_states.pointer_groups(vl,  left_states.carray_named_groups["velocity"])             # <<<<<<<<<<<<<<
- *         right_states.pointer_groups(vr, left_states.carray_named_groups["velocity"])
+ *         right_states.pointer_groups(vr, right_states.carray_named_groups["velocity"])
  * 
  */
   if (unlikely(__pyx_v_left_states->carray_named_groups == Py_None)) {
@@ -6166,22 +6174,22 @@ static PyObject *__pyx_f_3phd_7gravity_13gravity_force_11SelfGravity_apply_primi
   /* "phd/gravity/gravity_force.pyx":229
  * 
  *         left_states.pointer_groups(vl,  left_states.carray_named_groups["velocity"])
- *         right_states.pointer_groups(vr, left_states.carray_named_groups["velocity"])             # <<<<<<<<<<<<<<
+ *         right_states.pointer_groups(vr, right_states.carray_named_groups["velocity"])             # <<<<<<<<<<<<<<
  * 
  *         particles.pointer_groups(wx, particles.carray_named_groups["w"])
  */
-  if (unlikely(__pyx_v_left_states->carray_named_groups == Py_None)) {
+  if (unlikely(__pyx_v_right_states->carray_named_groups == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
     __PYX_ERR(0, 229, __pyx_L1_error)
   }
-  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_left_states->carray_named_groups, __pyx_n_s_velocity); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 229, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_right_states->carray_named_groups, __pyx_n_s_velocity); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 229, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 229, __pyx_L1_error)
   ((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_right_states->__pyx_vtab)->pointer_groups(__pyx_v_right_states, __pyx_v_vr, ((PyObject*)__pyx_t_1));
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "phd/gravity/gravity_force.pyx":231
- *         right_states.pointer_groups(vr, left_states.carray_named_groups["velocity"])
+ *         right_states.pointer_groups(vr, right_states.carray_named_groups["velocity"])
  * 
  *         particles.pointer_groups(wx, particles.carray_named_groups["w"])             # <<<<<<<<<<<<<<
  *         particles.pointer_groups(mv, particles.carray_named_groups["momentum"])
@@ -7389,7 +7397,7 @@ static PyObject *__pyx_f_3phd_7gravity_13gravity_force_11SelfGravity_compute_tim
  *         phdLogger.info("SelfGravity: Gravity dt: %f" %dt)
  *         return dt             # <<<<<<<<<<<<<<
  * 
- *     cpdef apply_flux(self, object integrator):
+ *     def set_gravity(self, gravtree):
  */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_2 = PyFloat_FromDouble(__pyx_v_dt); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 327, __pyx_L1_error)
@@ -7466,12 +7474,80 @@ static PyObject *__pyx_pf_3phd_7gravity_13gravity_force_11SelfGravity_8compute_t
 /* "phd/gravity/gravity_force.pyx":329
  *         return dt
  * 
+ *     def set_gravity(self, gravtree):             # <<<<<<<<<<<<<<
+ *         """Sets an external GravityTree object defined for the specific problem.
+ * 
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_3phd_7gravity_13gravity_force_11SelfGravity_11set_gravity(PyObject *__pyx_v_self, PyObject *__pyx_v_gravtree); /*proto*/
+static char __pyx_doc_3phd_7gravity_13gravity_force_11SelfGravity_10set_gravity[] = "Sets an external GravityTree object defined for the specific problem.\n\n        Parameters\n        ----------\n        gravtree : GravityTree\n            Solves gravity by barnes-hut algorithm.\n\n        ";
+static PyObject *__pyx_pw_3phd_7gravity_13gravity_force_11SelfGravity_11set_gravity(PyObject *__pyx_v_self, PyObject *__pyx_v_gravtree) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("set_gravity (wrapper)", 0);
+  __pyx_r = __pyx_pf_3phd_7gravity_13gravity_force_11SelfGravity_10set_gravity(((struct __pyx_obj_3phd_7gravity_13gravity_force_SelfGravity *)__pyx_v_self), ((PyObject *)__pyx_v_gravtree));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_3phd_7gravity_13gravity_force_11SelfGravity_10set_gravity(struct __pyx_obj_3phd_7gravity_13gravity_force_SelfGravity *__pyx_v_self, PyObject *__pyx_v_gravtree) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("set_gravity", 0);
+
+  /* "phd/gravity/gravity_force.pyx":338
+ * 
+ *         """
+ *         self.gravity = gravtree             # <<<<<<<<<<<<<<
+ * 
+ * 
+ */
+  if (!(likely(((__pyx_v_gravtree) == Py_None) || likely(__Pyx_TypeTest(__pyx_v_gravtree, __pyx_ptype_3phd_7gravity_12gravity_tree_GravityTree))))) __PYX_ERR(0, 338, __pyx_L1_error)
+  __pyx_t_1 = __pyx_v_gravtree;
+  __Pyx_INCREF(__pyx_t_1);
+  __Pyx_GIVEREF(__pyx_t_1);
+  __Pyx_GOTREF(__pyx_v_self->gravity);
+  __Pyx_DECREF(((PyObject *)__pyx_v_self->gravity));
+  __pyx_v_self->gravity = ((struct __pyx_obj_3phd_7gravity_12gravity_tree_GravityTree *)__pyx_t_1);
+  __pyx_t_1 = 0;
+
+  /* "phd/gravity/gravity_force.pyx":329
+ *         return dt
+ * 
+ *     def set_gravity(self, gravtree):             # <<<<<<<<<<<<<<
+ *         """Sets an external GravityTree object defined for the specific problem.
+ * 
+ */
+
+  /* function exit code */
+  __pyx_r = Py_None; __Pyx_INCREF(Py_None);
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("phd.gravity.gravity_force.SelfGravity.set_gravity", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "phd/gravity/gravity_force.pyx":341
+ * 
+ * 
  *     cpdef apply_flux(self, object integrator):             # <<<<<<<<<<<<<<
  *         """Perform any computation after flux update.
  * 
  */
 
-static PyObject *__pyx_pw_3phd_7gravity_13gravity_force_11SelfGravity_11apply_flux(PyObject *__pyx_v_self, PyObject *__pyx_v_integrator); /*proto*/
+static PyObject *__pyx_pw_3phd_7gravity_13gravity_force_11SelfGravity_13apply_flux(PyObject *__pyx_v_self, PyObject *__pyx_v_integrator); /*proto*/
 static PyObject *__pyx_f_3phd_7gravity_13gravity_force_11SelfGravity_apply_flux(CYTHON_UNUSED struct __pyx_obj_3phd_7gravity_13gravity_force_SelfGravity *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v_integrator, int __pyx_skip_dispatch) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
@@ -7492,9 +7568,9 @@ static PyObject *__pyx_f_3phd_7gravity_13gravity_force_11SelfGravity_apply_flux(
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_type_dict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_apply_flux); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 329, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_apply_flux); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 341, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_3phd_7gravity_13gravity_force_11SelfGravity_11apply_flux)) {
+      if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_3phd_7gravity_13gravity_force_11SelfGravity_13apply_flux)) {
         __Pyx_XDECREF(__pyx_r);
         __Pyx_INCREF(__pyx_t_1);
         __pyx_t_3 = __pyx_t_1; __pyx_t_4 = NULL;
@@ -7509,7 +7585,7 @@ static PyObject *__pyx_f_3phd_7gravity_13gravity_force_11SelfGravity_apply_flux(
         }
         __pyx_t_2 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_4, __pyx_v_integrator) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_v_integrator);
         __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 329, __pyx_L1_error)
+        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 341, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         __pyx_r = __pyx_t_2;
@@ -7530,7 +7606,7 @@ static PyObject *__pyx_f_3phd_7gravity_13gravity_force_11SelfGravity_apply_flux(
     #endif
   }
 
-  /* "phd/gravity/gravity_force.pyx":330
+  /* "phd/gravity/gravity_force.pyx":342
  * 
  *     cpdef apply_flux(self, object integrator):
  *         """Perform any computation after flux update.             # <<<<<<<<<<<<<<
@@ -7554,8 +7630,8 @@ static PyObject *__pyx_f_3phd_7gravity_13gravity_force_11SelfGravity_apply_flux(
   return __pyx_r;
 }
 
-/* "phd/gravity/gravity_force.pyx":329
- *         return dt
+/* "phd/gravity/gravity_force.pyx":341
+ * 
  * 
  *     cpdef apply_flux(self, object integrator):             # <<<<<<<<<<<<<<
  *         """Perform any computation after flux update.
@@ -7563,20 +7639,20 @@ static PyObject *__pyx_f_3phd_7gravity_13gravity_force_11SelfGravity_apply_flux(
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_3phd_7gravity_13gravity_force_11SelfGravity_11apply_flux(PyObject *__pyx_v_self, PyObject *__pyx_v_integrator); /*proto*/
-static char __pyx_doc_3phd_7gravity_13gravity_force_11SelfGravity_10apply_flux[] = "Perform any computation after flux update.\n        \n        Parameters\n        ----------\n        integrator : IntegrateBase\n            Advances the fluid equations by one step.\n\n        ";
-static PyObject *__pyx_pw_3phd_7gravity_13gravity_force_11SelfGravity_11apply_flux(PyObject *__pyx_v_self, PyObject *__pyx_v_integrator) {
+static PyObject *__pyx_pw_3phd_7gravity_13gravity_force_11SelfGravity_13apply_flux(PyObject *__pyx_v_self, PyObject *__pyx_v_integrator); /*proto*/
+static char __pyx_doc_3phd_7gravity_13gravity_force_11SelfGravity_12apply_flux[] = "Perform any computation after flux update.\n        \n        Parameters\n        ----------\n        integrator : IntegrateBase\n            Advances the fluid equations by one step.\n\n        ";
+static PyObject *__pyx_pw_3phd_7gravity_13gravity_force_11SelfGravity_13apply_flux(PyObject *__pyx_v_self, PyObject *__pyx_v_integrator) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("apply_flux (wrapper)", 0);
-  __pyx_r = __pyx_pf_3phd_7gravity_13gravity_force_11SelfGravity_10apply_flux(((struct __pyx_obj_3phd_7gravity_13gravity_force_SelfGravity *)__pyx_v_self), ((PyObject *)__pyx_v_integrator));
+  __pyx_r = __pyx_pf_3phd_7gravity_13gravity_force_11SelfGravity_12apply_flux(((struct __pyx_obj_3phd_7gravity_13gravity_force_SelfGravity *)__pyx_v_self), ((PyObject *)__pyx_v_integrator));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_3phd_7gravity_13gravity_force_11SelfGravity_10apply_flux(struct __pyx_obj_3phd_7gravity_13gravity_force_SelfGravity *__pyx_v_self, PyObject *__pyx_v_integrator) {
+static PyObject *__pyx_pf_3phd_7gravity_13gravity_force_11SelfGravity_12apply_flux(struct __pyx_obj_3phd_7gravity_13gravity_force_SelfGravity *__pyx_v_self, PyObject *__pyx_v_integrator) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -7585,7 +7661,7 @@ static PyObject *__pyx_pf_3phd_7gravity_13gravity_force_11SelfGravity_10apply_fl
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("apply_flux", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_3phd_7gravity_13gravity_force_11SelfGravity_apply_flux(__pyx_v_self, __pyx_v_integrator, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 329, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_3phd_7gravity_13gravity_force_11SelfGravity_apply_flux(__pyx_v_self, __pyx_v_integrator, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 341, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -7602,7 +7678,7 @@ static PyObject *__pyx_pf_3phd_7gravity_13gravity_force_11SelfGravity_10apply_fl
   return __pyx_r;
 }
 
-/* "phd/gravity/gravity_force.pyx":376
+/* "phd/gravity/gravity_force.pyx":388
  * #                    e.data[j] -= 0.5*dt*ar*fm.data[n]*(x[k][j] - x[k][i])*a[k][j]
  * 
  *     cpdef apply_conservative(self, object integrator):             # <<<<<<<<<<<<<<
@@ -7610,7 +7686,7 @@ static PyObject *__pyx_pf_3phd_7gravity_13gravity_force_11SelfGravity_10apply_fl
  * 
  */
 
-static PyObject *__pyx_pw_3phd_7gravity_13gravity_force_11SelfGravity_13apply_conservative(PyObject *__pyx_v_self, PyObject *__pyx_v_integrator); /*proto*/
+static PyObject *__pyx_pw_3phd_7gravity_13gravity_force_11SelfGravity_15apply_conservative(PyObject *__pyx_v_self, PyObject *__pyx_v_integrator); /*proto*/
 static PyObject *__pyx_f_3phd_7gravity_13gravity_force_11SelfGravity_apply_conservative(CYTHON_UNUSED struct __pyx_obj_3phd_7gravity_13gravity_force_SelfGravity *__pyx_v_self, PyObject *__pyx_v_integrator, int __pyx_skip_dispatch) {
   int __pyx_v_i;
   int __pyx_v_k;
@@ -7652,9 +7728,9 @@ static PyObject *__pyx_f_3phd_7gravity_13gravity_force_11SelfGravity_apply_conse
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_type_dict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_apply_conservative); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 376, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_apply_conservative); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 388, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_3phd_7gravity_13gravity_force_11SelfGravity_13apply_conservative)) {
+      if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_3phd_7gravity_13gravity_force_11SelfGravity_15apply_conservative)) {
         __Pyx_XDECREF(__pyx_r);
         __Pyx_INCREF(__pyx_t_1);
         __pyx_t_3 = __pyx_t_1; __pyx_t_4 = NULL;
@@ -7669,7 +7745,7 @@ static PyObject *__pyx_f_3phd_7gravity_13gravity_force_11SelfGravity_apply_conse
         }
         __pyx_t_2 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_4, __pyx_v_integrator) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_v_integrator);
         __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 376, __pyx_L1_error)
+        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 388, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         __pyx_r = __pyx_t_2;
@@ -7690,29 +7766,29 @@ static PyObject *__pyx_f_3phd_7gravity_13gravity_force_11SelfGravity_apply_conse
     #endif
   }
 
-  /* "phd/gravity/gravity_force.pyx":390
+  /* "phd/gravity/gravity_force.pyx":402
  *         cdef np.float64_t *wx[3]
  * 
  *         cdef double dt = integrator.dt             # <<<<<<<<<<<<<<
  * 
  *         cdef IntArray tags    = integrator.particles.get_carray("tag")
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_integrator, __pyx_n_s_dt); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 390, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_integrator, __pyx_n_s_dt); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 402, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_5 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_5 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 390, __pyx_L1_error)
+  __pyx_t_5 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_5 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 402, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_dt = __pyx_t_5;
 
-  /* "phd/gravity/gravity_force.pyx":392
+  /* "phd/gravity/gravity_force.pyx":404
  *         cdef double dt = integrator.dt
  * 
  *         cdef IntArray tags    = integrator.particles.get_carray("tag")             # <<<<<<<<<<<<<<
  *         cdef DoubleArray mass = integrator.particles.get_carray("mass")
  *         cdef DoubleArray e    = integrator.particles.get_carray("energy")
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_integrator, __pyx_n_s_particles); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 392, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_integrator, __pyx_n_s_particles); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 404, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_get_carray); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 392, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_get_carray); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 404, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_2 = NULL;
@@ -7727,23 +7803,23 @@ static PyObject *__pyx_f_3phd_7gravity_13gravity_force_11SelfGravity_apply_conse
   }
   __pyx_t_1 = (__pyx_t_2) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_2, __pyx_n_s_tag) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_n_s_tag);
   __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 392, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 404, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_3phd_5utils_6carray_IntArray))))) __PYX_ERR(0, 392, __pyx_L1_error)
+  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_3phd_5utils_6carray_IntArray))))) __PYX_ERR(0, 404, __pyx_L1_error)
   __pyx_v_tags = ((struct __pyx_obj_3phd_5utils_6carray_IntArray *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "phd/gravity/gravity_force.pyx":393
+  /* "phd/gravity/gravity_force.pyx":405
  * 
  *         cdef IntArray tags    = integrator.particles.get_carray("tag")
  *         cdef DoubleArray mass = integrator.particles.get_carray("mass")             # <<<<<<<<<<<<<<
  *         cdef DoubleArray e    = integrator.particles.get_carray("energy")
  * 
  */
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_integrator, __pyx_n_s_particles); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 393, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_integrator, __pyx_n_s_particles); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 405, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_get_carray); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 393, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_get_carray); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 405, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = NULL;
@@ -7758,23 +7834,23 @@ static PyObject *__pyx_f_3phd_7gravity_13gravity_force_11SelfGravity_apply_conse
   }
   __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_3, __pyx_n_s_mass) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_n_s_mass);
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 393, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 405, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_3phd_5utils_6carray_DoubleArray))))) __PYX_ERR(0, 393, __pyx_L1_error)
+  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_3phd_5utils_6carray_DoubleArray))))) __PYX_ERR(0, 405, __pyx_L1_error)
   __pyx_v_mass = ((struct __pyx_obj_3phd_5utils_6carray_DoubleArray *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "phd/gravity/gravity_force.pyx":394
+  /* "phd/gravity/gravity_force.pyx":406
  *         cdef IntArray tags    = integrator.particles.get_carray("tag")
  *         cdef DoubleArray mass = integrator.particles.get_carray("mass")
  *         cdef DoubleArray e    = integrator.particles.get_carray("energy")             # <<<<<<<<<<<<<<
  * 
  *         cdef CarrayContainer particles = integrator.particles
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_integrator, __pyx_n_s_particles); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 394, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_integrator, __pyx_n_s_particles); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 406, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_get_carray); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 394, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_get_carray); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 406, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_2 = NULL;
@@ -7789,36 +7865,36 @@ static PyObject *__pyx_f_3phd_7gravity_13gravity_force_11SelfGravity_apply_conse
   }
   __pyx_t_1 = (__pyx_t_2) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_2, __pyx_n_s_energy) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_n_s_energy);
   __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 394, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 406, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_3phd_5utils_6carray_DoubleArray))))) __PYX_ERR(0, 394, __pyx_L1_error)
+  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_3phd_5utils_6carray_DoubleArray))))) __PYX_ERR(0, 406, __pyx_L1_error)
   __pyx_v_e = ((struct __pyx_obj_3phd_5utils_6carray_DoubleArray *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "phd/gravity/gravity_force.pyx":396
+  /* "phd/gravity/gravity_force.pyx":408
  *         cdef DoubleArray e    = integrator.particles.get_carray("energy")
  * 
  *         cdef CarrayContainer particles = integrator.particles             # <<<<<<<<<<<<<<
  * 
  *         phdLogger.info("SelfGravity: Applying gravity to conservative")
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_integrator, __pyx_n_s_particles); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 396, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_integrator, __pyx_n_s_particles); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 408, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_3phd_10containers_10containers_CarrayContainer))))) __PYX_ERR(0, 396, __pyx_L1_error)
+  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_3phd_10containers_10containers_CarrayContainer))))) __PYX_ERR(0, 408, __pyx_L1_error)
   __pyx_v_particles = ((struct __pyx_obj_3phd_10containers_10containers_CarrayContainer *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "phd/gravity/gravity_force.pyx":398
+  /* "phd/gravity/gravity_force.pyx":410
  *         cdef CarrayContainer particles = integrator.particles
  * 
  *         phdLogger.info("SelfGravity: Applying gravity to conservative")             # <<<<<<<<<<<<<<
  *         dim = len(particles.carray_named_groups["position"])
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_phdLogger); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 398, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_phdLogger); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 410, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_info); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 398, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_info); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 410, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = NULL;
@@ -7833,12 +7909,12 @@ static PyObject *__pyx_f_3phd_7gravity_13gravity_force_11SelfGravity_apply_conse
   }
   __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_3, __pyx_kp_s_SelfGravity_Applying_gravity_to_2) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_kp_s_SelfGravity_Applying_gravity_to_2);
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 398, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 410, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "phd/gravity/gravity_force.pyx":399
+  /* "phd/gravity/gravity_force.pyx":411
  * 
  *         phdLogger.info("SelfGravity: Applying gravity to conservative")
  *         dim = len(particles.carray_named_groups["position"])             # <<<<<<<<<<<<<<
@@ -7847,15 +7923,15 @@ static PyObject *__pyx_f_3phd_7gravity_13gravity_force_11SelfGravity_apply_conse
  */
   if (unlikely(__pyx_v_particles->carray_named_groups == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(0, 399, __pyx_L1_error)
+    __PYX_ERR(0, 411, __pyx_L1_error)
   }
-  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_particles->carray_named_groups, __pyx_n_s_position); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 399, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_particles->carray_named_groups, __pyx_n_s_position); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 411, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_6 = PyObject_Length(__pyx_t_1); if (unlikely(__pyx_t_6 == ((Py_ssize_t)-1))) __PYX_ERR(0, 399, __pyx_L1_error)
+  __pyx_t_6 = PyObject_Length(__pyx_t_1); if (unlikely(__pyx_t_6 == ((Py_ssize_t)-1))) __PYX_ERR(0, 411, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_dim = __pyx_t_6;
 
-  /* "phd/gravity/gravity_force.pyx":401
+  /* "phd/gravity/gravity_force.pyx":413
  *         dim = len(particles.carray_named_groups["position"])
  * 
  *         particles.pointer_groups(wx, particles.carray_named_groups["w"])             # <<<<<<<<<<<<<<
@@ -7864,15 +7940,15 @@ static PyObject *__pyx_f_3phd_7gravity_13gravity_force_11SelfGravity_apply_conse
  */
   if (unlikely(__pyx_v_particles->carray_named_groups == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(0, 401, __pyx_L1_error)
+    __PYX_ERR(0, 413, __pyx_L1_error)
   }
-  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_particles->carray_named_groups, __pyx_n_s_w); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 401, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_particles->carray_named_groups, __pyx_n_s_w); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 413, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 401, __pyx_L1_error)
+  if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 413, __pyx_L1_error)
   ((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_particles->__pyx_vtab)->pointer_groups(__pyx_v_particles, __pyx_v_wx, ((PyObject*)__pyx_t_1));
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "phd/gravity/gravity_force.pyx":402
+  /* "phd/gravity/gravity_force.pyx":414
  * 
  *         particles.pointer_groups(wx, particles.carray_named_groups["w"])
  *         particles.pointer_groups(mv, particles.carray_named_groups["momentum"])             # <<<<<<<<<<<<<<
@@ -7881,15 +7957,15 @@ static PyObject *__pyx_f_3phd_7gravity_13gravity_force_11SelfGravity_apply_conse
  */
   if (unlikely(__pyx_v_particles->carray_named_groups == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(0, 402, __pyx_L1_error)
+    __PYX_ERR(0, 414, __pyx_L1_error)
   }
-  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_particles->carray_named_groups, __pyx_n_s_momentum); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 402, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_particles->carray_named_groups, __pyx_n_s_momentum); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 414, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 402, __pyx_L1_error)
+  if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 414, __pyx_L1_error)
   ((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_particles->__pyx_vtab)->pointer_groups(__pyx_v_particles, __pyx_v_mv, ((PyObject*)__pyx_t_1));
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "phd/gravity/gravity_force.pyx":403
+  /* "phd/gravity/gravity_force.pyx":415
  *         particles.pointer_groups(wx, particles.carray_named_groups["w"])
  *         particles.pointer_groups(mv, particles.carray_named_groups["momentum"])
  *         particles.pointer_groups(a,  particles.carray_named_groups["acceleration"])             # <<<<<<<<<<<<<<
@@ -7898,15 +7974,15 @@ static PyObject *__pyx_f_3phd_7gravity_13gravity_force_11SelfGravity_apply_conse
  */
   if (unlikely(__pyx_v_particles->carray_named_groups == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(0, 403, __pyx_L1_error)
+    __PYX_ERR(0, 415, __pyx_L1_error)
   }
-  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_particles->carray_named_groups, __pyx_n_s_acceleration); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 403, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_particles->carray_named_groups, __pyx_n_s_acceleration); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 415, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 403, __pyx_L1_error)
+  if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 415, __pyx_L1_error)
   ((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_particles->__pyx_vtab)->pointer_groups(__pyx_v_particles, __pyx_v_a, ((PyObject*)__pyx_t_1));
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "phd/gravity/gravity_force.pyx":406
+  /* "phd/gravity/gravity_force.pyx":418
  * 
  *         # add gravity acceleration from particle
  *         for i in range(particles.get_carray_size()):             # <<<<<<<<<<<<<<
@@ -7918,7 +7994,7 @@ static PyObject *__pyx_f_3phd_7gravity_13gravity_force_11SelfGravity_apply_conse
   for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
     __pyx_v_i = __pyx_t_9;
 
-    /* "phd/gravity/gravity_force.pyx":407
+    /* "phd/gravity/gravity_force.pyx":419
  *         # add gravity acceleration from particle
  *         for i in range(particles.get_carray_size()):
  *             if tags.data[i] == REAL:             # <<<<<<<<<<<<<<
@@ -7928,7 +8004,7 @@ static PyObject *__pyx_f_3phd_7gravity_13gravity_force_11SelfGravity_apply_conse
     __pyx_t_10 = (((__pyx_v_tags->data[__pyx_v_i]) == __pyx_v_3phd_7gravity_13gravity_force_REAL) != 0);
     if (__pyx_t_10) {
 
-      /* "phd/gravity/gravity_force.pyx":408
+      /* "phd/gravity/gravity_force.pyx":420
  *         for i in range(particles.get_carray_size()):
  *             if tags.data[i] == REAL:
  *                 for k in range(dim):             # <<<<<<<<<<<<<<
@@ -7940,7 +8016,7 @@ static PyObject *__pyx_f_3phd_7gravity_13gravity_force_11SelfGravity_apply_conse
       for (__pyx_t_12 = 0; __pyx_t_12 < __pyx_t_11; __pyx_t_12+=1) {
         __pyx_v_k = __pyx_t_12;
 
-        /* "phd/gravity/gravity_force.pyx":410
+        /* "phd/gravity/gravity_force.pyx":422
  *                 for k in range(dim):
  *                     # momentum Eq. 81
  *                     mv[k][i] += 0.5*dt*mass.data[i]*a[k][i]             # <<<<<<<<<<<<<<
@@ -7951,7 +8027,7 @@ static PyObject *__pyx_f_3phd_7gravity_13gravity_force_11SelfGravity_apply_conse
         __pyx_t_14 = __pyx_v_i;
         ((__pyx_v_mv[__pyx_t_13])[__pyx_t_14]) = (((__pyx_v_mv[__pyx_t_13])[__pyx_t_14]) + (((0.5 * __pyx_v_dt) * (__pyx_v_mass->data[__pyx_v_i])) * ((__pyx_v_a[__pyx_v_k])[__pyx_v_i])));
 
-        /* "phd/gravity/gravity_force.pyx":414
+        /* "phd/gravity/gravity_force.pyx":426
  *                     # energy Eq. 82
  *                     #e.data[i] += 0.5*dt*mass.data[i]*wx[k][i]*a[k][i]
  *                     e.data[i] += 0.5*dt*mv[k][i]*a[k][i]             # <<<<<<<<<<<<<<
@@ -7960,7 +8036,7 @@ static PyObject *__pyx_f_3phd_7gravity_13gravity_force_11SelfGravity_apply_conse
         (__pyx_v_e->data[__pyx_t_13]) = ((__pyx_v_e->data[__pyx_t_13]) + (((0.5 * __pyx_v_dt) * ((__pyx_v_mv[__pyx_v_k])[__pyx_v_i])) * ((__pyx_v_a[__pyx_v_k])[__pyx_v_i])));
       }
 
-      /* "phd/gravity/gravity_force.pyx":407
+      /* "phd/gravity/gravity_force.pyx":419
  *         # add gravity acceleration from particle
  *         for i in range(particles.get_carray_size()):
  *             if tags.data[i] == REAL:             # <<<<<<<<<<<<<<
@@ -7970,7 +8046,7 @@ static PyObject *__pyx_f_3phd_7gravity_13gravity_force_11SelfGravity_apply_conse
     }
   }
 
-  /* "phd/gravity/gravity_force.pyx":376
+  /* "phd/gravity/gravity_force.pyx":388
  * #                    e.data[j] -= 0.5*dt*ar*fm.data[n]*(x[k][j] - x[k][i])*a[k][j]
  * 
  *     cpdef apply_conservative(self, object integrator):             # <<<<<<<<<<<<<<
@@ -7999,20 +8075,20 @@ static PyObject *__pyx_f_3phd_7gravity_13gravity_force_11SelfGravity_apply_conse
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_3phd_7gravity_13gravity_force_11SelfGravity_13apply_conservative(PyObject *__pyx_v_self, PyObject *__pyx_v_integrator); /*proto*/
-static char __pyx_doc_3phd_7gravity_13gravity_force_11SelfGravity_12apply_conservative[] = "Update conservative variables after mesh build.\n        \n        Parameters\n        ----------\n        integrator : IntegrateBase\n            Advances the fluid equations by one step.\n\n        ";
-static PyObject *__pyx_pw_3phd_7gravity_13gravity_force_11SelfGravity_13apply_conservative(PyObject *__pyx_v_self, PyObject *__pyx_v_integrator) {
+static PyObject *__pyx_pw_3phd_7gravity_13gravity_force_11SelfGravity_15apply_conservative(PyObject *__pyx_v_self, PyObject *__pyx_v_integrator); /*proto*/
+static char __pyx_doc_3phd_7gravity_13gravity_force_11SelfGravity_14apply_conservative[] = "Update conservative variables after mesh build.\n        \n        Parameters\n        ----------\n        integrator : IntegrateBase\n            Advances the fluid equations by one step.\n\n        ";
+static PyObject *__pyx_pw_3phd_7gravity_13gravity_force_11SelfGravity_15apply_conservative(PyObject *__pyx_v_self, PyObject *__pyx_v_integrator) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("apply_conservative (wrapper)", 0);
-  __pyx_r = __pyx_pf_3phd_7gravity_13gravity_force_11SelfGravity_12apply_conservative(((struct __pyx_obj_3phd_7gravity_13gravity_force_SelfGravity *)__pyx_v_self), ((PyObject *)__pyx_v_integrator));
+  __pyx_r = __pyx_pf_3phd_7gravity_13gravity_force_11SelfGravity_14apply_conservative(((struct __pyx_obj_3phd_7gravity_13gravity_force_SelfGravity *)__pyx_v_self), ((PyObject *)__pyx_v_integrator));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_3phd_7gravity_13gravity_force_11SelfGravity_12apply_conservative(struct __pyx_obj_3phd_7gravity_13gravity_force_SelfGravity *__pyx_v_self, PyObject *__pyx_v_integrator) {
+static PyObject *__pyx_pf_3phd_7gravity_13gravity_force_11SelfGravity_14apply_conservative(struct __pyx_obj_3phd_7gravity_13gravity_force_SelfGravity *__pyx_v_self, PyObject *__pyx_v_integrator) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -8021,7 +8097,7 @@ static PyObject *__pyx_pf_3phd_7gravity_13gravity_force_11SelfGravity_12apply_co
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("apply_conservative", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_3phd_7gravity_13gravity_force_11SelfGravity_apply_conservative(__pyx_v_self, __pyx_v_integrator, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 376, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_3phd_7gravity_13gravity_force_11SelfGravity_apply_conservative(__pyx_v_self, __pyx_v_integrator, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 388, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -8562,19 +8638,19 @@ static int __pyx_pf_3phd_7gravity_13gravity_force_11SelfGravity_19calculate_pote
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_3phd_7gravity_13gravity_force_11SelfGravity_15__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyObject *__pyx_pw_3phd_7gravity_13gravity_force_11SelfGravity_15__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_3phd_7gravity_13gravity_force_11SelfGravity_17__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_3phd_7gravity_13gravity_force_11SelfGravity_17__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__reduce_cython__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_3phd_7gravity_13gravity_force_11SelfGravity_14__reduce_cython__(((struct __pyx_obj_3phd_7gravity_13gravity_force_SelfGravity *)__pyx_v_self));
+  __pyx_r = __pyx_pf_3phd_7gravity_13gravity_force_11SelfGravity_16__reduce_cython__(((struct __pyx_obj_3phd_7gravity_13gravity_force_SelfGravity *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_3phd_7gravity_13gravity_force_11SelfGravity_14__reduce_cython__(struct __pyx_obj_3phd_7gravity_13gravity_force_SelfGravity *__pyx_v_self) {
+static PyObject *__pyx_pf_3phd_7gravity_13gravity_force_11SelfGravity_16__reduce_cython__(struct __pyx_obj_3phd_7gravity_13gravity_force_SelfGravity *__pyx_v_self) {
   PyObject *__pyx_v_state = 0;
   PyObject *__pyx_v__dict = 0;
   int __pyx_v_use_setstate;
@@ -8842,19 +8918,19 @@ static PyObject *__pyx_pf_3phd_7gravity_13gravity_force_11SelfGravity_14__reduce
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_3phd_7gravity_13gravity_force_11SelfGravity_17__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state); /*proto*/
-static PyObject *__pyx_pw_3phd_7gravity_13gravity_force_11SelfGravity_17__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
+static PyObject *__pyx_pw_3phd_7gravity_13gravity_force_11SelfGravity_19__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state); /*proto*/
+static PyObject *__pyx_pw_3phd_7gravity_13gravity_force_11SelfGravity_19__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__setstate_cython__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_3phd_7gravity_13gravity_force_11SelfGravity_16__setstate_cython__(((struct __pyx_obj_3phd_7gravity_13gravity_force_SelfGravity *)__pyx_v_self), ((PyObject *)__pyx_v___pyx_state));
+  __pyx_r = __pyx_pf_3phd_7gravity_13gravity_force_11SelfGravity_18__setstate_cython__(((struct __pyx_obj_3phd_7gravity_13gravity_force_SelfGravity *)__pyx_v_self), ((PyObject *)__pyx_v___pyx_state));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_3phd_7gravity_13gravity_force_11SelfGravity_16__setstate_cython__(struct __pyx_obj_3phd_7gravity_13gravity_force_SelfGravity *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
+static PyObject *__pyx_pf_3phd_7gravity_13gravity_force_11SelfGravity_18__setstate_cython__(struct __pyx_obj_3phd_7gravity_13gravity_force_SelfGravity *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -10851,10 +10927,11 @@ static PyMethodDef __pyx_methods_3phd_7gravity_13gravity_force_SelfGravity[] = {
   {"apply_primitive", (PyCFunction)__pyx_pw_3phd_7gravity_13gravity_force_11SelfGravity_5apply_primitive, METH_O, __pyx_doc_3phd_7gravity_13gravity_force_11SelfGravity_4apply_primitive},
   {"compute_source", (PyCFunction)__pyx_pw_3phd_7gravity_13gravity_force_11SelfGravity_7compute_source, METH_O, __pyx_doc_3phd_7gravity_13gravity_force_11SelfGravity_6compute_source},
   {"compute_time_step", (PyCFunction)__pyx_pw_3phd_7gravity_13gravity_force_11SelfGravity_9compute_time_step, METH_O, __pyx_doc_3phd_7gravity_13gravity_force_11SelfGravity_8compute_time_step},
-  {"apply_flux", (PyCFunction)__pyx_pw_3phd_7gravity_13gravity_force_11SelfGravity_11apply_flux, METH_O, __pyx_doc_3phd_7gravity_13gravity_force_11SelfGravity_10apply_flux},
-  {"apply_conservative", (PyCFunction)__pyx_pw_3phd_7gravity_13gravity_force_11SelfGravity_13apply_conservative, METH_O, __pyx_doc_3phd_7gravity_13gravity_force_11SelfGravity_12apply_conservative},
-  {"__reduce_cython__", (PyCFunction)__pyx_pw_3phd_7gravity_13gravity_force_11SelfGravity_15__reduce_cython__, METH_NOARGS, 0},
-  {"__setstate_cython__", (PyCFunction)__pyx_pw_3phd_7gravity_13gravity_force_11SelfGravity_17__setstate_cython__, METH_O, 0},
+  {"set_gravity", (PyCFunction)__pyx_pw_3phd_7gravity_13gravity_force_11SelfGravity_11set_gravity, METH_O, __pyx_doc_3phd_7gravity_13gravity_force_11SelfGravity_10set_gravity},
+  {"apply_flux", (PyCFunction)__pyx_pw_3phd_7gravity_13gravity_force_11SelfGravity_13apply_flux, METH_O, __pyx_doc_3phd_7gravity_13gravity_force_11SelfGravity_12apply_flux},
+  {"apply_conservative", (PyCFunction)__pyx_pw_3phd_7gravity_13gravity_force_11SelfGravity_15apply_conservative, METH_O, __pyx_doc_3phd_7gravity_13gravity_force_11SelfGravity_14apply_conservative},
+  {"__reduce_cython__", (PyCFunction)__pyx_pw_3phd_7gravity_13gravity_force_11SelfGravity_17__reduce_cython__, METH_NOARGS, 0},
+  {"__setstate_cython__", (PyCFunction)__pyx_pw_3phd_7gravity_13gravity_force_11SelfGravity_19__setstate_cython__, METH_O, 0},
   {0, 0, 0, 0}
 };
 
