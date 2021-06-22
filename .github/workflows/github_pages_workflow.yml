@@ -15,7 +15,7 @@ jobs:
       uses: sphinx-notes/pages@master
       with:
         documentation_path: docs_source/
-        repository_path: docs
+        repository_path: .
     - name: Push changes
       uses: ad-m/github-push-action@master
       with:
