@@ -16,6 +16,8 @@ import mock
 sys.path.insert(0, os.path.abspath('../phd'))
 sys.path.insert(0, os.path.abspath('../'))
 sys.path.insert(0, os.path.abspath('./'))
+sys.path.insert(0, os.path.abspath('../phd/containers'))
+sys.path.insert(0, os.path.abspath('../phd/domain'))
 
 import furo
 import insipid_sphinx_theme
