@@ -8,7 +8,6 @@ phd: the python-based hydrodynamics package
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
 
    install
    tutorials
