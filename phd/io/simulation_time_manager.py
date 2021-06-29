@@ -77,7 +77,7 @@ class SimulationTimeManager(object):
         Parameters
         ----------
         integrator : IntegrateBase
-            Integrator that solves the equations.
+            Integrator that solves the fluid equations.
 
         Returns
         -------

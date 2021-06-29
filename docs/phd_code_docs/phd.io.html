@@ -135,12 +135,26 @@
 <dt id="phd.io.read_write.Hdf5.read">
 <code class="sig-name descname">read</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">file_name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.io.read_write.Hdf5.read" title="Permalink to this definition">¶</a></dt>
 <dd><p>Read hdf5 file of particles.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>file_name</strong> (<em>str</em>) – File to be parsed.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt id="phd.io.read_write.Hdf5.write">
 <code class="sig-name descname">write</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">base_name</span></em>, <em class="sig-param"><span class="n">output_directory</span></em>, <em class="sig-param"><span class="n">integrator</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.io.read_write.Hdf5.write" title="Permalink to this definition">¶</a></dt>
 <dd><p>Write simulation data to hdf5 file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>base_name</strong> (<em>str</em>) – Base file name for simulation output</p></li>
+<li><p><strong>output_directory</strong> (<em>str</em>) – </p></li>
+<li><p><strong>integrator</strong> (<a class="reference internal" href="phd.integrate.html#phd.integrate.integrate.IntegrateBase" title="phd.integrate.integrate.IntegrateBase"><em>IntegrateBase</em></a>) – Advances the fluid equations by one step</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -224,7 +238,7 @@ if reached max iteration number.</p>
 <dt id="phd.io.simulation_finish.SimulationFinisherBase">
 <em class="property">class </em><code class="sig-prename descclassname">phd.io.simulation_finish.</code><code class="sig-name descname">SimulationFinisherBase</code><a class="headerlink" href="#phd.io.simulation_finish.SimulationFinisherBase" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Class that singals the simulation to stop evolving.</p>
+<p>Class that signals the simulation to stop evolving.</p>
 <dl class="py method">
 <dt id="phd.io.simulation_finish.SimulationFinisherBase.finished">
 <code class="sig-name descname">finished</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simulation</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.io.simulation_finish.SimulationFinisherBase.finished" title="Permalink to this definition">¶</a></dt>
@@ -631,6 +645,11 @@ data files.</p>
 <dt id="phd.io.simulation_output.SimulationOutputterBase.set_output_directory">
 <code class="sig-name descname">set_output_directory</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">output_directory</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.io.simulation_output.SimulationOutputterBase.set_output_directory" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set directory where to output files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>output_directory</strong> (<em>str</em>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -820,7 +839,7 @@ object in the simulation. Assumes that integrator has its
 dt updated.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>integrator</strong> (<a class="reference internal" href="phd.integrate.html#phd.integrate.integrate.IntegrateBase" title="phd.integrate.integrate.IntegrateBase"><em>IntegrateBase</em></a>) – Integrator that solves the equations.</p>
+<dd class="field-odd"><p><strong>integrator</strong> (<a class="reference internal" href="phd.integrate.html#phd.integrate.integrate.IntegrateBase" title="phd.integrate.integrate.IntegrateBase"><em>IntegrateBase</em></a>) – Integrator that solves the fluid equations.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>modified time step if needed otherwise integrator dt.</p>

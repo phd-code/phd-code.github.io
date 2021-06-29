@@ -30,13 +30,17 @@
             "phd/riemann/",
             "phd/mesh/",
             "phd/reconstruction/",
-            "phd/source_term/"
+            "phd/source_term/",
+            "/opt/homebrew/Cellar/cgal/5.2/include",
+            "/opt/homebrew/Cellar/boost/1.75.0_1/include"
         ],
         "language": "c++",
         "libraries": [
-            "CGAL",
             "gmp",
             "m"
+        ],
+        "library_dirs": [
+            "/opt/homebrew/Cellar/cgal/5.2/lib"
         ],
         "name": "phd.riemann.riemann",
         "sources": [

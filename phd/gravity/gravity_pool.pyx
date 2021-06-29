@@ -53,7 +53,7 @@ cdef class GravityPool:
 
         Parameters
         ----------
-        size : size
+        size : int
             Number of nodes allocated
         """
         cdef void* array = NULL

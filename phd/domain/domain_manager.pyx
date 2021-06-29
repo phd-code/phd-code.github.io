@@ -45,9 +45,28 @@ cdef inline bint ghostid_cmp(
 
 
 cdef class DomainManager:
+    """
+    Class that handles everything related to the domain.
+    """
     def __init__(self, list xmin, list xmax, double initial_radius,
                  double search_radius_factor=2.0):
+        """
+        Define the parameters of the domain
 
+        Parameters
+        ----------
+        xmin : list
+            Lower boundary of domain – should be 2 or 3 dimensional.
+
+        xmax : list
+            Upper boundary of domain – shape should match xmin.
+
+        initial_radius : double
+            Initial radius used to construct the mesh. This gets updated after each mesh build.
+
+        search_radius_factor : double
+            Default value of 2.0
+        """
         if len(xmin) not in [2, 3]:
             raise RuntimeError("Wrong dimension specified")
         if len(xmin) != len(xmax):
@@ -103,6 +122,9 @@ cdef class DomainManager:
 
         Parameters
         ----------
+        particles : CarrayContainer
+            Class that holds all information pertaining to the particles.
+
         """
         cdef str field, dtype
         cdef int num_particles = particles.get_carray_size()
@@ -148,6 +170,12 @@ cdef class DomainManager:
     cpdef check_for_partition(self, CarrayContainer particles, object integrator):
         """
         Check if partition needs to called
+        
+        Parameters
+        ----------
+        particles : CarrayContainer
+            Class that holds all information pertaining to the particles.
+        integrator : object
         """
         return True
 
@@ -313,8 +341,8 @@ cdef class DomainManager:
                     inc(it) # next particle
 
     cpdef create_ghost_particles(self, CarrayContainer particles):
-        """After mesh generation, this method goes through partilce list
-        and generates ghost particles and communicates them. This method
+        """After mesh generation, this method goes through particle list, 
+        generates ghost particles and communicates them. This method
         is called by mesh repeatedly until the mesh is complete.
 
         Parameters
@@ -539,7 +567,7 @@ cdef class DomainManager:
         particles.append_container(ghosts)
 
     cpdef bint ghost_complete(self):
-        """Return True if their are no more particles flagged for ghost
+        """Return True if there are no more particles flagged for ghost
         creation.
 
         Particles that have been flagged for ghost creation are stored
@@ -713,14 +741,14 @@ cdef class DomainManager:
             bint apply_boundary_condition=False):
         """Transfer ghost fields from their image particle.
 
-        After ghost particles are created their are certain fields that
+        After ghost particles are created there are certain fields that
         cannot be calculated (i.e. volume, center-of-mass ...) and need
-        to be upated from their resepective image particle.
+        to be upated from their respective image particle.
 
         Parameters
         ----------
         particles : CarrayContainer
-            Container of particles.
+            Class that holds all information pertaining to the particles.
 
         fields : list
             List of field strings to update
@@ -783,7 +811,7 @@ cdef class DomainManager:
         Parameters
         ----------
         particles : CarrayContainer
-            Container of particles.
+            Class that holds all information pertaining to the particles.
 
         gradients : CarrayContainer
             Container of gradients for each primitive field.
@@ -902,6 +930,15 @@ cdef class DomainManager:
         have to sort all particles such that when ghost particle information
         is exported later it arrives exactly in the order which ghost particles
         are in the particle container.
+
+        Parameters
+        ----------
+        particles : CarrayContainer
+            Class that holds all information pertaining to the particles.
+            
+        num_real_particles : int
+
+        total_num_particles : int
         """
         cdef int i, j
         cdef LongArray procs

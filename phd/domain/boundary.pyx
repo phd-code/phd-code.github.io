@@ -78,7 +78,7 @@ cdef class Reflective(BoundaryConditionBase):
             Pointer to flagged particle.
 
         domain_manager : DomainManager
-            Class that handels all things related with the domain.
+            Class that handles all things related with the domain.
 
         """
         cdef int i, k
@@ -151,7 +151,7 @@ cdef class Reflective(BoundaryConditionBase):
             Pointer to flagged particle.
 
         domain_manager : DomainManager
-            Class that handels all things related with the domain.
+            Class that handles all things related with the domain.
 
         """
         cdef int i, j, k
@@ -243,7 +243,7 @@ cdef class Reflective(BoundaryConditionBase):
             Class that holds all information pertaining to the particles.
 
         domain_manager : DomainManager
-            Class that handels all things related with the domain.
+            Class that handles all things related with the domain.
 
         """
         cdef int k, dim
@@ -278,7 +278,9 @@ cdef class Reflective(BoundaryConditionBase):
 
         gradients : CarrayContainer
             Container of gradients for each primitive field.
-
+        
+        domain_manager : DomainManager
+            Class that handels all things related with the domain.            
         """
         cdef int i, j, k, dim
         cdef np.float64_t *x[3], *dv[9]
@@ -321,7 +323,10 @@ cdef class Reflective(BoundaryConditionBase):
 
         gradients : CarrayContainer
             Container of gradients for each primitive field.
-
+        
+        domain_manager : DomainManager
+            Class that handles all things related with the domain.            
+  
         """
         cdef int i, k, dim
         cdef np.float64_t *x[3], *v[3], *mv[3]
@@ -358,7 +363,7 @@ cdef class Periodic(BoundaryConditionBase):
             Pointer to flagged particle.
 
         domain_manager : DomainManager
-            Class that handels all things related with the domain.
+            Class that handles all things related with the domain.
 
         """
         cdef int j, k
@@ -409,7 +414,7 @@ cdef class Periodic(BoundaryConditionBase):
             Pointer to flagged particle.
 
         domain_manager : DomainManager
-            Class that handels all things related with the domain.
+            Class that handles all things related with the domain.
 
         """
         cdef int i, j, k
@@ -472,7 +477,7 @@ cdef class Periodic(BoundaryConditionBase):
             Pointer to flagged particle.
 
         domain_manager : DomainManager
-            Class that handels all things related with the domain.
+            Class that handles all things related with the domain.
 
         """
         pass
@@ -494,7 +499,7 @@ cdef class Periodic(BoundaryConditionBase):
             Pointer to flagged particle.
 
         domain_manager : DomainManager
-            Class that handels all things related with the domain.
+            Class that handles all things related with the domain.
 
         """
         pass
@@ -509,7 +514,7 @@ cdef class Periodic(BoundaryConditionBase):
             Class that holds all information pertaining to the particles.
 
         domain_manager : DomainManager
-            Class that handels all things related with the domain.
+            Class that handles all things related with the domain.
 
         """
         cdef double xs[3]

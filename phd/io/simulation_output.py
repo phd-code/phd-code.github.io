@@ -57,7 +57,12 @@ class SimulationOutputterBase(object):
                 os.mkdir(self._data_directory)
 
     def set_output_directory(self, output_directory):
-        """Set directory where to output files."""
+        """Set directory where to output files.
+        
+        Parameters
+        ----------
+        output_directory : str
+        """
         self.output_directory = output_directory
 
     def set_writer(self, read_write):

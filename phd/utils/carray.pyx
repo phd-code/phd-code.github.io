@@ -60,7 +60,12 @@ cdef class BaseArray:
         arr.dimensions[0] = self.length
 
     cpdef shrink(self, long size):
-        """Reset the length of the array to length size."""
+        """Reset the length of the array to length size.
+        
+        Parameters
+        ----------
+        size : long
+        """
         cdef PyArrayObject* arr = <PyArrayObject*> self._npy_array
 
         if size > self.length:
@@ -205,6 +210,10 @@ cdef class DoubleArray(BaseArray):
         """
         Resizes internal data to size*sizeof(np.float64_t) bytes
         and sets the length to the new size.
+        
+        Parameters
+        ----------
+        size : long
         """
         cdef PyArrayObject* arr = <PyArrayObject*> self._npy_array
 
@@ -278,7 +287,13 @@ cdef class DoubleArray(BaseArray):
             self.append(in_array[i])
 
     cpdef align_array(self, np.ndarray new_indices):
-        """Rearrange the array contents according to the new indices."""
+        """Rearrange the array contents according to the new indices.
+        
+        Parameters
+        ----------
+        new_indices : np.ndarray
+            Array of new indices for rearrangement
+        """
         if new_indices.size != self.length:
             raise ValueError, 'Unequal array lengths'
 

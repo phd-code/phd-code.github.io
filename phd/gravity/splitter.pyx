@@ -1,7 +1,12 @@
 cdef class Splitter:
     """Base class for open node criteria."""
     def set_dim(self, int dim):
-        """Set dimension of simulation."""
+        """Set dimension of simulation.
+        
+        Parameters
+        ----------
+        dim : int
+        """
         self.dim = dim
 
     cdef void initialize_particles(self, CarrayContainer particles):

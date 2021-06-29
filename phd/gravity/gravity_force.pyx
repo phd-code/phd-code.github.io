@@ -15,7 +15,7 @@ phdLogger = logging.getLogger("phd")
 
 cdef class ConstantGravity(MUSCLHancockSourceTerm):
     """
-    Constant gravity source term. Gravity is applied in only
+    Constant gravity source term. Gravity is applied in only one
     direction.
     """
     def __init__(self, grav_axis="y", g=-1., **kwargs):
@@ -40,6 +40,11 @@ cdef class ConstantGravity(MUSCLHancockSourceTerm):
         Add gravity half time step update to primitive variables
         at faces for riemann solver and add half update to
         conservative variables.
+
+        Parameters
+        ----------
+        integrator : IntegrateBase
+            Advances the fluid equations by one step.
         """
         cdef int i, j, m
 
@@ -91,6 +96,14 @@ cdef class ConstantGravity(MUSCLHancockSourceTerm):
         pass
 
     cpdef compute_time_step(self, object integrator):
+        """
+        Returns the timestep of the simulation.
+
+        Parameters
+        ----------
+        integrator : IntegrateBase
+            Advances the fluid equations by one step.
+        """
         return integrator.dt
 
     cpdef apply_flux(self, object integrator):
@@ -132,7 +145,13 @@ cdef class ConstantGravity(MUSCLHancockSourceTerm):
                 #e.data[j] += 0.25*dt*a*fm.data[n]*(x[axis][j] - x[axis][i])*g
 
     cpdef apply_conservative(self, object integrator):
-        """Update conservative variables after flux update."""
+        """Update conservative variables after flux update.
+
+        Parameters
+        ----------
+        integrator : IntegrateBase
+            Advances the fluid equations by one step.
+        """
         cdef int i
         cdef np.float64_t *mv[3]
         cdef np.float64_t *wx[3]
@@ -161,12 +180,34 @@ cdef class ConstantGravity(MUSCLHancockSourceTerm):
 
 cdef class SelfGravity(MUSCLHancockSourceTerm):
     """
-    Constant gravity source term. Gravity is applied in only
-    direction.
+    Self gravity source term. 
     """
     def __init__(self, str split_type="barnes-hut", double barnes_angle=0.3,
             double smoothing_length = 1.0E-5, int calculate_potential=0,
             int max_buffer_size=256, eta=0.1):
+        """
+        Initializes a self gravity component using the Barnes-Hut algorithm.
+
+        Parameters
+        ----------
+        split_type : str
+            Default is 'barnes-hut'
+
+        barnes_angle : double
+            Default is 0.3
+
+        smoothing_length : double
+            Default is 1e-5
+
+        calculate_potential : int
+            Default is 0
+
+        max_buffer_size : int
+            Default is 256
+
+        eta : float
+            Default is 0.1
+        """
 
         self.eta = eta
         self.split_type = split_type
@@ -204,6 +245,11 @@ cdef class SelfGravity(MUSCLHancockSourceTerm):
         Add gravity half time step update to primitive variables
         at faces for riemann solver and add half update to
         conservative variables.
+
+        Parameters
+        ----------
+        integrator : IntegrateBase
+            Advances the fluid equations by one step.
         """
         cdef int i, j, m, dim
         cdef double dt = integrator.dt

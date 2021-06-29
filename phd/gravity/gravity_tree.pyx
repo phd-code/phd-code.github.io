@@ -29,13 +29,32 @@ cdef int proc_compare(const void *a, const void *b):
     return 0
 
 cdef class GravityTree:
-    """Solves gravity by barnes and hut algorithm in serial
-    or parallel. The algorithm heavily depends on LoadBalance
+    """Solves gravity by Barnes-Hut algorithm in serial
+    or parallel. The algorithm heavily depends on the LoadBalance
     class if run in parallel. The algorithm works in 2d or 3d.
     """
     def __init__(self, str split_type="barnes-hut",  double barnes_angle=0.3,
             double smoothing_length = 1.0E-5, int calculate_potential=0,
             int max_buffer_size=256):
+        """
+        Parameters
+        ----------
+        split_type : str
+            Default is 'barnes-hut'
+
+        barnes_angle : double
+            Default is 0.3
+
+        smoothing_length : double
+            Default is 1e-5
+
+        calculate_potential : int
+            Default is 0
+
+        max_buffer_size : int
+            Default is 256
+        """
+
         self.split_type = split_type
         self.barnes_angle = barnes_angle
         self.calculate_potential = calculate_potential
@@ -139,7 +158,13 @@ cdef class GravityTree:
             self.toptree_carray_named_groups = toptree_carray_named_groups
 
     def set_domain_manager(self, DomainManager domain_manager):
-        """Set domain manager."""
+        """Set domain manager.
+        
+        Parameters
+        ----------
+        domain_manager : DomainManager
+            Class that handles the simulation boundaries.
+        """
         self.domain_manager = domain_manager
 
     def initialize(self):
@@ -462,6 +487,11 @@ cdef class GravityTree:
         Note, leaf nodes may have a particle. The distinction is for
         parallel tree builds because the top tree will have leafs
         without any particles.
+
+        Parameters
+        ----------
+        particles : CarrayContainer
+            Class that holds all information pertaining to the particles.
         """
         cdef LongLongArray keys
         cdef IntArray tags = particles.get_carray("tag")

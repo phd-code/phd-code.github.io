@@ -1,6 +1,6 @@
 
 class SimulationFinisherBase(object):
-    """Class that singals the simulation to stop evolving.
+    """Class that signals the simulation to stop evolving.
 
     Attributes
     ----------

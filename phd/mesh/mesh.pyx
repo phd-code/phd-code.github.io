@@ -61,16 +61,16 @@ cdef dict fields_to_register_3d = dict(fields_to_register_2d, **{
     })
 
 cdef class Mesh:
-    """Voronoi mesh responsible to build mesh, neighbor information,
+    """Voronoi mesh class responsible for building mesh, neighbor information,
     and all geometric quantities.
 
     Attributes
     ----------
     eta : double
-        Regularize parameter.
+        Regularization parameter.
 
     max_iterations : int
-        The max number of mesh updates in a build. This is
+        The max number of mesh updates in a build. This is to
         stop an infinite loop for bad meshes.
 
     num_neighbors : int
@@ -170,13 +170,13 @@ cdef class Mesh:
 
         The method of creating the voronoi tessellation follows the idea of
         Efficient Delaunay Tessellation Through K-D Tree Decomposition
-        by Dmitriy Morozov and Tom Peterka. The general idea is create
+        by Dmitriy Morozov and Tom Peterka. The general idea is to create
         a local tessellation. Those particles will have either finite
         or infinite radius. Use this radius (for infinite assign a radius)
         and create boundary particles if it intersects the boundary or export
         if intersects another processors boundary. Add new particles to the
         mesh. If the new radius is smaller then previous radius then the
-        particle can not influence anymore otherwise increase the radius
+        particle can not influence anymore, otherwise increase the radius
         untill all particles are done. In this first implementation we don't
         have a kd tree but use octtree for searches.
 
@@ -262,7 +262,7 @@ cdef class Mesh:
             Class that holds all information pertaining to the particles.
 
         domain_manager : DomainManager
-            Class that handels all things related with the domain.
+            Class that handles all things related with the domain.
 
         """
         # particle information
@@ -335,7 +335,7 @@ cdef class Mesh:
             Class that holds all information pertaining to the particles.
 
         domain_manager : DomainManager
-            Class that handels all things related with the domain.
+            Class that handles all things related with the domain.
 
         """
         cdef np.float64_t *x[3], *dcx[3]

@@ -146,7 +146,7 @@ cdef class CarrayContainer:
             carr.resize(carray_size)
 
     def get_sendbufs(self, np.ndarray indices):
-        """Slice out values from indices and store it a dictionary of numpy
+        """Slice out values from indices and store in a dictionary of numpy
         arrays.
 
         Parameters
@@ -156,7 +156,7 @@ cdef class CarrayContainer:
 
         Returns
         -------
-        dict
+        dict : dict
             Dictionary of numpy arrays of selected data by indices.
         """
         cdef str carray_name
@@ -172,8 +172,8 @@ cdef class CarrayContainer:
 
         Parameters
         ----------
-        container : Container
-            Container that will be append to self.
+        container : CarrayContainer
+            Container that will be appended to self.
 
         """
         if container.get_carray_size() == 0:
@@ -280,7 +280,9 @@ cdef class CarrayContainer:
 
         indices : LongArray
             Indices of container to copy to self.
-
+        
+        carray_list_names : list
+            List of container names between which to copy values.
         """
         cdef str carray_name
         cdef BaseArray dst_array, src_array
@@ -304,8 +306,10 @@ cdef class CarrayContainer:
             Container where values will be taken from.
 
         indices : LongArray
-            Indices to place copy values.
+            Indices to place copied values.
 
+        carray_list_names : list
+            List of container names between which to paste values.
         """
         cdef str carray_name
         cdef BaseArray dst_prop_array, src_prop_array
@@ -330,7 +334,9 @@ cdef class CarrayContainer:
 
         indices : LongArray
             Indices to add values to.
-
+        
+        carray_list_names : list
+            List of container names.
         """
         cdef str carray_name
         cdef BaseArray dst_carray, src_carray

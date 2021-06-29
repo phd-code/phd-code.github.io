@@ -233,7 +233,7 @@ class IntegrateBase(object):
     def compute_time_step(self):
         """Compute time step for current state of simulation.
 
-        Calculate the time step is then constrain by outputters
+        Calculate the time step then constrain by outputters
         and simulation.
         """
         # calculate new time step for integrator

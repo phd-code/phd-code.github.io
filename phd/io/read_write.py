@@ -51,7 +51,18 @@ class ReaderWriterBase(object):
 
 class Hdf5(ReaderWriterBase):
     def write(self, base_name, output_directory, integrator):
-        """Write simulation data to hdf5 file."""
+        """Write simulation data to hdf5 file.
+        
+        Parameters
+        ----------
+        base_name : str
+            Base file name for simulation output
+
+        output_directory : str
+
+        integrator : IntegrateBase
+            Advances the fluid equations by one step
+        """
         file_name = base_name + ".hdf5"
         output_path = output_directory + "/" + file_name
         phdLogger.info("hdf5 format: Writting %s" % file_name)
@@ -80,7 +91,13 @@ class Hdf5(ReaderWriterBase):
             f.close()
 
     def read(self, file_name):
-        """Read hdf5 file of particles."""
+        """Read hdf5 file of particles.
+        
+        Parameters
+        ----------
+        file_name : str
+            File to be parsed.
+        """
         phdLogger.info("hdf5 format: Reading filename %s" % file_name)
 
         with h5py.File(file_name, "r") as f:

@@ -30,6 +30,12 @@ cdef class LoadBalance:
         self.export_pid = LongArray()
 
     def add_domain_info(self, DomainManager domain_manager):
+        """
+        Parameters
+        ----------
+        domain_manager : DomainManager
+            Class that handles all computation relating to the domain.
+        """
         cdef int i, k
 
         for i in range(2):
@@ -65,6 +71,12 @@ cdef class LoadBalance:
 
     def decomposition(self, CarrayContainer particles):
         """Perform domain decomposition
+
+        Parameters
+        ----------
+        particles : CarrayContainer
+            Class that holds all information pertaining to the particles.
+
         """
         cdef np.ndarray ind
         cdef sendbuf, recvbuf
@@ -127,6 +139,14 @@ cdef class LoadBalance:
         """Calculate global work by calculating local work in each leaf. Then sum
         work across all process. Currently the work is just the the number of
         particles in each leaf.
+
+        Parameters
+        ----------
+        particles : CarrayContainer
+            Class that holds all information pertaining to the particles.
+        
+        work : np.ndarray
+
         """
         cdef int i
         cdef Node* node
@@ -140,6 +160,10 @@ cdef class LoadBalance:
     cdef void find_split_in_work(self, np.ndarray global_work):
         """Partition the global leaves amongst the process such that each process
         has roughly equal work load.
+
+        Parameters
+        ----------
+        global_work : np.ndarray
         """
         cdef int i, j, cum_sum
         cdef int total_work, part_per_proc

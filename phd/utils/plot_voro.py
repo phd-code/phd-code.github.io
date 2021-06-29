@@ -8,7 +8,17 @@ import matplotlib.colors as mat_colors
 from matplotlib.collections import PatchCollection
 
 def vor_collection(pc, field):
+    """
+    Generates a matplotlib PatchCollection colored by particle field
 
+    Parameters
+    ----------
+    pc : CarrayContainer
+        particle container
+
+    field : str
+        Particle field to color mesh
+    """
     mesh = VoronoiMesh2D()
     mesh.tessellate(pc['position-x'], pc['position-y'])
 

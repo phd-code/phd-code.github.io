@@ -34,7 +34,7 @@ cdef class IdealGas(EquationStateBase):
     Attributes
     ----------
     gamma : float
-        Ratio of specific heats.
+        Ratio of specific heats. Default value is 1.4
 
     """
     def __init__(self, gamma = 1.4):
@@ -43,6 +43,12 @@ cdef class IdealGas(EquationStateBase):
     cpdef conservative_from_primitive(self, CarrayContainer particles):
         """
         Computes conservative variables from primitive variables
+
+        Parameters
+        ----------
+        particles : CarrayContainer
+            Class that holds information pertaining to the particles.
+
         """
         # conservative variables
         cdef DoubleArray m = particles.get_carray("mass")
@@ -81,6 +87,12 @@ cdef class IdealGas(EquationStateBase):
     cpdef primitive_from_conservative(self, CarrayContainer particles):
         """Computes primitive variables from conservative variables. Calculates
         for all particles (real + ghost).
+        
+        Parameters
+        ----------
+        particles : CarrayContainer
+            Class that holds information pertaining to the particles.
+            
         """
         # conservative variables
         cdef DoubleArray m = particles.get_carray("mass")
@@ -117,7 +129,14 @@ cdef class IdealGas(EquationStateBase):
             p.data[i] = (e.data[i]/vol.data[i] - .5*d.data[i]*v_sq)*(self.gamma-1.)
 
     cpdef np.float64_t sound_speed(self, np.float64_t density, np.float64_t pressure):
-        """Sound speed of particle."""
+        """Sound speed of particle.
+
+        Parameters
+        ----------
+        density : float
+        pressure : float
+            
+        """
         return sqrt(self.gamma*pressure/density)
 
     cpdef np.float64_t get_gamma(self):
