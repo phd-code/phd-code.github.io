@@ -20,6 +20,22 @@ phd.mesh.mesh module
    :undoc-members:
    :show-inheritance:
 
+phd.mesh.mesh module
+--------------------
+
+.. automodule:: phd.mesh.mesh
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+phd.mesh.pytess module
+----------------------
+
+.. automodule:: phd.mesh.pytess
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 phd.mesh.pytess module
 ----------------------
 

@@ -20,6 +20,14 @@ phd.reconstruction.reconstruction module
    :undoc-members:
    :show-inheritance:
 
+phd.reconstruction.reconstruction module
+----------------------------------------
+
+.. automodule:: phd.reconstruction.reconstruction
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 Module contents
 ---------------
 
