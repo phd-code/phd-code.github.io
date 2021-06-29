@@ -13,9 +13,6 @@ phd: the python-based hydrodynamics package
    install
    tutorials
 
-Documentation
-=============
-
 .. toctree::
    
    docs.rst   
