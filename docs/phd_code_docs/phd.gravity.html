@@ -131,12 +131,17 @@
 <dt id="phd.gravity.gravity_force.ConstantGravity">
 <em class="property">class </em><code class="sig-prename descclassname">phd.gravity.gravity_force.</code><code class="sig-name descname">ConstantGravity</code><a class="headerlink" href="#phd.gravity.gravity_force.ConstantGravity" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="phd.source_term.html#id0" title="phd.source_term.source_term.MUSCLHancockSourceTerm"><code class="xref py py-class docutils literal notranslate"><span class="pre">phd.source_term.source_term.MUSCLHancockSourceTerm</span></code></a></p>
-<p>Constant gravity source term. Gravity is applied in only
+<p>Constant gravity source term. Gravity is applied in only one
 direction.</p>
 <dl class="py method">
 <dt id="phd.gravity.gravity_force.ConstantGravity.apply_conservative">
 <code class="sig-name descname">apply_conservative</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.gravity.gravity_force.ConstantGravity.apply_conservative" title="Permalink to this definition">¶</a></dt>
 <dd><p>Update conservative variables after flux update.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>integrator</strong> (<a class="reference internal" href="phd.integrate.html#phd.integrate.integrate.IntegrateBase" title="phd.integrate.integrate.IntegrateBase"><em>IntegrateBase</em></a>) – Advances the fluid equations by one step.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -157,6 +162,11 @@ direction.</p>
 <dd><p>Add gravity half time step update to primitive variables
 at faces for riemann solver and add half update to
 conservative variables.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>integrator</strong> (<a class="reference internal" href="phd.integrate.html#phd.integrate.integrate.IntegrateBase" title="phd.integrate.integrate.IntegrateBase"><em>IntegrateBase</em></a>) – Advances the fluid equations by one step.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -168,7 +178,12 @@ conservative variables.</p>
 <dl class="py method">
 <dt id="phd.gravity.gravity_force.ConstantGravity.compute_time_step">
 <code class="sig-name descname">compute_time_step</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.gravity.gravity_force.ConstantGravity.compute_time_step" title="Permalink to this definition">¶</a></dt>
-<dd><p>Compute time step.</p>
+<dd><p>Returns the timestep of the simulation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>integrator</strong> (<a class="reference internal" href="phd.integrate.html#phd.integrate.integrate.IntegrateBase" title="phd.integrate.integrate.IntegrateBase"><em>IntegrateBase</em></a>) – Advances the fluid equations by one step.</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -177,8 +192,20 @@ conservative variables.</p>
 <dt id="phd.gravity.gravity_force.SelfGravity">
 <em class="property">class </em><code class="sig-prename descclassname">phd.gravity.gravity_force.</code><code class="sig-name descname">SelfGravity</code><a class="headerlink" href="#phd.gravity.gravity_force.SelfGravity" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="phd.source_term.html#id0" title="phd.source_term.source_term.MUSCLHancockSourceTerm"><code class="xref py py-class docutils literal notranslate"><span class="pre">phd.source_term.source_term.MUSCLHancockSourceTerm</span></code></a></p>
-<p>Constant gravity source term. Gravity is applied in only
-direction.</p>
+<p>Self gravity source term.</p>
+<p>Initializes a self gravity component using the Barnes-Hut algorithm.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>split_type</strong> (<em>str</em>) – Default is ‘barnes-hut’</p></li>
+<li><p><strong>barnes_angle</strong> (<em>double</em>) – Default is 0.3</p></li>
+<li><p><strong>smoothing_length</strong> (<em>double</em>) – Default is 1e-5</p></li>
+<li><p><strong>calculate_potential</strong> (<em>int</em>) – Default is 0</p></li>
+<li><p><strong>max_buffer_size</strong> (<em>int</em>) – Default is 256</p></li>
+<li><p><strong>eta</strong> (<em>float</em>) – Default is 0.1</p></li>
+</ul>
+</dd>
+</dl>
 <dl class="py method">
 <dt id="phd.gravity.gravity_force.SelfGravity.apply_conservative">
 <code class="sig-name descname">apply_conservative</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.gravity.gravity_force.SelfGravity.apply_conservative" title="Permalink to this definition">¶</a></dt>
@@ -213,6 +240,11 @@ direction.</p>
 <dd><p>Add gravity half time step update to primitive variables
 at faces for riemann solver and add half update to
 conservative variables.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>integrator</strong> (<a class="reference internal" href="phd.integrate.html#phd.integrate.integrate.IntegrateBase" title="phd.integrate.integrate.IntegrateBase"><em>IntegrateBase</em></a>) – Advances the fluid equations by one step.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py attribute">
@@ -287,12 +319,17 @@ conservative variables.</p>
 <dt id="id0">
 <em class="property">class </em><code class="sig-prename descclassname">phd.gravity.gravity_force.</code><code class="sig-name descname">ConstantGravity</code><a class="headerlink" href="#id0" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="phd.source_term.html#id0" title="phd.source_term.source_term.MUSCLHancockSourceTerm"><code class="xref py py-class docutils literal notranslate"><span class="pre">phd.source_term.source_term.MUSCLHancockSourceTerm</span></code></a></p>
-<p>Constant gravity source term. Gravity is applied in only
+<p>Constant gravity source term. Gravity is applied in only one
 direction.</p>
 <dl class="py method">
 <dt id="id2">
 <code class="sig-name descname">apply_conservative</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id2" title="Permalink to this definition">¶</a></dt>
 <dd><p>Update conservative variables after flux update.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>integrator</strong> (<a class="reference internal" href="phd.integrate.html#phd.integrate.integrate.IntegrateBase" title="phd.integrate.integrate.IntegrateBase"><em>IntegrateBase</em></a>) – Advances the fluid equations by one step.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -313,6 +350,11 @@ direction.</p>
 <dd><p>Add gravity half time step update to primitive variables
 at faces for riemann solver and add half update to
 conservative variables.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>integrator</strong> (<a class="reference internal" href="phd.integrate.html#phd.integrate.integrate.IntegrateBase" title="phd.integrate.integrate.IntegrateBase"><em>IntegrateBase</em></a>) – Advances the fluid equations by one step.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -324,7 +366,12 @@ conservative variables.</p>
 <dl class="py method">
 <dt id="id7">
 <code class="sig-name descname">compute_time_step</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id7" title="Permalink to this definition">¶</a></dt>
-<dd><p>Compute time step.</p>
+<dd><p>Returns the timestep of the simulation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>integrator</strong> (<a class="reference internal" href="phd.integrate.html#phd.integrate.integrate.IntegrateBase" title="phd.integrate.integrate.IntegrateBase"><em>IntegrateBase</em></a>) – Advances the fluid equations by one step.</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -333,8 +380,20 @@ conservative variables.</p>
 <dt id="id8">
 <em class="property">class </em><code class="sig-prename descclassname">phd.gravity.gravity_force.</code><code class="sig-name descname">SelfGravity</code><a class="headerlink" href="#id8" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="phd.source_term.html#id0" title="phd.source_term.source_term.MUSCLHancockSourceTerm"><code class="xref py py-class docutils literal notranslate"><span class="pre">phd.source_term.source_term.MUSCLHancockSourceTerm</span></code></a></p>
-<p>Constant gravity source term. Gravity is applied in only
-direction.</p>
+<p>Self gravity source term.</p>
+<p>Initializes a self gravity component using the Barnes-Hut algorithm.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>split_type</strong> (<em>str</em>) – Default is ‘barnes-hut’</p></li>
+<li><p><strong>barnes_angle</strong> (<em>double</em>) – Default is 0.3</p></li>
+<li><p><strong>smoothing_length</strong> (<em>double</em>) – Default is 1e-5</p></li>
+<li><p><strong>calculate_potential</strong> (<em>int</em>) – Default is 0</p></li>
+<li><p><strong>max_buffer_size</strong> (<em>int</em>) – Default is 256</p></li>
+<li><p><strong>eta</strong> (<em>float</em>) – Default is 0.1</p></li>
+</ul>
+</dd>
+</dl>
 <dl class="py method">
 <dt id="id9">
 <code class="sig-name descname">apply_conservative</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id9" title="Permalink to this definition">¶</a></dt>
@@ -369,6 +428,11 @@ direction.</p>
 <dd><p>Add gravity half time step update to primitive variables
 at faces for riemann solver and add half update to
 conservative variables.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>integrator</strong> (<a class="reference internal" href="phd.integrate.html#phd.integrate.integrate.IntegrateBase" title="phd.integrate.integrate.IntegrateBase"><em>IntegrateBase</em></a>) – Advances the fluid equations by one step.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py attribute">
@@ -533,9 +597,20 @@ in pool for use.</p>
 <dt id="phd.gravity.gravity_tree.GravityTree">
 <em class="property">class </em><code class="sig-prename descclassname">phd.gravity.gravity_tree.</code><code class="sig-name descname">GravityTree</code><a class="headerlink" href="#phd.gravity.gravity_tree.GravityTree" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Solves gravity by barnes and hut algorithm in serial
-or parallel. The algorithm heavily depends on LoadBalance
+<p>Solves gravity by Barnes-Hut algorithm in serial
+or parallel. The algorithm heavily depends on the LoadBalance
 class if run in parallel. The algorithm works in 2d or 3d.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>split_type</strong> (<em>str</em>) – Default is ‘barnes-hut’</p></li>
+<li><p><strong>barnes_angle</strong> (<em>double</em>) – Default is 0.3</p></li>
+<li><p><strong>smoothing_length</strong> (<em>double</em>) – Default is 1e-5</p></li>
+<li><p><strong>calculate_potential</strong> (<em>int</em>) – Default is 0</p></li>
+<li><p><strong>max_buffer_size</strong> (<em>int</em>) – Default is 256</p></li>
+</ul>
+</dd>
+</dl>
 <dl class="py method">
 <dt id="phd.gravity.gravity_tree.GravityTree.add_fields">
 <code class="sig-name descname">add_fields</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.gravity.gravity_tree.GravityTree.add_fields" title="Permalink to this definition">¶</a></dt>
@@ -700,6 +775,11 @@ accleration, potential, mpi groups etc.).</p>
 <dt id="phd.gravity.gravity_tree.GravityTree.set_domain_manager">
 <code class="sig-name descname">set_domain_manager</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.gravity.gravity_tree.GravityTree.set_domain_manager" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set domain manager.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>domain_manager</strong> (<a class="reference internal" href="phd.domain.html#id8" title="phd.domain.domain_manager.DomainManager"><em>DomainManager</em></a>) – Class that handles the simulation boundaries.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py attribute">
@@ -737,9 +817,20 @@ accleration, potential, mpi groups etc.).</p>
 <dt id="id27">
 <em class="property">class </em><code class="sig-prename descclassname">phd.gravity.gravity_tree.</code><code class="sig-name descname">GravityTree</code><a class="headerlink" href="#id27" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Solves gravity by barnes and hut algorithm in serial
-or parallel. The algorithm heavily depends on LoadBalance
+<p>Solves gravity by Barnes-Hut algorithm in serial
+or parallel. The algorithm heavily depends on the LoadBalance
 class if run in parallel. The algorithm works in 2d or 3d.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>split_type</strong> (<em>str</em>) – Default is ‘barnes-hut’</p></li>
+<li><p><strong>barnes_angle</strong> (<em>double</em>) – Default is 0.3</p></li>
+<li><p><strong>smoothing_length</strong> (<em>double</em>) – Default is 1e-5</p></li>
+<li><p><strong>calculate_potential</strong> (<em>int</em>) – Default is 0</p></li>
+<li><p><strong>max_buffer_size</strong> (<em>int</em>) – Default is 256</p></li>
+</ul>
+</dd>
+</dl>
 <dl class="py method">
 <dt id="id28">
 <code class="sig-name descname">add_fields</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id28" title="Permalink to this definition">¶</a></dt>
@@ -904,6 +995,11 @@ accleration, potential, mpi groups etc.).</p>
 <dt id="id57">
 <code class="sig-name descname">set_domain_manager</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id57" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set domain manager.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>domain_manager</strong> (<a class="reference internal" href="phd.domain.html#id8" title="phd.domain.domain_manager.DomainManager"><em>DomainManager</em></a>) – Class that handles the simulation boundaries.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py attribute">
@@ -1063,6 +1159,11 @@ container.</p>
 <dt id="phd.gravity.splitter.Splitter.set_dim">
 <code class="sig-name descname">set_dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.gravity.splitter.Splitter.set_dim" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set dimension of simulation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>dim</strong> (<em>int</em>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -1092,6 +1193,11 @@ container.</p>
 <dt id="id71">
 <code class="sig-name descname">set_dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id71" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set dimension of simulation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>dim</strong> (<em>int</em>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>

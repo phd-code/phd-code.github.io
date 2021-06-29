@@ -164,6 +164,7 @@ input agrument should be the same size of indices.</p>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>container</strong> (<a class="reference internal" href="#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Container where values will be taken from.</p></li>
 <li><p><strong>indices</strong> (<a class="reference internal" href="phd.utils.html#id50" title="phd.utils.carray.LongArray"><em>LongArray</em></a>) – Indices to add values to.</p></li>
+<li><p><strong>carray_list_names</strong> (<em>list</em>) – List of container names.</p></li>
 </ul>
 </dd>
 </dl>
@@ -176,7 +177,7 @@ input agrument should be the same size of indices.</p>
 not there in self will not be added.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>container</strong> (<em>Container</em>) – Container that will be append to self.</p>
+<dd class="field-odd"><p><strong>container</strong> (<a class="reference internal" href="#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Container that will be appended to self.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -207,6 +208,7 @@ all contents will be overwritten.</p>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>container</strong> (<a class="reference internal" href="#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Container with values that will be copied to self.</p></li>
 <li><p><strong>indices</strong> (<a class="reference internal" href="phd.utils.html#id50" title="phd.utils.carray.LongArray"><em>LongArray</em></a>) – Indices of container to copy to self.</p></li>
+<li><p><strong>carray_list_names</strong> (<em>list</em>) – List of container names between which to copy values.</p></li>
 </ul>
 </dd>
 </dl>
@@ -258,14 +260,14 @@ are extracted.</p></li>
 <dl class="py method">
 <dt id="phd.containers.containers.CarrayContainer.get_sendbufs">
 <code class="sig-name descname">get_sendbufs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.containers.containers.CarrayContainer.get_sendbufs" title="Permalink to this definition">¶</a></dt>
-<dd><p>Slice out values from indices and store it a dictionary of numpy
+<dd><p>Slice out values from indices and store in a dictionary of numpy
 arrays.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>indices</strong> (<em>np.ndarray</em>) – Indices to copy values from.</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Dictionary of numpy arrays of selected data by indices.</p>
+<dd class="field-even"><p><strong>dict</strong> – Dictionary of numpy arrays of selected data by indices.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>dict</p>
@@ -282,7 +284,8 @@ input agrument should be the same size of indices.</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>container</strong> (<a class="reference internal" href="#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Container where values will be taken from.</p></li>
-<li><p><strong>indices</strong> (<a class="reference internal" href="phd.utils.html#id50" title="phd.utils.carray.LongArray"><em>LongArray</em></a>) – Indices to place copy values.</p></li>
+<li><p><strong>indices</strong> (<a class="reference internal" href="phd.utils.html#id50" title="phd.utils.carray.LongArray"><em>LongArray</em></a>) – Indices to place copied values.</p></li>
+<li><p><strong>carray_list_names</strong> (<em>list</em>) – List of container names between which to paste values.</p></li>
 </ul>
 </dd>
 </dl>
@@ -368,6 +371,7 @@ input agrument should be the same size of indices.</p>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>container</strong> (<a class="reference internal" href="#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Container where values will be taken from.</p></li>
 <li><p><strong>indices</strong> (<a class="reference internal" href="phd.utils.html#id50" title="phd.utils.carray.LongArray"><em>LongArray</em></a>) – Indices to add values to.</p></li>
+<li><p><strong>carray_list_names</strong> (<em>list</em>) – List of container names.</p></li>
 </ul>
 </dd>
 </dl>
@@ -380,7 +384,7 @@ input agrument should be the same size of indices.</p>
 not there in self will not be added.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>container</strong> (<em>Container</em>) – Container that will be append to self.</p>
+<dd class="field-odd"><p><strong>container</strong> (<a class="reference internal" href="#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Container that will be appended to self.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -411,6 +415,7 @@ all contents will be overwritten.</p>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>container</strong> (<a class="reference internal" href="#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Container with values that will be copied to self.</p></li>
 <li><p><strong>indices</strong> (<a class="reference internal" href="phd.utils.html#id50" title="phd.utils.carray.LongArray"><em>LongArray</em></a>) – Indices of container to copy to self.</p></li>
+<li><p><strong>carray_list_names</strong> (<em>list</em>) – List of container names between which to copy values.</p></li>
 </ul>
 </dd>
 </dl>
@@ -462,14 +467,14 @@ are extracted.</p></li>
 <dl class="py method">
 <dt id="id12">
 <code class="sig-name descname">get_sendbufs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id12" title="Permalink to this definition">¶</a></dt>
-<dd><p>Slice out values from indices and store it a dictionary of numpy
+<dd><p>Slice out values from indices and store in a dictionary of numpy
 arrays.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>indices</strong> (<em>np.ndarray</em>) – Indices to copy values from.</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Dictionary of numpy arrays of selected data by indices.</p>
+<dd class="field-even"><p><strong>dict</strong> – Dictionary of numpy arrays of selected data by indices.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>dict</p>
@@ -486,7 +491,8 @@ input agrument should be the same size of indices.</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>container</strong> (<a class="reference internal" href="#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Container where values will be taken from.</p></li>
-<li><p><strong>indices</strong> (<a class="reference internal" href="phd.utils.html#id50" title="phd.utils.carray.LongArray"><em>LongArray</em></a>) – Indices to place copy values.</p></li>
+<li><p><strong>indices</strong> (<a class="reference internal" href="phd.utils.html#id50" title="phd.utils.carray.LongArray"><em>LongArray</em></a>) – Indices to place copied values.</p></li>
+<li><p><strong>carray_list_names</strong> (<em>list</em>) – List of container names between which to paste values.</p></li>
 </ul>
 </dd>
 </dl>

@@ -145,12 +145,12 @@
 <dt id="phd.mesh.mesh.Mesh">
 <em class="property">class </em><code class="sig-prename descclassname">phd.mesh.mesh.</code><code class="sig-name descname">Mesh</code><a class="headerlink" href="#phd.mesh.mesh.Mesh" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Voronoi mesh responsible to build mesh, neighbor information,
+<p>Voronoi mesh class responsible for building mesh, neighbor information,
 and all geometric quantities.</p>
 <dl class="py attribute">
 <dt id="phd.mesh.mesh.Mesh.eta">
 <code class="sig-name descname">eta</code><a class="headerlink" href="#phd.mesh.mesh.Mesh.eta" title="Permalink to this definition">¶</a></dt>
-<dd><p>Regularize parameter.</p>
+<dd><p>Regularization parameter.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"><p>double</p>
@@ -161,7 +161,7 @@ and all geometric quantities.</p>
 <dl class="py attribute">
 <dt id="phd.mesh.mesh.Mesh.max_iterations">
 <code class="sig-name descname">max_iterations</code><a class="headerlink" href="#phd.mesh.mesh.Mesh.max_iterations" title="Permalink to this definition">¶</a></dt>
-<dd><p>The max number of mesh updates in a build. This is
+<dd><p>The max number of mesh updates in a build. This is to
 stop an infinite loop for bad meshes.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
@@ -244,7 +244,7 @@ volumes, face information, and neighbors.</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>particles</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Class that holds all information pertaining to the particles.</p></li>
-<li><p><strong>domain_manager</strong> (<a class="reference internal" href="phd.domain.html#id8" title="phd.domain.domain_manager.DomainManager"><em>DomainManager</em></a>) – Class that handels all things related with the domain.</p></li>
+<li><p><strong>domain_manager</strong> (<a class="reference internal" href="phd.domain.html#id8" title="phd.domain.domain_manager.DomainManager"><em>DomainManager</em></a>) – Class that handles all things related with the domain.</p></li>
 </ul>
 </dd>
 </dl>
@@ -302,7 +302,7 @@ volume, center of mass).</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>particles</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Class that holds all information pertaining to the particles.</p></li>
-<li><p><strong>domain_manager</strong> (<a class="reference internal" href="phd.domain.html#id8" title="phd.domain.domain_manager.DomainManager"><em>DomainManager</em></a>) – Class that handels all things related with the domain.</p></li>
+<li><p><strong>domain_manager</strong> (<a class="reference internal" href="phd.domain.html#id8" title="phd.domain.domain_manager.DomainManager"><em>DomainManager</em></a>) – Class that handles all things related with the domain.</p></li>
 </ul>
 </dd>
 </dl>
@@ -325,13 +325,13 @@ volume, center of mass).</p>
 <dd><p>Create voronoi tessellation.</p>
 <p>The method of creating the voronoi tessellation follows the idea of
 Efficient Delaunay Tessellation Through K-D Tree Decomposition
-by Dmitriy Morozov and Tom Peterka. The general idea is create
+by Dmitriy Morozov and Tom Peterka. The general idea is to create
 a local tessellation. Those particles will have either finite
 or infinite radius. Use this radius (for infinite assign a radius)
 and create boundary particles if it intersects the boundary or export
 if intersects another processors boundary. Add new particles to the
 mesh. If the new radius is smaller then previous radius then the
-particle can not influence anymore otherwise increase the radius
+particle can not influence anymore, otherwise increase the radius
 untill all particles are done. In this first implementation we don’t
 have a kd tree but use octtree for searches.</p>
 <dl class="field-list simple">
@@ -368,12 +368,12 @@ have a kd tree but use octtree for searches.</p>
 <dt id="id6">
 <em class="property">class </em><code class="sig-prename descclassname">phd.mesh.mesh.</code><code class="sig-name descname">Mesh</code><a class="headerlink" href="#id6" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Voronoi mesh responsible to build mesh, neighbor information,
+<p>Voronoi mesh class responsible for building mesh, neighbor information,
 and all geometric quantities.</p>
 <dl class="py attribute">
 <dt id="id7">
 <code class="sig-name descname">eta</code><a class="headerlink" href="#id7" title="Permalink to this definition">¶</a></dt>
-<dd><p>Regularize parameter.</p>
+<dd><p>Regularization parameter.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"><p>double</p>
@@ -384,7 +384,7 @@ and all geometric quantities.</p>
 <dl class="py attribute">
 <dt id="id8">
 <code class="sig-name descname">max_iterations</code><a class="headerlink" href="#id8" title="Permalink to this definition">¶</a></dt>
-<dd><p>The max number of mesh updates in a build. This is
+<dd><p>The max number of mesh updates in a build. This is to
 stop an infinite loop for bad meshes.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
@@ -467,7 +467,7 @@ volumes, face information, and neighbors.</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>particles</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Class that holds all information pertaining to the particles.</p></li>
-<li><p><strong>domain_manager</strong> (<a class="reference internal" href="phd.domain.html#id8" title="phd.domain.domain_manager.DomainManager"><em>DomainManager</em></a>) – Class that handels all things related with the domain.</p></li>
+<li><p><strong>domain_manager</strong> (<a class="reference internal" href="phd.domain.html#id8" title="phd.domain.domain_manager.DomainManager"><em>DomainManager</em></a>) – Class that handles all things related with the domain.</p></li>
 </ul>
 </dd>
 </dl>
@@ -525,7 +525,7 @@ volume, center of mass).</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>particles</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Class that holds all information pertaining to the particles.</p></li>
-<li><p><strong>domain_manager</strong> (<a class="reference internal" href="phd.domain.html#id8" title="phd.domain.domain_manager.DomainManager"><em>DomainManager</em></a>) – Class that handels all things related with the domain.</p></li>
+<li><p><strong>domain_manager</strong> (<a class="reference internal" href="phd.domain.html#id8" title="phd.domain.domain_manager.DomainManager"><em>DomainManager</em></a>) – Class that handles all things related with the domain.</p></li>
 </ul>
 </dd>
 </dl>
@@ -548,13 +548,13 @@ volume, center of mass).</p>
 <dd><p>Create voronoi tessellation.</p>
 <p>The method of creating the voronoi tessellation follows the idea of
 Efficient Delaunay Tessellation Through K-D Tree Decomposition
-by Dmitriy Morozov and Tom Peterka. The general idea is create
+by Dmitriy Morozov and Tom Peterka. The general idea is to create
 a local tessellation. Those particles will have either finite
 or infinite radius. Use this radius (for infinite assign a radius)
 and create boundary particles if it intersects the boundary or export
 if intersects another processors boundary. Add new particles to the
 mesh. If the new radius is smaller then previous radius then the
-particle can not influence anymore otherwise increase the radius
+particle can not influence anymore, otherwise increase the radius
 untill all particles are done. In this first implementation we don’t
 have a kd tree but use octtree for searches.</p>
 <dl class="field-list simple">

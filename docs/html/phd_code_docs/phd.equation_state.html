@@ -173,7 +173,7 @@ energy.</p>
 <dl class="py attribute">
 <dt id="phd.equation_state.equation_state.IdealGas.gamma">
 <code class="sig-name descname">gamma</code><a class="headerlink" href="#phd.equation_state.equation_state.IdealGas.gamma" title="Permalink to this definition">¶</a></dt>
-<dd><p>Ratio of specific heats.</p>
+<dd><p>Ratio of specific heats. Default value is 1.4</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"><p>float</p>
@@ -185,6 +185,11 @@ energy.</p>
 <dt id="phd.equation_state.equation_state.IdealGas.conservative_from_primitive">
 <code class="sig-name descname">conservative_from_primitive</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.equation_state.equation_state.IdealGas.conservative_from_primitive" title="Permalink to this definition">¶</a></dt>
 <dd><p>Computes conservative variables from primitive variables</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>particles</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Class that holds information pertaining to the particles.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -198,12 +203,25 @@ energy.</p>
 <code class="sig-name descname">primitive_from_conservative</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.equation_state.equation_state.IdealGas.primitive_from_conservative" title="Permalink to this definition">¶</a></dt>
 <dd><p>Computes primitive variables from conservative variables. Calculates
 for all particles (real + ghost).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>particles</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Class that holds information pertaining to the particles.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt id="phd.equation_state.equation_state.IdealGas.sound_speed">
 <code class="sig-name descname">sound_speed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.equation_state.equation_state.IdealGas.sound_speed" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sound speed of particle.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>density</strong> (<em>float</em>) – </p></li>
+<li><p><strong>pressure</strong> (<em>float</em>) – </p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -257,7 +275,7 @@ energy.</p>
 <dl class="py attribute">
 <dt id="id8">
 <code class="sig-name descname">gamma</code><a class="headerlink" href="#id8" title="Permalink to this definition">¶</a></dt>
-<dd><p>Ratio of specific heats.</p>
+<dd><p>Ratio of specific heats. Default value is 1.4</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"><p>float</p>
@@ -269,6 +287,11 @@ energy.</p>
 <dt id="id9">
 <code class="sig-name descname">conservative_from_primitive</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id9" title="Permalink to this definition">¶</a></dt>
 <dd><p>Computes conservative variables from primitive variables</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>particles</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Class that holds information pertaining to the particles.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -282,12 +305,25 @@ energy.</p>
 <code class="sig-name descname">primitive_from_conservative</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id11" title="Permalink to this definition">¶</a></dt>
 <dd><p>Computes primitive variables from conservative variables. Calculates
 for all particles (real + ghost).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>particles</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Class that holds information pertaining to the particles.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt id="id12">
 <code class="sig-name descname">sound_speed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id12" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sound speed of particle.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>density</strong> (<em>float</em>) – </p></li>
+<li><p><strong>pressure</strong> (<em>float</em>) – </p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
