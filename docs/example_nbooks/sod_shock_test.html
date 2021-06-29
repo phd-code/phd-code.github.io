@@ -390,10 +390,10 @@ separated by some boundary/diaphragm across which the density and pressure are d
 \end{array}
 \right.\end{split}\]</div>
 <p>where the subscripts correspond to the ‘left’ and ‘right’ sides of the boundary at <span class="math notranslate nohighlight">\(x=x_\mathrm{crit}\)</span>. Generally, we will define <span class="math notranslate nohighlight">\(P_L\)</span> and <span class="math notranslate nohighlight">\(P_R\)</span> such that <span class="math notranslate nohighlight">\(P_R &lt; P_L\)</span>. The following figure of the initial setup (<span class="math notranslate nohighlight">\(t=0\)</span>) for the 1D shock tube.</p>
-<p><img alt="Sod Setup" src="example_nbooks/sod_setup.png" /></p>
+<p><img alt="Sod Setup" src="../_images/sod_setup.png" /></p>
 <p>At <span class="math notranslate nohighlight">\(t=0\)</span>, the diaphragm is removed, and, because the fluid is initially at rest, this will initiate a flow from the higher pressure (left) to lower pressure (right) region. Conceptually, in an attempt to equalize te pressure, the fluid on the left will expand and flow into the right section, compressing the fluid there. This rarefaction occurs in a region known as the ‘expansion fan’ (2 in the diagram) that proceeds to the left, and, similarly, the compression proceeds to the right as a
 ‘shock front’ (the line separating 4 and 5 in the diagram). There is a ‘boundary’ between these two regions (the expanding and compressing fluids) across which the state variables of the fluid are discontinuous – this is the source of the difficulty for the code and is why this provides a good test. The following figure is a schematic visualization of what the aforementioned process looks like at <span class="math notranslate nohighlight">\(t&gt;0\)</span>.</p>
-<p><img alt="Sod Final" src="example_nbooks/solution_sod.png" /></p>
+<p><img alt="Sod Final" src="../_images/solution_sod.png" /></p>
 <p>Functionally, we need to solve the Euler equations to trace the evolution of the system over time and this corresponds to the aforementioned Riemann problem that we are solving. First, the Euler equations can be written in matrix form as follows (assuming no external body forces):</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\frac{\partial}{\partial t}\begin{pmatrix} \rho \\ \rho v \\ E \end{pmatrix} + \frac{\partial}{\partial x}\begin{pmatrix} \rho v\\ \rho v^2 + P \\ (E+P)v \end{pmatrix} = 0\end{split}\]</div>

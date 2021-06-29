@@ -128,8 +128,8 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="phd.mesh.test.html">phd.mesh.test package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="phd.mesh.test.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="phd.mesh.test.html#module-phd.mesh.test.test_mesh">phd.mesh.test.test_mesh module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="phd.mesh.test.html#module-phd.mesh.test.tests">phd.mesh.test.tests module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="phd.mesh.test.html#phd-mesh-test-test-mesh-module">phd.mesh.test.test_mesh module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="phd.mesh.test.html#phd-mesh-test-tests-module">phd.mesh.test.tests module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="phd.mesh.test.html#module-phd.mesh.test">Module contents</a></li>
 </ul>
 </li>
@@ -141,16 +141,492 @@
 </div>
 <div class="section" id="module-phd.mesh.mesh">
 <span id="phd-mesh-mesh-module"></span><h2>phd.mesh.mesh module<a class="headerlink" href="#module-phd.mesh.mesh" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="phd.mesh.mesh.Mesh">
+<em class="property">class </em><code class="sig-prename descclassname">phd.mesh.mesh.</code><code class="sig-name descname">Mesh</code><a class="headerlink" href="#phd.mesh.mesh.Mesh" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Voronoi mesh responsible to build mesh, neighbor information,
+and all geometric quantities.</p>
+<dl class="py attribute">
+<dt id="phd.mesh.mesh.Mesh.eta">
+<code class="sig-name descname">eta</code><a class="headerlink" href="#phd.mesh.mesh.Mesh.eta" title="Permalink to this definition">¶</a></dt>
+<dd><p>Regularize parameter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>double</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="phd.mesh.mesh.Mesh.max_iterations">
+<code class="sig-name descname">max_iterations</code><a class="headerlink" href="#phd.mesh.mesh.Mesh.max_iterations" title="Permalink to this definition">¶</a></dt>
+<dd><p>The max number of mesh updates in a build. This is
+stop an infinite loop for bad meshes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="phd.mesh.mesh.Mesh.num_neighbors">
+<code class="sig-name descname">num_neighbors</code><a class="headerlink" href="#phd.mesh.mesh.Mesh.num_neighbors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initial number of neighbors for each particle. Used
+to allocate storage space.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="phd.mesh.mesh.Mesh.regularize">
+<code class="sig-name descname">regularize</code><a class="headerlink" href="#phd.mesh.mesh.Mesh.regularize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add regularization to velocity mesh generators.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="phd.mesh.mesh.Mesh.relax_iterations">
+<code class="sig-name descname">relax_iterations</code><a class="headerlink" href="#phd.mesh.mesh.Mesh.relax_iterations" title="Permalink to this definition">¶</a></dt>
+<dd><p>Number of times to perform lloyd relaxation on startup.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.mesh.mesh.Mesh.assign_face_velocities">
+<code class="sig-name descname">assign_face_velocities</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.mesh.mesh.Mesh.assign_face_velocities" title="Permalink to this definition">¶</a></dt>
+<dd><p>Assigns velocities to face center of face defined by
+neighboring particles.</p>
+<p>The face velocity is the average of particle velocities
+that define the face plus a residual motion. The algorithm
+is taken from Springel (2009).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>particles</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Class that holds all information pertaining to the particles.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.mesh.mesh.Mesh.assign_generator_velocities">
+<code class="sig-name descname">assign_generator_velocities</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.mesh.mesh.Mesh.assign_generator_velocities" title="Permalink to this definition">¶</a></dt>
+<dd><p>Assigns particle velocities.</p>
+<p>Particle velocities are equal to local fluid velocity plus a
+regularization term. The algorithm is taken from Springel (2009).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>particles</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Class that holds all information pertaining to the particles.</p></li>
+<li><p><strong>eos</strong> (<a class="reference internal" href="phd.equation_state.html#id0" title="phd.equation_state.equation_state.EquationStateBase"><em>EquationStateBase</em></a>) – Thermodynamic equation of state.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.mesh.mesh.Mesh.build_geometry">
+<code class="sig-name descname">build_geometry</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.mesh.mesh.Mesh.build_geometry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build the voronoi mesh and then extract mesh information, i.e
+volumes, face information, and neighbors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>particles</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Class that holds all information pertaining to the particles.</p></li>
+<li><p><strong>domain_manager</strong> (<a class="reference internal" href="phd.domain.html#id8" title="phd.domain.domain_manager.DomainManager"><em>DomainManager</em></a>) – Class that handels all things related with the domain.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="id0">
+<code class="sig-name descname">eta</code><a class="headerlink" href="#id0" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="phd.mesh.mesh.Mesh.faces">
+<code class="sig-name descname">faces</code><a class="headerlink" href="#phd.mesh.mesh.Mesh.faces" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="phd.mesh.mesh.Mesh.initialize">
+<code class="sig-name descname">initialize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.mesh.mesh.Mesh.initialize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Setup all connections for computation classes. Should check
+always if particle_fields_registered is True.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="id1">
+<code class="sig-name descname">max_iterations</code><a class="headerlink" href="#id1" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="id2">
+<code class="sig-name descname">num_neighbors</code><a class="headerlink" href="#id2" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="phd.mesh.mesh.Mesh.register_fields">
+<code class="sig-name descname">register_fields</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.mesh.mesh.Mesh.register_fields" title="Permalink to this definition">¶</a></dt>
+<dd><p>Register mesh fields into the particle container (i.e.
+volume, center of mass).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>particles</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Class that holds all information pertaining to the particles.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="id3">
+<code class="sig-name descname">regularize</code><a class="headerlink" href="#id3" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="phd.mesh.mesh.Mesh.relax">
+<code class="sig-name descname">relax</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.mesh.mesh.Mesh.relax" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform mesh relaxation by moving particles to their center of mass.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>particles</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Class that holds all information pertaining to the particles.</p></li>
+<li><p><strong>domain_manager</strong> (<a class="reference internal" href="phd.domain.html#id8" title="phd.domain.domain_manager.DomainManager"><em>DomainManager</em></a>) – Class that handels all things related with the domain.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="id4">
+<code class="sig-name descname">relax_iterations</code><a class="headerlink" href="#id4" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="phd.mesh.mesh.Mesh.reset_mesh">
+<code class="sig-name descname">reset_mesh</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.mesh.mesh.Mesh.reset_mesh" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clear out mesh data.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.mesh.mesh.Mesh.tessellate">
+<code class="sig-name descname">tessellate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.mesh.mesh.Mesh.tessellate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create voronoi tessellation.</p>
+<p>The method of creating the voronoi tessellation follows the idea of
+Efficient Delaunay Tessellation Through K-D Tree Decomposition
+by Dmitriy Morozov and Tom Peterka. The general idea is create
+a local tessellation. Those particles will have either finite
+or infinite radius. Use this radius (for infinite assign a radius)
+and create boundary particles if it intersects the boundary or export
+if intersects another processors boundary. Add new particles to the
+mesh. If the new radius is smaller then previous radius then the
+particle can not influence anymore otherwise increase the radius
+untill all particles are done. In this first implementation we don’t
+have a kd tree but use octtree for searches.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>particles</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Class that holds all information pertaining to the particles.</p></li>
+<li><p><strong>domain_manager</strong> (<a class="reference internal" href="phd.domain.html#id8" title="phd.domain.domain_manager.DomainManager"><em>DomainManager</em></a>) – Class that handels all things related with the domain.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.mesh.mesh.Mesh.update_from_fluxes">
+<code class="sig-name descname">update_from_fluxes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.mesh.mesh.Mesh.update_from_fluxes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update conservative variables from fluxes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>particles</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Class that holds all information pertaining to the particles.</p></li>
+<li><p><strong>riemann</strong> (<a class="reference internal" href="phd.riemann.html#id13" title="phd.riemann.riemann.RiemannBase"><em>RiemannBase</em></a>) – Class that solves the riemann problem.</p></li>
+<li><p><strong>dt</strong> (<em>double</em>) – Simulation time step.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 </div>
-<div class="section" id="id1">
-<h2>phd.mesh.mesh module<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="module-0"></span></div>
+<div class="section" id="id5">
+<h2>phd.mesh.mesh module<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="module-0"></span><dl class="py class">
+<dt id="id6">
+<em class="property">class </em><code class="sig-prename descclassname">phd.mesh.mesh.</code><code class="sig-name descname">Mesh</code><a class="headerlink" href="#id6" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Voronoi mesh responsible to build mesh, neighbor information,
+and all geometric quantities.</p>
+<dl class="py attribute">
+<dt id="id7">
+<code class="sig-name descname">eta</code><a class="headerlink" href="#id7" title="Permalink to this definition">¶</a></dt>
+<dd><p>Regularize parameter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>double</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="id8">
+<code class="sig-name descname">max_iterations</code><a class="headerlink" href="#id8" title="Permalink to this definition">¶</a></dt>
+<dd><p>The max number of mesh updates in a build. This is
+stop an infinite loop for bad meshes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="id9">
+<code class="sig-name descname">num_neighbors</code><a class="headerlink" href="#id9" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initial number of neighbors for each particle. Used
+to allocate storage space.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="id10">
+<code class="sig-name descname">regularize</code><a class="headerlink" href="#id10" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add regularization to velocity mesh generators.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="id11">
+<code class="sig-name descname">relax_iterations</code><a class="headerlink" href="#id11" title="Permalink to this definition">¶</a></dt>
+<dd><p>Number of times to perform lloyd relaxation on startup.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id12">
+<code class="sig-name descname">assign_face_velocities</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id12" title="Permalink to this definition">¶</a></dt>
+<dd><p>Assigns velocities to face center of face defined by
+neighboring particles.</p>
+<p>The face velocity is the average of particle velocities
+that define the face plus a residual motion. The algorithm
+is taken from Springel (2009).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>particles</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Class that holds all information pertaining to the particles.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id13">
+<code class="sig-name descname">assign_generator_velocities</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id13" title="Permalink to this definition">¶</a></dt>
+<dd><p>Assigns particle velocities.</p>
+<p>Particle velocities are equal to local fluid velocity plus a
+regularization term. The algorithm is taken from Springel (2009).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>particles</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Class that holds all information pertaining to the particles.</p></li>
+<li><p><strong>eos</strong> (<a class="reference internal" href="phd.equation_state.html#id0" title="phd.equation_state.equation_state.EquationStateBase"><em>EquationStateBase</em></a>) – Thermodynamic equation of state.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id14">
+<code class="sig-name descname">build_geometry</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id14" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build the voronoi mesh and then extract mesh information, i.e
+volumes, face information, and neighbors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>particles</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Class that holds all information pertaining to the particles.</p></li>
+<li><p><strong>domain_manager</strong> (<a class="reference internal" href="phd.domain.html#id8" title="phd.domain.domain_manager.DomainManager"><em>DomainManager</em></a>) – Class that handels all things related with the domain.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="id15">
+<code class="sig-name descname">eta</code><a class="headerlink" href="#id15" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="id16">
+<code class="sig-name descname">faces</code><a class="headerlink" href="#id16" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="id17">
+<code class="sig-name descname">initialize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id17" title="Permalink to this definition">¶</a></dt>
+<dd><p>Setup all connections for computation classes. Should check
+always if particle_fields_registered is True.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="id18">
+<code class="sig-name descname">max_iterations</code><a class="headerlink" href="#id18" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="id19">
+<code class="sig-name descname">num_neighbors</code><a class="headerlink" href="#id19" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="id20">
+<code class="sig-name descname">register_fields</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id20" title="Permalink to this definition">¶</a></dt>
+<dd><p>Register mesh fields into the particle container (i.e.
+volume, center of mass).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>particles</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Class that holds all information pertaining to the particles.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="id21">
+<code class="sig-name descname">regularize</code><a class="headerlink" href="#id21" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="id22">
+<code class="sig-name descname">relax</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id22" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform mesh relaxation by moving particles to their center of mass.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>particles</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Class that holds all information pertaining to the particles.</p></li>
+<li><p><strong>domain_manager</strong> (<a class="reference internal" href="phd.domain.html#id8" title="phd.domain.domain_manager.DomainManager"><em>DomainManager</em></a>) – Class that handels all things related with the domain.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="id23">
+<code class="sig-name descname">relax_iterations</code><a class="headerlink" href="#id23" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="id24">
+<code class="sig-name descname">reset_mesh</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id24" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clear out mesh data.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id25">
+<code class="sig-name descname">tessellate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id25" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create voronoi tessellation.</p>
+<p>The method of creating the voronoi tessellation follows the idea of
+Efficient Delaunay Tessellation Through K-D Tree Decomposition
+by Dmitriy Morozov and Tom Peterka. The general idea is create
+a local tessellation. Those particles will have either finite
+or infinite radius. Use this radius (for infinite assign a radius)
+and create boundary particles if it intersects the boundary or export
+if intersects another processors boundary. Add new particles to the
+mesh. If the new radius is smaller then previous radius then the
+particle can not influence anymore otherwise increase the radius
+untill all particles are done. In this first implementation we don’t
+have a kd tree but use octtree for searches.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>particles</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Class that holds all information pertaining to the particles.</p></li>
+<li><p><strong>domain_manager</strong> (<a class="reference internal" href="phd.domain.html#id8" title="phd.domain.domain_manager.DomainManager"><em>DomainManager</em></a>) – Class that handels all things related with the domain.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id26">
+<code class="sig-name descname">update_from_fluxes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id26" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update conservative variables from fluxes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>particles</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Class that holds all information pertaining to the particles.</p></li>
+<li><p><strong>riemann</strong> (<a class="reference internal" href="phd.riemann.html#id13" title="phd.riemann.riemann.RiemannBase"><em>RiemannBase</em></a>) – Class that solves the riemann problem.</p></li>
+<li><p><strong>dt</strong> (<em>double</em>) – Simulation time step.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
 <div class="section" id="module-phd.mesh.pytess">
 <span id="phd-mesh-pytess-module"></span><h2>phd.mesh.pytess module<a class="headerlink" href="#module-phd.mesh.pytess" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="phd.mesh.pytess.PyTess">
+<em class="property">class </em><code class="sig-prename descclassname">phd.mesh.pytess.</code><code class="sig-name descname">PyTess</code><a class="headerlink" href="#phd.mesh.pytess.PyTess" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="phd.mesh.pytess.PyTess2d">
+<em class="property">class </em><code class="sig-prename descclassname">phd.mesh.pytess.</code><code class="sig-name descname">PyTess2d</code><a class="headerlink" href="#phd.mesh.pytess.PyTess2d" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#id28" title="phd.mesh.pytess.PyTess"><code class="xref py py-class docutils literal notranslate"><span class="pre">phd.mesh.pytess.PyTess</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="phd.mesh.pytess.PyTess3d">
+<em class="property">class </em><code class="sig-prename descclassname">phd.mesh.pytess.</code><code class="sig-name descname">PyTess3d</code><a class="headerlink" href="#phd.mesh.pytess.PyTess3d" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#id28" title="phd.mesh.pytess.PyTess"><code class="xref py py-class docutils literal notranslate"><span class="pre">phd.mesh.pytess.PyTess</span></code></a></p>
+</dd></dl>
+
 </div>
-<div class="section" id="id2">
-<h2>phd.mesh.pytess module<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="module-1"></span></div>
+<div class="section" id="id27">
+<h2>phd.mesh.pytess module<a class="headerlink" href="#id27" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="module-1"></span><dl class="py class">
+<dt id="id28">
+<em class="property">class </em><code class="sig-prename descclassname">phd.mesh.pytess.</code><code class="sig-name descname">PyTess</code><a class="headerlink" href="#id28" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="id29">
+<em class="property">class </em><code class="sig-prename descclassname">phd.mesh.pytess.</code><code class="sig-name descname">PyTess2d</code><a class="headerlink" href="#id29" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#id28" title="phd.mesh.pytess.PyTess"><code class="xref py py-class docutils literal notranslate"><span class="pre">phd.mesh.pytess.PyTess</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="id30">
+<em class="property">class </em><code class="sig-prename descclassname">phd.mesh.pytess.</code><code class="sig-name descname">PyTess3d</code><a class="headerlink" href="#id30" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#id28" title="phd.mesh.pytess.PyTess"><code class="xref py py-class docutils literal notranslate"><span class="pre">phd.mesh.pytess.PyTess</span></code></a></p>
+</dd></dl>
+
+</div>
 <div class="section" id="module-phd.mesh">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-phd.mesh" title="Permalink to this headline">¶</a></h2>
 </div>

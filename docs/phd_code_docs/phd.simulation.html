@@ -127,6 +127,141 @@
 </div>
 <div class="section" id="module-phd.simulation.simulation">
 <span id="phd-simulation-simulation-module"></span><h2>phd.simulation.simulation module<a class="headerlink" href="#module-phd.simulation.simulation" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="phd.simulation.simulation.Simulation">
+<em class="property">class </em><code class="sig-prename descclassname">phd.simulation.simulation.</code><code class="sig-name descname">Simulation</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simulation_name</span><span class="o">=</span><span class="default_value">'simulation'</span></em>, <em class="sig-param"><span class="n">colored_logs</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">log_level</span><span class="o">=</span><span class="default_value">'debug'</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.simulation.simulation.Simulation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Marshalls the simulation.</p>
+<p>This class runs the simulation and all necessary outputs. It takes
+an integrator and simulation time and builds an output directory
+where files will be saved.</p>
+<dl class="py attribute">
+<dt id="phd.simulation.simulation.Simulation.colored_logs">
+<code class="sig-name descname">colored_logs</code><a class="headerlink" href="#phd.simulation.simulation.Simulation.colored_logs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Output colored logs to screen if True otherwise remove color.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="phd.simulation.simulation.Simulation.integrator">
+<code class="sig-name descname">integrator</code><a class="headerlink" href="#phd.simulation.simulation.Simulation.integrator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Advances the fluid equations by one step.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="phd.integrate.html#phd.integrate.integrate.IntegrateBase" title="phd.integrate.integrate.IntegrateBase">IntegrateBase</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="phd.simulation.simulation.Simulation.log_level">
+<code class="sig-name descname">log_level</code><a class="headerlink" href="#phd.simulation.simulation.Simulation.log_level" title="Permalink to this definition">¶</a></dt>
+<dd><p>Level which logger is outputted.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="phd.simulation.simulation.Simulation._output_directory">
+<code class="sig-name descname">_output_directory</code><a class="headerlink" href="#phd.simulation.simulation.Simulation._output_directory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Directory to store all output of the simulation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="phd.simulation.simulation.Simulation.simulation_name">
+<code class="sig-name descname">simulation_name</code><a class="headerlink" href="#phd.simulation.simulation.Simulation.simulation_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Name of problem solving, this name prefixs output data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="phd.simulation.simulation.Simulation.simulation_time_manager">
+<code class="sig-name descname">simulation_time_manager</code><a class="headerlink" href="#phd.simulation.simulation.Simulation.simulation_time_manager" title="Permalink to this definition">¶</a></dt>
+<dd><p>Signals when to output data and finish the simulation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="phd.io.html#phd.io.simulation_time_manager.SimulationTimeManager" title="phd.io.simulation_time_manager.SimulationTimeManager">SimulationTimeManager</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="phd.simulation.simulation.Simulation._state">
+<code class="sig-name descname">_state</code><a class="headerlink" href="#phd.simulation.simulation.Simulation._state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Integer describing if simulation is before, in, or after
+main loop.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p>Constructor for simulation.</p>
+<dl class="simple">
+<dt>colored_logs<span class="classifier">bool</span></dt><dd><p>Output colored logs to screen if True otherwise remove color.</p>
+</dd>
+<dt>log_level<span class="classifier">str</span></dt><dd><p>Level which logger is outputted.outputted.</p>
+</dd>
+<dt>simulation_name<span class="classifier">str</span></dt><dd><p>Name of problem solving, this name prefixs output data.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="phd.simulation.simulation.Simulation.compute_time_step">
+<code class="sig-name descname">compute_time_step</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.simulation.simulation.Simulation.compute_time_step" title="Permalink to this definition">¶</a></dt>
+<dd><p>Modify time step for the next iteration.</p>
+<p>Calculate the time step is calculated from the integrator,
+then constrain by outputters and simulation.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.simulation.simulation.Simulation.initialize">
+<code class="sig-name descname">initialize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.simulation.simulation.Simulation.initialize" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="phd.simulation.simulation.Simulation.set_integrator">
+<code class="sig-name descname">set_integrator</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cl_to_check</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.simulation.simulation.Simulation.set_integrator" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="phd.simulation.simulation.Simulation.set_simulation_time_manager">
+<code class="sig-name descname">set_simulation_time_manager</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cl_to_check</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.simulation.simulation.Simulation.set_simulation_time_manager" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="phd.simulation.simulation.Simulation.solve">
+<code class="sig-name descname">solve</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.simulation.simulation.Simulation.solve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Advance the simulation to final time.</p>
+<p>Main driver to evolve the equations. Responsible for advancing
+the simulation while outputting data to disk at appropriate
+times.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.simulation.simulation.Simulation.start_up_message">
+<code class="sig-name descname">start_up_message</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.simulation.simulation.Simulation.start_up_message" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print out welcome message with details of the simulation.</p>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 <div class="section" id="module-phd.simulation">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-phd.simulation" title="Permalink to this headline">¶</a></h2>

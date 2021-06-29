@@ -127,10 +127,372 @@
 </div>
 <div class="section" id="module-phd.riemann.riemann">
 <span id="phd-riemann-riemann-module"></span><h2>phd.riemann.riemann module<a class="headerlink" href="#module-phd.riemann.riemann" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="phd.riemann.riemann.Exact">
+<em class="property">class </em><code class="sig-prename descclassname">phd.riemann.riemann.</code><code class="sig-name descname">Exact</code><a class="headerlink" href="#phd.riemann.riemann.Exact" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#id13" title="phd.riemann.riemann.RiemannBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">phd.riemann.riemann.RiemannBase</span></code></a></p>
+<p>Exact implementation of solving the riemann problem. This is taken
+from Toro Riemann Solvers and Numerical Methods for Fluid Dynamics
+chapter 9.</p>
+<dl class="py attribute">
+<dt id="phd.riemann.riemann.Exact.cfl">
+<code class="sig-name descname">cfl</code><a class="headerlink" href="#phd.riemann.riemann.Exact.cfl" title="Permalink to this definition">¶</a></dt>
+<dd><p>The Courant Friedrichs Lewy condition.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="phd.riemann.riemann.Exact.boost">
+<code class="sig-name descname">boost</code><a class="headerlink" href="#phd.riemann.riemann.Exact.boost" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="phd.riemann.riemann.HLL">
+<em class="property">class </em><code class="sig-prename descclassname">phd.riemann.riemann.</code><code class="sig-name descname">HLL</code><a class="headerlink" href="#phd.riemann.riemann.HLL" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#id13" title="phd.riemann.riemann.RiemannBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">phd.riemann.riemann.RiemannBase</span></code></a></p>
+<p>HLL implementation of solving the riemann problem. This is taken
+from Toro Riemann Solvers and Numerical Methods for Fluid Dynamics
+chapter 10.</p>
+<dl class="py attribute">
+<dt id="phd.riemann.riemann.HLL.cfl">
+<code class="sig-name descname">cfl</code><a class="headerlink" href="#phd.riemann.riemann.HLL.cfl" title="Permalink to this definition">¶</a></dt>
+<dd><p>The Courant Friedrichs Lewy condition.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="phd.riemann.riemann.HLL.boost">
+<code class="sig-name descname">boost</code><a class="headerlink" href="#phd.riemann.riemann.HLL.boost" title="Permalink to this definition">¶</a></dt>
+<dd><p>Flag indicating to boost to face frame if true</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>boolean</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="id0">
+<code class="sig-name descname">boost</code><a class="headerlink" href="#id0" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="phd.riemann.riemann.HLLC">
+<em class="property">class </em><code class="sig-prename descclassname">phd.riemann.riemann.</code><code class="sig-name descname">HLLC</code><a class="headerlink" href="#phd.riemann.riemann.HLLC" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#id6" title="phd.riemann.riemann.HLL"><code class="xref py py-class docutils literal notranslate"><span class="pre">phd.riemann.riemann.HLL</span></code></a></p>
+<p>HLLC implementation of solving the riemann problem. This is taken
+from Toro Riemann Solvers and Numerical Methods for Fluid Dynamics
+chapter 10.</p>
+<dl class="py attribute">
+<dt id="phd.riemann.riemann.HLLC.cfl">
+<code class="sig-name descname">cfl</code><a class="headerlink" href="#phd.riemann.riemann.HLLC.cfl" title="Permalink to this definition">¶</a></dt>
+<dd><p>The Courant Friedrichs Lewy condition.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="phd.riemann.riemann.HLLC.boost">
+<code class="sig-name descname">boost</code><a class="headerlink" href="#phd.riemann.riemann.HLLC.boost" title="Permalink to this definition">¶</a></dt>
+<dd><p>Flag indicating to boost to face frame if true</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>boolean</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="phd.riemann.riemann.RiemannBase">
+<em class="property">class </em><code class="sig-prename descclassname">phd.riemann.riemann.</code><code class="sig-name descname">RiemannBase</code><a class="headerlink" href="#phd.riemann.riemann.RiemannBase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Riemann base that all riemann solvers need to inherit.</p>
+<dl class="py attribute">
+<dt id="phd.riemann.riemann.RiemannBase.cfl">
+<code class="sig-name descname">cfl</code><a class="headerlink" href="#phd.riemann.riemann.RiemannBase.cfl" title="Permalink to this definition">¶</a></dt>
+<dd><p>The Courant Friedrichs Lewy condition.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p>Constructor for RiemannBase.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>cfl</strong> (<em>float</em>) – The Courant Friedrichs Lewy condition.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="phd.riemann.riemann.RiemannBase.add_fields">
+<code class="sig-name descname">add_fields</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.riemann.riemann.RiemannBase.add_fields" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create fields to calculate fluxes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>particles</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Class that holds all information pertaining to the particles.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="id1">
+<code class="sig-name descname">cfl</code><a class="headerlink" href="#id1" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="phd.riemann.riemann.RiemannBase.compute_fluxes">
+<code class="sig-name descname">compute_fluxes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.riemann.riemann.RiemannBase.compute_fluxes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute fluxes for each face in the mesh.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>particles</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Class that holds all information pertaining to the particles.</p></li>
+<li><p><strong>mesh</strong> (<a class="reference internal" href="phd.mesh.html#id6" title="phd.mesh.mesh.Mesh"><em>Mesh</em></a>) – Class that builds the domain mesh.</p></li>
+<li><p><strong>reconstruction</strong> (<a class="reference internal" href="phd.reconstruction.html#id36" title="phd.reconstruction.reconstruction.ReconstructionBase"><em>ReconstructionBase</em></a>) – Class that performs field reconstruction inputs for the
+riemann problem.</p></li>
+<li><p><strong>eos</strong> (<a class="reference internal" href="phd.equation_state.html#id0" title="phd.equation_state.equation_state.EquationStateBase"><em>EquationStateBase</em></a>) – Thermodynamic equation of state.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.riemann.riemann.RiemannBase.compute_time_step">
+<code class="sig-name descname">compute_time_step</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.riemann.riemann.RiemannBase.compute_time_step" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute time step for next integration step.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>particles</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Container of particles.</p></li>
+<li><p><strong>eos</strong> (<a class="reference internal" href="phd.equation_state.html#id0" title="phd.equation_state.equation_state.EquationStateBase"><em>EquationStateBase</em></a>) – Thermodynamic equation of state.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Time step.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>double</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="phd.riemann.riemann.RiemannBase.fluxes">
+<code class="sig-name descname">fluxes</code><a class="headerlink" href="#phd.riemann.riemann.RiemannBase.fluxes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="phd.riemann.riemann.RiemannBase.initialize">
+<code class="sig-name descname">initialize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.riemann.riemann.RiemannBase.initialize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Setup all connections for computation classes. Should check
+always if fields_registered is True.</p>
+</dd></dl>
+
+</dd></dl>
+
 </div>
-<div class="section" id="id1">
-<h2>phd.riemann.riemann module<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="module-0"></span></div>
+<div class="section" id="id2">
+<h2>phd.riemann.riemann module<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="module-0"></span><dl class="py class">
+<dt id="id3">
+<em class="property">class </em><code class="sig-prename descclassname">phd.riemann.riemann.</code><code class="sig-name descname">Exact</code><a class="headerlink" href="#id3" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#id13" title="phd.riemann.riemann.RiemannBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">phd.riemann.riemann.RiemannBase</span></code></a></p>
+<p>Exact implementation of solving the riemann problem. This is taken
+from Toro Riemann Solvers and Numerical Methods for Fluid Dynamics
+chapter 9.</p>
+<dl class="py attribute">
+<dt id="id4">
+<code class="sig-name descname">cfl</code><a class="headerlink" href="#id4" title="Permalink to this definition">¶</a></dt>
+<dd><p>The Courant Friedrichs Lewy condition.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="id5">
+<code class="sig-name descname">boost</code><a class="headerlink" href="#id5" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="id6">
+<em class="property">class </em><code class="sig-prename descclassname">phd.riemann.riemann.</code><code class="sig-name descname">HLL</code><a class="headerlink" href="#id6" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#id13" title="phd.riemann.riemann.RiemannBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">phd.riemann.riemann.RiemannBase</span></code></a></p>
+<p>HLL implementation of solving the riemann problem. This is taken
+from Toro Riemann Solvers and Numerical Methods for Fluid Dynamics
+chapter 10.</p>
+<dl class="py attribute">
+<dt id="id7">
+<code class="sig-name descname">cfl</code><a class="headerlink" href="#id7" title="Permalink to this definition">¶</a></dt>
+<dd><p>The Courant Friedrichs Lewy condition.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="id8">
+<code class="sig-name descname">boost</code><a class="headerlink" href="#id8" title="Permalink to this definition">¶</a></dt>
+<dd><p>Flag indicating to boost to face frame if true</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>boolean</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="id9">
+<code class="sig-name descname">boost</code><a class="headerlink" href="#id9" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="id10">
+<em class="property">class </em><code class="sig-prename descclassname">phd.riemann.riemann.</code><code class="sig-name descname">HLLC</code><a class="headerlink" href="#id10" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#id6" title="phd.riemann.riemann.HLL"><code class="xref py py-class docutils literal notranslate"><span class="pre">phd.riemann.riemann.HLL</span></code></a></p>
+<p>HLLC implementation of solving the riemann problem. This is taken
+from Toro Riemann Solvers and Numerical Methods for Fluid Dynamics
+chapter 10.</p>
+<dl class="py attribute">
+<dt id="id11">
+<code class="sig-name descname">cfl</code><a class="headerlink" href="#id11" title="Permalink to this definition">¶</a></dt>
+<dd><p>The Courant Friedrichs Lewy condition.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="id12">
+<code class="sig-name descname">boost</code><a class="headerlink" href="#id12" title="Permalink to this definition">¶</a></dt>
+<dd><p>Flag indicating to boost to face frame if true</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>boolean</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="id13">
+<em class="property">class </em><code class="sig-prename descclassname">phd.riemann.riemann.</code><code class="sig-name descname">RiemannBase</code><a class="headerlink" href="#id13" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Riemann base that all riemann solvers need to inherit.</p>
+<dl class="py attribute">
+<dt id="id14">
+<code class="sig-name descname">cfl</code><a class="headerlink" href="#id14" title="Permalink to this definition">¶</a></dt>
+<dd><p>The Courant Friedrichs Lewy condition.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p>Constructor for RiemannBase.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>cfl</strong> (<em>float</em>) – The Courant Friedrichs Lewy condition.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="id15">
+<code class="sig-name descname">add_fields</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id15" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create fields to calculate fluxes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>particles</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Class that holds all information pertaining to the particles.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="id16">
+<code class="sig-name descname">cfl</code><a class="headerlink" href="#id16" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="id17">
+<code class="sig-name descname">compute_fluxes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id17" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute fluxes for each face in the mesh.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>particles</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Class that holds all information pertaining to the particles.</p></li>
+<li><p><strong>mesh</strong> (<a class="reference internal" href="phd.mesh.html#id6" title="phd.mesh.mesh.Mesh"><em>Mesh</em></a>) – Class that builds the domain mesh.</p></li>
+<li><p><strong>reconstruction</strong> (<a class="reference internal" href="phd.reconstruction.html#id36" title="phd.reconstruction.reconstruction.ReconstructionBase"><em>ReconstructionBase</em></a>) – Class that performs field reconstruction inputs for the
+riemann problem.</p></li>
+<li><p><strong>eos</strong> (<a class="reference internal" href="phd.equation_state.html#id0" title="phd.equation_state.equation_state.EquationStateBase"><em>EquationStateBase</em></a>) – Thermodynamic equation of state.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id18">
+<code class="sig-name descname">compute_time_step</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id18" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute time step for next integration step.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>particles</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Container of particles.</p></li>
+<li><p><strong>eos</strong> (<a class="reference internal" href="phd.equation_state.html#id0" title="phd.equation_state.equation_state.EquationStateBase"><em>EquationStateBase</em></a>) – Thermodynamic equation of state.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Time step.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>double</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="id19">
+<code class="sig-name descname">fluxes</code><a class="headerlink" href="#id19" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="id20">
+<code class="sig-name descname">initialize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id20" title="Permalink to this definition">¶</a></dt>
+<dd><p>Setup all connections for computation classes. Should check
+always if fields_registered is True.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
 <div class="section" id="module-phd.riemann">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-phd.riemann" title="Permalink to this headline">¶</a></h2>
 </div>

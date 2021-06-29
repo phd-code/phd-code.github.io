@@ -127,15 +127,730 @@
 </div>
 <div class="section" id="module-phd.io.read_write">
 <span id="phd-io-read-write-module"></span><h2>phd.io.read_write module<a class="headerlink" href="#module-phd.io.read_write" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="phd.io.read_write.Hdf5">
+<em class="property">class </em><code class="sig-prename descclassname">phd.io.read_write.</code><code class="sig-name descname">Hdf5</code><a class="headerlink" href="#phd.io.read_write.Hdf5" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#phd.io.read_write.ReaderWriterBase" title="phd.io.read_write.ReaderWriterBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">phd.io.read_write.ReaderWriterBase</span></code></a></p>
+<dl class="py method">
+<dt id="phd.io.read_write.Hdf5.read">
+<code class="sig-name descname">read</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">file_name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.io.read_write.Hdf5.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read hdf5 file of particles.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.io.read_write.Hdf5.write">
+<code class="sig-name descname">write</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">base_name</span></em>, <em class="sig-param"><span class="n">output_directory</span></em>, <em class="sig-param"><span class="n">integrator</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.io.read_write.Hdf5.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write simulation data to hdf5 file.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="phd.io.read_write.ReaderWriterBase">
+<em class="property">class </em><code class="sig-prename descclassname">phd.io.read_write.</code><code class="sig-name descname">ReaderWriterBase</code><a class="headerlink" href="#phd.io.read_write.ReaderWriterBase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt id="phd.io.read_write.ReaderWriterBase.read">
+<code class="sig-name descname">read</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">file_name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.io.read_write.ReaderWriterBase.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read data and return particles.</p>
+<p>For formats where the data is being stored, a read
+function must be defined. This function reads the
+data outputted by <cite>write</cite> and returns a CarrayContainer
+of particles to be used by the simulation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>file_name</strong> (<em>str</em>) – File name to be read in.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>particles</strong> – Complete container of particles for a simulation.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer">CarrayContainer</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.io.read_write.ReaderWriterBase.write">
+<code class="sig-name descname">write</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">base_name</span></em>, <em class="sig-param"><span class="n">output_directory</span></em>, <em class="sig-param"><span class="n">integrator</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.io.read_write.ReaderWriterBase.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write simulation to disk.</p>
+<p>This base class is the api for writing and reading
+of data. Note the user is free to write any type of
+output. For example, this can be used to create
+runtime plots or diagnostics.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>base_name</strong> (<em>str</em>) – File name for output data.</p></li>
+<li><p><strong>output_directory</strong> (<em>str</em>) – Directory where to store the data.</p></li>
+<li><p><strong>integrator</strong> (<a class="reference internal" href="phd.integrate.html#phd.integrate.integrate.IntegrateBase" title="phd.integrate.integrate.IntegrateBase"><em>IntegrateBase</em></a>) – Advances the fluid equations by one step.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 <div class="section" id="module-phd.io.simulation_finish">
 <span id="phd-io-simulation-finish-module"></span><h2>phd.io.simulation_finish module<a class="headerlink" href="#module-phd.io.simulation_finish" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="phd.io.simulation_finish.Iteration">
+<em class="property">class </em><code class="sig-prename descclassname">phd.io.simulation_finish.</code><code class="sig-name descname">Iteration</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">iteration_max</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.io.simulation_finish.Iteration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#phd.io.simulation_finish.SimulationFinisherBase" title="phd.io.simulation_finish.SimulationFinisherBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">phd.io.simulation_finish.SimulationFinisherBase</span></code></a></p>
+<p>Signal simulation complete if reached desired iteration
+number.</p>
+<dl class="py attribute">
+<dt id="phd.io.simulation_finish.Iteration.iteration_max">
+<code class="sig-name descname">iteration_max</code><a class="headerlink" href="#phd.io.simulation_finish.Iteration.iteration_max" title="Permalink to this definition">¶</a></dt>
+<dd><p>Iteration value to end the simulation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.io.simulation_finish.Iteration.finished">
+<code class="sig-name descname">finished</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simulation</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.io.simulation_finish.Iteration.finished" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return True to signal the simulation is finished
+if reached max iteration number.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="phd.io.simulation_finish.SimulationFinisherBase">
+<em class="property">class </em><code class="sig-prename descclassname">phd.io.simulation_finish.</code><code class="sig-name descname">SimulationFinisherBase</code><a class="headerlink" href="#phd.io.simulation_finish.SimulationFinisherBase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class that singals the simulation to stop evolving.</p>
+<dl class="py method">
+<dt id="phd.io.simulation_finish.SimulationFinisherBase.finished">
+<code class="sig-name descname">finished</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simulation</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.io.simulation_finish.SimulationFinisherBase.finished" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check for flag to end the simulation.
+:param simulation: Class that marshalls the simulation of the fluid equations.
+:type simulation: Simulation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>True if main loop should be exited</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.io.simulation_finish.SimulationFinisherBase.modify_timestep">
+<code class="sig-name descname">modify_timestep</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simulation</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.io.simulation_finish.SimulationFinisherBase.modify_timestep" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return consistent time step.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>simulation</strong> (<a class="reference internal" href="phd.simulation.html#phd.simulation.simulation.Simulation" title="phd.simulation.simulation.Simulation"><em>Simulation</em></a>) – Class that marshalls the simulation of the fluid equations.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Modified dt if needed otherwise integrator dt.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="phd.io.simulation_finish.Time">
+<em class="property">class </em><code class="sig-prename descclassname">phd.io.simulation_finish.</code><code class="sig-name descname">Time</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">time_max</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.io.simulation_finish.Time" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#phd.io.simulation_finish.SimulationFinisherBase" title="phd.io.simulation_finish.SimulationFinisherBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">phd.io.simulation_finish.SimulationFinisherBase</span></code></a></p>
+<p>Signal simulation complete if reached desired time.</p>
+<dl class="py attribute">
+<dt id="phd.io.simulation_finish.Time.time_max">
+<code class="sig-name descname">time_max</code><a class="headerlink" href="#phd.io.simulation_finish.Time.time_max" title="Permalink to this definition">¶</a></dt>
+<dd><p>Time to end the simulation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.io.simulation_finish.Time.finished">
+<code class="sig-name descname">finished</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simulation</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.io.simulation_finish.Time.finished" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return True to signal the simulation is finished
+if the simulation reached a certain time.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.io.simulation_finish.Time.modify_timestep">
+<code class="sig-name descname">modify_timestep</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simulation</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.io.simulation_finish.Time.modify_timestep" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the simulation has reached final time.</p>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 <div class="section" id="module-phd.io.simulation_output">
 <span id="phd-io-simulation-output-module"></span><h2>phd.io.simulation_output module<a class="headerlink" href="#module-phd.io.simulation_output" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="phd.io.simulation_output.FinalOutput">
+<em class="property">class </em><code class="sig-prename descclassname">phd.io.simulation_output.</code><code class="sig-name descname">FinalOutput</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">base_name</span><span class="o">=</span><span class="default_value">'final_output'</span></em>, <em class="sig-param"><span class="n">counter</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">pad</span><span class="o">=</span><span class="default_value">4</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.io.simulation_output.FinalOutput" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#phd.io.simulation_output.SimulationOutputterBase" title="phd.io.simulation_output.SimulationOutputterBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">phd.io.simulation_output.SimulationOutputterBase</span></code></a></p>
+<p>Class that signals the simulation to write out
+final data.</p>
+<dl class="py attribute">
+<dt id="phd.io.simulation_output.FinalOutput.base_name">
+<code class="sig-name descname">base_name</code><a class="headerlink" href="#phd.io.simulation_output.FinalOutput.base_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Name of file to be outputted. Name will be post
+fixed with output number.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="phd.io.simulation_output.FinalOutput.counter">
+<code class="sig-name descname">counter</code><a class="headerlink" href="#phd.io.simulation_output.FinalOutput.counter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Output number in output order.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="phd.io.simulation_output.FinalOutput.pad">
+<code class="sig-name descname">pad</code><a class="headerlink" href="#phd.io.simulation_output.FinalOutput.pad" title="Permalink to this definition">¶</a></dt>
+<dd><p>Number of padding spaces for output numbering of
+data files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="phd.io.simulation_output.FinalOutput.read_write">
+<code class="sig-name descname">read_write</code><a class="headerlink" href="#phd.io.simulation_output.FinalOutput.read_write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class that writes data in a given format.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ReaderWriter</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.io.simulation_output.FinalOutput.check_for_output">
+<code class="sig-name descname">check_for_output</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simulation</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.io.simulation_output.FinalOutput.check_for_output" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return True to signal final output after main loop.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.io.simulation_output.FinalOutput.modify_timestep">
+<code class="sig-name descname">modify_timestep</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simulation</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.io.simulation_output.FinalOutput.modify_timestep" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return consistent time step.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="phd.io.simulation_output.InitialOutput">
+<em class="property">class </em><code class="sig-prename descclassname">phd.io.simulation_output.</code><code class="sig-name descname">InitialOutput</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">base_name</span><span class="o">=</span><span class="default_value">'initial_output'</span></em>, <em class="sig-param"><span class="n">counter</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">pad</span><span class="o">=</span><span class="default_value">4</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.io.simulation_output.InitialOutput" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#phd.io.simulation_output.SimulationOutputterBase" title="phd.io.simulation_output.SimulationOutputterBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">phd.io.simulation_output.SimulationOutputterBase</span></code></a></p>
+<p>Class that signals the simulation to write out
+initial data.</p>
+<dl class="py attribute">
+<dt id="phd.io.simulation_output.InitialOutput.base_name">
+<code class="sig-name descname">base_name</code><a class="headerlink" href="#phd.io.simulation_output.InitialOutput.base_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Name of file to be outputted. Name will be post
+fixed with output number.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="phd.io.simulation_output.InitialOutput.counter">
+<code class="sig-name descname">counter</code><a class="headerlink" href="#phd.io.simulation_output.InitialOutput.counter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Output number in output order.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="phd.io.simulation_output.InitialOutput.pad">
+<code class="sig-name descname">pad</code><a class="headerlink" href="#phd.io.simulation_output.InitialOutput.pad" title="Permalink to this definition">¶</a></dt>
+<dd><p>Number of padding spaces for output numbering of
+data files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="phd.io.simulation_output.InitialOutput.read_write">
+<code class="sig-name descname">read_write</code><a class="headerlink" href="#phd.io.simulation_output.InitialOutput.read_write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class that writes data in a given format.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ReaderWriter</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.io.simulation_output.InitialOutput.check_for_output">
+<code class="sig-name descname">check_for_output</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simulation</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.io.simulation_output.InitialOutput.check_for_output" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return True to signal first output before main loop.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.io.simulation_output.InitialOutput.modify_timestep">
+<code class="sig-name descname">modify_timestep</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simulation</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.io.simulation_output.InitialOutput.modify_timestep" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return consistent time step.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="phd.io.simulation_output.IterationInterval">
+<em class="property">class </em><code class="sig-prename descclassname">phd.io.simulation_output.</code><code class="sig-name descname">IterationInterval</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">iteration_interval</span></em>, <em class="sig-param"><span class="n">base_name</span><span class="o">=</span><span class="default_value">'iteration_interval'</span></em>, <em class="sig-param"><span class="n">counter</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">pad</span><span class="o">=</span><span class="default_value">4</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.io.simulation_output.IterationInterval" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#phd.io.simulation_output.SimulationOutputterBase" title="phd.io.simulation_output.SimulationOutputterBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">phd.io.simulation_output.SimulationOutputterBase</span></code></a></p>
+<p>Class that signals the simulation to write out
+at given iteration intervals.</p>
+<dl class="py attribute">
+<dt id="phd.io.simulation_output.IterationInterval.base_name">
+<code class="sig-name descname">base_name</code><a class="headerlink" href="#phd.io.simulation_output.IterationInterval.base_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Name of file to be outputted. Name will be post
+fixed with output number.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="phd.io.simulation_output.IterationInterval.counter">
+<code class="sig-name descname">counter</code><a class="headerlink" href="#phd.io.simulation_output.IterationInterval.counter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Output number in output order.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="phd.io.simulation_output.IterationInterval.iteration_interval">
+<code class="sig-name descname">iteration_interval</code><a class="headerlink" href="#phd.io.simulation_output.IterationInterval.iteration_interval" title="Permalink to this definition">¶</a></dt>
+<dd><p>Number of iterations between outputs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="phd.io.simulation_output.IterationInterval.pad">
+<code class="sig-name descname">pad</code><a class="headerlink" href="#phd.io.simulation_output.IterationInterval.pad" title="Permalink to this definition">¶</a></dt>
+<dd><p>Number of padding spaces for output numbering of
+data files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="phd.io.simulation_output.IterationInterval.read_write">
+<code class="sig-name descname">read_write</code><a class="headerlink" href="#phd.io.simulation_output.IterationInterval.read_write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class that writes data in a given format.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ReaderWriter</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.io.simulation_output.IterationInterval.check_for_output">
+<code class="sig-name descname">check_for_output</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simulation</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.io.simulation_output.IterationInterval.check_for_output" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return True to signal the simulation has reached
+iteteration interval to ouput data.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.io.simulation_output.IterationInterval.modify_timestep">
+<code class="sig-name descname">modify_timestep</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simulation</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.io.simulation_output.IterationInterval.modify_timestep" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return consistent time step.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="phd.io.simulation_output.SimulationOutputterBase">
+<em class="property">class </em><code class="sig-prename descclassname">phd.io.simulation_output.</code><code class="sig-name descname">SimulationOutputterBase</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">base_name</span></em>, <em class="sig-param"><span class="n">counter</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">pad</span><span class="o">=</span><span class="default_value">4</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.io.simulation_output.SimulationOutputterBase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class that signals the simulation to write out
+data at current state of the simultion.</p>
+<p>This class is the api for all outputters. To inherit
+you will have write your own check_for_output and
+modify_timestep methods.</p>
+<dl class="py attribute">
+<dt id="phd.io.simulation_output.SimulationOutputterBase.base_name">
+<code class="sig-name descname">base_name</code><a class="headerlink" href="#phd.io.simulation_output.SimulationOutputterBase.base_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Name of file to be outputted. Name will be post
+fixed with output number.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="phd.io.simulation_output.SimulationOutputterBase.counter">
+<code class="sig-name descname">counter</code><a class="headerlink" href="#phd.io.simulation_output.SimulationOutputterBase.counter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Output number in output order.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="phd.io.simulation_output.SimulationOutputterBase.output_directory">
+<code class="sig-name descname">output_directory</code><a class="headerlink" href="#phd.io.simulation_output.SimulationOutputterBase.output_directory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Directory to store all output of the simulation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="phd.io.simulation_output.SimulationOutputterBase.read_write">
+<code class="sig-name descname">read_write</code><a class="headerlink" href="#phd.io.simulation_output.SimulationOutputterBase.read_write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class that writes data in a given format.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ReaderWriter</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="phd.io.simulation_output.SimulationOutputterBase.pad">
+<code class="sig-name descname">pad</code><a class="headerlink" href="#phd.io.simulation_output.SimulationOutputterBase.pad" title="Permalink to this definition">¶</a></dt>
+<dd><p>Number of padding spaces for output numbering of
+data files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.io.simulation_output.SimulationOutputterBase.check_for_output">
+<code class="sig-name descname">check_for_output</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simulation</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.io.simulation_output.SimulationOutputterBase.check_for_output" title="Permalink to this definition">¶</a></dt>
+<dd><p>Signal if simulation needs to output.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>simulation</strong> (<a class="reference internal" href="phd.simulation.html#phd.simulation.simulation.Simulation" title="phd.simulation.simulation.Simulation"><em>Simulation</em></a>) – Class that marshalls the simulation of the fluid equations.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if time to output.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.io.simulation_output.SimulationOutputterBase.create_directory">
+<code class="sig-name descname">create_directory</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.io.simulation_output.SimulationOutputterBase.create_directory" title="Permalink to this definition">¶</a></dt>
+<dd><p>For each data output create a directory to store that output.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.io.simulation_output.SimulationOutputterBase.initialize">
+<code class="sig-name descname">initialize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.io.simulation_output.SimulationOutputterBase.initialize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize outputter, check for ReaderWriter and output directory.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.io.simulation_output.SimulationOutputterBase.modify_timestep">
+<code class="sig-name descname">modify_timestep</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simulation</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.io.simulation_output.SimulationOutputterBase.modify_timestep" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return consistent time step.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>simulation</strong> (<a class="reference internal" href="phd.simulation.html#phd.simulation.simulation.Simulation" title="phd.simulation.simulation.Simulation"><em>Simulation</em></a>) – Class that marshalls the simulation of the fluid equations.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Modified dt if needed otherwise integrator dt.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.io.simulation_output.SimulationOutputterBase.output">
+<code class="sig-name descname">output</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simulation</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.io.simulation_output.SimulationOutputterBase.output" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write out data to given directory.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>simulation</strong> (<a class="reference internal" href="phd.simulation.html#phd.simulation.simulation.Simulation" title="phd.simulation.simulation.Simulation"><em>Simulation</em></a>) – Class that marshalls the simulation of the fluid equations.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.io.simulation_output.SimulationOutputterBase.set_output_directory">
+<code class="sig-name descname">set_output_directory</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">output_directory</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.io.simulation_output.SimulationOutputterBase.set_output_directory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set directory where to output files.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.io.simulation_output.SimulationOutputterBase.set_writer">
+<code class="sig-name descname">set_writer</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">read_write</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.io.simulation_output.SimulationOutputterBase.set_writer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set class to write out data in a specific format.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>read_write</strong> (<em>ReaderWriter</em>) – Class that writes data in a given format.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.io.simulation_output.SimulationOutputterBase.write_parameters">
+<code class="sig-name descname">write_parameters</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">file_name</span></em>, <em class="sig-param"><span class="n">output_directory</span></em>, <em class="sig-param"><span class="n">simulation</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.io.simulation_output.SimulationOutputterBase.write_parameters" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="phd.io.simulation_output.TimeInterval">
+<em class="property">class </em><code class="sig-prename descclassname">phd.io.simulation_output.</code><code class="sig-name descname">TimeInterval</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">time_interval</span></em>, <em class="sig-param"><span class="n">initial_time</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">base_name</span><span class="o">=</span><span class="default_value">'time_interval'</span></em>, <em class="sig-param"><span class="n">counter</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">pad</span><span class="o">=</span><span class="default_value">4</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.io.simulation_output.TimeInterval" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#phd.io.simulation_output.SimulationOutputterBase" title="phd.io.simulation_output.SimulationOutputterBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">phd.io.simulation_output.SimulationOutputterBase</span></code></a></p>
+<p>Class that signals the simulation to write out
+final data.</p>
+<dl class="py attribute">
+<dt id="phd.io.simulation_output.TimeInterval.base_name">
+<code class="sig-name descname">base_name</code><a class="headerlink" href="#phd.io.simulation_output.TimeInterval.base_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Name of file to be outputted. Name will be post
+fixed with output number.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="phd.io.simulation_output.TimeInterval.counter">
+<code class="sig-name descname">counter</code><a class="headerlink" href="#phd.io.simulation_output.TimeInterval.counter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Output number in output order.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="phd.io.simulation_output.TimeInterval.pad">
+<code class="sig-name descname">pad</code><a class="headerlink" href="#phd.io.simulation_output.TimeInterval.pad" title="Permalink to this definition">¶</a></dt>
+<dd><p>Number of padding spaces for output numbering of
+data files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="phd.io.simulation_output.TimeInterval._next_time_output">
+<code class="sig-name descname">_next_time_output</code><a class="headerlink" href="#phd.io.simulation_output.TimeInterval._next_time_output" title="Permalink to this definition">¶</a></dt>
+<dd><p>Time of next output.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="phd.io.simulation_output.TimeInterval.read_write">
+<code class="sig-name descname">read_write</code><a class="headerlink" href="#phd.io.simulation_output.TimeInterval.read_write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class that writes data in a given format.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ReaderWriter</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="phd.io.simulation_output.TimeInterval.time_interval">
+<code class="sig-name descname">time_interval</code><a class="headerlink" href="#phd.io.simulation_output.TimeInterval.time_interval" title="Permalink to this definition">¶</a></dt>
+<dd><p>Time between outputs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="phd.io.simulation_output.TimeInterval.time_last_output">
+<code class="sig-name descname">time_last_output</code><a class="headerlink" href="#phd.io.simulation_output.TimeInterval.time_last_output" title="Permalink to this definition">¶</a></dt>
+<dd><p>Time of last output.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.io.simulation_output.TimeInterval.check_for_output">
+<code class="sig-name descname">check_for_output</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simulation</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.io.simulation_output.TimeInterval.check_for_output" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return True to signal the simulation has reached
+multiple of time_interval to ouput data.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.io.simulation_output.TimeInterval.modify_timestep">
+<code class="sig-name descname">modify_timestep</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simulation</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.io.simulation_output.TimeInterval.modify_timestep" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return time step for next time interval output.</p>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 <div class="section" id="module-phd.io.simulation_time_manager">
 <span id="phd-io-simulation-time-manager-module"></span><h2>phd.io.simulation_time_manager module<a class="headerlink" href="#module-phd.io.simulation_time_manager" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="phd.io.simulation_time_manager.SimulationTimeManager">
+<em class="property">class </em><code class="sig-prename descclassname">phd.io.simulation_time_manager.</code><code class="sig-name descname">SimulationTimeManager</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.io.simulation_time_manager.SimulationTimeManager" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Collection of data outputters and simulation finishers.</p>
+<p>Controls when the simulation needs to output data or needs to end the simulation.</p>
+<dl class="py attribute">
+<dt id="phd.io.simulation_time_manager.SimulationTimeManager._outputs">
+<code class="sig-name descname">_outputs</code><a class="headerlink" href="#phd.io.simulation_time_manager.SimulationTimeManager._outputs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set of SimulationOutputter to signal the simualtion
+to output data to disk.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>set</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="phd.io.simulation_time_manager.SimulationTimeManager._finishes">
+<code class="sig-name descname">_finishes</code><a class="headerlink" href="#phd.io.simulation_time_manager.SimulationTimeManager._finishes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set of SimulationFinisher to signal the termination
+of the simulation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>set</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.io.simulation_time_manager.SimulationTimeManager.add_finish">
+<code class="sig-name descname">add_finish</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cl_to_check</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.io.simulation_time_manager.SimulationTimeManager.add_finish" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="phd.io.simulation_time_manager.SimulationTimeManager.add_output">
+<code class="sig-name descname">add_output</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cl_to_check</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.io.simulation_time_manager.SimulationTimeManager.add_output" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="phd.io.simulation_time_manager.SimulationTimeManager.finished">
+<code class="sig-name descname">finished</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">integrator</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.io.simulation_time_manager.SimulationTimeManager.finished" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cycle through all finishers and check for flag to end
+the simulation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>integrator</strong> (<a class="reference internal" href="phd.integrate.html#phd.integrate.integrate.IntegrateBase" title="phd.integrate.integrate.IntegrateBase"><em>IntegrateBase</em></a>) – Integrator that solves the equations.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if simulation finished False otherwise.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.io.simulation_time_manager.SimulationTimeManager.modify_timestep">
+<code class="sig-name descname">modify_timestep</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simulation</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.io.simulation_time_manager.SimulationTimeManager.modify_timestep" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the smallest time step from each finish and output
+object in the simulation. Assumes that integrator has its
+dt updated.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>integrator</strong> (<a class="reference internal" href="phd.integrate.html#phd.integrate.integrate.IntegrateBase" title="phd.integrate.integrate.IntegrateBase"><em>IntegrateBase</em></a>) – Integrator that solves the equations.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>modified time step if needed otherwise integrator dt.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.io.simulation_time_manager.SimulationTimeManager.output">
+<code class="sig-name descname">output</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simulation</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.io.simulation_time_manager.SimulationTimeManager.output" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cycle through all outputs and check for flag to write out
+simulation data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>simulation</strong> (<a class="reference internal" href="phd.simulation.html#phd.simulation.simulation.Simulation" title="phd.simulation.simulation.Simulation"><em>Simulation</em></a>) – Class that marshalls the simulation of the fluid equations.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if should output False otherwise.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 <div class="section" id="module-phd.io">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-phd.io" title="Permalink to this headline">¶</a></h2>

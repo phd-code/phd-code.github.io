@@ -112,42 +112,1336 @@
 </div>
 <div class="section" id="module-phd.utils.carray">
 <span id="phd-utils-carray-module"></span><h2>phd.utils.carray module<a class="headerlink" href="#module-phd.utils.carray" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="phd.utils.carray.BaseArray">
+<em class="property">class </em><code class="sig-prename descclassname">phd.utils.carray.</code><code class="sig-name descname">BaseArray</code><a class="headerlink" href="#phd.utils.carray.BaseArray" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Base class for managed C-arrays.</p>
+<dl class="py method">
+<dt id="phd.utils.carray.BaseArray.add_values">
+<code class="sig-name descname">add_values</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.utils.carray.BaseArray.add_values" title="Permalink to this definition">¶</a></dt>
+<dd><p>“Copy values of particles from self to dest at indices.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.utils.carray.BaseArray.align_array">
+<code class="sig-name descname">align_array</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.utils.carray.BaseArray.align_array" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rearrange the array contents according to the new indices.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="phd.utils.carray.BaseArray.alloc">
+<code class="sig-name descname">alloc</code><a class="headerlink" href="#phd.utils.carray.BaseArray.alloc" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="phd.utils.carray.BaseArray.copy_values">
+<code class="sig-name descname">copy_values</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.utils.carray.BaseArray.copy_values" title="Permalink to this definition">¶</a></dt>
+<dd><p>“Copy values of indexed particles from self to dest.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.utils.carray.BaseArray.extend">
+<code class="sig-name descname">extend</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.utils.carray.BaseArray.extend" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extend the array with data from in_array.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.utils.carray.BaseArray.get_c_type">
+<code class="sig-name descname">get_c_type</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.utils.carray.BaseArray.get_c_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the c data type of this array.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.utils.carray.BaseArray.get_npy_array">
+<code class="sig-name descname">get_npy_array</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.utils.carray.BaseArray.get_npy_array" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a numpy array of the data: do not keep its reference.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="phd.utils.carray.BaseArray.length">
+<code class="sig-name descname">length</code><a class="headerlink" href="#phd.utils.carray.BaseArray.length" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="phd.utils.carray.BaseArray.paste_values">
+<code class="sig-name descname">paste_values</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.utils.carray.BaseArray.paste_values" title="Permalink to this definition">¶</a></dt>
+<dd><p>“Copy values of particles from self to dest at indices.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.utils.carray.BaseArray.remove">
+<code class="sig-name descname">remove</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.utils.carray.BaseArray.remove" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove the particles with indices in index_list.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.utils.carray.BaseArray.reserve">
+<code class="sig-name descname">reserve</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.utils.carray.BaseArray.reserve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resizes the internal data to required size.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.utils.carray.BaseArray.reset">
+<code class="sig-name descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.utils.carray.BaseArray.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset the length of the array to 0.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.utils.carray.BaseArray.resize">
+<code class="sig-name descname">resize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.utils.carray.BaseArray.resize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resizes the internal data to required size.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.utils.carray.BaseArray.shrink">
+<code class="sig-name descname">shrink</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.utils.carray.BaseArray.shrink" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset the length of the array to length size.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.utils.carray.BaseArray.squeeze">
+<code class="sig-name descname">squeeze</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.utils.carray.BaseArray.squeeze" title="Permalink to this definition">¶</a></dt>
+<dd><p>Release any unused memory.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="phd.utils.carray.BaseArrayIter">
+<em class="property">class </em><code class="sig-prename descclassname">phd.utils.carray.</code><code class="sig-name descname">BaseArrayIter</code><a class="headerlink" href="#phd.utils.carray.BaseArrayIter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Iteration object to support iteration over BaseArray.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="phd.utils.carray.DoubleArray">
+<em class="property">class </em><code class="sig-prename descclassname">phd.utils.carray.</code><code class="sig-name descname">DoubleArray</code><a class="headerlink" href="#phd.utils.carray.DoubleArray" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#id0" title="phd.utils.carray.BaseArray"><code class="xref py py-class docutils literal notranslate"><span class="pre">phd.utils.carray.BaseArray</span></code></a></p>
+<p>Represents an array of 64 bit floats.</p>
+<dl class="py method">
+<dt id="phd.utils.carray.DoubleArray.add_values">
+<code class="sig-name descname">add_values</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.utils.carray.DoubleArray.add_values" title="Permalink to this definition">¶</a></dt>
+<dd><p>Copy values from self to dest, stored at indices. Note
+indices has to be a subset of dest indices.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.utils.carray.DoubleArray.align_array">
+<code class="sig-name descname">align_array</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.utils.carray.DoubleArray.align_array" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rearrange the array contents according to the new indices.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.utils.carray.DoubleArray.append">
+<code class="sig-name descname">append</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.utils.carray.DoubleArray.append" title="Permalink to this definition">¶</a></dt>
+<dd><p>Appends value to the end of the array.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.utils.carray.DoubleArray.copy_values">
+<code class="sig-name descname">copy_values</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.utils.carray.DoubleArray.copy_values" title="Permalink to this definition">¶</a></dt>
+<dd><p>Copies values of indices in indices from self to dest.</p>
+<p>no size check if performed, we assume the dest to of proper size
+i.e. atleast as long as indices. Note self has to be the same
+size of indices.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.utils.carray.DoubleArray.extend">
+<code class="sig-name descname">extend</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.utils.carray.DoubleArray.extend" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extend the array with data from in_array.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>in_array</strong> (<em>ndarray</em>) – Array with data to be added to the current array.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.utils.carray.DoubleArray.get">
+<code class="sig-name descname">get</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.utils.carray.DoubleArray.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get item at position pid.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.utils.carray.DoubleArray.get_c_type">
+<code class="sig-name descname">get_c_type</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.utils.carray.DoubleArray.get_c_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the c data type for this array.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="phd.utils.carray.DoubleArray.maximum">
+<code class="sig-name descname">maximum</code><a class="headerlink" href="#phd.utils.carray.DoubleArray.maximum" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="phd.utils.carray.DoubleArray.minimum">
+<code class="sig-name descname">minimum</code><a class="headerlink" href="#phd.utils.carray.DoubleArray.minimum" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="phd.utils.carray.DoubleArray.paste_values">
+<code class="sig-name descname">paste_values</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.utils.carray.DoubleArray.paste_values" title="Permalink to this definition">¶</a></dt>
+<dd><p>Copy values from self to dest, stored at indices. Note
+indices has to be a subset of dest indices.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.utils.carray.DoubleArray.remove">
+<code class="sig-name descname">remove</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.utils.carray.DoubleArray.remove" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove the particles with indices in index_list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>index_list</strong> (<em>np.ndarray</em>) – Indices which should be removed.</p></li>
+<li><p><strong>input_sorted</strong> (<em>bint</em>) – Indicates if the input is sorted in ascending order. If not
+the array will be sorted internally.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.utils.carray.DoubleArray.reserve">
+<code class="sig-name descname">reserve</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.utils.carray.DoubleArray.reserve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resizes the internal data to size*sizeof(np.float64_t) bytes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.utils.carray.DoubleArray.resize">
+<code class="sig-name descname">resize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.utils.carray.DoubleArray.resize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resizes internal data to size*sizeof(np.float64_t) bytes
+and sets the length to the new size.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.utils.carray.DoubleArray.set">
+<code class="sig-name descname">set</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.utils.carray.DoubleArray.set" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set location pid to value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.utils.carray.DoubleArray.squeeze">
+<code class="sig-name descname">squeeze</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.utils.carray.DoubleArray.squeeze" title="Permalink to this definition">¶</a></dt>
+<dd><p>Release any unused memory.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="phd.utils.carray.IntArray">
+<em class="property">class </em><code class="sig-prename descclassname">phd.utils.carray.</code><code class="sig-name descname">IntArray</code><a class="headerlink" href="#phd.utils.carray.IntArray" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#id0" title="phd.utils.carray.BaseArray"><code class="xref py py-class docutils literal notranslate"><span class="pre">phd.utils.carray.BaseArray</span></code></a></p>
+<p>Represents an array of 8 bit integers.</p>
+<dl class="py method">
+<dt id="phd.utils.carray.IntArray.add_values">
+<code class="sig-name descname">add_values</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.utils.carray.IntArray.add_values" title="Permalink to this definition">¶</a></dt>
+<dd><p>Copy values from self to dest, stored at indices. Note
+indices has to be a subset of dest indices.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.utils.carray.IntArray.align_array">
+<code class="sig-name descname">align_array</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.utils.carray.IntArray.align_array" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rearrange the array contents according to the new indices.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.utils.carray.IntArray.append">
+<code class="sig-name descname">append</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.utils.carray.IntArray.append" title="Permalink to this definition">¶</a></dt>
+<dd><p>Appends value to the end of the array.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.utils.carray.IntArray.copy_values">
+<code class="sig-name descname">copy_values</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.utils.carray.IntArray.copy_values" title="Permalink to this definition">¶</a></dt>
+<dd><p>Copies values of indices in indices from self to dest.</p>
+<p>no size check if performed, we assume the dest to of proper size
+i.e. atleast as long as indices. Note self has to be the same
+size of indices.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.utils.carray.IntArray.extend">
+<code class="sig-name descname">extend</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.utils.carray.IntArray.extend" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extend the array with data from in_array.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>in_array</strong> (<em>ndarray</em>) – Array with data to be added to the current array.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.utils.carray.IntArray.get">
+<code class="sig-name descname">get</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.utils.carray.IntArray.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get item at position pid.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.utils.carray.IntArray.get_c_type">
+<code class="sig-name descname">get_c_type</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.utils.carray.IntArray.get_c_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the c data type for this array.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="phd.utils.carray.IntArray.maximum">
+<code class="sig-name descname">maximum</code><a class="headerlink" href="#phd.utils.carray.IntArray.maximum" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="phd.utils.carray.IntArray.minimum">
+<code class="sig-name descname">minimum</code><a class="headerlink" href="#phd.utils.carray.IntArray.minimum" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="phd.utils.carray.IntArray.paste_values">
+<code class="sig-name descname">paste_values</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.utils.carray.IntArray.paste_values" title="Permalink to this definition">¶</a></dt>
+<dd><p>Copy values from self to dest, stored at indices. Note
+indices has to be a subset of dest indices.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.utils.carray.IntArray.remove">
+<code class="sig-name descname">remove</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.utils.carray.IntArray.remove" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove the particles with indices in index_list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>index_list</strong> (<em>np.ndarray</em>) – Indices which should be removed.</p></li>
+<li><p><strong>input</strong> (<em>bint</em>) – Indicates if the input is sorted in ascending order. If not
+the array will be sorted internally.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.utils.carray.IntArray.reserve">
+<code class="sig-name descname">reserve</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.utils.carray.IntArray.reserve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resizes the internal data to size*sizeof(np.int8_t) bytes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.utils.carray.IntArray.resize">
+<code class="sig-name descname">resize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.utils.carray.IntArray.resize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resizes internal data to size*sizeof(np.int8_t) bytes
+and sets the length to the new size.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.utils.carray.IntArray.set">
+<code class="sig-name descname">set</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.utils.carray.IntArray.set" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set location pid to value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.utils.carray.IntArray.squeeze">
+<code class="sig-name descname">squeeze</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.utils.carray.IntArray.squeeze" title="Permalink to this definition">¶</a></dt>
+<dd><p>Release any unused memory.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="phd.utils.carray.LongArray">
+<em class="property">class </em><code class="sig-prename descclassname">phd.utils.carray.</code><code class="sig-name descname">LongArray</code><a class="headerlink" href="#phd.utils.carray.LongArray" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#id0" title="phd.utils.carray.BaseArray"><code class="xref py py-class docutils literal notranslate"><span class="pre">phd.utils.carray.BaseArray</span></code></a></p>
+<p>Represents an array of np.int32_t.</p>
+<dl class="py method">
+<dt id="phd.utils.carray.LongArray.add_values">
+<code class="sig-name descname">add_values</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.utils.carray.LongArray.add_values" title="Permalink to this definition">¶</a></dt>
+<dd><p>Copy values from self to dest, stored at indices. Note
+indices has to be a subset of dest indices.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.utils.carray.LongArray.align_array">
+<code class="sig-name descname">align_array</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.utils.carray.LongArray.align_array" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rearrange the array contents according to the new indices.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.utils.carray.LongArray.append">
+<code class="sig-name descname">append</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.utils.carray.LongArray.append" title="Permalink to this definition">¶</a></dt>
+<dd><p>Appends value to the end of the array.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.utils.carray.LongArray.copy_values">
+<code class="sig-name descname">copy_values</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.utils.carray.LongArray.copy_values" title="Permalink to this definition">¶</a></dt>
+<dd><p>Copies values of indices in indices from self to dest.</p>
+<p>no size check if performed, we assume the dest to of proper size
+i.e. atleast as long as indices. Note self has to be the same
+size of indices.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.utils.carray.LongArray.extend">
+<code class="sig-name descname">extend</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.utils.carray.LongArray.extend" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extend the array with data from in_array.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>in_array</strong> (<em>ndarray</em>) – Array with data to be added to the current array.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.utils.carray.LongArray.get">
+<code class="sig-name descname">get</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.utils.carray.LongArray.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get item at position pid.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.utils.carray.LongArray.get_c_type">
+<code class="sig-name descname">get_c_type</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.utils.carray.LongArray.get_c_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the c data type for this array.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="phd.utils.carray.LongArray.maximum">
+<code class="sig-name descname">maximum</code><a class="headerlink" href="#phd.utils.carray.LongArray.maximum" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="phd.utils.carray.LongArray.minimum">
+<code class="sig-name descname">minimum</code><a class="headerlink" href="#phd.utils.carray.LongArray.minimum" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="phd.utils.carray.LongArray.paste_values">
+<code class="sig-name descname">paste_values</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.utils.carray.LongArray.paste_values" title="Permalink to this definition">¶</a></dt>
+<dd><p>Copy values from self to dest, stored at indices. Note
+indices has to be a subset of dest indices.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.utils.carray.LongArray.remove">
+<code class="sig-name descname">remove</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.utils.carray.LongArray.remove" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove the particles with indices in index_list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>index_list</strong> (<em>np.ndarray</em>) – Indices which should be removed.</p></li>
+<li><p><strong>input_sorted</strong> (<em>bint</em>) – Indicates if the input is sorted in ascending order. If not
+the array will be sorted internally.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.utils.carray.LongArray.reserve">
+<code class="sig-name descname">reserve</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.utils.carray.LongArray.reserve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resizes the internal data to size*sizeof(np.float32_t) bytes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.utils.carray.LongArray.resize">
+<code class="sig-name descname">resize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.utils.carray.LongArray.resize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resizes internal data to size*sizeof(np.int32_t) bytes
+and sets the length to the new size.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.utils.carray.LongArray.set">
+<code class="sig-name descname">set</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.utils.carray.LongArray.set" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set location pid to value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.utils.carray.LongArray.squeeze">
+<code class="sig-name descname">squeeze</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.utils.carray.LongArray.squeeze" title="Permalink to this definition">¶</a></dt>
+<dd><p>Release any unused memory.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="phd.utils.carray.LongLongArray">
+<em class="property">class </em><code class="sig-prename descclassname">phd.utils.carray.</code><code class="sig-name descname">LongLongArray</code><a class="headerlink" href="#phd.utils.carray.LongLongArray" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#id0" title="phd.utils.carray.BaseArray"><code class="xref py py-class docutils literal notranslate"><span class="pre">phd.utils.carray.BaseArray</span></code></a></p>
+<p>Represents an array of np.int64_t.</p>
+<dl class="py method">
+<dt id="phd.utils.carray.LongLongArray.add_values">
+<code class="sig-name descname">add_values</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.utils.carray.LongLongArray.add_values" title="Permalink to this definition">¶</a></dt>
+<dd><p>Copy values from self to dest, stored at indices. Note
+indices has to be a subset of dest indices.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.utils.carray.LongLongArray.align_array">
+<code class="sig-name descname">align_array</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.utils.carray.LongLongArray.align_array" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rearrange the array contents according to the new indices.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.utils.carray.LongLongArray.append">
+<code class="sig-name descname">append</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.utils.carray.LongLongArray.append" title="Permalink to this definition">¶</a></dt>
+<dd><p>Appends value to the end of the array.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.utils.carray.LongLongArray.copy_values">
+<code class="sig-name descname">copy_values</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.utils.carray.LongLongArray.copy_values" title="Permalink to this definition">¶</a></dt>
+<dd><p>Copies values of indices in indices from self to dest.</p>
+<p>no size check if performed, we assume the dest to of proper size
+i.e. atleast as long as indices. Note self has to be the same
+size of indices.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.utils.carray.LongLongArray.extend">
+<code class="sig-name descname">extend</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.utils.carray.LongLongArray.extend" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extend the array with data from in_array.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>in_array</strong> (<em>ndarray</em>) – Array with data to be added to the current array.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.utils.carray.LongLongArray.get">
+<code class="sig-name descname">get</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.utils.carray.LongLongArray.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get item at position pid.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.utils.carray.LongLongArray.get_c_type">
+<code class="sig-name descname">get_c_type</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.utils.carray.LongLongArray.get_c_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the c data type for this array.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="phd.utils.carray.LongLongArray.maximum">
+<code class="sig-name descname">maximum</code><a class="headerlink" href="#phd.utils.carray.LongLongArray.maximum" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="phd.utils.carray.LongLongArray.minimum">
+<code class="sig-name descname">minimum</code><a class="headerlink" href="#phd.utils.carray.LongLongArray.minimum" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="phd.utils.carray.LongLongArray.paste_values">
+<code class="sig-name descname">paste_values</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.utils.carray.LongLongArray.paste_values" title="Permalink to this definition">¶</a></dt>
+<dd><p>Copy values from self to dest, stored at indices. Note
+indices has to be a subset of dest indices.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.utils.carray.LongLongArray.remove">
+<code class="sig-name descname">remove</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.utils.carray.LongLongArray.remove" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove the particles with indices in index_list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>index_list</strong> (<em>np.ndarray</em>) – Indices which should be removed.</p></li>
+<li><p><strong>input_sorted</strong> (<em>bint</em>) – Indicates if the input is sorted in ascending order. If not
+the array will be sorted internally.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.utils.carray.LongLongArray.reserve">
+<code class="sig-name descname">reserve</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.utils.carray.LongLongArray.reserve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resizes the internal data to size*sizeof(np.float64_t) bytes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.utils.carray.LongLongArray.resize">
+<code class="sig-name descname">resize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.utils.carray.LongLongArray.resize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resizes internal data to size*sizeof(np.int64_t) bytes
+and sets the length to the new size.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.utils.carray.LongLongArray.set">
+<code class="sig-name descname">set</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.utils.carray.LongLongArray.set" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set location pid to value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.utils.carray.LongLongArray.squeeze">
+<code class="sig-name descname">squeeze</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.utils.carray.LongLongArray.squeeze" title="Permalink to this definition">¶</a></dt>
+<dd><p>Release any unused memory.</p>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 <div class="section" id="id1">
 <h2>phd.utils.carray module<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="module-0"></span></div>
+<span class="target" id="module-0"></span><dl class="py class">
+<dt id="id0">
+<em class="property">class </em><code class="sig-prename descclassname">phd.utils.carray.</code><code class="sig-name descname">BaseArray</code><a class="headerlink" href="#id0" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Base class for managed C-arrays.</p>
+<dl class="py method">
+<dt id="id2">
+<code class="sig-name descname">add_values</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id2" title="Permalink to this definition">¶</a></dt>
+<dd><p>“Copy values of particles from self to dest at indices.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id3">
+<code class="sig-name descname">align_array</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id3" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rearrange the array contents according to the new indices.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="id4">
+<code class="sig-name descname">alloc</code><a class="headerlink" href="#id4" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="id5">
+<code class="sig-name descname">copy_values</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id5" title="Permalink to this definition">¶</a></dt>
+<dd><p>“Copy values of indexed particles from self to dest.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id6">
+<code class="sig-name descname">extend</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id6" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extend the array with data from in_array.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id7">
+<code class="sig-name descname">get_c_type</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id7" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the c data type of this array.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id8">
+<code class="sig-name descname">get_npy_array</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id8" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a numpy array of the data: do not keep its reference.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="id9">
+<code class="sig-name descname">length</code><a class="headerlink" href="#id9" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="id10">
+<code class="sig-name descname">paste_values</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id10" title="Permalink to this definition">¶</a></dt>
+<dd><p>“Copy values of particles from self to dest at indices.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id11">
+<code class="sig-name descname">remove</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id11" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove the particles with indices in index_list.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id12">
+<code class="sig-name descname">reserve</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id12" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resizes the internal data to required size.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id13">
+<code class="sig-name descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id13" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset the length of the array to 0.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id14">
+<code class="sig-name descname">resize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id14" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resizes the internal data to required size.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id15">
+<code class="sig-name descname">shrink</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id15" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset the length of the array to length size.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id16">
+<code class="sig-name descname">squeeze</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id16" title="Permalink to this definition">¶</a></dt>
+<dd><p>Release any unused memory.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="id17">
+<em class="property">class </em><code class="sig-prename descclassname">phd.utils.carray.</code><code class="sig-name descname">BaseArrayIter</code><a class="headerlink" href="#id17" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Iteration object to support iteration over BaseArray.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="id18">
+<em class="property">class </em><code class="sig-prename descclassname">phd.utils.carray.</code><code class="sig-name descname">DoubleArray</code><a class="headerlink" href="#id18" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#id0" title="phd.utils.carray.BaseArray"><code class="xref py py-class docutils literal notranslate"><span class="pre">phd.utils.carray.BaseArray</span></code></a></p>
+<p>Represents an array of 64 bit floats.</p>
+<dl class="py method">
+<dt id="id19">
+<code class="sig-name descname">add_values</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id19" title="Permalink to this definition">¶</a></dt>
+<dd><p>Copy values from self to dest, stored at indices. Note
+indices has to be a subset of dest indices.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id20">
+<code class="sig-name descname">align_array</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id20" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rearrange the array contents according to the new indices.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id21">
+<code class="sig-name descname">append</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id21" title="Permalink to this definition">¶</a></dt>
+<dd><p>Appends value to the end of the array.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id22">
+<code class="sig-name descname">copy_values</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id22" title="Permalink to this definition">¶</a></dt>
+<dd><p>Copies values of indices in indices from self to dest.</p>
+<p>no size check if performed, we assume the dest to of proper size
+i.e. atleast as long as indices. Note self has to be the same
+size of indices.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id23">
+<code class="sig-name descname">extend</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id23" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extend the array with data from in_array.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>in_array</strong> (<em>ndarray</em>) – Array with data to be added to the current array.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id24">
+<code class="sig-name descname">get</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id24" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get item at position pid.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id25">
+<code class="sig-name descname">get_c_type</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id25" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the c data type for this array.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="id26">
+<code class="sig-name descname">maximum</code><a class="headerlink" href="#id26" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="id27">
+<code class="sig-name descname">minimum</code><a class="headerlink" href="#id27" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="id28">
+<code class="sig-name descname">paste_values</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id28" title="Permalink to this definition">¶</a></dt>
+<dd><p>Copy values from self to dest, stored at indices. Note
+indices has to be a subset of dest indices.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id29">
+<code class="sig-name descname">remove</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id29" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove the particles with indices in index_list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>index_list</strong> (<em>np.ndarray</em>) – Indices which should be removed.</p></li>
+<li><p><strong>input_sorted</strong> (<em>bint</em>) – Indicates if the input is sorted in ascending order. If not
+the array will be sorted internally.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id30">
+<code class="sig-name descname">reserve</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id30" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resizes the internal data to size*sizeof(np.float64_t) bytes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id31">
+<code class="sig-name descname">resize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id31" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resizes internal data to size*sizeof(np.float64_t) bytes
+and sets the length to the new size.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id32">
+<code class="sig-name descname">set</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id32" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set location pid to value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id33">
+<code class="sig-name descname">squeeze</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id33" title="Permalink to this definition">¶</a></dt>
+<dd><p>Release any unused memory.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="id34">
+<em class="property">class </em><code class="sig-prename descclassname">phd.utils.carray.</code><code class="sig-name descname">IntArray</code><a class="headerlink" href="#id34" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#id0" title="phd.utils.carray.BaseArray"><code class="xref py py-class docutils literal notranslate"><span class="pre">phd.utils.carray.BaseArray</span></code></a></p>
+<p>Represents an array of 8 bit integers.</p>
+<dl class="py method">
+<dt id="id35">
+<code class="sig-name descname">add_values</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id35" title="Permalink to this definition">¶</a></dt>
+<dd><p>Copy values from self to dest, stored at indices. Note
+indices has to be a subset of dest indices.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id36">
+<code class="sig-name descname">align_array</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id36" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rearrange the array contents according to the new indices.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id37">
+<code class="sig-name descname">append</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id37" title="Permalink to this definition">¶</a></dt>
+<dd><p>Appends value to the end of the array.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id38">
+<code class="sig-name descname">copy_values</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id38" title="Permalink to this definition">¶</a></dt>
+<dd><p>Copies values of indices in indices from self to dest.</p>
+<p>no size check if performed, we assume the dest to of proper size
+i.e. atleast as long as indices. Note self has to be the same
+size of indices.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id39">
+<code class="sig-name descname">extend</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id39" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extend the array with data from in_array.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>in_array</strong> (<em>ndarray</em>) – Array with data to be added to the current array.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id40">
+<code class="sig-name descname">get</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id40" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get item at position pid.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id41">
+<code class="sig-name descname">get_c_type</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id41" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the c data type for this array.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="id42">
+<code class="sig-name descname">maximum</code><a class="headerlink" href="#id42" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="id43">
+<code class="sig-name descname">minimum</code><a class="headerlink" href="#id43" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="id44">
+<code class="sig-name descname">paste_values</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id44" title="Permalink to this definition">¶</a></dt>
+<dd><p>Copy values from self to dest, stored at indices. Note
+indices has to be a subset of dest indices.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id45">
+<code class="sig-name descname">remove</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id45" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove the particles with indices in index_list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>index_list</strong> (<em>np.ndarray</em>) – Indices which should be removed.</p></li>
+<li><p><strong>input</strong> (<em>bint</em>) – Indicates if the input is sorted in ascending order. If not
+the array will be sorted internally.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id46">
+<code class="sig-name descname">reserve</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id46" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resizes the internal data to size*sizeof(np.int8_t) bytes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id47">
+<code class="sig-name descname">resize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id47" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resizes internal data to size*sizeof(np.int8_t) bytes
+and sets the length to the new size.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id48">
+<code class="sig-name descname">set</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id48" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set location pid to value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id49">
+<code class="sig-name descname">squeeze</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id49" title="Permalink to this definition">¶</a></dt>
+<dd><p>Release any unused memory.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="id50">
+<em class="property">class </em><code class="sig-prename descclassname">phd.utils.carray.</code><code class="sig-name descname">LongArray</code><a class="headerlink" href="#id50" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#id0" title="phd.utils.carray.BaseArray"><code class="xref py py-class docutils literal notranslate"><span class="pre">phd.utils.carray.BaseArray</span></code></a></p>
+<p>Represents an array of np.int32_t.</p>
+<dl class="py method">
+<dt id="id51">
+<code class="sig-name descname">add_values</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id51" title="Permalink to this definition">¶</a></dt>
+<dd><p>Copy values from self to dest, stored at indices. Note
+indices has to be a subset of dest indices.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id52">
+<code class="sig-name descname">align_array</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id52" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rearrange the array contents according to the new indices.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id53">
+<code class="sig-name descname">append</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id53" title="Permalink to this definition">¶</a></dt>
+<dd><p>Appends value to the end of the array.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id54">
+<code class="sig-name descname">copy_values</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id54" title="Permalink to this definition">¶</a></dt>
+<dd><p>Copies values of indices in indices from self to dest.</p>
+<p>no size check if performed, we assume the dest to of proper size
+i.e. atleast as long as indices. Note self has to be the same
+size of indices.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id55">
+<code class="sig-name descname">extend</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id55" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extend the array with data from in_array.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>in_array</strong> (<em>ndarray</em>) – Array with data to be added to the current array.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id56">
+<code class="sig-name descname">get</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id56" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get item at position pid.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id57">
+<code class="sig-name descname">get_c_type</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id57" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the c data type for this array.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="id58">
+<code class="sig-name descname">maximum</code><a class="headerlink" href="#id58" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="id59">
+<code class="sig-name descname">minimum</code><a class="headerlink" href="#id59" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="id60">
+<code class="sig-name descname">paste_values</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id60" title="Permalink to this definition">¶</a></dt>
+<dd><p>Copy values from self to dest, stored at indices. Note
+indices has to be a subset of dest indices.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id61">
+<code class="sig-name descname">remove</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id61" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove the particles with indices in index_list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>index_list</strong> (<em>np.ndarray</em>) – Indices which should be removed.</p></li>
+<li><p><strong>input_sorted</strong> (<em>bint</em>) – Indicates if the input is sorted in ascending order. If not
+the array will be sorted internally.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id62">
+<code class="sig-name descname">reserve</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id62" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resizes the internal data to size*sizeof(np.float32_t) bytes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id63">
+<code class="sig-name descname">resize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id63" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resizes internal data to size*sizeof(np.int32_t) bytes
+and sets the length to the new size.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id64">
+<code class="sig-name descname">set</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id64" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set location pid to value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id65">
+<code class="sig-name descname">squeeze</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id65" title="Permalink to this definition">¶</a></dt>
+<dd><p>Release any unused memory.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="id66">
+<em class="property">class </em><code class="sig-prename descclassname">phd.utils.carray.</code><code class="sig-name descname">LongLongArray</code><a class="headerlink" href="#id66" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#id0" title="phd.utils.carray.BaseArray"><code class="xref py py-class docutils literal notranslate"><span class="pre">phd.utils.carray.BaseArray</span></code></a></p>
+<p>Represents an array of np.int64_t.</p>
+<dl class="py method">
+<dt id="id67">
+<code class="sig-name descname">add_values</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id67" title="Permalink to this definition">¶</a></dt>
+<dd><p>Copy values from self to dest, stored at indices. Note
+indices has to be a subset of dest indices.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id68">
+<code class="sig-name descname">align_array</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id68" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rearrange the array contents according to the new indices.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id69">
+<code class="sig-name descname">append</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id69" title="Permalink to this definition">¶</a></dt>
+<dd><p>Appends value to the end of the array.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id70">
+<code class="sig-name descname">copy_values</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id70" title="Permalink to this definition">¶</a></dt>
+<dd><p>Copies values of indices in indices from self to dest.</p>
+<p>no size check if performed, we assume the dest to of proper size
+i.e. atleast as long as indices. Note self has to be the same
+size of indices.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id71">
+<code class="sig-name descname">extend</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id71" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extend the array with data from in_array.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>in_array</strong> (<em>ndarray</em>) – Array with data to be added to the current array.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id72">
+<code class="sig-name descname">get</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id72" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get item at position pid.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id73">
+<code class="sig-name descname">get_c_type</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id73" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the c data type for this array.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="id74">
+<code class="sig-name descname">maximum</code><a class="headerlink" href="#id74" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="id75">
+<code class="sig-name descname">minimum</code><a class="headerlink" href="#id75" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="id76">
+<code class="sig-name descname">paste_values</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id76" title="Permalink to this definition">¶</a></dt>
+<dd><p>Copy values from self to dest, stored at indices. Note
+indices has to be a subset of dest indices.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id77">
+<code class="sig-name descname">remove</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id77" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove the particles with indices in index_list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>index_list</strong> (<em>np.ndarray</em>) – Indices which should be removed.</p></li>
+<li><p><strong>input_sorted</strong> (<em>bint</em>) – Indicates if the input is sorted in ascending order. If not
+the array will be sorted internally.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id78">
+<code class="sig-name descname">reserve</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id78" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resizes the internal data to size*sizeof(np.float64_t) bytes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id79">
+<code class="sig-name descname">resize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id79" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resizes internal data to size*sizeof(np.int64_t) bytes
+and sets the length to the new size.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id80">
+<code class="sig-name descname">set</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id80" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set location pid to value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id81">
+<code class="sig-name descname">squeeze</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id81" title="Permalink to this definition">¶</a></dt>
+<dd><p>Release any unused memory.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
 <div class="section" id="module-phd.utils.exchange_particles">
 <span id="phd-utils-exchange-particles-module"></span><h2>phd.utils.exchange_particles module<a class="headerlink" href="#module-phd.utils.exchange_particles" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="phd.utils.exchange_particles.exchange_particles">
+<code class="sig-prename descclassname">phd.utils.exchange_particles.</code><code class="sig-name descname">exchange_particles</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">particles</span></em>, <em class="sig-param"><span class="n">send_data</span></em>, <em class="sig-param"><span class="n">send_particles</span></em>, <em class="sig-param"><span class="n">recv_particles</span></em>, <em class="sig-param"><span class="n">disp</span></em>, <em class="sig-param"><span class="n">comm</span></em>, <em class="sig-param"><span class="n">fields</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">offset_se</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">offset_re</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.utils.exchange_particles.exchange_particles" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exchange particles between processes. Note you have allocate the appropriate space for
+incoming particles in the particle container.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>particles</strong> (<em>object</em>) – particle container</p></li>
+<li><p><strong>send_data</strong> (<em>ParticleArray</em>) – particle carrays to send</p></li>
+<li><p><strong>send_particles</strong> (<em>ndarray</em>) – number particles to send to each process</p></li>
+<li><p><strong>recv_particles</strong> (<em>ndarray</em>) – number particles to receive from each process</p></li>
+<li><p><strong>disp</strong> (<em>int</em>) – starting index position for incoming particles</p></li>
+<li><p><strong>comm</strong> (<em>object</em>) – mpi controller</p></li>
+<li><p><strong>fields</strong> (<em>list</em>) – List of fields to export</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
 </div>
 <div class="section" id="module-phd.utils.logger">
 <span id="phd-utils-logger-module"></span><h2>phd.utils.logger module<a class="headerlink" href="#module-phd.utils.logger" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="phd.utils.logger.add_coloring_to_emit_ansi">
+<code class="sig-prename descclassname">phd.utils.logger.</code><code class="sig-name descname">add_coloring_to_emit_ansi</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fn</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.utils.logger.add_coloring_to_emit_ansi" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </div>
 <div class="section" id="module-phd.utils.logo">
 <span id="phd-utils-logo-module"></span><h2>phd.utils.logo module<a class="headerlink" href="#module-phd.utils.logo" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="module-phd.utils.parallelize">
 <span id="phd-utils-parallelize-module"></span><h2>phd.utils.parallelize module<a class="headerlink" href="#module-phd.utils.parallelize" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="phd.utils.parallelize.distribute_initial_particles">
+<code class="sig-prename descclassname">phd.utils.parallelize.</code><code class="sig-name descname">distribute_initial_particles</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">create_particles</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.utils.parallelize.distribute_initial_particles" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </div>
 <div class="section" id="module-phd.utils.particle_creator">
 <span id="phd-utils-particle-creator-module"></span><h2>phd.utils.particle_creator module<a class="headerlink" href="#module-phd.utils.particle_creator" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="phd.utils.particle_creator.HydroParticleCreator">
+<code class="sig-prename descclassname">phd.utils.particle_creator.</code><code class="sig-name descname">HydroParticleCreator</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.utils.particle_creator.HydroParticleCreator" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </div>
-<div class="section" id="id2">
-<h2>phd.utils.particle_creator module<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="module-1"></span></div>
+<div class="section" id="id82">
+<h2>phd.utils.particle_creator module<a class="headerlink" href="#id82" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="module-1"></span><dl class="py function">
+<dt id="id83">
+<code class="sig-prename descclassname">phd.utils.particle_creator.</code><code class="sig-name descname">HydroParticleCreator</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id83" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
 <div class="section" id="module-phd.utils.particle_tags">
 <span id="phd-utils-particle-tags-module"></span><h2>phd.utils.particle_tags module<a class="headerlink" href="#module-phd.utils.particle_tags" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="phd.utils.particle_tags.ParticleTAGS">
+<em class="property">class </em><code class="sig-prename descclassname">phd.utils.particle_tags.</code><code class="sig-name descname">ParticleTAGS</code><a class="headerlink" href="#phd.utils.particle_tags.ParticleTAGS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt id="phd.utils.particle_tags.ParticleTAGS.Exterior">
+<code class="sig-name descname">Exterior</code><em class="property"> = 2</em><a class="headerlink" href="#phd.utils.particle_tags.ParticleTAGS.Exterior" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="phd.utils.particle_tags.ParticleTAGS.Ghost">
+<code class="sig-name descname">Ghost</code><em class="property"> = 1</em><a class="headerlink" href="#phd.utils.particle_tags.ParticleTAGS.Ghost" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="phd.utils.particle_tags.ParticleTAGS.Interior">
+<code class="sig-name descname">Interior</code><em class="property"> = 3</em><a class="headerlink" href="#phd.utils.particle_tags.ParticleTAGS.Interior" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="phd.utils.particle_tags.ParticleTAGS.Real">
+<code class="sig-name descname">Real</code><em class="property"> = 0</em><a class="headerlink" href="#phd.utils.particle_tags.ParticleTAGS.Real" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="phd.utils.particle_tags.ParticleTAGS.Undefined">
+<code class="sig-name descname">Undefined</code><em class="property"> = 4</em><a class="headerlink" href="#phd.utils.particle_tags.ParticleTAGS.Undefined" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="phd.utils.particle_tags.SimulationTAGS">
+<em class="property">class </em><code class="sig-prename descclassname">phd.utils.particle_tags.</code><code class="sig-name descname">SimulationTAGS</code><a class="headerlink" href="#phd.utils.particle_tags.SimulationTAGS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt id="phd.utils.particle_tags.SimulationTAGS.AFTER_LOOP">
+<code class="sig-name descname">AFTER_LOOP</code><em class="property"> = 3</em><a class="headerlink" href="#phd.utils.particle_tags.SimulationTAGS.AFTER_LOOP" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="phd.utils.particle_tags.SimulationTAGS.BEFORE_LOOP">
+<code class="sig-name descname">BEFORE_LOOP</code><em class="property"> = 1</em><a class="headerlink" href="#phd.utils.particle_tags.SimulationTAGS.BEFORE_LOOP" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="phd.utils.particle_tags.SimulationTAGS.MAIN_LOOP">
+<code class="sig-name descname">MAIN_LOOP</code><em class="property"> = 2</em><a class="headerlink" href="#phd.utils.particle_tags.SimulationTAGS.MAIN_LOOP" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="phd.utils.particle_tags.SimulationTAGS.POST_EVOLVE">
+<code class="sig-name descname">POST_EVOLVE</code><em class="property"> = 4</em><a class="headerlink" href="#phd.utils.particle_tags.SimulationTAGS.POST_EVOLVE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="phd.utils.particle_tags.SimulationTAGS.PRE_EVOLVE">
+<code class="sig-name descname">PRE_EVOLVE</code><em class="property"> = 0</em><a class="headerlink" href="#phd.utils.particle_tags.SimulationTAGS.PRE_EVOLVE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </div>
 <div class="section" id="module-phd.utils.plot_voro">
 <span id="phd-utils-plot-voro-module"></span><h2>phd.utils.plot_voro module<a class="headerlink" href="#module-phd.utils.plot_voro" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="phd.utils.plot_voro.VoronoiMesh2D">
+<em class="property">class </em><code class="sig-prename descclassname">phd.utils.plot_voro.</code><code class="sig-name descname">VoronoiMesh2D</code><a class="headerlink" href="#phd.utils.plot_voro.VoronoiMesh2D" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p>
+<p>2d voronoi mesh class</p>
+<dl class="py method">
+<dt id="phd.utils.plot_voro.VoronoiMesh2D.tessellate">
+<code class="sig-name descname">tessellate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">y</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.utils.plot_voro.VoronoiMesh2D.tessellate" title="Permalink to this definition">¶</a></dt>
+<dd><p>create 2d voronoi tesselation from particle positions</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="phd.utils.plot_voro.vor_collection">
+<code class="sig-prename descclassname">phd.utils.plot_voro.</code><code class="sig-name descname">vor_collection</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">pc</span></em>, <em class="sig-param"><span class="n">field</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.utils.plot_voro.vor_collection" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </div>
 <div class="section" id="module-phd.utils.plummer">
 <span id="phd-utils-plummer-module"></span><h2>phd.utils.plummer module<a class="headerlink" href="#module-phd.utils.plummer" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="phd.utils.plummer.make_plummer">
+<code class="sig-prename descclassname">phd.utils.plummer.</code><code class="sig-name descname">make_plummer</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">particles</span></em>, <em class="sig-param"><span class="n">M</span><span class="o">=</span><span class="default_value">1.0</span></em>, <em class="sig-param"><span class="n">R</span><span class="o">=</span><span class="default_value">1.0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.utils.plummer.make_plummer" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="phd.utils.plummer.plummer">
+<code class="sig-prename descclassname">phd.utils.plummer.</code><code class="sig-name descname">plummer</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">r</span></em>, <em class="sig-param"><span class="n">M</span><span class="o">=</span><span class="default_value">1.0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.utils.plummer.plummer" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </div>
 <div class="section" id="module-phd.utils.run_parallel_script">
 <span id="phd-utils-run-parallel-script-module"></span><h2>phd.utils.run_parallel_script module<a class="headerlink" href="#module-phd.utils.run_parallel_script" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="phd.utils.run_parallel_script.get_directory">
+<code class="sig-prename descclassname">phd.utils.run_parallel_script.</code><code class="sig-name descname">get_directory</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">file</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.utils.run_parallel_script.get_directory" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="phd.utils.run_parallel_script.kill_process">
+<code class="sig-prename descclassname">phd.utils.run_parallel_script.</code><code class="sig-name descname">kill_process</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">process</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.utils.run_parallel_script.kill_process" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="phd.utils.run_parallel_script.run">
+<code class="sig-prename descclassname">phd.utils.run_parallel_script.</code><code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filename</span></em>, <em class="sig-param"><span class="n">args</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">nprocs</span><span class="o">=</span><span class="default_value">2</span></em>, <em class="sig-param"><span class="n">timeout</span><span class="o">=</span><span class="default_value">20.0</span></em>, <em class="sig-param"><span class="n">path</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.utils.run_parallel_script.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>run a file python script</p>
+<p>filename - filename of python script to run under mpi
+nprocs - (2) number of processes of the script to run (0 =&gt; serial non-mpi run)
+timeout - (5) time in seconds to wait for the script to finish running,</p>
+<blockquote>
+<div><p>else raise RuntimeError exception</p>
+</div></blockquote>
+<dl class="simple">
+<dt>path - the path under which the script is located</dt><dd><p>Defaults to the location of this file (__file__), not curdir</p>
+</dd>
+</dl>
+</dd></dl>
+
 </div>
 <div class="section" id="module-phd.utils.tools">
 <span id="phd-utils-tools-module"></span><h2>phd.utils.tools module<a class="headerlink" href="#module-phd.utils.tools" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="phd.utils.tools.check_class">
+<code class="sig-prename descclassname">phd.utils.tools.</code><code class="sig-name descname">check_class</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cl</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.utils.tools.check_class" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wrapper that ensurese the setter method is given the proper type.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="phd.utils.tools.class_dict">
+<code class="sig-prename descclassname">phd.utils.tools.</code><code class="sig-name descname">class_dict</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cl</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.utils.tools.class_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cycle throught each attribute of a class and store information
+in a dictionary. The key will be the class name and value if
+that class has been set.</p>
+</dd></dl>
+
 </div>
 <div class="section" id="module-phd.utils">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-phd.utils" title="Permalink to this headline">¶</a></h2>

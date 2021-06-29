@@ -140,10 +140,412 @@
 </div>
 <div class="section" id="module-phd.containers.containers">
 <span id="phd-containers-containers-module"></span><h2>phd.containers.containers module<a class="headerlink" href="#module-phd.containers.containers" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="phd.containers.containers.CarrayContainer">
+<em class="property">class </em><code class="sig-prename descclassname">phd.containers.containers.</code><code class="sig-name descname">CarrayContainer</code><a class="headerlink" href="#phd.containers.containers.CarrayContainer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Create container of carrays of each of length array_size.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>carray_size</strong> (<em>int</em>) – Size of each carray in the container.</p></li>
+<li><p><strong>carrays_to_register</strong> (<em>dict</em>) – Dictionary where the keys are the names and values are the data type of
+carrays to create in the container.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="phd.containers.containers.CarrayContainer.add">
+<code class="sig-name descname">add</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.containers.containers.CarrayContainer.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add values from container to this container at given indices. The
+input agrument should be the same size of indices.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>container</strong> (<a class="reference internal" href="#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Container where values will be taken from.</p></li>
+<li><p><strong>indices</strong> (<a class="reference internal" href="phd.utils.html#id50" title="phd.utils.carray.LongArray"><em>LongArray</em></a>) – Indices to add values to.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.containers.containers.CarrayContainer.append_container">
+<code class="sig-name descname">append_container</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.containers.containers.CarrayContainer.append_container" title="Permalink to this definition">¶</a></dt>
+<dd><p>Append a container to current container. Carrays that are
+not there in self will not be added.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>container</strong> (<em>Container</em>) – Container that will be append to self.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="phd.containers.containers.CarrayContainer.carray_dtypes">
+<code class="sig-name descname">carray_dtypes</code><a class="headerlink" href="#phd.containers.containers.CarrayContainer.carray_dtypes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="phd.containers.containers.CarrayContainer.carray_named_groups">
+<code class="sig-name descname">carray_named_groups</code><a class="headerlink" href="#phd.containers.containers.CarrayContainer.carray_named_groups" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="phd.containers.containers.CarrayContainer.carrays">
+<code class="sig-name descname">carrays</code><a class="headerlink" href="#phd.containers.containers.CarrayContainer.carrays" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="phd.containers.containers.CarrayContainer.copy">
+<code class="sig-name descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.containers.containers.CarrayContainer.copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Copy values at indices from container to this container. This is similar to
+paste except the indices are from the source container. Self will be resized
+all contents will be overwritten.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>container</strong> (<a class="reference internal" href="#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Container with values that will be copied to self.</p></li>
+<li><p><strong>indices</strong> (<a class="reference internal" href="phd.utils.html#id50" title="phd.utils.carray.LongArray"><em>LongArray</em></a>) – Indices of container to copy to self.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.containers.containers.CarrayContainer.extend">
+<code class="sig-name descname">extend</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.containers.containers.CarrayContainer.extend" title="Permalink to this definition">¶</a></dt>
+<dd><p>Increase the total number of items by requested amount.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>increase_carray_size</strong> (<em>int</em>) – Size to increase container by.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.containers.containers.CarrayContainer.extract_items">
+<code class="sig-name descname">extract_items</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.containers.containers.CarrayContainer.extract_items" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create new carray container for item indices in index_array.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>index_array</strong> (<em>np.ndarray</em>) – Indices of items to be extracted.</p></li>
+<li><p><strong>carray_list_names</strong> (<em>list</em>) – The list of carrays to extract, if None all carrays
+are extracted.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.containers.containers.CarrayContainer.get_carray">
+<code class="sig-name descname">get_carray</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.containers.containers.CarrayContainer.get_carray" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the carray from the container.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>carray_name</strong> (<em>str</em>) – Name of carray to be returned.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.containers.containers.CarrayContainer.get_carray_size">
+<code class="sig-name descname">get_carray_size</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.containers.containers.CarrayContainer.get_carray_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of items in the carray.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.containers.containers.CarrayContainer.get_sendbufs">
+<code class="sig-name descname">get_sendbufs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.containers.containers.CarrayContainer.get_sendbufs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Slice out values from indices and store it a dictionary of numpy
+arrays.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>indices</strong> (<em>np.ndarray</em>) – Indices to copy values from.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Dictionary of numpy arrays of selected data by indices.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.containers.containers.CarrayContainer.paste">
+<code class="sig-name descname">paste</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.containers.containers.CarrayContainer.paste" title="Permalink to this definition">¶</a></dt>
+<dd><p>Copy values from container to this container at given indices. The
+input agrument should be the same size of indices.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>container</strong> (<a class="reference internal" href="#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Container where values will be taken from.</p></li>
+<li><p><strong>indices</strong> (<a class="reference internal" href="phd.utils.html#id50" title="phd.utils.carray.LongArray"><em>LongArray</em></a>) – Indices to place copy values.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.containers.containers.CarrayContainer.register_carray">
+<code class="sig-name descname">register_carray</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.containers.containers.CarrayContainer.register_carray" title="Permalink to this definition">¶</a></dt>
+<dd><p>Register new carray in the container.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>carray_size</strong> (<em>int</em>) – Size of the carray.</p></li>
+<li><p><strong>carray_name</strong> (<em>str</em>) – Name of carray to be added.</p></li>
+<li><p><strong>dtype</strong> (<em>str</em>) – Data type of carray.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.containers.containers.CarrayContainer.remove_items">
+<code class="sig-name descname">remove_items</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.containers.containers.CarrayContainer.remove_items" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove items whose indices are given in index_list.</p>
+<p>We repeatedly interchange the values of the last element and values from
+the index_list and reduce the size of the array by one. This is done for
+every property and temporary arrays that is being maintained.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>index_list</strong> (<em>np.ndarray</em>) – array of indices, this array should be a LongArray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.containers.containers.CarrayContainer.remove_tagged_particles">
+<code class="sig-name descname">remove_tagged_particles</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.containers.containers.CarrayContainer.remove_tagged_particles" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove particles that have the given tag.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>tag</strong> (<em>int8</em>) – The type of particles that need to be removed.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.containers.containers.CarrayContainer.resize">
+<code class="sig-name descname">resize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.containers.containers.CarrayContainer.resize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resize all arrays to the new size.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>carray_size</strong> (<em>int</em>) – Size of the carray.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 <div class="section" id="id1">
 <h2>phd.containers.containers module<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="module-0"></span></div>
+<span class="target" id="module-0"></span><dl class="py class">
+<dt id="id0">
+<em class="property">class </em><code class="sig-prename descclassname">phd.containers.containers.</code><code class="sig-name descname">CarrayContainer</code><a class="headerlink" href="#id0" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Create container of carrays of each of length array_size.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>carray_size</strong> (<em>int</em>) – Size of each carray in the container.</p></li>
+<li><p><strong>carrays_to_register</strong> (<em>dict</em>) – Dictionary where the keys are the names and values are the data type of
+carrays to create in the container.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="id2">
+<code class="sig-name descname">add</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add values from container to this container at given indices. The
+input agrument should be the same size of indices.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>container</strong> (<a class="reference internal" href="#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Container where values will be taken from.</p></li>
+<li><p><strong>indices</strong> (<a class="reference internal" href="phd.utils.html#id50" title="phd.utils.carray.LongArray"><em>LongArray</em></a>) – Indices to add values to.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id3">
+<code class="sig-name descname">append_container</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id3" title="Permalink to this definition">¶</a></dt>
+<dd><p>Append a container to current container. Carrays that are
+not there in self will not be added.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>container</strong> (<em>Container</em>) – Container that will be append to self.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="id4">
+<code class="sig-name descname">carray_dtypes</code><a class="headerlink" href="#id4" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="id5">
+<code class="sig-name descname">carray_named_groups</code><a class="headerlink" href="#id5" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="id6">
+<code class="sig-name descname">carrays</code><a class="headerlink" href="#id6" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="id7">
+<code class="sig-name descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id7" title="Permalink to this definition">¶</a></dt>
+<dd><p>Copy values at indices from container to this container. This is similar to
+paste except the indices are from the source container. Self will be resized
+all contents will be overwritten.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>container</strong> (<a class="reference internal" href="#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Container with values that will be copied to self.</p></li>
+<li><p><strong>indices</strong> (<a class="reference internal" href="phd.utils.html#id50" title="phd.utils.carray.LongArray"><em>LongArray</em></a>) – Indices of container to copy to self.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id8">
+<code class="sig-name descname">extend</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id8" title="Permalink to this definition">¶</a></dt>
+<dd><p>Increase the total number of items by requested amount.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>increase_carray_size</strong> (<em>int</em>) – Size to increase container by.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id9">
+<code class="sig-name descname">extract_items</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id9" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create new carray container for item indices in index_array.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>index_array</strong> (<em>np.ndarray</em>) – Indices of items to be extracted.</p></li>
+<li><p><strong>carray_list_names</strong> (<em>list</em>) – The list of carrays to extract, if None all carrays
+are extracted.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id10">
+<code class="sig-name descname">get_carray</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id10" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the carray from the container.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>carray_name</strong> (<em>str</em>) – Name of carray to be returned.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id11">
+<code class="sig-name descname">get_carray_size</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id11" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of items in the carray.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id12">
+<code class="sig-name descname">get_sendbufs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id12" title="Permalink to this definition">¶</a></dt>
+<dd><p>Slice out values from indices and store it a dictionary of numpy
+arrays.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>indices</strong> (<em>np.ndarray</em>) – Indices to copy values from.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Dictionary of numpy arrays of selected data by indices.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id13">
+<code class="sig-name descname">paste</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id13" title="Permalink to this definition">¶</a></dt>
+<dd><p>Copy values from container to this container at given indices. The
+input agrument should be the same size of indices.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>container</strong> (<a class="reference internal" href="#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Container where values will be taken from.</p></li>
+<li><p><strong>indices</strong> (<a class="reference internal" href="phd.utils.html#id50" title="phd.utils.carray.LongArray"><em>LongArray</em></a>) – Indices to place copy values.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id14">
+<code class="sig-name descname">register_carray</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id14" title="Permalink to this definition">¶</a></dt>
+<dd><p>Register new carray in the container.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>carray_size</strong> (<em>int</em>) – Size of the carray.</p></li>
+<li><p><strong>carray_name</strong> (<em>str</em>) – Name of carray to be added.</p></li>
+<li><p><strong>dtype</strong> (<em>str</em>) – Data type of carray.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id15">
+<code class="sig-name descname">remove_items</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id15" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove items whose indices are given in index_list.</p>
+<p>We repeatedly interchange the values of the last element and values from
+the index_list and reduce the size of the array by one. This is done for
+every property and temporary arrays that is being maintained.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>index_list</strong> (<em>np.ndarray</em>) – array of indices, this array should be a LongArray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id16">
+<code class="sig-name descname">remove_tagged_particles</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id16" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove particles that have the given tag.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>tag</strong> (<em>int8</em>) – The type of particles that need to be removed.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id17">
+<code class="sig-name descname">resize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id17" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resize all arrays to the new size.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>carray_size</strong> (<em>int</em>) – Size of the carray.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
 <div class="section" id="module-phd.containers">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-phd.containers" title="Permalink to this headline">¶</a></h2>
 </div>

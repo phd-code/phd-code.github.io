@@ -140,10 +140,972 @@
 </div>
 <div class="section" id="module-phd.reconstruction.reconstruction">
 <span id="phd-reconstruction-reconstruction-module"></span><h2>phd.reconstruction.reconstruction module<a class="headerlink" href="#module-phd.reconstruction.reconstruction" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="phd.reconstruction.reconstruction.PieceWiseConstant">
+<em class="property">class </em><code class="sig-prename descclassname">phd.reconstruction.reconstruction.</code><code class="sig-name descname">PieceWiseConstant</code><a class="headerlink" href="#phd.reconstruction.reconstruction.PieceWiseConstant" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#id36" title="phd.reconstruction.reconstruction.ReconstructionBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">phd.reconstruction.reconstruction.ReconstructionBase</span></code></a></p>
+<p>Reconstruction of primitive variables onto each face using
+constant implementation.</p>
+<dl class="py attribute">
+<dt id="phd.reconstruction.reconstruction.PieceWiseConstant.fields_registered">
+<code class="sig-name descname">fields_registered</code><a class="headerlink" href="#phd.reconstruction.reconstruction.PieceWiseConstant.fields_registered" title="Permalink to this definition">¶</a></dt>
+<dd><p>Flag stating if reconstruction fields have been registered.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="phd.reconstruction.reconstruction.PieceWiseConstant.left_states">
+<code class="sig-name descname">left_states</code><a class="headerlink" href="#phd.reconstruction.reconstruction.PieceWiseConstant.left_states" title="Permalink to this definition">¶</a></dt>
+<dd><p>Left states primitive values for riemann problem.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer">CarrayContainer</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="phd.reconstruction.reconstruction.PieceWiseConstant.right_states">
+<code class="sig-name descname">right_states</code><a class="headerlink" href="#phd.reconstruction.reconstruction.PieceWiseConstant.right_states" title="Permalink to this definition">¶</a></dt>
+<dd><p>Left states primitive values for riemann problem.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer">CarrayContainer</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="phd.reconstruction.reconstruction.PieceWiseConstant.has_passive_scalars">
+<code class="sig-name descname">has_passive_scalars</code><a class="headerlink" href="#phd.reconstruction.reconstruction.PieceWiseConstant.has_passive_scalars" title="Permalink to this definition">¶</a></dt>
+<dd><p>Flag indicating if passive scalars are present for
+reconstruction.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="phd.reconstruction.reconstruction.PieceWiseConstant.num_passive">
+<code class="sig-name descname">num_passive</code><a class="headerlink" href="#phd.reconstruction.reconstruction.PieceWiseConstant.num_passive" title="Permalink to this definition">¶</a></dt>
+<dd><p>Number of passive scalars in particle containers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="phd.reconstruction.reconstruction.PieceWiseConstant.reconstruct_fields">
+<code class="sig-name descname">reconstruct_fields</code><a class="headerlink" href="#phd.reconstruction.reconstruction.PieceWiseConstant.reconstruct_fields" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dictionary of primitive fields where the keys are the names
+and values are the data type of carrays to create in the
+container.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="phd.reconstruction.reconstruction.PieceWiseConstant.reconstruct_field_groups">
+<code class="sig-name descname">reconstruct_field_groups</code><a class="headerlink" href="#phd.reconstruction.reconstruction.PieceWiseConstant.reconstruct_field_groups" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dictionary of collection of field names allowing for ease
+of subsetting of fields.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.reconstruction.reconstruction.PieceWiseConstant.add_fields">
+<code class="sig-name descname">add_fields</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.reconstruction.reconstruction.PieceWiseConstant.add_fields" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create lists of variables to reconstruct and setup containers
+for gradients and reconstructions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>particles</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Class that holds all information pertaining to the particles.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.reconstruction.reconstruction.PieceWiseConstant.compute_gradients">
+<code class="sig-name descname">compute_gradients</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.reconstruction.reconstruction.PieceWiseConstant.compute_gradients" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create spatial derivatives for reconstruction.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>particles</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Class that holds all information pertaining to the particles.</p></li>
+<li><p><strong>mesh</strong> (<a class="reference internal" href="phd.mesh.html#id6" title="phd.mesh.mesh.Mesh"><em>Mesh</em></a>) – Class that builds the domain mesh.</p></li>
+<li><p><strong>domain_manager</strong> (<a class="reference internal" href="phd.domain.html#id8" title="phd.domain.domain_manager.DomainManager"><em>DomainManager</em></a>) – Class that handels all things related with the domain.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.reconstruction.reconstruction.PieceWiseConstant.compute_states">
+<code class="sig-name descname">compute_states</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.reconstruction.reconstruction.PieceWiseConstant.compute_states" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform reconstruction from cell center to face center.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>particles</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Class that holds all information pertaining to the particles.</p></li>
+<li><p><strong>mesh</strong> (<a class="reference internal" href="phd.mesh.html#id6" title="phd.mesh.mesh.Mesh"><em>Mesh</em></a>) – Class that builds the domain mesh.</p></li>
+<li><p><strong>boost</strong> (<em>bool</em>) – Solve equations in moving reference frame.</p></li>
+<li><p><strong>domain_manager</strong> (<a class="reference internal" href="phd.domain.html#id8" title="phd.domain.domain_manager.DomainManager"><em>DomainManager</em></a>) – Class that handels all things related with the domain.</p></li>
+<li><p><strong>dt</strong> (<em>float</em>) – Time to extrapolate reconstructed fields to.</p></li>
+<li><p><strong>add_temporal</strong> (<em>bool</em>) – If true add time derivatives in the reconstruction.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.reconstruction.reconstruction.PieceWiseConstant.initialize">
+<code class="sig-name descname">initialize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.reconstruction.reconstruction.PieceWiseConstant.initialize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Setup all connections for computation classes. Should always
+check if fields_registered is True.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="phd.reconstruction.reconstruction.PieceWiseLinear">
+<em class="property">class </em><code class="sig-prename descclassname">phd.reconstruction.reconstruction.</code><code class="sig-name descname">PieceWiseLinear</code><a class="headerlink" href="#phd.reconstruction.reconstruction.PieceWiseLinear" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#id36" title="phd.reconstruction.reconstruction.ReconstructionBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">phd.reconstruction.reconstruction.ReconstructionBase</span></code></a></p>
+<p>Reconstruction of primitive variables onto each face using
+AREPO implementation (2009).</p>
+<dl class="py attribute">
+<dt id="phd.reconstruction.reconstruction.PieceWiseLinear.fields_registered">
+<code class="sig-name descname">fields_registered</code><a class="headerlink" href="#phd.reconstruction.reconstruction.PieceWiseLinear.fields_registered" title="Permalink to this definition">¶</a></dt>
+<dd><p>Flag stating if reconstruction fields have been registered.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="phd.reconstruction.reconstruction.PieceWiseLinear.grad">
+<code class="sig-name descname">grad</code><a class="headerlink" href="#phd.reconstruction.reconstruction.PieceWiseLinear.grad" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gradient of each primitive field.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer">CarrayContainer</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="phd.reconstruction.reconstruction.PieceWiseLinear.left_states">
+<code class="sig-name descname">left_states</code><a class="headerlink" href="#phd.reconstruction.reconstruction.PieceWiseLinear.left_states" title="Permalink to this definition">¶</a></dt>
+<dd><p>Left states primitive values for riemann problem.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer">CarrayContainer</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="phd.reconstruction.reconstruction.PieceWiseLinear.right_states">
+<code class="sig-name descname">right_states</code><a class="headerlink" href="#phd.reconstruction.reconstruction.PieceWiseLinear.right_states" title="Permalink to this definition">¶</a></dt>
+<dd><p>Left states primitive values for riemann problem.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer">CarrayContainer</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="phd.reconstruction.reconstruction.PieceWiseLinear.limiter">
+<code class="sig-name descname">limiter</code><a class="headerlink" href="#phd.reconstruction.reconstruction.PieceWiseLinear.limiter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Value of 0 is AREPOs and 1 is TESS implementation of
+limiting the gradients.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="phd.reconstruction.reconstruction.PieceWiseLinear.has_passive_scalars">
+<code class="sig-name descname">has_passive_scalars</code><a class="headerlink" href="#phd.reconstruction.reconstruction.PieceWiseLinear.has_passive_scalars" title="Permalink to this definition">¶</a></dt>
+<dd><p>Flag indicating if passive scalars are present for
+reconstruction.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="phd.reconstruction.reconstruction.PieceWiseLinear.num_passive">
+<code class="sig-name descname">num_passive</code><a class="headerlink" href="#phd.reconstruction.reconstruction.PieceWiseLinear.num_passive" title="Permalink to this definition">¶</a></dt>
+<dd><p>Number of passive scalars in particle containers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="phd.reconstruction.reconstruction.PieceWiseLinear.reconstruct_fields">
+<code class="sig-name descname">reconstruct_fields</code><a class="headerlink" href="#phd.reconstruction.reconstruction.PieceWiseLinear.reconstruct_fields" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dictionary of primitive fields where the keys are the names
+and values are the data type of carrays to create in the
+container.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="phd.reconstruction.reconstruction.PieceWiseLinear.reconstruct_field_groups">
+<code class="sig-name descname">reconstruct_field_groups</code><a class="headerlink" href="#phd.reconstruction.reconstruction.PieceWiseLinear.reconstruct_field_groups" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dictionary of collection of field names allowing for ease
+of subsetting of fields.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="phd.reconstruction.reconstruction.PieceWiseLinear.reconstruct_grads">
+<code class="sig-name descname">reconstruct_grads</code><a class="headerlink" href="#phd.reconstruction.reconstruction.PieceWiseLinear.reconstruct_grads" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dictionary of primitive gradients where the keys are the names
+and values are the data type of carrays to create in the
+container.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="phd.reconstruction.reconstruction.PieceWiseLinear.reconstruct_grad_groups">
+<code class="sig-name descname">reconstruct_grad_groups</code><a class="headerlink" href="#phd.reconstruction.reconstruction.PieceWiseLinear.reconstruct_grad_groups" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dictionary of collection of gradient names allowing for ease
+of subsetting of gradients.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.reconstruction.reconstruction.PieceWiseLinear.add_fields">
+<code class="sig-name descname">add_fields</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.reconstruction.reconstruction.PieceWiseLinear.add_fields" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create lists of variables to reconstruct and setup containers
+for gradients and reconstructions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>particles</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Class that holds all information pertaining to the particles.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.reconstruction.reconstruction.PieceWiseLinear.add_spatial">
+<code class="sig-name descname">add_spatial</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.reconstruction.reconstruction.PieceWiseLinear.add_spatial" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform reconstruction from cell center to face center.
+This follows the method outlined by Springel (2009) and all equations
+referenced are from that paper.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>particles</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Class that holds all information pertaining to the particles.</p></li>
+<li><p><strong>mesh</strong> (<a class="reference internal" href="phd.mesh.html#id6" title="phd.mesh.mesh.Mesh"><em>Mesh</em></a>) – Class that builds the domain mesh.</p></li>
+<li><p><strong>boost</strong> (<em>bool</em>) – Solve equations in moving reference frame.</p></li>
+<li><p><strong>domain_manager</strong> (<a class="reference internal" href="phd.domain.html#id8" title="phd.domain.domain_manager.DomainManager"><em>DomainManager</em></a>) – Class that handels all things related with the domain.</p></li>
+<li><p><strong>dt</strong> (<em>float</em>) – Time to extrapolate reconstructed fields to.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.reconstruction.reconstruction.PieceWiseLinear.add_temporal">
+<code class="sig-name descname">add_temporal</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.reconstruction.reconstruction.PieceWiseLinear.add_temporal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform temporal reconstruction from cell center to face center.
+This follows the method outlined by Springel (2009) and all equations
+referenced are from that paper.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>particles</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Class that holds all information pertaining to the particles.</p></li>
+<li><p><strong>mesh</strong> (<a class="reference internal" href="phd.mesh.html#id6" title="phd.mesh.mesh.Mesh"><em>Mesh</em></a>) – Class that builds the domain mesh.</p></li>
+<li><p><strong>boost</strong> (<em>bool</em>) – Solve equations in moving reference frame.</p></li>
+<li><p><strong>domain_manager</strong> (<a class="reference internal" href="phd.domain.html#id8" title="phd.domain.domain_manager.DomainManager"><em>DomainManager</em></a>) – Class that handels all things related with the domain.</p></li>
+<li><p><strong>dt</strong> (<em>float</em>) – Time to extrapolate reconstructed fields to.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.reconstruction.reconstruction.PieceWiseLinear.compute_gradients">
+<code class="sig-name descname">compute_gradients</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.reconstruction.reconstruction.PieceWiseLinear.compute_gradients" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute gradients for each primitive variable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>particles</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Class that holds all information pertaining to the particles.</p></li>
+<li><p><strong>mesh</strong> (<a class="reference internal" href="phd.mesh.html#id6" title="phd.mesh.mesh.Mesh"><em>Mesh</em></a>) – Class that builds the domain mesh.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.reconstruction.reconstruction.PieceWiseLinear.compute_states">
+<code class="sig-name descname">compute_states</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.reconstruction.reconstruction.PieceWiseLinear.compute_states" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform reconstruction from cell center to face center.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>particles</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Class that holds all information pertaining to the particles.</p></li>
+<li><p><strong>mesh</strong> (<a class="reference internal" href="phd.mesh.html#id6" title="phd.mesh.mesh.Mesh"><em>Mesh</em></a>) – Class that builds the domain mesh.</p></li>
+<li><p><strong>gamma</strong> (<em>double</em>) – Ratio of specific heats.</p></li>
+<li><p><strong>domain_manager</strong> (<a class="reference internal" href="phd.domain.html#id8" title="phd.domain.domain_manager.DomainManager"><em>DomainManager</em></a>) – Class that handels all things related with the domain.</p></li>
+<li><p><strong>dt</strong> (<em>float</em>) – Time step of the simulation.</p></li>
+<li><p><strong>boost</strong> (<em>bool</em>) – Solve equations in moving reference frame.</p></li>
+<li><p><strong>add_temporal</strong> (<em>bool</em>) – If true add time derivatives in the reconstruction.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="phd.reconstruction.reconstruction.PieceWiseLinear.gizmo_limiter">
+<code class="sig-name descname">gizmo_limiter</code><a class="headerlink" href="#phd.reconstruction.reconstruction.PieceWiseLinear.gizmo_limiter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="id0">
+<code class="sig-name descname">grad</code><a class="headerlink" href="#id0" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="phd.reconstruction.reconstruction.PieceWiseLinear.initialize">
+<code class="sig-name descname">initialize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.reconstruction.reconstruction.PieceWiseLinear.initialize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Setup initial arrays and routines for computation.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="id1">
+<code class="sig-name descname">limiter</code><a class="headerlink" href="#id1" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="phd.reconstruction.reconstruction.ReconstructionBase">
+<em class="property">class </em><code class="sig-prename descclassname">phd.reconstruction.reconstruction.</code><code class="sig-name descname">ReconstructionBase</code><a class="headerlink" href="#phd.reconstruction.reconstruction.ReconstructionBase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt id="phd.reconstruction.reconstruction.ReconstructionBase.add_fields">
+<code class="sig-name descname">add_fields</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.reconstruction.reconstruction.ReconstructionBase.add_fields" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create lists of variables to reconstruct and setup containers
+for gradients and reconstructions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>particles</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Class that holds all information pertaining to the particles.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.reconstruction.reconstruction.ReconstructionBase.add_spatial">
+<code class="sig-name descname">add_spatial</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.reconstruction.reconstruction.ReconstructionBase.add_spatial" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create spatial derivatives for reconstruction.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>particles</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Class that holds all information pertaining to the particles.</p></li>
+<li><p><strong>mesh</strong> (<a class="reference internal" href="phd.mesh.html#id6" title="phd.mesh.mesh.Mesh"><em>Mesh</em></a>) – Class that builds the domain mesh.</p></li>
+<li><p><strong>domain_manager</strong> (<a class="reference internal" href="phd.domain.html#id8" title="phd.domain.domain_manager.DomainManager"><em>DomainManager</em></a>) – Class that handels all things related with the domain.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.reconstruction.reconstruction.ReconstructionBase.add_temporal">
+<code class="sig-name descname">add_temporal</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.reconstruction.reconstruction.ReconstructionBase.add_temporal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create spatial derivatives for reconstruction.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>particles</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Class that holds all information pertaining to the particles.</p></li>
+<li><p><strong>mesh</strong> (<a class="reference internal" href="phd.mesh.html#id6" title="phd.mesh.mesh.Mesh"><em>Mesh</em></a>) – Class that builds the domain mesh.</p></li>
+<li><p><strong>domain_manager</strong> (<a class="reference internal" href="phd.domain.html#id8" title="phd.domain.domain_manager.DomainManager"><em>DomainManager</em></a>) – Class that handels all things related with the domain.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.reconstruction.reconstruction.ReconstructionBase.compute_gradients">
+<code class="sig-name descname">compute_gradients</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.reconstruction.reconstruction.ReconstructionBase.compute_gradients" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create spatial derivatives for reconstruction.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>particles</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Class that holds all information pertaining to the particles.</p></li>
+<li><p><strong>mesh</strong> (<a class="reference internal" href="phd.mesh.html#id6" title="phd.mesh.mesh.Mesh"><em>Mesh</em></a>) – Class that builds the domain mesh.</p></li>
+<li><p><strong>domain_manager</strong> (<a class="reference internal" href="phd.domain.html#id8" title="phd.domain.domain_manager.DomainManager"><em>DomainManager</em></a>) – Class that handels all things related with the domain.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.reconstruction.reconstruction.ReconstructionBase.compute_states">
+<code class="sig-name descname">compute_states</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.reconstruction.reconstruction.ReconstructionBase.compute_states" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform reconstruction from cell center to face center.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>particles</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Class that holds all information pertaining to the particles.</p></li>
+<li><p><strong>mesh</strong> (<a class="reference internal" href="phd.mesh.html#id6" title="phd.mesh.mesh.Mesh"><em>Mesh</em></a>) – Class that builds the domain mesh.</p></li>
+<li><p><strong>gamma</strong> (<em>double</em>) – Ratio of specific heats.</p></li>
+<li><p><strong>domain_manager</strong> (<a class="reference internal" href="phd.domain.html#id8" title="phd.domain.domain_manager.DomainManager"><em>DomainManager</em></a>) – Class that handels all things related with the domain.</p></li>
+<li><p><strong>dt</strong> (<em>float</em>) – Time step of the simulation.</p></li>
+<li><p><strong>boost</strong> (<em>bool</em>) – Solve equations in moving reference frame.</p></li>
+<li><p><strong>add_temporal</strong> (<em>bool</em>) – If true add time derivatives in the reconstruction.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.reconstruction.reconstruction.ReconstructionBase.initialize">
+<code class="sig-name descname">initialize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.reconstruction.reconstruction.ReconstructionBase.initialize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Setup all connections for computation classes. Should always
+check if fields_registered is True.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="phd.reconstruction.reconstruction.ReconstructionBase.left_states">
+<code class="sig-name descname">left_states</code><a class="headerlink" href="#phd.reconstruction.reconstruction.ReconstructionBase.left_states" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="phd.reconstruction.reconstruction.ReconstructionBase.right_states">
+<code class="sig-name descname">right_states</code><a class="headerlink" href="#phd.reconstruction.reconstruction.ReconstructionBase.right_states" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </div>
-<div class="section" id="id1">
-<h2>phd.reconstruction.reconstruction module<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="module-0"></span></div>
+<div class="section" id="id2">
+<h2>phd.reconstruction.reconstruction module<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="module-0"></span><dl class="py class">
+<dt id="id3">
+<em class="property">class </em><code class="sig-prename descclassname">phd.reconstruction.reconstruction.</code><code class="sig-name descname">PieceWiseConstant</code><a class="headerlink" href="#id3" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#id36" title="phd.reconstruction.reconstruction.ReconstructionBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">phd.reconstruction.reconstruction.ReconstructionBase</span></code></a></p>
+<p>Reconstruction of primitive variables onto each face using
+constant implementation.</p>
+<dl class="py attribute">
+<dt id="id4">
+<code class="sig-name descname">fields_registered</code><a class="headerlink" href="#id4" title="Permalink to this definition">¶</a></dt>
+<dd><p>Flag stating if reconstruction fields have been registered.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="id5">
+<code class="sig-name descname">left_states</code><a class="headerlink" href="#id5" title="Permalink to this definition">¶</a></dt>
+<dd><p>Left states primitive values for riemann problem.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer">CarrayContainer</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="id6">
+<code class="sig-name descname">right_states</code><a class="headerlink" href="#id6" title="Permalink to this definition">¶</a></dt>
+<dd><p>Left states primitive values for riemann problem.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer">CarrayContainer</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="id7">
+<code class="sig-name descname">has_passive_scalars</code><a class="headerlink" href="#id7" title="Permalink to this definition">¶</a></dt>
+<dd><p>Flag indicating if passive scalars are present for
+reconstruction.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="id8">
+<code class="sig-name descname">num_passive</code><a class="headerlink" href="#id8" title="Permalink to this definition">¶</a></dt>
+<dd><p>Number of passive scalars in particle containers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="id9">
+<code class="sig-name descname">reconstruct_fields</code><a class="headerlink" href="#id9" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dictionary of primitive fields where the keys are the names
+and values are the data type of carrays to create in the
+container.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="id10">
+<code class="sig-name descname">reconstruct_field_groups</code><a class="headerlink" href="#id10" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dictionary of collection of field names allowing for ease
+of subsetting of fields.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id11">
+<code class="sig-name descname">add_fields</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id11" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create lists of variables to reconstruct and setup containers
+for gradients and reconstructions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>particles</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Class that holds all information pertaining to the particles.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id12">
+<code class="sig-name descname">compute_gradients</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id12" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create spatial derivatives for reconstruction.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>particles</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Class that holds all information pertaining to the particles.</p></li>
+<li><p><strong>mesh</strong> (<a class="reference internal" href="phd.mesh.html#id6" title="phd.mesh.mesh.Mesh"><em>Mesh</em></a>) – Class that builds the domain mesh.</p></li>
+<li><p><strong>domain_manager</strong> (<a class="reference internal" href="phd.domain.html#id8" title="phd.domain.domain_manager.DomainManager"><em>DomainManager</em></a>) – Class that handels all things related with the domain.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id13">
+<code class="sig-name descname">compute_states</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id13" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform reconstruction from cell center to face center.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>particles</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Class that holds all information pertaining to the particles.</p></li>
+<li><p><strong>mesh</strong> (<a class="reference internal" href="phd.mesh.html#id6" title="phd.mesh.mesh.Mesh"><em>Mesh</em></a>) – Class that builds the domain mesh.</p></li>
+<li><p><strong>boost</strong> (<em>bool</em>) – Solve equations in moving reference frame.</p></li>
+<li><p><strong>domain_manager</strong> (<a class="reference internal" href="phd.domain.html#id8" title="phd.domain.domain_manager.DomainManager"><em>DomainManager</em></a>) – Class that handels all things related with the domain.</p></li>
+<li><p><strong>dt</strong> (<em>float</em>) – Time to extrapolate reconstructed fields to.</p></li>
+<li><p><strong>add_temporal</strong> (<em>bool</em>) – If true add time derivatives in the reconstruction.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id14">
+<code class="sig-name descname">initialize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id14" title="Permalink to this definition">¶</a></dt>
+<dd><p>Setup all connections for computation classes. Should always
+check if fields_registered is True.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="id15">
+<em class="property">class </em><code class="sig-prename descclassname">phd.reconstruction.reconstruction.</code><code class="sig-name descname">PieceWiseLinear</code><a class="headerlink" href="#id15" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#id36" title="phd.reconstruction.reconstruction.ReconstructionBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">phd.reconstruction.reconstruction.ReconstructionBase</span></code></a></p>
+<p>Reconstruction of primitive variables onto each face using
+AREPO implementation (2009).</p>
+<dl class="py attribute">
+<dt id="id16">
+<code class="sig-name descname">fields_registered</code><a class="headerlink" href="#id16" title="Permalink to this definition">¶</a></dt>
+<dd><p>Flag stating if reconstruction fields have been registered.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="id17">
+<code class="sig-name descname">grad</code><a class="headerlink" href="#id17" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gradient of each primitive field.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer">CarrayContainer</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="id18">
+<code class="sig-name descname">left_states</code><a class="headerlink" href="#id18" title="Permalink to this definition">¶</a></dt>
+<dd><p>Left states primitive values for riemann problem.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer">CarrayContainer</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="id19">
+<code class="sig-name descname">right_states</code><a class="headerlink" href="#id19" title="Permalink to this definition">¶</a></dt>
+<dd><p>Left states primitive values for riemann problem.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer">CarrayContainer</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="id20">
+<code class="sig-name descname">limiter</code><a class="headerlink" href="#id20" title="Permalink to this definition">¶</a></dt>
+<dd><p>Value of 0 is AREPOs and 1 is TESS implementation of
+limiting the gradients.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="id21">
+<code class="sig-name descname">has_passive_scalars</code><a class="headerlink" href="#id21" title="Permalink to this definition">¶</a></dt>
+<dd><p>Flag indicating if passive scalars are present for
+reconstruction.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="id22">
+<code class="sig-name descname">num_passive</code><a class="headerlink" href="#id22" title="Permalink to this definition">¶</a></dt>
+<dd><p>Number of passive scalars in particle containers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="id23">
+<code class="sig-name descname">reconstruct_fields</code><a class="headerlink" href="#id23" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dictionary of primitive fields where the keys are the names
+and values are the data type of carrays to create in the
+container.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="id24">
+<code class="sig-name descname">reconstruct_field_groups</code><a class="headerlink" href="#id24" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dictionary of collection of field names allowing for ease
+of subsetting of fields.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="id25">
+<code class="sig-name descname">reconstruct_grads</code><a class="headerlink" href="#id25" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dictionary of primitive gradients where the keys are the names
+and values are the data type of carrays to create in the
+container.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="id26">
+<code class="sig-name descname">reconstruct_grad_groups</code><a class="headerlink" href="#id26" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dictionary of collection of gradient names allowing for ease
+of subsetting of gradients.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id27">
+<code class="sig-name descname">add_fields</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id27" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create lists of variables to reconstruct and setup containers
+for gradients and reconstructions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>particles</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Class that holds all information pertaining to the particles.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id28">
+<code class="sig-name descname">add_spatial</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id28" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform reconstruction from cell center to face center.
+This follows the method outlined by Springel (2009) and all equations
+referenced are from that paper.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>particles</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Class that holds all information pertaining to the particles.</p></li>
+<li><p><strong>mesh</strong> (<a class="reference internal" href="phd.mesh.html#id6" title="phd.mesh.mesh.Mesh"><em>Mesh</em></a>) – Class that builds the domain mesh.</p></li>
+<li><p><strong>boost</strong> (<em>bool</em>) – Solve equations in moving reference frame.</p></li>
+<li><p><strong>domain_manager</strong> (<a class="reference internal" href="phd.domain.html#id8" title="phd.domain.domain_manager.DomainManager"><em>DomainManager</em></a>) – Class that handels all things related with the domain.</p></li>
+<li><p><strong>dt</strong> (<em>float</em>) – Time to extrapolate reconstructed fields to.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id29">
+<code class="sig-name descname">add_temporal</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id29" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform temporal reconstruction from cell center to face center.
+This follows the method outlined by Springel (2009) and all equations
+referenced are from that paper.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>particles</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Class that holds all information pertaining to the particles.</p></li>
+<li><p><strong>mesh</strong> (<a class="reference internal" href="phd.mesh.html#id6" title="phd.mesh.mesh.Mesh"><em>Mesh</em></a>) – Class that builds the domain mesh.</p></li>
+<li><p><strong>boost</strong> (<em>bool</em>) – Solve equations in moving reference frame.</p></li>
+<li><p><strong>domain_manager</strong> (<a class="reference internal" href="phd.domain.html#id8" title="phd.domain.domain_manager.DomainManager"><em>DomainManager</em></a>) – Class that handels all things related with the domain.</p></li>
+<li><p><strong>dt</strong> (<em>float</em>) – Time to extrapolate reconstructed fields to.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id30">
+<code class="sig-name descname">compute_gradients</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id30" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute gradients for each primitive variable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>particles</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Class that holds all information pertaining to the particles.</p></li>
+<li><p><strong>mesh</strong> (<a class="reference internal" href="phd.mesh.html#id6" title="phd.mesh.mesh.Mesh"><em>Mesh</em></a>) – Class that builds the domain mesh.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id31">
+<code class="sig-name descname">compute_states</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id31" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform reconstruction from cell center to face center.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>particles</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Class that holds all information pertaining to the particles.</p></li>
+<li><p><strong>mesh</strong> (<a class="reference internal" href="phd.mesh.html#id6" title="phd.mesh.mesh.Mesh"><em>Mesh</em></a>) – Class that builds the domain mesh.</p></li>
+<li><p><strong>gamma</strong> (<em>double</em>) – Ratio of specific heats.</p></li>
+<li><p><strong>domain_manager</strong> (<a class="reference internal" href="phd.domain.html#id8" title="phd.domain.domain_manager.DomainManager"><em>DomainManager</em></a>) – Class that handels all things related with the domain.</p></li>
+<li><p><strong>dt</strong> (<em>float</em>) – Time step of the simulation.</p></li>
+<li><p><strong>boost</strong> (<em>bool</em>) – Solve equations in moving reference frame.</p></li>
+<li><p><strong>add_temporal</strong> (<em>bool</em>) – If true add time derivatives in the reconstruction.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="id32">
+<code class="sig-name descname">gizmo_limiter</code><a class="headerlink" href="#id32" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="id33">
+<code class="sig-name descname">grad</code><a class="headerlink" href="#id33" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="id34">
+<code class="sig-name descname">initialize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id34" title="Permalink to this definition">¶</a></dt>
+<dd><p>Setup initial arrays and routines for computation.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="id35">
+<code class="sig-name descname">limiter</code><a class="headerlink" href="#id35" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="id36">
+<em class="property">class </em><code class="sig-prename descclassname">phd.reconstruction.reconstruction.</code><code class="sig-name descname">ReconstructionBase</code><a class="headerlink" href="#id36" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt id="id37">
+<code class="sig-name descname">add_fields</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id37" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create lists of variables to reconstruct and setup containers
+for gradients and reconstructions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>particles</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Class that holds all information pertaining to the particles.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id38">
+<code class="sig-name descname">add_spatial</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id38" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create spatial derivatives for reconstruction.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>particles</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Class that holds all information pertaining to the particles.</p></li>
+<li><p><strong>mesh</strong> (<a class="reference internal" href="phd.mesh.html#id6" title="phd.mesh.mesh.Mesh"><em>Mesh</em></a>) – Class that builds the domain mesh.</p></li>
+<li><p><strong>domain_manager</strong> (<a class="reference internal" href="phd.domain.html#id8" title="phd.domain.domain_manager.DomainManager"><em>DomainManager</em></a>) – Class that handels all things related with the domain.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id39">
+<code class="sig-name descname">add_temporal</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id39" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create spatial derivatives for reconstruction.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>particles</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Class that holds all information pertaining to the particles.</p></li>
+<li><p><strong>mesh</strong> (<a class="reference internal" href="phd.mesh.html#id6" title="phd.mesh.mesh.Mesh"><em>Mesh</em></a>) – Class that builds the domain mesh.</p></li>
+<li><p><strong>domain_manager</strong> (<a class="reference internal" href="phd.domain.html#id8" title="phd.domain.domain_manager.DomainManager"><em>DomainManager</em></a>) – Class that handels all things related with the domain.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id40">
+<code class="sig-name descname">compute_gradients</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id40" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create spatial derivatives for reconstruction.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>particles</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Class that holds all information pertaining to the particles.</p></li>
+<li><p><strong>mesh</strong> (<a class="reference internal" href="phd.mesh.html#id6" title="phd.mesh.mesh.Mesh"><em>Mesh</em></a>) – Class that builds the domain mesh.</p></li>
+<li><p><strong>domain_manager</strong> (<a class="reference internal" href="phd.domain.html#id8" title="phd.domain.domain_manager.DomainManager"><em>DomainManager</em></a>) – Class that handels all things related with the domain.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id41">
+<code class="sig-name descname">compute_states</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id41" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform reconstruction from cell center to face center.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>particles</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Class that holds all information pertaining to the particles.</p></li>
+<li><p><strong>mesh</strong> (<a class="reference internal" href="phd.mesh.html#id6" title="phd.mesh.mesh.Mesh"><em>Mesh</em></a>) – Class that builds the domain mesh.</p></li>
+<li><p><strong>gamma</strong> (<em>double</em>) – Ratio of specific heats.</p></li>
+<li><p><strong>domain_manager</strong> (<a class="reference internal" href="phd.domain.html#id8" title="phd.domain.domain_manager.DomainManager"><em>DomainManager</em></a>) – Class that handels all things related with the domain.</p></li>
+<li><p><strong>dt</strong> (<em>float</em>) – Time step of the simulation.</p></li>
+<li><p><strong>boost</strong> (<em>bool</em>) – Solve equations in moving reference frame.</p></li>
+<li><p><strong>add_temporal</strong> (<em>bool</em>) – If true add time derivatives in the reconstruction.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id42">
+<code class="sig-name descname">initialize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id42" title="Permalink to this definition">¶</a></dt>
+<dd><p>Setup all connections for computation classes. Should always
+check if fields_registered is True.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="id43">
+<code class="sig-name descname">left_states</code><a class="headerlink" href="#id43" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="id44">
+<code class="sig-name descname">right_states</code><a class="headerlink" href="#id44" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
 <div class="section" id="module-phd.reconstruction">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-phd.reconstruction" title="Permalink to this headline">¶</a></h2>
 </div>

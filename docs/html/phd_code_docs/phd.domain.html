@@ -127,16 +127,568 @@
 </div>
 <div class="section" id="module-phd.domain.boundary">
 <span id="phd-domain-boundary-module"></span><h2>phd.domain.boundary module<a class="headerlink" href="#module-phd.domain.boundary" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="phd.domain.boundary.BoundaryConditionBase">
+<em class="property">class </em><code class="sig-prename descclassname">phd.domain.boundary.</code><code class="sig-name descname">BoundaryConditionBase</code><a class="headerlink" href="#phd.domain.boundary.BoundaryConditionBase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt id="phd.domain.boundary.BoundaryConditionBase.update_fields">
+<code class="sig-name descname">update_fields</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.domain.boundary.BoundaryConditionBase.update_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="phd.domain.boundary.Periodic">
+<em class="property">class </em><code class="sig-prename descclassname">phd.domain.boundary.</code><code class="sig-name descname">Periodic</code><a class="headerlink" href="#phd.domain.boundary.Periodic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#id0" title="phd.domain.boundary.BoundaryConditionBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">phd.domain.boundary.BoundaryConditionBase</span></code></a></p>
+<dl class="py method">
+<dt id="phd.domain.boundary.Periodic.update_fields">
+<code class="sig-name descname">update_fields</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.domain.boundary.Periodic.update_fields" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transfer gradient from image particle to ghost particle with reflective
+boundary condition.</p>
+<p>For periodic boundary condition the there is no need to update gradients.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>particles</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Gradient data</p></li>
+<li><p><strong>gradients</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Container of gradients for each primitive field.</p></li>
+<li><p><strong>p</strong> (<em>FlagParticle*</em>) – Pointer to flagged particle.</p></li>
+<li><p><strong>domain_manager</strong> (<a class="reference internal" href="#id8" title="phd.domain.domain_manager.DomainManager"><em>DomainManager</em></a>) – Class that handels all things related with the domain.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="phd.domain.boundary.Reflective">
+<em class="property">class </em><code class="sig-prename descclassname">phd.domain.boundary.</code><code class="sig-name descname">Reflective</code><a class="headerlink" href="#phd.domain.boundary.Reflective" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#id0" title="phd.domain.boundary.BoundaryConditionBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">phd.domain.boundary.BoundaryConditionBase</span></code></a></p>
+<dl class="py method">
+<dt id="phd.domain.boundary.Reflective.update_fields">
+<code class="sig-name descname">update_fields</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.domain.boundary.Reflective.update_fields" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transfer gradient from image particle to ghost particle with reflective
+boundary condition.</p>
+<p>For reflective boundary condition the velocity gradient normal to the
+boundary interface has to be flipped. This function finds all ghost
+particles outside the domain and flips the corresponding component.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>particles</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Gradient data</p></li>
+<li><p><strong>gradients</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Container of gradients for each primitive field.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 <div class="section" id="id1">
 <h2>phd.domain.boundary module<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="module-0"></span></div>
+<span class="target" id="module-0"></span><dl class="py class">
+<dt id="id0">
+<em class="property">class </em><code class="sig-prename descclassname">phd.domain.boundary.</code><code class="sig-name descname">BoundaryConditionBase</code><a class="headerlink" href="#id0" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt id="id2">
+<code class="sig-name descname">update_fields</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id2" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="id3">
+<em class="property">class </em><code class="sig-prename descclassname">phd.domain.boundary.</code><code class="sig-name descname">Periodic</code><a class="headerlink" href="#id3" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#id0" title="phd.domain.boundary.BoundaryConditionBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">phd.domain.boundary.BoundaryConditionBase</span></code></a></p>
+<dl class="py method">
+<dt id="id4">
+<code class="sig-name descname">update_fields</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id4" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transfer gradient from image particle to ghost particle with reflective
+boundary condition.</p>
+<p>For periodic boundary condition the there is no need to update gradients.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>particles</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Gradient data</p></li>
+<li><p><strong>gradients</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Container of gradients for each primitive field.</p></li>
+<li><p><strong>p</strong> (<em>FlagParticle*</em>) – Pointer to flagged particle.</p></li>
+<li><p><strong>domain_manager</strong> (<a class="reference internal" href="#id8" title="phd.domain.domain_manager.DomainManager"><em>DomainManager</em></a>) – Class that handels all things related with the domain.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="id5">
+<em class="property">class </em><code class="sig-prename descclassname">phd.domain.boundary.</code><code class="sig-name descname">Reflective</code><a class="headerlink" href="#id5" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#id0" title="phd.domain.boundary.BoundaryConditionBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">phd.domain.boundary.BoundaryConditionBase</span></code></a></p>
+<dl class="py method">
+<dt id="id6">
+<code class="sig-name descname">update_fields</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id6" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transfer gradient from image particle to ghost particle with reflective
+boundary condition.</p>
+<p>For reflective boundary condition the velocity gradient normal to the
+boundary interface has to be flipped. This function finds all ghost
+particles outside the domain and flips the corresponding component.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>particles</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Gradient data</p></li>
+<li><p><strong>gradients</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Container of gradients for each primitive field.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
 <div class="section" id="module-phd.domain.domain_manager">
 <span id="phd-domain-domain-manager-module"></span><h2>phd.domain.domain_manager module<a class="headerlink" href="#module-phd.domain.domain_manager" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="phd.domain.domain_manager.DomainManager">
+<em class="property">class </em><code class="sig-prename descclassname">phd.domain.domain_manager.</code><code class="sig-name descname">DomainManager</code><a class="headerlink" href="#phd.domain.domain_manager.DomainManager" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt id="phd.domain.domain_manager.DomainManager.boundary_condition">
+<code class="sig-name descname">boundary_condition</code><a class="headerlink" href="#phd.domain.domain_manager.DomainManager.boundary_condition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="phd.domain.domain_manager.DomainManager.check_for_partition">
+<code class="sig-name descname">check_for_partition</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.domain.domain_manager.DomainManager.check_for_partition" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if partition needs to called</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.domain.domain_manager.DomainManager.create_ghost_particles">
+<code class="sig-name descname">create_ghost_particles</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.domain.domain_manager.DomainManager.create_ghost_particles" title="Permalink to this definition">¶</a></dt>
+<dd><p>After mesh generation, this method goes through partilce list
+and generates ghost particles and communicates them. This method
+is called by mesh repeatedly until the mesh is complete.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>particles</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Class that holds all information pertaining to the particles.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.domain.domain_manager.DomainManager.ghost_complete">
+<code class="sig-name descname">ghost_complete</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.domain.domain_manager.DomainManager.ghost_complete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return True if their are no more particles flagged for ghost
+creation.</p>
+<p>Particles that have been flagged for ghost creation are stored
+in flagged_particles. When flagged particles have a complete
+voronoi cell they are removed from flagged_particles.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="phd.domain.domain_manager.DomainManager.initial_radius">
+<code class="sig-name descname">initial_radius</code><a class="headerlink" href="#phd.domain.domain_manager.DomainManager.initial_radius" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="phd.domain.domain_manager.DomainManager.initialize">
+<code class="sig-name descname">initialize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.domain.domain_manager.DomainManager.initialize" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="phd.domain.domain_manager.DomainManager.load_balance">
+<code class="sig-name descname">load_balance</code><a class="headerlink" href="#phd.domain.domain_manager.DomainManager.load_balance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="phd.domain.domain_manager.DomainManager.migrate_particles">
+<code class="sig-name descname">migrate_particles</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.domain.domain_manager.DomainManager.migrate_particles" title="Permalink to this definition">¶</a></dt>
+<dd><p>For particles that have left the domain or processor patch
+move particles to their appropriate spot.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>particles</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Class that holds all information pertaining to the particles.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.domain.domain_manager.DomainManager.move_generators">
+<code class="sig-name descname">move_generators</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.domain.domain_manager.DomainManager.move_generators" title="Permalink to this definition">¶</a></dt>
+<dd><p>Move particles after flux update.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>particles</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Class that holds all information pertaining to the particles.</p></li>
+<li><p><strong>dt</strong> (<em>float</em>) – Time step of the simulation.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="phd.domain.domain_manager.DomainManager.old_radius">
+<code class="sig-name descname">old_radius</code><a class="headerlink" href="#phd.domain.domain_manager.DomainManager.old_radius" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="phd.domain.domain_manager.DomainManager.partition">
+<code class="sig-name descname">partition</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.domain.domain_manager.DomainManager.partition" title="Permalink to this definition">¶</a></dt>
+<dd><p>Distribute particles across processors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>particles</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Class that holds all information pertaining to the particles.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.domain.domain_manager.DomainManager.register_fields">
+<code class="sig-name descname">register_fields</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.domain.domain_manager.DomainManager.register_fields" title="Permalink to this definition">¶</a></dt>
+<dd><p>Register mesh fields into the particle container (i.e.
+volume, center of mass)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="phd.domain.domain_manager.DomainManager.search_radius_factor">
+<code class="sig-name descname">search_radius_factor</code><a class="headerlink" href="#phd.domain.domain_manager.DomainManager.search_radius_factor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="phd.domain.domain_manager.DomainManager.set_boundary_condition">
+<code class="sig-name descname">set_boundary_condition</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.domain.domain_manager.DomainManager.set_boundary_condition" title="Permalink to this definition">¶</a></dt>
+<dd><p>add boundary condition to list</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.domain.domain_manager.DomainManager.set_load_balance">
+<code class="sig-name descname">set_load_balance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.domain.domain_manager.DomainManager.set_load_balance" title="Permalink to this definition">¶</a></dt>
+<dd><p>add boundary condition to list</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.domain.domain_manager.DomainManager.setup_for_ghost_creation">
+<code class="sig-name descname">setup_for_ghost_creation</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.domain.domain_manager.DomainManager.setup_for_ghost_creation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Go through each particle and flag for ghost creation. For particles
+with infinite radius use radius from previous time step.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>particles</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Class that holds all information pertaining to the particles.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.domain.domain_manager.DomainManager.setup_initial_radius">
+<code class="sig-name descname">setup_initial_radius</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.domain.domain_manager.DomainManager.setup_initial_radius" title="Permalink to this definition">¶</a></dt>
+<dd><p>At the start of the simulation assign every particle an
+initial radius used for constructing the mesh. This values
+gets updated after each mesh build.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>particles</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Class that holds all information pertaining to the particles.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.domain.domain_manager.DomainManager.store_radius">
+<code class="sig-name descname">store_radius</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.domain.domain_manager.DomainManager.store_radius" title="Permalink to this definition">¶</a></dt>
+<dd><p>At the start of the simulation assign every particle an
+initial radius used for constructing the mesh. This values
+gets updated after each mesh build.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>particles</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Class that holds all information pertaining to the particles.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.domain.domain_manager.DomainManager.update_ghost_fields">
+<code class="sig-name descname">update_ghost_fields</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.domain.domain_manager.DomainManager.update_ghost_fields" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transfer ghost fields from their image particle.</p>
+<p>After ghost particles are created their are certain fields that
+cannot be calculated (i.e. volume, center-of-mass …) and need
+to be upated from their resepective image particle.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>particles</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Container of particles.</p></li>
+<li><p><strong>fields</strong> (<em>list</em>) – List of field strings to update</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.domain.domain_manager.DomainManager.update_ghost_gradients">
+<code class="sig-name descname">update_ghost_gradients</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.domain.domain_manager.DomainManager.update_ghost_gradients" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update ghost gradients from their mirror particle.</p>
+<p>After reconstruction only real particles have gradients calculated.
+This call will transfer those calcluated gradients to the respective
+ghost particles with appropriate updates from the boundary condition.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>particles</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Container of particles.</p></li>
+<li><p><strong>gradients</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Container of gradients for each primitive field.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.domain.domain_manager.DomainManager.update_search_radius">
+<code class="sig-name descname">update_search_radius</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.domain.domain_manager.DomainManager.update_search_radius" title="Permalink to this definition">¶</a></dt>
+<dd><p>Go through each flag particle and update its radius. If
+the particle is still infinite double the search radius. If
+the new radius is smaller then the old search radius then that
+particle is done.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>particles</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Class that holds all information pertaining to the particles.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="phd.domain.domain_manager.DomainManager.xmax">
+<code class="sig-name descname">xmax</code><a class="headerlink" href="#phd.domain.domain_manager.DomainManager.xmax" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="phd.domain.domain_manager.DomainManager.xmin">
+<code class="sig-name descname">xmin</code><a class="headerlink" href="#phd.domain.domain_manager.DomainManager.xmin" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </div>
-<div class="section" id="id2">
-<h2>phd.domain.domain_manager module<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="module-1"></span></div>
+<div class="section" id="id7">
+<h2>phd.domain.domain_manager module<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="module-1"></span><dl class="py class">
+<dt id="id8">
+<em class="property">class </em><code class="sig-prename descclassname">phd.domain.domain_manager.</code><code class="sig-name descname">DomainManager</code><a class="headerlink" href="#id8" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt id="id9">
+<code class="sig-name descname">boundary_condition</code><a class="headerlink" href="#id9" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="id10">
+<code class="sig-name descname">check_for_partition</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id10" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if partition needs to called</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id11">
+<code class="sig-name descname">create_ghost_particles</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id11" title="Permalink to this definition">¶</a></dt>
+<dd><p>After mesh generation, this method goes through partilce list
+and generates ghost particles and communicates them. This method
+is called by mesh repeatedly until the mesh is complete.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>particles</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Class that holds all information pertaining to the particles.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id12">
+<code class="sig-name descname">ghost_complete</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id12" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return True if their are no more particles flagged for ghost
+creation.</p>
+<p>Particles that have been flagged for ghost creation are stored
+in flagged_particles. When flagged particles have a complete
+voronoi cell they are removed from flagged_particles.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="id13">
+<code class="sig-name descname">initial_radius</code><a class="headerlink" href="#id13" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="id14">
+<code class="sig-name descname">initialize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id14" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="id15">
+<code class="sig-name descname">load_balance</code><a class="headerlink" href="#id15" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="id16">
+<code class="sig-name descname">migrate_particles</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id16" title="Permalink to this definition">¶</a></dt>
+<dd><p>For particles that have left the domain or processor patch
+move particles to their appropriate spot.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>particles</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Class that holds all information pertaining to the particles.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id17">
+<code class="sig-name descname">move_generators</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id17" title="Permalink to this definition">¶</a></dt>
+<dd><p>Move particles after flux update.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>particles</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Class that holds all information pertaining to the particles.</p></li>
+<li><p><strong>dt</strong> (<em>float</em>) – Time step of the simulation.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="id18">
+<code class="sig-name descname">old_radius</code><a class="headerlink" href="#id18" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="id19">
+<code class="sig-name descname">partition</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id19" title="Permalink to this definition">¶</a></dt>
+<dd><p>Distribute particles across processors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>particles</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Class that holds all information pertaining to the particles.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id20">
+<code class="sig-name descname">register_fields</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id20" title="Permalink to this definition">¶</a></dt>
+<dd><p>Register mesh fields into the particle container (i.e.
+volume, center of mass)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="id21">
+<code class="sig-name descname">search_radius_factor</code><a class="headerlink" href="#id21" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="id22">
+<code class="sig-name descname">set_boundary_condition</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id22" title="Permalink to this definition">¶</a></dt>
+<dd><p>add boundary condition to list</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id23">
+<code class="sig-name descname">set_load_balance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id23" title="Permalink to this definition">¶</a></dt>
+<dd><p>add boundary condition to list</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id24">
+<code class="sig-name descname">setup_for_ghost_creation</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id24" title="Permalink to this definition">¶</a></dt>
+<dd><p>Go through each particle and flag for ghost creation. For particles
+with infinite radius use radius from previous time step.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>particles</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Class that holds all information pertaining to the particles.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id25">
+<code class="sig-name descname">setup_initial_radius</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id25" title="Permalink to this definition">¶</a></dt>
+<dd><p>At the start of the simulation assign every particle an
+initial radius used for constructing the mesh. This values
+gets updated after each mesh build.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>particles</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Class that holds all information pertaining to the particles.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id26">
+<code class="sig-name descname">store_radius</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id26" title="Permalink to this definition">¶</a></dt>
+<dd><p>At the start of the simulation assign every particle an
+initial radius used for constructing the mesh. This values
+gets updated after each mesh build.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>particles</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Class that holds all information pertaining to the particles.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id27">
+<code class="sig-name descname">update_ghost_fields</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id27" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transfer ghost fields from their image particle.</p>
+<p>After ghost particles are created their are certain fields that
+cannot be calculated (i.e. volume, center-of-mass …) and need
+to be upated from their resepective image particle.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>particles</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Container of particles.</p></li>
+<li><p><strong>fields</strong> (<em>list</em>) – List of field strings to update</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id28">
+<code class="sig-name descname">update_ghost_gradients</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id28" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update ghost gradients from their mirror particle.</p>
+<p>After reconstruction only real particles have gradients calculated.
+This call will transfer those calcluated gradients to the respective
+ghost particles with appropriate updates from the boundary condition.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>particles</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Container of particles.</p></li>
+<li><p><strong>gradients</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Container of gradients for each primitive field.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id29">
+<code class="sig-name descname">update_search_radius</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id29" title="Permalink to this definition">¶</a></dt>
+<dd><p>Go through each flag particle and update its radius. If
+the particle is still infinite double the search radius. If
+the new radius is smaller then the old search radius then that
+particle is done.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>particles</strong> (<a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer"><em>CarrayContainer</em></a>) – Class that holds all information pertaining to the particles.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="id30">
+<code class="sig-name descname">xmax</code><a class="headerlink" href="#id30" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="id31">
+<code class="sig-name descname">xmin</code><a class="headerlink" href="#id31" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
 <div class="section" id="module-phd.domain">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-phd.domain" title="Permalink to this headline">¶</a></h2>
 </div>

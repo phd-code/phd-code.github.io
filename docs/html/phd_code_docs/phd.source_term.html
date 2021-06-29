@@ -127,10 +127,94 @@
 </div>
 <div class="section" id="module-phd.source_term.source_term">
 <span id="phd-source-term-source-term-module"></span><h2>phd.source_term.source_term module<a class="headerlink" href="#module-phd.source_term.source_term" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="phd.source_term.source_term.MUSCLHancockSourceTerm">
+<em class="property">class </em><code class="sig-prename descclassname">phd.source_term.source_term.</code><code class="sig-name descname">MUSCLHancockSourceTerm</code><a class="headerlink" href="#phd.source_term.source_term.MUSCLHancockSourceTerm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt id="phd.source_term.source_term.MUSCLHancockSourceTerm.apply_conservative">
+<code class="sig-name descname">apply_conservative</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.source_term.source_term.MUSCLHancockSourceTerm.apply_conservative" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply terms to conservative values after flux update.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.source_term.source_term.MUSCLHancockSourceTerm.apply_flux">
+<code class="sig-name descname">apply_flux</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.source_term.source_term.MUSCLHancockSourceTerm.apply_flux" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply terms using flux variables.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.source_term.source_term.MUSCLHancockSourceTerm.apply_motion">
+<code class="sig-name descname">apply_motion</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.source_term.source_term.MUSCLHancockSourceTerm.apply_motion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply terms to particle motion.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.source_term.source_term.MUSCLHancockSourceTerm.apply_primitive">
+<code class="sig-name descname">apply_primitive</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.source_term.source_term.MUSCLHancockSourceTerm.apply_primitive" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply terms to primitive values at face.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.source_term.source_term.MUSCLHancockSourceTerm.compute_source">
+<code class="sig-name descname">compute_source</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.source_term.source_term.MUSCLHancockSourceTerm.compute_source" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute soure term.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.source_term.source_term.MUSCLHancockSourceTerm.compute_time_step">
+<code class="sig-name descname">compute_time_step</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.source_term.source_term.MUSCLHancockSourceTerm.compute_time_step" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute time step.</p>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 <div class="section" id="id1">
 <h2>phd.source_term.source_term module<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="module-0"></span></div>
+<span class="target" id="module-0"></span><dl class="py class">
+<dt id="id0">
+<em class="property">class </em><code class="sig-prename descclassname">phd.source_term.source_term.</code><code class="sig-name descname">MUSCLHancockSourceTerm</code><a class="headerlink" href="#id0" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt id="id2">
+<code class="sig-name descname">apply_conservative</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply terms to conservative values after flux update.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id3">
+<code class="sig-name descname">apply_flux</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id3" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply terms using flux variables.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id4">
+<code class="sig-name descname">apply_motion</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id4" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply terms to particle motion.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id5">
+<code class="sig-name descname">apply_primitive</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id5" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply terms to primitive values at face.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id6">
+<code class="sig-name descname">compute_source</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id6" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute soure term.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id7">
+<code class="sig-name descname">compute_time_step</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id7" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute time step.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
 <div class="section" id="module-phd.source_term">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-phd.source_term" title="Permalink to this headline">¶</a></h2>
 </div>

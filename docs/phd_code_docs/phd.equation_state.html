@@ -127,10 +127,172 @@
 </div>
 <div class="section" id="module-phd.equation_state.equation_state">
 <span id="phd-equation-state-equation-state-module"></span><h2>phd.equation_state.equation_state module<a class="headerlink" href="#module-phd.equation_state.equation_state" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="phd.equation_state.equation_state.EquationStateBase">
+<em class="property">class </em><code class="sig-prename descclassname">phd.equation_state.equation_state.</code><code class="sig-name descname">EquationStateBase</code><a class="headerlink" href="#phd.equation_state.equation_state.EquationStateBase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Equation of state base. All equation of states must inherit this
+class.</p>
+<dl class="py method">
+<dt id="phd.equation_state.equation_state.EquationStateBase.conservative_from_primitive">
+<code class="sig-name descname">conservative_from_primitive</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.equation_state.equation_state.EquationStateBase.conservative_from_primitive" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes conservative variables from primitive variables.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="phd.equation_state.equation_state.EquationStateBase.gamma">
+<code class="sig-name descname">gamma</code><a class="headerlink" href="#phd.equation_state.equation_state.EquationStateBase.gamma" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="phd.equation_state.equation_state.EquationStateBase.get_gamma">
+<code class="sig-name descname">get_gamma</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.equation_state.equation_state.EquationStateBase.get_gamma" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="phd.equation_state.equation_state.EquationStateBase.primitive_from_conservative">
+<code class="sig-name descname">primitive_from_conservative</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.equation_state.equation_state.EquationStateBase.primitive_from_conservative" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes primitive variables from conservative variables.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.equation_state.equation_state.EquationStateBase.sound_speed">
+<code class="sig-name descname">sound_speed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.equation_state.equation_state.EquationStateBase.sound_speed" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="phd.equation_state.equation_state.IdealGas">
+<em class="property">class </em><code class="sig-prename descclassname">phd.equation_state.equation_state.</code><code class="sig-name descname">IdealGas</code><a class="headerlink" href="#phd.equation_state.equation_state.IdealGas" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#id0" title="phd.equation_state.equation_state.EquationStateBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">phd.equation_state.equation_state.EquationStateBase</span></code></a></p>
+<p>Ideal gas law.</p>
+<p>This class is responsible for going to and back form primitive and
+conservative variables, generating sound speeds, pressure, and
+energy.</p>
+<dl class="py attribute">
+<dt id="phd.equation_state.equation_state.IdealGas.gamma">
+<code class="sig-name descname">gamma</code><a class="headerlink" href="#phd.equation_state.equation_state.IdealGas.gamma" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ratio of specific heats.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.equation_state.equation_state.IdealGas.conservative_from_primitive">
+<code class="sig-name descname">conservative_from_primitive</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.equation_state.equation_state.IdealGas.conservative_from_primitive" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes conservative variables from primitive variables</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.equation_state.equation_state.IdealGas.get_gamma">
+<code class="sig-name descname">get_gamma</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.equation_state.equation_state.IdealGas.get_gamma" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return ratio of specific heats.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.equation_state.equation_state.IdealGas.primitive_from_conservative">
+<code class="sig-name descname">primitive_from_conservative</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.equation_state.equation_state.IdealGas.primitive_from_conservative" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes primitive variables from conservative variables. Calculates
+for all particles (real + ghost).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.equation_state.equation_state.IdealGas.sound_speed">
+<code class="sig-name descname">sound_speed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.equation_state.equation_state.IdealGas.sound_speed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sound speed of particle.</p>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 <div class="section" id="id1">
 <h2>phd.equation_state.equation_state module<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="module-0"></span></div>
+<span class="target" id="module-0"></span><dl class="py class">
+<dt id="id0">
+<em class="property">class </em><code class="sig-prename descclassname">phd.equation_state.equation_state.</code><code class="sig-name descname">EquationStateBase</code><a class="headerlink" href="#id0" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Equation of state base. All equation of states must inherit this
+class.</p>
+<dl class="py method">
+<dt id="id2">
+<code class="sig-name descname">conservative_from_primitive</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes conservative variables from primitive variables.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="id3">
+<code class="sig-name descname">gamma</code><a class="headerlink" href="#id3" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="id4">
+<code class="sig-name descname">get_gamma</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id4" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="id5">
+<code class="sig-name descname">primitive_from_conservative</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id5" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes primitive variables from conservative variables.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id6">
+<code class="sig-name descname">sound_speed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id6" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="id7">
+<em class="property">class </em><code class="sig-prename descclassname">phd.equation_state.equation_state.</code><code class="sig-name descname">IdealGas</code><a class="headerlink" href="#id7" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#id0" title="phd.equation_state.equation_state.EquationStateBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">phd.equation_state.equation_state.EquationStateBase</span></code></a></p>
+<p>Ideal gas law.</p>
+<p>This class is responsible for going to and back form primitive and
+conservative variables, generating sound speeds, pressure, and
+energy.</p>
+<dl class="py attribute">
+<dt id="id8">
+<code class="sig-name descname">gamma</code><a class="headerlink" href="#id8" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ratio of specific heats.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id9">
+<code class="sig-name descname">conservative_from_primitive</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id9" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes conservative variables from primitive variables</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id10">
+<code class="sig-name descname">get_gamma</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id10" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return ratio of specific heats.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id11">
+<code class="sig-name descname">primitive_from_conservative</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id11" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes primitive variables from conservative variables. Calculates
+for all particles (real + ghost).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id12">
+<code class="sig-name descname">sound_speed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id12" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sound speed of particle.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
 <div class="section" id="module-phd.equation_state">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-phd.equation_state" title="Permalink to this headline">¶</a></h2>
 </div>

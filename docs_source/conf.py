@@ -25,7 +25,7 @@ import insipid_sphinx_theme
 #if 'READTHEDOCS' not in os.environ:
 #    import cython_generated_ext
 
-autodoc_mock_imports = ['matplotlib', 'numpy', 'mpi4py', 'h5py', 'logging', 'Cython', 'os', 'sys', 'scipy', 'phd']
+#autodoc_mock_imports = ['matplotlib', 'numpy', 'mpi4py', 'h5py', 'logging', 'Cython', 'os', 'sys', 'scipy', 'phd']
 
 
 # -- Project information -----------------------------------------------------
