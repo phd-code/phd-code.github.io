@@ -14,5 +14,3 @@ The following are some test problems and tutorials that outline the basic functi
    example_nbooks/plummer_test.ipynb
    example_nbooks/rayleigh_taylor_test.ipynb
    example_nbooks/evrard_test.ipynb
-
-

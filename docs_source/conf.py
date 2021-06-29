@@ -18,6 +18,7 @@ sys.path.insert(0, os.path.abspath('../'))
 sys.path.insert(0, os.path.abspath('./'))
 
 import furo
+import insipid_sphinx_theme
 
 #if 'READTHEDOCS' not in os.environ:
 #    import cython_generated_ext
@@ -59,8 +60,8 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 # a list of builtin themes.
 #
 
-html_theme = "furo"
-
+#html_theme = "furo"
+html_theme = "insipid"
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,

@@ -1,908 +1,15 @@
-<!doctype html>
-<html class="no-js">
-  <head><meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width,initial-scale=1"/><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="phd.load_balance package" href="phd.load_balance.html" /><link rel="prev" title="phd.integrate package" href="phd.integrate.html" />
 
-    <meta name="generator" content="sphinx-3.2.1, furo 2021.02.28.beta28"/>
-        <title>phd.io package - phd 0.1 documentation</title>
-      <link rel="stylesheet" href="../_static/styles/furo.css?digest=be5985a4059b5c2cd56ed0804790452beca62674">
-    <link rel="stylesheet" href="../_static/pygments.css">
-    <link media="(prefers-color-scheme: dark)" rel="stylesheet" href="../_static/pygments_dark.css">
-    
+<!DOCTYPE html>
 
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>phd.io package &#8212; phd 0.1 documentation</title>
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/insipid.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
 
-<style>
-  :root {
-    --color-code-background: #f8f8f8;
-  --color-code-foreground: black;
-  
-  }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --color-code-background: #202020;
-  --color-code-foreground: #d0d0d0;
-  
-    }
-  }
-
-  /* For allowing end-user-specific overrides */
-  .override-light {
-    --color-code-background: #f8f8f8;
-  --color-code-foreground: black;
-  
-  }
-  .override-dark {
-    --color-code-background: #202020;
-  --color-code-foreground: #d0d0d0;
-  
-  }
-</style><link rel="stylesheet" href="../_static/styles/furo-extensions.css?digest=d391b54134226e4196576da3bdb6dddb7e05ba2b"></head>
-  <body dir="">
-    
-<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-  <symbol id="svg-toc" viewBox="0 0 24 24">
-    <title>Contents</title>
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-      stroke-width="1.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-      <path stroke="none" d="M0 0h24v24H0z"/>
-      <line x1="4" y1="6" x2="20" y2="6" />
-      <line x1="10" y1="12" x2="20" y2="12" />
-      <line x1="6" y1="18" x2="20" y2="18" />
-    </svg>
-  </symbol>
-  <symbol id="svg-menu" viewBox="0 0 24 24">
-    <title>Menu</title>
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-      class="feather feather-menu">
-      <line x1="3" y1="12" x2="21" y2="12"></line>
-      <line x1="3" y1="6" x2="21" y2="6"></line>
-      <line x1="3" y1="18" x2="21" y2="18"></line>
-    </svg>
-  </symbol>
-  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
-    <title>Expand</title>
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-      class="feather feather-chevron-right">
-      <polyline points="9 18 15 12 9 6"></polyline>
-    </svg>
-  </symbol>
-</svg>
-
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
-<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
-<label class="overlay sidebar-overlay" for="__navigation"></label>
-<label class="overlay toc-overlay" for="__toc"></label>
-
-
-
-<div class="page">
-  <header class="mobile-header">
-    <div class="header-left">
-      <label class="nav-overlay-icon" for="__navigation">
-        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
-      </label>
-    </div>
-    <div class="header-center">
-      <a href="../index.html"><div class="brand">phd 0.1 documentation</div></a>
-    </div>
-    <div class="header-right">
-      <label class="toc-overlay-icon toc-header-icon" for="__toc">
-        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
-      </label>
-    </div>
-  </header>
-  <aside class="sidebar-drawer">
-    <div class="sidebar-container">
-      
-      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
-  
-  
-  <span class="sidebar-brand-text">phd 0.1 documentation</span>
-  
-</a><form class="sidebar-search-container" method="get" action="../search.html">
-  <input class="sidebar-search" placeholder=Search name="q">
-  <input type="hidden" name="check_keywords" value="yes">
-  <input type="hidden" name="area" value="default">
-</form><div class="sidebar-scroll"><div class="sidebar-tree">
-  <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../tutorials.html">Tutorials and Test Problems</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label for="toctree-checkbox-1"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../example_nbooks/linear_wave_test.html">A simple linear wave</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../example_nbooks/sod_shock_test.html">Sod Shock Tube</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../example_nbooks/gresho_test.html">The Gresho Vortex Test</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../example_nbooks/kelvin_helmholtz_test.html">Kelvin-Helmholtz Instability</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../example_nbooks/sedov_test.html">Sedov-Taylor Blast Wave</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../example_nbooks/two_body_test.html">Two Body Problem</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../example_nbooks/plummer_test.html">Plummer Sphere</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../example_nbooks/rayleigh_taylor_test.html">Rayleigh-Taylor Instability</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../example_nbooks/evrard_test.html">Evrard Collapse</a></li>
-</ul>
-</li>
-</ul>
-<ul class="current">
-<li class="toctree-l1 current has-children"><a class="reference internal" href="../docs.html">Documentation</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label for="toctree-checkbox-2"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
-<li class="toctree-l2 has-children"><a class="reference internal" href="phd.containers.html">phd.containers package</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label for="toctree-checkbox-3"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="phd.containers.tests.html">phd.containers.tests package</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="phd.domain.html">phd.domain package</a></li>
-<li class="toctree-l2"><a class="reference internal" href="phd.equation_state.html">phd.equation_state package</a></li>
-<li class="toctree-l2"><a class="reference internal" href="phd.gravity.html">phd.gravity package</a></li>
-<li class="toctree-l2"><a class="reference internal" href="phd.hilbert.html">phd.hilbert package</a></li>
-<li class="toctree-l2"><a class="reference internal" href="phd.integrate.html">phd.integrate package</a></li>
-<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">phd.io package</a></li>
-<li class="toctree-l2"><a class="reference internal" href="phd.load_balance.html">phd.load_balance package</a></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="phd.mesh.html">phd.mesh package</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label for="toctree-checkbox-4"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="phd.mesh.test.html">phd.mesh.test package</a></li>
-</ul>
-</li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="phd.reconstruction.html">phd.reconstruction package</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label for="toctree-checkbox-5"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="phd.reconstruction.test.html">phd.reconstruction.test package</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="phd.riemann.html">phd.riemann package</a></li>
-<li class="toctree-l2"><a class="reference internal" href="phd.simulation.html">phd.simulation package</a></li>
-<li class="toctree-l2"><a class="reference internal" href="phd.source_term.html">phd.source_term package</a></li>
-<li class="toctree-l2"><a class="reference internal" href="phd.utils.html">phd.utils package</a></li>
-</ul>
-</li>
-</ul>
-
-</div>
-</div>
-      </div>
-      
-    </div>
-  </aside>
-  <main class="main">
-    <div class="content">
-      <article role="main">
-        <label class="toc-overlay-icon toc-content-icon" for="__toc">
-          <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
-        </label>
-        <div class="section" id="phd-io-package">
-<h1>phd.io package<a class="headerlink" href="#phd-io-package" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="module-phd.io.read_write">
-<span id="phd-io-read-write-module"></span><h2>phd.io.read_write module<a class="headerlink" href="#module-phd.io.read_write" title="Permalink to this headline">¶</a></h2>
-<dl class="py class">
-<dt id="phd.io.read_write.Hdf5">
-<em class="property">class </em><code class="sig-prename descclassname">phd.io.read_write.</code><code class="sig-name descname">Hdf5</code><a class="headerlink" href="#phd.io.read_write.Hdf5" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#phd.io.read_write.ReaderWriterBase" title="phd.io.read_write.ReaderWriterBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">phd.io.read_write.ReaderWriterBase</span></code></a></p>
-<dl class="py method">
-<dt id="phd.io.read_write.Hdf5.read">
-<code class="sig-name descname">read</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">file_name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.io.read_write.Hdf5.read" title="Permalink to this definition">¶</a></dt>
-<dd><p>Read hdf5 file of particles.</p>
-</dd></dl>
-<dl class="py method">
-<dt id="phd.io.read_write.Hdf5.write">
-<code class="sig-name descname">write</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">base_name</span></em>, <em class="sig-param"><span class="n">output_directory</span></em>, <em class="sig-param"><span class="n">integrator</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.io.read_write.Hdf5.write" title="Permalink to this definition">¶</a></dt>
-<dd><p>Write simulation data to hdf5 file.</p>
-</dd></dl>
-</dd></dl>
-<dl class="py class">
-<dt id="phd.io.read_write.ReaderWriterBase">
-<em class="property">class </em><code class="sig-prename descclassname">phd.io.read_write.</code><code class="sig-name descname">ReaderWriterBase</code><a class="headerlink" href="#phd.io.read_write.ReaderWriterBase" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<dl class="py method">
-<dt id="phd.io.read_write.ReaderWriterBase.read">
-<code class="sig-name descname">read</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">file_name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.io.read_write.ReaderWriterBase.read" title="Permalink to this definition">¶</a></dt>
-<dd><p>Read data and return particles.</p>
-<p>For formats where the data is being stored, a read
-function must be defined. This function reads the
-data outputted by <cite>write</cite> and returns a CarrayContainer
-of particles to be used by the simulation.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>file_name</strong> (<em>str</em>) – File name to be read in.</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>particles</strong> – Complete container of particles for a simulation.</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference internal" href="phd.containers.html#id0" title="phd.containers.containers.CarrayContainer">CarrayContainer</a></p>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py method">
-<dt id="phd.io.read_write.ReaderWriterBase.write">
-<code class="sig-name descname">write</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">base_name</span></em>, <em class="sig-param"><span class="n">output_directory</span></em>, <em class="sig-param"><span class="n">integrator</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.io.read_write.ReaderWriterBase.write" title="Permalink to this definition">¶</a></dt>
-<dd><p>Write simulation to disk.</p>
-<p>This base class is the api for writing and reading
-of data. Note the user is free to write any type of
-output. For example, this can be used to create
-runtime plots or diagnostics.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>base_name</strong> (<em>str</em>) – File name for output data.</p></li>
-<li><p><strong>output_directory</strong> (<em>str</em>) – Directory where to store the data.</p></li>
-<li><p><strong>integrator</strong> (<a class="reference internal" href="phd.integrate.html#phd.integrate.integrate.IntegrateBase" title="phd.integrate.integrate.IntegrateBase"><em>IntegrateBase</em></a>) – Advances the fluid equations by one step.</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-</dd></dl>
-</div>
-<div class="section" id="module-phd.io.simulation_finish">
-<span id="phd-io-simulation-finish-module"></span><h2>phd.io.simulation_finish module<a class="headerlink" href="#module-phd.io.simulation_finish" title="Permalink to this headline">¶</a></h2>
-<dl class="py class">
-<dt id="phd.io.simulation_finish.Iteration">
-<em class="property">class </em><code class="sig-prename descclassname">phd.io.simulation_finish.</code><code class="sig-name descname">Iteration</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">iteration_max</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.io.simulation_finish.Iteration" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#phd.io.simulation_finish.SimulationFinisherBase" title="phd.io.simulation_finish.SimulationFinisherBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">phd.io.simulation_finish.SimulationFinisherBase</span></code></a></p>
-<p>Signal simulation complete if reached desired iteration
-number.</p>
-<dl class="py attribute">
-<dt id="phd.io.simulation_finish.Iteration.iteration_max">
-<code class="sig-name descname">iteration_max</code><a class="headerlink" href="#phd.io.simulation_finish.Iteration.iteration_max" title="Permalink to this definition">¶</a></dt>
-<dd><p>Iteration value to end the simulation.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>int</p>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py method">
-<dt id="phd.io.simulation_finish.Iteration.finished">
-<code class="sig-name descname">finished</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simulation</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.io.simulation_finish.Iteration.finished" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return True to signal the simulation is finished
-if reached max iteration number.</p>
-</dd></dl>
-</dd></dl>
-<dl class="py class">
-<dt id="phd.io.simulation_finish.SimulationFinisherBase">
-<em class="property">class </em><code class="sig-prename descclassname">phd.io.simulation_finish.</code><code class="sig-name descname">SimulationFinisherBase</code><a class="headerlink" href="#phd.io.simulation_finish.SimulationFinisherBase" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Class that singals the simulation to stop evolving.</p>
-<dl class="py method">
-<dt id="phd.io.simulation_finish.SimulationFinisherBase.finished">
-<code class="sig-name descname">finished</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simulation</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.io.simulation_finish.SimulationFinisherBase.finished" title="Permalink to this definition">¶</a></dt>
-<dd><p>Check for flag to end the simulation.
-:param simulation: Class that marshalls the simulation of the fluid equations.
-:type simulation: Simulation</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>True if main loop should be exited</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>bool</p>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py method">
-<dt id="phd.io.simulation_finish.SimulationFinisherBase.modify_timestep">
-<code class="sig-name descname">modify_timestep</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simulation</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.io.simulation_finish.SimulationFinisherBase.modify_timestep" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return consistent time step.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>simulation</strong> (<a class="reference internal" href="phd.simulation.html#phd.simulation.simulation.Simulation" title="phd.simulation.simulation.Simulation"><em>Simulation</em></a>) – Class that marshalls the simulation of the fluid equations.</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Modified dt if needed otherwise integrator dt.</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>float</p>
-</dd>
-</dl>
-</dd></dl>
-</dd></dl>
-<dl class="py class">
-<dt id="phd.io.simulation_finish.Time">
-<em class="property">class </em><code class="sig-prename descclassname">phd.io.simulation_finish.</code><code class="sig-name descname">Time</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">time_max</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.io.simulation_finish.Time" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#phd.io.simulation_finish.SimulationFinisherBase" title="phd.io.simulation_finish.SimulationFinisherBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">phd.io.simulation_finish.SimulationFinisherBase</span></code></a></p>
-<p>Signal simulation complete if reached desired time.</p>
-<dl class="py attribute">
-<dt id="phd.io.simulation_finish.Time.time_max">
-<code class="sig-name descname">time_max</code><a class="headerlink" href="#phd.io.simulation_finish.Time.time_max" title="Permalink to this definition">¶</a></dt>
-<dd><p>Time to end the simulation.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>float</p>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py method">
-<dt id="phd.io.simulation_finish.Time.finished">
-<code class="sig-name descname">finished</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simulation</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.io.simulation_finish.Time.finished" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return True to signal the simulation is finished
-if the simulation reached a certain time.</p>
-</dd></dl>
-<dl class="py method">
-<dt id="phd.io.simulation_finish.Time.modify_timestep">
-<code class="sig-name descname">modify_timestep</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simulation</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.io.simulation_finish.Time.modify_timestep" title="Permalink to this definition">¶</a></dt>
-<dd><p>Check if the simulation has reached final time.</p>
-</dd></dl>
-</dd></dl>
-</div>
-<div class="section" id="module-phd.io.simulation_output">
-<span id="phd-io-simulation-output-module"></span><h2>phd.io.simulation_output module<a class="headerlink" href="#module-phd.io.simulation_output" title="Permalink to this headline">¶</a></h2>
-<dl class="py class">
-<dt id="phd.io.simulation_output.FinalOutput">
-<em class="property">class </em><code class="sig-prename descclassname">phd.io.simulation_output.</code><code class="sig-name descname">FinalOutput</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">base_name</span><span class="o">=</span><span class="default_value">'final_output'</span></em>, <em class="sig-param"><span class="n">counter</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">pad</span><span class="o">=</span><span class="default_value">4</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.io.simulation_output.FinalOutput" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#phd.io.simulation_output.SimulationOutputterBase" title="phd.io.simulation_output.SimulationOutputterBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">phd.io.simulation_output.SimulationOutputterBase</span></code></a></p>
-<p>Class that signals the simulation to write out
-final data.</p>
-<dl class="py attribute">
-<dt id="phd.io.simulation_output.FinalOutput.base_name">
-<code class="sig-name descname">base_name</code><a class="headerlink" href="#phd.io.simulation_output.FinalOutput.base_name" title="Permalink to this definition">¶</a></dt>
-<dd><p>Name of file to be outputted. Name will be post
-fixed with output number.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>str</p>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py attribute">
-<dt id="phd.io.simulation_output.FinalOutput.counter">
-<code class="sig-name descname">counter</code><a class="headerlink" href="#phd.io.simulation_output.FinalOutput.counter" title="Permalink to this definition">¶</a></dt>
-<dd><p>Output number in output order.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>int</p>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py attribute">
-<dt id="phd.io.simulation_output.FinalOutput.pad">
-<code class="sig-name descname">pad</code><a class="headerlink" href="#phd.io.simulation_output.FinalOutput.pad" title="Permalink to this definition">¶</a></dt>
-<dd><p>Number of padding spaces for output numbering of
-data files.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>int</p>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py attribute">
-<dt id="phd.io.simulation_output.FinalOutput.read_write">
-<code class="sig-name descname">read_write</code><a class="headerlink" href="#phd.io.simulation_output.FinalOutput.read_write" title="Permalink to this definition">¶</a></dt>
-<dd><p>Class that writes data in a given format.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>ReaderWriter</p>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py method">
-<dt id="phd.io.simulation_output.FinalOutput.check_for_output">
-<code class="sig-name descname">check_for_output</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simulation</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.io.simulation_output.FinalOutput.check_for_output" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return True to signal final output after main loop.</p>
-</dd></dl>
-<dl class="py method">
-<dt id="phd.io.simulation_output.FinalOutput.modify_timestep">
-<code class="sig-name descname">modify_timestep</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simulation</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.io.simulation_output.FinalOutput.modify_timestep" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return consistent time step.</p>
-</dd></dl>
-</dd></dl>
-<dl class="py class">
-<dt id="phd.io.simulation_output.InitialOutput">
-<em class="property">class </em><code class="sig-prename descclassname">phd.io.simulation_output.</code><code class="sig-name descname">InitialOutput</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">base_name</span><span class="o">=</span><span class="default_value">'initial_output'</span></em>, <em class="sig-param"><span class="n">counter</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">pad</span><span class="o">=</span><span class="default_value">4</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.io.simulation_output.InitialOutput" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#phd.io.simulation_output.SimulationOutputterBase" title="phd.io.simulation_output.SimulationOutputterBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">phd.io.simulation_output.SimulationOutputterBase</span></code></a></p>
-<p>Class that signals the simulation to write out
-initial data.</p>
-<dl class="py attribute">
-<dt id="phd.io.simulation_output.InitialOutput.base_name">
-<code class="sig-name descname">base_name</code><a class="headerlink" href="#phd.io.simulation_output.InitialOutput.base_name" title="Permalink to this definition">¶</a></dt>
-<dd><p>Name of file to be outputted. Name will be post
-fixed with output number.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>str</p>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py attribute">
-<dt id="phd.io.simulation_output.InitialOutput.counter">
-<code class="sig-name descname">counter</code><a class="headerlink" href="#phd.io.simulation_output.InitialOutput.counter" title="Permalink to this definition">¶</a></dt>
-<dd><p>Output number in output order.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>int</p>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py attribute">
-<dt id="phd.io.simulation_output.InitialOutput.pad">
-<code class="sig-name descname">pad</code><a class="headerlink" href="#phd.io.simulation_output.InitialOutput.pad" title="Permalink to this definition">¶</a></dt>
-<dd><p>Number of padding spaces for output numbering of
-data files.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>int</p>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py attribute">
-<dt id="phd.io.simulation_output.InitialOutput.read_write">
-<code class="sig-name descname">read_write</code><a class="headerlink" href="#phd.io.simulation_output.InitialOutput.read_write" title="Permalink to this definition">¶</a></dt>
-<dd><p>Class that writes data in a given format.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>ReaderWriter</p>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py method">
-<dt id="phd.io.simulation_output.InitialOutput.check_for_output">
-<code class="sig-name descname">check_for_output</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simulation</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.io.simulation_output.InitialOutput.check_for_output" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return True to signal first output before main loop.</p>
-</dd></dl>
-<dl class="py method">
-<dt id="phd.io.simulation_output.InitialOutput.modify_timestep">
-<code class="sig-name descname">modify_timestep</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simulation</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.io.simulation_output.InitialOutput.modify_timestep" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return consistent time step.</p>
-</dd></dl>
-</dd></dl>
-<dl class="py class">
-<dt id="phd.io.simulation_output.IterationInterval">
-<em class="property">class </em><code class="sig-prename descclassname">phd.io.simulation_output.</code><code class="sig-name descname">IterationInterval</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">iteration_interval</span></em>, <em class="sig-param"><span class="n">base_name</span><span class="o">=</span><span class="default_value">'iteration_interval'</span></em>, <em class="sig-param"><span class="n">counter</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">pad</span><span class="o">=</span><span class="default_value">4</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.io.simulation_output.IterationInterval" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#phd.io.simulation_output.SimulationOutputterBase" title="phd.io.simulation_output.SimulationOutputterBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">phd.io.simulation_output.SimulationOutputterBase</span></code></a></p>
-<p>Class that signals the simulation to write out
-at given iteration intervals.</p>
-<dl class="py attribute">
-<dt id="phd.io.simulation_output.IterationInterval.base_name">
-<code class="sig-name descname">base_name</code><a class="headerlink" href="#phd.io.simulation_output.IterationInterval.base_name" title="Permalink to this definition">¶</a></dt>
-<dd><p>Name of file to be outputted. Name will be post
-fixed with output number.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>str</p>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py attribute">
-<dt id="phd.io.simulation_output.IterationInterval.counter">
-<code class="sig-name descname">counter</code><a class="headerlink" href="#phd.io.simulation_output.IterationInterval.counter" title="Permalink to this definition">¶</a></dt>
-<dd><p>Output number in output order.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>int</p>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py attribute">
-<dt id="phd.io.simulation_output.IterationInterval.iteration_interval">
-<code class="sig-name descname">iteration_interval</code><a class="headerlink" href="#phd.io.simulation_output.IterationInterval.iteration_interval" title="Permalink to this definition">¶</a></dt>
-<dd><p>Number of iterations between outputs.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>int</p>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py attribute">
-<dt id="phd.io.simulation_output.IterationInterval.pad">
-<code class="sig-name descname">pad</code><a class="headerlink" href="#phd.io.simulation_output.IterationInterval.pad" title="Permalink to this definition">¶</a></dt>
-<dd><p>Number of padding spaces for output numbering of
-data files.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>int</p>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py attribute">
-<dt id="phd.io.simulation_output.IterationInterval.read_write">
-<code class="sig-name descname">read_write</code><a class="headerlink" href="#phd.io.simulation_output.IterationInterval.read_write" title="Permalink to this definition">¶</a></dt>
-<dd><p>Class that writes data in a given format.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>ReaderWriter</p>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py method">
-<dt id="phd.io.simulation_output.IterationInterval.check_for_output">
-<code class="sig-name descname">check_for_output</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simulation</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.io.simulation_output.IterationInterval.check_for_output" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return True to signal the simulation has reached
-iteteration interval to ouput data.</p>
-</dd></dl>
-<dl class="py method">
-<dt id="phd.io.simulation_output.IterationInterval.modify_timestep">
-<code class="sig-name descname">modify_timestep</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simulation</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.io.simulation_output.IterationInterval.modify_timestep" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return consistent time step.</p>
-</dd></dl>
-</dd></dl>
-<dl class="py class">
-<dt id="phd.io.simulation_output.SimulationOutputterBase">
-<em class="property">class </em><code class="sig-prename descclassname">phd.io.simulation_output.</code><code class="sig-name descname">SimulationOutputterBase</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">base_name</span></em>, <em class="sig-param"><span class="n">counter</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">pad</span><span class="o">=</span><span class="default_value">4</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.io.simulation_output.SimulationOutputterBase" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Class that signals the simulation to write out
-data at current state of the simultion.</p>
-<p>This class is the api for all outputters. To inherit
-you will have write your own check_for_output and
-modify_timestep methods.</p>
-<dl class="py attribute">
-<dt id="phd.io.simulation_output.SimulationOutputterBase.base_name">
-<code class="sig-name descname">base_name</code><a class="headerlink" href="#phd.io.simulation_output.SimulationOutputterBase.base_name" title="Permalink to this definition">¶</a></dt>
-<dd><p>Name of file to be outputted. Name will be post
-fixed with output number.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>str</p>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py attribute">
-<dt id="phd.io.simulation_output.SimulationOutputterBase.counter">
-<code class="sig-name descname">counter</code><a class="headerlink" href="#phd.io.simulation_output.SimulationOutputterBase.counter" title="Permalink to this definition">¶</a></dt>
-<dd><p>Output number in output order.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>int</p>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py attribute">
-<dt id="phd.io.simulation_output.SimulationOutputterBase.output_directory">
-<code class="sig-name descname">output_directory</code><a class="headerlink" href="#phd.io.simulation_output.SimulationOutputterBase.output_directory" title="Permalink to this definition">¶</a></dt>
-<dd><p>Directory to store all output of the simulation.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>str</p>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py attribute">
-<dt id="phd.io.simulation_output.SimulationOutputterBase.read_write">
-<code class="sig-name descname">read_write</code><a class="headerlink" href="#phd.io.simulation_output.SimulationOutputterBase.read_write" title="Permalink to this definition">¶</a></dt>
-<dd><p>Class that writes data in a given format.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>ReaderWriter</p>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py attribute">
-<dt id="phd.io.simulation_output.SimulationOutputterBase.pad">
-<code class="sig-name descname">pad</code><a class="headerlink" href="#phd.io.simulation_output.SimulationOutputterBase.pad" title="Permalink to this definition">¶</a></dt>
-<dd><p>Number of padding spaces for output numbering of
-data files.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>int</p>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py method">
-<dt id="phd.io.simulation_output.SimulationOutputterBase.check_for_output">
-<code class="sig-name descname">check_for_output</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simulation</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.io.simulation_output.SimulationOutputterBase.check_for_output" title="Permalink to this definition">¶</a></dt>
-<dd><p>Signal if simulation needs to output.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>simulation</strong> (<a class="reference internal" href="phd.simulation.html#phd.simulation.simulation.Simulation" title="phd.simulation.simulation.Simulation"><em>Simulation</em></a>) – Class that marshalls the simulation of the fluid equations.</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>True if time to output.</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>bool</p>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py method">
-<dt id="phd.io.simulation_output.SimulationOutputterBase.create_directory">
-<code class="sig-name descname">create_directory</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.io.simulation_output.SimulationOutputterBase.create_directory" title="Permalink to this definition">¶</a></dt>
-<dd><p>For each data output create a directory to store that output.</p>
-</dd></dl>
-<dl class="py method">
-<dt id="phd.io.simulation_output.SimulationOutputterBase.initialize">
-<code class="sig-name descname">initialize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.io.simulation_output.SimulationOutputterBase.initialize" title="Permalink to this definition">¶</a></dt>
-<dd><p>Initialize outputter, check for ReaderWriter and output directory.</p>
-</dd></dl>
-<dl class="py method">
-<dt id="phd.io.simulation_output.SimulationOutputterBase.modify_timestep">
-<code class="sig-name descname">modify_timestep</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simulation</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.io.simulation_output.SimulationOutputterBase.modify_timestep" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return consistent time step.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>simulation</strong> (<a class="reference internal" href="phd.simulation.html#phd.simulation.simulation.Simulation" title="phd.simulation.simulation.Simulation"><em>Simulation</em></a>) – Class that marshalls the simulation of the fluid equations.</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Modified dt if needed otherwise integrator dt.</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>float</p>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py method">
-<dt id="phd.io.simulation_output.SimulationOutputterBase.output">
-<code class="sig-name descname">output</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simulation</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.io.simulation_output.SimulationOutputterBase.output" title="Permalink to this definition">¶</a></dt>
-<dd><p>Write out data to given directory.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>simulation</strong> (<a class="reference internal" href="phd.simulation.html#phd.simulation.simulation.Simulation" title="phd.simulation.simulation.Simulation"><em>Simulation</em></a>) – Class that marshalls the simulation of the fluid equations.</p>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py method">
-<dt id="phd.io.simulation_output.SimulationOutputterBase.set_output_directory">
-<code class="sig-name descname">set_output_directory</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">output_directory</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.io.simulation_output.SimulationOutputterBase.set_output_directory" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set directory where to output files.</p>
-</dd></dl>
-<dl class="py method">
-<dt id="phd.io.simulation_output.SimulationOutputterBase.set_writer">
-<code class="sig-name descname">set_writer</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">read_write</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.io.simulation_output.SimulationOutputterBase.set_writer" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set class to write out data in a specific format.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>read_write</strong> (<em>ReaderWriter</em>) – Class that writes data in a given format.</p>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py method">
-<dt id="phd.io.simulation_output.SimulationOutputterBase.write_parameters">
-<code class="sig-name descname">write_parameters</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">file_name</span></em>, <em class="sig-param"><span class="n">output_directory</span></em>, <em class="sig-param"><span class="n">simulation</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.io.simulation_output.SimulationOutputterBase.write_parameters" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-</dd></dl>
-<dl class="py class">
-<dt id="phd.io.simulation_output.TimeInterval">
-<em class="property">class </em><code class="sig-prename descclassname">phd.io.simulation_output.</code><code class="sig-name descname">TimeInterval</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">time_interval</span></em>, <em class="sig-param"><span class="n">initial_time</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">base_name</span><span class="o">=</span><span class="default_value">'time_interval'</span></em>, <em class="sig-param"><span class="n">counter</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">pad</span><span class="o">=</span><span class="default_value">4</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.io.simulation_output.TimeInterval" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#phd.io.simulation_output.SimulationOutputterBase" title="phd.io.simulation_output.SimulationOutputterBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">phd.io.simulation_output.SimulationOutputterBase</span></code></a></p>
-<p>Class that signals the simulation to write out
-final data.</p>
-<dl class="py attribute">
-<dt id="phd.io.simulation_output.TimeInterval.base_name">
-<code class="sig-name descname">base_name</code><a class="headerlink" href="#phd.io.simulation_output.TimeInterval.base_name" title="Permalink to this definition">¶</a></dt>
-<dd><p>Name of file to be outputted. Name will be post
-fixed with output number.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>str</p>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py attribute">
-<dt id="phd.io.simulation_output.TimeInterval.counter">
-<code class="sig-name descname">counter</code><a class="headerlink" href="#phd.io.simulation_output.TimeInterval.counter" title="Permalink to this definition">¶</a></dt>
-<dd><p>Output number in output order.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>int</p>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py attribute">
-<dt id="phd.io.simulation_output.TimeInterval.pad">
-<code class="sig-name descname">pad</code><a class="headerlink" href="#phd.io.simulation_output.TimeInterval.pad" title="Permalink to this definition">¶</a></dt>
-<dd><p>Number of padding spaces for output numbering of
-data files.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>int</p>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py attribute">
-<dt id="phd.io.simulation_output.TimeInterval._next_time_output">
-<code class="sig-name descname">_next_time_output</code><a class="headerlink" href="#phd.io.simulation_output.TimeInterval._next_time_output" title="Permalink to this definition">¶</a></dt>
-<dd><p>Time of next output.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>float</p>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py attribute">
-<dt id="phd.io.simulation_output.TimeInterval.read_write">
-<code class="sig-name descname">read_write</code><a class="headerlink" href="#phd.io.simulation_output.TimeInterval.read_write" title="Permalink to this definition">¶</a></dt>
-<dd><p>Class that writes data in a given format.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>ReaderWriter</p>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py attribute">
-<dt id="phd.io.simulation_output.TimeInterval.time_interval">
-<code class="sig-name descname">time_interval</code><a class="headerlink" href="#phd.io.simulation_output.TimeInterval.time_interval" title="Permalink to this definition">¶</a></dt>
-<dd><p>Time between outputs.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>float</p>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py attribute">
-<dt id="phd.io.simulation_output.TimeInterval.time_last_output">
-<code class="sig-name descname">time_last_output</code><a class="headerlink" href="#phd.io.simulation_output.TimeInterval.time_last_output" title="Permalink to this definition">¶</a></dt>
-<dd><p>Time of last output.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>float</p>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py method">
-<dt id="phd.io.simulation_output.TimeInterval.check_for_output">
-<code class="sig-name descname">check_for_output</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simulation</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.io.simulation_output.TimeInterval.check_for_output" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return True to signal the simulation has reached
-multiple of time_interval to ouput data.</p>
-</dd></dl>
-<dl class="py method">
-<dt id="phd.io.simulation_output.TimeInterval.modify_timestep">
-<code class="sig-name descname">modify_timestep</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simulation</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.io.simulation_output.TimeInterval.modify_timestep" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return time step for next time interval output.</p>
-</dd></dl>
-</dd></dl>
-</div>
-<div class="section" id="module-phd.io.simulation_time_manager">
-<span id="phd-io-simulation-time-manager-module"></span><h2>phd.io.simulation_time_manager module<a class="headerlink" href="#module-phd.io.simulation_time_manager" title="Permalink to this headline">¶</a></h2>
-<dl class="py class">
-<dt id="phd.io.simulation_time_manager.SimulationTimeManager">
-<em class="property">class </em><code class="sig-prename descclassname">phd.io.simulation_time_manager.</code><code class="sig-name descname">SimulationTimeManager</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.io.simulation_time_manager.SimulationTimeManager" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Collection of data outputters and simulation finishers.</p>
-<p>Controls when the simulation needs to output data or needs to end the simulation.</p>
-<dl class="py attribute">
-<dt id="phd.io.simulation_time_manager.SimulationTimeManager._outputs">
-<code class="sig-name descname">_outputs</code><a class="headerlink" href="#phd.io.simulation_time_manager.SimulationTimeManager._outputs" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set of SimulationOutputter to signal the simualtion
-to output data to disk.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>set</p>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py attribute">
-<dt id="phd.io.simulation_time_manager.SimulationTimeManager._finishes">
-<code class="sig-name descname">_finishes</code><a class="headerlink" href="#phd.io.simulation_time_manager.SimulationTimeManager._finishes" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set of SimulationFinisher to signal the termination
-of the simulation.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>set</p>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py method">
-<dt id="phd.io.simulation_time_manager.SimulationTimeManager.add_finish">
-<code class="sig-name descname">add_finish</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cl_to_check</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.io.simulation_time_manager.SimulationTimeManager.add_finish" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-<dl class="py method">
-<dt id="phd.io.simulation_time_manager.SimulationTimeManager.add_output">
-<code class="sig-name descname">add_output</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cl_to_check</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.io.simulation_time_manager.SimulationTimeManager.add_output" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-<dl class="py method">
-<dt id="phd.io.simulation_time_manager.SimulationTimeManager.finished">
-<code class="sig-name descname">finished</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">integrator</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.io.simulation_time_manager.SimulationTimeManager.finished" title="Permalink to this definition">¶</a></dt>
-<dd><p>Cycle through all finishers and check for flag to end
-the simulation.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>integrator</strong> (<a class="reference internal" href="phd.integrate.html#phd.integrate.integrate.IntegrateBase" title="phd.integrate.integrate.IntegrateBase"><em>IntegrateBase</em></a>) – Integrator that solves the equations.</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>True if simulation finished False otherwise.</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>bool</p>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py method">
-<dt id="phd.io.simulation_time_manager.SimulationTimeManager.modify_timestep">
-<code class="sig-name descname">modify_timestep</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simulation</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.io.simulation_time_manager.SimulationTimeManager.modify_timestep" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the smallest time step from each finish and output
-object in the simulation. Assumes that integrator has its
-dt updated.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>integrator</strong> (<a class="reference internal" href="phd.integrate.html#phd.integrate.integrate.IntegrateBase" title="phd.integrate.integrate.IntegrateBase"><em>IntegrateBase</em></a>) – Integrator that solves the equations.</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>modified time step if needed otherwise integrator dt.</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>float</p>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py method">
-<dt id="phd.io.simulation_time_manager.SimulationTimeManager.output">
-<code class="sig-name descname">output</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simulation</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.io.simulation_time_manager.SimulationTimeManager.output" title="Permalink to this definition">¶</a></dt>
-<dd><p>Cycle through all outputs and check for flag to write out
-simulation data.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>simulation</strong> (<a class="reference internal" href="phd.simulation.html#phd.simulation.simulation.Simulation" title="phd.simulation.simulation.Simulation"><em>Simulation</em></a>) – Class that marshalls the simulation of the fluid equations.</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>True if should output False otherwise.</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>bool</p>
-</dd>
-</dl>
-</dd></dl>
-</dd></dl>
-</div>
-<div class="section" id="module-phd.io">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-phd.io" title="Permalink to this headline">¶</a></h2>
-</div>
-</div>
-
-      </article>
-      <footer>
-        
-        <div class="related-pages">
-          <a class="next-page" href="phd.load_balance.html">
-              <div class="page-info">
-                <div class="context">
-                  <span>Next</span>
-                </div>
-                <div class="title">phd.load_balance package</div>
-              </div>
-              <svg><use href="#svg-arrow-right"></use></svg>
-            </a>
-          <a class="prev-page" href="phd.integrate.html">
-              <svg><use href="#svg-arrow-right"></use></svg>
-              <div class="page-info">
-                <div class="context">
-                  <span>Previous</span>
-                </div>
-                
-                <div class="title">phd.integrate package</div>
-                
-              </div>
-            </a>
-        </div>
-
-        <div class="related-information">
-              Copyright &#169; 2021, Ricardo Fernandez, Greg Bryan
-            |
-            Built with <a href="https://www.sphinx-doc.org/">Sphinx</a>
-              and
-              <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
-              <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
-            |
-            <a class="muted-link" href="../_sources/phd_code_docs/phd.io.rst.txt"
-               rel="nofollow">
-              Show Source
-            </a>
-        </div>
-        
-      </footer>
-    </div>
-    <aside class="toc-drawer">
-      
-      
-      <div class="toc-sticky toc-scroll">
-        <div class="toc-title-container">
-          <span class="toc-title">
-            Contents
-          </span>
-        </div>
-        <div class="toc-tree-container">
-          <div class="toc-tree">
-            <ul>
-<li><a class="reference internal" href="#">phd.io package</a><ul>
-<li><a class="reference internal" href="#submodules">Submodules</a></li>
-<li><a class="reference internal" href="#module-phd.io.read_write">phd.io.read_write module</a></li>
-<li><a class="reference internal" href="#module-phd.io.simulation_finish">phd.io.simulation_finish module</a></li>
-<li><a class="reference internal" href="#module-phd.io.simulation_output">phd.io.simulation_output module</a></li>
-<li><a class="reference internal" href="#module-phd.io.simulation_time_manager">phd.io.simulation_time_manager module</a></li>
-<li><a class="reference internal" href="#module-phd.io">Module contents</a></li>
-</ul>
-</li>
-</ul>
-
-          </div>
-        </div>
-      </div>
-      
-      
-    </aside>
-  </main>
-</div>
     <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
@@ -911,5 +18,193 @@ simulation data.</p>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
-    <script src="../_static/scripts/main.js?digest=e931d09b2a40c1bb82b542effe772014573baf67"></script></body>
+    <script defer src="../_static/insipid.js"></script>
+    <script defer src="../_static/insipid-sidebar.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="phd.load_balance package" href="phd.load_balance.html" />
+    <link rel="prev" title="phd.integrate package" href="phd.integrate.html" />
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+  </head>
+  <body class="sidebar-visible">
+    <script type="text/javascript">
+        (function() {
+            var $body = $(document.body);
+            $body.addClass('js');
+            $body.addClass('sidebar-resizing');  // avoid transitions on load
+            $body.removeClass('sidebar-visible');
+            try {
+                var sidebar = localStorage.getItem('sphinx-sidebar');
+                if (sidebar === 'visible') {
+                    $body.addClass('sidebar-visible');
+                }
+                var sidebar_width = localStorage.getItem('sphinx-sidebar-width');
+                if (sidebar_width) {
+                    $(':root').css('--sidebar-width', sidebar_width);
+                }
+            } catch(e) {
+            }
+        })();
+    </script>
+    <header id="topbar-placeholder">
+      <div id="topbar">
+        <div id="titlebar">
+          <div class="buttons">
+            <button id="sidebar-button" type="button" aria-controls="sphinxsidebar" accesskey="M">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.3 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"/></svg>
+            </button>
+            <button id="search-button" type="button" title="Search" aria-label="Search" aria-expanded="false" aria-controls="search-form" accesskey="S">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.3 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+            </button>
+          </div>
+          <div class="title">
+            <a class="parent" href="../docs.html" accesskey="U">Documentation</a>
+            <a class="top" href="#">phd.io package</a>
+          </div>
+          <div class="buttons">
+            <button id="fullscreen-button" type="button" aria-hidden="true">
+              <span class="enable">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.3 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M212.686 315.314L120 408l32.922 31.029c15.12 15.12 4.412 40.971-16.97 40.971h-112C10.697 480 0 469.255 0 456V344c0-21.382 25.803-32.09 40.922-16.971L72 360l92.686-92.686c6.248-6.248 16.379-6.248 22.627 0l25.373 25.373c6.249 6.248 6.249 16.378 0 22.627zm22.628-118.628L328 104l-32.922-31.029C279.958 57.851 290.666 32 312.048 32h112C437.303 32 448 42.745 448 56v112c0 21.382-25.803 32.09-40.922 16.971L376 152l-92.686 92.686c-6.248 6.248-16.379 6.248-22.627 0l-25.373-25.373c-6.249-6.248-6.249-16.378 0-22.627z"/></svg>
+              </span>
+              <span class="disable">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.3 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M4.686 427.314L104 328l-32.922-31.029C55.958 281.851 66.666 256 88.048 256h112C213.303 256 224 266.745 224 280v112c0 21.382-25.803 32.09-40.922 16.971L152 376l-99.314 99.314c-6.248 6.248-16.379 6.248-22.627 0L4.686 449.941c-6.248-6.248-6.248-16.379 0-22.627zM443.314 84.686L344 184l32.922 31.029c15.12 15.12 4.412 40.971-16.97 40.971h-112C234.697 256 224 245.255 224 232V120c0-21.382 25.803-32.09 40.922-16.971L296 136l99.314-99.314c6.248-6.248 16.379-6.248 22.627 0l25.373 25.373c6.248 6.248 6.248 16.379 0 22.627z"/></svg>
+              </span>
+            </button>
+          </div>
+        </div>
+        <div id="searchbox" role="search">
+          <form id="search-form" class="search" style="display: none" action="../search.html" method="get">
+            <input type="search" name="q" placeholder="Search ..." />
+            <button>Go</button>
+          </form>
+        </div>
+      </div>
+    </header>
+    <nav>
+      <a href="phd.integrate.html" class="nav-icon previous" title="previous:&#13;phd.integrate package" aria-label="Previous topic" accesskey="P" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!-- Font Awesome Free 5.15.3 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M31.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L127.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L201.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34z"/></svg>
+      </a>
+      <a href="phd.load_balance.html" class="nav-icon next" title="next:&#13;phd.load_balance package" aria-label="Next topic" accesskey="N" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!-- Font Awesome Free 5.15.3 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"/></svg>
+      </a>
+    </nav>
+
+    <nav class="relbar">
+      <a class="previous" href="phd.integrate.html" aria-label="Previous topic" >
+        <div class="icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.3 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M257.5 445.1l-22.2 22.2c-9.4 9.4-24.6 9.4-33.9 0L7 273c-9.4-9.4-9.4-24.6 0-33.9L201.4 44.7c9.4-9.4 24.6-9.4 33.9 0l22.2 22.2c9.5 9.5 9.3 25-.4 34.3L136.6 216H424c13.3 0 24 10.7 24 24v32c0 13.3-10.7 24-24 24H136.6l120.5 114.8c9.8 9.3 10 24.8.4 34.3z"/></svg>
+        </div>
+        <div class="title">
+          <span class="text">
+            <span class="direction">previous</span>
+            phd.integrate package
+          </span>
+        </div>
+      </a>
+      <a class="next" href="phd.load_balance.html" aria-label="Next topic" >
+        <div class="title">
+          <span class="text">
+            <span class="direction">next</span>
+            phd.load_balance package
+          </span>
+        </div>
+        <div class="icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.3 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"/></svg>
+        </div>
+      </a>
+    </nav>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+<div class="section" id="phd-io-package">
+<h1>phd.io package<a class="headerlink" href="#phd-io-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="phd-io-read-write-module">
+<h2>phd.io.read_write module<a class="headerlink" href="#phd-io-read-write-module" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="phd-io-simulation-finish-module">
+<h2>phd.io.simulation_finish module<a class="headerlink" href="#phd-io-simulation-finish-module" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="phd-io-simulation-output-module">
+<h2>phd.io.simulation_output module<a class="headerlink" href="#phd-io-simulation-output-module" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="phd-io-simulation-time-manager-module">
+<h2>phd.io.simulation_time_manager module<a class="headerlink" href="#phd-io-simulation-time-manager-module" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-contents">
+<h2>Module contents<a class="headerlink" href="#module-contents" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+
+    <nav class="relbar">
+      <a class="previous" href="phd.integrate.html" aria-label="Previous topic" >
+        <div class="icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.3 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M257.5 445.1l-22.2 22.2c-9.4 9.4-24.6 9.4-33.9 0L7 273c-9.4-9.4-9.4-24.6 0-33.9L201.4 44.7c9.4-9.4 24.6-9.4 33.9 0l22.2 22.2c9.5 9.5 9.3 25-.4 34.3L136.6 216H424c13.3 0 24 10.7 24 24v32c0 13.3-10.7 24-24 24H136.6l120.5 114.8c9.8 9.3 10 24.8.4 34.3z"/></svg>
+        </div>
+        <div class="title">
+          <span class="text">
+            <span class="direction">previous</span>
+            phd.integrate package
+          </span>
+        </div>
+      </a>
+      <a class="next" href="phd.load_balance.html" aria-label="Next topic" >
+        <div class="title">
+          <span class="text">
+            <span class="direction">next</span>
+            phd.load_balance package
+          </span>
+        </div>
+        <div class="icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.3 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"/></svg>
+        </div>
+      </a>
+    </nav>
+
+
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+
+          <div class="sidebar-resize-handle"></div>
+
+<h3><a href="../index.html">Table of Contents</a></h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials and Test Problems</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../docs.html">Documentation</a></li>
+</ul>
+
+<hr class="docutils" />
+<ul>
+  <li class="toctree-l1"><a class="reference internal" href="../genindex.html" accesskey="I">General Index</a></li>
+  <li class="toctree-l1"><a class="reference internal" href="../py-modindex.html">Python Module Index</a></li>
+</ul>
+<div id="ethical-ad-placement"></div>
+        </div>
+      </div>
+    <footer role="contentinfo">
+      &#169; Copyright 2021, Ricardo Fernandez, Greg Bryan.
+      Created using <a class="reference external" href="https://www.sphinx-doc.org/">Sphinx</a> 3.2.1.
+      <a class="reference external" href="https://insipid-sphinx-theme.readthedocs.io/">Insipid Theme</a>.
+<a class="reference internal" href="../_sources/phd_code_docs/phd.io.rst.txt" rel="nofollow">Show Source</a>.
+    </footer>
+    <div class="sidebar-resize-handle"></div>
+    <div id="overlay"></div>
+  </body>
 </html>
