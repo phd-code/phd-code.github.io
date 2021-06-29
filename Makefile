@@ -1,8 +1,3 @@
-# Minimal makefile for Sphinx documentation
-#
-
-# You can set these variables from the command line, and also
-# from the environment for the first two.
 SPHINXOPTS    ?=
 SPHINXBUILD   ?= sphinx-build
 SOURCEDIR     = ./docs_source
@@ -18,6 +13,10 @@ help:
 
 # Catch-all target: route all unknown targets to Sphinx using the new
 # "make mode" option.  $(O) is meant as a shortcut for $(SPHINXOPTS).
+# Generates docstrings from the code modules and deposits in documentation source dir
+# Builds sphinx documentation using generated docstrings
+# Copies docstrings to gh-pages recognized directory
+# Pushes updated documentation to main branch of Github repo
 %: Makefile
 	@sphinx-apidoc -fo $(AUTODOCDIR) $(CODEDIR)
 	@$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
@@ -28,11 +27,3 @@ help:
 	@git commit -m "Docs updated and rebuilt"
 	@git push -u origin main
 
-#html:
-#	$(SPHINXBUILD) -b html $(SPHINXOPTS) $(BUILDDIR)/docs
-#	@echo
-#	@echo "Build finished. The HTML pages are in $(BUILDDIR)"
-
-#github:
-#      @make html
-#      @cp -a _build/html/. ../docs
