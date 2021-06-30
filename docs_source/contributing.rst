@@ -6,7 +6,7 @@ If you find any bugs or other issues with the code, please make an issue at `htt
 Building the Documentation
 ==========================
 
-If you are making changes to the documentation, you can build the Sphinx documentation locally using the files in the ``docs_source`` and ``docs`` folders. The home directory of the repository, ``phd-code.github.io`` will contain the ``Makefile`` which enables two commands for building the documentation. Note that this will require Sphinx, which can be installed `here <https://www.sphinx-doc.org/en/master/usage/installation.html>`_. You may also need to install a few packages, which can be done via the following command::
+If you are making changes to the documentation, the Sphinx documentation can be built locally using the files in the ``docs_source`` and ``docs`` folders. The home directory of the repository, ``phd-code.github.io`` will contain the ``Makefile`` which enables two commands for building the documentation. Note that this will require Sphinx, which can be installed `here <https://www.sphinx-doc.org/en/master/usage/installation.html>`_. You may also need to install a few packages, which can be done via the following command::
 
 	python -m pip install -r docs_source/requirements.txt
 
