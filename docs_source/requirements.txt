@@ -1,4 +1,4 @@
-furo
+insipid-sphinx-theme
 nbsphinx
 IPython
 jupyter
