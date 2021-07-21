@@ -1598,51 +1598,11 @@ static CYTHON_INLINE PyObject* __Pyx_PyObject_CallMethO(PyObject *func, PyObject
 /* PyObjectCallOneArg.proto */
 static CYTHON_INLINE PyObject* __Pyx_PyObject_CallOneArg(PyObject *func, PyObject *arg);
 
-/* ListAppend.proto */
-#if CYTHON_USE_PYLIST_INTERNALS && CYTHON_ASSUME_SAFE_MACROS
-static CYTHON_INLINE int __Pyx_PyList_Append(PyObject* list, PyObject* x) {
-    PyListObject* L = (PyListObject*) list;
-    Py_ssize_t len = Py_SIZE(list);
-    if (likely(L->allocated > len) & likely(len > (L->allocated >> 1))) {
-        Py_INCREF(x);
-        PyList_SET_ITEM(list, len, x);
-        __Pyx_SET_SIZE(list, len + 1);
-        return 0;
-    }
-    return PyList_Append(list, x);
-}
-#else
-#define __Pyx_PyList_Append(L,x) PyList_Append(L,x)
-#endif
-
-/* PyObjectCall2Args.proto */
-static CYTHON_UNUSED PyObject* __Pyx_PyObject_Call2Args(PyObject* function, PyObject* arg1, PyObject* arg2);
-
 /* PyObjectGetAttrStr.proto */
 #if CYTHON_USE_TYPE_SLOTS
 static CYTHON_INLINE PyObject* __Pyx_PyObject_GetAttrStr(PyObject* obj, PyObject* attr_name);
 #else
 #define __Pyx_PyObject_GetAttrStr(o,n) PyObject_GetAttr(o,n)
-#endif
-
-/* PyObjectGetMethod.proto */
-static int __Pyx_PyObject_GetMethod(PyObject *obj, PyObject *name, PyObject **method);
-
-/* PyObjectCallMethod1.proto */
-static PyObject* __Pyx_PyObject_CallMethod1(PyObject* obj, PyObject* method_name, PyObject* arg);
-
-/* append.proto */
-static CYTHON_INLINE int __Pyx_PyObject_Append(PyObject* L, PyObject* x);
-
-/* DictGetItem.proto */
-#if PY_MAJOR_VERSION >= 3 && !CYTHON_COMPILING_IN_PYPY
-static PyObject *__Pyx_PyDict_GetItem(PyObject *d, PyObject* key);
-#define __Pyx_PyObject_Dict_GetItem(obj, name)\
-    (likely(PyDict_CheckExact(obj)) ?\
-     __Pyx_PyDict_GetItem(obj, name) : PyObject_GetItem(obj, name))
-#else
-#define __Pyx_PyDict_GetItem(d, key) PyObject_GetItem(d, key)
-#define __Pyx_PyObject_Dict_GetItem(obj, name)  PyObject_GetItem(obj, name)
 #endif
 
 /* GetBuiltinName.proto */
@@ -1693,6 +1653,46 @@ static PyObject *__Pyx__GetModuleGlobalName(PyObject *name, PY_UINT64_T *dict_ve
 #define __Pyx_GetModuleGlobalName(var, name)  (var) = __Pyx__GetModuleGlobalName(name)
 #define __Pyx_GetModuleGlobalNameUncached(var, name)  (var) = __Pyx__GetModuleGlobalName(name)
 static CYTHON_INLINE PyObject *__Pyx__GetModuleGlobalName(PyObject *name);
+#endif
+
+/* ListAppend.proto */
+#if CYTHON_USE_PYLIST_INTERNALS && CYTHON_ASSUME_SAFE_MACROS
+static CYTHON_INLINE int __Pyx_PyList_Append(PyObject* list, PyObject* x) {
+    PyListObject* L = (PyListObject*) list;
+    Py_ssize_t len = Py_SIZE(list);
+    if (likely(L->allocated > len) & likely(len > (L->allocated >> 1))) {
+        Py_INCREF(x);
+        PyList_SET_ITEM(list, len, x);
+        __Pyx_SET_SIZE(list, len + 1);
+        return 0;
+    }
+    return PyList_Append(list, x);
+}
+#else
+#define __Pyx_PyList_Append(L,x) PyList_Append(L,x)
+#endif
+
+/* PyObjectCall2Args.proto */
+static CYTHON_UNUSED PyObject* __Pyx_PyObject_Call2Args(PyObject* function, PyObject* arg1, PyObject* arg2);
+
+/* PyObjectGetMethod.proto */
+static int __Pyx_PyObject_GetMethod(PyObject *obj, PyObject *name, PyObject **method);
+
+/* PyObjectCallMethod1.proto */
+static PyObject* __Pyx_PyObject_CallMethod1(PyObject* obj, PyObject* method_name, PyObject* arg);
+
+/* append.proto */
+static CYTHON_INLINE int __Pyx_PyObject_Append(PyObject* L, PyObject* x);
+
+/* DictGetItem.proto */
+#if PY_MAJOR_VERSION >= 3 && !CYTHON_COMPILING_IN_PYPY
+static PyObject *__Pyx_PyDict_GetItem(PyObject *d, PyObject* key);
+#define __Pyx_PyObject_Dict_GetItem(obj, name)\
+    (likely(PyDict_CheckExact(obj)) ?\
+     __Pyx_PyDict_GetItem(obj, name) : PyObject_GetItem(obj, name))
+#else
+#define __Pyx_PyDict_GetItem(d, key) PyObject_GetItem(d, key)
+#define __Pyx_PyObject_Dict_GetItem(obj, name)  PyObject_GetItem(obj, name)
 #endif
 
 /* GetItemInt.proto */
@@ -2023,6 +2023,7 @@ int __pyx_module_is_main_phd__utils__particle_creator = 0;
 /* Implementation of 'phd.utils.particle_creator' */
 static PyObject *__pyx_builtin_ImportError;
 static const char __pyx_k_pc[] = "pc";
+static const char __pyx_k_cgs[] = "cgs";
 static const char __pyx_k_dim[] = "dim";
 static const char __pyx_k_ids[] = "ids";
 static const char __pyx_k_int[] = "int";
@@ -2037,6 +2038,8 @@ static const char __pyx_k_mass[] = "mass";
 static const char __pyx_k_name[] = "__name__";
 static const char __pyx_k_test[] = "__test__";
 static const char __pyx_k_type[] = "type";
+static const char __pyx_k_Units[] = "Units";
+static const char __pyx_k_units[] = "units";
 static const char __pyx_k_append[] = "append";
 static const char __pyx_k_double[] = "double";
 static const char __pyx_k_energy[] = "energy";
@@ -2046,15 +2049,19 @@ static const char __pyx_k_momentum[] = "momentum";
 static const char __pyx_k_parallel[] = "parallel";
 static const char __pyx_k_position[] = "position";
 static const char __pyx_k_pressure[] = "pressure";
+static const char __pyx_k_unit_obj[] = "unit_obj";
+static const char __pyx_k_unit_sys[] = "unit_sys";
 static const char __pyx_k_velocity[] = "velocity";
 static const char __pyx_k_Undefined[] = "Undefined";
 static const char __pyx_k_dimension[] = "dimension";
 static const char __pyx_k_primitive[] = "primitive";
+static const char __pyx_k_unit_dict[] = "unit_dict";
 static const char __pyx_k_momentum_2[] = "momentum-";
 static const char __pyx_k_position_2[] = "position-";
 static const char __pyx_k_pyx_vtable[] = "__pyx_vtable__";
 static const char __pyx_k_velocity_2[] = "velocity-";
 static const char __pyx_k_ImportError[] = "ImportError";
+static const char __pyx_k_unit_system[] = "unit_system";
 static const char __pyx_k_ParticleTAGS[] = "ParticleTAGS";
 static const char __pyx_k_conservative[] = "conservative";
 static const char __pyx_k_particle_tags[] = "particle_tags";
@@ -2070,9 +2077,11 @@ static PyObject *__pyx_n_s_ImportError;
 static PyObject *__pyx_n_s_ParticleTAGS;
 static PyObject *__pyx_n_s_Real;
 static PyObject *__pyx_n_s_Undefined;
+static PyObject *__pyx_n_s_Units;
 static PyObject *__pyx_n_s_append;
 static PyObject *__pyx_n_s_axis;
 static PyObject *__pyx_n_s_carray_named_groups;
+static PyObject *__pyx_n_s_cgs;
 static PyObject *__pyx_n_s_cline_in_traceback;
 static PyObject *__pyx_n_s_conservative;
 static PyObject *__pyx_n_s_density;
@@ -2105,10 +2114,15 @@ static PyObject *__pyx_n_s_pyx_vtable;
 static PyObject *__pyx_n_s_tag;
 static PyObject *__pyx_n_s_test;
 static PyObject *__pyx_n_s_type;
+static PyObject *__pyx_n_s_unit_dict;
+static PyObject *__pyx_n_s_unit_obj;
+static PyObject *__pyx_n_s_unit_sys;
+static PyObject *__pyx_n_s_unit_system;
+static PyObject *__pyx_n_s_units;
 static PyObject *__pyx_n_s_velocity;
 static PyObject *__pyx_kp_s_velocity_2;
 static PyObject *__pyx_n_s_xyz;
-static PyObject *__pyx_pf_3phd_5utils_16particle_creator_HydroParticleCreator(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_num, PyObject *__pyx_v_dim, CYTHON_UNUSED PyObject *__pyx_v_parallel); /* proto */
+static PyObject *__pyx_pf_3phd_5utils_16particle_creator_HydroParticleCreator(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_num, PyObject *__pyx_v_dim, CYTHON_UNUSED PyObject *__pyx_v_parallel, PyObject *__pyx_v_unit_sys, PyObject *__pyx_v_unit_dict); /* proto */
 static PyObject *__pyx_int_0;
 static PyObject *__pyx_int_2;
 static PyObject *__pyx_slice_;
@@ -2118,21 +2132,24 @@ static PyObject *__pyx_tuple__4;
 static PyObject *__pyx_codeobj__5;
 /* Late includes */
 
-/* "phd/utils/particle_creator.pyx":4
- * from ..containers.containers cimport CarrayContainer
+/* "phd/utils/particle_creator.pyx":5
+ * from .units import Units
  * 
- * def HydroParticleCreator(num=0, dim=2, parallel=False):             # <<<<<<<<<<<<<<
+ * def HydroParticleCreator(num=0, dim=2, parallel=False, unit_sys='cgs', unit_dict=None):             # <<<<<<<<<<<<<<
+ *     """Creates a ``CarrayContainer`` to hold hydro data related to the simulation.
  * 
- *     cdef dict carray_named_groups = {}
  */
 
 /* Python wrapper */
 static PyObject *__pyx_pw_3phd_5utils_16particle_creator_1HydroParticleCreator(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_3phd_5utils_16particle_creator_1HydroParticleCreator = {"HydroParticleCreator", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_3phd_5utils_16particle_creator_1HydroParticleCreator, METH_VARARGS|METH_KEYWORDS, 0};
+static char __pyx_doc_3phd_5utils_16particle_creator_HydroParticleCreator[] = "Creates a ``CarrayContainer`` to hold hydro data related to the simulation.\n\n    Parameters\n    ----------\n    num : int\n        Size of ``CarrayContainer``\n\n    dim : int\n        Number of dimensions\n\n    parallel : bool\n        Toggles whether the simulation is being run in parallel or serial\n\n    unit_sys : str\n        Specifies one of the named ``unyt`` systems for use in the simulation initialization.\n\n    unit_dict : dict\n        Overwrites use of unit_sys. Allows user to specify a custom unit system by passing \n        length, time, and mass units in dictionary.\n\n    Returns\n    -------\n    pc : CarrayContainer\n        Object holding the hydro information pertaining to the  particles\n\n    unit_obj : Units\n        Object holding the unit information in use for the simulation.\n        \n    ";
+static PyMethodDef __pyx_mdef_3phd_5utils_16particle_creator_1HydroParticleCreator = {"HydroParticleCreator", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_3phd_5utils_16particle_creator_1HydroParticleCreator, METH_VARARGS|METH_KEYWORDS, __pyx_doc_3phd_5utils_16particle_creator_HydroParticleCreator};
 static PyObject *__pyx_pw_3phd_5utils_16particle_creator_1HydroParticleCreator(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_num = 0;
   PyObject *__pyx_v_dim = 0;
   CYTHON_UNUSED PyObject *__pyx_v_parallel = 0;
+  PyObject *__pyx_v_unit_sys = 0;
+  PyObject *__pyx_v_unit_dict = 0;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
@@ -2140,15 +2157,21 @@ static PyObject *__pyx_pw_3phd_5utils_16particle_creator_1HydroParticleCreator(P
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("HydroParticleCreator (wrapper)", 0);
   {
-    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_num,&__pyx_n_s_dim,&__pyx_n_s_parallel,0};
-    PyObject* values[3] = {0,0,0};
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_num,&__pyx_n_s_dim,&__pyx_n_s_parallel,&__pyx_n_s_unit_sys,&__pyx_n_s_unit_dict,0};
+    PyObject* values[5] = {0,0,0,0,0};
     values[0] = ((PyObject *)__pyx_int_0);
     values[1] = ((PyObject *)__pyx_int_2);
     values[2] = ((PyObject *)Py_False);
+    values[3] = ((PyObject *)__pyx_n_s_cgs);
+    values[4] = ((PyObject *)Py_None);
     if (unlikely(__pyx_kwds)) {
       Py_ssize_t kw_args;
       const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
       switch (pos_args) {
+        case  5: values[4] = PyTuple_GET_ITEM(__pyx_args, 4);
+        CYTHON_FALLTHROUGH;
+        case  4: values[3] = PyTuple_GET_ITEM(__pyx_args, 3);
+        CYTHON_FALLTHROUGH;
         case  3: values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
         CYTHON_FALLTHROUGH;
         case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
@@ -2177,12 +2200,28 @@ static PyObject *__pyx_pw_3phd_5utils_16particle_creator_1HydroParticleCreator(P
           PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_parallel);
           if (value) { values[2] = value; kw_args--; }
         }
+        CYTHON_FALLTHROUGH;
+        case  3:
+        if (kw_args > 0) {
+          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_unit_sys);
+          if (value) { values[3] = value; kw_args--; }
+        }
+        CYTHON_FALLTHROUGH;
+        case  4:
+        if (kw_args > 0) {
+          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_unit_dict);
+          if (value) { values[4] = value; kw_args--; }
+        }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "HydroParticleCreator") < 0)) __PYX_ERR(0, 4, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "HydroParticleCreator") < 0)) __PYX_ERR(0, 5, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
+        case  5: values[4] = PyTuple_GET_ITEM(__pyx_args, 4);
+        CYTHON_FALLTHROUGH;
+        case  4: values[3] = PyTuple_GET_ITEM(__pyx_args, 3);
+        CYTHON_FALLTHROUGH;
         case  3: values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
         CYTHON_FALLTHROUGH;
         case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
@@ -2196,27 +2235,30 @@ static PyObject *__pyx_pw_3phd_5utils_16particle_creator_1HydroParticleCreator(P
     __pyx_v_num = values[0];
     __pyx_v_dim = values[1];
     __pyx_v_parallel = values[2];
+    __pyx_v_unit_sys = values[3];
+    __pyx_v_unit_dict = values[4];
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("HydroParticleCreator", 0, 0, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 4, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("HydroParticleCreator", 0, 0, 5, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 5, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("phd.utils.particle_creator.HydroParticleCreator", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_3phd_5utils_16particle_creator_HydroParticleCreator(__pyx_self, __pyx_v_num, __pyx_v_dim, __pyx_v_parallel);
+  __pyx_r = __pyx_pf_3phd_5utils_16particle_creator_HydroParticleCreator(__pyx_self, __pyx_v_num, __pyx_v_dim, __pyx_v_parallel, __pyx_v_unit_sys, __pyx_v_unit_dict);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_3phd_5utils_16particle_creator_HydroParticleCreator(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_num, PyObject *__pyx_v_dim, CYTHON_UNUSED PyObject *__pyx_v_parallel) {
+static PyObject *__pyx_pf_3phd_5utils_16particle_creator_HydroParticleCreator(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_num, PyObject *__pyx_v_dim, CYTHON_UNUSED PyObject *__pyx_v_parallel, PyObject *__pyx_v_unit_sys, PyObject *__pyx_v_unit_dict) {
   PyObject *__pyx_v_carray_named_groups = 0;
   PyObject *__pyx_v_axis = 0;
   PyObject *__pyx_v_dimension = 0;
   struct __pyx_obj_3phd_10containers_10containers_CarrayContainer *__pyx_v_pc = 0;
+  PyObject *__pyx_v_unit_obj = NULL;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -2224,30 +2266,31 @@ static PyObject *__pyx_pf_3phd_5utils_16particle_creator_HydroParticleCreator(CY
   int __pyx_t_3;
   Py_ssize_t __pyx_t_4;
   int __pyx_t_5;
-  struct __pyx_opt_args_3phd_10containers_10containers_15CarrayContainer_register_carray __pyx_t_6;
-  PyObject *(*__pyx_t_7)(PyObject *);
-  PyObject *__pyx_t_8 = NULL;
-  PyObject *__pyx_t_9 = NULL;
-  int __pyx_t_10;
+  PyObject *__pyx_t_6 = NULL;
+  PyObject *__pyx_t_7 = NULL;
+  int __pyx_t_8;
+  struct __pyx_opt_args_3phd_10containers_10containers_15CarrayContainer_register_carray __pyx_t_9;
+  PyObject *(*__pyx_t_10)(PyObject *);
+  int __pyx_t_11;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("HydroParticleCreator", 0);
 
-  /* "phd/utils/particle_creator.pyx":6
- * def HydroParticleCreator(num=0, dim=2, parallel=False):
+  /* "phd/utils/particle_creator.pyx":35
  * 
+ *     """
  *     cdef dict carray_named_groups = {}             # <<<<<<<<<<<<<<
  *     cdef str axis, dimension = 'xyz'[:dim]
  *     cdef CarrayContainer pc = CarrayContainer(num)
  */
-  __pyx_t_1 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 6, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 35, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_carray_named_groups = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "phd/utils/particle_creator.pyx":7
- * 
+  /* "phd/utils/particle_creator.pyx":36
+ *     """
  *     cdef dict carray_named_groups = {}
  *     cdef str axis, dimension = 'xyz'[:dim]             # <<<<<<<<<<<<<<
  *     cdef CarrayContainer pc = CarrayContainer(num)
@@ -2259,156 +2302,218 @@ static PyObject *__pyx_pf_3phd_5utils_16particle_creator_HydroParticleCreator(CY
   if (__pyx_t_3) {
     __pyx_t_2 = PY_SSIZE_T_MAX;
   } else {
-    __pyx_t_4 = __Pyx_PyIndex_AsSsize_t(__pyx_t_1); if (unlikely((__pyx_t_4 == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 7, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyIndex_AsSsize_t(__pyx_t_1); if (unlikely((__pyx_t_4 == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 36, __pyx_L1_error)
     __pyx_t_2 = __pyx_t_4;
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PySequence_GetSlice(__pyx_n_s_xyz, 0, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 7, __pyx_L1_error)
+  __pyx_t_1 = PySequence_GetSlice(__pyx_n_s_xyz, 0, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 36, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_dimension = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "phd/utils/particle_creator.pyx":8
+  /* "phd/utils/particle_creator.pyx":37
  *     cdef dict carray_named_groups = {}
  *     cdef str axis, dimension = 'xyz'[:dim]
  *     cdef CarrayContainer pc = CarrayContainer(num)             # <<<<<<<<<<<<<<
  * 
- *     # register primitive fields
+ *     # initialize unit interface
  */
-  __pyx_t_1 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_3phd_10containers_10containers_CarrayContainer), __pyx_v_num); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 8, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_3phd_10containers_10containers_CarrayContainer), __pyx_v_num); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 37, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_pc = ((struct __pyx_obj_3phd_10containers_10containers_CarrayContainer *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "phd/utils/particle_creator.pyx":11
+  /* "phd/utils/particle_creator.pyx":40
+ * 
+ *     # initialize unit interface
+ *     if(unit_dict is not None):             # <<<<<<<<<<<<<<
+ *         unit_obj = Units(unit_dict = unit_dict)
+ *     else:
+ */
+  __pyx_t_3 = (__pyx_v_unit_dict != Py_None);
+  __pyx_t_5 = (__pyx_t_3 != 0);
+  if (__pyx_t_5) {
+
+    /* "phd/utils/particle_creator.pyx":41
+ *     # initialize unit interface
+ *     if(unit_dict is not None):
+ *         unit_obj = Units(unit_dict = unit_dict)             # <<<<<<<<<<<<<<
+ *     else:
+ *         unit_obj = Units(unit_system = unit_sys)
+ */
+    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_Units); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 41, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_t_6 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 41, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_6);
+    if (PyDict_SetItem(__pyx_t_6, __pyx_n_s_unit_dict, __pyx_v_unit_dict) < 0) __PYX_ERR(0, 41, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_empty_tuple, __pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 41, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_7);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+    __pyx_v_unit_obj = __pyx_t_7;
+    __pyx_t_7 = 0;
+
+    /* "phd/utils/particle_creator.pyx":40
+ * 
+ *     # initialize unit interface
+ *     if(unit_dict is not None):             # <<<<<<<<<<<<<<
+ *         unit_obj = Units(unit_dict = unit_dict)
+ *     else:
+ */
+    goto __pyx_L3;
+  }
+
+  /* "phd/utils/particle_creator.pyx":43
+ *         unit_obj = Units(unit_dict = unit_dict)
+ *     else:
+ *         unit_obj = Units(unit_system = unit_sys)             # <<<<<<<<<<<<<<
+ * 
+ *     # register primitive fields
+ */
+  /*else*/ {
+    __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_Units); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 43, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_7);
+    __pyx_t_6 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 43, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_6);
+    if (PyDict_SetItem(__pyx_t_6, __pyx_n_s_unit_system, __pyx_v_unit_sys) < 0) __PYX_ERR(0, 43, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_empty_tuple, __pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 43, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+    __pyx_v_unit_obj = __pyx_t_1;
+    __pyx_t_1 = 0;
+  }
+  __pyx_L3:;
+
+  /* "phd/utils/particle_creator.pyx":46
  * 
  *     # register primitive fields
  *     carray_named_groups['position'] = []             # <<<<<<<<<<<<<<
  *     carray_named_groups['velocity'] = []
  *     pc.register_carray(num, 'density', 'double')
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 11, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 46, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (unlikely(PyDict_SetItem(__pyx_v_carray_named_groups, __pyx_n_s_position, __pyx_t_1) < 0)) __PYX_ERR(0, 11, __pyx_L1_error)
+  if (unlikely(PyDict_SetItem(__pyx_v_carray_named_groups, __pyx_n_s_position, __pyx_t_1) < 0)) __PYX_ERR(0, 46, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "phd/utils/particle_creator.pyx":12
+  /* "phd/utils/particle_creator.pyx":47
  *     # register primitive fields
  *     carray_named_groups['position'] = []
  *     carray_named_groups['velocity'] = []             # <<<<<<<<<<<<<<
  *     pc.register_carray(num, 'density', 'double')
  * 
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 12, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 47, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (unlikely(PyDict_SetItem(__pyx_v_carray_named_groups, __pyx_n_s_velocity, __pyx_t_1) < 0)) __PYX_ERR(0, 12, __pyx_L1_error)
+  if (unlikely(PyDict_SetItem(__pyx_v_carray_named_groups, __pyx_n_s_velocity, __pyx_t_1) < 0)) __PYX_ERR(0, 47, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "phd/utils/particle_creator.pyx":13
+  /* "phd/utils/particle_creator.pyx":48
  *     carray_named_groups['position'] = []
  *     carray_named_groups['velocity'] = []
  *     pc.register_carray(num, 'density', 'double')             # <<<<<<<<<<<<<<
  * 
  *     for axis in dimension:
  */
-  __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_v_num); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 13, __pyx_L1_error)
-  __pyx_t_6.__pyx_n = 1;
-  __pyx_t_6.dtype = __pyx_n_s_double;
-  __pyx_t_1 = ((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_pc->__pyx_vtab)->register_carray(__pyx_v_pc, __pyx_t_5, __pyx_n_s_density, 0, &__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 13, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyInt_As_int(__pyx_v_num); if (unlikely((__pyx_t_8 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 48, __pyx_L1_error)
+  __pyx_t_9.__pyx_n = 1;
+  __pyx_t_9.dtype = __pyx_n_s_double;
+  __pyx_t_1 = ((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_pc->__pyx_vtab)->register_carray(__pyx_v_pc, __pyx_t_8, __pyx_n_s_density, 0, &__pyx_t_9); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 48, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "phd/utils/particle_creator.pyx":15
+  /* "phd/utils/particle_creator.pyx":50
  *     pc.register_carray(num, 'density', 'double')
  * 
  *     for axis in dimension:             # <<<<<<<<<<<<<<
  * 
  *         pc.register_carray(num, 'position-' + axis, 'double')
  */
-  __pyx_t_1 = PyObject_GetIter(__pyx_v_dimension); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 15, __pyx_L1_error)
+  __pyx_t_1 = PyObject_GetIter(__pyx_v_dimension); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 50, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_7 = Py_TYPE(__pyx_t_1)->tp_iternext; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 15, __pyx_L1_error)
+  __pyx_t_10 = Py_TYPE(__pyx_t_1)->tp_iternext; if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 50, __pyx_L1_error)
   for (;;) {
     {
-      __pyx_t_8 = __pyx_t_7(__pyx_t_1);
-      if (unlikely(!__pyx_t_8)) {
+      __pyx_t_6 = __pyx_t_10(__pyx_t_1);
+      if (unlikely(!__pyx_t_6)) {
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 15, __pyx_L1_error)
+          else __PYX_ERR(0, 50, __pyx_L1_error)
         }
         break;
       }
-      __Pyx_GOTREF(__pyx_t_8);
+      __Pyx_GOTREF(__pyx_t_6);
     }
-    __Pyx_XDECREF_SET(__pyx_v_axis, ((PyObject*)__pyx_t_8));
-    __pyx_t_8 = 0;
+    __Pyx_XDECREF_SET(__pyx_v_axis, ((PyObject*)__pyx_t_6));
+    __pyx_t_6 = 0;
 
-    /* "phd/utils/particle_creator.pyx":17
+    /* "phd/utils/particle_creator.pyx":52
  *     for axis in dimension:
  * 
  *         pc.register_carray(num, 'position-' + axis, 'double')             # <<<<<<<<<<<<<<
  *         pc.register_carray(num, 'velocity-' + axis, 'double')
  * 
  */
-    __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_v_num); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 17, __pyx_L1_error)
-    __pyx_t_8 = PyNumber_Add(__pyx_kp_s_position_2, __pyx_v_axis); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 17, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_8);
-    __pyx_t_6.__pyx_n = 1;
-    __pyx_t_6.dtype = __pyx_n_s_double;
-    __pyx_t_9 = ((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_pc->__pyx_vtab)->register_carray(__pyx_v_pc, __pyx_t_5, ((PyObject*)__pyx_t_8), 0, &__pyx_t_6); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 17, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_9);
-    __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-    __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+    __pyx_t_8 = __Pyx_PyInt_As_int(__pyx_v_num); if (unlikely((__pyx_t_8 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 52, __pyx_L1_error)
+    __pyx_t_6 = PyNumber_Add(__pyx_kp_s_position_2, __pyx_v_axis); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 52, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_6);
+    __pyx_t_9.__pyx_n = 1;
+    __pyx_t_9.dtype = __pyx_n_s_double;
+    __pyx_t_7 = ((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_pc->__pyx_vtab)->register_carray(__pyx_v_pc, __pyx_t_8, ((PyObject*)__pyx_t_6), 0, &__pyx_t_9); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 52, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_7);
+    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-    /* "phd/utils/particle_creator.pyx":18
+    /* "phd/utils/particle_creator.pyx":53
  * 
  *         pc.register_carray(num, 'position-' + axis, 'double')
  *         pc.register_carray(num, 'velocity-' + axis, 'double')             # <<<<<<<<<<<<<<
  * 
  *         carray_named_groups['position'].append('position-' + axis)
  */
-    __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_v_num); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 18, __pyx_L1_error)
-    __pyx_t_9 = PyNumber_Add(__pyx_kp_s_velocity_2, __pyx_v_axis); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 18, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_9);
-    __pyx_t_6.__pyx_n = 1;
-    __pyx_t_6.dtype = __pyx_n_s_double;
-    __pyx_t_8 = ((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_pc->__pyx_vtab)->register_carray(__pyx_v_pc, __pyx_t_5, ((PyObject*)__pyx_t_9), 0, &__pyx_t_6); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 18, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_8);
-    __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-    __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+    __pyx_t_8 = __Pyx_PyInt_As_int(__pyx_v_num); if (unlikely((__pyx_t_8 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 53, __pyx_L1_error)
+    __pyx_t_7 = PyNumber_Add(__pyx_kp_s_velocity_2, __pyx_v_axis); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 53, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_7);
+    __pyx_t_9.__pyx_n = 1;
+    __pyx_t_9.dtype = __pyx_n_s_double;
+    __pyx_t_6 = ((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_pc->__pyx_vtab)->register_carray(__pyx_v_pc, __pyx_t_8, ((PyObject*)__pyx_t_7), 0, &__pyx_t_9); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 53, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_6);
+    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-    /* "phd/utils/particle_creator.pyx":20
+    /* "phd/utils/particle_creator.pyx":55
  *         pc.register_carray(num, 'velocity-' + axis, 'double')
  * 
  *         carray_named_groups['position'].append('position-' + axis)             # <<<<<<<<<<<<<<
  *         carray_named_groups['velocity'].append('velocity-' + axis)
  * 
  */
-    __pyx_t_8 = __Pyx_PyDict_GetItem(__pyx_v_carray_named_groups, __pyx_n_s_position); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 20, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_8);
-    __pyx_t_9 = PyNumber_Add(__pyx_kp_s_position_2, __pyx_v_axis); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 20, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_9);
-    __pyx_t_10 = __Pyx_PyObject_Append(__pyx_t_8, __pyx_t_9); if (unlikely(__pyx_t_10 == ((int)-1))) __PYX_ERR(0, 20, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-    __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+    __pyx_t_6 = __Pyx_PyDict_GetItem(__pyx_v_carray_named_groups, __pyx_n_s_position); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 55, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_6);
+    __pyx_t_7 = PyNumber_Add(__pyx_kp_s_position_2, __pyx_v_axis); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 55, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_7);
+    __pyx_t_11 = __Pyx_PyObject_Append(__pyx_t_6, __pyx_t_7); if (unlikely(__pyx_t_11 == ((int)-1))) __PYX_ERR(0, 55, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-    /* "phd/utils/particle_creator.pyx":21
+    /* "phd/utils/particle_creator.pyx":56
  * 
  *         carray_named_groups['position'].append('position-' + axis)
  *         carray_named_groups['velocity'].append('velocity-' + axis)             # <<<<<<<<<<<<<<
  * 
  *     pc.register_carray(num, 'pressure', 'double')
  */
-    __pyx_t_9 = __Pyx_PyDict_GetItem(__pyx_v_carray_named_groups, __pyx_n_s_velocity); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 21, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_9);
-    __pyx_t_8 = PyNumber_Add(__pyx_kp_s_velocity_2, __pyx_v_axis); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 21, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_8);
-    __pyx_t_10 = __Pyx_PyObject_Append(__pyx_t_9, __pyx_t_8); if (unlikely(__pyx_t_10 == ((int)-1))) __PYX_ERR(0, 21, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-    __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+    __pyx_t_7 = __Pyx_PyDict_GetItem(__pyx_v_carray_named_groups, __pyx_n_s_velocity); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 56, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_7);
+    __pyx_t_6 = PyNumber_Add(__pyx_kp_s_velocity_2, __pyx_v_axis); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 56, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_6);
+    __pyx_t_11 = __Pyx_PyObject_Append(__pyx_t_7, __pyx_t_6); if (unlikely(__pyx_t_11 == ((int)-1))) __PYX_ERR(0, 56, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-    /* "phd/utils/particle_creator.pyx":15
+    /* "phd/utils/particle_creator.pyx":50
  *     pc.register_carray(num, 'density', 'double')
  * 
  *     for axis in dimension:             # <<<<<<<<<<<<<<
@@ -2418,105 +2523,105 @@ static PyObject *__pyx_pf_3phd_5utils_16particle_creator_HydroParticleCreator(CY
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "phd/utils/particle_creator.pyx":23
+  /* "phd/utils/particle_creator.pyx":58
  *         carray_named_groups['velocity'].append('velocity-' + axis)
  * 
  *     pc.register_carray(num, 'pressure', 'double')             # <<<<<<<<<<<<<<
  * 
  *     # register conservative fields
  */
-  __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_v_num); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 23, __pyx_L1_error)
-  __pyx_t_6.__pyx_n = 1;
-  __pyx_t_6.dtype = __pyx_n_s_double;
-  __pyx_t_1 = ((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_pc->__pyx_vtab)->register_carray(__pyx_v_pc, __pyx_t_5, __pyx_n_s_pressure, 0, &__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 23, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyInt_As_int(__pyx_v_num); if (unlikely((__pyx_t_8 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 58, __pyx_L1_error)
+  __pyx_t_9.__pyx_n = 1;
+  __pyx_t_9.dtype = __pyx_n_s_double;
+  __pyx_t_1 = ((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_pc->__pyx_vtab)->register_carray(__pyx_v_pc, __pyx_t_8, __pyx_n_s_pressure, 0, &__pyx_t_9); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 58, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "phd/utils/particle_creator.pyx":26
+  /* "phd/utils/particle_creator.pyx":61
  * 
  *     # register conservative fields
  *     carray_named_groups['momentum'] = []             # <<<<<<<<<<<<<<
  *     pc.register_carray(num, 'mass', 'double')
  * 
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 26, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 61, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (unlikely(PyDict_SetItem(__pyx_v_carray_named_groups, __pyx_n_s_momentum, __pyx_t_1) < 0)) __PYX_ERR(0, 26, __pyx_L1_error)
+  if (unlikely(PyDict_SetItem(__pyx_v_carray_named_groups, __pyx_n_s_momentum, __pyx_t_1) < 0)) __PYX_ERR(0, 61, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "phd/utils/particle_creator.pyx":27
+  /* "phd/utils/particle_creator.pyx":62
  *     # register conservative fields
  *     carray_named_groups['momentum'] = []
  *     pc.register_carray(num, 'mass', 'double')             # <<<<<<<<<<<<<<
  * 
  *     for axis in dimension:
  */
-  __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_v_num); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 27, __pyx_L1_error)
-  __pyx_t_6.__pyx_n = 1;
-  __pyx_t_6.dtype = __pyx_n_s_double;
-  __pyx_t_1 = ((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_pc->__pyx_vtab)->register_carray(__pyx_v_pc, __pyx_t_5, __pyx_n_s_mass, 0, &__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 27, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyInt_As_int(__pyx_v_num); if (unlikely((__pyx_t_8 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 62, __pyx_L1_error)
+  __pyx_t_9.__pyx_n = 1;
+  __pyx_t_9.dtype = __pyx_n_s_double;
+  __pyx_t_1 = ((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_pc->__pyx_vtab)->register_carray(__pyx_v_pc, __pyx_t_8, __pyx_n_s_mass, 0, &__pyx_t_9); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 62, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "phd/utils/particle_creator.pyx":29
+  /* "phd/utils/particle_creator.pyx":64
  *     pc.register_carray(num, 'mass', 'double')
  * 
  *     for axis in dimension:             # <<<<<<<<<<<<<<
  * 
  *         pc.register_carray(num, 'momentum-' + axis, 'double')
  */
-  __pyx_t_1 = PyObject_GetIter(__pyx_v_dimension); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 29, __pyx_L1_error)
+  __pyx_t_1 = PyObject_GetIter(__pyx_v_dimension); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 64, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_7 = Py_TYPE(__pyx_t_1)->tp_iternext; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 29, __pyx_L1_error)
+  __pyx_t_10 = Py_TYPE(__pyx_t_1)->tp_iternext; if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 64, __pyx_L1_error)
   for (;;) {
     {
-      __pyx_t_8 = __pyx_t_7(__pyx_t_1);
-      if (unlikely(!__pyx_t_8)) {
+      __pyx_t_6 = __pyx_t_10(__pyx_t_1);
+      if (unlikely(!__pyx_t_6)) {
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 29, __pyx_L1_error)
+          else __PYX_ERR(0, 64, __pyx_L1_error)
         }
         break;
       }
-      __Pyx_GOTREF(__pyx_t_8);
+      __Pyx_GOTREF(__pyx_t_6);
     }
-    __Pyx_XDECREF_SET(__pyx_v_axis, ((PyObject*)__pyx_t_8));
-    __pyx_t_8 = 0;
+    __Pyx_XDECREF_SET(__pyx_v_axis, ((PyObject*)__pyx_t_6));
+    __pyx_t_6 = 0;
 
-    /* "phd/utils/particle_creator.pyx":31
+    /* "phd/utils/particle_creator.pyx":66
  *     for axis in dimension:
  * 
  *         pc.register_carray(num, 'momentum-' + axis, 'double')             # <<<<<<<<<<<<<<
  *         carray_named_groups['momentum'].append('momentum-' + axis)
  * 
  */
-    __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_v_num); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 31, __pyx_L1_error)
-    __pyx_t_8 = PyNumber_Add(__pyx_kp_s_momentum_2, __pyx_v_axis); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 31, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_8);
-    __pyx_t_6.__pyx_n = 1;
-    __pyx_t_6.dtype = __pyx_n_s_double;
-    __pyx_t_9 = ((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_pc->__pyx_vtab)->register_carray(__pyx_v_pc, __pyx_t_5, ((PyObject*)__pyx_t_8), 0, &__pyx_t_6); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 31, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_9);
-    __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-    __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+    __pyx_t_8 = __Pyx_PyInt_As_int(__pyx_v_num); if (unlikely((__pyx_t_8 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 66, __pyx_L1_error)
+    __pyx_t_6 = PyNumber_Add(__pyx_kp_s_momentum_2, __pyx_v_axis); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 66, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_6);
+    __pyx_t_9.__pyx_n = 1;
+    __pyx_t_9.dtype = __pyx_n_s_double;
+    __pyx_t_7 = ((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_pc->__pyx_vtab)->register_carray(__pyx_v_pc, __pyx_t_8, ((PyObject*)__pyx_t_6), 0, &__pyx_t_9); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 66, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_7);
+    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-    /* "phd/utils/particle_creator.pyx":32
+    /* "phd/utils/particle_creator.pyx":67
  * 
  *         pc.register_carray(num, 'momentum-' + axis, 'double')
  *         carray_named_groups['momentum'].append('momentum-' + axis)             # <<<<<<<<<<<<<<
  * 
  *     pc.register_carray(num, 'energy', 'double')
  */
-    __pyx_t_9 = __Pyx_PyDict_GetItem(__pyx_v_carray_named_groups, __pyx_n_s_momentum); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 32, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_9);
-    __pyx_t_8 = PyNumber_Add(__pyx_kp_s_momentum_2, __pyx_v_axis); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 32, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_8);
-    __pyx_t_10 = __Pyx_PyObject_Append(__pyx_t_9, __pyx_t_8); if (unlikely(__pyx_t_10 == ((int)-1))) __PYX_ERR(0, 32, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-    __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+    __pyx_t_7 = __Pyx_PyDict_GetItem(__pyx_v_carray_named_groups, __pyx_n_s_momentum); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 67, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_7);
+    __pyx_t_6 = PyNumber_Add(__pyx_kp_s_momentum_2, __pyx_v_axis); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 67, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_6);
+    __pyx_t_11 = __Pyx_PyObject_Append(__pyx_t_7, __pyx_t_6); if (unlikely(__pyx_t_11 == ((int)-1))) __PYX_ERR(0, 67, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-    /* "phd/utils/particle_creator.pyx":29
+    /* "phd/utils/particle_creator.pyx":64
  *     pc.register_carray(num, 'mass', 'double')
  * 
  *     for axis in dimension:             # <<<<<<<<<<<<<<
@@ -2526,244 +2631,244 @@ static PyObject *__pyx_pf_3phd_5utils_16particle_creator_HydroParticleCreator(CY
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "phd/utils/particle_creator.pyx":34
+  /* "phd/utils/particle_creator.pyx":69
  *         carray_named_groups['momentum'].append('momentum-' + axis)
  * 
  *     pc.register_carray(num, 'energy', 'double')             # <<<<<<<<<<<<<<
  * 
  *     # information for prallel runs
  */
-  __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_v_num); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 34, __pyx_L1_error)
-  __pyx_t_6.__pyx_n = 1;
-  __pyx_t_6.dtype = __pyx_n_s_double;
-  __pyx_t_1 = ((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_pc->__pyx_vtab)->register_carray(__pyx_v_pc, __pyx_t_5, __pyx_n_s_energy, 0, &__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 34, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyInt_As_int(__pyx_v_num); if (unlikely((__pyx_t_8 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 69, __pyx_L1_error)
+  __pyx_t_9.__pyx_n = 1;
+  __pyx_t_9.dtype = __pyx_n_s_double;
+  __pyx_t_1 = ((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_pc->__pyx_vtab)->register_carray(__pyx_v_pc, __pyx_t_8, __pyx_n_s_energy, 0, &__pyx_t_9); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 69, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "phd/utils/particle_creator.pyx":43
+  /* "phd/utils/particle_creator.pyx":78
  * 
  *     # ghost labels
  *     pc.register_carray(num, 'tag', 'int')             # <<<<<<<<<<<<<<
  *     pc.register_carray(num, 'type', 'int')
  * 
  */
-  __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_v_num); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 43, __pyx_L1_error)
-  __pyx_t_6.__pyx_n = 1;
-  __pyx_t_6.dtype = __pyx_n_s_int;
-  __pyx_t_1 = ((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_pc->__pyx_vtab)->register_carray(__pyx_v_pc, __pyx_t_5, __pyx_n_s_tag, 0, &__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 43, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyInt_As_int(__pyx_v_num); if (unlikely((__pyx_t_8 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 78, __pyx_L1_error)
+  __pyx_t_9.__pyx_n = 1;
+  __pyx_t_9.dtype = __pyx_n_s_int;
+  __pyx_t_1 = ((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_pc->__pyx_vtab)->register_carray(__pyx_v_pc, __pyx_t_8, __pyx_n_s_tag, 0, &__pyx_t_9); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 78, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "phd/utils/particle_creator.pyx":44
+  /* "phd/utils/particle_creator.pyx":79
  *     # ghost labels
  *     pc.register_carray(num, 'tag', 'int')
  *     pc.register_carray(num, 'type', 'int')             # <<<<<<<<<<<<<<
  * 
  *     # ** remove and place in boundary **
  */
-  __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_v_num); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 44, __pyx_L1_error)
-  __pyx_t_6.__pyx_n = 1;
-  __pyx_t_6.dtype = __pyx_n_s_int;
-  __pyx_t_1 = ((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_pc->__pyx_vtab)->register_carray(__pyx_v_pc, __pyx_t_5, __pyx_n_s_type, 0, &__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 44, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyInt_As_int(__pyx_v_num); if (unlikely((__pyx_t_8 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 79, __pyx_L1_error)
+  __pyx_t_9.__pyx_n = 1;
+  __pyx_t_9.dtype = __pyx_n_s_int;
+  __pyx_t_1 = ((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_pc->__pyx_vtab)->register_carray(__pyx_v_pc, __pyx_t_8, __pyx_n_s_type, 0, &__pyx_t_9); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 79, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "phd/utils/particle_creator.pyx":47
+  /* "phd/utils/particle_creator.pyx":82
  * 
  *     # ** remove and place in boundary **
  *     pc.register_carray(num, 'ids', 'long')             # <<<<<<<<<<<<<<
  *     #pc.register_carray(num, 'map', 'long')
  * 
  */
-  __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_v_num); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 47, __pyx_L1_error)
-  __pyx_t_6.__pyx_n = 1;
-  __pyx_t_6.dtype = __pyx_n_s_long;
-  __pyx_t_1 = ((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_pc->__pyx_vtab)->register_carray(__pyx_v_pc, __pyx_t_5, __pyx_n_s_ids, 0, &__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 47, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyInt_As_int(__pyx_v_num); if (unlikely((__pyx_t_8 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 82, __pyx_L1_error)
+  __pyx_t_9.__pyx_n = 1;
+  __pyx_t_9.dtype = __pyx_n_s_long;
+  __pyx_t_1 = ((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_pc->__pyx_vtab)->register_carray(__pyx_v_pc, __pyx_t_8, __pyx_n_s_ids, 0, &__pyx_t_9); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 82, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "phd/utils/particle_creator.pyx":50
+  /* "phd/utils/particle_creator.pyx":85
  *     #pc.register_carray(num, 'map', 'long')
  * 
  *     carray_named_groups['primitive'] = ['density'] +\             # <<<<<<<<<<<<<<
  *             carray_named_groups['velocity'] +\
  *             ['pressure']
  */
-  __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 50, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 85, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_INCREF(__pyx_n_s_density);
   __Pyx_GIVEREF(__pyx_n_s_density);
   PyList_SET_ITEM(__pyx_t_1, 0, __pyx_n_s_density);
 
-  /* "phd/utils/particle_creator.pyx":51
+  /* "phd/utils/particle_creator.pyx":86
  * 
  *     carray_named_groups['primitive'] = ['density'] +\
  *             carray_named_groups['velocity'] +\             # <<<<<<<<<<<<<<
  *             ['pressure']
  *     carray_named_groups['conservative'] = ['mass'] +\
  */
-  __pyx_t_8 = __Pyx_PyDict_GetItem(__pyx_v_carray_named_groups, __pyx_n_s_velocity); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 51, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_8);
+  __pyx_t_6 = __Pyx_PyDict_GetItem(__pyx_v_carray_named_groups, __pyx_n_s_velocity); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 86, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_6);
 
-  /* "phd/utils/particle_creator.pyx":50
+  /* "phd/utils/particle_creator.pyx":85
  *     #pc.register_carray(num, 'map', 'long')
  * 
  *     carray_named_groups['primitive'] = ['density'] +\             # <<<<<<<<<<<<<<
  *             carray_named_groups['velocity'] +\
  *             ['pressure']
  */
-  __pyx_t_9 = PyNumber_Add(__pyx_t_1, __pyx_t_8); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 50, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_9);
+  __pyx_t_7 = PyNumber_Add(__pyx_t_1, __pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 85, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+  __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-  /* "phd/utils/particle_creator.pyx":52
+  /* "phd/utils/particle_creator.pyx":87
  *     carray_named_groups['primitive'] = ['density'] +\
  *             carray_named_groups['velocity'] +\
  *             ['pressure']             # <<<<<<<<<<<<<<
  *     carray_named_groups['conservative'] = ['mass'] +\
  *             carray_named_groups['momentum'] +\
  */
-  __pyx_t_8 = PyList_New(1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 52, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_8);
+  __pyx_t_6 = PyList_New(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 87, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_6);
   __Pyx_INCREF(__pyx_n_s_pressure);
   __Pyx_GIVEREF(__pyx_n_s_pressure);
-  PyList_SET_ITEM(__pyx_t_8, 0, __pyx_n_s_pressure);
+  PyList_SET_ITEM(__pyx_t_6, 0, __pyx_n_s_pressure);
 
-  /* "phd/utils/particle_creator.pyx":51
+  /* "phd/utils/particle_creator.pyx":86
  * 
  *     carray_named_groups['primitive'] = ['density'] +\
  *             carray_named_groups['velocity'] +\             # <<<<<<<<<<<<<<
  *             ['pressure']
  *     carray_named_groups['conservative'] = ['mass'] +\
  */
-  __pyx_t_1 = PyNumber_Add(__pyx_t_9, __pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 51, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Add(__pyx_t_7, __pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 86, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-  __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+  __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+  __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-  /* "phd/utils/particle_creator.pyx":50
+  /* "phd/utils/particle_creator.pyx":85
  *     #pc.register_carray(num, 'map', 'long')
  * 
  *     carray_named_groups['primitive'] = ['density'] +\             # <<<<<<<<<<<<<<
  *             carray_named_groups['velocity'] +\
  *             ['pressure']
  */
-  if (unlikely(PyDict_SetItem(__pyx_v_carray_named_groups, __pyx_n_s_primitive, __pyx_t_1) < 0)) __PYX_ERR(0, 50, __pyx_L1_error)
+  if (unlikely(PyDict_SetItem(__pyx_v_carray_named_groups, __pyx_n_s_primitive, __pyx_t_1) < 0)) __PYX_ERR(0, 85, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "phd/utils/particle_creator.pyx":53
+  /* "phd/utils/particle_creator.pyx":88
  *             carray_named_groups['velocity'] +\
  *             ['pressure']
  *     carray_named_groups['conservative'] = ['mass'] +\             # <<<<<<<<<<<<<<
  *             carray_named_groups['momentum'] +\
  *             ['energy']
  */
-  __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 53, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 88, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_INCREF(__pyx_n_s_mass);
   __Pyx_GIVEREF(__pyx_n_s_mass);
   PyList_SET_ITEM(__pyx_t_1, 0, __pyx_n_s_mass);
 
-  /* "phd/utils/particle_creator.pyx":54
+  /* "phd/utils/particle_creator.pyx":89
  *             ['pressure']
  *     carray_named_groups['conservative'] = ['mass'] +\
  *             carray_named_groups['momentum'] +\             # <<<<<<<<<<<<<<
  *             ['energy']
  * 
  */
-  __pyx_t_8 = __Pyx_PyDict_GetItem(__pyx_v_carray_named_groups, __pyx_n_s_momentum); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 54, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_8);
+  __pyx_t_6 = __Pyx_PyDict_GetItem(__pyx_v_carray_named_groups, __pyx_n_s_momentum); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 89, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_6);
 
-  /* "phd/utils/particle_creator.pyx":53
+  /* "phd/utils/particle_creator.pyx":88
  *             carray_named_groups['velocity'] +\
  *             ['pressure']
  *     carray_named_groups['conservative'] = ['mass'] +\             # <<<<<<<<<<<<<<
  *             carray_named_groups['momentum'] +\
  *             ['energy']
  */
-  __pyx_t_9 = PyNumber_Add(__pyx_t_1, __pyx_t_8); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 53, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_9);
+  __pyx_t_7 = PyNumber_Add(__pyx_t_1, __pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 88, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+  __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-  /* "phd/utils/particle_creator.pyx":55
+  /* "phd/utils/particle_creator.pyx":90
  *     carray_named_groups['conservative'] = ['mass'] +\
  *             carray_named_groups['momentum'] +\
  *             ['energy']             # <<<<<<<<<<<<<<
  * 
  *     # set initial particle tags to be real
  */
-  __pyx_t_8 = PyList_New(1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 55, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_8);
+  __pyx_t_6 = PyList_New(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 90, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_6);
   __Pyx_INCREF(__pyx_n_s_energy);
   __Pyx_GIVEREF(__pyx_n_s_energy);
-  PyList_SET_ITEM(__pyx_t_8, 0, __pyx_n_s_energy);
+  PyList_SET_ITEM(__pyx_t_6, 0, __pyx_n_s_energy);
 
-  /* "phd/utils/particle_creator.pyx":54
+  /* "phd/utils/particle_creator.pyx":89
  *             ['pressure']
  *     carray_named_groups['conservative'] = ['mass'] +\
  *             carray_named_groups['momentum'] +\             # <<<<<<<<<<<<<<
  *             ['energy']
  * 
  */
-  __pyx_t_1 = PyNumber_Add(__pyx_t_9, __pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 54, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Add(__pyx_t_7, __pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 89, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-  __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+  __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+  __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-  /* "phd/utils/particle_creator.pyx":53
+  /* "phd/utils/particle_creator.pyx":88
  *             carray_named_groups['velocity'] +\
  *             ['pressure']
  *     carray_named_groups['conservative'] = ['mass'] +\             # <<<<<<<<<<<<<<
  *             carray_named_groups['momentum'] +\
  *             ['energy']
  */
-  if (unlikely(PyDict_SetItem(__pyx_v_carray_named_groups, __pyx_n_s_conservative, __pyx_t_1) < 0)) __PYX_ERR(0, 53, __pyx_L1_error)
+  if (unlikely(PyDict_SetItem(__pyx_v_carray_named_groups, __pyx_n_s_conservative, __pyx_t_1) < 0)) __PYX_ERR(0, 88, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "phd/utils/particle_creator.pyx":58
+  /* "phd/utils/particle_creator.pyx":93
  * 
  *     # set initial particle tags to be real
  *     pc['tag'][:] = ParticleTAGS.Real             # <<<<<<<<<<<<<<
  *     pc['type'][:] = ParticleTAGS.Undefined
  *     pc.carray_named_groups = carray_named_groups
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_ParticleTAGS); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 58, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_ParticleTAGS); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 93, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_Real); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 58, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_8);
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_Real); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 93, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_GetItem(((PyObject *)__pyx_v_pc), __pyx_n_s_tag); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 58, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetItem(((PyObject *)__pyx_v_pc), __pyx_n_s_tag); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 93, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (__Pyx_PyObject_SetSlice(__pyx_t_1, __pyx_t_8, 0, 0, NULL, NULL, &__pyx_slice_, 0, 0, 1) < 0) __PYX_ERR(0, 58, __pyx_L1_error)
+  if (__Pyx_PyObject_SetSlice(__pyx_t_1, __pyx_t_6, 0, 0, NULL, NULL, &__pyx_slice_, 0, 0, 1) < 0) __PYX_ERR(0, 93, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+  __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-  /* "phd/utils/particle_creator.pyx":59
+  /* "phd/utils/particle_creator.pyx":94
  *     # set initial particle tags to be real
  *     pc['tag'][:] = ParticleTAGS.Real
  *     pc['type'][:] = ParticleTAGS.Undefined             # <<<<<<<<<<<<<<
  *     pc.carray_named_groups = carray_named_groups
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_ParticleTAGS); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 59, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_8);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_Undefined); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 59, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_ParticleTAGS); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 94, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_6);
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_Undefined); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 94, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-  __pyx_t_8 = __Pyx_PyObject_GetItem(((PyObject *)__pyx_v_pc), __pyx_n_s_type); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 59, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_8);
-  if (__Pyx_PyObject_SetSlice(__pyx_t_8, __pyx_t_1, 0, 0, NULL, NULL, &__pyx_slice_, 0, 0, 1) < 0) __PYX_ERR(0, 59, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+  __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+  __pyx_t_6 = __Pyx_PyObject_GetItem(((PyObject *)__pyx_v_pc), __pyx_n_s_type); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 94, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_6);
+  if (__Pyx_PyObject_SetSlice(__pyx_t_6, __pyx_t_1, 0, 0, NULL, NULL, &__pyx_slice_, 0, 0, 1) < 0) __PYX_ERR(0, 94, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "phd/utils/particle_creator.pyx":60
+  /* "phd/utils/particle_creator.pyx":95
  *     pc['tag'][:] = ParticleTAGS.Real
  *     pc['type'][:] = ParticleTAGS.Undefined
  *     pc.carray_named_groups = carray_named_groups             # <<<<<<<<<<<<<<
  * 
- *     return pc
+ *     return pc, unit_obj
  */
   __Pyx_INCREF(__pyx_v_carray_named_groups);
   __Pyx_GIVEREF(__pyx_v_carray_named_groups);
@@ -2771,31 +2876,39 @@ static PyObject *__pyx_pf_3phd_5utils_16particle_creator_HydroParticleCreator(CY
   __Pyx_DECREF(__pyx_v_pc->carray_named_groups);
   __pyx_v_pc->carray_named_groups = __pyx_v_carray_named_groups;
 
-  /* "phd/utils/particle_creator.pyx":62
+  /* "phd/utils/particle_creator.pyx":97
  *     pc.carray_named_groups = carray_named_groups
  * 
- *     return pc             # <<<<<<<<<<<<<<
+ *     return pc, unit_obj             # <<<<<<<<<<<<<<
  * 
  * #def MhdParticleCreator(num=0, dim=2, parallel=False):
  */
   __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 97, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
   __Pyx_INCREF(((PyObject *)__pyx_v_pc));
-  __pyx_r = ((PyObject *)__pyx_v_pc);
+  __Pyx_GIVEREF(((PyObject *)__pyx_v_pc));
+  PyTuple_SET_ITEM(__pyx_t_1, 0, ((PyObject *)__pyx_v_pc));
+  __Pyx_INCREF(__pyx_v_unit_obj);
+  __Pyx_GIVEREF(__pyx_v_unit_obj);
+  PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_v_unit_obj);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "phd/utils/particle_creator.pyx":4
- * from ..containers.containers cimport CarrayContainer
+  /* "phd/utils/particle_creator.pyx":5
+ * from .units import Units
  * 
- * def HydroParticleCreator(num=0, dim=2, parallel=False):             # <<<<<<<<<<<<<<
+ * def HydroParticleCreator(num=0, dim=2, parallel=False, unit_sys='cgs', unit_dict=None):             # <<<<<<<<<<<<<<
+ *     """Creates a ``CarrayContainer`` to hold hydro data related to the simulation.
  * 
- *     cdef dict carray_named_groups = {}
  */
 
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_XDECREF(__pyx_t_8);
-  __Pyx_XDECREF(__pyx_t_9);
+  __Pyx_XDECREF(__pyx_t_6);
+  __Pyx_XDECREF(__pyx_t_7);
   __Pyx_AddTraceback("phd.utils.particle_creator.HydroParticleCreator", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
@@ -2803,6 +2916,7 @@ static PyObject *__pyx_pf_3phd_5utils_16particle_creator_HydroParticleCreator(CY
   __Pyx_XDECREF(__pyx_v_axis);
   __Pyx_XDECREF(__pyx_v_dimension);
   __Pyx_XDECREF((PyObject *)__pyx_v_pc);
+  __Pyx_XDECREF(__pyx_v_unit_obj);
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
@@ -3702,9 +3816,11 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_ParticleTAGS, __pyx_k_ParticleTAGS, sizeof(__pyx_k_ParticleTAGS), 0, 0, 1, 1},
   {&__pyx_n_s_Real, __pyx_k_Real, sizeof(__pyx_k_Real), 0, 0, 1, 1},
   {&__pyx_n_s_Undefined, __pyx_k_Undefined, sizeof(__pyx_k_Undefined), 0, 0, 1, 1},
+  {&__pyx_n_s_Units, __pyx_k_Units, sizeof(__pyx_k_Units), 0, 0, 1, 1},
   {&__pyx_n_s_append, __pyx_k_append, sizeof(__pyx_k_append), 0, 0, 1, 1},
   {&__pyx_n_s_axis, __pyx_k_axis, sizeof(__pyx_k_axis), 0, 0, 1, 1},
   {&__pyx_n_s_carray_named_groups, __pyx_k_carray_named_groups, sizeof(__pyx_k_carray_named_groups), 0, 0, 1, 1},
+  {&__pyx_n_s_cgs, __pyx_k_cgs, sizeof(__pyx_k_cgs), 0, 0, 1, 1},
   {&__pyx_n_s_cline_in_traceback, __pyx_k_cline_in_traceback, sizeof(__pyx_k_cline_in_traceback), 0, 0, 1, 1},
   {&__pyx_n_s_conservative, __pyx_k_conservative, sizeof(__pyx_k_conservative), 0, 0, 1, 1},
   {&__pyx_n_s_density, __pyx_k_density, sizeof(__pyx_k_density), 0, 0, 1, 1},
@@ -3737,6 +3853,11 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_tag, __pyx_k_tag, sizeof(__pyx_k_tag), 0, 0, 1, 1},
   {&__pyx_n_s_test, __pyx_k_test, sizeof(__pyx_k_test), 0, 0, 1, 1},
   {&__pyx_n_s_type, __pyx_k_type, sizeof(__pyx_k_type), 0, 0, 1, 1},
+  {&__pyx_n_s_unit_dict, __pyx_k_unit_dict, sizeof(__pyx_k_unit_dict), 0, 0, 1, 1},
+  {&__pyx_n_s_unit_obj, __pyx_k_unit_obj, sizeof(__pyx_k_unit_obj), 0, 0, 1, 1},
+  {&__pyx_n_s_unit_sys, __pyx_k_unit_sys, sizeof(__pyx_k_unit_sys), 0, 0, 1, 1},
+  {&__pyx_n_s_unit_system, __pyx_k_unit_system, sizeof(__pyx_k_unit_system), 0, 0, 1, 1},
+  {&__pyx_n_s_units, __pyx_k_units, sizeof(__pyx_k_units), 0, 0, 1, 1},
   {&__pyx_n_s_velocity, __pyx_k_velocity, sizeof(__pyx_k_velocity), 0, 0, 1, 1},
   {&__pyx_kp_s_velocity_2, __pyx_k_velocity_2, sizeof(__pyx_k_velocity_2), 0, 0, 1, 0},
   {&__pyx_n_s_xyz, __pyx_k_xyz, sizeof(__pyx_k_xyz), 0, 0, 1, 1},
@@ -3753,14 +3874,14 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "phd/utils/particle_creator.pyx":58
+  /* "phd/utils/particle_creator.pyx":93
  * 
  *     # set initial particle tags to be real
  *     pc['tag'][:] = ParticleTAGS.Real             # <<<<<<<<<<<<<<
  *     pc['type'][:] = ParticleTAGS.Undefined
  *     pc.carray_named_groups = carray_named_groups
  */
-  __pyx_slice_ = PySlice_New(Py_None, Py_None, Py_None); if (unlikely(!__pyx_slice_)) __PYX_ERR(0, 58, __pyx_L1_error)
+  __pyx_slice_ = PySlice_New(Py_None, Py_None, Py_None); if (unlikely(!__pyx_slice_)) __PYX_ERR(0, 93, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_slice_);
   __Pyx_GIVEREF(__pyx_slice_);
 
@@ -3786,17 +3907,17 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__3);
   __Pyx_GIVEREF(__pyx_tuple__3);
 
-  /* "phd/utils/particle_creator.pyx":4
- * from ..containers.containers cimport CarrayContainer
+  /* "phd/utils/particle_creator.pyx":5
+ * from .units import Units
  * 
- * def HydroParticleCreator(num=0, dim=2, parallel=False):             # <<<<<<<<<<<<<<
+ * def HydroParticleCreator(num=0, dim=2, parallel=False, unit_sys='cgs', unit_dict=None):             # <<<<<<<<<<<<<<
+ *     """Creates a ``CarrayContainer`` to hold hydro data related to the simulation.
  * 
- *     cdef dict carray_named_groups = {}
  */
-  __pyx_tuple__4 = PyTuple_Pack(7, __pyx_n_s_num, __pyx_n_s_dim, __pyx_n_s_parallel, __pyx_n_s_carray_named_groups, __pyx_n_s_axis, __pyx_n_s_dimension, __pyx_n_s_pc); if (unlikely(!__pyx_tuple__4)) __PYX_ERR(0, 4, __pyx_L1_error)
+  __pyx_tuple__4 = PyTuple_Pack(10, __pyx_n_s_num, __pyx_n_s_dim, __pyx_n_s_parallel, __pyx_n_s_unit_sys, __pyx_n_s_unit_dict, __pyx_n_s_carray_named_groups, __pyx_n_s_axis, __pyx_n_s_dimension, __pyx_n_s_pc, __pyx_n_s_unit_obj); if (unlikely(!__pyx_tuple__4)) __PYX_ERR(0, 5, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__4);
   __Pyx_GIVEREF(__pyx_tuple__4);
-  __pyx_codeobj__5 = (PyObject*)__Pyx_PyCode_New(3, 0, 7, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__4, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_phd_utils_particle_creator_pyx, __pyx_n_s_HydroParticleCreator, 4, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__5)) __PYX_ERR(0, 4, __pyx_L1_error)
+  __pyx_codeobj__5 = (PyObject*)__Pyx_PyCode_New(5, 0, 10, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__4, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_phd_utils_particle_creator_pyx, __pyx_n_s_HydroParticleCreator, 5, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__5)) __PYX_ERR(0, 5, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -4141,7 +4262,7 @@ if (!__Pyx_RefNanny) {
   /* "phd/utils/particle_creator.pyx":1
  * from .particle_tags import ParticleTAGS             # <<<<<<<<<<<<<<
  * from ..containers.containers cimport CarrayContainer
- * 
+ * from .units import Units
  */
   __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
@@ -4157,27 +4278,48 @@ if (!__Pyx_RefNanny) {
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "phd/utils/particle_creator.pyx":4
+  /* "phd/utils/particle_creator.pyx":3
+ * from .particle_tags import ParticleTAGS
  * from ..containers.containers cimport CarrayContainer
+ * from .units import Units             # <<<<<<<<<<<<<<
  * 
- * def HydroParticleCreator(num=0, dim=2, parallel=False):             # <<<<<<<<<<<<<<
- * 
- *     cdef dict carray_named_groups = {}
+ * def HydroParticleCreator(num=0, dim=2, parallel=False, unit_sys='cgs', unit_dict=None):
  */
-  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_3phd_5utils_16particle_creator_1HydroParticleCreator, NULL, __pyx_n_s_phd_utils_particle_creator); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 4, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 3, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_HydroParticleCreator, __pyx_t_2) < 0) __PYX_ERR(0, 4, __pyx_L1_error)
+  __Pyx_INCREF(__pyx_n_s_Units);
+  __Pyx_GIVEREF(__pyx_n_s_Units);
+  PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_s_Units);
+  __pyx_t_1 = __Pyx_Import(__pyx_n_s_units, __pyx_t_2, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 3, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_2 = __Pyx_ImportFrom(__pyx_t_1, __pyx_n_s_Units); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 3, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_Units, __pyx_t_2) < 0) __PYX_ERR(0, 3, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "phd/utils/particle_creator.pyx":5
+ * from .units import Units
+ * 
+ * def HydroParticleCreator(num=0, dim=2, parallel=False, unit_sys='cgs', unit_dict=None):             # <<<<<<<<<<<<<<
+ *     """Creates a ``CarrayContainer`` to hold hydro data related to the simulation.
+ * 
+ */
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_3phd_5utils_16particle_creator_1HydroParticleCreator, NULL, __pyx_n_s_phd_utils_particle_creator); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 5, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_HydroParticleCreator, __pyx_t_1) < 0) __PYX_ERR(0, 5, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "phd/utils/particle_creator.pyx":1
  * from .particle_tags import ParticleTAGS             # <<<<<<<<<<<<<<
  * from ..containers.containers cimport CarrayContainer
- * 
+ * from .units import Units
  */
-  __pyx_t_2 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_test, __pyx_t_2) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_test, __pyx_t_1) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "../../../opt/anaconda3/lib/python3.8/site-packages/numpy/__init__.pxd":892
  *         raise ImportError("numpy.core.umath failed to import")
@@ -4594,6 +4736,95 @@ static CYTHON_INLINE PyObject* __Pyx_PyObject_CallOneArg(PyObject *func, PyObjec
 }
 #endif
 
+/* PyObjectGetAttrStr */
+#if CYTHON_USE_TYPE_SLOTS
+static CYTHON_INLINE PyObject* __Pyx_PyObject_GetAttrStr(PyObject* obj, PyObject* attr_name) {
+    PyTypeObject* tp = Py_TYPE(obj);
+    if (likely(tp->tp_getattro))
+        return tp->tp_getattro(obj, attr_name);
+#if PY_MAJOR_VERSION < 3
+    if (likely(tp->tp_getattr))
+        return tp->tp_getattr(obj, PyString_AS_STRING(attr_name));
+#endif
+    return PyObject_GetAttr(obj, attr_name);
+}
+#endif
+
+/* GetBuiltinName */
+static PyObject *__Pyx_GetBuiltinName(PyObject *name) {
+    PyObject* result = __Pyx_PyObject_GetAttrStr(__pyx_b, name);
+    if (unlikely(!result)) {
+        PyErr_Format(PyExc_NameError,
+#if PY_MAJOR_VERSION >= 3
+            "name '%U' is not defined", name);
+#else
+            "name '%.200s' is not defined", PyString_AS_STRING(name));
+#endif
+    }
+    return result;
+}
+
+/* PyDictVersioning */
+#if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_TYPE_SLOTS
+static CYTHON_INLINE PY_UINT64_T __Pyx_get_tp_dict_version(PyObject *obj) {
+    PyObject *dict = Py_TYPE(obj)->tp_dict;
+    return likely(dict) ? __PYX_GET_DICT_VERSION(dict) : 0;
+}
+static CYTHON_INLINE PY_UINT64_T __Pyx_get_object_dict_version(PyObject *obj) {
+    PyObject **dictptr = NULL;
+    Py_ssize_t offset = Py_TYPE(obj)->tp_dictoffset;
+    if (offset) {
+#if CYTHON_COMPILING_IN_CPYTHON
+        dictptr = (likely(offset > 0)) ? (PyObject **) ((char *)obj + offset) : _PyObject_GetDictPtr(obj);
+#else
+        dictptr = _PyObject_GetDictPtr(obj);
+#endif
+    }
+    return (dictptr && *dictptr) ? __PYX_GET_DICT_VERSION(*dictptr) : 0;
+}
+static CYTHON_INLINE int __Pyx_object_dict_version_matches(PyObject* obj, PY_UINT64_T tp_dict_version, PY_UINT64_T obj_dict_version) {
+    PyObject *dict = Py_TYPE(obj)->tp_dict;
+    if (unlikely(!dict) || unlikely(tp_dict_version != __PYX_GET_DICT_VERSION(dict)))
+        return 0;
+    return obj_dict_version == __Pyx_get_object_dict_version(obj);
+}
+#endif
+
+/* GetModuleGlobalName */
+#if CYTHON_USE_DICT_VERSIONS
+static PyObject *__Pyx__GetModuleGlobalName(PyObject *name, PY_UINT64_T *dict_version, PyObject **dict_cached_value)
+#else
+static CYTHON_INLINE PyObject *__Pyx__GetModuleGlobalName(PyObject *name)
+#endif
+{
+    PyObject *result;
+#if !CYTHON_AVOID_BORROWED_REFS
+#if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030500A1
+    result = _PyDict_GetItem_KnownHash(__pyx_d, name, ((PyASCIIObject *) name)->hash);
+    __PYX_UPDATE_DICT_CACHE(__pyx_d, result, *dict_cached_value, *dict_version)
+    if (likely(result)) {
+        return __Pyx_NewRef(result);
+    } else if (unlikely(PyErr_Occurred())) {
+        return NULL;
+    }
+#else
+    result = PyDict_GetItem(__pyx_d, name);
+    __PYX_UPDATE_DICT_CACHE(__pyx_d, result, *dict_cached_value, *dict_version)
+    if (likely(result)) {
+        return __Pyx_NewRef(result);
+    }
+#endif
+#else
+    result = PyObject_GetItem(__pyx_d, name);
+    __PYX_UPDATE_DICT_CACHE(__pyx_d, result, *dict_cached_value, *dict_version)
+    if (likely(result)) {
+        return __Pyx_NewRef(result);
+    }
+    PyErr_Clear();
+#endif
+    return __Pyx_GetBuiltinName(name);
+}
+
 /* PyObjectCall2Args */
 static CYTHON_UNUSED PyObject* __Pyx_PyObject_Call2Args(PyObject* function, PyObject* arg1, PyObject* arg2) {
     PyObject *args, *result = NULL;
@@ -4622,20 +4853,6 @@ static CYTHON_UNUSED PyObject* __Pyx_PyObject_Call2Args(PyObject* function, PyOb
 done:
     return result;
 }
-
-/* PyObjectGetAttrStr */
-#if CYTHON_USE_TYPE_SLOTS
-static CYTHON_INLINE PyObject* __Pyx_PyObject_GetAttrStr(PyObject* obj, PyObject* attr_name) {
-    PyTypeObject* tp = Py_TYPE(obj);
-    if (likely(tp->tp_getattro))
-        return tp->tp_getattro(obj, attr_name);
-#if PY_MAJOR_VERSION < 3
-    if (likely(tp->tp_getattr))
-        return tp->tp_getattr(obj, PyString_AS_STRING(attr_name));
-#endif
-    return PyObject_GetAttr(obj, attr_name);
-}
-#endif
 
 /* PyObjectGetMethod */
 static int __Pyx_PyObject_GetMethod(PyObject *obj, PyObject *name, PyObject **method) {
@@ -4787,81 +5004,6 @@ static PyObject *__Pyx_PyDict_GetItem(PyObject *d, PyObject* key) {
     return value;
 }
 #endif
-
-/* GetBuiltinName */
-static PyObject *__Pyx_GetBuiltinName(PyObject *name) {
-    PyObject* result = __Pyx_PyObject_GetAttrStr(__pyx_b, name);
-    if (unlikely(!result)) {
-        PyErr_Format(PyExc_NameError,
-#if PY_MAJOR_VERSION >= 3
-            "name '%U' is not defined", name);
-#else
-            "name '%.200s' is not defined", PyString_AS_STRING(name));
-#endif
-    }
-    return result;
-}
-
-/* PyDictVersioning */
-#if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_TYPE_SLOTS
-static CYTHON_INLINE PY_UINT64_T __Pyx_get_tp_dict_version(PyObject *obj) {
-    PyObject *dict = Py_TYPE(obj)->tp_dict;
-    return likely(dict) ? __PYX_GET_DICT_VERSION(dict) : 0;
-}
-static CYTHON_INLINE PY_UINT64_T __Pyx_get_object_dict_version(PyObject *obj) {
-    PyObject **dictptr = NULL;
-    Py_ssize_t offset = Py_TYPE(obj)->tp_dictoffset;
-    if (offset) {
-#if CYTHON_COMPILING_IN_CPYTHON
-        dictptr = (likely(offset > 0)) ? (PyObject **) ((char *)obj + offset) : _PyObject_GetDictPtr(obj);
-#else
-        dictptr = _PyObject_GetDictPtr(obj);
-#endif
-    }
-    return (dictptr && *dictptr) ? __PYX_GET_DICT_VERSION(*dictptr) : 0;
-}
-static CYTHON_INLINE int __Pyx_object_dict_version_matches(PyObject* obj, PY_UINT64_T tp_dict_version, PY_UINT64_T obj_dict_version) {
-    PyObject *dict = Py_TYPE(obj)->tp_dict;
-    if (unlikely(!dict) || unlikely(tp_dict_version != __PYX_GET_DICT_VERSION(dict)))
-        return 0;
-    return obj_dict_version == __Pyx_get_object_dict_version(obj);
-}
-#endif
-
-/* GetModuleGlobalName */
-#if CYTHON_USE_DICT_VERSIONS
-static PyObject *__Pyx__GetModuleGlobalName(PyObject *name, PY_UINT64_T *dict_version, PyObject **dict_cached_value)
-#else
-static CYTHON_INLINE PyObject *__Pyx__GetModuleGlobalName(PyObject *name)
-#endif
-{
-    PyObject *result;
-#if !CYTHON_AVOID_BORROWED_REFS
-#if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030500A1
-    result = _PyDict_GetItem_KnownHash(__pyx_d, name, ((PyASCIIObject *) name)->hash);
-    __PYX_UPDATE_DICT_CACHE(__pyx_d, result, *dict_cached_value, *dict_version)
-    if (likely(result)) {
-        return __Pyx_NewRef(result);
-    } else if (unlikely(PyErr_Occurred())) {
-        return NULL;
-    }
-#else
-    result = PyDict_GetItem(__pyx_d, name);
-    __PYX_UPDATE_DICT_CACHE(__pyx_d, result, *dict_cached_value, *dict_version)
-    if (likely(result)) {
-        return __Pyx_NewRef(result);
-    }
-#endif
-#else
-    result = PyObject_GetItem(__pyx_d, name);
-    __PYX_UPDATE_DICT_CACHE(__pyx_d, result, *dict_cached_value, *dict_version)
-    if (likely(result)) {
-        return __Pyx_NewRef(result);
-    }
-    PyErr_Clear();
-#endif
-    return __Pyx_GetBuiltinName(name);
-}
 
 /* GetItemInt */
 static PyObject *__Pyx_GetItemInt_Generic(PyObject *o, PyObject* j) {

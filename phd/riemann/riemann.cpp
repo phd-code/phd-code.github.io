@@ -16,9 +16,9 @@
             "phd/mesh/tess.h"
         ],
         "include_dirs": [
+            "./phd/mesh",
             "./phd/domain",
             "phd/domain",
-            "./phd/mesh",
             "/Users/sahilhegde/opt/anaconda3/lib/python3.8/site-packages/numpy/core/include",
             "phd/utils/",
             "phd/containers/",

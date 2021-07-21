@@ -1,5 +1,6 @@
 from ..source_term.source_term cimport MUSCLHancockSourceTerm
 from .gravity_tree cimport GravityTree
+from ..utils.units import Units
 
 cdef class ConstantGravity(MUSCLHancockSourceTerm):
 

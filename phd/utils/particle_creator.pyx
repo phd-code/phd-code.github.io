@@ -1,11 +1,46 @@
 from .particle_tags import ParticleTAGS
 from ..containers.containers cimport CarrayContainer
+from .units import Units
 
-def HydroParticleCreator(num=0, dim=2, parallel=False):
+def HydroParticleCreator(num=0, dim=2, parallel=False, unit_sys='cgs', unit_dict=None):
+    """Creates a ``CarrayContainer`` to hold hydro data related to the simulation.
 
+    Parameters
+    ----------
+    num : int
+        Size of ``CarrayContainer``
+
+    dim : int
+        Number of dimensions
+
+    parallel : bool
+        Toggles whether the simulation is being run in parallel or serial
+
+    unit_sys : str
+        Specifies one of the named ``unyt`` systems for use in the simulation initialization.
+
+    unit_dict : dict
+        Overwrites use of unit_sys. Allows user to specify a custom unit system by passing 
+        length, time, and mass units in dictionary.
+
+    Returns
+    -------
+    pc : CarrayContainer
+        Object holding the hydro information pertaining to the  particles
+
+    unit_obj : Units
+        Object holding the unit information in use for the simulation.
+        
+    """
     cdef dict carray_named_groups = {}
     cdef str axis, dimension = 'xyz'[:dim]
     cdef CarrayContainer pc = CarrayContainer(num)
+
+    # initialize unit interface
+    if(unit_dict is not None):
+        unit_obj = Units(unit_dict = unit_dict)
+    else:
+        unit_obj = Units(unit_system = unit_sys)
 
     # register primitive fields
     carray_named_groups['position'] = []
@@ -59,7 +94,7 @@ def HydroParticleCreator(num=0, dim=2, parallel=False):
     pc['type'][:] = ParticleTAGS.Undefined
     pc.carray_named_groups = carray_named_groups
 
-    return pc
+    return pc, unit_obj
 
 #def MhdParticleCreator(num=0, dim=2, parallel=False):
 #    pass

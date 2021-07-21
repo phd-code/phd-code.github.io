@@ -2855,12 +2855,13 @@ static int __pyx_pf_3phd_12load_balance_12load_balance_11LoadBalance___init__(st
  *         self.export_pid = LongArray()
  * 
  *     def add_domain_info(self, DomainManager domain_manager):             # <<<<<<<<<<<<<<
- *         cdef int i, k
- * 
+ *         """
+ *         Parameters
  */
 
 /* Python wrapper */
 static PyObject *__pyx_pw_3phd_12load_balance_12load_balance_11LoadBalance_3add_domain_info(PyObject *__pyx_v_self, PyObject *__pyx_v_domain_manager); /*proto*/
+static char __pyx_doc_3phd_12load_balance_12load_balance_11LoadBalance_2add_domain_info[] = "\n        Parameters\n        ----------\n        domain_manager : DomainManager\n            Class that handles all computation relating to the domain.\n        ";
 static PyObject *__pyx_pw_3phd_12load_balance_12load_balance_11LoadBalance_3add_domain_info(PyObject *__pyx_v_self, PyObject *__pyx_v_domain_manager) {
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
@@ -2892,7 +2893,7 @@ static PyObject *__pyx_pf_3phd_12load_balance_12load_balance_11LoadBalance_2add_
   __pyx_t_5numpy_float64_t __pyx_t_5;
   __Pyx_RefNannySetupContext("add_domain_info", 0);
 
-  /* "phd/load_balance/load_balance.pyx":35
+  /* "phd/load_balance/load_balance.pyx":41
  *         cdef int i, k
  * 
  *         for i in range(2):             # <<<<<<<<<<<<<<
@@ -2902,7 +2903,7 @@ static PyObject *__pyx_pf_3phd_12load_balance_12load_balance_11LoadBalance_2add_
   for (__pyx_t_1 = 0; __pyx_t_1 < 2; __pyx_t_1+=1) {
     __pyx_v_i = __pyx_t_1;
 
-    /* "phd/load_balance/load_balance.pyx":36
+    /* "phd/load_balance/load_balance.pyx":42
  * 
  *         for i in range(2):
  *             for k in range(domain_manager.dim):             # <<<<<<<<<<<<<<
@@ -2914,7 +2915,7 @@ static PyObject *__pyx_pf_3phd_12load_balance_12load_balance_11LoadBalance_2add_
     for (__pyx_t_4 = 0; __pyx_t_4 < __pyx_t_3; __pyx_t_4+=1) {
       __pyx_v_k = __pyx_t_4;
 
-      /* "phd/load_balance/load_balance.pyx":37
+      /* "phd/load_balance/load_balance.pyx":43
  *         for i in range(2):
  *             for k in range(domain_manager.dim):
  *                 self.bounds[i][k] = domain_manager.bounds[i][k]             # <<<<<<<<<<<<<<
@@ -2925,7 +2926,7 @@ static PyObject *__pyx_pf_3phd_12load_balance_12load_balance_11LoadBalance_2add_
     }
   }
 
-  /* "phd/load_balance/load_balance.pyx":39
+  /* "phd/load_balance/load_balance.pyx":45
  *                 self.bounds[i][k] = domain_manager.bounds[i][k]
  * 
  *         self.dim = domain_manager.dim             # <<<<<<<<<<<<<<
@@ -2935,7 +2936,7 @@ static PyObject *__pyx_pf_3phd_12load_balance_12load_balance_11LoadBalance_2add_
   __pyx_t_1 = __pyx_v_domain_manager->dim;
   __pyx_v_self->dim = __pyx_t_1;
 
-  /* "phd/load_balance/load_balance.pyx":40
+  /* "phd/load_balance/load_balance.pyx":46
  * 
  *         self.dim = domain_manager.dim
  *         self.box_length = domain_manager.max_length             # <<<<<<<<<<<<<<
@@ -2945,7 +2946,7 @@ static PyObject *__pyx_pf_3phd_12load_balance_12load_balance_11LoadBalance_2add_
   __pyx_t_5 = __pyx_v_domain_manager->max_length;
   __pyx_v_self->box_length = __pyx_t_5;
 
-  /* "phd/load_balance/load_balance.pyx":41
+  /* "phd/load_balance/load_balance.pyx":47
  *         self.dim = domain_manager.dim
  *         self.box_length = domain_manager.max_length
  *         self.domain_info_added = True             # <<<<<<<<<<<<<<
@@ -2958,8 +2959,8 @@ static PyObject *__pyx_pf_3phd_12load_balance_12load_balance_11LoadBalance_2add_
  *         self.export_pid = LongArray()
  * 
  *     def add_domain_info(self, DomainManager domain_manager):             # <<<<<<<<<<<<<<
- *         cdef int i, k
- * 
+ *         """
+ *         Parameters
  */
 
   /* function exit code */
@@ -2969,7 +2970,7 @@ static PyObject *__pyx_pf_3phd_12load_balance_12load_balance_11LoadBalance_2add_
   return __pyx_r;
 }
 
-/* "phd/load_balance/load_balance.pyx":43
+/* "phd/load_balance/load_balance.pyx":49
  *         self.domain_info_added = True
  * 
  *     def initialize(self):             # <<<<<<<<<<<<<<
@@ -3012,16 +3013,16 @@ static PyObject *__pyx_pf_3phd_12load_balance_12load_balance_11LoadBalance_4init
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("initialize", 0);
 
-  /* "phd/load_balance/load_balance.pyx":47
+  /* "phd/load_balance/load_balance.pyx":53
  *         """
  *         cdef int i
  *         cdef np.ndarray corner = np.zeros(3)             # <<<<<<<<<<<<<<
  * 
  *         if not self.domain_info_added:
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 47, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 53, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_zeros); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 47, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_zeros); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 53, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_2 = NULL;
@@ -3036,14 +3037,14 @@ static PyObject *__pyx_pf_3phd_12load_balance_12load_balance_11LoadBalance_4init
   }
   __pyx_t_1 = (__pyx_t_2) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_2, __pyx_int_3) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_int_3);
   __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 47, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 53, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 47, __pyx_L1_error)
+  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 53, __pyx_L1_error)
   __pyx_v_corner = ((PyArrayObject *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "phd/load_balance/load_balance.pyx":49
+  /* "phd/load_balance/load_balance.pyx":55
  *         cdef np.ndarray corner = np.zeros(3)
  * 
  *         if not self.domain_info_added:             # <<<<<<<<<<<<<<
@@ -3053,20 +3054,20 @@ static PyObject *__pyx_pf_3phd_12load_balance_12load_balance_11LoadBalance_4init
   __pyx_t_4 = ((!(__pyx_v_self->domain_info_added != 0)) != 0);
   if (unlikely(__pyx_t_4)) {
 
-    /* "phd/load_balance/load_balance.pyx":50
+    /* "phd/load_balance/load_balance.pyx":56
  * 
  *         if not self.domain_info_added:
  *             raise RuntimeError("ERROR: Domain information not added")             # <<<<<<<<<<<<<<
  *         self.fac = 2**self.order / self.box_length
  * 
  */
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 50, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 56, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_Raise(__pyx_t_1, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __PYX_ERR(0, 50, __pyx_L1_error)
+    __PYX_ERR(0, 56, __pyx_L1_error)
 
-    /* "phd/load_balance/load_balance.pyx":49
+    /* "phd/load_balance/load_balance.pyx":55
  *         cdef np.ndarray corner = np.zeros(3)
  * 
  *         if not self.domain_info_added:             # <<<<<<<<<<<<<<
@@ -3075,7 +3076,7 @@ static PyObject *__pyx_pf_3phd_12load_balance_12load_balance_11LoadBalance_4init
  */
   }
 
-  /* "phd/load_balance/load_balance.pyx":51
+  /* "phd/load_balance/load_balance.pyx":57
  *         if not self.domain_info_added:
  *             raise RuntimeError("ERROR: Domain information not added")
  *         self.fac = 2**self.order / self.box_length             # <<<<<<<<<<<<<<
@@ -3085,11 +3086,11 @@ static PyObject *__pyx_pf_3phd_12load_balance_12load_balance_11LoadBalance_4init
   __pyx_t_5 = __Pyx_pow_long(2, ((long)__pyx_v_self->order));
   if (unlikely(__pyx_v_self->box_length == 0)) {
     PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-    __PYX_ERR(0, 51, __pyx_L1_error)
+    __PYX_ERR(0, 57, __pyx_L1_error)
   }
   __pyx_v_self->fac = (__pyx_t_5 / __pyx_v_self->box_length);
 
-  /* "phd/load_balance/load_balance.pyx":53
+  /* "phd/load_balance/load_balance.pyx":59
  *         self.fac = 2**self.order / self.box_length
  * 
  *         for i in range(self.dim):             # <<<<<<<<<<<<<<
@@ -3101,20 +3102,20 @@ static PyObject *__pyx_pf_3phd_12load_balance_12load_balance_11LoadBalance_4init
   for (__pyx_t_8 = 0; __pyx_t_8 < __pyx_t_7; __pyx_t_8+=1) {
     __pyx_v_i = __pyx_t_8;
 
-    /* "phd/load_balance/load_balance.pyx":54
+    /* "phd/load_balance/load_balance.pyx":60
  * 
  *         for i in range(self.dim):
  *             corner[i] = self.bounds[0][i]             # <<<<<<<<<<<<<<
  * 
  *         if self.dim == 2:
  */
-    __pyx_t_1 = PyFloat_FromDouble(((__pyx_v_self->bounds[0])[__pyx_v_i])); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 54, __pyx_L1_error)
+    __pyx_t_1 = PyFloat_FromDouble(((__pyx_v_self->bounds[0])[__pyx_v_i])); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 60, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    if (unlikely(__Pyx_SetItemInt(((PyObject *)__pyx_v_corner), __pyx_v_i, __pyx_t_1, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 54, __pyx_L1_error)
+    if (unlikely(__Pyx_SetItemInt(((PyObject *)__pyx_v_corner), __pyx_v_i, __pyx_t_1, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 60, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   }
 
-  /* "phd/load_balance/load_balance.pyx":56
+  /* "phd/load_balance/load_balance.pyx":62
  *             corner[i] = self.bounds[0][i]
  * 
  *         if self.dim == 2:             # <<<<<<<<<<<<<<
@@ -3124,7 +3125,7 @@ static PyObject *__pyx_pf_3phd_12load_balance_12load_balance_11LoadBalance_4init
   switch (__pyx_v_self->dim) {
     case 2:
 
-    /* "phd/load_balance/load_balance.pyx":57
+    /* "phd/load_balance/load_balance.pyx":63
  * 
  *         if self.dim == 2:
  *             self.hilbert_func = hilbert_key_2d             # <<<<<<<<<<<<<<
@@ -3133,7 +3134,7 @@ static PyObject *__pyx_pf_3phd_12load_balance_12load_balance_11LoadBalance_4init
  */
     __pyx_v_self->hilbert_func = __pyx_f_3phd_7hilbert_7hilbert_hilbert_key_2d;
 
-    /* "phd/load_balance/load_balance.pyx":56
+    /* "phd/load_balance/load_balance.pyx":62
  *             corner[i] = self.bounds[0][i]
  * 
  *         if self.dim == 2:             # <<<<<<<<<<<<<<
@@ -3143,7 +3144,7 @@ static PyObject *__pyx_pf_3phd_12load_balance_12load_balance_11LoadBalance_4init
     break;
     case 3:
 
-    /* "phd/load_balance/load_balance.pyx":59
+    /* "phd/load_balance/load_balance.pyx":65
  *             self.hilbert_func = hilbert_key_2d
  *         elif self.dim == 3:
  *             self.hilbert_func = hilbert_key_3d             # <<<<<<<<<<<<<<
@@ -3152,7 +3153,7 @@ static PyObject *__pyx_pf_3phd_12load_balance_12load_balance_11LoadBalance_4init
  */
     __pyx_v_self->hilbert_func = __pyx_f_3phd_7hilbert_7hilbert_hilbert_key_3d;
 
-    /* "phd/load_balance/load_balance.pyx":58
+    /* "phd/load_balance/load_balance.pyx":64
  *         if self.dim == 2:
  *             self.hilbert_func = hilbert_key_2d
  *         elif self.dim == 3:             # <<<<<<<<<<<<<<
@@ -3162,55 +3163,55 @@ static PyObject *__pyx_pf_3phd_12load_balance_12load_balance_11LoadBalance_4init
     break;
     default:
 
-    /* "phd/load_balance/load_balance.pyx":61
+    /* "phd/load_balance/load_balance.pyx":67
  *             self.hilbert_func = hilbert_key_3d
  *         else:
  *             raise RuntimeError("Wrong dimension for tree")             # <<<<<<<<<<<<<<
  * 
  *         self.tree = Tree(corner, self.box_length, self.dim,
  */
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_tuple__2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 61, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_tuple__2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 67, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_Raise(__pyx_t_1, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __PYX_ERR(0, 61, __pyx_L1_error)
+    __PYX_ERR(0, 67, __pyx_L1_error)
     break;
   }
 
-  /* "phd/load_balance/load_balance.pyx":63
+  /* "phd/load_balance/load_balance.pyx":69
  *             raise RuntimeError("Wrong dimension for tree")
  * 
  *         self.tree = Tree(corner, self.box_length, self.dim,             # <<<<<<<<<<<<<<
  *                 self.factor, self.min_in_leaf, self.order)
  * 
  */
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->box_length); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 63, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->box_length); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 69, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_self->dim); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 63, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_self->dim); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 69, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
 
-  /* "phd/load_balance/load_balance.pyx":64
+  /* "phd/load_balance/load_balance.pyx":70
  * 
  *         self.tree = Tree(corner, self.box_length, self.dim,
  *                 self.factor, self.min_in_leaf, self.order)             # <<<<<<<<<<<<<<
  * 
  *     def decomposition(self, CarrayContainer particles):
  */
-  __pyx_t_2 = PyFloat_FromDouble(__pyx_v_self->factor); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 64, __pyx_L1_error)
+  __pyx_t_2 = PyFloat_FromDouble(__pyx_v_self->factor); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 70, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_9 = __Pyx_PyInt_From_npy_int32(__pyx_v_self->min_in_leaf); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 64, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyInt_From_npy_int32(__pyx_v_self->min_in_leaf); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 70, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
-  __pyx_t_10 = __Pyx_PyInt_From_npy_int32(__pyx_v_self->order); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 64, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_PyInt_From_npy_int32(__pyx_v_self->order); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 70, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
 
-  /* "phd/load_balance/load_balance.pyx":63
+  /* "phd/load_balance/load_balance.pyx":69
  *             raise RuntimeError("Wrong dimension for tree")
  * 
  *         self.tree = Tree(corner, self.box_length, self.dim,             # <<<<<<<<<<<<<<
  *                 self.factor, self.min_in_leaf, self.order)
  * 
  */
-  __pyx_t_11 = PyTuple_New(6); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 63, __pyx_L1_error)
+  __pyx_t_11 = PyTuple_New(6); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 69, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_11);
   __Pyx_INCREF(((PyObject *)__pyx_v_corner));
   __Pyx_GIVEREF(((PyObject *)__pyx_v_corner));
@@ -3230,7 +3231,7 @@ static PyObject *__pyx_pf_3phd_12load_balance_12load_balance_11LoadBalance_4init
   __pyx_t_2 = 0;
   __pyx_t_9 = 0;
   __pyx_t_10 = 0;
-  __pyx_t_10 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_3phd_12load_balance_4tree_Tree), __pyx_t_11, NULL); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 63, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_3phd_12load_balance_4tree_Tree), __pyx_t_11, NULL); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 69, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
   __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
   __Pyx_GIVEREF(__pyx_t_10);
@@ -3239,7 +3240,7 @@ static PyObject *__pyx_pf_3phd_12load_balance_12load_balance_11LoadBalance_4init
   __pyx_v_self->tree = ((struct __pyx_obj_3phd_12load_balance_4tree_Tree *)__pyx_t_10);
   __pyx_t_10 = 0;
 
-  /* "phd/load_balance/load_balance.pyx":43
+  /* "phd/load_balance/load_balance.pyx":49
  *         self.domain_info_added = True
  * 
  *     def initialize(self):             # <<<<<<<<<<<<<<
@@ -3266,17 +3267,17 @@ static PyObject *__pyx_pf_3phd_12load_balance_12load_balance_11LoadBalance_4init
   return __pyx_r;
 }
 
-/* "phd/load_balance/load_balance.pyx":66
+/* "phd/load_balance/load_balance.pyx":72
  *                 self.factor, self.min_in_leaf, self.order)
  * 
  *     def decomposition(self, CarrayContainer particles):             # <<<<<<<<<<<<<<
  *         """Perform domain decomposition
- *         """
+ * 
  */
 
 /* Python wrapper */
 static PyObject *__pyx_pw_3phd_12load_balance_12load_balance_11LoadBalance_7decomposition(PyObject *__pyx_v_self, PyObject *__pyx_v_particles); /*proto*/
-static char __pyx_doc_3phd_12load_balance_12load_balance_11LoadBalance_6decomposition[] = "Perform domain decomposition\n        ";
+static char __pyx_doc_3phd_12load_balance_12load_balance_11LoadBalance_6decomposition[] = "Perform domain decomposition\n\n        Parameters\n        ----------\n        particles : CarrayContainer\n            Class that holds all information pertaining to the particles.\n\n        ";
 static PyObject *__pyx_pw_3phd_12load_balance_12load_balance_11LoadBalance_7decomposition(PyObject *__pyx_v_self, PyObject *__pyx_v_particles) {
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
@@ -3284,7 +3285,7 @@ static PyObject *__pyx_pw_3phd_12load_balance_12load_balance_11LoadBalance_7deco
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("decomposition (wrapper)", 0);
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_particles), __pyx_ptype_3phd_10containers_10containers_CarrayContainer, 1, "particles", 0))) __PYX_ERR(0, 66, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_particles), __pyx_ptype_3phd_10containers_10containers_CarrayContainer, 1, "particles", 0))) __PYX_ERR(0, 72, __pyx_L1_error)
   __pyx_r = __pyx_pf_3phd_12load_balance_12load_balance_11LoadBalance_6decomposition(((struct __pyx_obj_3phd_12load_balance_12load_balance_LoadBalance *)__pyx_v_self), ((struct __pyx_obj_3phd_10containers_10containers_CarrayContainer *)__pyx_v_particles));
 
   /* function exit code */
@@ -3321,25 +3322,25 @@ static PyObject *__pyx_pf_3phd_12load_balance_12load_balance_11LoadBalance_6deco
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("decomposition", 0);
 
-  /* "phd/load_balance/load_balance.pyx":77
+  /* "phd/load_balance/load_balance.pyx":89
  * 
  *         # remove current (if any) ghost particles
  *         particles.remove_tagged_particles(ParticleTAGS.Ghost)             # <<<<<<<<<<<<<<
  * 
  *         # generate hilbert keys for real particles and create
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_ParticleTAGS); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 77, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_ParticleTAGS); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 89, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_Ghost); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 77, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_Ghost); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 89, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_3 = __Pyx_PyInt_As_npy_int8(__pyx_t_2); if (unlikely((__pyx_t_3 == ((npy_int8)-1)) && PyErr_Occurred())) __PYX_ERR(0, 77, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_As_npy_int8(__pyx_t_2); if (unlikely((__pyx_t_3 == ((npy_int8)-1)) && PyErr_Occurred())) __PYX_ERR(0, 89, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = ((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_particles->__pyx_vtab)->remove_tagged_particles(__pyx_v_particles, __pyx_t_3, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 77, __pyx_L1_error)
+  __pyx_t_2 = ((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_particles->__pyx_vtab)->remove_tagged_particles(__pyx_v_particles, __pyx_t_3, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 89, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "phd/load_balance/load_balance.pyx":81
+  /* "phd/load_balance/load_balance.pyx":93
  *         # generate hilbert keys for real particles and create
  *         # global tree over all process
  *         self.compute_hilbert_keys(particles)             # <<<<<<<<<<<<<<
@@ -3348,96 +3349,96 @@ static PyObject *__pyx_pf_3phd_12load_balance_12load_balance_11LoadBalance_6deco
  */
   ((struct __pyx_vtabstruct_3phd_12load_balance_12load_balance_LoadBalance *)__pyx_v_self->__pyx_vtab)->compute_hilbert_keys(__pyx_v_self, __pyx_v_particles);
 
-  /* "phd/load_balance/load_balance.pyx":82
+  /* "phd/load_balance/load_balance.pyx":94
  *         # global tree over all process
  *         self.compute_hilbert_keys(particles)
  *         self.tree.construct_global_tree(particles, phd._comm)             # <<<<<<<<<<<<<<
  * 
  *         local_work  = np.zeros(self.tree.number_leaves, dtype=np.int32)
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_phd); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 82, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_phd); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 94, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_comm); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 82, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_comm); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 94, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   ((struct __pyx_vtabstruct_3phd_12load_balance_4tree_Tree *)__pyx_v_self->tree->__pyx_vtab)->construct_global_tree(__pyx_v_self->tree, __pyx_v_particles, __pyx_t_1);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "phd/load_balance/load_balance.pyx":84
+  /* "phd/load_balance/load_balance.pyx":96
  *         self.tree.construct_global_tree(particles, phd._comm)
  * 
  *         local_work  = np.zeros(self.tree.number_leaves, dtype=np.int32)             # <<<<<<<<<<<<<<
  *         global_work = np.zeros(self.tree.number_leaves, dtype=np.int32)
  *         self.calculate_local_work(particles, local_work)
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 84, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 96, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_zeros); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 84, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_zeros); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 96, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->tree->number_leaves); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 84, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->tree->number_leaves); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 96, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 84, __pyx_L1_error)
+  __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 96, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_1);
   __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 84, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 96, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 84, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 96, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_int32); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 84, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_int32); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 96, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_dtype, __pyx_t_6) < 0) __PYX_ERR(0, 84, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_dtype, __pyx_t_6) < 0) __PYX_ERR(0, 96, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_4, __pyx_t_1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 84, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_4, __pyx_t_1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 96, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (!(likely(((__pyx_t_6) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_6, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 84, __pyx_L1_error)
+  if (!(likely(((__pyx_t_6) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_6, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 96, __pyx_L1_error)
   __pyx_v_local_work = ((PyArrayObject *)__pyx_t_6);
   __pyx_t_6 = 0;
 
-  /* "phd/load_balance/load_balance.pyx":85
+  /* "phd/load_balance/load_balance.pyx":97
  * 
  *         local_work  = np.zeros(self.tree.number_leaves, dtype=np.int32)
  *         global_work = np.zeros(self.tree.number_leaves, dtype=np.int32)             # <<<<<<<<<<<<<<
  *         self.calculate_local_work(particles, local_work)
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 85, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 97, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_zeros); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 85, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_zeros); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 97, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_6 = __Pyx_PyInt_From_int(__pyx_v_self->tree->number_leaves); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 85, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyInt_From_int(__pyx_v_self->tree->number_leaves); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 97, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 85, __pyx_L1_error)
+  __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 97, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_GIVEREF(__pyx_t_6);
   PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_6);
   __pyx_t_6 = 0;
-  __pyx_t_6 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 85, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 97, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 85, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 97, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_int32); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 85, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_int32); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 97, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (PyDict_SetItem(__pyx_t_6, __pyx_n_s_dtype, __pyx_t_5) < 0) __PYX_ERR(0, 85, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_6, __pyx_n_s_dtype, __pyx_t_5) < 0) __PYX_ERR(0, 97, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_4, __pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 85, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_4, __pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 97, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  if (!(likely(((__pyx_t_5) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_5, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 85, __pyx_L1_error)
+  if (!(likely(((__pyx_t_5) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_5, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 97, __pyx_L1_error)
   __pyx_v_global_work = ((PyArrayObject *)__pyx_t_5);
   __pyx_t_5 = 0;
 
-  /* "phd/load_balance/load_balance.pyx":86
+  /* "phd/load_balance/load_balance.pyx":98
  *         local_work  = np.zeros(self.tree.number_leaves, dtype=np.int32)
  *         global_work = np.zeros(self.tree.number_leaves, dtype=np.int32)
  *         self.calculate_local_work(particles, local_work)             # <<<<<<<<<<<<<<
@@ -3446,39 +3447,39 @@ static PyObject *__pyx_pf_3phd_12load_balance_12load_balance_11LoadBalance_6deco
  */
   ((struct __pyx_vtabstruct_3phd_12load_balance_12load_balance_LoadBalance *)__pyx_v_self->__pyx_vtab)->calculate_local_work(__pyx_v_self, __pyx_v_particles, __pyx_v_local_work);
 
-  /* "phd/load_balance/load_balance.pyx":89
+  /* "phd/load_balance/load_balance.pyx":101
  * 
  *         # gather work across all processors
  *         phd._comm.Allreduce(sendbuf=local_work, recvbuf=global_work, op=MPI.SUM)             # <<<<<<<<<<<<<<
  *         self.find_split_in_work(global_work)
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_phd); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 89, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_phd); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 101, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_comm); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 89, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_comm); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 101, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_Allreduce); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 89, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_Allreduce); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 101, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_6 = __Pyx_PyDict_NewPresized(3); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 89, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyDict_NewPresized(3); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 101, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  if (PyDict_SetItem(__pyx_t_6, __pyx_n_s_sendbuf, ((PyObject *)__pyx_v_local_work)) < 0) __PYX_ERR(0, 89, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_6, __pyx_n_s_recvbuf, ((PyObject *)__pyx_v_global_work)) < 0) __PYX_ERR(0, 89, __pyx_L1_error)
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_MPI); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 89, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_6, __pyx_n_s_sendbuf, ((PyObject *)__pyx_v_local_work)) < 0) __PYX_ERR(0, 101, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_6, __pyx_n_s_recvbuf, ((PyObject *)__pyx_v_global_work)) < 0) __PYX_ERR(0, 101, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_MPI); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 101, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_SUM); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 89, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_SUM); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 101, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (PyDict_SetItem(__pyx_t_6, __pyx_n_s_op, __pyx_t_1) < 0) __PYX_ERR(0, 89, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_6, __pyx_n_s_op, __pyx_t_1) < 0) __PYX_ERR(0, 101, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_empty_tuple, __pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 89, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_empty_tuple, __pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 101, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "phd/load_balance/load_balance.pyx":90
+  /* "phd/load_balance/load_balance.pyx":102
  *         # gather work across all processors
  *         phd._comm.Allreduce(sendbuf=local_work, recvbuf=global_work, op=MPI.SUM)
  *         self.find_split_in_work(global_work)             # <<<<<<<<<<<<<<
@@ -3487,14 +3488,14 @@ static PyObject *__pyx_pf_3phd_12load_balance_12load_balance_11LoadBalance_6deco
  */
   ((struct __pyx_vtabstruct_3phd_12load_balance_12load_balance_LoadBalance *)__pyx_v_self->__pyx_vtab)->find_split_in_work(__pyx_v_self, __pyx_v_global_work);
 
-  /* "phd/load_balance/load_balance.pyx":93
+  /* "phd/load_balance/load_balance.pyx":105
  * 
  *         # collect particle for export
  *         self.export_ids.reset()             # <<<<<<<<<<<<<<
  *         self.export_pid.reset()
  *         self.collect_particles_export(particles, self.export_ids, self.export_pid,
  */
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_self->export_ids, __pyx_n_s_reset); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 93, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_self->export_ids, __pyx_n_s_reset); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 105, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __pyx_t_5 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_6))) {
@@ -3508,19 +3509,19 @@ static PyObject *__pyx_pf_3phd_12load_balance_12load_balance_11LoadBalance_6deco
   }
   __pyx_t_1 = (__pyx_t_5) ? __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_5) : __Pyx_PyObject_CallNoArg(__pyx_t_6);
   __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 93, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 105, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "phd/load_balance/load_balance.pyx":94
+  /* "phd/load_balance/load_balance.pyx":106
  *         # collect particle for export
  *         self.export_ids.reset()
  *         self.export_pid.reset()             # <<<<<<<<<<<<<<
  *         self.collect_particles_export(particles, self.export_ids, self.export_pid,
  *                 self.leaf_pid, phd._rank)
  */
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_self->export_pid, __pyx_n_s_reset); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 94, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_self->export_pid, __pyx_n_s_reset); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 106, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __pyx_t_5 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_6))) {
@@ -3534,26 +3535,26 @@ static PyObject *__pyx_pf_3phd_12load_balance_12load_balance_11LoadBalance_6deco
   }
   __pyx_t_1 = (__pyx_t_5) ? __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_5) : __Pyx_PyObject_CallNoArg(__pyx_t_6);
   __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 94, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 106, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "phd/load_balance/load_balance.pyx":95
+  /* "phd/load_balance/load_balance.pyx":107
  *         self.export_ids.reset()
  *         self.export_pid.reset()
  *         self.collect_particles_export(particles, self.export_ids, self.export_pid,             # <<<<<<<<<<<<<<
  *                 self.leaf_pid, phd._rank)
  * 
  */
-  if (!(likely(((__pyx_v_self->export_ids) == Py_None) || likely(__Pyx_TypeTest(__pyx_v_self->export_ids, __pyx_ptype_3phd_5utils_6carray_LongArray))))) __PYX_ERR(0, 95, __pyx_L1_error)
+  if (!(likely(((__pyx_v_self->export_ids) == Py_None) || likely(__Pyx_TypeTest(__pyx_v_self->export_ids, __pyx_ptype_3phd_5utils_6carray_LongArray))))) __PYX_ERR(0, 107, __pyx_L1_error)
   __pyx_t_1 = __pyx_v_self->export_ids;
   __Pyx_INCREF(__pyx_t_1);
-  if (!(likely(((__pyx_v_self->export_pid) == Py_None) || likely(__Pyx_TypeTest(__pyx_v_self->export_pid, __pyx_ptype_3phd_5utils_6carray_LongArray))))) __PYX_ERR(0, 95, __pyx_L1_error)
+  if (!(likely(((__pyx_v_self->export_pid) == Py_None) || likely(__Pyx_TypeTest(__pyx_v_self->export_pid, __pyx_ptype_3phd_5utils_6carray_LongArray))))) __PYX_ERR(0, 107, __pyx_L1_error)
   __pyx_t_6 = __pyx_v_self->export_pid;
   __Pyx_INCREF(__pyx_t_6);
 
-  /* "phd/load_balance/load_balance.pyx":96
+  /* "phd/load_balance/load_balance.pyx":108
  *         self.export_pid.reset()
  *         self.collect_particles_export(particles, self.export_ids, self.export_pid,
  *                 self.leaf_pid, phd._rank)             # <<<<<<<<<<<<<<
@@ -3562,15 +3563,15 @@ static PyObject *__pyx_pf_3phd_12load_balance_12load_balance_11LoadBalance_6deco
  */
   __pyx_t_5 = ((PyObject *)__pyx_v_self->leaf_pid);
   __Pyx_INCREF(__pyx_t_5);
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_phd); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 96, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_phd); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 108, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_rank); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 96, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_rank); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 108, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_7 = __Pyx_PyInt_As_int(__pyx_t_2); if (unlikely((__pyx_t_7 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 96, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyInt_As_int(__pyx_t_2); if (unlikely((__pyx_t_7 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 108, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "phd/load_balance/load_balance.pyx":95
+  /* "phd/load_balance/load_balance.pyx":107
  *         self.export_ids.reset()
  *         self.export_pid.reset()
  *         self.collect_particles_export(particles, self.export_ids, self.export_pid,             # <<<<<<<<<<<<<<
@@ -3582,14 +3583,14 @@ static PyObject *__pyx_pf_3phd_12load_balance_12load_balance_11LoadBalance_6deco
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "phd/load_balance/load_balance.pyx":99
+  /* "phd/load_balance/load_balance.pyx":111
  * 
  *         # arrange particles in process order
  *         export_ids_npy = self.export_ids.get_npy_array()             # <<<<<<<<<<<<<<
  *         export_pid_npy = self.export_pid.get_npy_array()
  * 
  */
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_self->export_ids, __pyx_n_s_get_npy_array); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 99, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_self->export_ids, __pyx_n_s_get_npy_array); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 111, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __pyx_t_1 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_6))) {
@@ -3603,21 +3604,21 @@ static PyObject *__pyx_pf_3phd_12load_balance_12load_balance_11LoadBalance_6deco
   }
   __pyx_t_5 = (__pyx_t_1) ? __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_1) : __Pyx_PyObject_CallNoArg(__pyx_t_6);
   __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 99, __pyx_L1_error)
+  if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 111, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  if (!(likely(((__pyx_t_5) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_5, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 99, __pyx_L1_error)
+  if (!(likely(((__pyx_t_5) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_5, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 111, __pyx_L1_error)
   __pyx_v_export_ids_npy = ((PyArrayObject *)__pyx_t_5);
   __pyx_t_5 = 0;
 
-  /* "phd/load_balance/load_balance.pyx":100
+  /* "phd/load_balance/load_balance.pyx":112
  *         # arrange particles in process order
  *         export_ids_npy = self.export_ids.get_npy_array()
  *         export_pid_npy = self.export_pid.get_npy_array()             # <<<<<<<<<<<<<<
  * 
  *         ind = export_pid_npy.argsort()
  */
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_self->export_pid, __pyx_n_s_get_npy_array); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 100, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_self->export_pid, __pyx_n_s_get_npy_array); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 112, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __pyx_t_1 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_6))) {
@@ -3631,21 +3632,21 @@ static PyObject *__pyx_pf_3phd_12load_balance_12load_balance_11LoadBalance_6deco
   }
   __pyx_t_5 = (__pyx_t_1) ? __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_1) : __Pyx_PyObject_CallNoArg(__pyx_t_6);
   __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 100, __pyx_L1_error)
+  if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 112, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  if (!(likely(((__pyx_t_5) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_5, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 100, __pyx_L1_error)
+  if (!(likely(((__pyx_t_5) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_5, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 112, __pyx_L1_error)
   __pyx_v_export_pid_npy = ((PyArrayObject *)__pyx_t_5);
   __pyx_t_5 = 0;
 
-  /* "phd/load_balance/load_balance.pyx":102
+  /* "phd/load_balance/load_balance.pyx":114
  *         export_pid_npy = self.export_pid.get_npy_array()
  * 
  *         ind = export_pid_npy.argsort()             # <<<<<<<<<<<<<<
  *         export_ids_npy[:] = export_ids_npy[ind]
  *         export_pid_npy[:] = export_pid_npy[ind]
  */
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_export_pid_npy), __pyx_n_s_argsort); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 102, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_export_pid_npy), __pyx_n_s_argsort); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 114, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __pyx_t_1 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_6))) {
@@ -3659,69 +3660,69 @@ static PyObject *__pyx_pf_3phd_12load_balance_12load_balance_11LoadBalance_6deco
   }
   __pyx_t_5 = (__pyx_t_1) ? __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_1) : __Pyx_PyObject_CallNoArg(__pyx_t_6);
   __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 102, __pyx_L1_error)
+  if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 114, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  if (!(likely(((__pyx_t_5) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_5, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 102, __pyx_L1_error)
+  if (!(likely(((__pyx_t_5) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_5, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 114, __pyx_L1_error)
   __pyx_v_ind = ((PyArrayObject *)__pyx_t_5);
   __pyx_t_5 = 0;
 
-  /* "phd/load_balance/load_balance.pyx":103
+  /* "phd/load_balance/load_balance.pyx":115
  * 
  *         ind = export_pid_npy.argsort()
  *         export_ids_npy[:] = export_ids_npy[ind]             # <<<<<<<<<<<<<<
  *         export_pid_npy[:] = export_pid_npy[ind]
  * 
  */
-  __pyx_t_5 = __Pyx_PyObject_GetItem(((PyObject *)__pyx_v_export_ids_npy), ((PyObject *)__pyx_v_ind)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 103, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetItem(((PyObject *)__pyx_v_export_ids_npy), ((PyObject *)__pyx_v_ind)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 115, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  if (__Pyx_PyObject_SetSlice(((PyObject *)__pyx_v_export_ids_npy), __pyx_t_5, 0, 0, NULL, NULL, &__pyx_slice__3, 0, 0, 1) < 0) __PYX_ERR(0, 103, __pyx_L1_error)
+  if (__Pyx_PyObject_SetSlice(((PyObject *)__pyx_v_export_ids_npy), __pyx_t_5, 0, 0, NULL, NULL, &__pyx_slice__3, 0, 0, 1) < 0) __PYX_ERR(0, 115, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "phd/load_balance/load_balance.pyx":104
+  /* "phd/load_balance/load_balance.pyx":116
  *         ind = export_pid_npy.argsort()
  *         export_ids_npy[:] = export_ids_npy[ind]
  *         export_pid_npy[:] = export_pid_npy[ind]             # <<<<<<<<<<<<<<
  * 
  *         # count number of particles to send to each process
  */
-  __pyx_t_5 = __Pyx_PyObject_GetItem(((PyObject *)__pyx_v_export_pid_npy), ((PyObject *)__pyx_v_ind)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 104, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetItem(((PyObject *)__pyx_v_export_pid_npy), ((PyObject *)__pyx_v_ind)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 116, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  if (__Pyx_PyObject_SetSlice(((PyObject *)__pyx_v_export_pid_npy), __pyx_t_5, 0, 0, NULL, NULL, &__pyx_slice__3, 0, 0, 1) < 0) __PYX_ERR(0, 104, __pyx_L1_error)
+  if (__Pyx_PyObject_SetSlice(((PyObject *)__pyx_v_export_pid_npy), __pyx_t_5, 0, 0, NULL, NULL, &__pyx_slice__3, 0, 0, 1) < 0) __PYX_ERR(0, 116, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "phd/load_balance/load_balance.pyx":107
+  /* "phd/load_balance/load_balance.pyx":119
  * 
  *         # count number of particles to send to each process
  *         recvbuf = np.zeros(phd._size, dtype=np.int32)             # <<<<<<<<<<<<<<
  *         sendbuf = np.bincount(export_pid_npy,
  *                 minlength=phd._size).astype(np.int32)
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 107, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 119, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_zeros); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 107, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_zeros); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 119, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_phd); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 107, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_phd); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 119, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_size); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 107, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_size); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 119, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = PyTuple_New(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 107, __pyx_L1_error)
+  __pyx_t_5 = PyTuple_New(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 119, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_1);
   __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 107, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 119, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 107, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 119, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_int32); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 107, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_int32); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 119, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_dtype, __pyx_t_4) < 0) __PYX_ERR(0, 107, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_dtype, __pyx_t_4) < 0) __PYX_ERR(0, 119, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_5, __pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 107, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_5, __pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 119, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -3729,67 +3730,67 @@ static PyObject *__pyx_pf_3phd_12load_balance_12load_balance_11LoadBalance_6deco
   __pyx_v_recvbuf = __pyx_t_4;
   __pyx_t_4 = 0;
 
-  /* "phd/load_balance/load_balance.pyx":108
+  /* "phd/load_balance/load_balance.pyx":120
  *         # count number of particles to send to each process
  *         recvbuf = np.zeros(phd._size, dtype=np.int32)
  *         sendbuf = np.bincount(export_pid_npy,             # <<<<<<<<<<<<<<
  *                 minlength=phd._size).astype(np.int32)
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 108, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 120, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_bincount); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 108, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_bincount); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 120, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 108, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 120, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_INCREF(((PyObject *)__pyx_v_export_pid_npy));
   __Pyx_GIVEREF(((PyObject *)__pyx_v_export_pid_npy));
   PyTuple_SET_ITEM(__pyx_t_1, 0, ((PyObject *)__pyx_v_export_pid_npy));
 
-  /* "phd/load_balance/load_balance.pyx":109
+  /* "phd/load_balance/load_balance.pyx":121
  *         recvbuf = np.zeros(phd._size, dtype=np.int32)
  *         sendbuf = np.bincount(export_pid_npy,
  *                 minlength=phd._size).astype(np.int32)             # <<<<<<<<<<<<<<
  * 
  *         # how many particles are being sent from each process
  */
-  __pyx_t_6 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 109, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 121, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_phd); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 109, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_phd); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 121, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_size); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 109, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_size); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 121, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (PyDict_SetItem(__pyx_t_6, __pyx_n_s_minlength, __pyx_t_8) < 0) __PYX_ERR(0, 109, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_6, __pyx_n_s_minlength, __pyx_t_8) < 0) __PYX_ERR(0, 121, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-  /* "phd/load_balance/load_balance.pyx":108
+  /* "phd/load_balance/load_balance.pyx":120
  *         # count number of particles to send to each process
  *         recvbuf = np.zeros(phd._size, dtype=np.int32)
  *         sendbuf = np.bincount(export_pid_npy,             # <<<<<<<<<<<<<<
  *                 minlength=phd._size).astype(np.int32)
  * 
  */
-  __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_1, __pyx_t_6); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 108, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_1, __pyx_t_6); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 120, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-  /* "phd/load_balance/load_balance.pyx":109
+  /* "phd/load_balance/load_balance.pyx":121
  *         recvbuf = np.zeros(phd._size, dtype=np.int32)
  *         sendbuf = np.bincount(export_pid_npy,
  *                 minlength=phd._size).astype(np.int32)             # <<<<<<<<<<<<<<
  * 
  *         # how many particles are being sent from each process
  */
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_astype); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 109, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_astype); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 121, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-  __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_np); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 109, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_np); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 121, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_int32); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 109, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_int32); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 121, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
   __pyx_t_8 = NULL;
@@ -3805,45 +3806,45 @@ static PyObject *__pyx_pf_3phd_12load_balance_12load_balance_11LoadBalance_6deco
   __pyx_t_4 = (__pyx_t_8) ? __Pyx_PyObject_Call2Args(__pyx_t_6, __pyx_t_8, __pyx_t_1) : __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_1);
   __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 109, __pyx_L1_error)
+  if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 121, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   __pyx_v_sendbuf = __pyx_t_4;
   __pyx_t_4 = 0;
 
-  /* "phd/load_balance/load_balance.pyx":112
+  /* "phd/load_balance/load_balance.pyx":124
  * 
  *         # how many particles are being sent from each process
  *         phd._comm.Alltoall(sendbuf=sendbuf, recvbuf=recvbuf)             # <<<<<<<<<<<<<<
  * 
  *         # extract particles to send
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_phd); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 112, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_phd); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 124, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_comm); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 112, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_comm); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 124, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_Alltoall); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 112, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_Alltoall); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 124, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_6 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 112, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 124, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  if (PyDict_SetItem(__pyx_t_6, __pyx_n_s_sendbuf, __pyx_v_sendbuf) < 0) __PYX_ERR(0, 112, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_6, __pyx_n_s_recvbuf, __pyx_v_recvbuf) < 0) __PYX_ERR(0, 112, __pyx_L1_error)
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_empty_tuple, __pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 112, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_6, __pyx_n_s_sendbuf, __pyx_v_sendbuf) < 0) __PYX_ERR(0, 124, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_6, __pyx_n_s_recvbuf, __pyx_v_recvbuf) < 0) __PYX_ERR(0, 124, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_empty_tuple, __pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 124, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "phd/load_balance/load_balance.pyx":115
+  /* "phd/load_balance/load_balance.pyx":127
  * 
  *         # extract particles to send
  *         send_data = particles.get_sendbufs(export_ids_npy)             # <<<<<<<<<<<<<<
  *         particles.remove_items(export_ids_npy)
  *         temp = particles.get_carray_size()
  */
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_particles), __pyx_n_s_get_sendbufs); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 115, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_particles), __pyx_n_s_get_sendbufs); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 127, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __pyx_t_4 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_6))) {
@@ -3857,24 +3858,24 @@ static PyObject *__pyx_pf_3phd_12load_balance_12load_balance_11LoadBalance_6deco
   }
   __pyx_t_1 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_6, __pyx_t_4, ((PyObject *)__pyx_v_export_ids_npy)) : __Pyx_PyObject_CallOneArg(__pyx_t_6, ((PyObject *)__pyx_v_export_ids_npy));
   __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 115, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 127, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   __pyx_v_send_data = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "phd/load_balance/load_balance.pyx":116
+  /* "phd/load_balance/load_balance.pyx":128
  *         # extract particles to send
  *         send_data = particles.get_sendbufs(export_ids_npy)
  *         particles.remove_items(export_ids_npy)             # <<<<<<<<<<<<<<
  *         temp = particles.get_carray_size()
  * 
  */
-  __pyx_t_1 = ((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_particles->__pyx_vtab)->remove_items(__pyx_v_particles, __pyx_v_export_ids_npy, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 116, __pyx_L1_error)
+  __pyx_t_1 = ((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_particles->__pyx_vtab)->remove_items(__pyx_v_particles, __pyx_v_export_ids_npy, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 128, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "phd/load_balance/load_balance.pyx":117
+  /* "phd/load_balance/load_balance.pyx":129
  *         send_data = particles.get_sendbufs(export_ids_npy)
  *         particles.remove_items(export_ids_npy)
  *         temp = particles.get_carray_size()             # <<<<<<<<<<<<<<
@@ -3883,16 +3884,16 @@ static PyObject *__pyx_pf_3phd_12load_balance_12load_balance_11LoadBalance_6deco
  */
   __pyx_v_temp = ((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_particles->__pyx_vtab)->get_carray_size(__pyx_v_particles, 0);
 
-  /* "phd/load_balance/load_balance.pyx":120
+  /* "phd/load_balance/load_balance.pyx":132
  * 
  *         # exchange load balance particles
  *         particles.extend(np.sum(recvbuf))             # <<<<<<<<<<<<<<
  *         exchange_particles(particles, send_data, sendbuf, recvbuf,
  *                 temp, phd._comm)
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 120, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 132, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_sum); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 120, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_sum); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 132, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   __pyx_t_6 = NULL;
@@ -3907,37 +3908,37 @@ static PyObject *__pyx_pf_3phd_12load_balance_12load_balance_11LoadBalance_6deco
   }
   __pyx_t_1 = (__pyx_t_6) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_6, __pyx_v_recvbuf) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_v_recvbuf);
   __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 120, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 132, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_7 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_7 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 120, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_7 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 132, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = ((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_particles->__pyx_vtab)->extend(__pyx_v_particles, __pyx_t_7, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 120, __pyx_L1_error)
+  __pyx_t_1 = ((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_particles->__pyx_vtab)->extend(__pyx_v_particles, __pyx_t_7, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 132, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "phd/load_balance/load_balance.pyx":121
+  /* "phd/load_balance/load_balance.pyx":133
  *         # exchange load balance particles
  *         particles.extend(np.sum(recvbuf))
  *         exchange_particles(particles, send_data, sendbuf, recvbuf,             # <<<<<<<<<<<<<<
  *                 temp, phd._comm)
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_exchange_particles); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 121, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_exchange_particles); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 133, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
 
-  /* "phd/load_balance/load_balance.pyx":122
+  /* "phd/load_balance/load_balance.pyx":134
  *         particles.extend(np.sum(recvbuf))
  *         exchange_particles(particles, send_data, sendbuf, recvbuf,
  *                 temp, phd._comm)             # <<<<<<<<<<<<<<
  * 
  *         particles["process"][:] = phd._rank
  */
-  __pyx_t_6 = __Pyx_PyInt_From_int(__pyx_v_temp); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 122, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyInt_From_int(__pyx_v_temp); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 134, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_phd); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 122, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_phd); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 134, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_comm); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 122, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_comm); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 134, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
   __pyx_t_8 = NULL;
@@ -3955,7 +3956,7 @@ static PyObject *__pyx_pf_3phd_12load_balance_12load_balance_11LoadBalance_6deco
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_4)) {
     PyObject *__pyx_temp[7] = {__pyx_t_8, ((PyObject *)__pyx_v_particles), __pyx_v_send_data, __pyx_v_sendbuf, __pyx_v_recvbuf, __pyx_t_6, __pyx_t_5};
-    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_7, 6+__pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 121, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_7, 6+__pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 133, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -3965,7 +3966,7 @@ static PyObject *__pyx_pf_3phd_12load_balance_12load_balance_11LoadBalance_6deco
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
     PyObject *__pyx_temp[7] = {__pyx_t_8, ((PyObject *)__pyx_v_particles), __pyx_v_send_data, __pyx_v_sendbuf, __pyx_v_recvbuf, __pyx_t_6, __pyx_t_5};
-    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_7, 6+__pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 121, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_7, 6+__pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 133, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -3973,7 +3974,7 @@ static PyObject *__pyx_pf_3phd_12load_balance_12load_balance_11LoadBalance_6deco
   } else
   #endif
   {
-    __pyx_t_2 = PyTuple_New(6+__pyx_t_7); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 121, __pyx_L1_error)
+    __pyx_t_2 = PyTuple_New(6+__pyx_t_7); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 133, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     if (__pyx_t_8) {
       __Pyx_GIVEREF(__pyx_t_8); PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_8); __pyx_t_8 = NULL;
@@ -3996,37 +3997,37 @@ static PyObject *__pyx_pf_3phd_12load_balance_12load_balance_11LoadBalance_6deco
     PyTuple_SET_ITEM(__pyx_t_2, 5+__pyx_t_7, __pyx_t_5);
     __pyx_t_6 = 0;
     __pyx_t_5 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 121, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 133, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   }
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "phd/load_balance/load_balance.pyx":124
+  /* "phd/load_balance/load_balance.pyx":136
  *                 temp, phd._comm)
  * 
  *         particles["process"][:] = phd._rank             # <<<<<<<<<<<<<<
  * 
  *     cdef void calculate_local_work(self, CarrayContainer particles, np.ndarray work):
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_phd); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 124, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_phd); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 136, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_rank); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 124, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_rank); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 136, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_GetItem(((PyObject *)__pyx_v_particles), __pyx_n_s_process); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 124, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetItem(((PyObject *)__pyx_v_particles), __pyx_n_s_process); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 136, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (__Pyx_PyObject_SetSlice(__pyx_t_1, __pyx_t_4, 0, 0, NULL, NULL, &__pyx_slice__3, 0, 0, 1) < 0) __PYX_ERR(0, 124, __pyx_L1_error)
+  if (__Pyx_PyObject_SetSlice(__pyx_t_1, __pyx_t_4, 0, 0, NULL, NULL, &__pyx_slice__3, 0, 0, 1) < 0) __PYX_ERR(0, 136, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "phd/load_balance/load_balance.pyx":66
+  /* "phd/load_balance/load_balance.pyx":72
  *                 self.factor, self.min_in_leaf, self.order)
  * 
  *     def decomposition(self, CarrayContainer particles):             # <<<<<<<<<<<<<<
  *         """Perform domain decomposition
- *         """
+ * 
  */
 
   /* function exit code */
@@ -4055,7 +4056,7 @@ static PyObject *__pyx_pf_3phd_12load_balance_12load_balance_11LoadBalance_6deco
   return __pyx_r;
 }
 
-/* "phd/load_balance/load_balance.pyx":126
+/* "phd/load_balance/load_balance.pyx":138
  *         particles["process"][:] = phd._rank
  * 
  *     cdef void calculate_local_work(self, CarrayContainer particles, np.ndarray work):             # <<<<<<<<<<<<<<
@@ -4079,20 +4080,20 @@ static void __pyx_f_3phd_12load_balance_12load_balance_11LoadBalance_calculate_l
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("calculate_local_work", 0);
 
-  /* "phd/load_balance/load_balance.pyx":133
+  /* "phd/load_balance/load_balance.pyx":153
  *         cdef int i
  *         cdef Node* node
  *         cdef LongLongArray keys = particles.get_carray("key")             # <<<<<<<<<<<<<<
  * 
  *         # work is the number of local particles in leaf
  */
-  __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_particles->__pyx_vtab)->get_carray(__pyx_v_particles, __pyx_n_s_key, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 133, __pyx_L1_error)
+  __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_particles->__pyx_vtab)->get_carray(__pyx_v_particles, __pyx_n_s_key, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 153, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_3phd_5utils_6carray_LongLongArray))))) __PYX_ERR(0, 133, __pyx_L1_error)
+  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_3phd_5utils_6carray_LongLongArray))))) __PYX_ERR(0, 153, __pyx_L1_error)
   __pyx_v_keys = ((struct __pyx_obj_3phd_5utils_6carray_LongLongArray *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "phd/load_balance/load_balance.pyx":136
+  /* "phd/load_balance/load_balance.pyx":156
  * 
  *         # work is the number of local particles in leaf
  *         for i in range(particles.get_carray_size()):             # <<<<<<<<<<<<<<
@@ -4104,7 +4105,7 @@ static void __pyx_f_3phd_12load_balance_12load_balance_11LoadBalance_calculate_l
   for (__pyx_t_4 = 0; __pyx_t_4 < __pyx_t_3; __pyx_t_4+=1) {
     __pyx_v_i = __pyx_t_4;
 
-    /* "phd/load_balance/load_balance.pyx":137
+    /* "phd/load_balance/load_balance.pyx":157
  *         # work is the number of local particles in leaf
  *         for i in range(particles.get_carray_size()):
  *             node = self.tree.find_leaf(keys.data[i])             # <<<<<<<<<<<<<<
@@ -4113,7 +4114,7 @@ static void __pyx_f_3phd_12load_balance_12load_balance_11LoadBalance_calculate_l
  */
     __pyx_v_node = ((struct __pyx_vtabstruct_3phd_12load_balance_4tree_Tree *)__pyx_v_self->tree->__pyx_vtab)->find_leaf(__pyx_v_self->tree, (__pyx_v_keys->data[__pyx_v_i]));
 
-    /* "phd/load_balance/load_balance.pyx":138
+    /* "phd/load_balance/load_balance.pyx":158
  *         for i in range(particles.get_carray_size()):
  *             node = self.tree.find_leaf(keys.data[i])
  *             work[node.array_index] += 1             # <<<<<<<<<<<<<<
@@ -4121,16 +4122,16 @@ static void __pyx_f_3phd_12load_balance_12load_balance_11LoadBalance_calculate_l
  *     cdef void find_split_in_work(self, np.ndarray global_work):
  */
     __pyx_t_5 = __pyx_v_node->array_index;
-    __pyx_t_1 = __Pyx_GetItemInt(((PyObject *)__pyx_v_work), __pyx_t_5, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 138, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_GetItemInt(((PyObject *)__pyx_v_work), __pyx_t_5, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 158, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_6 = __Pyx_PyInt_AddObjC(__pyx_t_1, __pyx_int_1, 1, 1, 0); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 138, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyInt_AddObjC(__pyx_t_1, __pyx_int_1, 1, 1, 0); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 158, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    if (unlikely(__Pyx_SetItemInt(((PyObject *)__pyx_v_work), __pyx_t_5, __pyx_t_6, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 138, __pyx_L1_error)
+    if (unlikely(__Pyx_SetItemInt(((PyObject *)__pyx_v_work), __pyx_t_5, __pyx_t_6, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 158, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   }
 
-  /* "phd/load_balance/load_balance.pyx":126
+  /* "phd/load_balance/load_balance.pyx":138
  *         particles["process"][:] = phd._rank
  * 
  *     cdef void calculate_local_work(self, CarrayContainer particles, np.ndarray work):             # <<<<<<<<<<<<<<
@@ -4149,7 +4150,7 @@ static void __pyx_f_3phd_12load_balance_12load_balance_11LoadBalance_calculate_l
   __Pyx_RefNannyFinishContext();
 }
 
-/* "phd/load_balance/load_balance.pyx":140
+/* "phd/load_balance/load_balance.pyx":160
  *             work[node.array_index] += 1
  * 
  *     cdef void find_split_in_work(self, np.ndarray global_work):             # <<<<<<<<<<<<<<
@@ -4177,29 +4178,29 @@ static void __pyx_f_3phd_12load_balance_12load_balance_11LoadBalance_find_split_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("find_split_in_work", 0);
 
-  /* "phd/load_balance/load_balance.pyx":147
+  /* "phd/load_balance/load_balance.pyx":171
  *         cdef int total_work, part_per_proc
  * 
  *         self.leaf_pid.resize(global_work.size)             # <<<<<<<<<<<<<<
  * 
  *         total_work = global_work.sum()
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_global_work), __pyx_n_s_size_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 147, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_global_work), __pyx_n_s_size_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 171, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyInt_As_long(__pyx_t_1); if (unlikely((__pyx_t_2 == (long)-1) && PyErr_Occurred())) __PYX_ERR(0, 147, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_As_long(__pyx_t_1); if (unlikely((__pyx_t_2 == (long)-1) && PyErr_Occurred())) __PYX_ERR(0, 171, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = ((struct __pyx_vtabstruct_3phd_5utils_6carray_LongArray *)__pyx_v_self->leaf_pid->__pyx_base.__pyx_vtab)->__pyx_base.resize(((struct __pyx_obj_3phd_5utils_6carray_BaseArray *)__pyx_v_self->leaf_pid), __pyx_t_2, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 147, __pyx_L1_error)
+  __pyx_t_1 = ((struct __pyx_vtabstruct_3phd_5utils_6carray_LongArray *)__pyx_v_self->leaf_pid->__pyx_base.__pyx_vtab)->__pyx_base.resize(((struct __pyx_obj_3phd_5utils_6carray_BaseArray *)__pyx_v_self->leaf_pid), __pyx_t_2, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 171, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "phd/load_balance/load_balance.pyx":149
+  /* "phd/load_balance/load_balance.pyx":173
  *         self.leaf_pid.resize(global_work.size)
  * 
  *         total_work = global_work.sum()             # <<<<<<<<<<<<<<
  *         if total_work%phd._size == 0:
  *             part_per_proc = total_work/phd._size
  */
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_global_work), __pyx_n_s_sum); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 149, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_global_work), __pyx_n_s_sum); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 173, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_4 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
@@ -4213,61 +4214,61 @@ static void __pyx_f_3phd_12load_balance_12load_balance_11LoadBalance_find_split_
   }
   __pyx_t_1 = (__pyx_t_4) ? __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4) : __Pyx_PyObject_CallNoArg(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 149, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 173, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 149, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 173, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_total_work = __pyx_t_5;
 
-  /* "phd/load_balance/load_balance.pyx":150
+  /* "phd/load_balance/load_balance.pyx":174
  * 
  *         total_work = global_work.sum()
  *         if total_work%phd._size == 0:             # <<<<<<<<<<<<<<
  *             part_per_proc = total_work/phd._size
  *         else:
  */
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_total_work); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 150, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_total_work); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 174, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_phd); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 150, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_phd); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 174, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_size); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 150, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_size); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 174, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PyNumber_Remainder(__pyx_t_1, __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 150, __pyx_L1_error)
+  __pyx_t_3 = PyNumber_Remainder(__pyx_t_1, __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 174, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyInt_EqObjC(__pyx_t_3, __pyx_int_0, 0, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 150, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyInt_EqObjC(__pyx_t_3, __pyx_int_0, 0, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 174, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 150, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 174, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   if (__pyx_t_6) {
 
-    /* "phd/load_balance/load_balance.pyx":151
+    /* "phd/load_balance/load_balance.pyx":175
  *         total_work = global_work.sum()
  *         if total_work%phd._size == 0:
  *             part_per_proc = total_work/phd._size             # <<<<<<<<<<<<<<
  *         else:
  *             part_per_proc = total_work/phd._size + 1
  */
-    __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_total_work); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 151, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_total_work); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 175, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_phd); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 151, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_phd); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 175, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_size); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 151, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_size); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 175, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = __Pyx_PyNumber_Divide(__pyx_t_4, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 151, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyNumber_Divide(__pyx_t_4, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 175, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_t_3); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 151, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_t_3); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 175, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_v_part_per_proc = __pyx_t_5;
 
-    /* "phd/load_balance/load_balance.pyx":150
+    /* "phd/load_balance/load_balance.pyx":174
  * 
  *         total_work = global_work.sum()
  *         if total_work%phd._size == 0:             # <<<<<<<<<<<<<<
@@ -4277,7 +4278,7 @@ static void __pyx_f_3phd_12load_balance_12load_balance_11LoadBalance_find_split_
     goto __pyx_L3;
   }
 
-  /* "phd/load_balance/load_balance.pyx":153
+  /* "phd/load_balance/load_balance.pyx":177
  *             part_per_proc = total_work/phd._size
  *         else:
  *             part_per_proc = total_work/phd._size + 1             # <<<<<<<<<<<<<<
@@ -4285,27 +4286,27 @@ static void __pyx_f_3phd_12load_balance_12load_balance_11LoadBalance_find_split_
  *         j = 1
  */
   /*else*/ {
-    __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_total_work); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 153, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_total_work); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 177, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_phd); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 153, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_phd); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 177, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_size); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 153, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_size); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 177, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyNumber_Divide(__pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 153, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyNumber_Divide(__pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 177, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_4 = __Pyx_PyInt_AddObjC(__pyx_t_1, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 153, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyInt_AddObjC(__pyx_t_1, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 177, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_t_4); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 153, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_t_4); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 177, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_v_part_per_proc = __pyx_t_5;
   }
   __pyx_L3:;
 
-  /* "phd/load_balance/load_balance.pyx":155
+  /* "phd/load_balance/load_balance.pyx":179
  *             part_per_proc = total_work/phd._size + 1
  * 
  *         j = 1             # <<<<<<<<<<<<<<
@@ -4314,7 +4315,7 @@ static void __pyx_f_3phd_12load_balance_12load_balance_11LoadBalance_find_split_
  */
   __pyx_v_j = 1;
 
-  /* "phd/load_balance/load_balance.pyx":156
+  /* "phd/load_balance/load_balance.pyx":180
  * 
  *         j = 1
  *         cum_sum = 0             # <<<<<<<<<<<<<<
@@ -4323,41 +4324,41 @@ static void __pyx_f_3phd_12load_balance_12load_balance_11LoadBalance_find_split_
  */
   __pyx_v_cum_sum = 0;
 
-  /* "phd/load_balance/load_balance.pyx":157
+  /* "phd/load_balance/load_balance.pyx":181
  *         j = 1
  *         cum_sum = 0
  *         for i in range(global_work.size):             # <<<<<<<<<<<<<<
  *             cum_sum += global_work[i]
  *             if cum_sum > j*part_per_proc:
  */
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_global_work), __pyx_n_s_size_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 157, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_global_work), __pyx_n_s_size_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 181, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_2 = __Pyx_PyInt_As_long(__pyx_t_4); if (unlikely((__pyx_t_2 == (long)-1) && PyErr_Occurred())) __PYX_ERR(0, 157, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_As_long(__pyx_t_4); if (unlikely((__pyx_t_2 == (long)-1) && PyErr_Occurred())) __PYX_ERR(0, 181, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_7 = __pyx_t_2;
   for (__pyx_t_5 = 0; __pyx_t_5 < __pyx_t_7; __pyx_t_5+=1) {
     __pyx_v_i = __pyx_t_5;
 
-    /* "phd/load_balance/load_balance.pyx":158
+    /* "phd/load_balance/load_balance.pyx":182
  *         cum_sum = 0
  *         for i in range(global_work.size):
  *             cum_sum += global_work[i]             # <<<<<<<<<<<<<<
  *             if cum_sum > j*part_per_proc:
  *                 j += 1
  */
-    __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_cum_sum); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 158, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_cum_sum); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 182, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_1 = __Pyx_GetItemInt(((PyObject *)__pyx_v_global_work), __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 158, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_GetItemInt(((PyObject *)__pyx_v_global_work), __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 182, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_3 = PyNumber_InPlaceAdd(__pyx_t_4, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 158, __pyx_L1_error)
+    __pyx_t_3 = PyNumber_InPlaceAdd(__pyx_t_4, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 182, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_8 = __Pyx_PyInt_As_int(__pyx_t_3); if (unlikely((__pyx_t_8 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 158, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyInt_As_int(__pyx_t_3); if (unlikely((__pyx_t_8 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 182, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_v_cum_sum = __pyx_t_8;
 
-    /* "phd/load_balance/load_balance.pyx":159
+    /* "phd/load_balance/load_balance.pyx":183
  *         for i in range(global_work.size):
  *             cum_sum += global_work[i]
  *             if cum_sum > j*part_per_proc:             # <<<<<<<<<<<<<<
@@ -4367,7 +4368,7 @@ static void __pyx_f_3phd_12load_balance_12load_balance_11LoadBalance_find_split_
     __pyx_t_6 = ((__pyx_v_cum_sum > (__pyx_v_j * __pyx_v_part_per_proc)) != 0);
     if (__pyx_t_6) {
 
-      /* "phd/load_balance/load_balance.pyx":160
+      /* "phd/load_balance/load_balance.pyx":184
  *             cum_sum += global_work[i]
  *             if cum_sum > j*part_per_proc:
  *                 j += 1             # <<<<<<<<<<<<<<
@@ -4376,7 +4377,7 @@ static void __pyx_f_3phd_12load_balance_12load_balance_11LoadBalance_find_split_
  */
       __pyx_v_j = (__pyx_v_j + 1);
 
-      /* "phd/load_balance/load_balance.pyx":159
+      /* "phd/load_balance/load_balance.pyx":183
  *         for i in range(global_work.size):
  *             cum_sum += global_work[i]
  *             if cum_sum > j*part_per_proc:             # <<<<<<<<<<<<<<
@@ -4385,7 +4386,7 @@ static void __pyx_f_3phd_12load_balance_12load_balance_11LoadBalance_find_split_
  */
     }
 
-    /* "phd/load_balance/load_balance.pyx":161
+    /* "phd/load_balance/load_balance.pyx":185
  *             if cum_sum > j*part_per_proc:
  *                 j += 1
  *             self.leaf_pid.data[i] = j - 1             # <<<<<<<<<<<<<<
@@ -4395,7 +4396,7 @@ static void __pyx_f_3phd_12load_balance_12load_balance_11LoadBalance_find_split_
     (__pyx_v_self->leaf_pid->data[__pyx_v_i]) = (__pyx_v_j - 1);
   }
 
-  /* "phd/load_balance/load_balance.pyx":140
+  /* "phd/load_balance/load_balance.pyx":160
  *             work[node.array_index] += 1
  * 
  *     cdef void find_split_in_work(self, np.ndarray global_work):             # <<<<<<<<<<<<<<
@@ -4414,7 +4415,7 @@ static void __pyx_f_3phd_12load_balance_12load_balance_11LoadBalance_find_split_
   __Pyx_RefNannyFinishContext();
 }
 
-/* "phd/load_balance/load_balance.pyx":163
+/* "phd/load_balance/load_balance.pyx":187
  *             self.leaf_pid.data[i] = j - 1
  * 
  *     cdef void collect_particles_export(self, CarrayContainer particles, LongArray part_ids,             # <<<<<<<<<<<<<<
@@ -4438,20 +4439,20 @@ static void __pyx_f_3phd_12load_balance_12load_balance_11LoadBalance_collect_par
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("collect_particles_export", 0);
 
-  /* "phd/load_balance/load_balance.pyx":184
+  /* "phd/load_balance/load_balance.pyx":208
  *         cdef Node *node
  *         cdef int i, pid
  *         cdef LongLongArray keys = particles.get_carray("key")             # <<<<<<<<<<<<<<
  * 
  *         for i in range(particles.get_carray_size()):
  */
-  __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_particles->__pyx_vtab)->get_carray(__pyx_v_particles, __pyx_n_s_key, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 184, __pyx_L1_error)
+  __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_particles->__pyx_vtab)->get_carray(__pyx_v_particles, __pyx_n_s_key, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 208, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_3phd_5utils_6carray_LongLongArray))))) __PYX_ERR(0, 184, __pyx_L1_error)
+  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_3phd_5utils_6carray_LongLongArray))))) __PYX_ERR(0, 208, __pyx_L1_error)
   __pyx_v_keys = ((struct __pyx_obj_3phd_5utils_6carray_LongLongArray *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "phd/load_balance/load_balance.pyx":186
+  /* "phd/load_balance/load_balance.pyx":210
  *         cdef LongLongArray keys = particles.get_carray("key")
  * 
  *         for i in range(particles.get_carray_size()):             # <<<<<<<<<<<<<<
@@ -4463,7 +4464,7 @@ static void __pyx_f_3phd_12load_balance_12load_balance_11LoadBalance_collect_par
   for (__pyx_t_4 = 0; __pyx_t_4 < __pyx_t_3; __pyx_t_4+=1) {
     __pyx_v_i = __pyx_t_4;
 
-    /* "phd/load_balance/load_balance.pyx":188
+    /* "phd/load_balance/load_balance.pyx":212
  *         for i in range(particles.get_carray_size()):
  * 
  *             node = self.tree.find_leaf(keys.data[i])             # <<<<<<<<<<<<<<
@@ -4472,7 +4473,7 @@ static void __pyx_f_3phd_12load_balance_12load_balance_11LoadBalance_collect_par
  */
     __pyx_v_node = ((struct __pyx_vtabstruct_3phd_12load_balance_4tree_Tree *)__pyx_v_self->tree->__pyx_vtab)->find_leaf(__pyx_v_self->tree, (__pyx_v_keys->data[__pyx_v_i]));
 
-    /* "phd/load_balance/load_balance.pyx":189
+    /* "phd/load_balance/load_balance.pyx":213
  * 
  *             node = self.tree.find_leaf(keys.data[i])
  *             pid  = leaf_pid.data[node.array_index]             # <<<<<<<<<<<<<<
@@ -4481,7 +4482,7 @@ static void __pyx_f_3phd_12load_balance_12load_balance_11LoadBalance_collect_par
  */
     __pyx_v_pid = (__pyx_v_leaf_pid->data[__pyx_v_node->array_index]);
 
-    /* "phd/load_balance/load_balance.pyx":191
+    /* "phd/load_balance/load_balance.pyx":215
  *             pid  = leaf_pid.data[node.array_index]
  * 
  *             if pid != my_pid:             # <<<<<<<<<<<<<<
@@ -4491,29 +4492,29 @@ static void __pyx_f_3phd_12load_balance_12load_balance_11LoadBalance_collect_par
     __pyx_t_5 = ((__pyx_v_pid != __pyx_v_my_pid) != 0);
     if (__pyx_t_5) {
 
-      /* "phd/load_balance/load_balance.pyx":192
+      /* "phd/load_balance/load_balance.pyx":216
  * 
  *             if pid != my_pid:
  *                 part_ids.append(i)             # <<<<<<<<<<<<<<
  *                 part_pid.append(pid)
  * 
  */
-      __pyx_t_1 = ((struct __pyx_vtabstruct_3phd_5utils_6carray_LongArray *)__pyx_v_part_ids->__pyx_base.__pyx_vtab)->append(__pyx_v_part_ids, __pyx_v_i, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 192, __pyx_L1_error)
+      __pyx_t_1 = ((struct __pyx_vtabstruct_3phd_5utils_6carray_LongArray *)__pyx_v_part_ids->__pyx_base.__pyx_vtab)->append(__pyx_v_part_ids, __pyx_v_i, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 216, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-      /* "phd/load_balance/load_balance.pyx":193
+      /* "phd/load_balance/load_balance.pyx":217
  *             if pid != my_pid:
  *                 part_ids.append(i)
  *                 part_pid.append(pid)             # <<<<<<<<<<<<<<
  * 
  *     cdef void compute_hilbert_keys(self, CarrayContainer particles):
  */
-      __pyx_t_1 = ((struct __pyx_vtabstruct_3phd_5utils_6carray_LongArray *)__pyx_v_part_pid->__pyx_base.__pyx_vtab)->append(__pyx_v_part_pid, __pyx_v_pid, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 193, __pyx_L1_error)
+      __pyx_t_1 = ((struct __pyx_vtabstruct_3phd_5utils_6carray_LongArray *)__pyx_v_part_pid->__pyx_base.__pyx_vtab)->append(__pyx_v_part_pid, __pyx_v_pid, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 217, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-      /* "phd/load_balance/load_balance.pyx":191
+      /* "phd/load_balance/load_balance.pyx":215
  *             pid  = leaf_pid.data[node.array_index]
  * 
  *             if pid != my_pid:             # <<<<<<<<<<<<<<
@@ -4523,7 +4524,7 @@ static void __pyx_f_3phd_12load_balance_12load_balance_11LoadBalance_collect_par
     }
   }
 
-  /* "phd/load_balance/load_balance.pyx":163
+  /* "phd/load_balance/load_balance.pyx":187
  *             self.leaf_pid.data[i] = j - 1
  * 
  *     cdef void collect_particles_export(self, CarrayContainer particles, LongArray part_ids,             # <<<<<<<<<<<<<<
@@ -4541,7 +4542,7 @@ static void __pyx_f_3phd_12load_balance_12load_balance_11LoadBalance_collect_par
   __Pyx_RefNannyFinishContext();
 }
 
-/* "phd/load_balance/load_balance.pyx":195
+/* "phd/load_balance/load_balance.pyx":219
  *                 part_pid.append(pid)
  * 
  *     cdef void compute_hilbert_keys(self, CarrayContainer particles):             # <<<<<<<<<<<<<<
@@ -4568,20 +4569,20 @@ static void __pyx_f_3phd_12load_balance_12load_balance_11LoadBalance_compute_hil
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("compute_hilbert_keys", 0);
 
-  /* "phd/load_balance/load_balance.pyx":208
+  /* "phd/load_balance/load_balance.pyx":232
  *         cdef np.int32_t xh[3]
  *         cdef np.float64_t *x[3]
  *         cdef LongLongArray keys = particles.get_carray("key")             # <<<<<<<<<<<<<<
  * 
  *         particles.pointer_groups(x, particles.carray_named_groups["position"])
  */
-  __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_particles->__pyx_vtab)->get_carray(__pyx_v_particles, __pyx_n_s_key, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 208, __pyx_L1_error)
+  __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_particles->__pyx_vtab)->get_carray(__pyx_v_particles, __pyx_n_s_key, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 232, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_3phd_5utils_6carray_LongLongArray))))) __PYX_ERR(0, 208, __pyx_L1_error)
+  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_3phd_5utils_6carray_LongLongArray))))) __PYX_ERR(0, 232, __pyx_L1_error)
   __pyx_v_keys = ((struct __pyx_obj_3phd_5utils_6carray_LongLongArray *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "phd/load_balance/load_balance.pyx":210
+  /* "phd/load_balance/load_balance.pyx":234
  *         cdef LongLongArray keys = particles.get_carray("key")
  * 
  *         particles.pointer_groups(x, particles.carray_named_groups["position"])             # <<<<<<<<<<<<<<
@@ -4590,15 +4591,15 @@ static void __pyx_f_3phd_12load_balance_12load_balance_11LoadBalance_compute_hil
  */
   if (unlikely(__pyx_v_particles->carray_named_groups == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(0, 210, __pyx_L1_error)
+    __PYX_ERR(0, 234, __pyx_L1_error)
   }
-  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_particles->carray_named_groups, __pyx_n_s_position); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 210, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_particles->carray_named_groups, __pyx_n_s_position); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 234, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 210, __pyx_L1_error)
+  if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 234, __pyx_L1_error)
   ((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_particles->__pyx_vtab)->pointer_groups(__pyx_v_particles, __pyx_v_x, ((PyObject*)__pyx_t_1));
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "phd/load_balance/load_balance.pyx":212
+  /* "phd/load_balance/load_balance.pyx":236
  *         particles.pointer_groups(x, particles.carray_named_groups["position"])
  * 
  *         for i in range(particles.get_carray_size()):             # <<<<<<<<<<<<<<
@@ -4610,7 +4611,7 @@ static void __pyx_f_3phd_12load_balance_12load_balance_11LoadBalance_compute_hil
   for (__pyx_t_4 = 0; __pyx_t_4 < __pyx_t_3; __pyx_t_4+=1) {
     __pyx_v_i = __pyx_t_4;
 
-    /* "phd/load_balance/load_balance.pyx":213
+    /* "phd/load_balance/load_balance.pyx":237
  * 
  *         for i in range(particles.get_carray_size()):
  *             for j in range(self.tree.dim):             # <<<<<<<<<<<<<<
@@ -4622,7 +4623,7 @@ static void __pyx_f_3phd_12load_balance_12load_balance_11LoadBalance_compute_hil
     for (__pyx_t_7 = 0; __pyx_t_7 < __pyx_t_6; __pyx_t_7+=1) {
       __pyx_v_j = __pyx_t_7;
 
-      /* "phd/load_balance/load_balance.pyx":214
+      /* "phd/load_balance/load_balance.pyx":238
  *         for i in range(particles.get_carray_size()):
  *             for j in range(self.tree.dim):
  *                 xh[j] = <np.int32_t> ( (x[j][i] - self.tree.domain_corner[j])*self.fac )             # <<<<<<<<<<<<<<
@@ -4632,7 +4633,7 @@ static void __pyx_f_3phd_12load_balance_12load_balance_11LoadBalance_compute_hil
       (__pyx_v_xh[__pyx_v_j]) = ((__pyx_t_5numpy_int32_t)((((__pyx_v_x[__pyx_v_j])[__pyx_v_i]) - (__pyx_v_self->tree->domain_corner[__pyx_v_j])) * __pyx_v_self->fac));
     }
 
-    /* "phd/load_balance/load_balance.pyx":216
+    /* "phd/load_balance/load_balance.pyx":240
  *                 xh[j] = <np.int32_t> ( (x[j][i] - self.tree.domain_corner[j])*self.fac )
  * 
  *             keys.data[i] = self.hilbert_func(xh[0], xh[1], xh[2], self.order)             # <<<<<<<<<<<<<<
@@ -4642,7 +4643,7 @@ static void __pyx_f_3phd_12load_balance_12load_balance_11LoadBalance_compute_hil
     (__pyx_v_keys->data[__pyx_v_i]) = __pyx_v_self->hilbert_func((__pyx_v_xh[0]), (__pyx_v_xh[1]), (__pyx_v_xh[2]), __pyx_v_self->order);
   }
 
-  /* "phd/load_balance/load_balance.pyx":195
+  /* "phd/load_balance/load_balance.pyx":219
  *                 part_pid.append(pid)
  * 
  *     cdef void compute_hilbert_keys(self, CarrayContainer particles):             # <<<<<<<<<<<<<<
@@ -4660,7 +4661,7 @@ static void __pyx_f_3phd_12load_balance_12load_balance_11LoadBalance_compute_hil
   __Pyx_RefNannyFinishContext();
 }
 
-/* "phd/load_balance/load_balance.pyx":218
+/* "phd/load_balance/load_balance.pyx":242
  *             keys.data[i] = self.hilbert_func(xh[0], xh[1], xh[2], self.order)
  * 
  *     def print_tree(self):             # <<<<<<<<<<<<<<
@@ -4691,13 +4692,13 @@ static PyObject *__pyx_pf_3phd_12load_balance_12load_balance_11LoadBalance_8prin
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("print_tree", 0);
 
-  /* "phd/load_balance/load_balance.pyx":219
+  /* "phd/load_balance/load_balance.pyx":243
  * 
  *     def print_tree(self):
  *         return self.tree.dump_data()             # <<<<<<<<<<<<<<
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self->tree), __pyx_n_s_dump_data); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 219, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self->tree), __pyx_n_s_dump_data); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 243, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -4711,14 +4712,14 @@ static PyObject *__pyx_pf_3phd_12load_balance_12load_balance_11LoadBalance_8prin
   }
   __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3) : __Pyx_PyObject_CallNoArg(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 219, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 243, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "phd/load_balance/load_balance.pyx":218
+  /* "phd/load_balance/load_balance.pyx":242
  *             keys.data[i] = self.hilbert_func(xh[0], xh[1], xh[2], self.order)
  * 
  *     def print_tree(self):             # <<<<<<<<<<<<<<
@@ -6053,7 +6054,7 @@ static int __pyx_setprop_3phd_12load_balance_12load_balance_11LoadBalance_min_in
 }
 
 static PyMethodDef __pyx_methods_3phd_12load_balance_12load_balance_LoadBalance[] = {
-  {"add_domain_info", (PyCFunction)__pyx_pw_3phd_12load_balance_12load_balance_11LoadBalance_3add_domain_info, METH_O, 0},
+  {"add_domain_info", (PyCFunction)__pyx_pw_3phd_12load_balance_12load_balance_11LoadBalance_3add_domain_info, METH_O, __pyx_doc_3phd_12load_balance_12load_balance_11LoadBalance_2add_domain_info},
   {"initialize", (PyCFunction)__pyx_pw_3phd_12load_balance_12load_balance_11LoadBalance_5initialize, METH_NOARGS, __pyx_doc_3phd_12load_balance_12load_balance_11LoadBalance_4initialize},
   {"decomposition", (PyCFunction)__pyx_pw_3phd_12load_balance_12load_balance_11LoadBalance_7decomposition, METH_O, __pyx_doc_3phd_12load_balance_12load_balance_11LoadBalance_6decomposition},
   {"print_tree", (PyCFunction)__pyx_pw_3phd_12load_balance_12load_balance_11LoadBalance_9print_tree, METH_NOARGS, 0},
@@ -6247,8 +6248,8 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {0, 0, 0, 0, 0, 0, 0}
 };
 static CYTHON_SMALL_CODE int __Pyx_InitCachedBuiltins(void) {
-  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 35, __pyx_L1_error)
-  __pyx_builtin_RuntimeError = __Pyx_GetBuiltinName(__pyx_n_s_RuntimeError); if (!__pyx_builtin_RuntimeError) __PYX_ERR(0, 50, __pyx_L1_error)
+  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 41, __pyx_L1_error)
+  __pyx_builtin_RuntimeError = __Pyx_GetBuiltinName(__pyx_n_s_RuntimeError); if (!__pyx_builtin_RuntimeError) __PYX_ERR(0, 56, __pyx_L1_error)
   __pyx_builtin_TypeError = __Pyx_GetBuiltinName(__pyx_n_s_TypeError); if (!__pyx_builtin_TypeError) __PYX_ERR(1, 2, __pyx_L1_error)
   __pyx_builtin_ImportError = __Pyx_GetBuiltinName(__pyx_n_s_ImportError); if (!__pyx_builtin_ImportError) __PYX_ERR(3, 884, __pyx_L1_error)
   return 0;
@@ -6260,36 +6261,36 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "phd/load_balance/load_balance.pyx":50
+  /* "phd/load_balance/load_balance.pyx":56
  * 
  *         if not self.domain_info_added:
  *             raise RuntimeError("ERROR: Domain information not added")             # <<<<<<<<<<<<<<
  *         self.fac = 2**self.order / self.box_length
  * 
  */
-  __pyx_tuple_ = PyTuple_Pack(1, __pyx_kp_s_ERROR_Domain_information_not_add); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 50, __pyx_L1_error)
+  __pyx_tuple_ = PyTuple_Pack(1, __pyx_kp_s_ERROR_Domain_information_not_add); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 56, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple_);
   __Pyx_GIVEREF(__pyx_tuple_);
 
-  /* "phd/load_balance/load_balance.pyx":61
+  /* "phd/load_balance/load_balance.pyx":67
  *             self.hilbert_func = hilbert_key_3d
  *         else:
  *             raise RuntimeError("Wrong dimension for tree")             # <<<<<<<<<<<<<<
  * 
  *         self.tree = Tree(corner, self.box_length, self.dim,
  */
-  __pyx_tuple__2 = PyTuple_Pack(1, __pyx_kp_s_Wrong_dimension_for_tree); if (unlikely(!__pyx_tuple__2)) __PYX_ERR(0, 61, __pyx_L1_error)
+  __pyx_tuple__2 = PyTuple_Pack(1, __pyx_kp_s_Wrong_dimension_for_tree); if (unlikely(!__pyx_tuple__2)) __PYX_ERR(0, 67, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__2);
   __Pyx_GIVEREF(__pyx_tuple__2);
 
-  /* "phd/load_balance/load_balance.pyx":103
+  /* "phd/load_balance/load_balance.pyx":115
  * 
  *         ind = export_pid_npy.argsort()
  *         export_ids_npy[:] = export_ids_npy[ind]             # <<<<<<<<<<<<<<
  *         export_pid_npy[:] = export_pid_npy[ind]
  * 
  */
-  __pyx_slice__3 = PySlice_New(Py_None, Py_None, Py_None); if (unlikely(!__pyx_slice__3)) __PYX_ERR(0, 103, __pyx_L1_error)
+  __pyx_slice__3 = PySlice_New(Py_None, Py_None, Py_None); if (unlikely(!__pyx_slice__3)) __PYX_ERR(0, 115, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_slice__3);
   __Pyx_GIVEREF(__pyx_slice__3);
 

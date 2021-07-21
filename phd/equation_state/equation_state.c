@@ -3540,72 +3540,72 @@ static PyObject *__pyx_f_3phd_14equation_state_14equation_state_8IdealGas_conser
     #endif
   }
 
-  /* "phd/equation_state/equation_state.pyx":48
+  /* "phd/equation_state/equation_state.pyx":54
  *         """
  *         # conservative variables
  *         cdef DoubleArray m = particles.get_carray("mass")             # <<<<<<<<<<<<<<
  *         cdef DoubleArray e = particles.get_carray("energy")
  * 
  */
-  __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_particles->__pyx_vtab)->get_carray(__pyx_v_particles, __pyx_n_s_mass, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 48, __pyx_L1_error)
+  __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_particles->__pyx_vtab)->get_carray(__pyx_v_particles, __pyx_n_s_mass, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 54, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_3phd_5utils_6carray_DoubleArray))))) __PYX_ERR(0, 48, __pyx_L1_error)
+  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_3phd_5utils_6carray_DoubleArray))))) __PYX_ERR(0, 54, __pyx_L1_error)
   __pyx_v_m = ((struct __pyx_obj_3phd_5utils_6carray_DoubleArray *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "phd/equation_state/equation_state.pyx":49
+  /* "phd/equation_state/equation_state.pyx":55
  *         # conservative variables
  *         cdef DoubleArray m = particles.get_carray("mass")
  *         cdef DoubleArray e = particles.get_carray("energy")             # <<<<<<<<<<<<<<
  * 
  *         # primitive variable
  */
-  __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_particles->__pyx_vtab)->get_carray(__pyx_v_particles, __pyx_n_s_energy, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 49, __pyx_L1_error)
+  __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_particles->__pyx_vtab)->get_carray(__pyx_v_particles, __pyx_n_s_energy, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 55, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_3phd_5utils_6carray_DoubleArray))))) __PYX_ERR(0, 49, __pyx_L1_error)
+  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_3phd_5utils_6carray_DoubleArray))))) __PYX_ERR(0, 55, __pyx_L1_error)
   __pyx_v_e = ((struct __pyx_obj_3phd_5utils_6carray_DoubleArray *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "phd/equation_state/equation_state.pyx":52
+  /* "phd/equation_state/equation_state.pyx":58
  * 
  *         # primitive variable
  *         cdef DoubleArray d = particles.get_carray("density")             # <<<<<<<<<<<<<<
  *         cdef DoubleArray p = particles.get_carray("pressure")
  * 
  */
-  __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_particles->__pyx_vtab)->get_carray(__pyx_v_particles, __pyx_n_s_density, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 52, __pyx_L1_error)
+  __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_particles->__pyx_vtab)->get_carray(__pyx_v_particles, __pyx_n_s_density, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 58, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_3phd_5utils_6carray_DoubleArray))))) __PYX_ERR(0, 52, __pyx_L1_error)
+  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_3phd_5utils_6carray_DoubleArray))))) __PYX_ERR(0, 58, __pyx_L1_error)
   __pyx_v_d = ((struct __pyx_obj_3phd_5utils_6carray_DoubleArray *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "phd/equation_state/equation_state.pyx":53
+  /* "phd/equation_state/equation_state.pyx":59
  *         # primitive variable
  *         cdef DoubleArray d = particles.get_carray("density")
  *         cdef DoubleArray p = particles.get_carray("pressure")             # <<<<<<<<<<<<<<
  * 
  *         # particle volume
  */
-  __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_particles->__pyx_vtab)->get_carray(__pyx_v_particles, __pyx_n_s_pressure, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 53, __pyx_L1_error)
+  __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_particles->__pyx_vtab)->get_carray(__pyx_v_particles, __pyx_n_s_pressure, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 59, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_3phd_5utils_6carray_DoubleArray))))) __PYX_ERR(0, 53, __pyx_L1_error)
+  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_3phd_5utils_6carray_DoubleArray))))) __PYX_ERR(0, 59, __pyx_L1_error)
   __pyx_v_p = ((struct __pyx_obj_3phd_5utils_6carray_DoubleArray *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "phd/equation_state/equation_state.pyx":56
+  /* "phd/equation_state/equation_state.pyx":62
  * 
  *         # particle volume
  *         cdef DoubleArray vol = particles.get_carray("volume")             # <<<<<<<<<<<<<<
  * 
  *         cdef int i, k, dim
  */
-  __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_particles->__pyx_vtab)->get_carray(__pyx_v_particles, __pyx_n_s_volume, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 56, __pyx_L1_error)
+  __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_particles->__pyx_vtab)->get_carray(__pyx_v_particles, __pyx_n_s_volume, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 62, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_3phd_5utils_6carray_DoubleArray))))) __PYX_ERR(0, 56, __pyx_L1_error)
+  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_3phd_5utils_6carray_DoubleArray))))) __PYX_ERR(0, 62, __pyx_L1_error)
   __pyx_v_vol = ((struct __pyx_obj_3phd_5utils_6carray_DoubleArray *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "phd/equation_state/equation_state.pyx":62
+  /* "phd/equation_state/equation_state.pyx":68
  *         cdef np.float64_t *v[3], *mv[3]
  * 
  *         dim = len(particles.carray_named_groups['position'])             # <<<<<<<<<<<<<<
@@ -3614,15 +3614,15 @@ static PyObject *__pyx_f_3phd_14equation_state_14equation_state_8IdealGas_conser
  */
   if (unlikely(__pyx_v_particles->carray_named_groups == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(0, 62, __pyx_L1_error)
+    __PYX_ERR(0, 68, __pyx_L1_error)
   }
-  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_particles->carray_named_groups, __pyx_n_s_position); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 62, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_particles->carray_named_groups, __pyx_n_s_position); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 68, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_5 = PyObject_Length(__pyx_t_1); if (unlikely(__pyx_t_5 == ((Py_ssize_t)-1))) __PYX_ERR(0, 62, __pyx_L1_error)
+  __pyx_t_5 = PyObject_Length(__pyx_t_1); if (unlikely(__pyx_t_5 == ((Py_ssize_t)-1))) __PYX_ERR(0, 68, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_dim = __pyx_t_5;
 
-  /* "phd/equation_state/equation_state.pyx":63
+  /* "phd/equation_state/equation_state.pyx":69
  * 
  *         dim = len(particles.carray_named_groups['position'])
  *         particles.pointer_groups(v,  particles.carray_named_groups['velocity'])             # <<<<<<<<<<<<<<
@@ -3631,15 +3631,15 @@ static PyObject *__pyx_f_3phd_14equation_state_14equation_state_8IdealGas_conser
  */
   if (unlikely(__pyx_v_particles->carray_named_groups == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(0, 63, __pyx_L1_error)
+    __PYX_ERR(0, 69, __pyx_L1_error)
   }
-  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_particles->carray_named_groups, __pyx_n_s_velocity); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 63, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_particles->carray_named_groups, __pyx_n_s_velocity); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 69, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 63, __pyx_L1_error)
+  if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 69, __pyx_L1_error)
   ((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_particles->__pyx_vtab)->pointer_groups(__pyx_v_particles, __pyx_v_v, ((PyObject*)__pyx_t_1));
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "phd/equation_state/equation_state.pyx":64
+  /* "phd/equation_state/equation_state.pyx":70
  *         dim = len(particles.carray_named_groups['position'])
  *         particles.pointer_groups(v,  particles.carray_named_groups['velocity'])
  *         particles.pointer_groups(mv, particles.carray_named_groups['momentum'])             # <<<<<<<<<<<<<<
@@ -3648,15 +3648,15 @@ static PyObject *__pyx_f_3phd_14equation_state_14equation_state_8IdealGas_conser
  */
   if (unlikely(__pyx_v_particles->carray_named_groups == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(0, 64, __pyx_L1_error)
+    __PYX_ERR(0, 70, __pyx_L1_error)
   }
-  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_particles->carray_named_groups, __pyx_n_s_momentum); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 64, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_particles->carray_named_groups, __pyx_n_s_momentum); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 70, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 64, __pyx_L1_error)
+  if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 70, __pyx_L1_error)
   ((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_particles->__pyx_vtab)->pointer_groups(__pyx_v_particles, __pyx_v_mv, ((PyObject*)__pyx_t_1));
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "phd/equation_state/equation_state.pyx":67
+  /* "phd/equation_state/equation_state.pyx":73
  * 
  *         # loop through all particles (real + ghost)
  *         for i in range(particles.get_carray_size()):             # <<<<<<<<<<<<<<
@@ -3668,7 +3668,7 @@ static PyObject *__pyx_f_3phd_14equation_state_14equation_state_8IdealGas_conser
   for (__pyx_t_8 = 0; __pyx_t_8 < __pyx_t_7; __pyx_t_8+=1) {
     __pyx_v_i = __pyx_t_8;
 
-    /* "phd/equation_state/equation_state.pyx":70
+    /* "phd/equation_state/equation_state.pyx":76
  * 
  *             # total mass in cell
  *             m.data[i] = d.data[i]*vol.data[i]             # <<<<<<<<<<<<<<
@@ -3677,7 +3677,7 @@ static PyObject *__pyx_f_3phd_14equation_state_14equation_state_8IdealGas_conser
  */
     (__pyx_v_m->data[__pyx_v_i]) = ((__pyx_v_d->data[__pyx_v_i]) * (__pyx_v_vol->data[__pyx_v_i]));
 
-    /* "phd/equation_state/equation_state.pyx":73
+    /* "phd/equation_state/equation_state.pyx":79
  * 
  *             # total momentum in cell
  *             v_sq = 0.             # <<<<<<<<<<<<<<
@@ -3687,7 +3687,7 @@ static PyObject *__pyx_f_3phd_14equation_state_14equation_state_8IdealGas_conser
     __Pyx_INCREF(__pyx_float_0_);
     __Pyx_XDECREF_SET(__pyx_v_v_sq, __pyx_float_0_);
 
-    /* "phd/equation_state/equation_state.pyx":74
+    /* "phd/equation_state/equation_state.pyx":80
  *             # total momentum in cell
  *             v_sq = 0.
  *             for k in range(dim):             # <<<<<<<<<<<<<<
@@ -3699,7 +3699,7 @@ static PyObject *__pyx_f_3phd_14equation_state_14equation_state_8IdealGas_conser
     for (__pyx_t_11 = 0; __pyx_t_11 < __pyx_t_10; __pyx_t_11+=1) {
       __pyx_v_k = __pyx_t_11;
 
-      /* "phd/equation_state/equation_state.pyx":75
+      /* "phd/equation_state/equation_state.pyx":81
  *             v_sq = 0.
  *             for k in range(dim):
  *                 mv[k][i] = v[k][i]*m.data[i]             # <<<<<<<<<<<<<<
@@ -3708,52 +3708,52 @@ static PyObject *__pyx_f_3phd_14equation_state_14equation_state_8IdealGas_conser
  */
       ((__pyx_v_mv[__pyx_v_k])[__pyx_v_i]) = (((__pyx_v_v[__pyx_v_k])[__pyx_v_i]) * (__pyx_v_m->data[__pyx_v_i]));
 
-      /* "phd/equation_state/equation_state.pyx":76
+      /* "phd/equation_state/equation_state.pyx":82
  *             for k in range(dim):
  *                 mv[k][i] = v[k][i]*m.data[i]
  *                 v_sq    += v[k][i]*v[k][i]             # <<<<<<<<<<<<<<
  * 
  *             # total energy in cell
  */
-      __pyx_t_1 = PyFloat_FromDouble((((__pyx_v_v[__pyx_v_k])[__pyx_v_i]) * ((__pyx_v_v[__pyx_v_k])[__pyx_v_i]))); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 76, __pyx_L1_error)
+      __pyx_t_1 = PyFloat_FromDouble((((__pyx_v_v[__pyx_v_k])[__pyx_v_i]) * ((__pyx_v_v[__pyx_v_k])[__pyx_v_i]))); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 82, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_2 = PyNumber_InPlaceAdd(__pyx_v_v_sq, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 76, __pyx_L1_error)
+      __pyx_t_2 = PyNumber_InPlaceAdd(__pyx_v_v_sq, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 82, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __Pyx_DECREF_SET(__pyx_v_v_sq, __pyx_t_2);
       __pyx_t_2 = 0;
     }
 
-    /* "phd/equation_state/equation_state.pyx":79
+    /* "phd/equation_state/equation_state.pyx":85
  * 
  *             # total energy in cell
  *             e.data[i] = (.5*d.data[i]*v_sq + p.data[i]/(self.gamma-1.))*vol.data[i]             # <<<<<<<<<<<<<<
  * 
  *     cpdef primitive_from_conservative(self, CarrayContainer particles):
  */
-    __pyx_t_2 = PyFloat_FromDouble((.5 * (__pyx_v_d->data[__pyx_v_i]))); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 79, __pyx_L1_error)
+    __pyx_t_2 = PyFloat_FromDouble((.5 * (__pyx_v_d->data[__pyx_v_i]))); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 85, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_1 = PyNumber_Multiply(__pyx_t_2, __pyx_v_v_sq); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 79, __pyx_L1_error)
+    __pyx_t_1 = PyNumber_Multiply(__pyx_t_2, __pyx_v_v_sq); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 85, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_t_12 = (__pyx_v_self->__pyx_base.gamma - 1.);
     if (unlikely(__pyx_t_12 == 0)) {
       PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-      __PYX_ERR(0, 79, __pyx_L1_error)
+      __PYX_ERR(0, 85, __pyx_L1_error)
     }
-    __pyx_t_2 = PyFloat_FromDouble(((__pyx_v_p->data[__pyx_v_i]) / __pyx_t_12)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 79, __pyx_L1_error)
+    __pyx_t_2 = PyFloat_FromDouble(((__pyx_v_p->data[__pyx_v_i]) / __pyx_t_12)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 85, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_3 = PyNumber_Add(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 79, __pyx_L1_error)
+    __pyx_t_3 = PyNumber_Add(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 85, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = PyFloat_FromDouble((__pyx_v_vol->data[__pyx_v_i])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 79, __pyx_L1_error)
+    __pyx_t_2 = PyFloat_FromDouble((__pyx_v_vol->data[__pyx_v_i])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 85, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_1 = PyNumber_Multiply(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 79, __pyx_L1_error)
+    __pyx_t_1 = PyNumber_Multiply(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 85, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_13 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_13 == ((npy_float64)-1)) && PyErr_Occurred())) __PYX_ERR(0, 79, __pyx_L1_error)
+    __pyx_t_13 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_13 == ((npy_float64)-1)) && PyErr_Occurred())) __PYX_ERR(0, 85, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     (__pyx_v_e->data[__pyx_v_i]) = __pyx_t_13;
   }
@@ -3790,7 +3790,7 @@ static PyObject *__pyx_f_3phd_14equation_state_14equation_state_8IdealGas_conser
 
 /* Python wrapper */
 static PyObject *__pyx_pw_3phd_14equation_state_14equation_state_8IdealGas_3conservative_from_primitive(PyObject *__pyx_v_self, PyObject *__pyx_v_particles); /*proto*/
-static char __pyx_doc_3phd_14equation_state_14equation_state_8IdealGas_2conservative_from_primitive[] = "\n        Computes conservative variables from primitive variables\n        ";
+static char __pyx_doc_3phd_14equation_state_14equation_state_8IdealGas_2conservative_from_primitive[] = "\n        Computes conservative variables from primitive variables\n\n        Parameters\n        ----------\n        particles : CarrayContainer\n            Class that holds information pertaining to the particles.\n\n        ";
 static PyObject *__pyx_pw_3phd_14equation_state_14equation_state_8IdealGas_3conservative_from_primitive(PyObject *__pyx_v_self, PyObject *__pyx_v_particles) {
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
@@ -3836,7 +3836,7 @@ static PyObject *__pyx_pf_3phd_14equation_state_14equation_state_8IdealGas_2cons
   return __pyx_r;
 }
 
-/* "phd/equation_state/equation_state.pyx":81
+/* "phd/equation_state/equation_state.pyx":87
  *             e.data[i] = (.5*d.data[i]*v_sq + p.data[i]/(self.gamma-1.))*vol.data[i]
  * 
  *     cpdef primitive_from_conservative(self, CarrayContainer particles):             # <<<<<<<<<<<<<<
@@ -3883,7 +3883,7 @@ static PyObject *__pyx_f_3phd_14equation_state_14equation_state_8IdealGas_primit
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_type_dict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_primitive_from_conservative); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 81, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_primitive_from_conservative); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 87, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_3phd_14equation_state_14equation_state_8IdealGas_5primitive_from_conservative)) {
         __Pyx_XDECREF(__pyx_r);
@@ -3900,7 +3900,7 @@ static PyObject *__pyx_f_3phd_14equation_state_14equation_state_8IdealGas_primit
         }
         __pyx_t_2 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_4, ((PyObject *)__pyx_v_particles)) : __Pyx_PyObject_CallOneArg(__pyx_t_3, ((PyObject *)__pyx_v_particles));
         __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 81, __pyx_L1_error)
+        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 87, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         __pyx_r = __pyx_t_2;
@@ -3921,72 +3921,72 @@ static PyObject *__pyx_f_3phd_14equation_state_14equation_state_8IdealGas_primit
     #endif
   }
 
-  /* "phd/equation_state/equation_state.pyx":86
+  /* "phd/equation_state/equation_state.pyx":98
  *         """
  *         # conservative variables
  *         cdef DoubleArray m = particles.get_carray("mass")             # <<<<<<<<<<<<<<
  *         cdef DoubleArray e = particles.get_carray("energy")
  * 
  */
-  __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_particles->__pyx_vtab)->get_carray(__pyx_v_particles, __pyx_n_s_mass, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 86, __pyx_L1_error)
+  __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_particles->__pyx_vtab)->get_carray(__pyx_v_particles, __pyx_n_s_mass, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 98, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_3phd_5utils_6carray_DoubleArray))))) __PYX_ERR(0, 86, __pyx_L1_error)
+  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_3phd_5utils_6carray_DoubleArray))))) __PYX_ERR(0, 98, __pyx_L1_error)
   __pyx_v_m = ((struct __pyx_obj_3phd_5utils_6carray_DoubleArray *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "phd/equation_state/equation_state.pyx":87
+  /* "phd/equation_state/equation_state.pyx":99
  *         # conservative variables
  *         cdef DoubleArray m = particles.get_carray("mass")
  *         cdef DoubleArray e = particles.get_carray("energy")             # <<<<<<<<<<<<<<
  * 
  *         # primitive variables
  */
-  __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_particles->__pyx_vtab)->get_carray(__pyx_v_particles, __pyx_n_s_energy, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 87, __pyx_L1_error)
+  __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_particles->__pyx_vtab)->get_carray(__pyx_v_particles, __pyx_n_s_energy, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 99, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_3phd_5utils_6carray_DoubleArray))))) __PYX_ERR(0, 87, __pyx_L1_error)
+  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_3phd_5utils_6carray_DoubleArray))))) __PYX_ERR(0, 99, __pyx_L1_error)
   __pyx_v_e = ((struct __pyx_obj_3phd_5utils_6carray_DoubleArray *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "phd/equation_state/equation_state.pyx":90
+  /* "phd/equation_state/equation_state.pyx":102
  * 
  *         # primitive variables
  *         cdef DoubleArray d = particles.get_carray("density")             # <<<<<<<<<<<<<<
  *         cdef DoubleArray p = particles.get_carray("pressure")
  * 
  */
-  __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_particles->__pyx_vtab)->get_carray(__pyx_v_particles, __pyx_n_s_density, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 90, __pyx_L1_error)
+  __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_particles->__pyx_vtab)->get_carray(__pyx_v_particles, __pyx_n_s_density, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 102, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_3phd_5utils_6carray_DoubleArray))))) __PYX_ERR(0, 90, __pyx_L1_error)
+  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_3phd_5utils_6carray_DoubleArray))))) __PYX_ERR(0, 102, __pyx_L1_error)
   __pyx_v_d = ((struct __pyx_obj_3phd_5utils_6carray_DoubleArray *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "phd/equation_state/equation_state.pyx":91
+  /* "phd/equation_state/equation_state.pyx":103
  *         # primitive variables
  *         cdef DoubleArray d = particles.get_carray("density")
  *         cdef DoubleArray p = particles.get_carray("pressure")             # <<<<<<<<<<<<<<
  * 
  *         # particle volume
  */
-  __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_particles->__pyx_vtab)->get_carray(__pyx_v_particles, __pyx_n_s_pressure, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 91, __pyx_L1_error)
+  __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_particles->__pyx_vtab)->get_carray(__pyx_v_particles, __pyx_n_s_pressure, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 103, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_3phd_5utils_6carray_DoubleArray))))) __PYX_ERR(0, 91, __pyx_L1_error)
+  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_3phd_5utils_6carray_DoubleArray))))) __PYX_ERR(0, 103, __pyx_L1_error)
   __pyx_v_p = ((struct __pyx_obj_3phd_5utils_6carray_DoubleArray *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "phd/equation_state/equation_state.pyx":94
+  /* "phd/equation_state/equation_state.pyx":106
  * 
  *         # particle volume
  *         cdef DoubleArray vol = particles.get_carray("volume")             # <<<<<<<<<<<<<<
  * 
  *         cdef int i, k
  */
-  __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_particles->__pyx_vtab)->get_carray(__pyx_v_particles, __pyx_n_s_volume, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 94, __pyx_L1_error)
+  __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_particles->__pyx_vtab)->get_carray(__pyx_v_particles, __pyx_n_s_volume, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 106, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_3phd_5utils_6carray_DoubleArray))))) __PYX_ERR(0, 94, __pyx_L1_error)
+  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_3phd_5utils_6carray_DoubleArray))))) __PYX_ERR(0, 106, __pyx_L1_error)
   __pyx_v_vol = ((struct __pyx_obj_3phd_5utils_6carray_DoubleArray *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "phd/equation_state/equation_state.pyx":100
+  /* "phd/equation_state/equation_state.pyx":112
  *         cdef np.float64_t *v[3], *mv[3]
  * 
  *         dim = len(particles.carray_named_groups["position"])             # <<<<<<<<<<<<<<
@@ -3995,15 +3995,15 @@ static PyObject *__pyx_f_3phd_14equation_state_14equation_state_8IdealGas_primit
  */
   if (unlikely(__pyx_v_particles->carray_named_groups == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(0, 100, __pyx_L1_error)
+    __PYX_ERR(0, 112, __pyx_L1_error)
   }
-  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_particles->carray_named_groups, __pyx_n_s_position); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 100, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_particles->carray_named_groups, __pyx_n_s_position); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 112, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_5 = PyObject_Length(__pyx_t_1); if (unlikely(__pyx_t_5 == ((Py_ssize_t)-1))) __PYX_ERR(0, 100, __pyx_L1_error)
+  __pyx_t_5 = PyObject_Length(__pyx_t_1); if (unlikely(__pyx_t_5 == ((Py_ssize_t)-1))) __PYX_ERR(0, 112, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_dim = __pyx_t_5;
 
-  /* "phd/equation_state/equation_state.pyx":101
+  /* "phd/equation_state/equation_state.pyx":113
  * 
  *         dim = len(particles.carray_named_groups["position"])
  *         particles.pointer_groups(v,  particles.carray_named_groups["velocity"])             # <<<<<<<<<<<<<<
@@ -4012,15 +4012,15 @@ static PyObject *__pyx_f_3phd_14equation_state_14equation_state_8IdealGas_primit
  */
   if (unlikely(__pyx_v_particles->carray_named_groups == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(0, 101, __pyx_L1_error)
+    __PYX_ERR(0, 113, __pyx_L1_error)
   }
-  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_particles->carray_named_groups, __pyx_n_s_velocity); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 101, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_particles->carray_named_groups, __pyx_n_s_velocity); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 113, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 101, __pyx_L1_error)
+  if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 113, __pyx_L1_error)
   ((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_particles->__pyx_vtab)->pointer_groups(__pyx_v_particles, __pyx_v_v, ((PyObject*)__pyx_t_1));
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "phd/equation_state/equation_state.pyx":102
+  /* "phd/equation_state/equation_state.pyx":114
  *         dim = len(particles.carray_named_groups["position"])
  *         particles.pointer_groups(v,  particles.carray_named_groups["velocity"])
  *         particles.pointer_groups(mv, particles.carray_named_groups["momentum"])             # <<<<<<<<<<<<<<
@@ -4029,15 +4029,15 @@ static PyObject *__pyx_f_3phd_14equation_state_14equation_state_8IdealGas_primit
  */
   if (unlikely(__pyx_v_particles->carray_named_groups == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(0, 102, __pyx_L1_error)
+    __PYX_ERR(0, 114, __pyx_L1_error)
   }
-  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_particles->carray_named_groups, __pyx_n_s_momentum); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 102, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_particles->carray_named_groups, __pyx_n_s_momentum); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 114, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 102, __pyx_L1_error)
+  if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 114, __pyx_L1_error)
   ((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_particles->__pyx_vtab)->pointer_groups(__pyx_v_particles, __pyx_v_mv, ((PyObject*)__pyx_t_1));
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "phd/equation_state/equation_state.pyx":105
+  /* "phd/equation_state/equation_state.pyx":117
  * 
  *         # loop through all particles (real + ghost)
  *         for i in range(particles.get_carray_size()):             # <<<<<<<<<<<<<<
@@ -4049,7 +4049,7 @@ static PyObject *__pyx_f_3phd_14equation_state_14equation_state_8IdealGas_primit
   for (__pyx_t_8 = 0; __pyx_t_8 < __pyx_t_7; __pyx_t_8+=1) {
     __pyx_v_i = __pyx_t_8;
 
-    /* "phd/equation_state/equation_state.pyx":108
+    /* "phd/equation_state/equation_state.pyx":120
  * 
  *             # density in cell
  *             d.data[i] = m.data[i]/vol.data[i]             # <<<<<<<<<<<<<<
@@ -4058,11 +4058,11 @@ static PyObject *__pyx_f_3phd_14equation_state_14equation_state_8IdealGas_primit
  */
     if (unlikely((__pyx_v_vol->data[__pyx_v_i]) == 0)) {
       PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-      __PYX_ERR(0, 108, __pyx_L1_error)
+      __PYX_ERR(0, 120, __pyx_L1_error)
     }
     (__pyx_v_d->data[__pyx_v_i]) = ((__pyx_v_m->data[__pyx_v_i]) / (__pyx_v_vol->data[__pyx_v_i]));
 
-    /* "phd/equation_state/equation_state.pyx":111
+    /* "phd/equation_state/equation_state.pyx":123
  * 
  *             # velocity in cell
  *             v_sq = 0.             # <<<<<<<<<<<<<<
@@ -4072,7 +4072,7 @@ static PyObject *__pyx_f_3phd_14equation_state_14equation_state_8IdealGas_primit
     __Pyx_INCREF(__pyx_float_0_);
     __Pyx_XDECREF_SET(__pyx_v_v_sq, __pyx_float_0_);
 
-    /* "phd/equation_state/equation_state.pyx":112
+    /* "phd/equation_state/equation_state.pyx":124
  *             # velocity in cell
  *             v_sq = 0.
  *             for k in range(dim):             # <<<<<<<<<<<<<<
@@ -4084,7 +4084,7 @@ static PyObject *__pyx_f_3phd_14equation_state_14equation_state_8IdealGas_primit
     for (__pyx_t_10 = 0; __pyx_t_10 < __pyx_t_9; __pyx_t_10+=1) {
       __pyx_v_k = __pyx_t_10;
 
-      /* "phd/equation_state/equation_state.pyx":113
+      /* "phd/equation_state/equation_state.pyx":125
  *             v_sq = 0.
  *             for k in range(dim):
  *                 v[k][i] = mv[k][i]/m.data[i]             # <<<<<<<<<<<<<<
@@ -4093,27 +4093,27 @@ static PyObject *__pyx_f_3phd_14equation_state_14equation_state_8IdealGas_primit
  */
       if (unlikely((__pyx_v_m->data[__pyx_v_i]) == 0)) {
         PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-        __PYX_ERR(0, 113, __pyx_L1_error)
+        __PYX_ERR(0, 125, __pyx_L1_error)
       }
       ((__pyx_v_v[__pyx_v_k])[__pyx_v_i]) = (((__pyx_v_mv[__pyx_v_k])[__pyx_v_i]) / (__pyx_v_m->data[__pyx_v_i]));
 
-      /* "phd/equation_state/equation_state.pyx":114
+      /* "phd/equation_state/equation_state.pyx":126
  *             for k in range(dim):
  *                 v[k][i] = mv[k][i]/m.data[i]
  *                 v_sq   += v[k][i]*v[k][i]             # <<<<<<<<<<<<<<
  * 
  *             # pressure in cell
  */
-      __pyx_t_1 = PyFloat_FromDouble((((__pyx_v_v[__pyx_v_k])[__pyx_v_i]) * ((__pyx_v_v[__pyx_v_k])[__pyx_v_i]))); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 114, __pyx_L1_error)
+      __pyx_t_1 = PyFloat_FromDouble((((__pyx_v_v[__pyx_v_k])[__pyx_v_i]) * ((__pyx_v_v[__pyx_v_k])[__pyx_v_i]))); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 126, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_2 = PyNumber_InPlaceAdd(__pyx_v_v_sq, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 114, __pyx_L1_error)
+      __pyx_t_2 = PyNumber_InPlaceAdd(__pyx_v_v_sq, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 126, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __Pyx_DECREF_SET(__pyx_v_v_sq, __pyx_t_2);
       __pyx_t_2 = 0;
     }
 
-    /* "phd/equation_state/equation_state.pyx":117
+    /* "phd/equation_state/equation_state.pyx":129
  * 
  *             # pressure in cell
  *             p.data[i] = (e.data[i]/vol.data[i] - .5*d.data[i]*v_sq)*(self.gamma-1.)             # <<<<<<<<<<<<<<
@@ -4122,31 +4122,31 @@ static PyObject *__pyx_f_3phd_14equation_state_14equation_state_8IdealGas_primit
  */
     if (unlikely((__pyx_v_vol->data[__pyx_v_i]) == 0)) {
       PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-      __PYX_ERR(0, 117, __pyx_L1_error)
+      __PYX_ERR(0, 129, __pyx_L1_error)
     }
-    __pyx_t_2 = PyFloat_FromDouble(((__pyx_v_e->data[__pyx_v_i]) / (__pyx_v_vol->data[__pyx_v_i]))); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 117, __pyx_L1_error)
+    __pyx_t_2 = PyFloat_FromDouble(((__pyx_v_e->data[__pyx_v_i]) / (__pyx_v_vol->data[__pyx_v_i]))); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 129, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_1 = PyFloat_FromDouble((.5 * (__pyx_v_d->data[__pyx_v_i]))); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 117, __pyx_L1_error)
+    __pyx_t_1 = PyFloat_FromDouble((.5 * (__pyx_v_d->data[__pyx_v_i]))); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 129, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_3 = PyNumber_Multiply(__pyx_t_1, __pyx_v_v_sq); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 117, __pyx_L1_error)
+    __pyx_t_3 = PyNumber_Multiply(__pyx_t_1, __pyx_v_v_sq); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 129, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = PyNumber_Subtract(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 117, __pyx_L1_error)
+    __pyx_t_1 = PyNumber_Subtract(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 129, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = PyFloat_FromDouble((__pyx_v_self->__pyx_base.gamma - 1.)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 117, __pyx_L1_error)
+    __pyx_t_3 = PyFloat_FromDouble((__pyx_v_self->__pyx_base.gamma - 1.)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 129, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_2 = PyNumber_Multiply(__pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 117, __pyx_L1_error)
+    __pyx_t_2 = PyNumber_Multiply(__pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 129, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_11 = __pyx_PyFloat_AsDouble(__pyx_t_2); if (unlikely((__pyx_t_11 == ((npy_float64)-1)) && PyErr_Occurred())) __PYX_ERR(0, 117, __pyx_L1_error)
+    __pyx_t_11 = __pyx_PyFloat_AsDouble(__pyx_t_2); if (unlikely((__pyx_t_11 == ((npy_float64)-1)) && PyErr_Occurred())) __PYX_ERR(0, 129, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     (__pyx_v_p->data[__pyx_v_i]) = __pyx_t_11;
   }
 
-  /* "phd/equation_state/equation_state.pyx":81
+  /* "phd/equation_state/equation_state.pyx":87
  *             e.data[i] = (.5*d.data[i]*v_sq + p.data[i]/(self.gamma-1.))*vol.data[i]
  * 
  *     cpdef primitive_from_conservative(self, CarrayContainer particles):             # <<<<<<<<<<<<<<
@@ -4178,7 +4178,7 @@ static PyObject *__pyx_f_3phd_14equation_state_14equation_state_8IdealGas_primit
 
 /* Python wrapper */
 static PyObject *__pyx_pw_3phd_14equation_state_14equation_state_8IdealGas_5primitive_from_conservative(PyObject *__pyx_v_self, PyObject *__pyx_v_particles); /*proto*/
-static char __pyx_doc_3phd_14equation_state_14equation_state_8IdealGas_4primitive_from_conservative[] = "Computes primitive variables from conservative variables. Calculates\n        for all particles (real + ghost).\n        ";
+static char __pyx_doc_3phd_14equation_state_14equation_state_8IdealGas_4primitive_from_conservative[] = "Computes primitive variables from conservative variables. Calculates\n        for all particles (real + ghost).\n        \n        Parameters\n        ----------\n        particles : CarrayContainer\n            Class that holds information pertaining to the particles.\n            \n        ";
 static PyObject *__pyx_pw_3phd_14equation_state_14equation_state_8IdealGas_5primitive_from_conservative(PyObject *__pyx_v_self, PyObject *__pyx_v_particles) {
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
@@ -4186,7 +4186,7 @@ static PyObject *__pyx_pw_3phd_14equation_state_14equation_state_8IdealGas_5prim
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("primitive_from_conservative (wrapper)", 0);
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_particles), __pyx_ptype_3phd_10containers_10containers_CarrayContainer, 1, "particles", 0))) __PYX_ERR(0, 81, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_particles), __pyx_ptype_3phd_10containers_10containers_CarrayContainer, 1, "particles", 0))) __PYX_ERR(0, 87, __pyx_L1_error)
   __pyx_r = __pyx_pf_3phd_14equation_state_14equation_state_8IdealGas_4primitive_from_conservative(((struct __pyx_obj_3phd_14equation_state_14equation_state_IdealGas *)__pyx_v_self), ((struct __pyx_obj_3phd_10containers_10containers_CarrayContainer *)__pyx_v_particles));
 
   /* function exit code */
@@ -4207,7 +4207,7 @@ static PyObject *__pyx_pf_3phd_14equation_state_14equation_state_8IdealGas_4prim
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("primitive_from_conservative", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_3phd_14equation_state_14equation_state_8IdealGas_primitive_from_conservative(__pyx_v_self, __pyx_v_particles, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 81, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_3phd_14equation_state_14equation_state_8IdealGas_primitive_from_conservative(__pyx_v_self, __pyx_v_particles, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 87, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -4224,12 +4224,12 @@ static PyObject *__pyx_pf_3phd_14equation_state_14equation_state_8IdealGas_4prim
   return __pyx_r;
 }
 
-/* "phd/equation_state/equation_state.pyx":119
+/* "phd/equation_state/equation_state.pyx":131
  *             p.data[i] = (e.data[i]/vol.data[i] - .5*d.data[i]*v_sq)*(self.gamma-1.)
  * 
  *     cpdef np.float64_t sound_speed(self, np.float64_t density, np.float64_t pressure):             # <<<<<<<<<<<<<<
- *         """Sound speed of particle."""
- *         return sqrt(self.gamma*pressure/density)
+ *         """Sound speed of particle.
+ * 
  */
 
 static PyObject *__pyx_pw_3phd_14equation_state_14equation_state_8IdealGas_7sound_speed(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
@@ -4258,12 +4258,12 @@ static __pyx_t_5numpy_float64_t __pyx_f_3phd_14equation_state_14equation_state_8
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_type_dict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_sound_speed); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 119, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_sound_speed); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 131, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_3phd_14equation_state_14equation_state_8IdealGas_7sound_speed)) {
-        __pyx_t_3 = PyFloat_FromDouble(__pyx_v_density); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 119, __pyx_L1_error)
+        __pyx_t_3 = PyFloat_FromDouble(__pyx_v_density); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 131, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
-        __pyx_t_4 = PyFloat_FromDouble(__pyx_v_pressure); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 119, __pyx_L1_error)
+        __pyx_t_4 = PyFloat_FromDouble(__pyx_v_pressure); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 131, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_INCREF(__pyx_t_1);
         __pyx_t_5 = __pyx_t_1; __pyx_t_6 = NULL;
@@ -4281,7 +4281,7 @@ static __pyx_t_5numpy_float64_t __pyx_f_3phd_14equation_state_14equation_state_8
         #if CYTHON_FAST_PYCALL
         if (PyFunction_Check(__pyx_t_5)) {
           PyObject *__pyx_temp[3] = {__pyx_t_6, __pyx_t_3, __pyx_t_4};
-          __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 119, __pyx_L1_error)
+          __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 131, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -4291,7 +4291,7 @@ static __pyx_t_5numpy_float64_t __pyx_f_3phd_14equation_state_14equation_state_8
         #if CYTHON_FAST_PYCCALL
         if (__Pyx_PyFastCFunction_Check(__pyx_t_5)) {
           PyObject *__pyx_temp[3] = {__pyx_t_6, __pyx_t_3, __pyx_t_4};
-          __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 119, __pyx_L1_error)
+          __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 131, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -4299,7 +4299,7 @@ static __pyx_t_5numpy_float64_t __pyx_f_3phd_14equation_state_14equation_state_8
         } else
         #endif
         {
-          __pyx_t_8 = PyTuple_New(2+__pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 119, __pyx_L1_error)
+          __pyx_t_8 = PyTuple_New(2+__pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 131, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_8);
           if (__pyx_t_6) {
             __Pyx_GIVEREF(__pyx_t_6); PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_6); __pyx_t_6 = NULL;
@@ -4310,12 +4310,12 @@ static __pyx_t_5numpy_float64_t __pyx_f_3phd_14equation_state_14equation_state_8
           PyTuple_SET_ITEM(__pyx_t_8, 1+__pyx_t_7, __pyx_t_4);
           __pyx_t_3 = 0;
           __pyx_t_4 = 0;
-          __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_8, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 119, __pyx_L1_error)
+          __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_8, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 131, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
         }
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-        __pyx_t_9 = __pyx_PyFloat_AsDouble(__pyx_t_2); if (unlikely((__pyx_t_9 == ((npy_float64)-1)) && PyErr_Occurred())) __PYX_ERR(0, 119, __pyx_L1_error)
+        __pyx_t_9 = __pyx_PyFloat_AsDouble(__pyx_t_2); if (unlikely((__pyx_t_9 == ((npy_float64)-1)) && PyErr_Occurred())) __PYX_ERR(0, 131, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         __pyx_r = __pyx_t_9;
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -4334,9 +4334,9 @@ static __pyx_t_5numpy_float64_t __pyx_f_3phd_14equation_state_14equation_state_8
     #endif
   }
 
-  /* "phd/equation_state/equation_state.pyx":121
- *     cpdef np.float64_t sound_speed(self, np.float64_t density, np.float64_t pressure):
- *         """Sound speed of particle."""
+  /* "phd/equation_state/equation_state.pyx":140
+ * 
+ *         """
  *         return sqrt(self.gamma*pressure/density)             # <<<<<<<<<<<<<<
  * 
  *     cpdef np.float64_t get_gamma(self):
@@ -4344,17 +4344,17 @@ static __pyx_t_5numpy_float64_t __pyx_f_3phd_14equation_state_14equation_state_8
   __pyx_t_9 = (__pyx_v_self->__pyx_base.gamma * __pyx_v_pressure);
   if (unlikely(__pyx_v_density == 0)) {
     PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-    __PYX_ERR(0, 121, __pyx_L1_error)
+    __PYX_ERR(0, 140, __pyx_L1_error)
   }
   __pyx_r = sqrt((__pyx_t_9 / __pyx_v_density));
   goto __pyx_L0;
 
-  /* "phd/equation_state/equation_state.pyx":119
+  /* "phd/equation_state/equation_state.pyx":131
  *             p.data[i] = (e.data[i]/vol.data[i] - .5*d.data[i]*v_sq)*(self.gamma-1.)
  * 
  *     cpdef np.float64_t sound_speed(self, np.float64_t density, np.float64_t pressure):             # <<<<<<<<<<<<<<
- *         """Sound speed of particle."""
- *         return sqrt(self.gamma*pressure/density)
+ *         """Sound speed of particle.
+ * 
  */
 
   /* function exit code */
@@ -4375,7 +4375,7 @@ static __pyx_t_5numpy_float64_t __pyx_f_3phd_14equation_state_14equation_state_8
 
 /* Python wrapper */
 static PyObject *__pyx_pw_3phd_14equation_state_14equation_state_8IdealGas_7sound_speed(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_3phd_14equation_state_14equation_state_8IdealGas_6sound_speed[] = "Sound speed of particle.";
+static char __pyx_doc_3phd_14equation_state_14equation_state_8IdealGas_6sound_speed[] = "Sound speed of particle.\n\n        Parameters\n        ----------\n        density : float\n        pressure : float\n            \n        ";
 static PyObject *__pyx_pw_3phd_14equation_state_14equation_state_8IdealGas_7sound_speed(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   __pyx_t_5numpy_float64_t __pyx_v_density;
   __pyx_t_5numpy_float64_t __pyx_v_pressure;
@@ -4408,11 +4408,11 @@ static PyObject *__pyx_pw_3phd_14equation_state_14equation_state_8IdealGas_7soun
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_pressure)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("sound_speed", 1, 2, 2, 1); __PYX_ERR(0, 119, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("sound_speed", 1, 2, 2, 1); __PYX_ERR(0, 131, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "sound_speed") < 0)) __PYX_ERR(0, 119, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "sound_speed") < 0)) __PYX_ERR(0, 131, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -4420,12 +4420,12 @@ static PyObject *__pyx_pw_3phd_14equation_state_14equation_state_8IdealGas_7soun
       values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
       values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
     }
-    __pyx_v_density = __pyx_PyFloat_AsDouble(values[0]); if (unlikely((__pyx_v_density == ((npy_float64)-1)) && PyErr_Occurred())) __PYX_ERR(0, 119, __pyx_L3_error)
-    __pyx_v_pressure = __pyx_PyFloat_AsDouble(values[1]); if (unlikely((__pyx_v_pressure == ((npy_float64)-1)) && PyErr_Occurred())) __PYX_ERR(0, 119, __pyx_L3_error)
+    __pyx_v_density = __pyx_PyFloat_AsDouble(values[0]); if (unlikely((__pyx_v_density == ((npy_float64)-1)) && PyErr_Occurred())) __PYX_ERR(0, 131, __pyx_L3_error)
+    __pyx_v_pressure = __pyx_PyFloat_AsDouble(values[1]); if (unlikely((__pyx_v_pressure == ((npy_float64)-1)) && PyErr_Occurred())) __PYX_ERR(0, 131, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("sound_speed", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 119, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("sound_speed", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 131, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("phd.equation_state.equation_state.IdealGas.sound_speed", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -4447,7 +4447,7 @@ static PyObject *__pyx_pf_3phd_14equation_state_14equation_state_8IdealGas_6soun
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("sound_speed", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_f_3phd_14equation_state_14equation_state_8IdealGas_sound_speed(__pyx_v_self, __pyx_v_density, __pyx_v_pressure, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 119, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_f_3phd_14equation_state_14equation_state_8IdealGas_sound_speed(__pyx_v_self, __pyx_v_density, __pyx_v_pressure, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 131, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -4464,7 +4464,7 @@ static PyObject *__pyx_pf_3phd_14equation_state_14equation_state_8IdealGas_6soun
   return __pyx_r;
 }
 
-/* "phd/equation_state/equation_state.pyx":123
+/* "phd/equation_state/equation_state.pyx":142
  *         return sqrt(self.gamma*pressure/density)
  * 
  *     cpdef np.float64_t get_gamma(self):             # <<<<<<<<<<<<<<
@@ -4494,7 +4494,7 @@ static __pyx_t_5numpy_float64_t __pyx_f_3phd_14equation_state_14equation_state_8
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_type_dict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get_gamma); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 123, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get_gamma); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 142, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_3phd_14equation_state_14equation_state_8IdealGas_9get_gamma)) {
         __Pyx_INCREF(__pyx_t_1);
@@ -4510,10 +4510,10 @@ static __pyx_t_5numpy_float64_t __pyx_f_3phd_14equation_state_14equation_state_8
         }
         __pyx_t_2 = (__pyx_t_4) ? __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4) : __Pyx_PyObject_CallNoArg(__pyx_t_3);
         __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 123, __pyx_L1_error)
+        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 142, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-        __pyx_t_5 = __pyx_PyFloat_AsDouble(__pyx_t_2); if (unlikely((__pyx_t_5 == ((npy_float64)-1)) && PyErr_Occurred())) __PYX_ERR(0, 123, __pyx_L1_error)
+        __pyx_t_5 = __pyx_PyFloat_AsDouble(__pyx_t_2); if (unlikely((__pyx_t_5 == ((npy_float64)-1)) && PyErr_Occurred())) __PYX_ERR(0, 142, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         __pyx_r = __pyx_t_5;
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -4532,7 +4532,7 @@ static __pyx_t_5numpy_float64_t __pyx_f_3phd_14equation_state_14equation_state_8
     #endif
   }
 
-  /* "phd/equation_state/equation_state.pyx":125
+  /* "phd/equation_state/equation_state.pyx":144
  *     cpdef np.float64_t get_gamma(self):
  *         """Return ratio of specific heats."""
  *         return self.gamma             # <<<<<<<<<<<<<<
@@ -4540,7 +4540,7 @@ static __pyx_t_5numpy_float64_t __pyx_f_3phd_14equation_state_14equation_state_8
   __pyx_r = __pyx_v_self->__pyx_base.gamma;
   goto __pyx_L0;
 
-  /* "phd/equation_state/equation_state.pyx":123
+  /* "phd/equation_state/equation_state.pyx":142
  *         return sqrt(self.gamma*pressure/density)
  * 
  *     cpdef np.float64_t get_gamma(self):             # <<<<<<<<<<<<<<
@@ -4584,7 +4584,7 @@ static PyObject *__pyx_pf_3phd_14equation_state_14equation_state_8IdealGas_8get_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_gamma", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_f_3phd_14equation_state_14equation_state_8IdealGas_get_gamma(__pyx_v_self, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 123, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_f_3phd_14equation_state_14equation_state_8IdealGas_get_gamma(__pyx_v_self, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 142, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -6703,7 +6703,7 @@ static PyTypeObject __pyx_type_3phd_14equation_state_14equation_state_IdealGas =
   0, /*tp_setattro*/
   0, /*tp_as_buffer*/
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE, /*tp_flags*/
-  "Ideal gas law.\n\n    This class is responsible for going to and back form primitive and\n    conservative variables, generating sound speeds, pressure, and\n    energy.\n\n    Attributes\n    ----------\n    gamma : float\n        Ratio of specific heats.\n\n    ", /*tp_doc*/
+  "Ideal gas law.\n\n    This class is responsible for going to and back form primitive and\n    conservative variables, generating sound speeds, pressure, and\n    energy.\n\n    Attributes\n    ----------\n    gamma : float\n        Ratio of specific heats. Default value is 1.4\n\n    ", /*tp_doc*/
   0, /*tp_traverse*/
   0, /*tp_clear*/
   0, /*tp_richcompare*/
@@ -6842,7 +6842,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
 };
 static CYTHON_SMALL_CODE int __Pyx_InitCachedBuiltins(void) {
   __pyx_builtin_NotImplementedError = __Pyx_GetBuiltinName(__pyx_n_s_NotImplementedError); if (!__pyx_builtin_NotImplementedError) __PYX_ERR(0, 12, __pyx_L1_error)
-  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 67, __pyx_L1_error)
+  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 73, __pyx_L1_error)
   __pyx_builtin_ImportError = __Pyx_GetBuiltinName(__pyx_n_s_ImportError); if (!__pyx_builtin_ImportError) __PYX_ERR(3, 884, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;

@@ -4301,13 +4301,13 @@ static PyObject *__pyx_pf_3phd_10containers_10containers_15CarrayContainer_12res
  *             carr.resize(carray_size)
  * 
  *     def get_sendbufs(self, np.ndarray indices):             # <<<<<<<<<<<<<<
- *         """Slice out values from indices and store it a dictionary of numpy
+ *         """Slice out values from indices and store in a dictionary of numpy
  *         arrays.
  */
 
 /* Python wrapper */
 static PyObject *__pyx_pw_3phd_10containers_10containers_15CarrayContainer_15get_sendbufs(PyObject *__pyx_v_self, PyObject *__pyx_v_indices); /*proto*/
-static char __pyx_doc_3phd_10containers_10containers_15CarrayContainer_14get_sendbufs[] = "Slice out values from indices and store it a dictionary of numpy\n        arrays.\n\n        Parameters\n        ----------\n        indices : np.ndarray\n            Indices to copy values from.\n\n        Returns\n        -------\n        dict\n            Dictionary of numpy arrays of selected data by indices.\n        ";
+static char __pyx_doc_3phd_10containers_10containers_15CarrayContainer_14get_sendbufs[] = "Slice out values from indices and store in a dictionary of numpy\n        arrays.\n\n        Parameters\n        ----------\n        indices : np.ndarray\n            Indices to copy values from.\n\n        Returns\n        -------\n        dict : dict\n            Dictionary of numpy arrays of selected data by indices.\n        ";
 static PyObject *__pyx_pw_3phd_10containers_10containers_15CarrayContainer_15get_sendbufs(PyObject *__pyx_v_self, PyObject *__pyx_v_indices) {
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
@@ -4415,7 +4415,7 @@ static PyObject *__pyx_pf_3phd_10containers_10containers_15CarrayContainer_14get
  *             carr.resize(carray_size)
  * 
  *     def get_sendbufs(self, np.ndarray indices):             # <<<<<<<<<<<<<<
- *         """Slice out values from indices and store it a dictionary of numpy
+ *         """Slice out values from indices and store in a dictionary of numpy
  *         arrays.
  */
 
@@ -4756,7 +4756,7 @@ static int __pyx_f_3phd_10containers_10containers_15CarrayContainer_append_conta
 
 /* Python wrapper */
 static PyObject *__pyx_pw_3phd_10containers_10containers_15CarrayContainer_17append_container(PyObject *__pyx_v_self, PyObject *__pyx_v_container); /*proto*/
-static char __pyx_doc_3phd_10containers_10containers_15CarrayContainer_16append_container[] = "Append a container to current container. Carrays that are\n        not there in self will not be added.\n\n        Parameters\n        ----------\n        container : Container\n            Container that will be append to self.\n\n        ";
+static char __pyx_doc_3phd_10containers_10containers_15CarrayContainer_16append_container[] = "Append a container to current container. Carrays that are\n        not there in self will not be added.\n\n        Parameters\n        ----------\n        container : CarrayContainer\n            Container that will be appended to self.\n\n        ";
 static PyObject *__pyx_pw_3phd_10containers_10containers_15CarrayContainer_17append_container(PyObject *__pyx_v_self, PyObject *__pyx_v_container) {
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
@@ -5700,18 +5700,18 @@ static PyObject *__pyx_f_3phd_10containers_10containers_15CarrayContainer_copy(s
     #endif
   }
 
-  /* "phd/containers/containers.pyx":289
+  /* "phd/containers/containers.pyx":291
  * 
  *         # resize array
  *         self.resize(indices.length)             # <<<<<<<<<<<<<<
  * 
  *         # copy the required indices for each property
  */
-  __pyx_t_1 = ((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_self->__pyx_vtab)->resize(__pyx_v_self, __pyx_v_indices->__pyx_base.length, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 289, __pyx_L1_error)
+  __pyx_t_1 = ((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_self->__pyx_vtab)->resize(__pyx_v_self, __pyx_v_indices->__pyx_base.length, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 291, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "phd/containers/containers.pyx":292
+  /* "phd/containers/containers.pyx":294
  * 
  *         # copy the required indices for each property
  *         for carray_name in carray_list_names:             # <<<<<<<<<<<<<<
@@ -5720,57 +5720,57 @@ static PyObject *__pyx_f_3phd_10containers_10containers_15CarrayContainer_copy(s
  */
   if (unlikely(__pyx_v_carray_list_names == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-    __PYX_ERR(0, 292, __pyx_L1_error)
+    __PYX_ERR(0, 294, __pyx_L1_error)
   }
   __pyx_t_1 = __pyx_v_carray_list_names; __Pyx_INCREF(__pyx_t_1); __pyx_t_7 = 0;
   for (;;) {
     if (__pyx_t_7 >= PyList_GET_SIZE(__pyx_t_1)) break;
     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-    __pyx_t_2 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_7); __Pyx_INCREF(__pyx_t_2); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 292, __pyx_L1_error)
+    __pyx_t_2 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_7); __Pyx_INCREF(__pyx_t_2); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 294, __pyx_L1_error)
     #else
-    __pyx_t_2 = PySequence_ITEM(__pyx_t_1, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 292, __pyx_L1_error)
+    __pyx_t_2 = PySequence_ITEM(__pyx_t_1, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 294, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     #endif
-    if (!(likely(PyString_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 292, __pyx_L1_error)
+    if (!(likely(PyString_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 294, __pyx_L1_error)
     __Pyx_XDECREF_SET(__pyx_v_carray_name, ((PyObject*)__pyx_t_2));
     __pyx_t_2 = 0;
 
-    /* "phd/containers/containers.pyx":293
+    /* "phd/containers/containers.pyx":295
  *         # copy the required indices for each property
  *         for carray_name in carray_list_names:
  *             dst_array = self.get_carray(carray_name)             # <<<<<<<<<<<<<<
  *             src_array = container.get_carray(carray_name)
  *             src_array.copy_values(indices, dst_array)
  */
-    __pyx_t_2 = ((PyObject *)((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_self->__pyx_vtab)->get_carray(__pyx_v_self, __pyx_v_carray_name, 0)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 293, __pyx_L1_error)
+    __pyx_t_2 = ((PyObject *)((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_self->__pyx_vtab)->get_carray(__pyx_v_self, __pyx_v_carray_name, 0)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 295, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_XDECREF_SET(__pyx_v_dst_array, ((struct __pyx_obj_3phd_5utils_6carray_BaseArray *)__pyx_t_2));
     __pyx_t_2 = 0;
 
-    /* "phd/containers/containers.pyx":294
+    /* "phd/containers/containers.pyx":296
  *         for carray_name in carray_list_names:
  *             dst_array = self.get_carray(carray_name)
  *             src_array = container.get_carray(carray_name)             # <<<<<<<<<<<<<<
  *             src_array.copy_values(indices, dst_array)
  * 
  */
-    __pyx_t_2 = ((PyObject *)((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_container->__pyx_vtab)->get_carray(__pyx_v_container, __pyx_v_carray_name, 0)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 294, __pyx_L1_error)
+    __pyx_t_2 = ((PyObject *)((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_container->__pyx_vtab)->get_carray(__pyx_v_container, __pyx_v_carray_name, 0)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 296, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_XDECREF_SET(__pyx_v_src_array, ((struct __pyx_obj_3phd_5utils_6carray_BaseArray *)__pyx_t_2));
     __pyx_t_2 = 0;
 
-    /* "phd/containers/containers.pyx":295
+    /* "phd/containers/containers.pyx":297
  *             dst_array = self.get_carray(carray_name)
  *             src_array = container.get_carray(carray_name)
  *             src_array.copy_values(indices, dst_array)             # <<<<<<<<<<<<<<
  * 
  *     cpdef paste(self, CarrayContainer container, LongArray indices, list carray_list_names):
  */
-    __pyx_t_2 = ((struct __pyx_vtabstruct_3phd_5utils_6carray_BaseArray *)__pyx_v_src_array->__pyx_vtab)->copy_values(__pyx_v_src_array, __pyx_v_indices, __pyx_v_dst_array, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 295, __pyx_L1_error)
+    __pyx_t_2 = ((struct __pyx_vtabstruct_3phd_5utils_6carray_BaseArray *)__pyx_v_src_array->__pyx_vtab)->copy_values(__pyx_v_src_array, __pyx_v_indices, __pyx_v_dst_array, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 297, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "phd/containers/containers.pyx":292
+    /* "phd/containers/containers.pyx":294
  * 
  *         # copy the required indices for each property
  *         for carray_name in carray_list_names:             # <<<<<<<<<<<<<<
@@ -5810,7 +5810,7 @@ static PyObject *__pyx_f_3phd_10containers_10containers_15CarrayContainer_copy(s
 
 /* Python wrapper */
 static PyObject *__pyx_pw_3phd_10containers_10containers_15CarrayContainer_23copy(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_3phd_10containers_10containers_15CarrayContainer_22copy[] = "Copy values at indices from container to this container. This is similar to\n        paste except the indices are from the source container. Self will be resized\n        all contents will be overwritten.\n\n        Parameters\n        ----------\n        container : CarrayContainer\n            Container with values that will be copied to self.\n\n        indices : LongArray\n            Indices of container to copy to self.\n\n        ";
+static char __pyx_doc_3phd_10containers_10containers_15CarrayContainer_22copy[] = "Copy values at indices from container to this container. This is similar to\n        paste except the indices are from the source container. Self will be resized\n        all contents will be overwritten.\n\n        Parameters\n        ----------\n        container : CarrayContainer\n            Container with values that will be copied to self.\n\n        indices : LongArray\n            Indices of container to copy to self.\n        \n        carray_list_names : list\n            List of container names between which to copy values.\n        ";
 static PyObject *__pyx_pw_3phd_10containers_10containers_15CarrayContainer_23copy(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   struct __pyx_obj_3phd_10containers_10containers_CarrayContainer *__pyx_v_container = 0;
   struct __pyx_obj_3phd_5utils_6carray_LongArray *__pyx_v_indices = 0;
@@ -5917,7 +5917,7 @@ static PyObject *__pyx_pf_3phd_10containers_10containers_15CarrayContainer_22cop
   return __pyx_r;
 }
 
-/* "phd/containers/containers.pyx":297
+/* "phd/containers/containers.pyx":299
  *             src_array.copy_values(indices, dst_array)
  * 
  *     cpdef paste(self, CarrayContainer container, LongArray indices, list carray_list_names):             # <<<<<<<<<<<<<<
@@ -5953,7 +5953,7 @@ static PyObject *__pyx_f_3phd_10containers_10containers_15CarrayContainer_paste(
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_type_dict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_paste); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 297, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_paste); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 299, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_3phd_10containers_10containers_15CarrayContainer_25paste)) {
         __Pyx_XDECREF(__pyx_r);
@@ -5973,7 +5973,7 @@ static PyObject *__pyx_f_3phd_10containers_10containers_15CarrayContainer_paste(
         #if CYTHON_FAST_PYCALL
         if (PyFunction_Check(__pyx_t_3)) {
           PyObject *__pyx_temp[4] = {__pyx_t_4, ((PyObject *)__pyx_v_container), ((PyObject *)__pyx_v_indices), __pyx_v_carray_list_names};
-          __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_5, 3+__pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 297, __pyx_L1_error)
+          __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_5, 3+__pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 299, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
           __Pyx_GOTREF(__pyx_t_2);
         } else
@@ -5981,13 +5981,13 @@ static PyObject *__pyx_f_3phd_10containers_10containers_15CarrayContainer_paste(
         #if CYTHON_FAST_PYCCALL
         if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
           PyObject *__pyx_temp[4] = {__pyx_t_4, ((PyObject *)__pyx_v_container), ((PyObject *)__pyx_v_indices), __pyx_v_carray_list_names};
-          __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_5, 3+__pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 297, __pyx_L1_error)
+          __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_5, 3+__pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 299, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
           __Pyx_GOTREF(__pyx_t_2);
         } else
         #endif
         {
-          __pyx_t_6 = PyTuple_New(3+__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 297, __pyx_L1_error)
+          __pyx_t_6 = PyTuple_New(3+__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 299, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_6);
           if (__pyx_t_4) {
             __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_4); __pyx_t_4 = NULL;
@@ -6001,7 +6001,7 @@ static PyObject *__pyx_f_3phd_10containers_10containers_15CarrayContainer_paste(
           __Pyx_INCREF(__pyx_v_carray_list_names);
           __Pyx_GIVEREF(__pyx_v_carray_list_names);
           PyTuple_SET_ITEM(__pyx_t_6, 2+__pyx_t_5, __pyx_v_carray_list_names);
-          __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_6, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 297, __pyx_L1_error)
+          __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_6, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 299, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
         }
@@ -6024,7 +6024,7 @@ static PyObject *__pyx_f_3phd_10containers_10containers_15CarrayContainer_paste(
     #endif
   }
 
-  /* "phd/containers/containers.pyx":313
+  /* "phd/containers/containers.pyx":317
  *         cdef BaseArray dst_prop_array, src_prop_array
  * 
  *         if indices.length != container.get_carray_size():             # <<<<<<<<<<<<<<
@@ -6034,20 +6034,20 @@ static PyObject *__pyx_f_3phd_10containers_10containers_15CarrayContainer_paste(
   __pyx_t_7 = ((__pyx_v_indices->__pyx_base.length != ((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_container->__pyx_vtab)->get_carray_size(__pyx_v_container, 0)) != 0);
   if (unlikely(__pyx_t_7)) {
 
-    /* "phd/containers/containers.pyx":314
+    /* "phd/containers/containers.pyx":318
  * 
  *         if indices.length != container.get_carray_size():
  *             raise RuntimeError("ERROR: inconsistent carray sizes!")             # <<<<<<<<<<<<<<
  * 
  *         # copy the required indices for each property
  */
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_tuple__5, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 314, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_tuple__5, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 318, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_Raise(__pyx_t_1, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __PYX_ERR(0, 314, __pyx_L1_error)
+    __PYX_ERR(0, 318, __pyx_L1_error)
 
-    /* "phd/containers/containers.pyx":313
+    /* "phd/containers/containers.pyx":317
  *         cdef BaseArray dst_prop_array, src_prop_array
  * 
  *         if indices.length != container.get_carray_size():             # <<<<<<<<<<<<<<
@@ -6056,7 +6056,7 @@ static PyObject *__pyx_f_3phd_10containers_10containers_15CarrayContainer_paste(
  */
   }
 
-  /* "phd/containers/containers.pyx":317
+  /* "phd/containers/containers.pyx":321
  * 
  *         # copy the required indices for each property
  *         for carray_name in carray_list_names:             # <<<<<<<<<<<<<<
@@ -6065,57 +6065,57 @@ static PyObject *__pyx_f_3phd_10containers_10containers_15CarrayContainer_paste(
  */
   if (unlikely(__pyx_v_carray_list_names == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-    __PYX_ERR(0, 317, __pyx_L1_error)
+    __PYX_ERR(0, 321, __pyx_L1_error)
   }
   __pyx_t_1 = __pyx_v_carray_list_names; __Pyx_INCREF(__pyx_t_1); __pyx_t_8 = 0;
   for (;;) {
     if (__pyx_t_8 >= PyList_GET_SIZE(__pyx_t_1)) break;
     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-    __pyx_t_2 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_8); __Pyx_INCREF(__pyx_t_2); __pyx_t_8++; if (unlikely(0 < 0)) __PYX_ERR(0, 317, __pyx_L1_error)
+    __pyx_t_2 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_8); __Pyx_INCREF(__pyx_t_2); __pyx_t_8++; if (unlikely(0 < 0)) __PYX_ERR(0, 321, __pyx_L1_error)
     #else
-    __pyx_t_2 = PySequence_ITEM(__pyx_t_1, __pyx_t_8); __pyx_t_8++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 317, __pyx_L1_error)
+    __pyx_t_2 = PySequence_ITEM(__pyx_t_1, __pyx_t_8); __pyx_t_8++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 321, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     #endif
-    if (!(likely(PyString_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 317, __pyx_L1_error)
+    if (!(likely(PyString_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 321, __pyx_L1_error)
     __Pyx_XDECREF_SET(__pyx_v_carray_name, ((PyObject*)__pyx_t_2));
     __pyx_t_2 = 0;
 
-    /* "phd/containers/containers.pyx":318
+    /* "phd/containers/containers.pyx":322
  *         # copy the required indices for each property
  *         for carray_name in carray_list_names:
  *             dst_array = self.get_carray(carray_name)             # <<<<<<<<<<<<<<
  *             src_array = container.get_carray(carray_name)
  *             src_array.paste_values(indices, dst_array)
  */
-    __pyx_t_2 = ((PyObject *)((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_self->__pyx_vtab)->get_carray(__pyx_v_self, __pyx_v_carray_name, 0)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 318, __pyx_L1_error)
+    __pyx_t_2 = ((PyObject *)((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_self->__pyx_vtab)->get_carray(__pyx_v_self, __pyx_v_carray_name, 0)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 322, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_XDECREF_SET(__pyx_v_dst_array, ((struct __pyx_obj_3phd_5utils_6carray_BaseArray *)__pyx_t_2));
     __pyx_t_2 = 0;
 
-    /* "phd/containers/containers.pyx":319
+    /* "phd/containers/containers.pyx":323
  *         for carray_name in carray_list_names:
  *             dst_array = self.get_carray(carray_name)
  *             src_array = container.get_carray(carray_name)             # <<<<<<<<<<<<<<
  *             src_array.paste_values(indices, dst_array)
  * 
  */
-    __pyx_t_2 = ((PyObject *)((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_container->__pyx_vtab)->get_carray(__pyx_v_container, __pyx_v_carray_name, 0)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 319, __pyx_L1_error)
+    __pyx_t_2 = ((PyObject *)((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_container->__pyx_vtab)->get_carray(__pyx_v_container, __pyx_v_carray_name, 0)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 323, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_XDECREF_SET(__pyx_v_src_array, ((struct __pyx_obj_3phd_5utils_6carray_BaseArray *)__pyx_t_2));
     __pyx_t_2 = 0;
 
-    /* "phd/containers/containers.pyx":320
+    /* "phd/containers/containers.pyx":324
  *             dst_array = self.get_carray(carray_name)
  *             src_array = container.get_carray(carray_name)
  *             src_array.paste_values(indices, dst_array)             # <<<<<<<<<<<<<<
  * 
  *     cpdef add(self, CarrayContainer container, LongArray indices, list carray_list_names):
  */
-    __pyx_t_2 = ((struct __pyx_vtabstruct_3phd_5utils_6carray_BaseArray *)__pyx_v_src_array->__pyx_vtab)->paste_values(__pyx_v_src_array, __pyx_v_indices, __pyx_v_dst_array, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 320, __pyx_L1_error)
+    __pyx_t_2 = ((struct __pyx_vtabstruct_3phd_5utils_6carray_BaseArray *)__pyx_v_src_array->__pyx_vtab)->paste_values(__pyx_v_src_array, __pyx_v_indices, __pyx_v_dst_array, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 324, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "phd/containers/containers.pyx":317
+    /* "phd/containers/containers.pyx":321
  * 
  *         # copy the required indices for each property
  *         for carray_name in carray_list_names:             # <<<<<<<<<<<<<<
@@ -6125,7 +6125,7 @@ static PyObject *__pyx_f_3phd_10containers_10containers_15CarrayContainer_paste(
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "phd/containers/containers.pyx":297
+  /* "phd/containers/containers.pyx":299
  *             src_array.copy_values(indices, dst_array)
  * 
  *     cpdef paste(self, CarrayContainer container, LongArray indices, list carray_list_names):             # <<<<<<<<<<<<<<
@@ -6155,7 +6155,7 @@ static PyObject *__pyx_f_3phd_10containers_10containers_15CarrayContainer_paste(
 
 /* Python wrapper */
 static PyObject *__pyx_pw_3phd_10containers_10containers_15CarrayContainer_25paste(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_3phd_10containers_10containers_15CarrayContainer_24paste[] = "Copy values from container to this container at given indices. The\n        input agrument should be the same size of indices.\n\n        Parameters\n        ----------\n        container : CarrayContainer\n            Container where values will be taken from.\n\n        indices : LongArray\n            Indices to place copy values.\n\n        ";
+static char __pyx_doc_3phd_10containers_10containers_15CarrayContainer_24paste[] = "Copy values from container to this container at given indices. The\n        input agrument should be the same size of indices.\n\n        Parameters\n        ----------\n        container : CarrayContainer\n            Container where values will be taken from.\n\n        indices : LongArray\n            Indices to place copied values.\n\n        carray_list_names : list\n            List of container names between which to paste values.\n        ";
 static PyObject *__pyx_pw_3phd_10containers_10containers_15CarrayContainer_25paste(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   struct __pyx_obj_3phd_10containers_10containers_CarrayContainer *__pyx_v_container = 0;
   struct __pyx_obj_3phd_5utils_6carray_LongArray *__pyx_v_indices = 0;
@@ -6191,17 +6191,17 @@ static PyObject *__pyx_pw_3phd_10containers_10containers_15CarrayContainer_25pas
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_indices)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("paste", 1, 3, 3, 1); __PYX_ERR(0, 297, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("paste", 1, 3, 3, 1); __PYX_ERR(0, 299, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_carray_list_names)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("paste", 1, 3, 3, 2); __PYX_ERR(0, 297, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("paste", 1, 3, 3, 2); __PYX_ERR(0, 299, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "paste") < 0)) __PYX_ERR(0, 297, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "paste") < 0)) __PYX_ERR(0, 299, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 3) {
       goto __pyx_L5_argtuple_error;
@@ -6216,15 +6216,15 @@ static PyObject *__pyx_pw_3phd_10containers_10containers_15CarrayContainer_25pas
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("paste", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 297, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("paste", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 299, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("phd.containers.containers.CarrayContainer.paste", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_container), __pyx_ptype_3phd_10containers_10containers_CarrayContainer, 1, "container", 0))) __PYX_ERR(0, 297, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_indices), __pyx_ptype_3phd_5utils_6carray_LongArray, 1, "indices", 0))) __PYX_ERR(0, 297, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_carray_list_names), (&PyList_Type), 1, "carray_list_names", 1))) __PYX_ERR(0, 297, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_container), __pyx_ptype_3phd_10containers_10containers_CarrayContainer, 1, "container", 0))) __PYX_ERR(0, 299, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_indices), __pyx_ptype_3phd_5utils_6carray_LongArray, 1, "indices", 0))) __PYX_ERR(0, 299, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_carray_list_names), (&PyList_Type), 1, "carray_list_names", 1))) __PYX_ERR(0, 299, __pyx_L1_error)
   __pyx_r = __pyx_pf_3phd_10containers_10containers_15CarrayContainer_24paste(((struct __pyx_obj_3phd_10containers_10containers_CarrayContainer *)__pyx_v_self), __pyx_v_container, __pyx_v_indices, __pyx_v_carray_list_names);
 
   /* function exit code */
@@ -6245,7 +6245,7 @@ static PyObject *__pyx_pf_3phd_10containers_10containers_15CarrayContainer_24pas
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("paste", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_3phd_10containers_10containers_15CarrayContainer_paste(__pyx_v_self, __pyx_v_container, __pyx_v_indices, __pyx_v_carray_list_names, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 297, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_3phd_10containers_10containers_15CarrayContainer_paste(__pyx_v_self, __pyx_v_container, __pyx_v_indices, __pyx_v_carray_list_names, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 299, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -6262,7 +6262,7 @@ static PyObject *__pyx_pf_3phd_10containers_10containers_15CarrayContainer_24pas
   return __pyx_r;
 }
 
-/* "phd/containers/containers.pyx":322
+/* "phd/containers/containers.pyx":326
  *             src_array.paste_values(indices, dst_array)
  * 
  *     cpdef add(self, CarrayContainer container, LongArray indices, list carray_list_names):             # <<<<<<<<<<<<<<
@@ -6298,7 +6298,7 @@ static PyObject *__pyx_f_3phd_10containers_10containers_15CarrayContainer_add(st
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_type_dict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_add); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 322, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_add); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 326, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_3phd_10containers_10containers_15CarrayContainer_27add)) {
         __Pyx_XDECREF(__pyx_r);
@@ -6318,7 +6318,7 @@ static PyObject *__pyx_f_3phd_10containers_10containers_15CarrayContainer_add(st
         #if CYTHON_FAST_PYCALL
         if (PyFunction_Check(__pyx_t_3)) {
           PyObject *__pyx_temp[4] = {__pyx_t_4, ((PyObject *)__pyx_v_container), ((PyObject *)__pyx_v_indices), __pyx_v_carray_list_names};
-          __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_5, 3+__pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 322, __pyx_L1_error)
+          __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_5, 3+__pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 326, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
           __Pyx_GOTREF(__pyx_t_2);
         } else
@@ -6326,13 +6326,13 @@ static PyObject *__pyx_f_3phd_10containers_10containers_15CarrayContainer_add(st
         #if CYTHON_FAST_PYCCALL
         if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
           PyObject *__pyx_temp[4] = {__pyx_t_4, ((PyObject *)__pyx_v_container), ((PyObject *)__pyx_v_indices), __pyx_v_carray_list_names};
-          __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_5, 3+__pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 322, __pyx_L1_error)
+          __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_5, 3+__pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 326, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
           __Pyx_GOTREF(__pyx_t_2);
         } else
         #endif
         {
-          __pyx_t_6 = PyTuple_New(3+__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 322, __pyx_L1_error)
+          __pyx_t_6 = PyTuple_New(3+__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 326, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_6);
           if (__pyx_t_4) {
             __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_4); __pyx_t_4 = NULL;
@@ -6346,7 +6346,7 @@ static PyObject *__pyx_f_3phd_10containers_10containers_15CarrayContainer_add(st
           __Pyx_INCREF(__pyx_v_carray_list_names);
           __Pyx_GIVEREF(__pyx_v_carray_list_names);
           PyTuple_SET_ITEM(__pyx_t_6, 2+__pyx_t_5, __pyx_v_carray_list_names);
-          __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_6, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 322, __pyx_L1_error)
+          __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_6, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 326, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
         }
@@ -6369,7 +6369,7 @@ static PyObject *__pyx_f_3phd_10containers_10containers_15CarrayContainer_add(st
     #endif
   }
 
-  /* "phd/containers/containers.pyx":338
+  /* "phd/containers/containers.pyx":344
  *         cdef BaseArray dst_carray, src_carray
  * 
  *         if indices.length != container.get_carray_size():             # <<<<<<<<<<<<<<
@@ -6379,20 +6379,20 @@ static PyObject *__pyx_f_3phd_10containers_10containers_15CarrayContainer_add(st
   __pyx_t_7 = ((__pyx_v_indices->__pyx_base.length != ((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_container->__pyx_vtab)->get_carray_size(__pyx_v_container, 0)) != 0);
   if (unlikely(__pyx_t_7)) {
 
-    /* "phd/containers/containers.pyx":339
+    /* "phd/containers/containers.pyx":345
  * 
  *         if indices.length != container.get_carray_size():
  *             raise RuntimeError("ERROR: inconsistent carray sizes!")             # <<<<<<<<<<<<<<
  * 
  *         # copy the required indices for each property
  */
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_tuple__5, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 339, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_tuple__5, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 345, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_Raise(__pyx_t_1, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __PYX_ERR(0, 339, __pyx_L1_error)
+    __PYX_ERR(0, 345, __pyx_L1_error)
 
-    /* "phd/containers/containers.pyx":338
+    /* "phd/containers/containers.pyx":344
  *         cdef BaseArray dst_carray, src_carray
  * 
  *         if indices.length != container.get_carray_size():             # <<<<<<<<<<<<<<
@@ -6401,7 +6401,7 @@ static PyObject *__pyx_f_3phd_10containers_10containers_15CarrayContainer_add(st
  */
   }
 
-  /* "phd/containers/containers.pyx":342
+  /* "phd/containers/containers.pyx":348
  * 
  *         # copy the required indices for each property
  *         for carray_name in carray_list_names:             # <<<<<<<<<<<<<<
@@ -6410,57 +6410,57 @@ static PyObject *__pyx_f_3phd_10containers_10containers_15CarrayContainer_add(st
  */
   if (unlikely(__pyx_v_carray_list_names == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-    __PYX_ERR(0, 342, __pyx_L1_error)
+    __PYX_ERR(0, 348, __pyx_L1_error)
   }
   __pyx_t_1 = __pyx_v_carray_list_names; __Pyx_INCREF(__pyx_t_1); __pyx_t_8 = 0;
   for (;;) {
     if (__pyx_t_8 >= PyList_GET_SIZE(__pyx_t_1)) break;
     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-    __pyx_t_2 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_8); __Pyx_INCREF(__pyx_t_2); __pyx_t_8++; if (unlikely(0 < 0)) __PYX_ERR(0, 342, __pyx_L1_error)
+    __pyx_t_2 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_8); __Pyx_INCREF(__pyx_t_2); __pyx_t_8++; if (unlikely(0 < 0)) __PYX_ERR(0, 348, __pyx_L1_error)
     #else
-    __pyx_t_2 = PySequence_ITEM(__pyx_t_1, __pyx_t_8); __pyx_t_8++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 342, __pyx_L1_error)
+    __pyx_t_2 = PySequence_ITEM(__pyx_t_1, __pyx_t_8); __pyx_t_8++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 348, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     #endif
-    if (!(likely(PyString_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 342, __pyx_L1_error)
+    if (!(likely(PyString_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 348, __pyx_L1_error)
     __Pyx_XDECREF_SET(__pyx_v_carray_name, ((PyObject*)__pyx_t_2));
     __pyx_t_2 = 0;
 
-    /* "phd/containers/containers.pyx":343
+    /* "phd/containers/containers.pyx":349
  *         # copy the required indices for each property
  *         for carray_name in carray_list_names:
  *             dst_carray = self.get_carray(carray_name)             # <<<<<<<<<<<<<<
  *             src_carray = container.get_carray(carray_name)
  *             src_carray.add_values(indices, dst_carray)
  */
-    __pyx_t_2 = ((PyObject *)((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_self->__pyx_vtab)->get_carray(__pyx_v_self, __pyx_v_carray_name, 0)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 343, __pyx_L1_error)
+    __pyx_t_2 = ((PyObject *)((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_self->__pyx_vtab)->get_carray(__pyx_v_self, __pyx_v_carray_name, 0)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 349, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_XDECREF_SET(__pyx_v_dst_carray, ((struct __pyx_obj_3phd_5utils_6carray_BaseArray *)__pyx_t_2));
     __pyx_t_2 = 0;
 
-    /* "phd/containers/containers.pyx":344
+    /* "phd/containers/containers.pyx":350
  *         for carray_name in carray_list_names:
  *             dst_carray = self.get_carray(carray_name)
  *             src_carray = container.get_carray(carray_name)             # <<<<<<<<<<<<<<
  *             src_carray.add_values(indices, dst_carray)
  * 
  */
-    __pyx_t_2 = ((PyObject *)((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_container->__pyx_vtab)->get_carray(__pyx_v_container, __pyx_v_carray_name, 0)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 344, __pyx_L1_error)
+    __pyx_t_2 = ((PyObject *)((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_container->__pyx_vtab)->get_carray(__pyx_v_container, __pyx_v_carray_name, 0)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 350, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_XDECREF_SET(__pyx_v_src_carray, ((struct __pyx_obj_3phd_5utils_6carray_BaseArray *)__pyx_t_2));
     __pyx_t_2 = 0;
 
-    /* "phd/containers/containers.pyx":345
+    /* "phd/containers/containers.pyx":351
  *             dst_carray = self.get_carray(carray_name)
  *             src_carray = container.get_carray(carray_name)
  *             src_carray.add_values(indices, dst_carray)             # <<<<<<<<<<<<<<
  * 
  *     cpdef remove_tagged_particles(self, np.int8_t tag):
  */
-    __pyx_t_2 = ((struct __pyx_vtabstruct_3phd_5utils_6carray_BaseArray *)__pyx_v_src_carray->__pyx_vtab)->add_values(__pyx_v_src_carray, __pyx_v_indices, __pyx_v_dst_carray, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 345, __pyx_L1_error)
+    __pyx_t_2 = ((struct __pyx_vtabstruct_3phd_5utils_6carray_BaseArray *)__pyx_v_src_carray->__pyx_vtab)->add_values(__pyx_v_src_carray, __pyx_v_indices, __pyx_v_dst_carray, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 351, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "phd/containers/containers.pyx":342
+    /* "phd/containers/containers.pyx":348
  * 
  *         # copy the required indices for each property
  *         for carray_name in carray_list_names:             # <<<<<<<<<<<<<<
@@ -6470,7 +6470,7 @@ static PyObject *__pyx_f_3phd_10containers_10containers_15CarrayContainer_add(st
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "phd/containers/containers.pyx":322
+  /* "phd/containers/containers.pyx":326
  *             src_array.paste_values(indices, dst_array)
  * 
  *     cpdef add(self, CarrayContainer container, LongArray indices, list carray_list_names):             # <<<<<<<<<<<<<<
@@ -6500,7 +6500,7 @@ static PyObject *__pyx_f_3phd_10containers_10containers_15CarrayContainer_add(st
 
 /* Python wrapper */
 static PyObject *__pyx_pw_3phd_10containers_10containers_15CarrayContainer_27add(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_3phd_10containers_10containers_15CarrayContainer_26add[] = "Add values from container to this container at given indices. The\n        input agrument should be the same size of indices.\n\n        Parameters\n        ----------\n        container : CarrayContainer\n            Container where values will be taken from.\n\n        indices : LongArray\n            Indices to add values to.\n\n        ";
+static char __pyx_doc_3phd_10containers_10containers_15CarrayContainer_26add[] = "Add values from container to this container at given indices. The\n        input agrument should be the same size of indices.\n\n        Parameters\n        ----------\n        container : CarrayContainer\n            Container where values will be taken from.\n\n        indices : LongArray\n            Indices to add values to.\n        \n        carray_list_names : list\n            List of container names.\n        ";
 static PyObject *__pyx_pw_3phd_10containers_10containers_15CarrayContainer_27add(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   struct __pyx_obj_3phd_10containers_10containers_CarrayContainer *__pyx_v_container = 0;
   struct __pyx_obj_3phd_5utils_6carray_LongArray *__pyx_v_indices = 0;
@@ -6536,17 +6536,17 @@ static PyObject *__pyx_pw_3phd_10containers_10containers_15CarrayContainer_27add
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_indices)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("add", 1, 3, 3, 1); __PYX_ERR(0, 322, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("add", 1, 3, 3, 1); __PYX_ERR(0, 326, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_carray_list_names)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("add", 1, 3, 3, 2); __PYX_ERR(0, 322, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("add", 1, 3, 3, 2); __PYX_ERR(0, 326, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "add") < 0)) __PYX_ERR(0, 322, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "add") < 0)) __PYX_ERR(0, 326, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 3) {
       goto __pyx_L5_argtuple_error;
@@ -6561,15 +6561,15 @@ static PyObject *__pyx_pw_3phd_10containers_10containers_15CarrayContainer_27add
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("add", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 322, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("add", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 326, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("phd.containers.containers.CarrayContainer.add", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_container), __pyx_ptype_3phd_10containers_10containers_CarrayContainer, 1, "container", 0))) __PYX_ERR(0, 322, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_indices), __pyx_ptype_3phd_5utils_6carray_LongArray, 1, "indices", 0))) __PYX_ERR(0, 322, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_carray_list_names), (&PyList_Type), 1, "carray_list_names", 1))) __PYX_ERR(0, 322, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_container), __pyx_ptype_3phd_10containers_10containers_CarrayContainer, 1, "container", 0))) __PYX_ERR(0, 326, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_indices), __pyx_ptype_3phd_5utils_6carray_LongArray, 1, "indices", 0))) __PYX_ERR(0, 326, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_carray_list_names), (&PyList_Type), 1, "carray_list_names", 1))) __PYX_ERR(0, 326, __pyx_L1_error)
   __pyx_r = __pyx_pf_3phd_10containers_10containers_15CarrayContainer_26add(((struct __pyx_obj_3phd_10containers_10containers_CarrayContainer *)__pyx_v_self), __pyx_v_container, __pyx_v_indices, __pyx_v_carray_list_names);
 
   /* function exit code */
@@ -6590,7 +6590,7 @@ static PyObject *__pyx_pf_3phd_10containers_10containers_15CarrayContainer_26add
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("add", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_3phd_10containers_10containers_15CarrayContainer_add(__pyx_v_self, __pyx_v_container, __pyx_v_indices, __pyx_v_carray_list_names, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 322, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_3phd_10containers_10containers_15CarrayContainer_add(__pyx_v_self, __pyx_v_container, __pyx_v_indices, __pyx_v_carray_list_names, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 326, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -6607,7 +6607,7 @@ static PyObject *__pyx_pf_3phd_10containers_10containers_15CarrayContainer_26add
   return __pyx_r;
 }
 
-/* "phd/containers/containers.pyx":347
+/* "phd/containers/containers.pyx":353
  *             src_carray.add_values(indices, dst_carray)
  * 
  *     cpdef remove_tagged_particles(self, np.int8_t tag):             # <<<<<<<<<<<<<<
@@ -6646,11 +6646,11 @@ static PyObject *__pyx_f_3phd_10containers_10containers_15CarrayContainer_remove
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_type_dict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_remove_tagged_particles); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 347, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_remove_tagged_particles); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 353, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_3phd_10containers_10containers_15CarrayContainer_29remove_tagged_particles)) {
         __Pyx_XDECREF(__pyx_r);
-        __pyx_t_3 = __Pyx_PyInt_From_npy_int8(__pyx_v_tag); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 347, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyInt_From_npy_int8(__pyx_v_tag); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 353, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_INCREF(__pyx_t_1);
         __pyx_t_4 = __pyx_t_1; __pyx_t_5 = NULL;
@@ -6666,7 +6666,7 @@ static PyObject *__pyx_f_3phd_10containers_10containers_15CarrayContainer_remove
         __pyx_t_2 = (__pyx_t_5) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_5, __pyx_t_3) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3);
         __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 347, __pyx_L1_error)
+        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 353, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
         __pyx_r = __pyx_t_2;
@@ -6687,19 +6687,19 @@ static PyObject *__pyx_f_3phd_10containers_10containers_15CarrayContainer_remove
     #endif
   }
 
-  /* "phd/containers/containers.pyx":358
+  /* "phd/containers/containers.pyx":364
  *         """
  *         cdef int i
  *         cdef LongArray indices = LongArray()             # <<<<<<<<<<<<<<
  *         cdef IntArray tag_array = self.carrays["tag"]
  *         cdef np.int8_t* tagarrptr = tag_array.get_data_ptr()
  */
-  __pyx_t_1 = __Pyx_PyObject_CallNoArg(((PyObject *)__pyx_ptype_3phd_5utils_6carray_LongArray)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 358, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_CallNoArg(((PyObject *)__pyx_ptype_3phd_5utils_6carray_LongArray)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 364, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_indices = ((struct __pyx_obj_3phd_5utils_6carray_LongArray *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "phd/containers/containers.pyx":359
+  /* "phd/containers/containers.pyx":365
  *         cdef int i
  *         cdef LongArray indices = LongArray()
  *         cdef IntArray tag_array = self.carrays["tag"]             # <<<<<<<<<<<<<<
@@ -6708,15 +6708,15 @@ static PyObject *__pyx_f_3phd_10containers_10containers_15CarrayContainer_remove
  */
   if (unlikely(__pyx_v_self->carrays == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(0, 359, __pyx_L1_error)
+    __PYX_ERR(0, 365, __pyx_L1_error)
   }
-  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_self->carrays, __pyx_n_s_tag); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 359, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_self->carrays, __pyx_n_s_tag); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 365, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_3phd_5utils_6carray_IntArray))))) __PYX_ERR(0, 359, __pyx_L1_error)
+  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_3phd_5utils_6carray_IntArray))))) __PYX_ERR(0, 365, __pyx_L1_error)
   __pyx_v_tag_array = ((struct __pyx_obj_3phd_5utils_6carray_IntArray *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "phd/containers/containers.pyx":360
+  /* "phd/containers/containers.pyx":366
  *         cdef LongArray indices = LongArray()
  *         cdef IntArray tag_array = self.carrays["tag"]
  *         cdef np.int8_t* tagarrptr = tag_array.get_data_ptr()             # <<<<<<<<<<<<<<
@@ -6725,7 +6725,7 @@ static PyObject *__pyx_f_3phd_10containers_10containers_15CarrayContainer_remove
  */
   __pyx_v_tagarrptr = ((struct __pyx_vtabstruct_3phd_5utils_6carray_IntArray *)__pyx_v_tag_array->__pyx_base.__pyx_vtab)->get_data_ptr(__pyx_v_tag_array);
 
-  /* "phd/containers/containers.pyx":364
+  /* "phd/containers/containers.pyx":370
  * 
  *         # find the indices of the particles to be removed
  *         for i in range(tag_array.length):             # <<<<<<<<<<<<<<
@@ -6737,7 +6737,7 @@ static PyObject *__pyx_f_3phd_10containers_10containers_15CarrayContainer_remove
   for (__pyx_t_8 = 0; __pyx_t_8 < __pyx_t_7; __pyx_t_8+=1) {
     __pyx_v_i = __pyx_t_8;
 
-    /* "phd/containers/containers.pyx":365
+    /* "phd/containers/containers.pyx":371
  *         # find the indices of the particles to be removed
  *         for i in range(tag_array.length):
  *             if tagarrptr[i] == tag:             # <<<<<<<<<<<<<<
@@ -6747,18 +6747,18 @@ static PyObject *__pyx_f_3phd_10containers_10containers_15CarrayContainer_remove
     __pyx_t_9 = (((__pyx_v_tagarrptr[__pyx_v_i]) == __pyx_v_tag) != 0);
     if (__pyx_t_9) {
 
-      /* "phd/containers/containers.pyx":366
+      /* "phd/containers/containers.pyx":372
  *         for i in range(tag_array.length):
  *             if tagarrptr[i] == tag:
  *                 indices.append(i)             # <<<<<<<<<<<<<<
  * 
  *         # remove the particles
  */
-      __pyx_t_1 = ((struct __pyx_vtabstruct_3phd_5utils_6carray_LongArray *)__pyx_v_indices->__pyx_base.__pyx_vtab)->append(__pyx_v_indices, __pyx_v_i, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 366, __pyx_L1_error)
+      __pyx_t_1 = ((struct __pyx_vtabstruct_3phd_5utils_6carray_LongArray *)__pyx_v_indices->__pyx_base.__pyx_vtab)->append(__pyx_v_indices, __pyx_v_i, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 372, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-      /* "phd/containers/containers.pyx":365
+      /* "phd/containers/containers.pyx":371
  *         # find the indices of the particles to be removed
  *         for i in range(tag_array.length):
  *             if tagarrptr[i] == tag:             # <<<<<<<<<<<<<<
@@ -6768,30 +6768,30 @@ static PyObject *__pyx_f_3phd_10containers_10containers_15CarrayContainer_remove
     }
   }
 
-  /* "phd/containers/containers.pyx":369
+  /* "phd/containers/containers.pyx":375
  * 
  *         # remove the particles
  *         ind = indices.get_npy_array()             # <<<<<<<<<<<<<<
  *         self.remove_items(ind)
  * 
  */
-  __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_3phd_5utils_6carray_LongArray *)__pyx_v_indices->__pyx_base.__pyx_vtab)->__pyx_base.get_npy_array(((struct __pyx_obj_3phd_5utils_6carray_BaseArray *)__pyx_v_indices), 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 369, __pyx_L1_error)
+  __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_3phd_5utils_6carray_LongArray *)__pyx_v_indices->__pyx_base.__pyx_vtab)->__pyx_base.get_npy_array(((struct __pyx_obj_3phd_5utils_6carray_BaseArray *)__pyx_v_indices), 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 375, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_ind = ((PyArrayObject *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "phd/containers/containers.pyx":370
+  /* "phd/containers/containers.pyx":376
  *         # remove the particles
  *         ind = indices.get_npy_array()
  *         self.remove_items(ind)             # <<<<<<<<<<<<<<
  * 
  *     cdef void pointer_groups(self, np.float64_t *vec[], list carray_list_names):
  */
-  __pyx_t_1 = ((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_self->__pyx_vtab)->remove_items(__pyx_v_self, __pyx_v_ind, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 370, __pyx_L1_error)
+  __pyx_t_1 = ((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_self->__pyx_vtab)->remove_items(__pyx_v_self, __pyx_v_ind, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 376, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "phd/containers/containers.pyx":347
+  /* "phd/containers/containers.pyx":353
  *             src_carray.add_values(indices, dst_carray)
  * 
  *     cpdef remove_tagged_particles(self, np.int8_t tag):             # <<<<<<<<<<<<<<
@@ -6831,7 +6831,7 @@ static PyObject *__pyx_pw_3phd_10containers_10containers_15CarrayContainer_29rem
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("remove_tagged_particles (wrapper)", 0);
   assert(__pyx_arg_tag); {
-    __pyx_v_tag = __Pyx_PyInt_As_npy_int8(__pyx_arg_tag); if (unlikely((__pyx_v_tag == ((npy_int8)-1)) && PyErr_Occurred())) __PYX_ERR(0, 347, __pyx_L3_error)
+    __pyx_v_tag = __Pyx_PyInt_As_npy_int8(__pyx_arg_tag); if (unlikely((__pyx_v_tag == ((npy_int8)-1)) && PyErr_Occurred())) __PYX_ERR(0, 353, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -6855,7 +6855,7 @@ static PyObject *__pyx_pf_3phd_10containers_10containers_15CarrayContainer_28rem
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("remove_tagged_particles", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_3phd_10containers_10containers_15CarrayContainer_remove_tagged_particles(__pyx_v_self, __pyx_v_tag, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 347, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_3phd_10containers_10containers_15CarrayContainer_remove_tagged_particles(__pyx_v_self, __pyx_v_tag, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 353, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -6872,7 +6872,7 @@ static PyObject *__pyx_pf_3phd_10containers_10containers_15CarrayContainer_28rem
   return __pyx_r;
 }
 
-/* "phd/containers/containers.pyx":372
+/* "phd/containers/containers.pyx":378
  *         self.remove_items(ind)
  * 
  *     cdef void pointer_groups(self, np.float64_t *vec[], list carray_list_names):             # <<<<<<<<<<<<<<
@@ -6896,7 +6896,7 @@ static void __pyx_f_3phd_10containers_10containers_15CarrayContainer_pointer_gro
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("pointer_groups", 0);
 
-  /* "phd/containers/containers.pyx":388
+  /* "phd/containers/containers.pyx":394
  *         cdef DoubleArray arr
  * 
  *         i = 0             # <<<<<<<<<<<<<<
@@ -6905,7 +6905,7 @@ static void __pyx_f_3phd_10containers_10containers_15CarrayContainer_pointer_gro
  */
   __pyx_v_i = 0;
 
-  /* "phd/containers/containers.pyx":389
+  /* "phd/containers/containers.pyx":395
  * 
  *         i = 0
  *         for carray_name in carray_list_names:             # <<<<<<<<<<<<<<
@@ -6914,22 +6914,22 @@ static void __pyx_f_3phd_10containers_10containers_15CarrayContainer_pointer_gro
  */
   if (unlikely(__pyx_v_carray_list_names == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-    __PYX_ERR(0, 389, __pyx_L1_error)
+    __PYX_ERR(0, 395, __pyx_L1_error)
   }
   __pyx_t_1 = __pyx_v_carray_list_names; __Pyx_INCREF(__pyx_t_1); __pyx_t_2 = 0;
   for (;;) {
     if (__pyx_t_2 >= PyList_GET_SIZE(__pyx_t_1)) break;
     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-    __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_3); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 389, __pyx_L1_error)
+    __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_3); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 395, __pyx_L1_error)
     #else
-    __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 389, __pyx_L1_error)
+    __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 395, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     #endif
-    if (!(likely(PyString_CheckExact(__pyx_t_3))||((__pyx_t_3) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_3)->tp_name), 0))) __PYX_ERR(0, 389, __pyx_L1_error)
+    if (!(likely(PyString_CheckExact(__pyx_t_3))||((__pyx_t_3) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_3)->tp_name), 0))) __PYX_ERR(0, 395, __pyx_L1_error)
     __Pyx_XDECREF_SET(__pyx_v_carray_name, ((PyObject*)__pyx_t_3));
     __pyx_t_3 = 0;
 
-    /* "phd/containers/containers.pyx":390
+    /* "phd/containers/containers.pyx":396
  *         i = 0
  *         for carray_name in carray_list_names:
  *             if carray_name in list(self.carrays.keys()):             # <<<<<<<<<<<<<<
@@ -6938,26 +6938,26 @@ static void __pyx_f_3phd_10containers_10containers_15CarrayContainer_pointer_gro
  */
     if (unlikely(__pyx_v_self->carrays == Py_None)) {
       PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "keys");
-      __PYX_ERR(0, 390, __pyx_L1_error)
+      __PYX_ERR(0, 396, __pyx_L1_error)
     }
-    __pyx_t_3 = __Pyx_PyDict_Keys(__pyx_v_self->carrays); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 390, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyDict_Keys(__pyx_v_self->carrays); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 396, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = PySequence_List(__pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 390, __pyx_L1_error)
+    __pyx_t_4 = PySequence_List(__pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 396, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_5 = (__Pyx_PySequence_ContainsTF(__pyx_v_carray_name, __pyx_t_4, Py_EQ)); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 390, __pyx_L1_error)
+    __pyx_t_5 = (__Pyx_PySequence_ContainsTF(__pyx_v_carray_name, __pyx_t_4, Py_EQ)); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 396, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_t_6 = (__pyx_t_5 != 0);
     if (likely(__pyx_t_6)) {
 
-      /* "phd/containers/containers.pyx":391
+      /* "phd/containers/containers.pyx":397
  *         for carray_name in carray_list_names:
  *             if carray_name in list(self.carrays.keys()):
  *                 arr = <DoubleArray> self.get_carray(carray_name)             # <<<<<<<<<<<<<<
  *                 vec[i] = arr.get_data_ptr()
  *                 i += 1
  */
-      __pyx_t_4 = ((PyObject *)((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_self->__pyx_vtab)->get_carray(__pyx_v_self, __pyx_v_carray_name, 0)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 391, __pyx_L1_error)
+      __pyx_t_4 = ((PyObject *)((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_self->__pyx_vtab)->get_carray(__pyx_v_self, __pyx_v_carray_name, 0)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 397, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __pyx_t_3 = __pyx_t_4;
       __Pyx_INCREF(__pyx_t_3);
@@ -6965,7 +6965,7 @@ static void __pyx_f_3phd_10containers_10containers_15CarrayContainer_pointer_gro
       __Pyx_XDECREF_SET(__pyx_v_arr, ((struct __pyx_obj_3phd_5utils_6carray_DoubleArray *)__pyx_t_3));
       __pyx_t_3 = 0;
 
-      /* "phd/containers/containers.pyx":392
+      /* "phd/containers/containers.pyx":398
  *             if carray_name in list(self.carrays.keys()):
  *                 arr = <DoubleArray> self.get_carray(carray_name)
  *                 vec[i] = arr.get_data_ptr()             # <<<<<<<<<<<<<<
@@ -6974,7 +6974,7 @@ static void __pyx_f_3phd_10containers_10containers_15CarrayContainer_pointer_gro
  */
       (__pyx_v_vec[__pyx_v_i]) = ((struct __pyx_vtabstruct_3phd_5utils_6carray_DoubleArray *)__pyx_v_arr->__pyx_base.__pyx_vtab)->get_data_ptr(__pyx_v_arr);
 
-      /* "phd/containers/containers.pyx":393
+      /* "phd/containers/containers.pyx":399
  *                 arr = <DoubleArray> self.get_carray(carray_name)
  *                 vec[i] = arr.get_data_ptr()
  *                 i += 1             # <<<<<<<<<<<<<<
@@ -6983,7 +6983,7 @@ static void __pyx_f_3phd_10containers_10containers_15CarrayContainer_pointer_gro
  */
       __pyx_v_i = (__pyx_v_i + 1);
 
-      /* "phd/containers/containers.pyx":390
+      /* "phd/containers/containers.pyx":396
  *         i = 0
  *         for carray_name in carray_list_names:
  *             if carray_name in list(self.carrays.keys()):             # <<<<<<<<<<<<<<
@@ -6993,21 +6993,21 @@ static void __pyx_f_3phd_10containers_10containers_15CarrayContainer_pointer_gro
       goto __pyx_L5;
     }
 
-    /* "phd/containers/containers.pyx":395
+    /* "phd/containers/containers.pyx":401
  *                 i += 1
  *             else:
  *                 raise ValueError("ERROR: Unknown field!")             # <<<<<<<<<<<<<<
  */
     /*else*/ {
-      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__6, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 395, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__6, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 401, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_Raise(__pyx_t_3, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __PYX_ERR(0, 395, __pyx_L1_error)
+      __PYX_ERR(0, 401, __pyx_L1_error)
     }
     __pyx_L5:;
 
-    /* "phd/containers/containers.pyx":389
+    /* "phd/containers/containers.pyx":395
  * 
  *         i = 0
  *         for carray_name in carray_list_names:             # <<<<<<<<<<<<<<
@@ -7017,7 +7017,7 @@ static void __pyx_f_3phd_10containers_10containers_15CarrayContainer_pointer_gro
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "phd/containers/containers.pyx":372
+  /* "phd/containers/containers.pyx":378
  *         self.remove_items(ind)
  * 
  *     cdef void pointer_groups(self, np.float64_t *vec[], list carray_list_names):             # <<<<<<<<<<<<<<
@@ -9117,23 +9117,23 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__4);
   __Pyx_GIVEREF(__pyx_tuple__4);
 
-  /* "phd/containers/containers.pyx":314
+  /* "phd/containers/containers.pyx":318
  * 
  *         if indices.length != container.get_carray_size():
  *             raise RuntimeError("ERROR: inconsistent carray sizes!")             # <<<<<<<<<<<<<<
  * 
  *         # copy the required indices for each property
  */
-  __pyx_tuple__5 = PyTuple_Pack(1, __pyx_kp_s_ERROR_inconsistent_carray_sizes); if (unlikely(!__pyx_tuple__5)) __PYX_ERR(0, 314, __pyx_L1_error)
+  __pyx_tuple__5 = PyTuple_Pack(1, __pyx_kp_s_ERROR_inconsistent_carray_sizes); if (unlikely(!__pyx_tuple__5)) __PYX_ERR(0, 318, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__5);
   __Pyx_GIVEREF(__pyx_tuple__5);
 
-  /* "phd/containers/containers.pyx":395
+  /* "phd/containers/containers.pyx":401
  *                 i += 1
  *             else:
  *                 raise ValueError("ERROR: Unknown field!")             # <<<<<<<<<<<<<<
  */
-  __pyx_tuple__6 = PyTuple_Pack(1, __pyx_kp_s_ERROR_Unknown_field); if (unlikely(!__pyx_tuple__6)) __PYX_ERR(0, 395, __pyx_L1_error)
+  __pyx_tuple__6 = PyTuple_Pack(1, __pyx_kp_s_ERROR_Unknown_field); if (unlikely(!__pyx_tuple__6)) __PYX_ERR(0, 401, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__6);
   __Pyx_GIVEREF(__pyx_tuple__6);
 

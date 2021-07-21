@@ -16,9 +16,9 @@
             "phd/mesh/tess.h"
         ],
         "include_dirs": [
+            "./phd/mesh",
             "./phd/domain",
             "phd/domain",
-            "./phd/mesh",
             "/Users/sahilhegde/opt/anaconda3/lib/python3.8/site-packages/numpy/core/include",
             "phd/utils/",
             "phd/containers/",
@@ -2311,7 +2311,7 @@ static struct __pyx_vtabstruct_3phd_7riemann_7riemann_Exact *__pyx_vtabptr_3phd_
  *     })
  * 
  * cdef class Mesh:             # <<<<<<<<<<<<<<
- *     """Voronoi mesh responsible to build mesh, neighbor information,
+ *     """Voronoi mesh class responsible for building mesh, neighbor information,
  *     and all geometric quantities.
  */
 
@@ -4833,7 +4833,7 @@ static PyObject *__pyx_f_3phd_4mesh_4mesh_4Mesh_tessellate(struct __pyx_obj_3phd
 
 /* Python wrapper */
 static PyObject *__pyx_pw_3phd_4mesh_4mesh_4Mesh_7tessellate(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_3phd_4mesh_4mesh_4Mesh_6tessellate[] = "Create voronoi tessellation.\n\n        The method of creating the voronoi tessellation follows the idea of\n        Efficient Delaunay Tessellation Through K-D Tree Decomposition\n        by Dmitriy Morozov and Tom Peterka. The general idea is create\n        a local tessellation. Those particles will have either finite\n        or infinite radius. Use this radius (for infinite assign a radius)\n        and create boundary particles if it intersects the boundary or export\n        if intersects another processors boundary. Add new particles to the\n        mesh. If the new radius is smaller then previous radius then the\n        particle can not influence anymore otherwise increase the radius\n        untill all particles are done. In this first implementation we don't\n        have a kd tree but use octtree for searches.\n\n        Parameters\n        ---------\n        particles : CarrayContainer\n            Class that holds all information pertaining to the particles.\n\n        domain_manager : DomainManager\n            Class that handels all things related with the domain.\n\n        ";
+static char __pyx_doc_3phd_4mesh_4mesh_4Mesh_6tessellate[] = "Create voronoi tessellation.\n\n        The method of creating the voronoi tessellation follows the idea of\n        Efficient Delaunay Tessellation Through K-D Tree Decomposition\n        by Dmitriy Morozov and Tom Peterka. The general idea is to create\n        a local tessellation. Those particles will have either finite\n        or infinite radius. Use this radius (for infinite assign a radius)\n        and create boundary particles if it intersects the boundary or export\n        if intersects another processors boundary. Add new particles to the\n        mesh. If the new radius is smaller then previous radius then the\n        particle can not influence anymore, otherwise increase the radius\n        untill all particles are done. In this first implementation we don't\n        have a kd tree but use octtree for searches.\n\n        Parameters\n        ---------\n        particles : CarrayContainer\n            Class that holds all information pertaining to the particles.\n\n        domain_manager : DomainManager\n            Class that handels all things related with the domain.\n\n        ";
 static PyObject *__pyx_pw_3phd_4mesh_4mesh_4Mesh_7tessellate(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   struct __pyx_obj_3phd_10containers_10containers_CarrayContainer *__pyx_v_particles = 0;
   struct __pyx_obj_3phd_6domain_14domain_manager_DomainManager *__pyx_v_domain_manager = 0;
@@ -5409,7 +5409,7 @@ static PyObject *__pyx_f_3phd_4mesh_4mesh_4Mesh_build_geometry(struct __pyx_obj_
 
 /* Python wrapper */
 static PyObject *__pyx_pw_3phd_4mesh_4mesh_4Mesh_9build_geometry(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_3phd_4mesh_4mesh_4Mesh_8build_geometry[] = "Build the voronoi mesh and then extract mesh information, i.e\n        volumes, face information, and neighbors.\n\n        Parameters\n        ---------\n        particles : CarrayContainer\n            Class that holds all information pertaining to the particles.\n\n        domain_manager : DomainManager\n            Class that handels all things related with the domain.\n\n        ";
+static char __pyx_doc_3phd_4mesh_4mesh_4Mesh_8build_geometry[] = "Build the voronoi mesh and then extract mesh information, i.e\n        volumes, face information, and neighbors.\n\n        Parameters\n        ---------\n        particles : CarrayContainer\n            Class that holds all information pertaining to the particles.\n\n        domain_manager : DomainManager\n            Class that handles all things related with the domain.\n\n        ";
 static PyObject *__pyx_pw_3phd_4mesh_4mesh_4Mesh_9build_geometry(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   struct __pyx_obj_3phd_10containers_10containers_CarrayContainer *__pyx_v_particles = 0;
   struct __pyx_obj_3phd_6domain_14domain_manager_DomainManager *__pyx_v_domain_manager = 0;
@@ -5947,7 +5947,7 @@ static PyObject *__pyx_f_3phd_4mesh_4mesh_4Mesh_relax(struct __pyx_obj_3phd_4mes
 
 /* Python wrapper */
 static PyObject *__pyx_pw_3phd_4mesh_4mesh_4Mesh_13relax(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_3phd_4mesh_4mesh_4Mesh_12relax[] = "Perform mesh relaxation by moving particles to their center of mass.\n\n        Parameters\n        ---------\n        particles : CarrayContainer\n            Class that holds all information pertaining to the particles.\n\n        domain_manager : DomainManager\n            Class that handels all things related with the domain.\n\n        ";
+static char __pyx_doc_3phd_4mesh_4mesh_4Mesh_12relax[] = "Perform mesh relaxation by moving particles to their center of mass.\n\n        Parameters\n        ---------\n        particles : CarrayContainer\n            Class that holds all information pertaining to the particles.\n\n        domain_manager : DomainManager\n            Class that handles all things related with the domain.\n\n        ";
 static PyObject *__pyx_pw_3phd_4mesh_4mesh_4Mesh_13relax(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   struct __pyx_obj_3phd_10containers_10containers_CarrayContainer *__pyx_v_particles = 0;
   struct __pyx_obj_3phd_6domain_14domain_manager_DomainManager *__pyx_v_domain_manager = 0;
@@ -10747,7 +10747,7 @@ static PyTypeObject __pyx_type_3phd_4mesh_4mesh_Mesh = {
   0, /*tp_setattro*/
   0, /*tp_as_buffer*/
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_HAVE_GC, /*tp_flags*/
-  "Voronoi mesh responsible to build mesh, neighbor information,\n    and all geometric quantities.\n\n    Attributes\n    ----------\n    eta : double\n        Regularize parameter.\n\n    max_iterations : int\n        The max number of mesh updates in a build. This is\n        stop an infinite loop for bad meshes.\n\n    num_neighbors : int\n        Initial number of neighbors for each particle. Used\n        to allocate storage space.\n\n    regularize : bool\n        Add regularization to velocity mesh generators.\n\n    relax_iterations : int\n        Number of times to perform lloyd relaxation on startup.\n\n    ", /*tp_doc*/
+  "Voronoi mesh class responsible for building mesh, neighbor information,\n    and all geometric quantities.\n\n    Attributes\n    ----------\n    eta : double\n        Regularization parameter.\n\n    max_iterations : int\n        The max number of mesh updates in a build. This is to\n        stop an infinite loop for bad meshes.\n\n    num_neighbors : int\n        Initial number of neighbors for each particle. Used\n        to allocate storage space.\n\n    regularize : bool\n        Add regularization to velocity mesh generators.\n\n    relax_iterations : int\n        Number of times to perform lloyd relaxation on startup.\n\n    ", /*tp_doc*/
   __pyx_tp_traverse_3phd_4mesh_4mesh_Mesh, /*tp_traverse*/
   __pyx_tp_clear_3phd_4mesh_4mesh_Mesh, /*tp_clear*/
   0, /*tp_richcompare*/

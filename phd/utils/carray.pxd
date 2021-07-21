@@ -12,7 +12,7 @@ cdef class BaseArray:
     """Base Class for managed C-arrays."""
     cdef readonly long length, alloc
     cdef np.ndarray _npy_array
-
+    
     cpdef reserve(self, long size)
     cpdef resize(self, long size)
     cpdef np.ndarray get_npy_array(self)

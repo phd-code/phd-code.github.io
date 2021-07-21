@@ -1617,7 +1617,7 @@ struct __pyx_vtabstruct_3phd_7gravity_8splitter_Splitter {
 static struct __pyx_vtabstruct_3phd_7gravity_8splitter_Splitter *__pyx_vtabptr_3phd_7gravity_8splitter_Splitter;
 
 
-/* "phd/gravity/splitter.pyx":18
+/* "phd/gravity/splitter.pyx":23
  *         raise NotImplementedError(msg)
  * 
  * cdef class BarnesHut(Splitter):             # <<<<<<<<<<<<<<
@@ -2288,13 +2288,13 @@ static PyObject *__pyx_codeobj__6;
  * cdef class Splitter:
  *     """Base class for open node criteria."""
  *     def set_dim(self, int dim):             # <<<<<<<<<<<<<<
- *         """Set dimension of simulation."""
- *         self.dim = dim
+ *         """Set dimension of simulation.
+ * 
  */
 
 /* Python wrapper */
 static PyObject *__pyx_pw_3phd_7gravity_8splitter_8Splitter_1set_dim(PyObject *__pyx_v_self, PyObject *__pyx_arg_dim); /*proto*/
-static char __pyx_doc_3phd_7gravity_8splitter_8Splitter_set_dim[] = "Set dimension of simulation.";
+static char __pyx_doc_3phd_7gravity_8splitter_8Splitter_set_dim[] = "Set dimension of simulation.\n        \n        Parameters\n        ----------\n        dim : int\n        ";
 static PyObject *__pyx_pw_3phd_7gravity_8splitter_8Splitter_1set_dim(PyObject *__pyx_v_self, PyObject *__pyx_arg_dim) {
   int __pyx_v_dim;
   int __pyx_lineno = 0;
@@ -2324,9 +2324,9 @@ static PyObject *__pyx_pf_3phd_7gravity_8splitter_8Splitter_set_dim(struct __pyx
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("set_dim", 0);
 
-  /* "phd/gravity/splitter.pyx":5
- *     def set_dim(self, int dim):
- *         """Set dimension of simulation."""
+  /* "phd/gravity/splitter.pyx":10
+ *         dim : int
+ *         """
  *         self.dim = dim             # <<<<<<<<<<<<<<
  * 
  *     cdef void initialize_particles(self, CarrayContainer particles):
@@ -2337,8 +2337,8 @@ static PyObject *__pyx_pf_3phd_7gravity_8splitter_8Splitter_set_dim(struct __pyx
  * cdef class Splitter:
  *     """Base class for open node criteria."""
  *     def set_dim(self, int dim):             # <<<<<<<<<<<<<<
- *         """Set dimension of simulation."""
- *         self.dim = dim
+ *         """Set dimension of simulation.
+ * 
  */
 
   /* function exit code */
@@ -2348,7 +2348,7 @@ static PyObject *__pyx_pf_3phd_7gravity_8splitter_8Splitter_set_dim(struct __pyx
   return __pyx_r;
 }
 
-/* "phd/gravity/splitter.pyx":7
+/* "phd/gravity/splitter.pyx":12
  *         self.dim = dim
  * 
  *     cdef void initialize_particles(self, CarrayContainer particles):             # <<<<<<<<<<<<<<
@@ -2365,7 +2365,7 @@ static void __pyx_f_3phd_7gravity_8splitter_8Splitter_initialize_particles(CYTHO
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("initialize_particles", 0);
 
-  /* "phd/gravity/splitter.pyx":8
+  /* "phd/gravity/splitter.pyx":13
  * 
  *     cdef void initialize_particles(self, CarrayContainer particles):
  *         msg = "Splitter::initialize_particles called!"             # <<<<<<<<<<<<<<
@@ -2375,20 +2375,20 @@ static void __pyx_f_3phd_7gravity_8splitter_8Splitter_initialize_particles(CYTHO
   __Pyx_INCREF(__pyx_kp_s_Splitter_initialize_particles_ca);
   __pyx_v_msg = __pyx_kp_s_Splitter_initialize_particles_ca;
 
-  /* "phd/gravity/splitter.pyx":9
+  /* "phd/gravity/splitter.pyx":14
  *     cdef void initialize_particles(self, CarrayContainer particles):
  *         msg = "Splitter::initialize_particles called!"
  *         raise NotImplementedError(msg)             # <<<<<<<<<<<<<<
  * 
  *     cdef void process_particle(self, long idp):
  */
-  __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_builtin_NotImplementedError, __pyx_v_msg); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 9, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_builtin_NotImplementedError, __pyx_v_msg); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 14, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_Raise(__pyx_t_1, 0, 0, 0);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __PYX_ERR(0, 9, __pyx_L1_error)
+  __PYX_ERR(0, 14, __pyx_L1_error)
 
-  /* "phd/gravity/splitter.pyx":7
+  /* "phd/gravity/splitter.pyx":12
  *         self.dim = dim
  * 
  *     cdef void initialize_particles(self, CarrayContainer particles):             # <<<<<<<<<<<<<<
@@ -2404,7 +2404,7 @@ static void __pyx_f_3phd_7gravity_8splitter_8Splitter_initialize_particles(CYTHO
   __Pyx_RefNannyFinishContext();
 }
 
-/* "phd/gravity/splitter.pyx":11
+/* "phd/gravity/splitter.pyx":16
  *         raise NotImplementedError(msg)
  * 
  *     cdef void process_particle(self, long idp):             # <<<<<<<<<<<<<<
@@ -2416,7 +2416,7 @@ static void __pyx_f_3phd_7gravity_8splitter_8Splitter_process_particle(struct __
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("process_particle", 0);
 
-  /* "phd/gravity/splitter.pyx":12
+  /* "phd/gravity/splitter.pyx":17
  * 
  *     cdef void process_particle(self, long idp):
  *         self.idp = idp             # <<<<<<<<<<<<<<
@@ -2425,7 +2425,7 @@ static void __pyx_f_3phd_7gravity_8splitter_8Splitter_process_particle(struct __
  */
   __pyx_v_self->idp = __pyx_v_idp;
 
-  /* "phd/gravity/splitter.pyx":11
+  /* "phd/gravity/splitter.pyx":16
  *         raise NotImplementedError(msg)
  * 
  *     cdef void process_particle(self, long idp):             # <<<<<<<<<<<<<<
@@ -2437,7 +2437,7 @@ static void __pyx_f_3phd_7gravity_8splitter_8Splitter_process_particle(struct __
   __Pyx_RefNannyFinishContext();
 }
 
-/* "phd/gravity/splitter.pyx":14
+/* "phd/gravity/splitter.pyx":19
  *         self.idp = idp
  * 
  *     cdef int split(self, Node *node):             # <<<<<<<<<<<<<<
@@ -2455,7 +2455,7 @@ static int __pyx_f_3phd_7gravity_8splitter_8Splitter_split(CYTHON_UNUSED struct 
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("split", 0);
 
-  /* "phd/gravity/splitter.pyx":15
+  /* "phd/gravity/splitter.pyx":20
  * 
  *     cdef int split(self, Node *node):
  *         msg = "Splitter::split called!"             # <<<<<<<<<<<<<<
@@ -2465,20 +2465,20 @@ static int __pyx_f_3phd_7gravity_8splitter_8Splitter_split(CYTHON_UNUSED struct 
   __Pyx_INCREF(__pyx_kp_s_Splitter_split_called);
   __pyx_v_msg = __pyx_kp_s_Splitter_split_called;
 
-  /* "phd/gravity/splitter.pyx":16
+  /* "phd/gravity/splitter.pyx":21
  *     cdef int split(self, Node *node):
  *         msg = "Splitter::split called!"
  *         raise NotImplementedError(msg)             # <<<<<<<<<<<<<<
  * 
  * cdef class BarnesHut(Splitter):
  */
-  __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_builtin_NotImplementedError, __pyx_v_msg); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 16, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_builtin_NotImplementedError, __pyx_v_msg); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 21, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_Raise(__pyx_t_1, 0, 0, 0);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __PYX_ERR(0, 16, __pyx_L1_error)
+  __PYX_ERR(0, 21, __pyx_L1_error)
 
-  /* "phd/gravity/splitter.pyx":14
+  /* "phd/gravity/splitter.pyx":19
  *         self.idp = idp
  * 
  *     cdef int split(self, Node *node):             # <<<<<<<<<<<<<<
@@ -2795,7 +2795,7 @@ static PyObject *__pyx_pf_3phd_7gravity_8splitter_8Splitter_4__setstate_cython__
   return __pyx_r;
 }
 
-/* "phd/gravity/splitter.pyx":20
+/* "phd/gravity/splitter.pyx":25
  * cdef class BarnesHut(Splitter):
  *     """Barnes and Hut criteria."""
  *     def __init__(self, double open_angle):             # <<<<<<<<<<<<<<
@@ -2836,18 +2836,18 @@ static int __pyx_pw_3phd_7gravity_8splitter_9BarnesHut_1__init__(PyObject *__pyx
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) __PYX_ERR(0, 20, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) __PYX_ERR(0, 25, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 1) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
     }
-    __pyx_v_open_angle = __pyx_PyFloat_AsDouble(values[0]); if (unlikely((__pyx_v_open_angle == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 20, __pyx_L3_error)
+    __pyx_v_open_angle = __pyx_PyFloat_AsDouble(values[0]); if (unlikely((__pyx_v_open_angle == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 25, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__init__", 1, 1, 1, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 20, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__init__", 1, 1, 1, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 25, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("phd.gravity.splitter.BarnesHut.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -2865,7 +2865,7 @@ static int __pyx_pf_3phd_7gravity_8splitter_9BarnesHut___init__(struct __pyx_obj
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__init__", 0);
 
-  /* "phd/gravity/splitter.pyx":29
+  /* "phd/gravity/splitter.pyx":34
  * 
  *         """
  *         self.open_angle = open_angle             # <<<<<<<<<<<<<<
@@ -2874,7 +2874,7 @@ static int __pyx_pf_3phd_7gravity_8splitter_9BarnesHut___init__(struct __pyx_obj
  */
   __pyx_v_self->open_angle = __pyx_v_open_angle;
 
-  /* "phd/gravity/splitter.pyx":20
+  /* "phd/gravity/splitter.pyx":25
  * cdef class BarnesHut(Splitter):
  *     """Barnes and Hut criteria."""
  *     def __init__(self, double open_angle):             # <<<<<<<<<<<<<<
@@ -2888,7 +2888,7 @@ static int __pyx_pf_3phd_7gravity_8splitter_9BarnesHut___init__(struct __pyx_obj
   return __pyx_r;
 }
 
-/* "phd/gravity/splitter.pyx":31
+/* "phd/gravity/splitter.pyx":36
  *         self.open_angle = open_angle
  * 
  *     cdef void initialize_particles(self, CarrayContainer particles):             # <<<<<<<<<<<<<<
@@ -2904,7 +2904,7 @@ static void __pyx_f_3phd_7gravity_8splitter_9BarnesHut_initialize_particles(stru
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("initialize_particles", 0);
 
-  /* "phd/gravity/splitter.pyx":40
+  /* "phd/gravity/splitter.pyx":45
  * 
  *         """
  *         particles.pointer_groups(self.x, particles.carray_named_groups["position"])             # <<<<<<<<<<<<<<
@@ -2913,15 +2913,15 @@ static void __pyx_f_3phd_7gravity_8splitter_9BarnesHut_initialize_particles(stru
  */
   if (unlikely(__pyx_v_particles->carray_named_groups == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(0, 40, __pyx_L1_error)
+    __PYX_ERR(0, 45, __pyx_L1_error)
   }
-  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_particles->carray_named_groups, __pyx_n_s_position); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 40, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_particles->carray_named_groups, __pyx_n_s_position); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 45, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 40, __pyx_L1_error)
+  if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 45, __pyx_L1_error)
   ((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_particles->__pyx_vtab)->pointer_groups(__pyx_v_particles, __pyx_v_self->x, ((PyObject*)__pyx_t_1));
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "phd/gravity/splitter.pyx":31
+  /* "phd/gravity/splitter.pyx":36
  *         self.open_angle = open_angle
  * 
  *     cdef void initialize_particles(self, CarrayContainer particles):             # <<<<<<<<<<<<<<
@@ -2938,7 +2938,7 @@ static void __pyx_f_3phd_7gravity_8splitter_9BarnesHut_initialize_particles(stru
   __Pyx_RefNannyFinishContext();
 }
 
-/* "phd/gravity/splitter.pyx":42
+/* "phd/gravity/splitter.pyx":47
  *         particles.pointer_groups(self.x, particles.carray_named_groups["position"])
  * 
  *     cdef int split(self, Node* node):             # <<<<<<<<<<<<<<
@@ -2957,7 +2957,7 @@ static int __pyx_f_3phd_7gravity_8splitter_9BarnesHut_split(struct __pyx_obj_3ph
   int __pyx_t_4;
   __Pyx_RefNannySetupContext("split", 0);
 
-  /* "phd/gravity/splitter.pyx":57
+  /* "phd/gravity/splitter.pyx":62
  *         """
  *         cdef int i
  *         cdef double r2 = 0.             # <<<<<<<<<<<<<<
@@ -2966,7 +2966,7 @@ static int __pyx_f_3phd_7gravity_8splitter_9BarnesHut_split(struct __pyx_obj_3ph
  */
   __pyx_v_r2 = 0.;
 
-  /* "phd/gravity/splitter.pyx":59
+  /* "phd/gravity/splitter.pyx":64
  *         cdef double r2 = 0.
  * 
  *         for i in range(self.dim):             # <<<<<<<<<<<<<<
@@ -2978,7 +2978,7 @@ static int __pyx_f_3phd_7gravity_8splitter_9BarnesHut_split(struct __pyx_obj_3ph
   for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_i = __pyx_t_3;
 
-    /* "phd/gravity/splitter.pyx":60
+    /* "phd/gravity/splitter.pyx":65
  * 
  *         for i in range(self.dim):
  *             r2 += (self.x[i][self.idp] - node.group.data.com[i])**2             # <<<<<<<<<<<<<<
@@ -2988,7 +2988,7 @@ static int __pyx_f_3phd_7gravity_8splitter_9BarnesHut_split(struct __pyx_obj_3ph
     __pyx_v_r2 = (__pyx_v_r2 + pow((((__pyx_v_self->x[__pyx_v_i])[__pyx_v_self->__pyx_base.idp]) - (__pyx_v_node->group.data.com[__pyx_v_i])), 2.0));
   }
 
-  /* "phd/gravity/splitter.pyx":62
+  /* "phd/gravity/splitter.pyx":67
  *             r2 += (self.x[i][self.idp] - node.group.data.com[i])**2
  * 
  *         if(node.width*node.width >= r2*self.open_angle*self.open_angle):             # <<<<<<<<<<<<<<
@@ -2998,7 +2998,7 @@ static int __pyx_f_3phd_7gravity_8splitter_9BarnesHut_split(struct __pyx_obj_3ph
   __pyx_t_4 = (((__pyx_v_node->width * __pyx_v_node->width) >= ((__pyx_v_r2 * __pyx_v_self->open_angle) * __pyx_v_self->open_angle)) != 0);
   if (__pyx_t_4) {
 
-    /* "phd/gravity/splitter.pyx":63
+    /* "phd/gravity/splitter.pyx":68
  * 
  *         if(node.width*node.width >= r2*self.open_angle*self.open_angle):
  *             return 1 # open node             # <<<<<<<<<<<<<<
@@ -3008,7 +3008,7 @@ static int __pyx_f_3phd_7gravity_8splitter_9BarnesHut_split(struct __pyx_obj_3ph
     __pyx_r = 1;
     goto __pyx_L0;
 
-    /* "phd/gravity/splitter.pyx":62
+    /* "phd/gravity/splitter.pyx":67
  *             r2 += (self.x[i][self.idp] - node.group.data.com[i])**2
  * 
  *         if(node.width*node.width >= r2*self.open_angle*self.open_angle):             # <<<<<<<<<<<<<<
@@ -3017,7 +3017,7 @@ static int __pyx_f_3phd_7gravity_8splitter_9BarnesHut_split(struct __pyx_obj_3ph
  */
   }
 
-  /* "phd/gravity/splitter.pyx":65
+  /* "phd/gravity/splitter.pyx":70
  *             return 1 # open node
  *         else:
  *             return 0 # dont open node             # <<<<<<<<<<<<<<
@@ -3027,7 +3027,7 @@ static int __pyx_f_3phd_7gravity_8splitter_9BarnesHut_split(struct __pyx_obj_3ph
     goto __pyx_L0;
   }
 
-  /* "phd/gravity/splitter.pyx":42
+  /* "phd/gravity/splitter.pyx":47
  *         particles.pointer_groups(self.x, particles.carray_named_groups["position"])
  * 
  *     cdef int split(self, Node* node):             # <<<<<<<<<<<<<<
@@ -4676,8 +4676,8 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {0, 0, 0, 0, 0, 0, 0}
 };
 static CYTHON_SMALL_CODE int __Pyx_InitCachedBuiltins(void) {
-  __pyx_builtin_NotImplementedError = __Pyx_GetBuiltinName(__pyx_n_s_NotImplementedError); if (!__pyx_builtin_NotImplementedError) __PYX_ERR(0, 9, __pyx_L1_error)
-  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 59, __pyx_L1_error)
+  __pyx_builtin_NotImplementedError = __Pyx_GetBuiltinName(__pyx_n_s_NotImplementedError); if (!__pyx_builtin_NotImplementedError) __PYX_ERR(0, 14, __pyx_L1_error)
+  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 64, __pyx_L1_error)
   __pyx_builtin_TypeError = __Pyx_GetBuiltinName(__pyx_n_s_TypeError); if (!__pyx_builtin_TypeError) __PYX_ERR(1, 2, __pyx_L1_error)
   __pyx_builtin_ImportError = __Pyx_GetBuiltinName(__pyx_n_s_ImportError); if (!__pyx_builtin_ImportError) __PYX_ERR(2, 884, __pyx_L1_error)
   return 0;
@@ -4813,7 +4813,7 @@ static int __Pyx_modinit_type_init_code(void) {
   __pyx_vtable_3phd_7gravity_8splitter_BarnesHut.__pyx_base.initialize_particles = (void (*)(struct __pyx_obj_3phd_7gravity_8splitter_Splitter *, struct __pyx_obj_3phd_10containers_10containers_CarrayContainer *))__pyx_f_3phd_7gravity_8splitter_9BarnesHut_initialize_particles;
   __pyx_vtable_3phd_7gravity_8splitter_BarnesHut.__pyx_base.split = (int (*)(struct __pyx_obj_3phd_7gravity_8splitter_Splitter *, struct __pyx_t_3phd_7gravity_12gravity_pool_Node *))__pyx_f_3phd_7gravity_8splitter_9BarnesHut_split;
   __pyx_type_3phd_7gravity_8splitter_BarnesHut.tp_base = __pyx_ptype_3phd_7gravity_8splitter_Splitter;
-  if (PyType_Ready(&__pyx_type_3phd_7gravity_8splitter_BarnesHut) < 0) __PYX_ERR(0, 18, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_3phd_7gravity_8splitter_BarnesHut) < 0) __PYX_ERR(0, 23, __pyx_L1_error)
   #if PY_VERSION_HEX < 0x030800B1
   __pyx_type_3phd_7gravity_8splitter_BarnesHut.tp_print = 0;
   #endif
@@ -4822,7 +4822,7 @@ static int __Pyx_modinit_type_init_code(void) {
   }
   #if CYTHON_COMPILING_IN_CPYTHON
   {
-    PyObject *wrapper = PyObject_GetAttrString((PyObject *)&__pyx_type_3phd_7gravity_8splitter_BarnesHut, "__init__"); if (unlikely(!wrapper)) __PYX_ERR(0, 18, __pyx_L1_error)
+    PyObject *wrapper = PyObject_GetAttrString((PyObject *)&__pyx_type_3phd_7gravity_8splitter_BarnesHut, "__init__"); if (unlikely(!wrapper)) __PYX_ERR(0, 23, __pyx_L1_error)
     if (Py_TYPE(wrapper) == &PyWrapperDescr_Type) {
       __pyx_wrapperbase_3phd_7gravity_8splitter_9BarnesHut___init__ = *((PyWrapperDescrObject *)wrapper)->d_base;
       __pyx_wrapperbase_3phd_7gravity_8splitter_9BarnesHut___init__.doc = __pyx_doc_3phd_7gravity_8splitter_9BarnesHut___init__;
@@ -4830,9 +4830,9 @@ static int __Pyx_modinit_type_init_code(void) {
     }
   }
   #endif
-  if (__Pyx_SetVtable(__pyx_type_3phd_7gravity_8splitter_BarnesHut.tp_dict, __pyx_vtabptr_3phd_7gravity_8splitter_BarnesHut) < 0) __PYX_ERR(0, 18, __pyx_L1_error)
-  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_BarnesHut, (PyObject *)&__pyx_type_3phd_7gravity_8splitter_BarnesHut) < 0) __PYX_ERR(0, 18, __pyx_L1_error)
-  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_3phd_7gravity_8splitter_BarnesHut) < 0) __PYX_ERR(0, 18, __pyx_L1_error)
+  if (__Pyx_SetVtable(__pyx_type_3phd_7gravity_8splitter_BarnesHut.tp_dict, __pyx_vtabptr_3phd_7gravity_8splitter_BarnesHut) < 0) __PYX_ERR(0, 23, __pyx_L1_error)
+  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_BarnesHut, (PyObject *)&__pyx_type_3phd_7gravity_8splitter_BarnesHut) < 0) __PYX_ERR(0, 23, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_3phd_7gravity_8splitter_BarnesHut) < 0) __PYX_ERR(0, 23, __pyx_L1_error)
   __pyx_ptype_3phd_7gravity_8splitter_BarnesHut = &__pyx_type_3phd_7gravity_8splitter_BarnesHut;
   __Pyx_RefNannyFinishContext();
   return 0;

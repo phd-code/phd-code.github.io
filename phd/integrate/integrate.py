@@ -160,6 +160,18 @@ class IntegrateBase(object):
         """Set riemann solver."""
         self.riemann = riemann
 
+    def set_units(self, units):
+        """Set the units for the simulation 
+            calculation and output
+
+        Parameters
+        ----------
+        units : Units
+            Object holding the information pertaining to unit systems 
+            in the simulation and outputs.
+        """
+        self.units = units
+
 #    @check_class(SourceTermBase)
     def add_source_term(self, source_term):
         self.source_terms[source_term.__class__.__name__] = source_term

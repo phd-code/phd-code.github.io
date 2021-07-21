@@ -12,9 +12,14 @@ def distribute_initial_particles(create_particles, **kwargs):
         else:
             dim = kwargs["dim"]
 
+        if "units" not in kwargs:
+                raise KeyError("Units not specified")
+        else:
+            units = kwargs["units"]
+
         if phd._rank == 0:
 
-            particles_root = create_particles(**kwargs)
+            particles_root, units = create_particles(**kwargs)
 
             # how many particles to each process
             nsect, extra = divmod(particles_root.get_carray_size(), phd._size)
@@ -30,18 +35,19 @@ def distribute_initial_particles(create_particles, **kwargs):
 
             lengths = disp = send = None
             particles_root = {}
-            for key in list(phd.HydroParticleCreator(dim=dim).carrays.keys()):
+            pc, units = phd.HydroParticleCreator(dim=dim, unit_sys = units)
+            for key in list(pc.carrays.keys()):
                 particles_root[key] = None
 
         # tell each processor how many particles it will hold
         send = phd._comm.scatter(send, root=0)
 
         # allocate local particle container
-        particles = phd.HydroParticleCreator(send, dim=dim)
+        particles, units = phd.HydroParticleCreator(send, dim=dim, unit_sys = units)
 
         # import particles from root
         for field in list(particles.carrays.keys()):
             phd._comm.Scatterv([particles_root[field], (lengths, disp)], particles[field])
         del particles_root
 
-        return particles
+        return particles, units

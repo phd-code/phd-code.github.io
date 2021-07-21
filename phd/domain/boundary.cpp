@@ -1839,7 +1839,7 @@ struct __pyx_vtabstruct_3phd_6domain_8boundary_Reflective {
 static struct __pyx_vtabstruct_3phd_6domain_8boundary_Reflective *__pyx_vtabptr_3phd_6domain_8boundary_Reflective;
 
 
-/* "phd/domain/boundary.pyx":350
+/* "phd/domain/boundary.pyx":355
  *                         mv[k][i] *= -1
  * 
  * cdef class Periodic(BoundaryConditionBase):             # <<<<<<<<<<<<<<
@@ -4712,20 +4712,20 @@ static void __pyx_f_3phd_6domain_8boundary_10Reflective_update_gradients(CYTHON_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("update_gradients", 0);
 
-  /* "phd/domain/boundary.pyx":285
+  /* "phd/domain/boundary.pyx":287
  *         cdef int i, j, k, dim
  *         cdef np.float64_t *x[3], *dv[9]
  *         cdef IntArray types = particles.get_carray("type")             # <<<<<<<<<<<<<<
  * 
  *         dim = len(particles.carray_named_groups["position"])
  */
-  __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_particles->__pyx_vtab)->get_carray(__pyx_v_particles, __pyx_n_s_type, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 285, __pyx_L1_error)
+  __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_particles->__pyx_vtab)->get_carray(__pyx_v_particles, __pyx_n_s_type, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 287, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_3phd_5utils_6carray_IntArray))))) __PYX_ERR(0, 285, __pyx_L1_error)
+  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_3phd_5utils_6carray_IntArray))))) __PYX_ERR(0, 287, __pyx_L1_error)
   __pyx_v_types = ((struct __pyx_obj_3phd_5utils_6carray_IntArray *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "phd/domain/boundary.pyx":287
+  /* "phd/domain/boundary.pyx":289
  *         cdef IntArray types = particles.get_carray("type")
  * 
  *         dim = len(particles.carray_named_groups["position"])             # <<<<<<<<<<<<<<
@@ -4734,15 +4734,15 @@ static void __pyx_f_3phd_6domain_8boundary_10Reflective_update_gradients(CYTHON_
  */
   if (unlikely(__pyx_v_particles->carray_named_groups == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(0, 287, __pyx_L1_error)
+    __PYX_ERR(0, 289, __pyx_L1_error)
   }
-  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_particles->carray_named_groups, __pyx_n_s_position); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 287, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_particles->carray_named_groups, __pyx_n_s_position); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 289, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyObject_Length(__pyx_t_1); if (unlikely(__pyx_t_2 == ((Py_ssize_t)-1))) __PYX_ERR(0, 287, __pyx_L1_error)
+  __pyx_t_2 = PyObject_Length(__pyx_t_1); if (unlikely(__pyx_t_2 == ((Py_ssize_t)-1))) __PYX_ERR(0, 289, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_dim = __pyx_t_2;
 
-  /* "phd/domain/boundary.pyx":288
+  /* "phd/domain/boundary.pyx":290
  * 
  *         dim = len(particles.carray_named_groups["position"])
  *         particles.pointer_groups(x, particles.carray_named_groups["position"])             # <<<<<<<<<<<<<<
@@ -4751,15 +4751,15 @@ static void __pyx_f_3phd_6domain_8boundary_10Reflective_update_gradients(CYTHON_
  */
   if (unlikely(__pyx_v_particles->carray_named_groups == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(0, 288, __pyx_L1_error)
+    __PYX_ERR(0, 290, __pyx_L1_error)
   }
-  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_particles->carray_named_groups, __pyx_n_s_position); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 288, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_particles->carray_named_groups, __pyx_n_s_position); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 290, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 288, __pyx_L1_error)
+  if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 290, __pyx_L1_error)
   ((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_particles->__pyx_vtab)->pointer_groups(__pyx_v_particles, __pyx_v_x, ((PyObject*)__pyx_t_1));
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "phd/domain/boundary.pyx":289
+  /* "phd/domain/boundary.pyx":291
  *         dim = len(particles.carray_named_groups["position"])
  *         particles.pointer_groups(x, particles.carray_named_groups["position"])
  *         gradients.pointer_groups(dv, gradients.carray_named_groups["velocity"])             # <<<<<<<<<<<<<<
@@ -4768,15 +4768,15 @@ static void __pyx_f_3phd_6domain_8boundary_10Reflective_update_gradients(CYTHON_
  */
   if (unlikely(__pyx_v_gradients->carray_named_groups == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(0, 289, __pyx_L1_error)
+    __PYX_ERR(0, 291, __pyx_L1_error)
   }
-  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_gradients->carray_named_groups, __pyx_n_s_velocity); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 289, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_gradients->carray_named_groups, __pyx_n_s_velocity); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 291, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 289, __pyx_L1_error)
+  if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 291, __pyx_L1_error)
   ((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_gradients->__pyx_vtab)->pointer_groups(__pyx_v_gradients, __pyx_v_dv, ((PyObject*)__pyx_t_1));
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "phd/domain/boundary.pyx":291
+  /* "phd/domain/boundary.pyx":293
  *         gradients.pointer_groups(dv, gradients.carray_named_groups["velocity"])
  * 
  *         for i in range(particles.get_carray_size()):             # <<<<<<<<<<<<<<
@@ -4788,7 +4788,7 @@ static void __pyx_f_3phd_6domain_8boundary_10Reflective_update_gradients(CYTHON_
   for (__pyx_t_5 = 0; __pyx_t_5 < __pyx_t_4; __pyx_t_5+=1) {
     __pyx_v_i = __pyx_t_5;
 
-    /* "phd/domain/boundary.pyx":292
+    /* "phd/domain/boundary.pyx":294
  * 
  *         for i in range(particles.get_carray_size()):
  *             if types.data[i] == EXTERIOR:             # <<<<<<<<<<<<<<
@@ -4798,7 +4798,7 @@ static void __pyx_f_3phd_6domain_8boundary_10Reflective_update_gradients(CYTHON_
     __pyx_t_6 = (((__pyx_v_types->data[__pyx_v_i]) == __pyx_v_3phd_6domain_8boundary_EXTERIOR) != 0);
     if (__pyx_t_6) {
 
-      /* "phd/domain/boundary.pyx":295
+      /* "phd/domain/boundary.pyx":297
  * 
  *                 # check each dimension
  *                 for j in range(dim):             # <<<<<<<<<<<<<<
@@ -4810,7 +4810,7 @@ static void __pyx_f_3phd_6domain_8boundary_10Reflective_update_gradients(CYTHON_
       for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
         __pyx_v_j = __pyx_t_9;
 
-        /* "phd/domain/boundary.pyx":297
+        /* "phd/domain/boundary.pyx":299
  *                 for j in range(dim):
  * 
  *                     if x[j][i] < domain_manager.bounds[0][j]:             # <<<<<<<<<<<<<<
@@ -4820,7 +4820,7 @@ static void __pyx_f_3phd_6domain_8boundary_10Reflective_update_gradients(CYTHON_
         __pyx_t_6 = ((((__pyx_v_x[__pyx_v_j])[__pyx_v_i]) < ((__pyx_v_domain_manager->bounds[0])[__pyx_v_j])) != 0);
         if (__pyx_t_6) {
 
-          /* "phd/domain/boundary.pyx":301
+          /* "phd/domain/boundary.pyx":303
  *                             # flip gradient component
  *                             #dv[dim*k + j][i] *= -1
  *                         dv[dim*j + j][i] *= -1             # <<<<<<<<<<<<<<
@@ -4831,7 +4831,7 @@ static void __pyx_f_3phd_6domain_8boundary_10Reflective_update_gradients(CYTHON_
           __pyx_t_11 = __pyx_v_i;
           ((__pyx_v_dv[__pyx_t_10])[__pyx_t_11]) = (((__pyx_v_dv[__pyx_t_10])[__pyx_t_11]) * -1.0);
 
-          /* "phd/domain/boundary.pyx":297
+          /* "phd/domain/boundary.pyx":299
  *                 for j in range(dim):
  * 
  *                     if x[j][i] < domain_manager.bounds[0][j]:             # <<<<<<<<<<<<<<
@@ -4840,7 +4840,7 @@ static void __pyx_f_3phd_6domain_8boundary_10Reflective_update_gradients(CYTHON_
  */
         }
 
-        /* "phd/domain/boundary.pyx":303
+        /* "phd/domain/boundary.pyx":305
  *                         dv[dim*j + j][i] *= -1
  * 
  *                     if x[j][i] > domain_manager.bounds[1][j]:             # <<<<<<<<<<<<<<
@@ -4850,7 +4850,7 @@ static void __pyx_f_3phd_6domain_8boundary_10Reflective_update_gradients(CYTHON_
         __pyx_t_6 = ((((__pyx_v_x[__pyx_v_j])[__pyx_v_i]) > ((__pyx_v_domain_manager->bounds[1])[__pyx_v_j])) != 0);
         if (__pyx_t_6) {
 
-          /* "phd/domain/boundary.pyx":307
+          /* "phd/domain/boundary.pyx":309
  *                             # flip gradient component
  *                             #dv[dim*k + j][i] *= -1
  *                         dv[dim*j + j][i] *= -1             # <<<<<<<<<<<<<<
@@ -4861,7 +4861,7 @@ static void __pyx_f_3phd_6domain_8boundary_10Reflective_update_gradients(CYTHON_
           __pyx_t_11 = __pyx_v_i;
           ((__pyx_v_dv[__pyx_t_10])[__pyx_t_11]) = (((__pyx_v_dv[__pyx_t_10])[__pyx_t_11]) * -1.0);
 
-          /* "phd/domain/boundary.pyx":303
+          /* "phd/domain/boundary.pyx":305
  *                         dv[dim*j + j][i] *= -1
  * 
  *                     if x[j][i] > domain_manager.bounds[1][j]:             # <<<<<<<<<<<<<<
@@ -4871,7 +4871,7 @@ static void __pyx_f_3phd_6domain_8boundary_10Reflective_update_gradients(CYTHON_
         }
       }
 
-      /* "phd/domain/boundary.pyx":292
+      /* "phd/domain/boundary.pyx":294
  * 
  *         for i in range(particles.get_carray_size()):
  *             if types.data[i] == EXTERIOR:             # <<<<<<<<<<<<<<
@@ -4899,7 +4899,7 @@ static void __pyx_f_3phd_6domain_8boundary_10Reflective_update_gradients(CYTHON_
   __Pyx_RefNannyFinishContext();
 }
 
-/* "phd/domain/boundary.pyx":309
+/* "phd/domain/boundary.pyx":311
  *                         dv[dim*j + j][i] *= -1
  * 
  *     cpdef update_fields(self, CarrayContainer particles, DomainManager domain_manager):             # <<<<<<<<<<<<<<
@@ -4946,7 +4946,7 @@ static PyObject *__pyx_f_3phd_6domain_8boundary_10Reflective_update_fields(CYTHO
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_type_dict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_update_fields); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 309, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_update_fields); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 311, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_3phd_6domain_8boundary_10Reflective_1update_fields)) {
         __Pyx_XDECREF(__pyx_r);
@@ -4966,7 +4966,7 @@ static PyObject *__pyx_f_3phd_6domain_8boundary_10Reflective_update_fields(CYTHO
         #if CYTHON_FAST_PYCALL
         if (PyFunction_Check(__pyx_t_3)) {
           PyObject *__pyx_temp[3] = {__pyx_t_4, ((PyObject *)__pyx_v_particles), ((PyObject *)__pyx_v_domain_manager)};
-          __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 309, __pyx_L1_error)
+          __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 311, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
           __Pyx_GOTREF(__pyx_t_2);
         } else
@@ -4974,13 +4974,13 @@ static PyObject *__pyx_f_3phd_6domain_8boundary_10Reflective_update_fields(CYTHO
         #if CYTHON_FAST_PYCCALL
         if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
           PyObject *__pyx_temp[3] = {__pyx_t_4, ((PyObject *)__pyx_v_particles), ((PyObject *)__pyx_v_domain_manager)};
-          __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 309, __pyx_L1_error)
+          __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 311, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
           __Pyx_GOTREF(__pyx_t_2);
         } else
         #endif
         {
-          __pyx_t_6 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 309, __pyx_L1_error)
+          __pyx_t_6 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 311, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_6);
           if (__pyx_t_4) {
             __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_4); __pyx_t_4 = NULL;
@@ -4991,7 +4991,7 @@ static PyObject *__pyx_f_3phd_6domain_8boundary_10Reflective_update_fields(CYTHO
           __Pyx_INCREF(((PyObject *)__pyx_v_domain_manager));
           __Pyx_GIVEREF(((PyObject *)__pyx_v_domain_manager));
           PyTuple_SET_ITEM(__pyx_t_6, 1+__pyx_t_5, ((PyObject *)__pyx_v_domain_manager));
-          __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_6, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 309, __pyx_L1_error)
+          __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_6, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 311, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
         }
@@ -5014,20 +5014,20 @@ static PyObject *__pyx_f_3phd_6domain_8boundary_10Reflective_update_fields(CYTHO
     #endif
   }
 
-  /* "phd/domain/boundary.pyx":328
+  /* "phd/domain/boundary.pyx":333
  *         cdef int i, k, dim
  *         cdef np.float64_t *x[3], *v[3], *mv[3]
  *         cdef IntArray types = particles.get_carray("type")             # <<<<<<<<<<<<<<
  * 
  *         dim = len(particles.carray_named_groups["position"])
  */
-  __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_particles->__pyx_vtab)->get_carray(__pyx_v_particles, __pyx_n_s_type, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 328, __pyx_L1_error)
+  __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_particles->__pyx_vtab)->get_carray(__pyx_v_particles, __pyx_n_s_type, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 333, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_3phd_5utils_6carray_IntArray))))) __PYX_ERR(0, 328, __pyx_L1_error)
+  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_3phd_5utils_6carray_IntArray))))) __PYX_ERR(0, 333, __pyx_L1_error)
   __pyx_v_types = ((struct __pyx_obj_3phd_5utils_6carray_IntArray *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "phd/domain/boundary.pyx":330
+  /* "phd/domain/boundary.pyx":335
  *         cdef IntArray types = particles.get_carray("type")
  * 
  *         dim = len(particles.carray_named_groups["position"])             # <<<<<<<<<<<<<<
@@ -5036,15 +5036,15 @@ static PyObject *__pyx_f_3phd_6domain_8boundary_10Reflective_update_fields(CYTHO
  */
   if (unlikely(__pyx_v_particles->carray_named_groups == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(0, 330, __pyx_L1_error)
+    __PYX_ERR(0, 335, __pyx_L1_error)
   }
-  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_particles->carray_named_groups, __pyx_n_s_position); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 330, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_particles->carray_named_groups, __pyx_n_s_position); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 335, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_7 = PyObject_Length(__pyx_t_1); if (unlikely(__pyx_t_7 == ((Py_ssize_t)-1))) __PYX_ERR(0, 330, __pyx_L1_error)
+  __pyx_t_7 = PyObject_Length(__pyx_t_1); if (unlikely(__pyx_t_7 == ((Py_ssize_t)-1))) __PYX_ERR(0, 335, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_dim = __pyx_t_7;
 
-  /* "phd/domain/boundary.pyx":332
+  /* "phd/domain/boundary.pyx":337
  *         dim = len(particles.carray_named_groups["position"])
  * 
  *         particles.pointer_groups(x,  particles.carray_named_groups["position"])             # <<<<<<<<<<<<<<
@@ -5053,15 +5053,15 @@ static PyObject *__pyx_f_3phd_6domain_8boundary_10Reflective_update_fields(CYTHO
  */
   if (unlikely(__pyx_v_particles->carray_named_groups == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(0, 332, __pyx_L1_error)
+    __PYX_ERR(0, 337, __pyx_L1_error)
   }
-  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_particles->carray_named_groups, __pyx_n_s_position); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 332, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_particles->carray_named_groups, __pyx_n_s_position); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 337, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 332, __pyx_L1_error)
+  if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 337, __pyx_L1_error)
   ((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_particles->__pyx_vtab)->pointer_groups(__pyx_v_particles, __pyx_v_x, ((PyObject*)__pyx_t_1));
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "phd/domain/boundary.pyx":333
+  /* "phd/domain/boundary.pyx":338
  * 
  *         particles.pointer_groups(x,  particles.carray_named_groups["position"])
  *         particles.pointer_groups(v,  particles.carray_named_groups["velocity"])             # <<<<<<<<<<<<<<
@@ -5070,15 +5070,15 @@ static PyObject *__pyx_f_3phd_6domain_8boundary_10Reflective_update_fields(CYTHO
  */
   if (unlikely(__pyx_v_particles->carray_named_groups == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(0, 333, __pyx_L1_error)
+    __PYX_ERR(0, 338, __pyx_L1_error)
   }
-  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_particles->carray_named_groups, __pyx_n_s_velocity); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 333, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_particles->carray_named_groups, __pyx_n_s_velocity); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 338, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 333, __pyx_L1_error)
+  if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 338, __pyx_L1_error)
   ((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_particles->__pyx_vtab)->pointer_groups(__pyx_v_particles, __pyx_v_v, ((PyObject*)__pyx_t_1));
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "phd/domain/boundary.pyx":334
+  /* "phd/domain/boundary.pyx":339
  *         particles.pointer_groups(x,  particles.carray_named_groups["position"])
  *         particles.pointer_groups(v,  particles.carray_named_groups["velocity"])
  *         particles.pointer_groups(mv, particles.carray_named_groups["momentum"])             # <<<<<<<<<<<<<<
@@ -5087,15 +5087,15 @@ static PyObject *__pyx_f_3phd_6domain_8boundary_10Reflective_update_fields(CYTHO
  */
   if (unlikely(__pyx_v_particles->carray_named_groups == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(0, 334, __pyx_L1_error)
+    __PYX_ERR(0, 339, __pyx_L1_error)
   }
-  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_particles->carray_named_groups, __pyx_n_s_momentum); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 334, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_particles->carray_named_groups, __pyx_n_s_momentum); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 339, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 334, __pyx_L1_error)
+  if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 339, __pyx_L1_error)
   ((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_particles->__pyx_vtab)->pointer_groups(__pyx_v_particles, __pyx_v_mv, ((PyObject*)__pyx_t_1));
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "phd/domain/boundary.pyx":336
+  /* "phd/domain/boundary.pyx":341
  *         particles.pointer_groups(mv, particles.carray_named_groups["momentum"])
  * 
  *         for i in range(particles.get_carray_size()):             # <<<<<<<<<<<<<<
@@ -5107,7 +5107,7 @@ static PyObject *__pyx_f_3phd_6domain_8boundary_10Reflective_update_fields(CYTHO
   for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
     __pyx_v_i = __pyx_t_9;
 
-    /* "phd/domain/boundary.pyx":337
+    /* "phd/domain/boundary.pyx":342
  * 
  *         for i in range(particles.get_carray_size()):
  *             if types.data[i] == EXTERIOR:             # <<<<<<<<<<<<<<
@@ -5117,7 +5117,7 @@ static PyObject *__pyx_f_3phd_6domain_8boundary_10Reflective_update_fields(CYTHO
     __pyx_t_10 = (((__pyx_v_types->data[__pyx_v_i]) == __pyx_v_3phd_6domain_8boundary_EXTERIOR) != 0);
     if (__pyx_t_10) {
 
-      /* "phd/domain/boundary.pyx":340
+      /* "phd/domain/boundary.pyx":345
  * 
  *                 # check each dimension
  *                 for k in range(dim):             # <<<<<<<<<<<<<<
@@ -5129,7 +5129,7 @@ static PyObject *__pyx_f_3phd_6domain_8boundary_10Reflective_update_fields(CYTHO
       for (__pyx_t_13 = 0; __pyx_t_13 < __pyx_t_12; __pyx_t_13+=1) {
         __pyx_v_k = __pyx_t_13;
 
-        /* "phd/domain/boundary.pyx":342
+        /* "phd/domain/boundary.pyx":347
  *                 for k in range(dim):
  * 
  *                     if x[k][i] < domain_manager.bounds[0][k]:             # <<<<<<<<<<<<<<
@@ -5139,7 +5139,7 @@ static PyObject *__pyx_f_3phd_6domain_8boundary_10Reflective_update_fields(CYTHO
         __pyx_t_10 = ((((__pyx_v_x[__pyx_v_k])[__pyx_v_i]) < ((__pyx_v_domain_manager->bounds[0])[__pyx_v_k])) != 0);
         if (__pyx_t_10) {
 
-          /* "phd/domain/boundary.pyx":343
+          /* "phd/domain/boundary.pyx":348
  * 
  *                     if x[k][i] < domain_manager.bounds[0][k]:
  *                         v[k][i]  *= -1             # <<<<<<<<<<<<<<
@@ -5150,7 +5150,7 @@ static PyObject *__pyx_f_3phd_6domain_8boundary_10Reflective_update_fields(CYTHO
           __pyx_t_15 = __pyx_v_i;
           ((__pyx_v_v[__pyx_t_14])[__pyx_t_15]) = (((__pyx_v_v[__pyx_t_14])[__pyx_t_15]) * -1.0);
 
-          /* "phd/domain/boundary.pyx":344
+          /* "phd/domain/boundary.pyx":349
  *                     if x[k][i] < domain_manager.bounds[0][k]:
  *                         v[k][i]  *= -1
  *                         mv[k][i] *= -1             # <<<<<<<<<<<<<<
@@ -5161,7 +5161,7 @@ static PyObject *__pyx_f_3phd_6domain_8boundary_10Reflective_update_fields(CYTHO
           __pyx_t_15 = __pyx_v_i;
           ((__pyx_v_mv[__pyx_t_14])[__pyx_t_15]) = (((__pyx_v_mv[__pyx_t_14])[__pyx_t_15]) * -1.0);
 
-          /* "phd/domain/boundary.pyx":342
+          /* "phd/domain/boundary.pyx":347
  *                 for k in range(dim):
  * 
  *                     if x[k][i] < domain_manager.bounds[0][k]:             # <<<<<<<<<<<<<<
@@ -5170,7 +5170,7 @@ static PyObject *__pyx_f_3phd_6domain_8boundary_10Reflective_update_fields(CYTHO
  */
         }
 
-        /* "phd/domain/boundary.pyx":346
+        /* "phd/domain/boundary.pyx":351
  *                         mv[k][i] *= -1
  * 
  *                     if x[k][i] > domain_manager.bounds[1][k]:             # <<<<<<<<<<<<<<
@@ -5180,7 +5180,7 @@ static PyObject *__pyx_f_3phd_6domain_8boundary_10Reflective_update_fields(CYTHO
         __pyx_t_10 = ((((__pyx_v_x[__pyx_v_k])[__pyx_v_i]) > ((__pyx_v_domain_manager->bounds[1])[__pyx_v_k])) != 0);
         if (__pyx_t_10) {
 
-          /* "phd/domain/boundary.pyx":347
+          /* "phd/domain/boundary.pyx":352
  * 
  *                     if x[k][i] > domain_manager.bounds[1][k]:
  *                         v[k][i]  *= -1             # <<<<<<<<<<<<<<
@@ -5191,7 +5191,7 @@ static PyObject *__pyx_f_3phd_6domain_8boundary_10Reflective_update_fields(CYTHO
           __pyx_t_15 = __pyx_v_i;
           ((__pyx_v_v[__pyx_t_14])[__pyx_t_15]) = (((__pyx_v_v[__pyx_t_14])[__pyx_t_15]) * -1.0);
 
-          /* "phd/domain/boundary.pyx":348
+          /* "phd/domain/boundary.pyx":353
  *                     if x[k][i] > domain_manager.bounds[1][k]:
  *                         v[k][i]  *= -1
  *                         mv[k][i] *= -1             # <<<<<<<<<<<<<<
@@ -5202,7 +5202,7 @@ static PyObject *__pyx_f_3phd_6domain_8boundary_10Reflective_update_fields(CYTHO
           __pyx_t_15 = __pyx_v_i;
           ((__pyx_v_mv[__pyx_t_14])[__pyx_t_15]) = (((__pyx_v_mv[__pyx_t_14])[__pyx_t_15]) * -1.0);
 
-          /* "phd/domain/boundary.pyx":346
+          /* "phd/domain/boundary.pyx":351
  *                         mv[k][i] *= -1
  * 
  *                     if x[k][i] > domain_manager.bounds[1][k]:             # <<<<<<<<<<<<<<
@@ -5212,7 +5212,7 @@ static PyObject *__pyx_f_3phd_6domain_8boundary_10Reflective_update_fields(CYTHO
         }
       }
 
-      /* "phd/domain/boundary.pyx":337
+      /* "phd/domain/boundary.pyx":342
  * 
  *         for i in range(particles.get_carray_size()):
  *             if types.data[i] == EXTERIOR:             # <<<<<<<<<<<<<<
@@ -5222,7 +5222,7 @@ static PyObject *__pyx_f_3phd_6domain_8boundary_10Reflective_update_fields(CYTHO
     }
   }
 
-  /* "phd/domain/boundary.pyx":309
+  /* "phd/domain/boundary.pyx":311
  *                         dv[dim*j + j][i] *= -1
  * 
  *     cpdef update_fields(self, CarrayContainer particles, DomainManager domain_manager):             # <<<<<<<<<<<<<<
@@ -5250,7 +5250,7 @@ static PyObject *__pyx_f_3phd_6domain_8boundary_10Reflective_update_fields(CYTHO
 
 /* Python wrapper */
 static PyObject *__pyx_pw_3phd_6domain_8boundary_10Reflective_1update_fields(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_3phd_6domain_8boundary_10Reflective_update_fields[] = "Transfer gradient from image particle to ghost particle with reflective\n        boundary condition.\n\n        For reflective boundary condition the velocity gradient normal to the\n        boundary interface has to be flipped. This function finds all ghost\n        particles outside the domain and flips the corresponding component.\n\n        Parameters\n        ----------\n        particles : CarrayContainer\n            Gradient data\n\n        gradients : CarrayContainer\n            Container of gradients for each primitive field.\n\n        ";
+static char __pyx_doc_3phd_6domain_8boundary_10Reflective_update_fields[] = "Transfer gradient from image particle to ghost particle with reflective\n        boundary condition.\n\n        For reflective boundary condition the velocity gradient normal to the\n        boundary interface has to be flipped. This function finds all ghost\n        particles outside the domain and flips the corresponding component.\n\n        Parameters\n        ----------\n        particles : CarrayContainer\n            Gradient data\n\n        gradients : CarrayContainer\n            Container of gradients for each primitive field.\n        \n        domain_manager : DomainManager\n            Class that handles all things related with the domain.            \n  \n        ";
 static PyObject *__pyx_pw_3phd_6domain_8boundary_10Reflective_1update_fields(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   struct __pyx_obj_3phd_10containers_10containers_CarrayContainer *__pyx_v_particles = 0;
   struct __pyx_obj_3phd_6domain_14domain_manager_DomainManager *__pyx_v_domain_manager = 0;
@@ -5283,11 +5283,11 @@ static PyObject *__pyx_pw_3phd_6domain_8boundary_10Reflective_1update_fields(PyO
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_domain_manager)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("update_fields", 1, 2, 2, 1); __PYX_ERR(0, 309, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("update_fields", 1, 2, 2, 1); __PYX_ERR(0, 311, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "update_fields") < 0)) __PYX_ERR(0, 309, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "update_fields") < 0)) __PYX_ERR(0, 311, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -5300,14 +5300,14 @@ static PyObject *__pyx_pw_3phd_6domain_8boundary_10Reflective_1update_fields(PyO
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("update_fields", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 309, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("update_fields", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 311, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("phd.domain.boundary.Reflective.update_fields", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_particles), __pyx_ptype_3phd_10containers_10containers_CarrayContainer, 1, "particles", 0))) __PYX_ERR(0, 309, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_domain_manager), __pyx_ptype_3phd_6domain_14domain_manager_DomainManager, 1, "domain_manager", 0))) __PYX_ERR(0, 309, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_particles), __pyx_ptype_3phd_10containers_10containers_CarrayContainer, 1, "particles", 0))) __PYX_ERR(0, 311, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_domain_manager), __pyx_ptype_3phd_6domain_14domain_manager_DomainManager, 1, "domain_manager", 0))) __PYX_ERR(0, 311, __pyx_L1_error)
   __pyx_r = __pyx_pf_3phd_6domain_8boundary_10Reflective_update_fields(((struct __pyx_obj_3phd_6domain_8boundary_Reflective *)__pyx_v_self), __pyx_v_particles, __pyx_v_domain_manager);
 
   /* function exit code */
@@ -5328,7 +5328,7 @@ static PyObject *__pyx_pf_3phd_6domain_8boundary_10Reflective_update_fields(stru
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("update_fields", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_3phd_6domain_8boundary_10Reflective_update_fields(__pyx_v_self, __pyx_v_particles, __pyx_v_domain_manager, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 309, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_3phd_6domain_8boundary_10Reflective_update_fields(__pyx_v_self, __pyx_v_particles, __pyx_v_domain_manager, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 311, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -5632,7 +5632,7 @@ static PyObject *__pyx_pf_3phd_6domain_8boundary_10Reflective_4__setstate_cython
   return __pyx_r;
 }
 
-/* "phd/domain/boundary.pyx":351
+/* "phd/domain/boundary.pyx":356
  * 
  * cdef class Periodic(BoundaryConditionBase):
  *     cdef void create_ghost_particle_serial(self, cpplist[FlagParticle] &flagged_particles,             # <<<<<<<<<<<<<<
@@ -5664,7 +5664,7 @@ static void __pyx_f_3phd_6domain_8boundary_8Periodic_create_ghost_particle_seria
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("create_ghost_particle_serial", 0);
 
-  /* "phd/domain/boundary.pyx":368
+  /* "phd/domain/boundary.pyx":373
  *         cdef int index[3]
  *         cdef FlagParticle *p
  *         cdef int dim = domain_manager.dim             # <<<<<<<<<<<<<<
@@ -5674,7 +5674,7 @@ static void __pyx_f_3phd_6domain_8boundary_8Periodic_create_ghost_particle_seria
   __pyx_t_1 = __pyx_v_domain_manager->dim;
   __pyx_v_dim = __pyx_t_1;
 
-  /* "phd/domain/boundary.pyx":370
+  /* "phd/domain/boundary.pyx":375
  *         cdef int dim = domain_manager.dim
  * 
  *         cdef cpplist[FlagParticle].iterator it = flagged_particles.begin()             # <<<<<<<<<<<<<<
@@ -5683,7 +5683,7 @@ static void __pyx_f_3phd_6domain_8boundary_8Periodic_create_ghost_particle_seria
  */
   __pyx_v_it = __pyx_v_flagged_particles.begin();
 
-  /* "phd/domain/boundary.pyx":371
+  /* "phd/domain/boundary.pyx":376
  * 
  *         cdef cpplist[FlagParticle].iterator it = flagged_particles.begin()
  *         while it != flagged_particles.end():             # <<<<<<<<<<<<<<
@@ -5694,7 +5694,7 @@ static void __pyx_f_3phd_6domain_8boundary_8Periodic_create_ghost_particle_seria
     __pyx_t_2 = ((__pyx_v_it != __pyx_v_flagged_particles.end()) != 0);
     if (!__pyx_t_2) break;
 
-    /* "phd/domain/boundary.pyx":372
+    /* "phd/domain/boundary.pyx":377
  *         cdef cpplist[FlagParticle].iterator it = flagged_particles.begin()
  *         while it != flagged_particles.end():
  *             p = particle_flag_deref(it)             # <<<<<<<<<<<<<<
@@ -5703,7 +5703,7 @@ static void __pyx_f_3phd_6domain_8boundary_8Periodic_create_ghost_particle_seria
  */
     __pyx_v_p = particle_flag_deref(__pyx_v_it);
 
-    /* "phd/domain/boundary.pyx":375
+    /* "phd/domain/boundary.pyx":380
  * 
  *             # skip partilce if does not intersect boundary
  *             if intersect_bounds(p.x, p.search_radius, domain_manager.bounds, dim):             # <<<<<<<<<<<<<<
@@ -5713,25 +5713,25 @@ static void __pyx_f_3phd_6domain_8boundary_8Periodic_create_ghost_particle_seria
     __pyx_t_2 = (__pyx_f_3phd_6domain_8boundary_intersect_bounds(__pyx_v_p->x, __pyx_v_p->search_radius, __pyx_v_domain_manager->bounds, __pyx_v_dim) != 0);
     if (__pyx_t_2) {
 
-      /* "phd/domain/boundary.pyx":378
+      /* "phd/domain/boundary.pyx":383
  * 
  *                 # shift particle
  *                 for i in range(3**dim):             # <<<<<<<<<<<<<<
  * 
  *                     # create shift indices
  */
-      __pyx_t_3 = __Pyx_PyInt_From_long(__Pyx_pow_long(3, ((long)__pyx_v_dim))); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 378, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyInt_From_long(__Pyx_pow_long(3, ((long)__pyx_v_dim))); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 383, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 378, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 383, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       if (likely(PyList_CheckExact(__pyx_t_4)) || PyTuple_CheckExact(__pyx_t_4)) {
         __pyx_t_3 = __pyx_t_4; __Pyx_INCREF(__pyx_t_3); __pyx_t_5 = 0;
         __pyx_t_6 = NULL;
       } else {
-        __pyx_t_5 = -1; __pyx_t_3 = PyObject_GetIter(__pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 378, __pyx_L1_error)
+        __pyx_t_5 = -1; __pyx_t_3 = PyObject_GetIter(__pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 383, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
-        __pyx_t_6 = Py_TYPE(__pyx_t_3)->tp_iternext; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 378, __pyx_L1_error)
+        __pyx_t_6 = Py_TYPE(__pyx_t_3)->tp_iternext; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 383, __pyx_L1_error)
       }
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       for (;;) {
@@ -5739,17 +5739,17 @@ static void __pyx_f_3phd_6domain_8boundary_8Periodic_create_ghost_particle_seria
           if (likely(PyList_CheckExact(__pyx_t_3))) {
             if (__pyx_t_5 >= PyList_GET_SIZE(__pyx_t_3)) break;
             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-            __pyx_t_4 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_5); __Pyx_INCREF(__pyx_t_4); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 378, __pyx_L1_error)
+            __pyx_t_4 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_5); __Pyx_INCREF(__pyx_t_4); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 383, __pyx_L1_error)
             #else
-            __pyx_t_4 = PySequence_ITEM(__pyx_t_3, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 378, __pyx_L1_error)
+            __pyx_t_4 = PySequence_ITEM(__pyx_t_3, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 383, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_4);
             #endif
           } else {
             if (__pyx_t_5 >= PyTuple_GET_SIZE(__pyx_t_3)) break;
             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-            __pyx_t_4 = PyTuple_GET_ITEM(__pyx_t_3, __pyx_t_5); __Pyx_INCREF(__pyx_t_4); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 378, __pyx_L1_error)
+            __pyx_t_4 = PyTuple_GET_ITEM(__pyx_t_3, __pyx_t_5); __Pyx_INCREF(__pyx_t_4); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 383, __pyx_L1_error)
             #else
-            __pyx_t_4 = PySequence_ITEM(__pyx_t_3, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 378, __pyx_L1_error)
+            __pyx_t_4 = PySequence_ITEM(__pyx_t_3, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 383, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_4);
             #endif
           }
@@ -5759,7 +5759,7 @@ static void __pyx_f_3phd_6domain_8boundary_8Periodic_create_ghost_particle_seria
             PyObject* exc_type = PyErr_Occurred();
             if (exc_type) {
               if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-              else __PYX_ERR(0, 378, __pyx_L1_error)
+              else __PYX_ERR(0, 383, __pyx_L1_error)
             }
             break;
           }
@@ -5768,42 +5768,42 @@ static void __pyx_f_3phd_6domain_8boundary_8Periodic_create_ghost_particle_seria
         __Pyx_XDECREF_SET(__pyx_v_i, __pyx_t_4);
         __pyx_t_4 = 0;
 
-        /* "phd/domain/boundary.pyx":381
+        /* "phd/domain/boundary.pyx":386
  * 
  *                     # create shift indices
  *                     index[0] = i%3; index[1] = (i/3)%3; index[2] = i/9             # <<<<<<<<<<<<<<
  *                     if (i == 4 and dim == 2) or (i == 13 and dim == 3):
  *                         continue # skip no shift
  */
-        __pyx_t_4 = __Pyx_PyInt_RemainderObjC(__pyx_v_i, __pyx_int_3, 3, 0, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 381, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyInt_RemainderObjC(__pyx_v_i, __pyx_int_3, 3, 0, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 386, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
-        __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_t_4); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 381, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_t_4); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 386, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
         (__pyx_v_index[0]) = __pyx_t_1;
-        __pyx_t_4 = __Pyx_PyNumber_Divide(__pyx_v_i, __pyx_int_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 381, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyNumber_Divide(__pyx_v_i, __pyx_int_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 386, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
-        __pyx_t_7 = __Pyx_PyInt_RemainderObjC(__pyx_t_4, __pyx_int_3, 3, 0, 0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 381, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyInt_RemainderObjC(__pyx_t_4, __pyx_int_3, 3, 0, 0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 386, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-        __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_t_7); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 381, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_t_7); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 386, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
         (__pyx_v_index[1]) = __pyx_t_1;
-        __pyx_t_7 = __Pyx_PyNumber_Divide(__pyx_v_i, __pyx_int_9); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 381, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyNumber_Divide(__pyx_v_i, __pyx_int_9); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 386, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
-        __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_t_7); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 381, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_t_7); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 386, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
         (__pyx_v_index[2]) = __pyx_t_1;
 
-        /* "phd/domain/boundary.pyx":382
+        /* "phd/domain/boundary.pyx":387
  *                     # create shift indices
  *                     index[0] = i%3; index[1] = (i/3)%3; index[2] = i/9
  *                     if (i == 4 and dim == 2) or (i == 13 and dim == 3):             # <<<<<<<<<<<<<<
  *                         continue # skip no shift
  * 
  */
-        __pyx_t_7 = __Pyx_PyInt_EqObjC(__pyx_v_i, __pyx_int_4, 4, 0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 382, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyInt_EqObjC(__pyx_v_i, __pyx_int_4, 4, 0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 387, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
-        __pyx_t_8 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 382, __pyx_L1_error)
+        __pyx_t_8 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 387, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
         if (!__pyx_t_8) {
           goto __pyx_L10_next_or;
@@ -5816,9 +5816,9 @@ static void __pyx_f_3phd_6domain_8boundary_8Periodic_create_ghost_particle_seria
           goto __pyx_L9_bool_binop_done;
         }
         __pyx_L10_next_or:;
-        __pyx_t_7 = __Pyx_PyInt_EqObjC(__pyx_v_i, __pyx_int_13, 13, 0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 382, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyInt_EqObjC(__pyx_v_i, __pyx_int_13, 13, 0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 387, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
-        __pyx_t_8 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 382, __pyx_L1_error)
+        __pyx_t_8 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 387, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
         if (__pyx_t_8) {
         } else {
@@ -5830,7 +5830,7 @@ static void __pyx_f_3phd_6domain_8boundary_8Periodic_create_ghost_particle_seria
         __pyx_L9_bool_binop_done:;
         if (__pyx_t_2) {
 
-          /* "phd/domain/boundary.pyx":383
+          /* "phd/domain/boundary.pyx":388
  *                     index[0] = i%3; index[1] = (i/3)%3; index[2] = i/9
  *                     if (i == 4 and dim == 2) or (i == 13 and dim == 3):
  *                         continue # skip no shift             # <<<<<<<<<<<<<<
@@ -5839,7 +5839,7 @@ static void __pyx_f_3phd_6domain_8boundary_8Periodic_create_ghost_particle_seria
  */
           goto __pyx_L6_continue;
 
-          /* "phd/domain/boundary.pyx":382
+          /* "phd/domain/boundary.pyx":387
  *                     # create shift indices
  *                     index[0] = i%3; index[1] = (i/3)%3; index[2] = i/9
  *                     if (i == 4 and dim == 2) or (i == 13 and dim == 3):             # <<<<<<<<<<<<<<
@@ -5848,7 +5848,7 @@ static void __pyx_f_3phd_6domain_8boundary_8Periodic_create_ghost_particle_seria
  */
         }
 
-        /* "phd/domain/boundary.pyx":386
+        /* "phd/domain/boundary.pyx":391
  * 
  *                     # shifted particle
  *                     for k in range(dim):             # <<<<<<<<<<<<<<
@@ -5860,7 +5860,7 @@ static void __pyx_f_3phd_6domain_8boundary_8Periodic_create_ghost_particle_seria
         for (__pyx_t_10 = 0; __pyx_t_10 < __pyx_t_9; __pyx_t_10+=1) {
           __pyx_v_k = __pyx_t_10;
 
-          /* "phd/domain/boundary.pyx":387
+          /* "phd/domain/boundary.pyx":392
  *                     # shifted particle
  *                     for k in range(dim):
  *                         xs[k] = p.x[k] +\             # <<<<<<<<<<<<<<
@@ -5870,7 +5870,7 @@ static void __pyx_f_3phd_6domain_8boundary_8Periodic_create_ghost_particle_seria
           (__pyx_v_xs[__pyx_v_k]) = ((__pyx_v_p->x[__pyx_v_k]) + (((__pyx_v_index[__pyx_v_k]) - 1) * (__pyx_v_domain_manager->translate[__pyx_v_k])));
         }
 
-        /* "phd/domain/boundary.pyx":392
+        /* "phd/domain/boundary.pyx":397
  *                     # find if shifted particle intersects domain
  *                     # skip if processed in earlier iteration
  *                     if intersect_bounds(xs, p.search_radius, domain_manager.bounds, dim) and\             # <<<<<<<<<<<<<<
@@ -5884,7 +5884,7 @@ static void __pyx_f_3phd_6domain_8boundary_8Periodic_create_ghost_particle_seria
           goto __pyx_L16_bool_binop_done;
         }
 
-        /* "phd/domain/boundary.pyx":393
+        /* "phd/domain/boundary.pyx":398
  *                     # skip if processed in earlier iteration
  *                     if intersect_bounds(xs, p.search_radius, domain_manager.bounds, dim) and\
  *                             not intersect_bounds(xs, p.old_search_radius, domain_manager.bounds, dim):             # <<<<<<<<<<<<<<
@@ -5895,7 +5895,7 @@ static void __pyx_f_3phd_6domain_8boundary_8Periodic_create_ghost_particle_seria
         __pyx_t_2 = __pyx_t_8;
         __pyx_L16_bool_binop_done:;
 
-        /* "phd/domain/boundary.pyx":392
+        /* "phd/domain/boundary.pyx":397
  *                     # find if shifted particle intersects domain
  *                     # skip if processed in earlier iteration
  *                     if intersect_bounds(xs, p.search_radius, domain_manager.bounds, dim) and\             # <<<<<<<<<<<<<<
@@ -5904,7 +5904,7 @@ static void __pyx_f_3phd_6domain_8boundary_8Periodic_create_ghost_particle_seria
  */
         if (__pyx_t_2) {
 
-          /* "phd/domain/boundary.pyx":396
+          /* "phd/domain/boundary.pyx":401
  * 
  *                         # create ghost particle
  *                         domain_manager.ghost_vec.push_back(             # <<<<<<<<<<<<<<
@@ -5915,10 +5915,10 @@ static void __pyx_f_3phd_6domain_8boundary_8Periodic_create_ghost_particle_seria
             __pyx_v_domain_manager->ghost_vec.push_back(BoundaryParticle(__pyx_v_xs, __pyx_v_p->index, 0, __pyx_v_3phd_6domain_8boundary_EXTERIOR, __pyx_v_dim));
           } catch(...) {
             __Pyx_CppExn2PyErr();
-            __PYX_ERR(0, 396, __pyx_L1_error)
+            __PYX_ERR(0, 401, __pyx_L1_error)
           }
 
-          /* "phd/domain/boundary.pyx":392
+          /* "phd/domain/boundary.pyx":397
  *                     # find if shifted particle intersects domain
  *                     # skip if processed in earlier iteration
  *                     if intersect_bounds(xs, p.search_radius, domain_manager.bounds, dim) and\             # <<<<<<<<<<<<<<
@@ -5927,7 +5927,7 @@ static void __pyx_f_3phd_6domain_8boundary_8Periodic_create_ghost_particle_seria
  */
         }
 
-        /* "phd/domain/boundary.pyx":378
+        /* "phd/domain/boundary.pyx":383
  * 
  *                 # shift particle
  *                 for i in range(3**dim):             # <<<<<<<<<<<<<<
@@ -5938,7 +5938,7 @@ static void __pyx_f_3phd_6domain_8boundary_8Periodic_create_ghost_particle_seria
       }
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-      /* "phd/domain/boundary.pyx":375
+      /* "phd/domain/boundary.pyx":380
  * 
  *             # skip partilce if does not intersect boundary
  *             if intersect_bounds(p.x, p.search_radius, domain_manager.bounds, dim):             # <<<<<<<<<<<<<<
@@ -5947,7 +5947,7 @@ static void __pyx_f_3phd_6domain_8boundary_8Periodic_create_ghost_particle_seria
  */
     }
 
-    /* "phd/domain/boundary.pyx":400
+    /* "phd/domain/boundary.pyx":405
  *                                     0, EXTERIOR, dim))
  * 
  *             inc(it)  # increment iterator             # <<<<<<<<<<<<<<
@@ -5957,7 +5957,7 @@ static void __pyx_f_3phd_6domain_8boundary_8Periodic_create_ghost_particle_seria
     (void)((++__pyx_v_it));
   }
 
-  /* "phd/domain/boundary.pyx":351
+  /* "phd/domain/boundary.pyx":356
  * 
  * cdef class Periodic(BoundaryConditionBase):
  *     cdef void create_ghost_particle_serial(self, cpplist[FlagParticle] &flagged_particles,             # <<<<<<<<<<<<<<
@@ -5977,7 +5977,7 @@ static void __pyx_f_3phd_6domain_8boundary_8Periodic_create_ghost_particle_seria
   __Pyx_RefNannyFinishContext();
 }
 
-/* "phd/domain/boundary.pyx":402
+/* "phd/domain/boundary.pyx":407
  *             inc(it)  # increment iterator
  * 
  *     cdef void create_ghost_particle_parallel(self, cpplist[FlagParticle] &flagged_particles,             # <<<<<<<<<<<<<<
@@ -6013,19 +6013,19 @@ static void __pyx_f_3phd_6domain_8boundary_8Periodic_create_ghost_particle_paral
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("create_ghost_particle_parallel", 0);
 
-  /* "phd/domain/boundary.pyx":418
+  /* "phd/domain/boundary.pyx":423
  *         cdef double xs[3]
  *         cdef int index[3]
  *         cdef LongArray proc_nbrs = LongArray()             # <<<<<<<<<<<<<<
  *         cdef int dim = domain_manager.dim
  * 
  */
-  __pyx_t_1 = __Pyx_PyObject_CallNoArg(((PyObject *)__pyx_ptype_3phd_5utils_6carray_LongArray)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 418, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_CallNoArg(((PyObject *)__pyx_ptype_3phd_5utils_6carray_LongArray)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 423, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_proc_nbrs = ((struct __pyx_obj_3phd_5utils_6carray_LongArray *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "phd/domain/boundary.pyx":419
+  /* "phd/domain/boundary.pyx":424
  *         cdef int index[3]
  *         cdef LongArray proc_nbrs = LongArray()
  *         cdef int dim = domain_manager.dim             # <<<<<<<<<<<<<<
@@ -6035,7 +6035,7 @@ static void __pyx_f_3phd_6domain_8boundary_8Periodic_create_ghost_particle_paral
   __pyx_t_2 = __pyx_v_domain_manager->dim;
   __pyx_v_dim = __pyx_t_2;
 
-  /* "phd/domain/boundary.pyx":421
+  /* "phd/domain/boundary.pyx":426
  *         cdef int dim = domain_manager.dim
  * 
  *         cdef cpplist[FlagParticle].iterator it = flagged_particles.begin()             # <<<<<<<<<<<<<<
@@ -6044,7 +6044,7 @@ static void __pyx_f_3phd_6domain_8boundary_8Periodic_create_ghost_particle_paral
  */
   __pyx_v_it = __pyx_v_flagged_particles.begin();
 
-  /* "phd/domain/boundary.pyx":422
+  /* "phd/domain/boundary.pyx":427
  * 
  *         cdef cpplist[FlagParticle].iterator it = flagged_particles.begin()
  *         while it != flagged_particles.end():             # <<<<<<<<<<<<<<
@@ -6055,7 +6055,7 @@ static void __pyx_f_3phd_6domain_8boundary_8Periodic_create_ghost_particle_paral
     __pyx_t_3 = ((__pyx_v_it != __pyx_v_flagged_particles.end()) != 0);
     if (!__pyx_t_3) break;
 
-    /* "phd/domain/boundary.pyx":423
+    /* "phd/domain/boundary.pyx":428
  *         cdef cpplist[FlagParticle].iterator it = flagged_particles.begin()
  *         while it != flagged_particles.end():
  *             p = particle_flag_deref(it)             # <<<<<<<<<<<<<<
@@ -6064,7 +6064,7 @@ static void __pyx_f_3phd_6domain_8boundary_8Periodic_create_ghost_particle_paral
  */
     __pyx_v_p = particle_flag_deref(__pyx_v_it);
 
-    /* "phd/domain/boundary.pyx":426
+    /* "phd/domain/boundary.pyx":431
  * 
  *             # skip if it does not intersect boundary
  *             if intersect_bounds(p.x, p.search_radius, domain_manager.bounds, dim):             # <<<<<<<<<<<<<<
@@ -6074,7 +6074,7 @@ static void __pyx_f_3phd_6domain_8boundary_8Periodic_create_ghost_particle_paral
     __pyx_t_3 = (__pyx_f_3phd_6domain_8boundary_intersect_bounds(__pyx_v_p->x, __pyx_v_p->search_radius, __pyx_v_domain_manager->bounds, __pyx_v_dim) != 0);
     if (__pyx_t_3) {
 
-      /* "phd/domain/boundary.pyx":429
+      /* "phd/domain/boundary.pyx":434
  * 
  *                 # shift particle
  *                 for i in range(3**dim):             # <<<<<<<<<<<<<<
@@ -6086,7 +6086,7 @@ static void __pyx_f_3phd_6domain_8boundary_8Periodic_create_ghost_particle_paral
       for (__pyx_t_2 = 0; __pyx_t_2 < __pyx_t_5; __pyx_t_2+=1) {
         __pyx_v_i = __pyx_t_2;
 
-        /* "phd/domain/boundary.pyx":432
+        /* "phd/domain/boundary.pyx":437
  * 
  *                     # create shift indices
  *                     index[0] = i%3; index[1] = (i/3)%3; index[2] = i/9             # <<<<<<<<<<<<<<
@@ -6097,7 +6097,7 @@ static void __pyx_f_3phd_6domain_8boundary_8Periodic_create_ghost_particle_paral
         (__pyx_v_index[1]) = __Pyx_mod_long(__Pyx_div_long(__pyx_v_i, 3), 3);
         (__pyx_v_index[2]) = __Pyx_div_long(__pyx_v_i, 9);
 
-        /* "phd/domain/boundary.pyx":433
+        /* "phd/domain/boundary.pyx":438
  *                     # create shift indices
  *                     index[0] = i%3; index[1] = (i/3)%3; index[2] = i/9
  *                     if (i == 4 and dim == 2) or (i == 13 and dim == 3):             # <<<<<<<<<<<<<<
@@ -6127,7 +6127,7 @@ static void __pyx_f_3phd_6domain_8boundary_8Periodic_create_ghost_particle_paral
         __pyx_L9_bool_binop_done:;
         if (__pyx_t_3) {
 
-          /* "phd/domain/boundary.pyx":434
+          /* "phd/domain/boundary.pyx":439
  *                     index[0] = i%3; index[1] = (i/3)%3; index[2] = i/9
  *                     if (i == 4 and dim == 2) or (i == 13 and dim == 3):
  *                         continue # skip no shift             # <<<<<<<<<<<<<<
@@ -6136,7 +6136,7 @@ static void __pyx_f_3phd_6domain_8boundary_8Periodic_create_ghost_particle_paral
  */
           goto __pyx_L6_continue;
 
-          /* "phd/domain/boundary.pyx":433
+          /* "phd/domain/boundary.pyx":438
  *                     # create shift indices
  *                     index[0] = i%3; index[1] = (i/3)%3; index[2] = i/9
  *                     if (i == 4 and dim == 2) or (i == 13 and dim == 3):             # <<<<<<<<<<<<<<
@@ -6145,7 +6145,7 @@ static void __pyx_f_3phd_6domain_8boundary_8Periodic_create_ghost_particle_paral
  */
         }
 
-        /* "phd/domain/boundary.pyx":437
+        /* "phd/domain/boundary.pyx":442
  * 
  *                     # shifted position
  *                     for k in range(dim):             # <<<<<<<<<<<<<<
@@ -6157,7 +6157,7 @@ static void __pyx_f_3phd_6domain_8boundary_8Periodic_create_ghost_particle_paral
         for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
           __pyx_v_k = __pyx_t_9;
 
-          /* "phd/domain/boundary.pyx":438
+          /* "phd/domain/boundary.pyx":443
  *                     # shifted position
  *                     for k in range(dim):
  *                         xs[k] = p.x[k] +\             # <<<<<<<<<<<<<<
@@ -6167,33 +6167,33 @@ static void __pyx_f_3phd_6domain_8boundary_8Periodic_create_ghost_particle_paral
           (__pyx_v_xs[__pyx_v_k]) = ((__pyx_v_p->x[__pyx_v_k]) + (((__pyx_v_index[__pyx_v_k]) - 1) * (__pyx_v_domain_manager->translate[__pyx_v_k])));
         }
 
-        /* "phd/domain/boundary.pyx":442
+        /* "phd/domain/boundary.pyx":447
  * 
  *                     # find processor neighbors
  *                     proc_nbrs.reset()             # <<<<<<<<<<<<<<
  *                     domain_manager.get_nearest_intersect_process_neighbors(
  *                             xs, p.old_search_radius, p.search_radius,
  */
-        __pyx_t_1 = ((struct __pyx_vtabstruct_3phd_5utils_6carray_LongArray *)__pyx_v_proc_nbrs->__pyx_base.__pyx_vtab)->__pyx_base.reset(((struct __pyx_obj_3phd_5utils_6carray_BaseArray *)__pyx_v_proc_nbrs), 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 442, __pyx_L1_error)
+        __pyx_t_1 = ((struct __pyx_vtabstruct_3phd_5utils_6carray_LongArray *)__pyx_v_proc_nbrs->__pyx_base.__pyx_vtab)->__pyx_base.reset(((struct __pyx_obj_3phd_5utils_6carray_BaseArray *)__pyx_v_proc_nbrs), 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 447, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-        /* "phd/domain/boundary.pyx":445
+        /* "phd/domain/boundary.pyx":450
  *                     domain_manager.get_nearest_intersect_process_neighbors(
  *                             xs, p.old_search_radius, p.search_radius,
  *                             phd._rank, proc_nbrs)             # <<<<<<<<<<<<<<
  * 
  *                     if proc_nbrs.length:
  */
-        __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_phd); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 445, __pyx_L1_error)
+        __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_phd); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 450, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
-        __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_rank); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 445, __pyx_L1_error)
+        __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_rank); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 450, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-        __pyx_t_7 = __Pyx_PyInt_As_int(__pyx_t_10); if (unlikely((__pyx_t_7 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 445, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyInt_As_int(__pyx_t_10); if (unlikely((__pyx_t_7 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 450, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
 
-        /* "phd/domain/boundary.pyx":443
+        /* "phd/domain/boundary.pyx":448
  *                     # find processor neighbors
  *                     proc_nbrs.reset()
  *                     domain_manager.get_nearest_intersect_process_neighbors(             # <<<<<<<<<<<<<<
@@ -6202,7 +6202,7 @@ static void __pyx_f_3phd_6domain_8boundary_8Periodic_create_ghost_particle_paral
  */
         (void)(((struct __pyx_vtabstruct_3phd_6domain_14domain_manager_DomainManager *)__pyx_v_domain_manager->__pyx_vtab)->get_nearest_intersect_process_neighbors(__pyx_v_domain_manager, __pyx_v_xs, __pyx_v_p->old_search_radius, __pyx_v_p->search_radius, __pyx_t_7, __pyx_v_proc_nbrs));
 
-        /* "phd/domain/boundary.pyx":447
+        /* "phd/domain/boundary.pyx":452
  *                             phd._rank, proc_nbrs)
  * 
  *                     if proc_nbrs.length:             # <<<<<<<<<<<<<<
@@ -6212,7 +6212,7 @@ static void __pyx_f_3phd_6domain_8boundary_8Periodic_create_ghost_particle_paral
         __pyx_t_3 = (__pyx_v_proc_nbrs->__pyx_base.length != 0);
         if (__pyx_t_3) {
 
-          /* "phd/domain/boundary.pyx":448
+          /* "phd/domain/boundary.pyx":453
  * 
  *                     if proc_nbrs.length:
  *                         for j in range(proc_nbrs.length):             # <<<<<<<<<<<<<<
@@ -6224,7 +6224,7 @@ static void __pyx_f_3phd_6domain_8boundary_8Periodic_create_ghost_particle_paral
           for (__pyx_t_7 = 0; __pyx_t_7 < __pyx_t_12; __pyx_t_7+=1) {
             __pyx_v_j = __pyx_t_7;
 
-            /* "phd/domain/boundary.pyx":449
+            /* "phd/domain/boundary.pyx":454
  *                     if proc_nbrs.length:
  *                         for j in range(proc_nbrs.length):
  *                             domain_manager.ghost_vec.push_back(             # <<<<<<<<<<<<<<
@@ -6235,11 +6235,11 @@ static void __pyx_f_3phd_6domain_8boundary_8Periodic_create_ghost_particle_paral
               __pyx_v_domain_manager->ghost_vec.push_back(BoundaryParticle(__pyx_v_xs, __pyx_v_p->index, (__pyx_v_proc_nbrs->data[__pyx_v_j]), __pyx_v_3phd_6domain_8boundary_EXTERIOR, __pyx_v_dim));
             } catch(...) {
               __Pyx_CppExn2PyErr();
-              __PYX_ERR(0, 449, __pyx_L1_error)
+              __PYX_ERR(0, 454, __pyx_L1_error)
             }
           }
 
-          /* "phd/domain/boundary.pyx":447
+          /* "phd/domain/boundary.pyx":452
  *                             phd._rank, proc_nbrs)
  * 
  *                     if proc_nbrs.length:             # <<<<<<<<<<<<<<
@@ -6250,7 +6250,7 @@ static void __pyx_f_3phd_6domain_8boundary_8Periodic_create_ghost_particle_paral
         __pyx_L6_continue:;
       }
 
-      /* "phd/domain/boundary.pyx":426
+      /* "phd/domain/boundary.pyx":431
  * 
  *             # skip if it does not intersect boundary
  *             if intersect_bounds(p.x, p.search_radius, domain_manager.bounds, dim):             # <<<<<<<<<<<<<<
@@ -6259,7 +6259,7 @@ static void __pyx_f_3phd_6domain_8boundary_8Periodic_create_ghost_particle_paral
  */
     }
 
-    /* "phd/domain/boundary.pyx":455
+    /* "phd/domain/boundary.pyx":460
  *                                         EXTERIOR, dim))
  * 
  *             inc(it)  # increment iterator             # <<<<<<<<<<<<<<
@@ -6269,7 +6269,7 @@ static void __pyx_f_3phd_6domain_8boundary_8Periodic_create_ghost_particle_paral
     (void)((++__pyx_v_it));
   }
 
-  /* "phd/domain/boundary.pyx":402
+  /* "phd/domain/boundary.pyx":407
  *             inc(it)  # increment iterator
  * 
  *     cdef void create_ghost_particle_parallel(self, cpplist[FlagParticle] &flagged_particles,             # <<<<<<<<<<<<<<
@@ -6288,7 +6288,7 @@ static void __pyx_f_3phd_6domain_8boundary_8Periodic_create_ghost_particle_paral
   __Pyx_RefNannyFinishContext();
 }
 
-/* "phd/domain/boundary.pyx":457
+/* "phd/domain/boundary.pyx":462
  *             inc(it)  # increment iterator
  * 
  *     cdef void update_gradients(self, CarrayContainer particles, CarrayContainer gradients,             # <<<<<<<<<<<<<<
@@ -6304,7 +6304,7 @@ static void __pyx_f_3phd_6domain_8boundary_8Periodic_update_gradients(CYTHON_UNU
   __Pyx_RefNannyFinishContext();
 }
 
-/* "phd/domain/boundary.pyx":480
+/* "phd/domain/boundary.pyx":485
  *         pass
  * 
  *     cpdef update_fields(self, CarrayContainer particles, DomainManager domain_manager):             # <<<<<<<<<<<<<<
@@ -6335,7 +6335,7 @@ static PyObject *__pyx_f_3phd_6domain_8boundary_8Periodic_update_fields(CYTHON_U
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_type_dict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_update_fields); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 480, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_update_fields); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 485, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_3phd_6domain_8boundary_8Periodic_1update_fields)) {
         __Pyx_XDECREF(__pyx_r);
@@ -6355,7 +6355,7 @@ static PyObject *__pyx_f_3phd_6domain_8boundary_8Periodic_update_fields(CYTHON_U
         #if CYTHON_FAST_PYCALL
         if (PyFunction_Check(__pyx_t_3)) {
           PyObject *__pyx_temp[3] = {__pyx_t_4, ((PyObject *)__pyx_v_particles), ((PyObject *)__pyx_v_domain_manager)};
-          __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 480, __pyx_L1_error)
+          __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 485, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
           __Pyx_GOTREF(__pyx_t_2);
         } else
@@ -6363,13 +6363,13 @@ static PyObject *__pyx_f_3phd_6domain_8boundary_8Periodic_update_fields(CYTHON_U
         #if CYTHON_FAST_PYCCALL
         if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
           PyObject *__pyx_temp[3] = {__pyx_t_4, ((PyObject *)__pyx_v_particles), ((PyObject *)__pyx_v_domain_manager)};
-          __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 480, __pyx_L1_error)
+          __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 485, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
           __Pyx_GOTREF(__pyx_t_2);
         } else
         #endif
         {
-          __pyx_t_6 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 480, __pyx_L1_error)
+          __pyx_t_6 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 485, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_6);
           if (__pyx_t_4) {
             __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_4); __pyx_t_4 = NULL;
@@ -6380,7 +6380,7 @@ static PyObject *__pyx_f_3phd_6domain_8boundary_8Periodic_update_fields(CYTHON_U
           __Pyx_INCREF(((PyObject *)__pyx_v_domain_manager));
           __Pyx_GIVEREF(((PyObject *)__pyx_v_domain_manager));
           PyTuple_SET_ITEM(__pyx_t_6, 1+__pyx_t_5, ((PyObject *)__pyx_v_domain_manager));
-          __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_6, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 480, __pyx_L1_error)
+          __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_6, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 485, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
         }
@@ -6403,7 +6403,7 @@ static PyObject *__pyx_f_3phd_6domain_8boundary_8Periodic_update_fields(CYTHON_U
     #endif
   }
 
-  /* "phd/domain/boundary.pyx":481
+  /* "phd/domain/boundary.pyx":486
  * 
  *     cpdef update_fields(self, CarrayContainer particles, DomainManager domain_manager):
  *         """Transfer gradient from image particle to ghost particle with reflective             # <<<<<<<<<<<<<<
@@ -6428,7 +6428,7 @@ static PyObject *__pyx_f_3phd_6domain_8boundary_8Periodic_update_fields(CYTHON_U
   return __pyx_r;
 }
 
-/* "phd/domain/boundary.pyx":480
+/* "phd/domain/boundary.pyx":485
  *         pass
  * 
  *     cpdef update_fields(self, CarrayContainer particles, DomainManager domain_manager):             # <<<<<<<<<<<<<<
@@ -6438,7 +6438,7 @@ static PyObject *__pyx_f_3phd_6domain_8boundary_8Periodic_update_fields(CYTHON_U
 
 /* Python wrapper */
 static PyObject *__pyx_pw_3phd_6domain_8boundary_8Periodic_1update_fields(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_3phd_6domain_8boundary_8Periodic_update_fields[] = "Transfer gradient from image particle to ghost particle with reflective\n        boundary condition.\n\n        For periodic boundary condition the there is no need to update gradients.\n\n        Parameters\n        ----------\n        particles : CarrayContainer\n            Gradient data\n\n        gradients : CarrayContainer\n            Container of gradients for each primitive field.\n        p : FlagParticle*\n            Pointer to flagged particle.\n\n        domain_manager : DomainManager\n            Class that handels all things related with the domain.\n\n        ";
+static char __pyx_doc_3phd_6domain_8boundary_8Periodic_update_fields[] = "Transfer gradient from image particle to ghost particle with reflective\n        boundary condition.\n\n        For periodic boundary condition the there is no need to update gradients.\n\n        Parameters\n        ----------\n        particles : CarrayContainer\n            Gradient data\n\n        gradients : CarrayContainer\n            Container of gradients for each primitive field.\n        p : FlagParticle*\n            Pointer to flagged particle.\n\n        domain_manager : DomainManager\n            Class that handles all things related with the domain.\n\n        ";
 static PyObject *__pyx_pw_3phd_6domain_8boundary_8Periodic_1update_fields(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   struct __pyx_obj_3phd_10containers_10containers_CarrayContainer *__pyx_v_particles = 0;
   struct __pyx_obj_3phd_6domain_14domain_manager_DomainManager *__pyx_v_domain_manager = 0;
@@ -6471,11 +6471,11 @@ static PyObject *__pyx_pw_3phd_6domain_8boundary_8Periodic_1update_fields(PyObje
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_domain_manager)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("update_fields", 1, 2, 2, 1); __PYX_ERR(0, 480, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("update_fields", 1, 2, 2, 1); __PYX_ERR(0, 485, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "update_fields") < 0)) __PYX_ERR(0, 480, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "update_fields") < 0)) __PYX_ERR(0, 485, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -6488,14 +6488,14 @@ static PyObject *__pyx_pw_3phd_6domain_8boundary_8Periodic_1update_fields(PyObje
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("update_fields", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 480, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("update_fields", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 485, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("phd.domain.boundary.Periodic.update_fields", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_particles), __pyx_ptype_3phd_10containers_10containers_CarrayContainer, 1, "particles", 0))) __PYX_ERR(0, 480, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_domain_manager), __pyx_ptype_3phd_6domain_14domain_manager_DomainManager, 1, "domain_manager", 0))) __PYX_ERR(0, 480, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_particles), __pyx_ptype_3phd_10containers_10containers_CarrayContainer, 1, "particles", 0))) __PYX_ERR(0, 485, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_domain_manager), __pyx_ptype_3phd_6domain_14domain_manager_DomainManager, 1, "domain_manager", 0))) __PYX_ERR(0, 485, __pyx_L1_error)
   __pyx_r = __pyx_pf_3phd_6domain_8boundary_8Periodic_update_fields(((struct __pyx_obj_3phd_6domain_8boundary_Periodic *)__pyx_v_self), __pyx_v_particles, __pyx_v_domain_manager);
 
   /* function exit code */
@@ -6516,7 +6516,7 @@ static PyObject *__pyx_pf_3phd_6domain_8boundary_8Periodic_update_fields(struct 
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("update_fields", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_3phd_6domain_8boundary_8Periodic_update_fields(__pyx_v_self, __pyx_v_particles, __pyx_v_domain_manager, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 480, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_3phd_6domain_8boundary_8Periodic_update_fields(__pyx_v_self, __pyx_v_particles, __pyx_v_domain_manager, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 485, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -6533,7 +6533,7 @@ static PyObject *__pyx_pf_3phd_6domain_8boundary_8Periodic_update_fields(struct 
   return __pyx_r;
 }
 
-/* "phd/domain/boundary.pyx":502
+/* "phd/domain/boundary.pyx":507
  *         pass
  * 
  *     cdef void migrate_particles(self, CarrayContainer particles, DomainManager domain_manager):             # <<<<<<<<<<<<<<
@@ -6565,20 +6565,20 @@ static void __pyx_f_3phd_6domain_8boundary_8Periodic_migrate_particles(CYTHON_UN
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("migrate_particles", 0);
 
-  /* "phd/domain/boundary.pyx":518
+  /* "phd/domain/boundary.pyx":523
  *         cdef int i, k, dim
  *         cdef np.float64_t *x[3]
  *         cdef IntArray tags = particles.get_carray("tag")             # <<<<<<<<<<<<<<
  * 
  *         dim = len(particles.carray_named_groups["position"])
  */
-  __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_particles->__pyx_vtab)->get_carray(__pyx_v_particles, __pyx_n_s_tag, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 518, __pyx_L1_error)
+  __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_particles->__pyx_vtab)->get_carray(__pyx_v_particles, __pyx_n_s_tag, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 523, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_3phd_5utils_6carray_IntArray))))) __PYX_ERR(0, 518, __pyx_L1_error)
+  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_3phd_5utils_6carray_IntArray))))) __PYX_ERR(0, 523, __pyx_L1_error)
   __pyx_v_tags = ((struct __pyx_obj_3phd_5utils_6carray_IntArray *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "phd/domain/boundary.pyx":520
+  /* "phd/domain/boundary.pyx":525
  *         cdef IntArray tags = particles.get_carray("tag")
  * 
  *         dim = len(particles.carray_named_groups["position"])             # <<<<<<<<<<<<<<
@@ -6587,15 +6587,15 @@ static void __pyx_f_3phd_6domain_8boundary_8Periodic_migrate_particles(CYTHON_UN
  */
   if (unlikely(__pyx_v_particles->carray_named_groups == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(0, 520, __pyx_L1_error)
+    __PYX_ERR(0, 525, __pyx_L1_error)
   }
-  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_particles->carray_named_groups, __pyx_n_s_position); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 520, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_particles->carray_named_groups, __pyx_n_s_position); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 525, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyObject_Length(__pyx_t_1); if (unlikely(__pyx_t_2 == ((Py_ssize_t)-1))) __PYX_ERR(0, 520, __pyx_L1_error)
+  __pyx_t_2 = PyObject_Length(__pyx_t_1); if (unlikely(__pyx_t_2 == ((Py_ssize_t)-1))) __PYX_ERR(0, 525, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_dim = __pyx_t_2;
 
-  /* "phd/domain/boundary.pyx":521
+  /* "phd/domain/boundary.pyx":526
  * 
  *         dim = len(particles.carray_named_groups["position"])
  *         particles.pointer_groups(x, particles.carray_named_groups["position"])             # <<<<<<<<<<<<<<
@@ -6604,15 +6604,15 @@ static void __pyx_f_3phd_6domain_8boundary_8Periodic_migrate_particles(CYTHON_UN
  */
   if (unlikely(__pyx_v_particles->carray_named_groups == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(0, 521, __pyx_L1_error)
+    __PYX_ERR(0, 526, __pyx_L1_error)
   }
-  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_particles->carray_named_groups, __pyx_n_s_position); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 521, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_particles->carray_named_groups, __pyx_n_s_position); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 526, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 521, __pyx_L1_error)
+  if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 526, __pyx_L1_error)
   ((struct __pyx_vtabstruct_3phd_10containers_10containers_CarrayContainer *)__pyx_v_particles->__pyx_vtab)->pointer_groups(__pyx_v_particles, __pyx_v_x, ((PyObject*)__pyx_t_1));
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "phd/domain/boundary.pyx":523
+  /* "phd/domain/boundary.pyx":528
  *         particles.pointer_groups(x, particles.carray_named_groups["position"])
  * 
  *         for i in range(particles.get_carray_size()):             # <<<<<<<<<<<<<<
@@ -6624,7 +6624,7 @@ static void __pyx_f_3phd_6domain_8boundary_8Periodic_migrate_particles(CYTHON_UN
   for (__pyx_t_5 = 0; __pyx_t_5 < __pyx_t_4; __pyx_t_5+=1) {
     __pyx_v_i = __pyx_t_5;
 
-    /* "phd/domain/boundary.pyx":524
+    /* "phd/domain/boundary.pyx":529
  * 
  *         for i in range(particles.get_carray_size()):
  *             if tags.data[i] == REAL:             # <<<<<<<<<<<<<<
@@ -6634,7 +6634,7 @@ static void __pyx_f_3phd_6domain_8boundary_8Periodic_migrate_particles(CYTHON_UN
     __pyx_t_6 = (((__pyx_v_tags->data[__pyx_v_i]) == __pyx_v_3phd_6domain_8boundary_REAL) != 0);
     if (__pyx_t_6) {
 
-      /* "phd/domain/boundary.pyx":525
+      /* "phd/domain/boundary.pyx":530
  *         for i in range(particles.get_carray_size()):
  *             if tags.data[i] == REAL:
  *                 for k in range(dim):             # <<<<<<<<<<<<<<
@@ -6646,7 +6646,7 @@ static void __pyx_f_3phd_6domain_8boundary_8Periodic_migrate_particles(CYTHON_UN
       for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
         __pyx_v_k = __pyx_t_9;
 
-        /* "phd/domain/boundary.pyx":526
+        /* "phd/domain/boundary.pyx":531
  *             if tags.data[i] == REAL:
  *                 for k in range(dim):
  *                     xs[k] = x[k][i]             # <<<<<<<<<<<<<<
@@ -6656,7 +6656,7 @@ static void __pyx_f_3phd_6domain_8boundary_8Periodic_migrate_particles(CYTHON_UN
         (__pyx_v_xs[__pyx_v_k]) = ((__pyx_v_x[__pyx_v_k])[__pyx_v_i]);
       }
 
-      /* "phd/domain/boundary.pyx":528
+      /* "phd/domain/boundary.pyx":533
  *                     xs[k] = x[k][i]
  * 
  *                 if not intersect_bounds(xs, 0.0, domain_manager.bounds, dim):             # <<<<<<<<<<<<<<
@@ -6666,7 +6666,7 @@ static void __pyx_f_3phd_6domain_8boundary_8Periodic_migrate_particles(CYTHON_UN
       __pyx_t_6 = ((!(__pyx_f_3phd_6domain_8boundary_intersect_bounds(__pyx_v_xs, 0.0, __pyx_v_domain_manager->bounds, __pyx_v_dim) != 0)) != 0);
       if (__pyx_t_6) {
 
-        /* "phd/domain/boundary.pyx":530
+        /* "phd/domain/boundary.pyx":535
  *                 if not intersect_bounds(xs, 0.0, domain_manager.bounds, dim):
  *                     # wrap particle back into domain
  *                     for k in range(dim):             # <<<<<<<<<<<<<<
@@ -6678,7 +6678,7 @@ static void __pyx_f_3phd_6domain_8boundary_8Periodic_migrate_particles(CYTHON_UN
         for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
           __pyx_v_k = __pyx_t_9;
 
-          /* "phd/domain/boundary.pyx":533
+          /* "phd/domain/boundary.pyx":538
  * 
  *                         # lower boundary
  *                         if xs[k] <= domain_manager.bounds[0][k]:             # <<<<<<<<<<<<<<
@@ -6688,7 +6688,7 @@ static void __pyx_f_3phd_6domain_8boundary_8Periodic_migrate_particles(CYTHON_UN
           __pyx_t_6 = (((__pyx_v_xs[__pyx_v_k]) <= ((__pyx_v_domain_manager->bounds[0])[__pyx_v_k])) != 0);
           if (__pyx_t_6) {
 
-            /* "phd/domain/boundary.pyx":534
+            /* "phd/domain/boundary.pyx":539
  *                         # lower boundary
  *                         if xs[k] <= domain_manager.bounds[0][k]:
  *                             x[k][i] += domain_manager.translate[k]             # <<<<<<<<<<<<<<
@@ -6699,7 +6699,7 @@ static void __pyx_f_3phd_6domain_8boundary_8Periodic_migrate_particles(CYTHON_UN
             __pyx_t_11 = __pyx_v_i;
             ((__pyx_v_x[__pyx_t_10])[__pyx_t_11]) = (((__pyx_v_x[__pyx_t_10])[__pyx_t_11]) + (__pyx_v_domain_manager->translate[__pyx_v_k]));
 
-            /* "phd/domain/boundary.pyx":533
+            /* "phd/domain/boundary.pyx":538
  * 
  *                         # lower boundary
  *                         if xs[k] <= domain_manager.bounds[0][k]:             # <<<<<<<<<<<<<<
@@ -6708,7 +6708,7 @@ static void __pyx_f_3phd_6domain_8boundary_8Periodic_migrate_particles(CYTHON_UN
  */
           }
 
-          /* "phd/domain/boundary.pyx":537
+          /* "phd/domain/boundary.pyx":542
  * 
  *                         # upper boundary
  *                         if xs[k] >= domain_manager.bounds[1][k]:             # <<<<<<<<<<<<<<
@@ -6717,7 +6717,7 @@ static void __pyx_f_3phd_6domain_8boundary_8Periodic_migrate_particles(CYTHON_UN
           __pyx_t_6 = (((__pyx_v_xs[__pyx_v_k]) >= ((__pyx_v_domain_manager->bounds[1])[__pyx_v_k])) != 0);
           if (__pyx_t_6) {
 
-            /* "phd/domain/boundary.pyx":538
+            /* "phd/domain/boundary.pyx":543
  *                         # upper boundary
  *                         if xs[k] >= domain_manager.bounds[1][k]:
  *                             x[k][i] -= domain_manager.translate[k]             # <<<<<<<<<<<<<<
@@ -6726,7 +6726,7 @@ static void __pyx_f_3phd_6domain_8boundary_8Periodic_migrate_particles(CYTHON_UN
             __pyx_t_11 = __pyx_v_i;
             ((__pyx_v_x[__pyx_t_10])[__pyx_t_11]) = (((__pyx_v_x[__pyx_t_10])[__pyx_t_11]) - (__pyx_v_domain_manager->translate[__pyx_v_k]));
 
-            /* "phd/domain/boundary.pyx":537
+            /* "phd/domain/boundary.pyx":542
  * 
  *                         # upper boundary
  *                         if xs[k] >= domain_manager.bounds[1][k]:             # <<<<<<<<<<<<<<
@@ -6735,7 +6735,7 @@ static void __pyx_f_3phd_6domain_8boundary_8Periodic_migrate_particles(CYTHON_UN
           }
         }
 
-        /* "phd/domain/boundary.pyx":528
+        /* "phd/domain/boundary.pyx":533
  *                     xs[k] = x[k][i]
  * 
  *                 if not intersect_bounds(xs, 0.0, domain_manager.bounds, dim):             # <<<<<<<<<<<<<<
@@ -6744,7 +6744,7 @@ static void __pyx_f_3phd_6domain_8boundary_8Periodic_migrate_particles(CYTHON_UN
  */
       }
 
-      /* "phd/domain/boundary.pyx":524
+      /* "phd/domain/boundary.pyx":529
  * 
  *         for i in range(particles.get_carray_size()):
  *             if tags.data[i] == REAL:             # <<<<<<<<<<<<<<
@@ -6754,7 +6754,7 @@ static void __pyx_f_3phd_6domain_8boundary_8Periodic_migrate_particles(CYTHON_UN
     }
   }
 
-  /* "phd/domain/boundary.pyx":502
+  /* "phd/domain/boundary.pyx":507
  *         pass
  * 
  *     cdef void migrate_particles(self, CarrayContainer particles, DomainManager domain_manager):             # <<<<<<<<<<<<<<
@@ -9587,16 +9587,16 @@ static int __Pyx_modinit_type_init_code(void) {
   __pyx_vtable_3phd_6domain_8boundary_Periodic.__pyx_base.update_gradients = (void (*)(struct __pyx_obj_3phd_6domain_8boundary_BoundaryConditionBase *, struct __pyx_obj_3phd_10containers_10containers_CarrayContainer *, struct __pyx_obj_3phd_10containers_10containers_CarrayContainer *, struct __pyx_obj_3phd_6domain_14domain_manager_DomainManager *))__pyx_f_3phd_6domain_8boundary_8Periodic_update_gradients;
   __pyx_vtable_3phd_6domain_8boundary_Periodic.__pyx_base.update_fields = (PyObject *(*)(struct __pyx_obj_3phd_6domain_8boundary_BoundaryConditionBase *, struct __pyx_obj_3phd_10containers_10containers_CarrayContainer *, struct __pyx_obj_3phd_6domain_14domain_manager_DomainManager *, int __pyx_skip_dispatch))__pyx_f_3phd_6domain_8boundary_8Periodic_update_fields;
   __pyx_type_3phd_6domain_8boundary_Periodic.tp_base = __pyx_ptype_3phd_6domain_8boundary_BoundaryConditionBase;
-  if (PyType_Ready(&__pyx_type_3phd_6domain_8boundary_Periodic) < 0) __PYX_ERR(0, 350, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_3phd_6domain_8boundary_Periodic) < 0) __PYX_ERR(0, 355, __pyx_L1_error)
   #if PY_VERSION_HEX < 0x030800B1
   __pyx_type_3phd_6domain_8boundary_Periodic.tp_print = 0;
   #endif
   if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_3phd_6domain_8boundary_Periodic.tp_dictoffset && __pyx_type_3phd_6domain_8boundary_Periodic.tp_getattro == PyObject_GenericGetAttr)) {
     __pyx_type_3phd_6domain_8boundary_Periodic.tp_getattro = __Pyx_PyObject_GenericGetAttr;
   }
-  if (__Pyx_SetVtable(__pyx_type_3phd_6domain_8boundary_Periodic.tp_dict, __pyx_vtabptr_3phd_6domain_8boundary_Periodic) < 0) __PYX_ERR(0, 350, __pyx_L1_error)
-  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_Periodic, (PyObject *)&__pyx_type_3phd_6domain_8boundary_Periodic) < 0) __PYX_ERR(0, 350, __pyx_L1_error)
-  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_3phd_6domain_8boundary_Periodic) < 0) __PYX_ERR(0, 350, __pyx_L1_error)
+  if (__Pyx_SetVtable(__pyx_type_3phd_6domain_8boundary_Periodic.tp_dict, __pyx_vtabptr_3phd_6domain_8boundary_Periodic) < 0) __PYX_ERR(0, 355, __pyx_L1_error)
+  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_Periodic, (PyObject *)&__pyx_type_3phd_6domain_8boundary_Periodic) < 0) __PYX_ERR(0, 355, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_3phd_6domain_8boundary_Periodic) < 0) __PYX_ERR(0, 355, __pyx_L1_error)
   __pyx_ptype_3phd_6domain_8boundary_Periodic = &__pyx_type_3phd_6domain_8boundary_Periodic;
   __Pyx_RefNannyFinishContext();
   return 0;

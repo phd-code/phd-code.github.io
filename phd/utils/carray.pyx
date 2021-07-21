@@ -142,6 +142,14 @@ cdef class DoubleArray(BaseArray):
 
         self._setup_npy_array()
 
+        #if(units != None):
+        #   self.units = units
+        #   self.code_unit_equiv = units.cgs # yields the conversion to cgs units (astropy)
+        #if(unit.is_Unit == True): # unyt
+        #    self.code_unit_equiv = unit.get_cgs_equivalent()
+        #else:
+        #    raise TypeError('Provided unit not recognized')
+
     def __dealloc__(self):
         """Frees the c array."""
         stdlib.free(<void*>self.data)
