@@ -408,7 +408,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="k">def</span> <span class="nf">create_particles</span><span class="p">(</span><span class="n">dim</span><span class="p">,</span> <span class="n">gamma</span><span class="p">):</span>
+<span></span><span class="k">def</span> <span class="nf">create_particles</span><span class="p">(</span><span class="n">dim</span><span class="p">,</span> <span class="n">gamma</span><span class="p">,</span> <span class="n">units</span> <span class="o">=</span> <span class="s2">&quot;cgs&quot;</span><span class="p">):</span>
 
     <span class="n">Lx</span> <span class="o">=</span> <span class="mf">1.</span>    <span class="c1"># domain size in x</span>
     <span class="n">nx</span> <span class="o">=</span> <span class="mi">50</span>   <span class="c1"># particles per dim</span>
@@ -421,7 +421,7 @@ div.rendered_html tbody tr:hover {
     <span class="n">dx</span> <span class="o">=</span> <span class="n">Lx</span><span class="o">/</span><span class="n">nx</span> <span class="c1"># spacing between particles</span>
 
     <span class="c1"># create particle container</span>
-    <span class="n">particles</span> <span class="o">=</span> <span class="n">phd</span><span class="o">.</span><span class="n">HydroParticleCreator</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">particles</span><span class="p">,</span> <span class="n">units</span> <span class="o">=</span> <span class="n">phd</span><span class="o">.</span><span class="n">HydroParticleCreator</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">unit_sys</span> <span class="o">=</span> <span class="n">units</span><span class="p">)</span>
     <span class="n">part</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nx</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nx</span><span class="p">):</span>
@@ -449,7 +449,7 @@ div.rendered_html tbody tr:hover {
 
     <span class="n">particles</span><span class="p">[</span><span class="s2">&quot;pressure&quot;</span><span class="p">][:]</span> <span class="o">=</span> <span class="mf">2.5</span>
 
-    <span class="k">return</span> <span class="n">particles</span>
+    <span class="k">return</span> <span class="n">particles</span><span class="p">,</span> <span class="n">units</span>
 </pre></div>
 </div>
 </div>
@@ -459,8 +459,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="n">dim</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="n">gamma</span> <span class="o">=</span> <span class="mf">5.</span><span class="o">/</span><span class="mf">3.</span>
-<span class="n">particles</span> <span class="o">=</span> <span class="n">phd</span><span class="o">.</span><span class="n">distribute_initial_particles</span><span class="p">(</span>
-        <span class="n">create_particles</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="n">gamma</span><span class="p">)</span>
+<span class="n">particles</span><span class="p">,</span> <span class="n">units</span> <span class="o">=</span> <span class="n">phd</span><span class="o">.</span><span class="n">distribute_initial_particles</span><span class="p">(</span>
+                    <span class="n">create_particles</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="n">gamma</span><span class="p">,</span> <span class="n">units</span> <span class="o">=</span> <span class="s2">&quot;cgs&quot;</span><span class="p">)</span>
 
 <span class="c1"># computation related to boundaries</span>
 <span class="n">domain_manager</span> <span class="o">=</span> <span class="n">phd</span><span class="o">.</span><span class="n">DomainManager</span><span class="p">(</span>
@@ -478,6 +478,7 @@ div.rendered_html tbody tr:hover {
 <span class="n">integrator</span><span class="o">.</span><span class="n">set_boundary_condition</span><span class="p">(</span><span class="n">phd</span><span class="o">.</span><span class="n">Periodic</span><span class="p">())</span>
 <span class="n">integrator</span><span class="o">.</span><span class="n">set_reconstruction</span><span class="p">(</span><span class="n">phd</span><span class="o">.</span><span class="n">PieceWiseLinear</span><span class="p">())</span>
 <span class="n">integrator</span><span class="o">.</span><span class="n">set_equation_state</span><span class="p">(</span><span class="n">phd</span><span class="o">.</span><span class="n">IdealGas</span><span class="p">(</span><span class="n">gamma</span><span class="o">=</span><span class="n">gamma</span><span class="p">))</span>
+<span class="n">integrator</span><span class="o">.</span><span class="n">set_units</span><span class="p">(</span><span class="n">units</span><span class="p">)</span>
 
 <span class="n">sim_name</span> <span class="o">=</span> <span class="s2">&quot;kelvin&quot;</span>
 <span class="k">if</span> <span class="n">phd</span><span class="o">.</span><span class="n">_in_parallel</span><span class="p">:</span>
@@ -7369,7 +7370,7 @@ phd: [<span class="ansi-green-fg">SUCCESS</span>  ] 2021-06-02 12:24:54,826: Sim
     <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
 
         <span class="n">file_name</span> <span class="o">=</span> <span class="n">file_names</span><span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="n">i</span> <span class="o">+</span> <span class="n">j</span><span class="p">]</span>
-        <span class="n">kelvin</span> <span class="o">=</span> <span class="n">reader</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span>
+        <span class="n">kelvin</span><span class="p">,</span> <span class="n">units</span> <span class="o">=</span> <span class="n">reader</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span>
         <span class="n">patch</span><span class="p">,</span> <span class="n">colors</span> <span class="o">=</span> <span class="n">phd</span><span class="o">.</span><span class="n">vor_collection</span><span class="p">(</span><span class="n">kelvin</span><span class="p">,</span> <span class="s2">&quot;density&quot;</span><span class="p">)</span>
         <span class="n">kelvin</span><span class="o">.</span><span class="n">remove_tagged_particles</span><span class="p">(</span><span class="n">phd</span><span class="o">.</span><span class="n">ParticleTAGS</span><span class="o">.</span><span class="n">Ghost</span><span class="p">)</span>
 
@@ -7470,6 +7471,8 @@ phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 12:25:38,044: hdf
 <li class="toctree-l2"><a class="reference internal" href="evrard_test.html">Evrard Collapse</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html#building-the-documentation">Building the Documentation</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../docs.html">API Reference</a></li>

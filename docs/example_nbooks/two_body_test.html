@@ -416,7 +416,7 @@ div.rendered_html tbody tr:hover {
 <span class="n">v0</span> <span class="o">=</span> <span class="mf">1.</span><span class="o">/</span><span class="p">(</span><span class="mf">1.</span> <span class="o">+</span> <span class="n">q</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="mi">1</span><span class="o">+</span><span class="n">e</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">e</span><span class="p">))</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">G</span><span class="o">*</span><span class="n">m</span><span class="o">/</span><span class="n">a</span><span class="p">)</span>
 
 <span class="n">num_part</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="n">particles</span> <span class="o">=</span> <span class="n">phd</span><span class="o">.</span><span class="n">HydroParticleCreator</span><span class="p">(</span><span class="n">num_part</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">particles</span><span class="p">,</span> <span class="n">units</span> <span class="o">=</span> <span class="n">phd</span><span class="o">.</span><span class="n">HydroParticleCreator</span><span class="p">(</span><span class="n">num_part</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">unit_sys</span> <span class="o">=</span> <span class="s2">&quot;cgs&quot;</span><span class="p">)</span>
 
 <span class="n">particles</span><span class="p">[</span><span class="s2">&quot;mass&quot;</span><span class="p">][:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">])</span>
 <span class="n">particles</span><span class="p">[</span><span class="s2">&quot;position-x&quot;</span><span class="p">][:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">r0</span><span class="p">,</span> <span class="o">-</span><span class="n">q</span><span class="o">*</span><span class="n">r0</span><span class="p">])</span>
@@ -445,6 +445,7 @@ div.rendered_html tbody tr:hover {
 <span class="n">integrator</span><span class="o">.</span><span class="n">set_particles</span><span class="p">(</span><span class="n">particles</span><span class="p">)</span>
 <span class="n">integrator</span><span class="o">.</span><span class="n">set_domain_manager</span><span class="p">(</span><span class="n">domain_manager</span><span class="p">)</span>
 <span class="n">integrator</span><span class="o">.</span><span class="n">set_gravity_tree</span><span class="p">(</span><span class="n">gravity_tree</span><span class="p">)</span>
+<span class="n">integrator</span><span class="o">.</span><span class="n">set_units</span><span class="p">(</span><span class="n">units</span><span class="p">)</span>
 
 <span class="c1"># add finish criteria</span>
 <span class="n">simulation_time_manager</span> <span class="o">=</span> <span class="n">phd</span><span class="o">.</span><span class="n">SimulationTimeManager</span><span class="p">()</span>
@@ -11547,7 +11548,7 @@ phd: [<span class="ansi-green-fg">SUCCESS</span>  ] 2021-06-02 18:53:34,449: Sim
         <span class="n">file_name</span><span class="o">=</span><span class="s2">&quot;two_body_output/iteration_interval/iteration_interval&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
         <span class="n">file_name</span><span class="o">=</span><span class="n">file_name</span><span class="o">+</span><span class="s2">&quot;/iteration_interval&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;.hdf5&quot;</span>
 
-    <span class="n">particles</span> <span class="o">=</span> <span class="n">reader</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span>
+    <span class="n">particles</span><span class="p">,</span> <span class="n">units</span> <span class="o">=</span> <span class="n">reader</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">particles</span><span class="p">[</span><span class="s2">&quot;position-x&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">particles</span><span class="p">[</span><span class="s2">&quot;position-y&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;.k&quot;</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">particles</span><span class="p">[</span><span class="s2">&quot;position-x&quot;</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span> <span class="n">particles</span><span class="p">[</span><span class="s2">&quot;position-y&quot;</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span> <span class="s2">&quot;.k&quot;</span><span class="p">)</span>
 
@@ -12618,15 +12619,6 @@ energy min: -0.00010729717290347542 energy max: -0.0
 <img alt="../_images/example_nbooks_two_body_test_6_2.png" src="../_images/example_nbooks_two_body_test_6_2.png" />
 </div>
 </div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>
-</pre></div>
-</div>
-</div>
 </div>
 
             <div class="clearer"></div>
@@ -12682,6 +12674,8 @@ energy min: -0.00010729717290347542 energy max: -0.0
 <li class="toctree-l2"><a class="reference internal" href="evrard_test.html">Evrard Collapse</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html#building-the-documentation">Building the Documentation</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../docs.html">API Reference</a></li>

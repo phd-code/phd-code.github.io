@@ -22,7 +22,7 @@
     <script defer src="../_static/insipid-sidebar.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="API Reference" href="../docs.html" />
+    <link rel="next" title="Contributing" href="../contributing.html" />
     <link rel="prev" title="Rayleigh-Taylor Instability" href="rayleigh_taylor_test.html" />
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -85,7 +85,7 @@
       <a href="rayleigh_taylor_test.html" class="nav-icon previous" title="previous:&#13;Rayleigh-Taylor Instability" aria-label="Previous topic" accesskey="P" tabindex="-1">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!-- Font Awesome Free 5.15.3 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M31.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L127.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L201.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34z"/></svg>
       </a>
-      <a href="../docs.html" class="nav-icon next" title="next:&#13;API Reference" aria-label="Next topic" accesskey="N" tabindex="-1">
+      <a href="../contributing.html" class="nav-icon next" title="next:&#13;Contributing" aria-label="Next topic" accesskey="N" tabindex="-1">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!-- Font Awesome Free 5.15.3 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"/></svg>
       </a>
     </nav>
@@ -102,11 +102,11 @@
           </span>
         </div>
       </a>
-      <a class="next" href="../docs.html" aria-label="Next topic" >
+      <a class="next" href="../contributing.html" aria-label="Next topic" >
         <div class="title">
           <span class="text">
             <span class="direction">next</span>
-            API Reference
+            Contributing
           </span>
         </div>
         <div class="icon">
@@ -403,7 +403,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="k">def</span> <span class="nf">create_particles</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mf">1.4</span><span class="p">):</span>
+<span></span><span class="k">def</span> <span class="nf">create_particles</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mf">1.4</span><span class="p">,</span> <span class="n">units</span> <span class="o">=</span> <span class="s2">&quot;cgs&quot;</span><span class="p">):</span>
 
     <span class="n">L</span> <span class="o">=</span> <span class="mf">2.5</span>     <span class="c1"># domain size in x</span>
     <span class="n">n</span> <span class="o">=</span> <span class="mi">33</span>      <span class="c1"># particles per dim</span>
@@ -420,7 +420,7 @@ div.rendered_html tbody tr:hover {
     <span class="n">pre_fac</span> <span class="o">=</span> <span class="mf">2.</span><span class="o">*</span><span class="n">rho_fac</span><span class="o">*</span><span class="n">u</span><span class="o">/</span><span class="mf">3.</span>
 
     <span class="c1"># create particle container</span>
-    <span class="n">particles</span> <span class="o">=</span> <span class="n">phd</span><span class="o">.</span><span class="n">HydroParticleCreator</span><span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">particles</span><span class="p">,</span> <span class="n">units</span> <span class="o">=</span> <span class="n">phd</span><span class="o">.</span><span class="n">HydroParticleCreator</span><span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">unit_sys</span> <span class="o">=</span> <span class="n">units</span><span class="p">)</span>
     <span class="n">part</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
@@ -464,7 +464,7 @@ div.rendered_html tbody tr:hover {
     <span class="n">particles</span><span class="p">[</span><span class="s2">&quot;velocity-y&quot;</span><span class="p">][:]</span> <span class="o">=</span> <span class="mf">0.0</span>
     <span class="n">particles</span><span class="p">[</span><span class="s2">&quot;velocity-z&quot;</span><span class="p">][:]</span> <span class="o">=</span> <span class="mf">0.0</span>
 
-    <span class="k">return</span> <span class="n">particles</span>
+    <span class="k">return</span> <span class="n">particles</span><span class="p">,</span> <span class="n">units</span>
 </pre></div>
 </div>
 </div>
@@ -474,8 +474,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="n">dim</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="n">gamma</span> <span class="o">=</span> <span class="mf">5.</span><span class="o">/</span><span class="mf">3.</span>
-<span class="n">particles</span> <span class="o">=</span> <span class="n">phd</span><span class="o">.</span><span class="n">distribute_initial_particles</span><span class="p">(</span>
-        <span class="n">create_particles</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="n">gamma</span><span class="p">)</span>
+<span class="n">particles</span><span class="p">,</span> <span class="n">units</span> <span class="o">=</span> <span class="n">phd</span><span class="o">.</span><span class="n">distribute_initial_particles</span><span class="p">(</span>
+                    <span class="n">create_particles</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="n">gamma</span><span class="p">,</span> <span class="n">units</span> <span class="o">=</span> <span class="s2">&quot;cgs&quot;</span><span class="p">)</span>
 
 <span class="c1"># computation related to boundaries</span>
 <span class="n">domain_manager</span> <span class="o">=</span> <span class="n">phd</span><span class="o">.</span><span class="n">DomainManager</span><span class="p">(</span>
@@ -494,6 +494,7 @@ div.rendered_html tbody tr:hover {
 <span class="n">integrator</span><span class="o">.</span><span class="n">set_boundary_condition</span><span class="p">(</span><span class="n">phd</span><span class="o">.</span><span class="n">Reflective</span><span class="p">())</span>
 <span class="n">integrator</span><span class="o">.</span><span class="n">set_reconstruction</span><span class="p">(</span><span class="n">phd</span><span class="o">.</span><span class="n">PieceWiseLinear</span><span class="p">())</span>
 <span class="n">integrator</span><span class="o">.</span><span class="n">set_equation_state</span><span class="p">(</span><span class="n">phd</span><span class="o">.</span><span class="n">IdealGas</span><span class="p">(</span><span class="n">gamma</span><span class="o">=</span><span class="n">gamma</span><span class="p">))</span>
+<span class="n">integrator</span><span class="o">.</span><span class="n">set_units</span><span class="p">(</span><span class="n">units</span><span class="p">)</span>
 
 <span class="n">sim_name</span> <span class="o">=</span> <span class="s2">&quot;evrard&quot;</span>
 <span class="k">if</span> <span class="n">phd</span><span class="o">.</span><span class="n">_in_parallel</span><span class="p">:</span>
@@ -3191,15 +3192,10 @@ phd: [<span class="ansi-green-fg">SUCCESS</span>  ] 2021-06-04 11:57:05,407: Sim
     <span class="k">return</span> <span class="n">radial_bins</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">dr</span><span class="p">,</span> <span class="n">dens</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 
 
-<span class="c1">#exact = np.loadtxt(&quot;exact/profile3d027.txt&quot;)</span>
-
 <span class="c1"># initial output</span>
 <span class="n">io</span> <span class="o">=</span> <span class="n">phd</span><span class="o">.</span><span class="n">Hdf5</span><span class="p">()</span>
-<span class="c1">#file_name = &quot;evrard2_output/time_interval/time_interval0080/time_interval0080.hdf5&quot;</span>
-<span class="c1">#file_name = &quot;test_collapse_output/final_output/final_output0000/final_output0000.hdf5&quot;</span>
-<span class="c1">#file_name = &quot;blnr_output/time_interval/time_interval0080/time_interval0080.hdf5&quot;</span>
 <span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;evrard_output/final_output/final_output0000/final_output0000.hdf5&quot;</span>
-<span class="n">particles</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span>
+<span class="n">particles</span><span class="p">,</span> <span class="n">units</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span>
 <span class="n">particles</span><span class="o">.</span><span class="n">remove_tagged_particles</span><span class="p">(</span><span class="n">phd</span><span class="o">.</span><span class="n">ParticleTAGS</span><span class="o">.</span><span class="n">Ghost</span><span class="p">)</span>
 
 <span class="n">time</span> <span class="o">=</span> <span class="n">h5py</span><span class="o">.</span><span class="n">File</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">]</span>
@@ -3226,7 +3222,6 @@ phd: [<span class="ansi-green-fg">SUCCESS</span>  ] 2021-06-04 11:57:05,407: Sim
 
 <span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">rad_den</span><span class="p">,</span> <span class="n">den</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;steelblue&quot;</span><span class="p">)</span>
-<span class="c1">#ax.loglog(exact[:,0], exact[:,1], &quot;r-&quot;)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mf">1.0E-2</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mf">1.0E-2</span><span class="p">,</span> <span class="mf">1.0E3</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$r$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
@@ -3235,7 +3230,6 @@ phd: [<span class="ansi-green-fg">SUCCESS</span>  ] 2021-06-04 11:57:05,407: Sim
 
 <span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">rad_vel</span><span class="p">,</span> <span class="n">vel</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;steelblue&quot;</span><span class="p">)</span>
-<span class="c1">#ax.semilogx(exact[:,0], exact[:,2], &quot;r-&quot;)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mf">1.0E-2</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">1.8</span><span class="p">,</span> <span class="o">.</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$r$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
@@ -3245,15 +3239,12 @@ phd: [<span class="ansi-green-fg">SUCCESS</span>  ] 2021-06-04 11:57:05,407: Sim
 
 <span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">rad_ent</span><span class="p">,</span> <span class="n">ent</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;steelblue&quot;</span><span class="p">)</span>
-<span class="c1">#ax.semilogx(exact[:,0], exact[:,3]/exact[:,1]**(5./3.), &quot;r-&quot;)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mf">1.0E-2</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">.</span><span class="mi">3</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$r$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$P/\rho^\gamma$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="s2">&quot;in&quot;</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s2">&quot;both&quot;</span><span class="p">)</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
-<span class="c1">#fig.subplots_adjust(top=0.9)</span>
-<span class="c1">#plt.savefig(&quot;evrard.eps&quot;)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -3302,11 +3293,11 @@ phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-04 11:57:29,568: hdf
           </span>
         </div>
       </a>
-      <a class="next" href="../docs.html" aria-label="Next topic" >
+      <a class="next" href="../contributing.html" aria-label="Next topic" >
         <div class="title">
           <span class="text">
             <span class="direction">next</span>
-            API Reference
+            Contributing
           </span>
         </div>
         <div class="icon">
@@ -3336,6 +3327,8 @@ phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-04 11:57:29,568: hdf
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Evrard Collapse</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html#building-the-documentation">Building the Documentation</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../docs.html">API Reference</a></li>

@@ -465,7 +465,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="n">num_part</span> <span class="o">=</span> <span class="mi">1000</span>
-<span class="n">particles</span> <span class="o">=</span> <span class="n">phd</span><span class="o">.</span><span class="n">HydroParticleCreator</span><span class="p">(</span><span class="n">num_part</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">particles</span><span class="p">,</span> <span class="n">units</span> <span class="o">=</span> <span class="n">phd</span><span class="o">.</span><span class="n">HydroParticleCreator</span><span class="p">(</span><span class="n">num_part</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">unit_sys</span> <span class="o">=</span> <span class="s2">&quot;cgs&quot;</span><span class="p">)</span>
 
 <span class="n">make_plummer</span><span class="p">(</span><span class="n">particles</span><span class="p">,</span> <span class="mf">1000.</span><span class="p">,</span> <span class="n">R</span><span class="o">=</span><span class="mf">1.</span><span class="p">,</span> <span class="n">r_cut_off</span><span class="o">=</span><span class="mf">10.</span><span class="p">)</span>
 
@@ -485,6 +485,7 @@ div.rendered_html tbody tr:hover {
 <span class="n">integrator</span><span class="o">.</span><span class="n">set_particles</span><span class="p">(</span><span class="n">particles</span><span class="p">)</span>
 <span class="n">integrator</span><span class="o">.</span><span class="n">set_domain_manager</span><span class="p">(</span><span class="n">domain_manager</span><span class="p">)</span>
 <span class="n">integrator</span><span class="o">.</span><span class="n">set_gravity_tree</span><span class="p">(</span><span class="n">gravity_tree</span><span class="p">)</span>
+<span class="n">integrator</span><span class="o">.</span><span class="n">set_units</span><span class="p">(</span><span class="n">units</span><span class="p">)</span>
 
 <span class="c1"># add finish criteria</span>
 <span class="n">simulation_time_manager</span> <span class="o">=</span> <span class="n">phd</span><span class="o">.</span><span class="n">SimulationTimeManager</span><span class="p">()</span>
@@ -710,13 +711,13 @@ phd: [<span class="ansi-green-fg">SUCCESS</span>  ] 2021-06-02 19:52:32,466: Sim
 <span class="n">io</span> <span class="o">=</span> <span class="n">phd</span><span class="o">.</span><span class="n">Hdf5</span><span class="p">()</span>
 <span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;plummer_output/initial_output/initial_output0000/initial_output0000.hdf5&quot;</span>
 <span class="n">initial_time</span> <span class="o">=</span> <span class="n">h5py</span><span class="o">.</span><span class="n">File</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">]</span>
-<span class="n">initial_particles</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span>
+<span class="n">initial_particles</span><span class="p">,</span> <span class="n">units</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span>
 
 <span class="c1"># final output</span>
 <span class="n">io</span> <span class="o">=</span> <span class="n">phd</span><span class="o">.</span><span class="n">Hdf5</span><span class="p">()</span>
 <span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;plummer_output/final_output/final_output0000/final_output0000.hdf5&quot;</span>
 <span class="n">final_time</span> <span class="o">=</span> <span class="n">h5py</span><span class="o">.</span><span class="n">File</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">]</span>
-<span class="n">final_particles</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span>
+<span class="n">final_particles</span><span class="p">,</span> <span class="n">units</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span>
 
 <span class="n">initial_radial</span><span class="p">,</span> <span class="n">initial_dens</span> <span class="o">=</span> <span class="n">radial_profile</span><span class="p">(</span><span class="n">initial_particles</span><span class="p">)</span>
 <span class="n">final_radial</span><span class="p">,</span> <span class="n">final_dens</span> <span class="o">=</span> <span class="n">radial_profile</span><span class="p">(</span><span class="n">final_particles</span><span class="p">)</span>
@@ -808,6 +809,8 @@ phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:53:09,294: hdf
 <li class="toctree-l2"><a class="reference internal" href="evrard_test.html">Evrard Collapse</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html#building-the-documentation">Building the Documentation</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../docs.html">API Reference</a></li>

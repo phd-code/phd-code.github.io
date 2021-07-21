@@ -1317,7 +1317,27 @@ incoming particles in the particle container.</p>
 <dl class="py function">
 <dt id="phd.utils.particle_creator.HydroParticleCreator">
 <code class="sig-prename descclassname">phd.utils.particle_creator.</code><code class="sig-name descname">HydroParticleCreator</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.utils.particle_creator.HydroParticleCreator" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Creates a <code class="docutils literal notranslate"><span class="pre">CarrayContainer</span></code> to hold hydro data related to the simulation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>num</strong> (<em>int</em>) – Size of <code class="docutils literal notranslate"><span class="pre">CarrayContainer</span></code></p></li>
+<li><p><strong>dim</strong> (<em>int</em>) – Number of dimensions</p></li>
+<li><p><strong>parallel</strong> (<em>bool</em>) – Toggles whether the simulation is being run in parallel or serial</p></li>
+<li><p><strong>unit_sys</strong> (<em>str</em>) – Specifies one of the named <code class="docutils literal notranslate"><span class="pre">unyt</span></code> systems for use in the simulation initialization.</p></li>
+<li><p><strong>unit_dict</strong> (<em>dict</em>) – Overwrites use of unit_sys. Allows user to specify a custom unit system by passing
+length, time, and mass units in dictionary.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>pc</strong> (<em>CarrayContainer</em>) – Object holding the hydro information pertaining to the  particles</p></li>
+<li><p><strong>unit_obj</strong> (<em>Units</em>) – Object holding the unit information in use for the simulation.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
 
 </div>
 <div class="section" id="id82">
@@ -1325,7 +1345,27 @@ incoming particles in the particle container.</p>
 <span class="target" id="module-1"></span><dl class="py function">
 <dt id="id83">
 <code class="sig-prename descclassname">phd.utils.particle_creator.</code><code class="sig-name descname">HydroParticleCreator</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id83" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Creates a <code class="docutils literal notranslate"><span class="pre">CarrayContainer</span></code> to hold hydro data related to the simulation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>num</strong> (<em>int</em>) – Size of <code class="docutils literal notranslate"><span class="pre">CarrayContainer</span></code></p></li>
+<li><p><strong>dim</strong> (<em>int</em>) – Number of dimensions</p></li>
+<li><p><strong>parallel</strong> (<em>bool</em>) – Toggles whether the simulation is being run in parallel or serial</p></li>
+<li><p><strong>unit_sys</strong> (<em>str</em>) – Specifies one of the named <code class="docutils literal notranslate"><span class="pre">unyt</span></code> systems for use in the simulation initialization.</p></li>
+<li><p><strong>unit_dict</strong> (<em>dict</em>) – Overwrites use of unit_sys. Allows user to specify a custom unit system by passing
+length, time, and mass units in dictionary.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>pc</strong> (<em>CarrayContainer</em>) – Object holding the hydro information pertaining to the  particles</p></li>
+<li><p><strong>unit_obj</strong> (<em>Units</em>) – Object holding the unit information in use for the simulation.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
 
 </div>
 <div class="section" id="module-phd.utils.particle_tags">
@@ -1482,6 +1522,65 @@ that class has been set.</p>
 </dd></dl>
 
 </div>
+<div class="section" id="module-phd.utils.units">
+<span id="phd-utils-units-module"></span><h2>phd.utils.units module<a class="headerlink" href="#module-phd.utils.units" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="phd.utils.units.Units">
+<em class="property">class </em><code class="sig-prename descclassname">phd.utils.units.</code><code class="sig-name descname">Units</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">unit_system</span><span class="o">=</span><span class="default_value">'cgs'</span></em>, <em class="sig-param"><span class="n">unit_dict</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.utils.units.Units" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Defines the unit system in use for the computations.
+This depends on unyt’s units package, but includes conversion
+support for Astropy’s Unit package as well.</p>
+<p>Constructor for the Unit class.</p>
+<dl class="simple">
+<dt>unit_system<span class="classifier">str</span></dt><dd><p>Specifies the unit system, supports available unyt unit systems
+(cgs, mks, imperial, galactic, solar, planck).</p>
+</dd>
+<dt>unit_dict<span class="classifier">dict</span></dt><dd><p>Dictionary of unyt <code class="docutils literal notranslate"><span class="pre">Unit</span></code> objects or strings (values) with associated
+dimensions (keys). Must include length, time, mass units. For example,
+u_dict = {‘length’: unyt.cm, ‘time’: unyt.s, ‘mass’: unyt.g}. This overwrites
+use of the <code class="docutils literal notranslate"><span class="pre">unit_system</span></code> parameter.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="phd.utils.units.Units.get_bases">
+<code class="sig-name descname">get_bases</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.utils.units.Units.get_bases" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the base units for the simulation</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.utils.units.Units.get_output_bases">
+<code class="sig-name descname">get_output_bases</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#phd.utils.units.Units.get_output_bases" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the base units for the output</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.utils.units.Units.set_bases">
+<code class="sig-name descname">set_bases</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">unit_dict</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.utils.units.Units.set_bases" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the base units (time, length, mass) for the simulation</p>
+<dl class="simple">
+<dt>unit_dict<span class="classifier">dict</span></dt><dd><p>Dictionary of unyt <code class="docutils literal notranslate"><span class="pre">Unit</span></code> objects (values) with associated
+dimensions (keys). Must include length, time, mass units. For example,
+u_dict = {‘length’: unyt.cm, ‘time’: unyt.s, ‘mass’: unyt.g}.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="phd.utils.units.Units.set_output_system">
+<code class="sig-name descname">set_output_system</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">unit_system</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.utils.units.Units.set_output_system" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the units for simulation output.</p>
+<dl class="simple">
+<dt>unit_system<span class="classifier">str</span></dt><dd><p>Name of the unit system to be used. Accepted names are those included with unyt
+(cgs, mks, imperial, galactic, solar, planck) and ‘user’ (only works if <code class="docutils literal notranslate"><span class="pre">set_bases</span></code>
+method has been used or custom <code class="docutils literal notranslate"><span class="pre">unit_dict</span></code> has been provided).</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
 <div class="section" id="module-phd.utils">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-phd.utils" title="Permalink to this headline">¶</a></h2>
 </div>
@@ -1518,6 +1617,8 @@ that class has been set.</p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials and Test Problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html#building-the-documentation">Building the Documentation</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../docs.html">API Reference</a></li>

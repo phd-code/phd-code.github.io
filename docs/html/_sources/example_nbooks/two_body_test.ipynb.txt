@@ -61,7 +61,7 @@
     "v0 = 1./(1. + q)*np.sqrt((1+e)/(1-e))*np.sqrt(G*m/a)\n",
     "\n",
     "num_part = 2\n",
-    "particles = phd.HydroParticleCreator(num_part, dim=2)\n",
+    "particles, units = phd.HydroParticleCreator(num_part, dim=2, unit_sys = \"cgs\")\n",
     "\n",
     "particles[\"mass\"][:] = np.array([m1, m2])\n",
     "particles[\"position-x\"][:] = np.array([r0, -q*r0])\n",
@@ -11958,6 +11958,7 @@
     "integrator.set_particles(particles)\n",
     "integrator.set_domain_manager(domain_manager)\n",
     "integrator.set_gravity_tree(gravity_tree)\n",
+    "integrator.set_units(units)\n",
     "\n",
     "# add finish criteria\n",
     "simulation_time_manager = phd.SimulationTimeManager()\n",
@@ -13166,7 +13167,7 @@
     "        file_name=\"two_body_output/iteration_interval/iteration_interval\"+str(i).zfill(4)\n",
     "        file_name=file_name+\"/iteration_interval\"+str(i).zfill(4)+\".hdf5\"\n",
     "\n",
-    "    particles = reader.read(file_name)\n",
+    "    particles, units = reader.read(file_name)\n",
     "    ax.plot(particles[\"position-x\"][0], particles[\"position-y\"][0], \".k\")\n",
     "    ax.plot(particles[\"position-x\"][1], particles[\"position-y\"][1], \".k\")\n",
     "\n",
@@ -13213,13 +13214,6 @@
     "plt.savefig(\"two_body.png\")\n",
     "plt.show()"
    ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
-   "source": []
   }
  ],
  "metadata": {

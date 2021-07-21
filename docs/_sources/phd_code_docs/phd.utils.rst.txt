@@ -108,6 +108,14 @@ phd.utils.tools module
    :undoc-members:
    :show-inheritance:
 
+phd.utils.units module
+----------------------
+
+.. automodule:: phd.utils.units
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 Module contents
 ---------------
 

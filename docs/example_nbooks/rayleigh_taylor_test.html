@@ -406,7 +406,7 @@ configuration towards a lower energy state and the instability grows – the den
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="k">def</span> <span class="nf">create_particles</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mf">1.4</span><span class="p">):</span>
+<span></span><span class="k">def</span> <span class="nf">create_particles</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mf">1.4</span><span class="p">,</span> <span class="n">units</span> <span class="o">=</span> <span class="s2">&quot;cgs&quot;</span><span class="p">):</span>
 
     <span class="n">nx</span> <span class="o">=</span> <span class="mi">50</span>
     <span class="n">ny</span> <span class="o">=</span> <span class="mi">150</span>
@@ -435,7 +435,7 @@ configuration towards a lower energy state and the instability grows – the den
     <span class="n">amp</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">;</span>   <span class="n">sigma</span> <span class="o">=</span> <span class="mf">0.1</span>
 
     <span class="c1"># create particle container</span>
-    <span class="n">particles</span> <span class="o">=</span> <span class="n">phd</span><span class="o">.</span><span class="n">HydroParticleCreator</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">particles</span><span class="p">,</span> <span class="n">units</span> <span class="o">=</span> <span class="n">phd</span><span class="o">.</span><span class="n">HydroParticleCreator</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">unit_sys</span> <span class="o">=</span> <span class="n">units</span><span class="p">)</span>
     <span class="n">part</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nx</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ny</span><span class="p">):</span>
@@ -462,7 +462,7 @@ configuration towards a lower energy state and the instability grows – the den
     <span class="c1"># zero out velocities and set particle type</span>
     <span class="n">particles</span><span class="p">[</span><span class="s2">&quot;velocity-x&quot;</span><span class="p">][:]</span> <span class="o">=</span> <span class="mf">0.0</span>
 
-    <span class="k">return</span> <span class="n">particles</span>
+    <span class="k">return</span> <span class="n">particles</span><span class="p">,</span> <span class="n">units</span>
 </pre></div>
 </div>
 </div>
@@ -474,8 +474,8 @@ object as a component of our integrator here as well.</p>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="n">dim</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="n">gamma</span> <span class="o">=</span> <span class="mf">1.4</span>
-<span class="n">particles</span> <span class="o">=</span> <span class="n">phd</span><span class="o">.</span><span class="n">distribute_initial_particles</span><span class="p">(</span>
-        <span class="n">create_particles</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="n">gamma</span><span class="p">)</span>
+<span class="n">particles</span><span class="p">,</span> <span class="n">units</span> <span class="o">=</span> <span class="n">phd</span><span class="o">.</span><span class="n">distribute_initial_particles</span><span class="p">(</span>
+                    <span class="n">create_particles</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="n">gamma</span><span class="p">,</span> <span class="n">units</span> <span class="o">=</span> <span class="s2">&quot;cgs&quot;</span><span class="p">)</span>
 
 <span class="c1"># computation related to boundaries</span>
 <span class="k">if</span> <span class="n">phd</span><span class="o">.</span><span class="n">_in_parallel</span><span class="p">:</span>
@@ -497,6 +497,7 @@ object as a component of our integrator here as well.</p>
 <span class="n">integrator</span><span class="o">.</span><span class="n">set_boundary_condition</span><span class="p">(</span><span class="n">phd</span><span class="o">.</span><span class="n">Reflective</span><span class="p">())</span>
 <span class="n">integrator</span><span class="o">.</span><span class="n">set_reconstruction</span><span class="p">(</span><span class="n">phd</span><span class="o">.</span><span class="n">PieceWiseLinear</span><span class="p">())</span>
 <span class="n">integrator</span><span class="o">.</span><span class="n">set_equation_state</span><span class="p">(</span><span class="n">phd</span><span class="o">.</span><span class="n">IdealGas</span><span class="p">(</span><span class="n">gamma</span><span class="o">=</span><span class="n">gamma</span><span class="p">))</span>
+<span class="n">integrator</span><span class="o">.</span><span class="n">set_units</span><span class="p">(</span><span class="n">units</span><span class="p">)</span>
 
 <span class="n">sim_name</span> <span class="o">=</span> <span class="s2">&quot;rayleigh_moving&quot;</span>
 <span class="k">if</span> <span class="n">phd</span><span class="o">.</span><span class="n">_in_parallel</span><span class="p">:</span>
@@ -16562,8 +16563,8 @@ phd: [<span class="ansi-green-fg">SUCCESS</span>  ] 2021-06-04 11:36:16,422: Sim
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="n">dim</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="n">gamma</span> <span class="o">=</span> <span class="mf">1.4</span>
-<span class="n">particles</span> <span class="o">=</span> <span class="n">phd</span><span class="o">.</span><span class="n">distribute_initial_particles</span><span class="p">(</span>
-        <span class="n">create_particles</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="n">gamma</span><span class="p">)</span>
+<span class="n">particles</span><span class="p">,</span> <span class="n">units</span> <span class="o">=</span> <span class="n">phd</span><span class="o">.</span><span class="n">distribute_initial_particles</span><span class="p">(</span>
+                    <span class="n">create_particles</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="n">gamma</span><span class="p">,</span> <span class="n">units</span> <span class="o">=</span> <span class="s2">&quot;cgs&quot;</span><span class="p">)</span>
 
 <span class="c1"># computation related to boundaries</span>
 <span class="k">if</span> <span class="n">phd</span><span class="o">.</span><span class="n">_in_parallel</span><span class="p">:</span>
@@ -16585,6 +16586,7 @@ phd: [<span class="ansi-green-fg">SUCCESS</span>  ] 2021-06-04 11:36:16,422: Sim
 <span class="n">integrator</span><span class="o">.</span><span class="n">set_boundary_condition</span><span class="p">(</span><span class="n">phd</span><span class="o">.</span><span class="n">Reflective</span><span class="p">())</span>
 <span class="n">integrator</span><span class="o">.</span><span class="n">set_reconstruction</span><span class="p">(</span><span class="n">phd</span><span class="o">.</span><span class="n">PieceWiseLinear</span><span class="p">())</span>
 <span class="n">integrator</span><span class="o">.</span><span class="n">set_equation_state</span><span class="p">(</span><span class="n">phd</span><span class="o">.</span><span class="n">IdealGas</span><span class="p">(</span><span class="n">gamma</span><span class="o">=</span><span class="n">gamma</span><span class="p">))</span>
+<span class="n">integrator</span><span class="o">.</span><span class="n">set_units</span><span class="p">(</span><span class="n">units</span><span class="p">)</span>
 
 <span class="n">sim_name</span> <span class="o">=</span> <span class="s2">&quot;rayleigh_static&quot;</span>
 <span class="k">if</span> <span class="n">phd</span><span class="o">.</span><span class="n">_in_parallel</span><span class="p">:</span>
@@ -30046,7 +30048,7 @@ its own.</p>
     <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span> <span class="c1"># over plots</span>
 
         <span class="n">file_name</span> <span class="o">=</span> <span class="n">static_names</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">i</span><span class="p">]</span>
-        <span class="n">particles</span> <span class="o">=</span> <span class="n">reader</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span>
+        <span class="n">particles</span><span class="p">,</span> <span class="n">units</span> <span class="o">=</span> <span class="n">reader</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span>
         <span class="n">time</span> <span class="o">=</span> <span class="n">h5py</span><span class="o">.</span><span class="n">File</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">]</span>
 
         <span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">i</span><span class="p">]</span>
@@ -30251,6 +30253,8 @@ phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-04 11:38:11,676: hdf
 <li class="toctree-l2"><a class="reference internal" href="evrard_test.html">Evrard Collapse</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html#building-the-documentation">Building the Documentation</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../docs.html">API Reference</a></li>
