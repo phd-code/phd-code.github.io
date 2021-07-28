@@ -1492,16 +1492,17 @@ length, time, and mass units in dictionary.</p></li>
 <dt id="phd.utils.run_parallel_script.run">
 <code class="sig-prename descclassname">phd.utils.run_parallel_script.</code><code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filename</span></em>, <em class="sig-param"><span class="n">args</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">nprocs</span><span class="o">=</span><span class="default_value">2</span></em>, <em class="sig-param"><span class="n">timeout</span><span class="o">=</span><span class="default_value">20.0</span></em>, <em class="sig-param"><span class="n">path</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.utils.run_parallel_script.run" title="Permalink to this definition">¶</a></dt>
 <dd><p>run a file python script</p>
-<p>filename - filename of python script to run under mpi
-nprocs - (2) number of processes of the script to run (0 =&gt; serial non-mpi run)
-timeout - (5) time in seconds to wait for the script to finish running,</p>
-<blockquote>
-<div><p>else raise RuntimeError exception</p>
-</div></blockquote>
-<dl class="simple">
-<dt>path - the path under which the script is located</dt><dd><p>Defaults to the location of this file (__file__), not curdir</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>- filename of python script to run under mpi</strong> (<em>filename</em>) – </p></li>
+<li><p><strong>-</strong><strong> (</strong><strong>2</strong><strong>) </strong><strong>number of processes of the script to run</strong><strong> (</strong><strong>0 =&gt; serial non-mpi run</strong><strong>)</strong> (<em>nprocs</em>) – </p></li>
+<li><p><strong>-</strong><strong> (</strong><strong>5</strong><strong>) </strong><strong>time in seconds to wait for the script to finish running</strong> (<em>timeout</em>) – else raise RuntimeError exception</p></li>
+</ul>
 </dd>
 </dl>
+<p>:param : else raise RuntimeError exception
+:param path - the path under which the script is located: Defaults to the location of this file (__file__), not curdir</p>
 </dd></dl>
 
 </div>
@@ -1532,14 +1533,16 @@ that class has been set.</p>
 This depends on unyt’s units package, but includes conversion
 support for Astropy’s Unit package as well.</p>
 <p>Constructor for the Unit class.</p>
-<dl class="simple">
-<dt>unit_system<span class="classifier">str</span></dt><dd><p>Specifies the unit system, supports available unyt unit systems
-(cgs, mks, imperial, galactic, solar, planck).</p>
-</dd>
-<dt>unit_dict<span class="classifier">dict</span></dt><dd><p>Dictionary of unyt <code class="docutils literal notranslate"><span class="pre">Unit</span></code> objects or strings (values) with associated
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>unit_system</strong> (<em>str</em>) – Specifies the unit system, supports available unyt unit systems
+(cgs, mks, imperial, galactic, solar, planck).</p></li>
+<li><p><strong>unit_dict</strong> (<em>dict</em>) – Dictionary of unyt <code class="docutils literal notranslate"><span class="pre">Unit</span></code> objects or strings (values) with associated
 dimensions (keys). Must include length, time, mass units. For example,
 u_dict = {‘length’: unyt.cm, ‘time’: unyt.s, ‘mass’: unyt.g}. This overwrites
-use of the <code class="docutils literal notranslate"><span class="pre">unit_system</span></code> parameter.</p>
+use of the <code class="docutils literal notranslate"><span class="pre">unit_system</span></code> parameter.</p></li>
+</ul>
 </dd>
 </dl>
 <dl class="py method">
@@ -1558,8 +1561,9 @@ use of the <code class="docutils literal notranslate"><span class="pre">unit_sys
 <dt id="phd.utils.units.Units.set_bases">
 <code class="sig-name descname">set_bases</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">unit_dict</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.utils.units.Units.set_bases" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets the base units (time, length, mass) for the simulation</p>
-<dl class="simple">
-<dt>unit_dict<span class="classifier">dict</span></dt><dd><p>Dictionary of unyt <code class="docutils literal notranslate"><span class="pre">Unit</span></code> objects (values) with associated
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>unit_dict</strong> (<em>dict</em>) – Dictionary of unyt <code class="docutils literal notranslate"><span class="pre">Unit</span></code> objects (values) with associated
 dimensions (keys). Must include length, time, mass units. For example,
 u_dict = {‘length’: unyt.cm, ‘time’: unyt.s, ‘mass’: unyt.g}.</p>
 </dd>
@@ -1570,8 +1574,9 @@ u_dict = {‘length’: unyt.cm, ‘time’: unyt.s, ‘mass’: unyt.g}.</p>
 <dt id="phd.utils.units.Units.set_output_system">
 <code class="sig-name descname">set_output_system</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">unit_system</span></em><span class="sig-paren">)</span><a class="headerlink" href="#phd.utils.units.Units.set_output_system" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets the units for simulation output.</p>
-<dl class="simple">
-<dt>unit_system<span class="classifier">str</span></dt><dd><p>Name of the unit system to be used. Accepted names are those included with unyt
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>unit_system</strong> (<em>str</em>) – Name of the unit system to be used. Accepted names are those included with unyt
 (cgs, mks, imperial, galactic, solar, planck) and ‘user’ (only works if <code class="docutils literal notranslate"><span class="pre">set_bases</span></code>
 method has been used or custom <code class="docutils literal notranslate"><span class="pre">unit_dict</span></code> has been provided).</p>
 </dd>
