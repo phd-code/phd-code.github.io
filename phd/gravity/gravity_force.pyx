@@ -20,11 +20,11 @@ cdef class ConstantGravity(MUSCLHancockSourceTerm):
     direction.
     """
     def __init__(self, grav_axis="y", g=-1., **kwargs):
-        #if(unit in kwargs):
-        #    self.units = kwargs[unit]
-        #    if(type(g) is u.array.unyt_quantity): # if G is unitful then convert it to simulation units
-        #        g = g.in_base(self.units.get_bases())
-        #        g = g.v # strip G of units
+        if("unit" in kwargs):
+            self.units = kwargs["unit"]
+            if(type(g) is u.array.unyt_quantity): # if G is unitful then convert it to simulation units
+                g = g.in_base(self.units.get_bases())
+                g = g.v # strip G of units
         
         self.g = g
 

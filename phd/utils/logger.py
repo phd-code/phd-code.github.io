@@ -47,6 +47,10 @@ logging.SUCCESS = 25
 logging.addLevelName(logging.SUCCESS, 'SUCCESS')
 phdLogger.success = lambda msg, *args, **kwargs: phdLogger.log(logging.SUCCESS, msg, *args, **kwargs)
 
+logging.STARTUP = 22
+logging.addLevelName(logging.STARTUP, 'STARTUP')
+phdLogger.startup = lambda msg, *args, **kwargs: phdLogger.log(logging.STARTUP, msg, *args, **kwargs)
+
 # make sure only processor zero logs
 phdLogger.debug    = lambda msg, *args, **kwargs: phdLogger.log(logging.DEBUG, msg, *args, **kwargs)\
         if phd._rank == 0 else None
@@ -57,4 +61,6 @@ phdLogger.success  = lambda msg, *args, **kwargs: phdLogger.log(logging.SUCCESS,
 phdLogger.warning  = lambda msg, *args, **kwargs: phdLogger.log(logging.WARNING, msg, *args, **kwargs)\
         if phd._rank == 0 else None
 phdLogger.critical = lambda msg, *args, **kwargs: phdLogger.log(logging.CRITICAL, msg, *args, **kwargs)\
+        if phd._rank == 0 else None
+phdLogger.startup  = lambda msg, *args, **kwargs: phdLogger.log(logging.STARTUP, msg, *args, **kwargs)\
         if phd._rank == 0 else None

@@ -25,7 +25,10 @@ class Simulation(object):
         Advances the fluid equations by one step.
 
     log_level : str
-        Level which logger is outputted.
+        Level which logger is outputted – acceptable inputs are "debug",
+        "info", "success", "warning", and "startup". All levels are inherited
+        from standard Python logger package implementation with the exception 
+        of "success" (at 25) and "startup" (at 22).
 
     _output_directory : str
         Directory to store all output of the simulation.
@@ -45,16 +48,19 @@ class Simulation(object):
                  log_level='debug', **kwargs):
         """Constructor for simulation.
 
-        Parameters:
-        -----------
+        Parameters
+        ----------
         colored_logs : bool
             Output colored logs to screen if True otherwise remove color.
 
         log_level : str
-            Level which logger is outputted.outputted.
+            Level which logger is outputted – acceptable inputs are "debug",
+            "info", "success", "warning", and "startup". All levels are inherited
+            from standard Python logger package implementation with the exception 
+            of "success" (at 25) and "startup" (at 22).
 
         simulation_name : str
-           Name of problem solving, this name prefixs output data.
+           Name of the problem being solved, this name prefixes the output data.
 
         """
         # variables use setters 
@@ -90,6 +96,8 @@ class Simulation(object):
             phdLogger.setLevel(logging.SUCCESS)
         elif self.log_level == "warning":
             phdLogger.setLevel(logging.WARNING)
+        elif self.log_level == "startup":
+            phdLogger.setLevel(logging.STARTUP)
         else:
             raise RuntimeError("Unknown log level: %s" % self.log_level)
 
@@ -196,7 +204,7 @@ class Simulation(object):
         for key, val in sorted(cldict.items()):
             message += key + ": " + val + "\n"
 
-        phdLogger.info(message)
+        phdLogger.startup(message)
 
     def compute_time_step(self):
         """Modify time step for the next iteration.
