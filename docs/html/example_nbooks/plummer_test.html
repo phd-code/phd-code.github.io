@@ -506,7 +506,7 @@ div.rendered_html tbody tr:hover {
 <span class="n">simulation_time_manager</span><span class="o">.</span><span class="n">add_output</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
 
 <span class="c1"># Create simulator</span>
-<span class="n">simulation</span> <span class="o">=</span> <span class="n">phd</span><span class="o">.</span><span class="n">Simulation</span><span class="p">(</span><span class="n">simulation_name</span><span class="o">=</span><span class="s2">&quot;plummer&quot;</span><span class="p">,</span> <span class="n">colored_logs</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">simulation</span> <span class="o">=</span> <span class="n">phd</span><span class="o">.</span><span class="n">Simulation</span><span class="p">(</span><span class="n">simulation_name</span><span class="o">=</span><span class="s2">&quot;plummer&quot;</span><span class="p">,</span> <span class="n">log_level</span> <span class="o">=</span> <span class="s2">&quot;startup&quot;</span><span class="p">)</span>
 <span class="n">simulation</span><span class="o">.</span><span class="n">set_integrator</span><span class="p">(</span><span class="n">integrator</span><span class="p">)</span>
 <span class="n">simulation</span><span class="o">.</span><span class="n">set_simulation_time_manager</span><span class="p">(</span><span class="n">simulation_time_manager</span><span class="p">)</span>
 <span class="n">simulation</span><span class="o">.</span><span class="n">initialize</span><span class="p">()</span>
@@ -519,7 +519,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:31,370:
+phd: [<span class="ansi-green-fg">STARTUP</span>  ] 2021-07-28 10:33:40,218:
 
  __________.__         .___
 \______   \  |__    __| _/
@@ -546,115 +546,9 @@ mesh: Not Defined
 particles: CarrayContainer
 reconstruction: Not Defined
 riemann: Not Defined
+units: Units
 
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:31,383: hdf5 format: Writting initial_output0000.hdf5
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:31,418: Beginning integration loop
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:31,419: Starting iteration: 0 time: 0.000000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:31,429: Starting iteration: 1 time: 0.005000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:31,439: Starting iteration: 2 time: 0.010000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:31,449: Starting iteration: 3 time: 0.015000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:31,459: Starting iteration: 4 time: 0.020000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:31,468: Starting iteration: 5 time: 0.025000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:31,478: Starting iteration: 6 time: 0.030000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:31,487: Starting iteration: 7 time: 0.035000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:31,497: Starting iteration: 8 time: 0.040000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:31,506: Starting iteration: 9 time: 0.045000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:31,516: Starting iteration: 10 time: 0.050000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:31,527: Starting iteration: 11 time: 0.055000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:31,537: Starting iteration: 12 time: 0.060000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:31,547: Starting iteration: 13 time: 0.065000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:31,556: Starting iteration: 14 time: 0.070000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:31,566: Starting iteration: 15 time: 0.075000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:31,575: Starting iteration: 16 time: 0.080000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:31,585: Starting iteration: 17 time: 0.085000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:31,594: Starting iteration: 18 time: 0.090000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:31,604: Starting iteration: 19 time: 0.095000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:31,613: Starting iteration: 20 time: 0.100000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:31,623: Starting iteration: 21 time: 0.105000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:31,632: Starting iteration: 22 time: 0.110000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:31,642: Starting iteration: 23 time: 0.115000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:31,651: Starting iteration: 24 time: 0.120000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:31,661: hdf5 format: Writting iteration_interval0000.hdf5
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:31,677: Starting iteration: 25 time: 0.125000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:31,687: Starting iteration: 26 time: 0.130000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:31,697: Starting iteration: 27 time: 0.135000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:31,707: Starting iteration: 28 time: 0.140000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:31,717: Starting iteration: 29 time: 0.145000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:31,727: Starting iteration: 30 time: 0.150000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:31,738: Starting iteration: 31 time: 0.155000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:31,747: Starting iteration: 32 time: 0.160000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:31,757: Starting iteration: 33 time: 0.165000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:31,768: Starting iteration: 34 time: 0.170000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:31,777: Starting iteration: 35 time: 0.175000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:31,787: Starting iteration: 36 time: 0.180000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:31,797: Starting iteration: 37 time: 0.185000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:31,807: Starting iteration: 38 time: 0.190000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:31,817: Starting iteration: 39 time: 0.195000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:31,827: Starting iteration: 40 time: 0.200000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:31,836: Starting iteration: 41 time: 0.205000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:31,846: Starting iteration: 42 time: 0.210000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:31,856: Starting iteration: 43 time: 0.215000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:31,866: Starting iteration: 44 time: 0.220000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:31,875: Starting iteration: 45 time: 0.225000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:31,885: Starting iteration: 46 time: 0.230000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:31,894: Starting iteration: 47 time: 0.235000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:31,904: Starting iteration: 48 time: 0.240000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:31,913: Starting iteration: 49 time: 0.245000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:31,923: hdf5 format: Writting iteration_interval0001.hdf5
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:31,934: Starting iteration: 50 time: 0.250000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:31,944: Starting iteration: 51 time: 0.255000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:31,954: Starting iteration: 52 time: 0.260000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:31,963: Starting iteration: 53 time: 0.265000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:31,973: Starting iteration: 54 time: 0.270000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:31,982: Starting iteration: 55 time: 0.275000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:31,993: Starting iteration: 56 time: 0.280000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:32,003: Starting iteration: 57 time: 0.285000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:32,013: Starting iteration: 58 time: 0.290000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:32,023: Starting iteration: 59 time: 0.295000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:32,033: Starting iteration: 60 time: 0.300000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:32,043: Starting iteration: 61 time: 0.305000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:32,054: Starting iteration: 62 time: 0.310000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:32,065: Starting iteration: 63 time: 0.315000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:32,075: Starting iteration: 64 time: 0.320000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:32,085: Starting iteration: 65 time: 0.325000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:32,095: Starting iteration: 66 time: 0.330000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:32,107: Starting iteration: 67 time: 0.335000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:32,118: Starting iteration: 68 time: 0.340000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:32,128: Starting iteration: 69 time: 0.345000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:32,138: Starting iteration: 70 time: 0.350000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:32,148: Starting iteration: 71 time: 0.355000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:32,159: Starting iteration: 72 time: 0.360000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:32,169: Starting iteration: 73 time: 0.365000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:32,179: Starting iteration: 74 time: 0.370000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:32,189: hdf5 format: Writting iteration_interval0002.hdf5
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:32,200: Starting iteration: 75 time: 0.375000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:32,210: Starting iteration: 76 time: 0.380000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:32,219: Starting iteration: 77 time: 0.385000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:32,229: Starting iteration: 78 time: 0.390000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:32,239: Starting iteration: 79 time: 0.395000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:32,248: Starting iteration: 80 time: 0.400000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:32,258: Starting iteration: 81 time: 0.405000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:32,268: Starting iteration: 82 time: 0.410000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:32,278: Starting iteration: 83 time: 0.415000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:32,288: Starting iteration: 84 time: 0.420000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:32,298: Starting iteration: 85 time: 0.425000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:32,308: Starting iteration: 86 time: 0.430000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:32,318: Starting iteration: 87 time: 0.435000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:32,328: Starting iteration: 88 time: 0.440000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:32,337: Starting iteration: 89 time: 0.445000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:32,348: Starting iteration: 90 time: 0.450000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:32,358: Starting iteration: 91 time: 0.455000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:32,368: Starting iteration: 92 time: 0.460000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:32,378: Starting iteration: 93 time: 0.465000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:32,388: Starting iteration: 94 time: 0.470000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:32,398: Starting iteration: 95 time: 0.475000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:32,407: Starting iteration: 96 time: 0.480000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:32,417: Starting iteration: 97 time: 0.485000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:32,426: Starting iteration: 98 time: 0.490000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:32,436: Starting iteration: 99 time: 0.495000 dt: 0.005000
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:32,445: hdf5 format: Writting iteration_interval0003.hdf5
-phd: [<span class="ansi-green-fg">INFO</span>     ] 2021-06-02 19:52:32,456: hdf5 format: Writting final_output0000.hdf5
-phd: [<span class="ansi-green-fg">SUCCESS</span>  ] 2021-06-02 19:52:32,466: Simulation successfully finished!
+phd: [<span class="ansi-green-fg">SUCCESS</span>  ] 2021-07-28 10:33:40,932: Simulation successfully finished!
 </pre></div></div>
 </div>
 <p>We can then evaluate the results of the simulation by computing the density profile at different times and comparing them against the analytic Plummer prescription. Specifically, we can divide the simulation domain into spherical shells and compute the particle density in the shells to get an approximate measure of the density as a function of radius. Visual comparison of the initial, final, and analytic profiles show excellent agreement!</p>

@@ -160,7 +160,10 @@ where files will be saved.</p>
 <dl class="py attribute">
 <dt id="phd.simulation.simulation.Simulation.log_level">
 <code class="sig-name descname">log_level</code><a class="headerlink" href="#phd.simulation.simulation.Simulation.log_level" title="Permalink to this definition">¶</a></dt>
-<dd><p>Level which logger is outputted.</p>
+<dd><p>Level which logger is outputted – acceptable inputs are “debug”,
+“info”, “success”, “warning”, and “startup”. All levels are inherited
+from standard Python logger package implementation with the exception
+of “success” (at 25) and “startup” (at 22).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"><p>str</p>
@@ -214,12 +217,16 @@ main loop.</p>
 </dd></dl>
 
 <p>Constructor for simulation.</p>
-<dl class="simple">
-<dt>colored_logs<span class="classifier">bool</span></dt><dd><p>Output colored logs to screen if True otherwise remove color.</p>
-</dd>
-<dt>log_level<span class="classifier">str</span></dt><dd><p>Level which logger is outputted.outputted.</p>
-</dd>
-<dt>simulation_name<span class="classifier">str</span></dt><dd><p>Name of problem solving, this name prefixs output data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>colored_logs</strong> (<em>bool</em>) – Output colored logs to screen if True otherwise remove color.</p></li>
+<li><p><strong>log_level</strong> (<em>str</em>) – Level which logger is outputted – acceptable inputs are “debug”,
+“info”, “success”, “warning”, and “startup”. All levels are inherited
+from standard Python logger package implementation with the exception
+of “success” (at 25) and “startup” (at 22).</p></li>
+<li><p><strong>simulation_name</strong> (<em>str</em>) – Name of the problem being solved, this name prefixes the output data.</p></li>
+</ul>
 </dd>
 </dl>
 <dl class="py method">
