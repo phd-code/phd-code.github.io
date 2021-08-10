@@ -20,7 +20,7 @@ def kill_process(process):
 def run(filename, args=[], nprocs=2, timeout=20.0, path=None):
     """ run a file python script
 
-    Parameters:
+    Parameters
     ----------
     filename - filename of python script to run under mpi
     nprocs - (2) number of processes of the script to run (0 => serial non-mpi run)

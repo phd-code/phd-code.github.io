@@ -19,8 +19,8 @@ class Units:
         """
         Constructor for the Unit class.
 
-        Parameters:
-        -----------
+        Parameters
+        ----------
         unit_system : str
             Specifies the unit system, supports available unyt unit systems 
             (cgs, mks, imperial, galactic, solar, planck).
@@ -46,8 +46,8 @@ class Units:
     def set_bases(self, unit_dict):
         """ Sets the base units (time, length, mass) for the simulation 
 
-        Parameters:
-        -----------
+        Parameters
+        ----------
         unit_dict : dict
             Dictionary of unyt ``Unit`` objects (values) with associated 
             dimensions (keys). Must include length, time, mass units. For example, 
@@ -59,8 +59,8 @@ class Units:
     def set_output_system(self, unit_system):
         """ Sets the units for simulation output. 
 
-        Parameters:
-        -----------
+        Parameters
+        ----------
         unit_system : str
             Name of the unit system to be used. Accepted names are those included with unyt 
             (cgs, mks, imperial, galactic, solar, planck) and 'user' (only works if ``set_bases`` 
